@@ -13,6 +13,7 @@
     "@libsql/kysely-libsql": "^0.4.1",
     "better-auth": "^1.0.10",
     "nuxt": "^3.14.1592",
+    "resend": "^4.0.1",
     "vue": "latest",
     "vue-router": "latest"
   },
