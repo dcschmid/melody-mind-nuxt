@@ -1,26 +1,36 @@
 <template>
-    <div>
-        <h1>Welcome to the homepage</h1>
-        <AppAlert>
-            This is an auto-imported component
+    <div role="main">
+        <h1>Willkommen</h1>
+        <AppAlert>This is an auto-imported component
         </AppAlert>
 
-        <form v-if="!isRegistering" @submit.prevent="handleLogin" class="auth-form">
-            <h2>Anmelden</h2>
+        <form v-if="!isRegistering" @submit.prevent="handleLogin" class="auth-form" aria-labelledby="login-title">
+            <h2 id="login-title">Anmelden</h2>
+            <div v-if="errorMessage" class="error-message" role="alert" aria-live="assertive">
+                {{ errorMessage }}
+            </div>
             <div class="form-group">
-                <select v-model="loginMethod" class="form-control">
+                <label for="login-method">Anmeldemethode wählen</label>
+                <select id="login-method" v-model="loginMethod" class="form-control"
+                    aria-describedby="login-method-description">
                     <option value="email">Mit E-Mail anmelden</option>
                     <option value="username">Mit Benutzername anmelden</option>
                 </select>
             </div>
             <div class="form-group" v-if="loginMethod === 'email'">
-                <input type="email" v-model="email" placeholder="E-Mail" required>
+                <label for="email">E-Mail Adresse</label>
+                <input type="email" id="email" v-model="email" aria-required="true" :aria-invalid="!!emailError">
+                <span v-if="emailError" class="error-message">{{ emailError }}</span>
             </div>
             <div class="form-group" v-else>
-                <input type="text" v-model="username" placeholder="Benutzername" required>
+                <label for="username">Benutzername</label>
+                <input type="text" id="username" v-model="username" placeholder="Benutzername" required :aria-invalid="!!usernameError">
+                <span v-if="usernameError" class="error-message">{{ usernameError }}</span>
             </div>
             <div class="form-group">
-                <input type="password" v-model="password" placeholder="Passwort" required>
+                <label for="password">Passwort</label>
+                <input type="password" id="password" v-model="password" placeholder="Passwort" required :aria-invalid="!!passwordError">
+                <span v-if="passwordError" class="error-message">{{ passwordError }}</span>
             </div>
             <button type="submit">Anmelden</button>
             <p>
@@ -34,6 +44,9 @@
         <!-- Registrierungs Formular -->
         <form v-else @submit.prevent="handleRegister" class="auth-form">
             <h2>Registrieren</h2>
+            <div v-if="errorMessage" class="error-message" role="alert" aria-live="assertive">
+                {{ errorMessage }}
+            </div>
             <div class="form-group">
                 <input type="text" v-model="name" placeholder="Name" required>
             </div>
@@ -54,25 +67,32 @@
         </form>
         <div>
             <div class="social-login-group">
-                <button v-if="!session?.data" @click="() => authClient.signIn.social({ provider: 'github' })">
+                <button v-if="!session?.data"
+                    @click="() => authClient.signIn.social({ provider: 'github', callbackURL: '/gamehome' })">
                     Continue with GitHub
                 </button>
-                <button v-if="!session?.data" @click="() => authClient.signIn.social({ provider: 'google' })">
+                <button v-if="!session?.data"
+                    @click="() => authClient.signIn.social({ provider: 'google', callbackURL: '/gamehome' })">
                     Continue with Google
                 </button>
-                <button v-if="!session?.data" @click="() => authClient.signIn.social({ provider: 'discord' })">
+                <button v-if="!session?.data"
+                    @click="() => authClient.signIn.social({ provider: 'discord', callbackURL: '/gamehome' })">
                     Continue with Discord
                 </button>
-                <button v-if="!session?.data" @click="() => authClient.signIn.social({ provider: 'twitch' })">
+                <button v-if="!session?.data"
+                    @click="() => authClient.signIn.social({ provider: 'twitch', callbackURL: '/gamehome' })">
                     Continue with Twitch
                 </button>
-                <button v-if="!session?.data" @click="() => authClient.signIn.social({ provider: 'twitter' })">
+                <button v-if="!session?.data"
+                    @click="() => authClient.signIn.social({ provider: 'twitter', callbackURL: '/gamehome' })">
                     Continue with Twitter
                 </button>
-                <button v-if="!session?.data" @click="() => authClient.signIn.oauth2({ providerId: 'spotify' })">
+                <button v-if="!session?.data"
+                    @click="() => authClient.signIn.oauth2({ providerId: 'spotify', callbackURL: '/gamehome' })">
                     Mit Spotify fortfahren
                 </button>
-                <button v-if="!session?.data" @click="() => authClient.signIn.oauth2({ providerId: 'yahoo' })">
+                <button v-if="!session?.data"
+                    @click="() => authClient.signIn.oauth2({ providerId: 'yahoo', callbackURL: '/gamehome' })">
                     Mit Yahoo fortfahren
                 </button>
             </div>
@@ -89,6 +109,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { authClient } from "../lib/auth-client";
+import { useRouter } from 'vue-router';
 
 const session = authClient.useSession()
 const isRegistering = ref(false)
@@ -97,68 +118,97 @@ const email = ref('')
 const password = ref('')
 const name = ref('')
 const username = ref('')
+const router = useRouter();
+const errorMessage = ref('')
+const emailError = ref('')
+const passwordError = ref('')
+const usernameError = ref('')
+
+const validateForm = () => {
+  let isValid = true
+  emailError.value = ''
+  passwordError.value = ''
+  usernameError.value = ''
+
+  if (loginMethod.value === 'email' && !email.value) {
+    emailError.value = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'
+    isValid = false
+  }
+  if (!password.value) {
+    passwordError.value = 'Bitte geben Sie ein Passwort ein.'
+    isValid = false
+  }
+  if (loginMethod.value === 'username' && !username.value) {
+    usernameError.value = 'Bitte geben Sie einen Benutzernamen ein.'
+    isValid = false
+  }
+  return isValid
+}
 
 const handleLogin = async () => {
-    try {
-        let result;
-        if (loginMethod.value === 'email') {
-            result = await authClient.signIn.email({
-                email: email.value,
-                password: password.value
-            })
-        } else {
-            result = await authClient.signIn.username({
-                username: username.value,
-                password: password.value
-            })
-        }
+  if (!validateForm()) return
 
-        if (result.error) throw result.error
-    } catch (error) {
-        console.error('Login error:', error)
-        alert('Login fehlgeschlagen')
+  try {
+    let result;
+    if (loginMethod.value === 'email') {
+      result = await authClient.signIn.email({
+        email: email.value,
+        password: password.value
+      })
+    } else {
+      result = await authClient.signIn.username({
+        username: username.value,
+        password: password.value
+      })
     }
+
+    if (result.error) throw result.error
+
+    router.push('/gamehome')
+  } catch (error) {
+    console.error('Login error:', error)
+    errorMessage.value = 'Login fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben.'
+  }
 }
 
 const handleRegister = async () => {
-    try {
-        const { data, error } = await authClient.signUp.email({
-            email: email.value,
-            password: password.value,
-            name: name.value,
-            username: username.value
-        })
-        if (error) throw error
-        isRegistering.value = false
-    } catch (error) {
-        console.error('Registration error:', error)
-        alert('Registrierung fehlgeschlagen')
-    }
+  try {
+    const { data, error } = await authClient.signUp.email({
+      email: email.value,
+      password: password.value,
+      name: name.value,
+      username: username.value
+    })
+    if (error) throw error
+    isRegistering.value = false
+  } catch (error) {
+    console.error('Registration error:', error)
+    errorMessage.value = 'Registrierung fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben.'
+  }
 }
 
 const handleForgotPassword = async () => {
-    try {
-        const { data, error } = await authClient.forgetPassword({
-            email: email.value,
-            redirectTo: '/reset-password'
-        })
-        if (error) throw error
-        alert('Überprüfen Sie Ihre E-Mail für weitere Anweisungen')
-    } catch (error) {
-        console.error('Password reset error:', error)
-        alert('Passwort-Reset fehlgeschlagen')
-    }
+  try {
+    const { data, error } = await authClient.forgetPassword({
+      email: email.value,
+      redirectTo: '/reset-password'
+    })
+    if (error) throw error
+    errorMessage.value = 'Überprüfen Sie Ihre E-Mail für weitere Anweisungen.'
+  } catch (error) {
+    console.error('Password reset error:', error)
+    errorMessage.value = 'Passwort-Reset fehlgeschlagen. Bitte versuchen Sie es erneut.'
+  }
 }
 </script>
 
 <style scoped>
 .auth-form {
-    max-width: var(--max-line-length);
-    margin: 0 auto;
-    padding: var(--padding-large);
-    background-color: var(--secondary-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 h2 {
@@ -175,8 +225,8 @@ h2 {
 input,
 select {
     width: 100%;
-    min-height: var(--min-touch-target);
-    padding: var(--padding-small);
+    min-height: 44px;
+    padding: 0.5rem 1rem;
     font-size: var(--body-font-size);
     color: var(--text-color);
     background-color: var(--background-color);
@@ -252,5 +302,21 @@ button:hover {
     flex-direction: column;
     gap: var(--padding-small);
     margin-top: var(--padding-medium);
+}
+
+.error-message {
+    color: var(--error-color);
+    background-color: var(--error-bg);
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
+input:focus,
+select:focus,
+button:focus {
+    outline: 3px solid var(--highlight-color);
+    outline-offset: 2px;
 }
 </style>
