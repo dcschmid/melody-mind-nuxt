@@ -1,0 +1,46 @@
+{
+  "languages": {
+    "de": "German",
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "it": "Italian"
+  },
+  "welcome": "Welcome to Melody Mind",
+  "intro": "Test your music knowledge in our interactive quiz. Recognize songs, albums and artists, collect points and become a music champion. Play now for free!",
+  "login": {
+    "title": "Login",
+    "methodLabel": "Choose login method",
+    "emailOption": "Login with email",
+    "usernameOption": "Login with username",
+    "emailLabel": "Email address",
+    "usernameLabel": "Username",
+    "passwordLabel": "Password",
+    "submitButton": "Login",
+    "noAccount": "No account yet? Register",
+    "forgotPassword": "Forgot password?"
+  },
+  "register": {
+    "title": "Register",
+    "nameLabel": "Name",
+    "usernameLabel": "Username",
+    "usernameLengthHint": "Minimum 3 characters, maximum 20 characters",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "submitButton": "Register",
+    "hasAccount": "Already registered? Login"
+  },
+  "socialLogin": {
+    "title": "Login with social networks",
+    "signOut": "Sign out"
+  },
+  "errors": {
+    "emailRequired": "Please enter a valid email address.",
+    "passwordRequired": "Please enter a password.",
+    "usernameRequired": "Please enter a username.",
+    "loginFailed": "Login failed. Please check your credentials.",
+    "registrationFailed": "Registration failed. Please check your input.",
+    "passwordResetFailed": "Password reset failed. Please try again.",
+    "passwordResetSuccess": "Check your email for further instructions."
+  }
+}

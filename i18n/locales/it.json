@@ -1,0 +1,46 @@
+{
+  "languages": {
+    "de": "Tedesco",
+    "en": "Inglese",
+    "es": "Spagnolo",
+    "fr": "Francese",
+    "it": "Italiano"
+  },
+  "welcome": "Benvenuto su Melody Mind",
+  "intro": "Metti alla prova le tue conoscenze musicali nel nostro quiz interattivo. Riconosci canzoni, album e artisti, accumula punti e diventa un campione della musica. Gioca ora gratuitamente!",
+  "login": {
+    "title": "Accedi",
+    "methodLabel": "Scegli il metodo di accesso",
+    "emailOption": "Accedi con email",
+    "usernameOption": "Accedi con nome utente",
+    "emailLabel": "Indirizzo email",
+    "usernameLabel": "Nome utente",
+    "passwordLabel": "Password",
+    "submitButton": "Accedi",
+    "noAccount": "Non hai un account? Registrati",
+    "forgotPassword": "Password dimenticata?"
+  },
+  "register": {
+    "title": "Registrati",
+    "nameLabel": "Nome",
+    "usernameLabel": "Nome utente",
+    "usernameLengthHint": "Minimo 3 caratteri, massimo 20 caratteri",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "submitButton": "Registrati",
+    "hasAccount": "Già registrato? Accedi"
+  },
+  "socialLogin": {
+    "title": "Accedi con i social network",
+    "signOut": "Disconnetti"
+  },
+  "errors": {
+    "emailRequired": "Inserisci un indirizzo email valido.",
+    "passwordRequired": "Inserisci una password.",
+    "usernameRequired": "Inserisci un nome utente.",
+    "loginFailed": "Accesso fallito. Verifica le tue credenziali.",
+    "registrationFailed": "Registrazione fallita. Verifica i tuoi dati.",
+    "passwordResetFailed": "Reimpostazione password fallita. Riprova.",
+    "passwordResetSuccess": "Controlla la tua email per ulteriori istruzioni."
+  }
+}

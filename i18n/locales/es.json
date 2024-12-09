@@ -1,0 +1,46 @@
+{
+  "languages": {
+    "de": "Alemán",
+    "en": "Inglés",
+    "es": "Español",
+    "fr": "Francés",
+    "it": "Italiano"
+  },
+  "welcome": "Bienvenido a Melody Mind",
+  "intro": "Pon a prueba tus conocimientos musicales en nuestro cuestionario interactivo. Reconoce canciones, álbumes y artistas, acumula puntos y conviértete en un campeón musical. ¡Juega gratis ahora!",
+  "login": {
+    "title": "Iniciar sesión",
+    "methodLabel": "Elegir método de inicio de sesión",
+    "emailOption": "Iniciar sesión con correo",
+    "usernameOption": "Iniciar sesión con nombre de usuario",
+    "emailLabel": "Correo electrónico",
+    "usernameLabel": "Nombre de usuario",
+    "passwordLabel": "Contraseña",
+    "submitButton": "Iniciar sesión",
+    "noAccount": "¿No tienes cuenta? Regístrate",
+    "forgotPassword": "¿Olvidaste tu contraseña?"
+  },
+  "register": {
+    "title": "Registrarse",
+    "nameLabel": "Nombre",
+    "usernameLabel": "Nombre de usuario",
+    "usernameLengthHint": "Mínimo 3 caracteres, máximo 20 caracteres",
+    "emailLabel": "Correo electrónico",
+    "passwordLabel": "Contraseña",
+    "submitButton": "Registrarse",
+    "hasAccount": "¿Ya estás registrado? Inicia sesión"
+  },
+  "socialLogin": {
+    "title": "Iniciar sesión con redes sociales",
+    "signOut": "Cerrar sesión"
+  },
+  "errors": {
+    "emailRequired": "Por favor, introduce un correo electrónico válido.",
+    "passwordRequired": "Por favor, introduce una contraseña.",
+    "usernameRequired": "Por favor, introduce un nombre de usuario.",
+    "loginFailed": "Error al iniciar sesión. Por favor, verifica tus credenciales.",
+    "registrationFailed": "Error en el registro. Por favor, verifica tus datos.",
+    "passwordResetFailed": "Error al restablecer la contraseña. Por favor, inténtalo de nuevo.",
+    "passwordResetSuccess": "Revisa tu correo para más instrucciones."
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "languages": {
+    "de": "Deutsch",
+    "en": "Englisch",
+    "es": "Spanisch",
+    "fr": "Französisch",
+    "it": "Italienisch"
+  },
+  "welcome": "Willkommen bei Melody Mind",
+  "intro": "Teste dein Musikwissen in unserem interaktiven Quiz. Erkenne Songs, Alben und Künstler, sammle Punkte und werde zum Musik-Champion. Jetzt kostenlos spielen!",
+  "login": {
+    "title": "Anmelden",
+    "methodLabel": "Anmeldemethode wählen",
+    "emailOption": "Mit E-Mail anmelden",
+    "usernameOption": "Mit Benutzername anmelden",
+    "emailLabel": "E-Mail Adresse",
+    "usernameLabel": "Benutzername",
+    "passwordLabel": "Passwort",
+    "submitButton": "Anmelden",
+    "noAccount": "Noch kein Konto? Registrieren",
+    "forgotPassword": "Passwort vergessen?"
+  },
+  "register": {
+    "title": "Registrieren",
+    "nameLabel": "Name",
+    "usernameLabel": "Benutzername",
+    "usernameLengthHint": "Mindestens 3 Zeichen, maximal 20 Zeichen",
+    "emailLabel": "E-Mail",
+    "passwordLabel": "Passwort",
+    "submitButton": "Registrieren",
+    "hasAccount": "Bereits registriert? Anmelden"
+  },
+  "socialLogin": {
+    "title": "Mit sozialen Netzwerken anmelden",
+    "signOut": "Abmelden"
+  },
+  "errors": {
+    "emailRequired": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+    "passwordRequired": "Bitte geben Sie ein Passwort ein.",
+    "usernameRequired": "Bitte geben Sie einen Benutzernamen ein.",
+    "loginFailed": "Login fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben.",
+    "registrationFailed": "Registrierung fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben.",
+    "passwordResetFailed": "Passwort-Reset fehlgeschlagen. Bitte versuchen Sie es erneut.",
+    "passwordResetSuccess": "Überprüfen Sie Ihre E-Mail für weitere Anweisungen."
+  }
+}

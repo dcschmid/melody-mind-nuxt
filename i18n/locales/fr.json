@@ -1,0 +1,46 @@
+{
+  "languages": {
+    "de": "Allemand",
+    "en": "Anglais",
+    "es": "Espagnol",
+    "fr": "Français",
+    "it": "Italien"
+  },
+  "welcome": "Bienvenue sur Melody Mind",
+  "intro": "Testez vos connaissances musicales dans notre quiz interactif. Reconnaissez des chansons, des albums et des artistes, accumulez des points et devenez un champion de la musique. Jouez gratuitement maintenant !",
+  "login": {
+    "title": "Connexion",
+    "methodLabel": "Choisir la méthode de connexion",
+    "emailOption": "Connexion par email",
+    "usernameOption": "Connexion par nom d'utilisateur",
+    "emailLabel": "Adresse email",
+    "usernameLabel": "Nom d'utilisateur",
+    "passwordLabel": "Mot de passe",
+    "submitButton": "Se connecter",
+    "noAccount": "Pas encore de compte ? S'inscrire",
+    "forgotPassword": "Mot de passe oublié ?"
+  },
+  "register": {
+    "title": "S'inscrire",
+    "nameLabel": "Nom",
+    "usernameLabel": "Nom d'utilisateur",
+    "usernameLengthHint": "Minimum 3 caractères, maximum 20 caractères",
+    "emailLabel": "Email",
+    "passwordLabel": "Mot de passe",
+    "submitButton": "S'inscrire",
+    "hasAccount": "Déjà inscrit ? Se connecter"
+  },
+  "socialLogin": {
+    "title": "Se connecter avec les réseaux sociaux",
+    "signOut": "Se déconnecter"
+  },
+  "errors": {
+    "emailRequired": "Veuillez entrer une adresse email valide.",
+    "passwordRequired": "Veuillez entrer un mot de passe.",
+    "usernameRequired": "Veuillez entrer un nom d'utilisateur.",
+    "loginFailed": "Échec de la connexion. Veuillez vérifier vos identifiants.",
+    "registrationFailed": "Échec de l'inscription. Veuillez vérifier vos informations.",
+    "passwordResetFailed": "Échec de la réinitialisation du mot de passe. Veuillez réessayer.",
+    "passwordResetSuccess": "Vérifiez votre email pour plus d'instructions."
+  }
+}

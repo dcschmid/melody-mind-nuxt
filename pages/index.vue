@@ -1,105 +1,114 @@
 <template>
+    <LanguagePicker />
+
     <div role="main">
-        <h1>Willkommen</h1>
-        <AppAlert>This is an auto-imported component
-        </AppAlert>
+        <h1>{{ $t('welcome') }}</h1>
+
+        <div>
+            {{ $t('intro') }}
+        </div>
 
         <form v-if="!isRegistering" @submit.prevent="handleLogin" class="auth-form" aria-labelledby="login-title">
-            <h2 id="login-title">Anmelden</h2>
+            <h2 id="login-title">{{ $t('login.title') }}</h2>
             <div v-if="errorMessage" class="error-message" role="alert" aria-live="assertive">
                 {{ errorMessage }}
             </div>
             <div class="form-group">
-                <label for="login-method">Anmeldemethode wählen</label>
+                <label for="login-method">{{ $t('login.methodLabel') }}</label>
                 <select id="login-method" v-model="loginMethod" class="form-control"
                     aria-describedby="login-method-description">
-                    <option value="email">Mit E-Mail anmelden</option>
-                    <option value="username">Mit Benutzername anmelden</option>
+                    <option value="email">{{ $t('login.emailOption') }}</option>
+                    <option value="username">{{ $t('login.usernameOption') }}</option>
                 </select>
             </div>
             <div class="form-group" v-if="loginMethod === 'email'">
-                <label for="email">E-Mail Adresse</label>
+                <label for="email">{{ $t('login.emailLabel') }}</label>
                 <input type="email" id="email" v-model="email" aria-required="true" :aria-invalid="!!emailError">
-                <span v-if="emailError" class="error-message">{{ emailError }}</span>
+                <span v-if="emailError" class="error-message">{{ $t('errors.emailRequired') }}</span>
             </div>
             <div class="form-group" v-else>
-                <label for="username">Benutzername</label>
-                <input type="text" id="username" v-model="username" placeholder="Benutzername" required :aria-invalid="!!usernameError">
-                <span v-if="usernameError" class="error-message">{{ usernameError }}</span>
+                <label for="username">{{ $t('login.usernameLabel') }}</label>
+                <input type="text" id="username" v-model="username" required :aria-invalid="!!usernameError">
+                <span v-if="usernameError" class="error-message">{{ $t('errors.usernameRequired') }}</span>
             </div>
             <div class="form-group">
-                <label for="password">Passwort</label>
-                <input type="password" id="password" v-model="password" placeholder="Passwort" required :aria-invalid="!!passwordError">
-                <span v-if="passwordError" class="error-message">{{ passwordError }}</span>
+                <label for="password">{{ $t('login.passwordLabel') }}</label>
+                <input type="password" id="password" v-model="password" required :aria-invalid="!!passwordError">
+                <span v-if="passwordError" class="error-message">{{ $t('errors.passwordRequired') }}</span>
             </div>
-            <button type="submit">Anmelden</button>
+            <button type="submit">{{ $t('login.submitButton') }}</button>
             <p>
-                <a href="#" @click.prevent="isRegistering = true">Noch kein Konto? Registrieren</a>
+                <a href="#" @click.prevent="isRegistering = true">{{ $t('login.noAccount') }}</a>
             </p>
             <p>
-                <a href="#" @click.prevent="handleForgotPassword">Passwort vergessen?</a>
+                <a href="#" @click.prevent="handleForgotPassword">{{ $t('login.forgotPassword') }}</a>
             </p>
         </form>
 
         <!-- Registrierungs Formular -->
         <form v-else @submit.prevent="handleRegister" class="auth-form">
-            <h2>Registrieren</h2>
+            <h2>{{ $t('register.title') }}</h2>
             <div v-if="errorMessage" class="error-message" role="alert" aria-live="assertive">
                 {{ errorMessage }}
             </div>
             <div class="form-group">
-                <input type="text" v-model="name" placeholder="Name" required>
+                <label for="name">{{ $t('register.nameLabel') }}</label>
+                <input type="text" id="name" v-model="name" required>
             </div>
             <div class="form-group">
-                <input type="text" v-model="username" placeholder="Benutzername" required>
-                <small>Mindestens 3 Zeichen, maximal 20 Zeichen</small>
+                <label for="reg-username">{{ $t('register.usernameLabel') }}</label>
+                <input type="text" id="reg-username" v-model="username" required>
+                <small>{{ $t('register.usernameLengthHint') }}</small>
             </div>
             <div class="form-group">
-                <input type="email" v-model="email" placeholder="E-Mail" required>
+                <label for="reg-email">{{ $t('register.emailLabel') }}</label>
+                <input type="email" id="reg-email" v-model="email" required>
             </div>
             <div class="form-group">
-                <input type="password" v-model="password" placeholder="Passwort" required>
+                <label for="reg-password">{{ $t('register.passwordLabel') }}</label>
+                <input type="password" id="reg-password" v-model="password" required>
             </div>
-            <button type="submit">Registrieren</button>
+            <button type="submit">{{ $t('register.submitButton') }}</button>
             <p>
-                <a href="#" @click.prevent="isRegistering = false">Bereits registriert? Anmelden</a>
+                <a href="#" @click.prevent="isRegistering = false">{{ $t('register.hasAccount') }}</a>
             </p>
         </form>
         <div>
+            <h2 class="social-login-title">{{ $t('socialLogin.title') }}</h2>
             <div class="social-login-group">
                 <button v-if="!session?.data"
                     @click="() => authClient.signIn.social({ provider: 'github', callbackURL: '/gamehome' })">
-                    Continue with GitHub
+                    <Icon name="line-md:github-loop" size="30" style="fill: #000;" /> GitHub
                 </button>
                 <button v-if="!session?.data"
                     @click="() => authClient.signIn.social({ provider: 'google', callbackURL: '/gamehome' })">
-                    Continue with Google
+                    <Icon name="mage:google" size="30" style="fill: #000;" /> Google
                 </button>
                 <button v-if="!session?.data"
                     @click="() => authClient.signIn.social({ provider: 'discord', callbackURL: '/gamehome' })">
-                    Continue with Discord
+                    <Icon name="meteor-icons:discord" size="30" style="fill: #000;" /> Discord
                 </button>
                 <button v-if="!session?.data"
                     @click="() => authClient.signIn.social({ provider: 'twitch', callbackURL: '/gamehome' })">
-                    Continue with Twitch
+                    <Icon name="mdi:twitch" size="30" style="fill: #000;" /> Twitch
                 </button>
                 <button v-if="!session?.data"
                     @click="() => authClient.signIn.social({ provider: 'twitter', callbackURL: '/gamehome' })">
-                    Continue with Twitter
+                    <Icon name="prime:twitter" size="24" style="fill: #000;" /> Twitter
                 </button>
                 <button v-if="!session?.data"
                     @click="() => authClient.signIn.oauth2({ providerId: 'spotify', callbackURL: '/gamehome' })">
-                    Mit Spotify fortfahren
+                    <Icon name="line-md:spotify" size="30" style="fill: #000;" />Spotify
                 </button>
                 <button v-if="!session?.data"
                     @click="() => authClient.signIn.oauth2({ providerId: 'yahoo', callbackURL: '/gamehome' })">
-                    Mit Yahoo fortfahren
+                    <Icon name="jam:yahoo" size="34" style="fill: #000;" /> Yahoo
                 </button>
             </div>
             <div>
                 <pre>{{ session.data }}</pre>
                 <button v-if="session.data" @click="authClient.signOut()">
-                    Sign out
+                    {{ $t('socialLogin.signOut') }}
                 </button>
             </div>
         </div>
@@ -125,86 +134,85 @@ const passwordError = ref('')
 const usernameError = ref('')
 
 const validateForm = () => {
-  let isValid = true
-  emailError.value = ''
-  passwordError.value = ''
-  usernameError.value = ''
+    let isValid = true
+    emailError.value = ''
+    passwordError.value = ''
+    usernameError.value = ''
 
-  if (loginMethod.value === 'email' && !email.value) {
-    emailError.value = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'
-    isValid = false
-  }
-  if (!password.value) {
-    passwordError.value = 'Bitte geben Sie ein Passwort ein.'
-    isValid = false
-  }
-  if (loginMethod.value === 'username' && !username.value) {
-    usernameError.value = 'Bitte geben Sie einen Benutzernamen ein.'
-    isValid = false
-  }
-  return isValid
+    if (loginMethod.value === 'email' && !email.value) {
+        emailError.value = 'errors.emailRequired'
+        isValid = false
+    }
+    if (!password.value) {
+        passwordError.value = 'errors.passwordRequired'
+        isValid = false
+    }
+    if (loginMethod.value === 'username' && !username.value) {
+        usernameError.value = 'errors.usernameRequired'
+        isValid = false
+    }
+    return isValid
 }
 
 const handleLogin = async () => {
-  if (!validateForm()) return
+    if (!validateForm()) return
 
-  try {
-    let result;
-    if (loginMethod.value === 'email') {
-      result = await authClient.signIn.email({
-        email: email.value,
-        password: password.value
-      })
-    } else {
-      result = await authClient.signIn.username({
-        username: username.value,
-        password: password.value
-      })
+    try {
+        let result;
+        if (loginMethod.value === 'email') {
+            result = await authClient.signIn.email({
+                email: email.value,
+                password: password.value
+            })
+        } else {
+            result = await authClient.signIn.username({
+                username: username.value,
+                password: password.value
+            })
+        }
+
+        if (result.error) throw result.error
+
+        router.push('/gamehome')
+    } catch (error) {
+        console.error('Login error:', error)
+        errorMessage.value = 'errors.loginFailed'
     }
-
-    if (result.error) throw result.error
-
-    router.push('/gamehome')
-  } catch (error) {
-    console.error('Login error:', error)
-    errorMessage.value = 'Login fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben.'
-  }
 }
 
 const handleRegister = async () => {
-  try {
-    const { data, error } = await authClient.signUp.email({
-      email: email.value,
-      password: password.value,
-      name: name.value,
-      username: username.value
-    })
-    if (error) throw error
-    isRegistering.value = false
-  } catch (error) {
-    console.error('Registration error:', error)
-    errorMessage.value = 'Registrierung fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben.'
-  }
+    try {
+        const { data, error } = await authClient.signUp.email({
+            email: email.value,
+            password: password.value,
+            name: name.value,
+            username: username.value
+        })
+        if (error) throw error
+        isRegistering.value = false
+    } catch (error) {
+        console.error('Registration error:', error)
+        errorMessage.value = 'errors.registrationFailed'
+    }
 }
 
 const handleForgotPassword = async () => {
-  try {
-    const { data, error } = await authClient.forgetPassword({
-      email: email.value,
-      redirectTo: '/reset-password'
-    })
-    if (error) throw error
-    errorMessage.value = 'Überprüfen Sie Ihre E-Mail für weitere Anweisungen.'
-  } catch (error) {
-    console.error('Password reset error:', error)
-    errorMessage.value = 'Passwort-Reset fehlgeschlagen. Bitte versuchen Sie es erneut.'
-  }
+    try {
+        const { data, error } = await authClient.forgetPassword({
+            email: email.value,
+            redirectTo: '/reset-password'
+        })
+        if (error) throw error
+        errorMessage.value = 'errors.passwordResetSuccess'
+    } catch (error) {
+        console.error('Password reset error:', error)
+        errorMessage.value = 'errors.passwordResetFailed'
+    }
 }
 </script>
 
 <style scoped>
 .auth-form {
-    max-width: 500px;
     margin: 2rem auto;
     padding: 2rem;
     background-color: var(--background-color);
@@ -215,6 +223,12 @@ h2 {
     font-size: var(--header-font-size);
     margin-bottom: var(--padding-medium);
     color: var(--text-color);
+    text-align: center;
+}
+
+.social-login-title {
+    text-align: center;
+    margin-bottom: var(--padding-medium);
 }
 
 .form-group {
@@ -280,7 +294,11 @@ small {
 
 /* Social Login Buttons */
 button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
+    max-width: 300px;
     margin: var(--padding-small) 0;
     min-height: var(--min-touch-target);
     padding: var(--padding-small) var(--padding-medium);
@@ -300,6 +318,7 @@ button:hover {
 .social-login-group {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: var(--padding-small);
     margin-top: var(--padding-medium);
 }
@@ -318,5 +337,18 @@ select:focus,
 button:focus {
     outline: 3px solid var(--highlight-color);
     outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+    .social-login-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    button {
+        flex: 0 0 calc(50% - var(--padding-small));
+        margin: var(--padding-small);
+    }
 }
 </style>
