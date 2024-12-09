@@ -1,118 +1,112 @@
 <template>
-    <LanguagePicker />
+    <NuxtLayout name="default" :show-header="false" :show-menu="false" :show-coins="false">
+        <div role="main">
+            <h1>{{ $t('welcome') }}</h1>
 
-    <div role="main">
-        <h1>{{ $t('welcome') }}</h1>
-
-        <div>
-            {{ $t('intro') }}
-        </div>
-
-        <form v-if="!isRegistering" @submit.prevent="handleLogin" class="auth-form" aria-labelledby="login-title">
-            <h2 id="login-title">{{ $t('login.title') }}</h2>
-            <div v-if="errorMessage" class="error-message" role="alert" aria-live="assertive">
-                {{ errorMessage }}
-            </div>
-            <div class="form-group">
-                <label for="login-method">{{ $t('login.methodLabel') }}</label>
-                <select id="login-method" v-model="loginMethod" class="form-control"
-                    aria-describedby="login-method-description">
-                    <option value="email">{{ $t('login.emailOption') }}</option>
-                    <option value="username">{{ $t('login.usernameOption') }}</option>
-                </select>
-            </div>
-            <div class="form-group" v-if="loginMethod === 'email'">
-                <label for="email">{{ $t('login.emailLabel') }}</label>
-                <input type="email" id="email" v-model="email" aria-required="true" :aria-invalid="!!emailError">
-                <span v-if="emailError" class="error-message">{{ $t('errors.emailRequired') }}</span>
-            </div>
-            <div class="form-group" v-else>
-                <label for="username">{{ $t('login.usernameLabel') }}</label>
-                <input type="text" id="username" v-model="username" required :aria-invalid="!!usernameError">
-                <span v-if="usernameError" class="error-message">{{ $t('errors.usernameRequired') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="password">{{ $t('login.passwordLabel') }}</label>
-                <input type="password" id="password" v-model="password" required :aria-invalid="!!passwordError">
-                <span v-if="passwordError" class="error-message">{{ $t('errors.passwordRequired') }}</span>
-            </div>
-            <button type="submit">{{ $t('login.submitButton') }}</button>
-            <p>
-                <a href="#" @click.prevent="isRegistering = true">{{ $t('login.noAccount') }}</a>
-            </p>
-            <p>
-                <a href="#" @click.prevent="handleForgotPassword">{{ $t('login.forgotPassword') }}</a>
-            </p>
-        </form>
-
-        <!-- Registrierungs Formular -->
-        <form v-else @submit.prevent="handleRegister" class="auth-form">
-            <h2>{{ $t('register.title') }}</h2>
-            <div v-if="errorMessage" class="error-message" role="alert" aria-live="assertive">
-                {{ errorMessage }}
-            </div>
-            <div class="form-group">
-                <label for="name">{{ $t('register.nameLabel') }}</label>
-                <input type="text" id="name" v-model="name" required>
-            </div>
-            <div class="form-group">
-                <label for="reg-username">{{ $t('register.usernameLabel') }}</label>
-                <input type="text" id="reg-username" v-model="username" required>
-                <small>{{ $t('register.usernameLengthHint') }}</small>
-            </div>
-            <div class="form-group">
-                <label for="reg-email">{{ $t('register.emailLabel') }}</label>
-                <input type="email" id="reg-email" v-model="email" required>
-            </div>
-            <div class="form-group">
-                <label for="reg-password">{{ $t('register.passwordLabel') }}</label>
-                <input type="password" id="reg-password" v-model="password" required>
-            </div>
-            <button type="submit">{{ $t('register.submitButton') }}</button>
-            <p>
-                <a href="#" @click.prevent="isRegistering = false">{{ $t('register.hasAccount') }}</a>
-            </p>
-        </form>
-        <div>
-            <h2 class="social-login-title">{{ $t('socialLogin.title') }}</h2>
-            <div class="social-login-group">
-                <button v-if="!session?.data"
-                    @click="() => authClient.signIn.social({ provider: 'github', callbackURL: '/gamehome' })">
-                    <Icon name="line-md:github-loop" size="30" style="fill: #000;" /> GitHub
-                </button>
-                <button v-if="!session?.data"
-                    @click="() => authClient.signIn.social({ provider: 'google', callbackURL: '/gamehome' })">
-                    <Icon name="mage:google" size="30" style="fill: #000;" /> Google
-                </button>
-                <button v-if="!session?.data"
-                    @click="() => authClient.signIn.social({ provider: 'discord', callbackURL: '/gamehome' })">
-                    <Icon name="meteor-icons:discord" size="30" style="fill: #000;" /> Discord
-                </button>
-                <button v-if="!session?.data"
-                    @click="() => authClient.signIn.social({ provider: 'twitch', callbackURL: '/gamehome' })">
-                    <Icon name="mdi:twitch" size="30" style="fill: #000;" /> Twitch
-                </button>
-                <button v-if="!session?.data"
-                    @click="() => authClient.signIn.social({ provider: 'twitter', callbackURL: '/gamehome' })">
-                    <Icon name="prime:twitter" size="24" style="fill: #000;" /> Twitter
-                </button>
-                <button v-if="!session?.data"
-                    @click="() => authClient.signIn.oauth2({ providerId: 'spotify', callbackURL: '/gamehome' })">
-                    <Icon name="line-md:spotify" size="30" style="fill: #000;" />Spotify
-                </button>
-                <button v-if="!session?.data"
-                    @click="() => authClient.signIn.oauth2({ providerId: 'yahoo', callbackURL: '/gamehome' })">
-                    <Icon name="jam:yahoo" size="34" style="fill: #000;" /> Yahoo
-                </button>
-            </div>
             <div>
-                <pre>{{ session.data }}</pre>
-                <button v-if="session.data" @click="authClient.signOut()">
-                    {{ $t('socialLogin.signOut') }}
-                </button>
+                {{ $t('intro') }}
+            </div>
+
+            <form v-if="!isRegistering" @submit.prevent="handleLogin" class="auth-form" aria-labelledby="login-title">
+                <h2 id="login-title">{{ $t('login.title') }}</h2>
+                <div v-if="errorMessage" class="error-message" role="alert" aria-live="assertive">
+                    {{ errorMessage }}
+                </div>
+                <div class="form-group">
+                    <label for="login-method">{{ $t('login.methodLabel') }}</label>
+                    <select id="login-method" v-model="loginMethod" class="form-control"
+                        aria-describedby="login-method-description">
+                        <option value="email">{{ $t('login.emailOption') }}</option>
+                        <option value="username">{{ $t('login.usernameOption') }}</option>
+                    </select>
+                </div>
+                <div class="form-group" v-if="loginMethod === 'email'">
+                    <label for="email">{{ $t('login.emailLabel') }}</label>
+                    <input type="email" id="email" v-model="email" aria-required="true" :aria-invalid="!!emailError">
+                    <span v-if="emailError" class="error-message">{{ $t('errors.emailRequired') }}</span>
+                </div>
+                <div class="form-group" v-else>
+                    <label for="username">{{ $t('login.usernameLabel') }}</label>
+                    <input type="text" id="username" v-model="username" required :aria-invalid="!!usernameError">
+                    <span v-if="usernameError" class="error-message">{{ $t('errors.usernameRequired') }}</span>
+                </div>
+                <div class="form-group">
+                    <label for="password">{{ $t('login.passwordLabel') }}</label>
+                    <input type="password" id="password" v-model="password" required :aria-invalid="!!passwordError">
+                    <span v-if="passwordError" class="error-message">{{ $t('errors.passwordRequired') }}</span>
+                </div>
+                <button type="submit">{{ $t('login.submitButton') }}</button>
+                <p>
+                    <a href="#" @click.prevent="isRegistering = true">{{ $t('login.noAccount') }}</a>
+                </p>
+                <p>
+                    <a href="#" @click.prevent="handleForgotPassword">{{ $t('login.forgotPassword') }}</a>
+                </p>
+            </form>
+
+            <!-- Registrierungs Formular -->
+            <form v-else @submit.prevent="handleRegister" class="auth-form">
+                <h2>{{ $t('register.title') }}</h2>
+                <div v-if="errorMessage" class="error-message" role="alert" aria-live="assertive">
+                    {{ errorMessage }}
+                </div>
+                <div class="form-group">
+                    <label for="name">{{ $t('register.nameLabel') }}</label>
+                    <input type="text" id="name" v-model="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-username">{{ $t('register.usernameLabel') }}</label>
+                    <input type="text" id="reg-username" v-model="username" required>
+                    <small>{{ $t('register.usernameLengthHint') }}</small>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">{{ $t('register.emailLabel') }}</label>
+                    <input type="email" id="reg-email" v-model="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">{{ $t('register.passwordLabel') }}</label>
+                    <input type="password" id="reg-password" v-model="password" required>
+                </div>
+                <button type="submit">{{ $t('register.submitButton') }}</button>
+                <p>
+                    <a href="#" @click.prevent="isRegistering = false">{{ $t('register.hasAccount') }}</a>
+                </p>
+            </form>
+            <div>
+                <h2 class="social-login-title">{{ $t('socialLogin.title') }}</h2>
+                <div class="social-login-group">
+                    <button v-if="!session?.data"
+                        @click="() => authClient.signIn.social({ provider: 'github', callbackURL: '/gamehome' })">
+                        <Icon name="line-md:github-loop" size="30" style="fill: #000;" /> GitHub
+                    </button>
+                    <button v-if="!session?.data"
+                        @click="() => authClient.signIn.social({ provider: 'google', callbackURL: '/gamehome' })">
+                        <Icon name="mage:google" size="30" style="fill: #000;" /> Google
+                    </button>
+                    <button v-if="!session?.data"
+                        @click="() => authClient.signIn.social({ provider: 'discord', callbackURL: '/gamehome' })">
+                        <Icon name="meteor-icons:discord" size="30" style="fill: #000;" /> Discord
+                    </button>
+                    <button v-if="!session?.data"
+                        @click="() => authClient.signIn.social({ provider: 'twitch', callbackURL: '/gamehome' })">
+                        <Icon name="mdi:twitch" size="30" style="fill: #000;" /> Twitch
+                    </button>
+                    <button v-if="!session?.data"
+                        @click="() => authClient.signIn.social({ provider: 'twitter', callbackURL: '/gamehome' })">
+                        <Icon name="prime:twitter" size="24" style="fill: #000;" /> Twitter
+                    </button>
+                    <button v-if="!session?.data"
+                        @click="() => authClient.signIn.oauth2({ providerId: 'spotify', callbackURL: '/gamehome' })">
+                        <Icon name="line-md:spotify" size="30" style="fill: #000;" />Spotify
+                    </button>
+                    <button v-if="!session?.data"
+                        @click="() => authClient.signIn.oauth2({ providerId: 'yahoo', callbackURL: '/gamehome' })">
+                        <Icon name="jam:yahoo" size="34" style="fill: #000;" /> Yahoo
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+    </NuxtLayout>
 </template>
 
 <script setup lang="ts">

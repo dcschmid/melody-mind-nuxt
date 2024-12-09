@@ -42,5 +42,15 @@
     "registrationFailed": "Registrazione fallita. Verifica i tuoi dati.",
     "passwordResetFailed": "Reimpostazione password fallita. Riprova.",
     "passwordResetSuccess": "Controlla la tua email per ulteriori istruzioni."
+  },
+  "navigation": {
+    "skipToMain": "Vai al contenuto principale",
+    "openMenu": "Apri menu",
+    "closeMenu": "Chiudi menu",
+    "home": "Home",
+    "rules": "Regole del gioco",
+    "highscores": "Punteggi migliori",
+    "profile": "Profilo",
+    "signOut": "Disconnetti"
   }
 }

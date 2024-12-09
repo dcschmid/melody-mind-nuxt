@@ -42,5 +42,15 @@
     "registrationFailed": "Registration failed. Please check your input.",
     "passwordResetFailed": "Password reset failed. Please try again.",
     "passwordResetSuccess": "Check your email for further instructions."
+  },
+  "navigation": {
+    "skipToMain": "Skip to main content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "home": "Home",
+    "rules": "Game Rules",
+    "highscores": "High Scores",
+    "profile": "Profile",
+    "signOut": "Sign Out"
   }
 }

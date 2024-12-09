@@ -42,5 +42,15 @@
     "registrationFailed": "Registrierung fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben.",
     "passwordResetFailed": "Passwort-Reset fehlgeschlagen. Bitte versuchen Sie es erneut.",
     "passwordResetSuccess": "Überprüfen Sie Ihre E-Mail für weitere Anweisungen."
+  },
+  "navigation": {
+    "skipToMain": "Zum Hauptinhalt springen",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "home": "Startseite",
+    "rules": "Spielregeln",
+    "highscores": "Bestenliste",
+    "profile": "Profil",
+    "signOut": "Abmelden"
   }
 }

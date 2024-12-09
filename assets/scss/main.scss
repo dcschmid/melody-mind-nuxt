@@ -370,17 +370,8 @@ main {
     align-items: center;
     justify-content: center;
 
-    width: 40px;
-    height: 40px;
-
-    font-size: 2rem;
-    color: var(--text-color);
-
-    background-color: transparent;
-    border: none;
-    border-radius: 50%;
-
-    transition: background-color var(--transition-speed);
+    width: 60px;
+    height: 60px;
 
     &:hover,
     &:focus-visible {

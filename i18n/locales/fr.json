@@ -42,5 +42,15 @@
     "registrationFailed": "Échec de l'inscription. Veuillez vérifier vos informations.",
     "passwordResetFailed": "Échec de la réinitialisation du mot de passe. Veuillez réessayer.",
     "passwordResetSuccess": "Vérifiez votre email pour plus d'instructions."
+  },
+  "navigation": {
+    "skipToMain": "Passer au contenu principal",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "home": "Accueil",
+    "rules": "Règles du jeu",
+    "highscores": "Meilleurs scores",
+    "profile": "Profil",
+    "signOut": "Se déconnecter"
   }
 }

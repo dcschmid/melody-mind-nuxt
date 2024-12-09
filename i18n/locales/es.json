@@ -42,5 +42,15 @@
     "registrationFailed": "Error en el registro. Por favor, verifica tus datos.",
     "passwordResetFailed": "Error al restablecer la contraseña. Por favor, inténtalo de nuevo.",
     "passwordResetSuccess": "Revisa tu correo para más instrucciones."
+  },
+  "navigation": {
+    "skipToMain": "Ir al contenido principal",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "home": "Inicio",
+    "rules": "Reglas del juego",
+    "highscores": "Puntuaciones",
+    "profile": "Perfil",
+    "signOut": "Cerrar sesión"
   }
 }
