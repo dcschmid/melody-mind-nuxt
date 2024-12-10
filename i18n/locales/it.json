@@ -52,5 +52,85 @@
     "highscores": "Punteggi migliori",
     "profile": "Profilo",
     "signOut": "Disconnetti"
+  },
+  "gameRules": {
+    "title": "Regole del gioco – MelodyMind",
+    "overview": {
+      "title": "Panoramica",
+      "text": "Benvenuto su MelodyMind! Il tuo obiettivo è rispondere a domande su canzoni, artisti e album di diversi generi musicali. Scegli un genere e metti alla prova le tue conoscenze. Più domande rispondi correttamente, più punti guadagnerai."
+    },
+    "difficultyLevels": {
+      "title": "Livelli di difficoltà",
+      "intro": "Ci sono tre livelli di difficoltà tra cui scegliere:",
+      "levels": {
+        "easy": {
+          "title": "Facile",
+          "description": "10 domande per round. Perfetto per rinfrescare le tue conoscenze e divertirti"
+        },
+        "medium": {
+          "title": "Medio",
+          "description": "15 domande per round. Una sfida per gli amanti della musica avanzati"
+        },
+        "hard": {
+          "title": "Difficile",
+          "description": "20 domande per round. Solo per veri esperti di musica!"
+        }
+      },
+      "titles": {
+        "intro": "Ogni livello di difficoltà ha il suo titolo che puoi sbloccare:",
+        "novice": {
+          "title": "Novizio Musicale",
+          "description": "Tutte le domande risposte correttamente in modalità facile"
+        },
+        "master": {
+          "title": "Maestro della Musica",
+          "description": "Tutte le domande risposte correttamente in modalità media"
+        },
+        "legend": {
+          "title": "Leggenda della Musica",
+          "description": "Tutte le domande risposte correttamente in modalità difficile"
+        }
+      }
+    },
+    "pointSystem": {
+      "title": "Sistema di punteggio",
+      "points": {
+        "correct": "50 punti per ogni risposta corretta",
+        "wrong": "Nessun punto per le risposte sbagliate"
+      }
+    },
+    "goldenRecords": {
+      "title": "Dischi d'Oro",
+      "intro": "Quando rispondi correttamente a tutte le domande di una categoria, ricevi un disco d'oro:",
+      "rewards": {
+        "easy": "Facile: Novizio Musicale",
+        "medium": "Medio: Maestro della Musica",
+        "hard": "Difficile: Leggenda della Musica"
+      }
+    },
+    "rankings": {
+      "title": "Classifiche",
+      "description": "Il sistema di classifiche ti confronta con altri giocatori. Il tuo posizionamento nella Top 10 si basa sui punti accumulati in tutte le categorie",
+      "types": {
+        "genre": "Classifica per genere: Migliori giocatori di un genere",
+        "overall": "Classifica generale: Migliori giocatori in tutte le categorie"
+      }
+    },
+    "tipsAndTricks": {
+      "title": "Suggerimenti e trucchi",
+      "tips": {
+        "startEasy": "Inizia in modalità facile per familiarizzare con il gioco",
+        "chooseStrengths": "Scegli i tuoi punti di forza e gioca nei generi in cui ti senti sicuro",
+        "practice": "Esercitati regolarmente per migliorare il tuo punteggio",
+        "accuracy": "Precisione prima della velocità – leggi attentamente ogni domanda"
+      }
+    }
+  },
+  "gameHome": {
+    "title": "Scegli una categoria per giocare",
+    "searchPlaceholder": "Cerca categoria...",
+    "playCategory": "Gioca a {category}",
+    "comingSoon": "{category} - Prossimamente",
+    "categoryAlt": "Immagine per la categoria {category}"
   }
 }

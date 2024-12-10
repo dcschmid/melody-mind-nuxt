@@ -52,5 +52,85 @@
     "highscores": "High Scores",
     "profile": "Profile",
     "signOut": "Sign Out"
+  },
+  "gameRules": {
+    "title": "Game Rules – MelodyMind",
+    "overview": {
+      "title": "Overview",
+      "text": "Welcome to MelodyMind! Your goal is to answer questions about songs, artists, and albums from different music genres. Choose a genre and test your knowledge. The more questions you answer correctly, the more points you'll earn."
+    },
+    "difficultyLevels": {
+      "title": "Difficulty Levels",
+      "intro": "There are three difficulty levels you can choose from:",
+      "levels": {
+        "easy": {
+          "title": "Easy",
+          "description": "10 questions per round. Perfect for refreshing your knowledge and having fun"
+        },
+        "medium": {
+          "title": "Medium",
+          "description": "15 questions per round. A challenge for advanced music lovers"
+        },
+        "hard": {
+          "title": "Hard",
+          "description": "20 questions per round. Only for true music experts!"
+        }
+      },
+      "titles": {
+        "intro": "Each difficulty level has its own title that you can unlock:",
+        "novice": {
+          "title": "Music Novice",
+          "description": "All questions answered correctly in easy mode"
+        },
+        "master": {
+          "title": "Music Master",
+          "description": "All questions answered correctly in medium mode"
+        },
+        "legend": {
+          "title": "Music Legend",
+          "description": "All questions answered correctly in hard mode"
+        }
+      }
+    },
+    "pointSystem": {
+      "title": "Point System",
+      "points": {
+        "correct": "50 points for each correct answer",
+        "wrong": "No points for wrong answers"
+      }
+    },
+    "goldenRecords": {
+      "title": "Golden Records",
+      "intro": "When you answer all questions in a category correctly, you'll receive a golden record:",
+      "rewards": {
+        "easy": "Easy: Music Novice",
+        "medium": "Medium: Music Master",
+        "hard": "Hard: Music Legend"
+      }
+    },
+    "rankings": {
+      "title": "Rankings",
+      "description": "The ranking system compares you with other players. Your placement in the Top 10 is based on your collected points in all categories",
+      "types": {
+        "genre": "Genre-specific ranking: Best players of a genre",
+        "overall": "Overall ranking: Best players across all categories"
+      }
+    },
+    "tipsAndTricks": {
+      "title": "Tips & Tricks",
+      "tips": {
+        "startEasy": "Start in easy mode to get a feel for the game",
+        "chooseStrengths": "Choose your strengths and play the genres you're confident in",
+        "practice": "Practice regularly to improve your score",
+        "accuracy": "Accuracy over speed – read each question carefully"
+      }
+    }
+  },
+  "gameHome": {
+    "title": "Choose a category to play",
+    "searchPlaceholder": "Search category...",
+    "playCategory": "Play {category}",
+    "comingSoon": "{category} - Coming Soon",
+    "categoryAlt": "Image for category {category}"
   }
 }

@@ -21,7 +21,7 @@
                                 <Icon name="material-symbols:home-outline" size="36" aria-hidden="true" />
                                 {{ $t('navigation.home') }}
                             </NuxtLink>
-                            <NuxtLink :to="localePath('spielregeln')">
+                            <NuxtLink :to="localePath('gamerules')">
                                 <Icon name="fluent:question-32-filled" size="36" aria-hidden="true" />
                                 {{ $t('navigation.rules') }}
                             </NuxtLink>
@@ -42,8 +42,6 @@
                 </nav>
             </template>
         </header>
-
-        <ShowCoins v-if="showCoins" />
 
         <main id="main-content">
             <slot />

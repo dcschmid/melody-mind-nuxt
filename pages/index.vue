@@ -1,5 +1,5 @@
 <template>
-    <NuxtLayout name="default" :show-header="false" :show-menu="false" :show-coins="false">
+    <NuxtLayout name="default" :show-header="true" :show-menu="false" :show-coins="false">
         <div role="main">
             <h1>{{ $t('welcome') }}</h1>
 
