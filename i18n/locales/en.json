@@ -132,5 +132,19 @@
     "playCategory": "Play {category}",
     "comingSoon": "{category} - Coming Soon",
     "categoryAlt": "Image for category {category}"
+  },
+  "category": {
+    "selected": "selected!",
+    "image": {
+      "alt": "Category image"
+    },
+    "difficulty": {
+      "groupLabel": "Difficulty levels",
+      "heading": "Choose your difficulty level",
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    },
+    "noImage": "No image available"
   }
 }

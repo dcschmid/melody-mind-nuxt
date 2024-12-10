@@ -1,0 +1,21 @@
+{
+  "category": {
+    "image": {
+      "alt": "Kategorie-Bild"
+    },
+    "difficulty": {
+      "easy": "Einfach",
+      "medium": "Mittel",
+      "hard": "Schwer",
+      "easy": {
+        "label": "Starte mit einfachem Schwierigkeitsgrad"
+      },
+      "medium": {
+        "label": "Starte mit mittlerem Schwierigkeitsgrad"
+      },
+      "hard": {
+        "label": "Starte mit schwierigem Schwierigkeitsgrad"
+      }
+    }
+  }
+} 

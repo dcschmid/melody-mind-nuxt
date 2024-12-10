@@ -132,5 +132,19 @@
     "playCategory": "{category} spielen",
     "comingSoon": "{category} - Demnächst verfügbar",
     "categoryAlt": "Bild für die Kategorie {category}"
+  },
+  "category": {
+    "selected": "gewählt!",
+    "image": {
+      "alt": "Kategorie-Bild"
+    },
+    "difficulty": {
+      "groupLabel": "Schwierigkeitsgrade",
+      "heading": "Wähle deinen Schwierigkeitsgrad",
+      "easy": "Einfach",
+      "medium": "Mittel",
+      "hard": "Schwer"
+    },
+    "noImage": "Kein Bild verfügbar"
   }
 }
