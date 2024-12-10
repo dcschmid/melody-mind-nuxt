@@ -3,12 +3,15 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
   css: ["~/assets/scss/main.scss"],
-  modules: ["@nuxt/icon", "@nuxtjs/i18n", "@vueuse/motion/nuxt"],
+  modules: ["@nuxt/icon", "@nuxtjs/i18n"],
   i18n: {
     strategy: "prefix",
     defaultLocale: "de",
     detectBrowserLanguage: {
       useCookie: true,
+      fallbackLocale: "de",
+      cookieKey: "melody-mind-locale",
+      redirectOn: "root",
     },
     lazy: true,
     locales: [

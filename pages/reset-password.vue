@@ -26,6 +26,11 @@ const token = route.query.token
 const newPassword = ref('')
 
 const handleResetPassword = async () => {
+  if (newPassword.value.length < 8) {
+    alert('Das Passwort muss mindestens 8 Zeichen lang sein')
+    return
+  }
+
   try {
     const { error } = await authClient.resetPassword({
       newPassword: newPassword.value,
@@ -38,4 +43,4 @@ const handleResetPassword = async () => {
     alert('Fehler beim Zurücksetzen des Passworts')
   }
 }
-</script> 
+</script>

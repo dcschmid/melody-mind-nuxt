@@ -6,12 +6,21 @@ const availableLocales = computed(() => {
     return locales.value.filter(i => i.code !== locale.value)
 })
 
+const flagEmojiCache = new Map()
+
 const getFlagEmoji = (countryCode) => {
-    const code = countryCode.toUpperCase() === 'EN' ? 'GB' : countryCode.toUpperCase()
+    const cacheKey = countryCode.toUpperCase()
+    if (flagEmojiCache.has(cacheKey)) {
+        return flagEmojiCache.get(cacheKey)
+    }
+
+    const code = cacheKey === 'EN' ? 'GB' : cacheKey
     const codePoints = code
         .split('')
-        .map(char => 127397 + char.charCodeAt());
-    return String.fromCodePoint(...codePoints);
+        .map(char => 127397 + char.charCodeAt())
+    const emoji = String.fromCodePoint(...codePoints)
+    flagEmojiCache.set(cacheKey, emoji)
+    return emoji
 }
 
 const handleLocaleChange = async (localeCode) => {

@@ -8,22 +8,16 @@
             <section class="search-section" v-motion-slide-visible>
                 <div class="search-wrapper">
                     <label for="category-search" class="sr-only">{{ $t('gameHome.searchPlaceholder') }}</label>
-                    <input
-                        id="category-search"
-                        v-model="searchQuery"
-                        type="search"
-                        class="filterInput"
-                        :placeholder="$t('gameHome.searchPlaceholder')"
-                        :aria-label="$t('gameHome.searchPlaceholder')"
+                    <input id="category-search" v-model="searchQuery" type="search" class="filterInput"
+                        :placeholder="$t('gameHome.searchPlaceholder')" :aria-label="$t('gameHome.searchPlaceholder')"
                         @input="filterCategories" />
                 </div>
             </section>
 
             <section class="categories-section" aria-label="Spielkategorien">
-                <TransitionGroup tag="div" class="categories-grid" name="categories" appear>
+                <div class="categories-grid">
                     <div v-for="category in filteredCategories" :key="category.slug" class="category-card"
-                        :class="{ 'not-playable': !category.isPlayable }"
-                        :aria-disabled="!category.isPlayable">
+                        :class="{ 'not-playable': !category.isPlayable }" :aria-disabled="!category.isPlayable">
                         <NuxtLink v-if="category.isPlayable" :to="localePath(category.categoryUrl)"
                             class="category-link"
                             :aria-label="$t('gameHome.playCategory', { category: category.headline })">
@@ -46,7 +40,7 @@
                             </div>
                         </div>
                     </div>
-                </TransitionGroup>
+                </div>
             </section>
         </main>
     </NuxtLayout>
@@ -69,9 +63,18 @@ const localePath = useLocalePath()
 
 const { locale } = useI18n()
 const loadCategories = async () => {
+    const cacheKey = `categories_${locale.value}`
+    const cached = sessionStorage.getItem(cacheKey)
+
+    if (cached) {
+        categories.value = JSON.parse(cached)
+        return
+    }
+
     try {
         const data = await import(`../json/${locale.value}_categories.json`)
         categories.value = data.default
+        sessionStorage.setItem(cacheKey, JSON.stringify(data.default))
     } catch (error) {
         console.error('Fehler beim Laden der Kategorien:', error)
         categories.value = []
@@ -220,22 +223,6 @@ onMounted(() => {
         margin: 0;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
-}
-
-// Animations
-.categories-enter-active,
-.categories-leave-active {
-    transition: all 0.5s ease;
-}
-
-.categories-enter-from,
-.categories-leave-to {
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.categories-move {
-    transition: transform 0.5s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
