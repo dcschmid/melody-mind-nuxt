@@ -1,146 +1,182 @@
 <template>
     <NuxtLayout name="default" :show-header="true" :show-menu="false" :show-coins="false">
         <main>
-            <ShowPoints ref="pointsDisplay" class="game-points" />
+            <ShowPoints v-if="!gameFinished" ref="pointsDisplay" class="game-points" />
 
-            <div v-if="!showSolution" class="game-content">
-                <div class="game-header">
-                    <h1>{{ currentCategoryData?.name || category }}</h1>
-                    <p class="round-counter">Runde: {{ usedQuestions.length }} / {{ maxQuestions }}</p>
-                </div>
-
-                <div v-if="currentQuestion" class="question-container">
-                    <!-- Frage -->
-                    <div class="question">
-                        <h2>{{ currentQuestion.question }}</h2>
+            <!-- Spielscreen -->
+            <div v-if="!gameFinished" class="game-content">
+                <div v-if="!showSolution">
+                    <div class="game-header">
+                        <h1>{{ currentCategoryData?.name || category }}</h1>
+                        <p class="round-counter">Runde: {{ usedQuestions.length }} / {{ maxQuestions }}</p>
                     </div>
 
-                    <!-- Antwortmöglichkeiten -->
-                    <div class="options">
-                        <button v-for="(option, index) in currentQuestion.options"
-                                :key="index"
-                                class="button option-button"
-                                :class="{ 'hidden': hiddenOptions.includes(option) }"
+                    <div v-if="currentQuestion" class="question-container">
+                        <!-- Frage -->
+                        <div class="question">
+                            <h2>{{ currentQuestion.question }}</h2>
+                        </div>
+
+                        <!-- Antwortmöglichkeiten -->
+                        <div class="options">
+                            <button v-for="(option, index) in currentQuestion.options" :key="index"
+                                class="button option-button" :class="{ 'hidden': hiddenOptions.includes(option) }"
                                 @click="selectAnswer(option)">
-                            <span>{{ option }}</span>
-                        </button>
-                    </div>
+                                <span>{{ option }}</span>
+                            </button>
+                        </div>
 
-                    <!-- Telefonjoker Antwort -->
-                    <div v-if="phoneExpertOpinion" class="phone-expert">
-                        <div class="expert-message">
-                            <Icon name="material-symbols:phone" class="phone-icon" />
-                            <div class="message-content">
-                                <p class="expert-title">{{ phoneExpertOpinion.expert }}</p>
-                                <p class="expert-answer">{{ phoneExpertOpinion.message }}</p>
-                                <div class="confidence-bar"
-                                     :style="{ '--confidence': phoneExpertConfidence + '%' }"
-                                     :class="{
-                                         'high': phoneExpertConfidence >= 80,
-                                         'medium': phoneExpertConfidence >= 60 && phoneExpertConfidence < 80,
-                                         'low': phoneExpertConfidence < 60
-                                     }">
-                                    <div class="confidence-level"></div>
-                                    <span class="confidence-text">{{ phoneExpertConfidence }}% Sicherheit</span>
+                        <!-- Telefonjoker Antwort -->
+                        <div v-if="phoneExpertOpinion" class="phone-expert">
+                            <div class="expert-message">
+                                <Icon name="material-symbols:phone" class="phone-icon" />
+                                <div class="message-content">
+                                    <p class="expert-title">{{ phoneExpertOpinion.expert }}</p>
+                                    <p class="expert-answer">{{ phoneExpertOpinion.message }}</p>
+                                    <div class="confidence-bar" :style="{ '--confidence': phoneExpertConfidence + '%' }"
+                                        :class="{
+                                            'high': phoneExpertConfidence >= 80,
+                                            'medium': phoneExpertConfidence >= 60 && phoneExpertConfidence < 80,
+                                            'low': phoneExpertConfidence < 60
+                                        }">
+                                        <div class="confidence-level"></div>
+                                        <span class="confidence-text">{{ phoneExpertConfidence }}% Sicherheit</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Publikumsjoker Ergebnis -->
+                        <div v-if="Object.keys(audienceHelp).length > 0" class="audience-help">
+                            <h3>Publikumsmeinung:</h3>
+                            <ul>
+                                <li v-for="(percentage, option) in audienceHelp" :key="option">
+                                    {{ option }}: {{ percentage }}%
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Joker Section -->
+                        <div class="jokers-section">
+                            <!-- 50:50 Joker -->
+                            <button class="button joker-button" @click="useFiftyFiftyJoker"
+                                :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion" title="50:50 Joker">
+                                <Icon name="material-symbols:balance" />
+                            </button>
+
+                            <!-- Publikumsjoker -->
+                            <button class="button joker-button" @click="useAudienceJoker"
+                                :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion" title="Publikumsjoker">
+                                <Icon name="material-symbols:people" />
+                            </button>
+
+                            <!-- Telefonjoker -->
+                            <button class="button joker-button" @click="usePhoneJoker"
+                                :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion" title="Telefonjoker">
+                                <Icon name="material-symbols:phone" />
+                            </button>
+
+                            <span class="joker-count">Verbleibend: {{ remainingJokers }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div v-else class="solution-container">
+                    <div class="result-banner" :class="{ 'correct': isCorrectAnswer, 'incorrect': !isCorrectAnswer }">
+                        <h2>{{ isCorrectAnswer ? 'Richtig!' : 'Leider falsch!' }}</h2>
+                        <p v-if="isCorrectAnswer">
+                            +{{ BASE_POINTS }} Punkte
+                            <span v-if="earnedPoints > BASE_POINTS" class="bonus-points">
+                                + {{ earnedPoints - BASE_POINTS }} Bonus
+                            </span>
+                        </p>
+                        <p v-else>+0 Punkte</p>
+                        <p class="correct-answer">Richtige Antwort: {{ currentQuestion.correctAnswer }}</p>
                     </div>
 
-                    <!-- Publikumsjoker Ergebnis -->
-                    <div v-if="Object.keys(audienceHelp).length > 0" class="audience-help">
-                        <h3>Publikumsmeinung:</h3>
-                        <ul>
-                            <li v-for="(percentage, option) in audienceHelp" :key="option">
-                                {{ option }}: {{ percentage }}%
-                            </li>
-                        </ul>
+                    <div class="song-details">
+                        <div class="cover-container">
+                            <img :src="currentArtist.coverSrc"
+                                :alt="`${currentArtist.artist} - ${currentArtist.album}`">
+                        </div>
+
+                        <div class="preview-player">
+                            <audio controls :src="currentArtist.preview_link"></audio>
+                        </div>
+
+                        <div class="music-links">
+                            <a v-if="currentArtist.spotify_link" :href="currentArtist.spotify_link" target="_blank"
+                                class="button music-link spotify">
+                                <span>Auf Spotify hören</span>
+                            </a>
+                            <a v-if="currentArtist.apple_music_link" :href="currentArtist.apple_music_link"
+                                target="_blank" class="button music-link apple">
+                                <span>Auf Apple Music hören</span>
+                            </a>
+                            <a v-if="currentArtist.deezer_link" :href="currentArtist.deezer_link" target="_blank"
+                                class="button music-link deezer">
+                                <span>Auf Deezer hören</span>
+                            </a>
+                        </div>
+
+                        <div class="metadata">
+                            <h3>{{ currentArtist.album }}</h3>
+                            <p class="artist">{{ currentArtist.artist }}</p>
+                            <p class="year">{{ currentArtist.year }}</p>
+                        </div>
+
+                        <div class="trivia">
+                            <h3>Wusstest du schon?</h3>
+                            <p>{{ currentQuestion.trivia }}</p>
+                        </div>
                     </div>
 
-                    <!-- Joker Section -->
-                    <div class="jokers-section">
-                        <!-- 50:50 Joker -->
-                        <button class="button joker-button"
-                                @click="useFiftyFiftyJoker"
-                                :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
-                                title="50:50 Joker">
-                            <Icon name="material-symbols:balance" />
-                        </button>
-
-                        <!-- Publikumsjoker -->
-                        <button class="button joker-button"
-                                @click="useAudienceJoker"
-                                :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
-                                title="Publikumsjoker">
-                            <Icon name="material-symbols:people" />
-                        </button>
-
-                        <!-- Telefonjoker -->
-                        <button class="button joker-button"
-                                @click="usePhoneJoker"
-                                :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
-                                title="Telefonjoker">
-                            <Icon name="material-symbols:phone" />
-                        </button>
-
-                        <span class="joker-count">Verbleibend: {{ remainingJokers }}</span>
-                    </div>
+                    <button @click="nextQuestion" class="button next-button">
+                        Nächste Frage
+                    </button>
                 </div>
             </div>
 
-            <!-- Lösungs-Ansicht -->
-            <div v-else class="solution-container">
-                <div class="result-banner" :class="{ 'correct': isCorrectAnswer, 'incorrect': !isCorrectAnswer }">
-                    <h2>{{ isCorrectAnswer ? 'Richtig!' : 'Leider falsch!' }}</h2>
-                    <p v-if="isCorrectAnswer">
-                        +{{ BASE_POINTS }} Punkte
-                        <span v-if="earnedPoints > BASE_POINTS" class="bonus-points">
-                            + {{ earnedPoints - BASE_POINTS }} Bonus
-                        </span>
+            <!-- Endscreen -->
+            <div v-else class="game-end-screen">
+                <h2>Spiel beendet!</h2>
+
+                <div class="final-score">
+                    <h3>Deine Gesamtpunktzahl:</h3>
+                    <p class="points">{{ totalPoints }} Punkte</p>
+                </div>
+
+                <div class="reward-section">
+                    <div class="record-icon" :class="recordClass">
+                        <Icon v-if="earnedRecord" :name="recordIcon" size="64" />
+                    </div>
+                    <p class="reward-text">
+                        <template v-if="allQuestionsCorrect">
+                            Unglaublich! Du hast eine Goldene LP gewonnen! 🏆
+                            <br>Du bist ein absoluter Musik-Champion! Alle Fragen perfekt beantwortet - das schaffen nur die Besten der Besten!
+                        </template>
+                        <template v-else-if="correctAnswers >= (maxQuestions * 0.75)">
+                            Hervorragend! Du hast eine Silberne LP gewonnen! 🥈
+                            <br>Was für eine starke Leistung! Du bist schon fast ein Musik-Experte. Mit ein bisschen Feinschliff holst du dir beim nächsten Mal bestimmt Gold!
+                        </template>
+                        <template v-else-if="correctAnswers >= (maxQuestions * 0.5)">
+                            Klasse! Du hast eine Bronzene LP gewonnen! 🥉
+                            <br>Dein Musikwissen kann sich sehen lassen! Mach weiter so, und schon bald wirst du noch mehr Hits erkennen und höhere Auszeichnungen gewinnen!
+                        </template>
+                        <template v-else>
+                            Das war ein guter Anfang! 💪
+                            <br>Jeder Musikexperte hat mal klein angefangen. Lass uns gleich noch eine Runde spielen - mit jedem Versuch lernst du neue Songs kennen und wirst besser!
+                        </template>
                     </p>
-                    <p v-else>+0 Punkte</p>
-                    <p class="correct-answer">Richtige Antwort: {{ currentQuestion.correctAnswer }}</p>
                 </div>
 
-                <div class="song-details">
-                    <div class="cover-container">
-                        <img :src="currentArtist.coverSrc" :alt="`${currentArtist.artist} - ${currentArtist.album}`">
-                    </div>
-
-                    <div class="preview-player">
-                        <audio controls :src="currentArtist.preview_link"></audio>
-                    </div>
-
-                    <div class="music-links">
-                        <a v-if="currentArtist.spotify_link" :href="currentArtist.spotify_link" target="_blank"
-                            class="button music-link spotify">
-                            <span>Auf Spotify hören</span>
-                        </a>
-                        <a v-if="currentArtist.apple_music_link" :href="currentArtist.apple_music_link" target="_blank"
-                            class="button music-link apple">
-                            <span>Auf Apple Music hören</span>
-                        </a>
-                        <a v-if="currentArtist.deezer_link" :href="currentArtist.deezer_link" target="_blank"
-                            class="button music-link deezer">
-                            <span>Auf Deezer hören</span>
-                        </a>
-                    </div>
-
-                    <div class="metadata">
-                        <h3>{{ currentArtist.album }}</h3>
-                        <p class="artist">{{ currentArtist.artist }}</p>
-                        <p class="year">{{ currentArtist.year }}</p>
-                    </div>
-
-                    <div class="trivia">
-                        <h3>Wusstest du schon?</h3>
-                        <p>{{ currentQuestion.trivia }}</p>
-                    </div>
+                <div class="end-actions">
+                    <button @click="restartGame" class="button restart-button">
+                        Nochmal spielen
+                    </button>
+                    <NuxtLink to="/gamehome" class="button home-button">
+                        Zurück zum Hauptmenü
+                    </NuxtLink>
                 </div>
-
-                <button @click="nextQuestion" class="button next-button">
-                    Nächste Frage
-                </button>
             </div>
         </main>
     </NuxtLayout>
@@ -274,12 +310,12 @@ const usePhoneJoker = () => {
         } else if (random < 0.8) {
             confidence = Math.floor(Math.random() * 20) + 60
             answer = Math.random() < 0.8 ? currentQuestion.value.correctAnswer :
-                    currentQuestion.value.options.find(o => o !== currentQuestion.value.correctAnswer)
+                currentQuestion.value.options.find(o => o !== currentQuestion.value.correctAnswer)
             confidenceLevel = 'medium'
         } else {
             confidence = Math.floor(Math.random() * 25) + 35
             answer = Math.random() < 0.5 ? currentQuestion.value.correctAnswer :
-                    currentQuestion.value.options.find(o => o !== currentQuestion.value.correctAnswer)
+                currentQuestion.value.options.find(o => o !== currentQuestion.value.correctAnswer)
             confidenceLevel = 'low'
         }
 
@@ -373,31 +409,50 @@ const pointsDisplay = ref<any>(null)
 const scrollToTop = () => {
     window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: smoothScrollBehavior.value
     })
 }
 
+const totalPoints = ref(0)
+
 const selectAnswer = async (selectedAnswer: string) => {
+    if (showSolution.value) return
+
     isCorrectAnswer.value = selectedAnswer === currentQuestion.value.correctAnswer
+    showSolution.value = true
 
     if (isCorrectAnswer.value) {
-        const timeBonus = calculateTimeBonus()
-        earnedPoints.value = BASE_POINTS + timeBonus
+        correctAnswers.value++
+        earnedPoints.value = calculatePoints()
+        totalPoints.value += earnedPoints.value
         pointsDisplay.value?.updatePoints(earnedPoints.value)
     }
 
+    // Lade Künstlerinformationen
     const response = await import(`~/json/genres/${locale.value}/${category}.json`)
-    currentArtist.value = response.default.find((artist: any) => {
-        return artist.questions[difficulty].some((q: any) => q.question === currentQuestion.value.question)
-    })
-    showSolution.value = true
-    scrollToTop() // Scroll nach oben wenn Lösung angezeigt wird
+    currentArtist.value = response.default.find((artist: any) =>
+        artist.questions[difficulty].some((q: any) => q.id === currentQuestion.value.id)
+    )
+
+    // Warte kurz und scrolle dann nach oben
+    await nextTick()
+    scrollToTop()
 }
 
 const nextQuestion = () => {
+    if (usedQuestions.value.length >= maxQuestions.value) {
+        gameFinished.value = true
+        return
+    }
+
     showSolution.value = false
+    hiddenOptions.value = []
+    phoneExpertOpinion.value = null
+    audienceHelp.value = {}
+    jokerUsedForCurrentQuestion.value = false
+
     selectRandomQuestion()
-    scrollToTop() // Scroll nach oben wenn neue Frage angezeigt wird
+    scrollToTop()
 }
 
 // Lade die Fragen beim Mounten der Komponente
@@ -413,6 +468,34 @@ onMounted(() => {
 const smoothScrollBehavior = computed(() => {
     const mediaQuery = window?.matchMedia('(prefers-reduced-motion: reduce)')
     return mediaQuery?.matches ? 'auto' : 'smooth'
+})
+
+const correctAnswers = ref(0)
+
+const gameFinished = computed(() => usedQuestions.value.length >= maxQuestions.value)
+const allQuestionsCorrect = computed(() => correctAnswers.value === maxQuestions.value)
+
+const restartGame = () => {
+    usedQuestions.value = []
+    correctAnswers.value = 0
+    totalPoints.value = 0
+    pointsDisplay.value?.resetPoints()
+    loadQuestions()
+}
+
+const earnedRecord = computed(() => correctAnswers.value >= (maxQuestions.value * 0.5))
+const recordIcon = computed(() => {
+    if (allQuestionsCorrect.value) return 'material-symbols:album-gold'
+    if (correctAnswers.value >= (maxQuestions.value * 0.75)) return 'material-symbols:album-silver'
+    if (correctAnswers.value >= (maxQuestions.value * 0.5)) return 'material-symbols:album-bronze'
+    return ''
+})
+
+const recordClass = computed(() => {
+    if (allQuestionsCorrect.value) return 'gold'
+    if (correctAnswers.value >= (maxQuestions.value * 0.75)) return 'silver'
+    if (correctAnswers.value >= (maxQuestions.value * 0.5)) return 'bronze'
+    return ''
 })
 </script>
 
@@ -820,8 +903,80 @@ const smoothScrollBehavior = computed(() => {
             color: var(--text-color);
             font-size: 14px;
             font-weight: bold;
-            text-shadow: 0 0 2px rgba(0,0,0,0.5);
+            text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
         }
+    }
+}
+
+.game-end-screen {
+    text-align: center;
+    padding: var(--padding-large);
+
+    h2 {
+        font-size: var(--header-font-size);
+        margin-bottom: var(--padding-large);
+    }
+
+    .final-score {
+        margin: var(--padding-large) 0;
+
+        .points {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--highlight-color);
+        }
+    }
+
+    .performance-message {
+        margin: var(--padding-large) 0;
+
+        .perfect-score {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .motivation {
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+    }
+
+    .end-actions {
+        display: flex;
+        flex-direction: column;
+        gap: var(--padding-medium);
+        max-width: 300px;
+        margin: 0 auto;
+
+        .button {
+            width: 100%;
+        }
+    }
+}
+
+.reward-section {
+    margin: var(--padding-large) 0;
+    text-align: center;
+
+    .record-icon {
+        margin-bottom: var(--padding-medium);
+
+        &.gold {
+            color: #FFD700;
+        }
+
+        &.silver {
+            color: #C0C0C0;
+        }
+
+        &.bronze {
+            color: #CD7F32;
+        }
+    }
+
+    .reward-text {
+        font-size: 1.2em;
+        font-weight: bold;
     }
 }
 </style>

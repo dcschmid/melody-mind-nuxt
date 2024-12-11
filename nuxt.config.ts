@@ -4,6 +4,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/scss/main.scss"],
   modules: ["@nuxt/icon", "@nuxtjs/i18n"],
+  runtimeConfig: {
+    turso: {
+      databaseUrl: "",
+      authToken: "",
+    },
+  },
   i18n: {
     strategy: "prefix",
     defaultLocale: "de",
