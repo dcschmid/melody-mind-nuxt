@@ -12,10 +12,9 @@
   "dependencies": {
     "@libsql/client": "^0.14.0",
     "@libsql/kysely-libsql": "^0.4.1",
-    "@nuxt/icon": "1.10.1",
-    "@nuxtjs/i18n": "9.1.1",
-    "@vueuse/motion": "^2.2.6",
-    "better-auth": "^1.0.15",
+    "@nuxt/icon": "1.9.1",
+    "@nuxtjs/i18n": "9.0.0-rc.2",
+    "better-auth": "^1.0.10",
     "nuxt": "^3.14.1592",
     "resend": "^4.0.1",
     "typescript": "^5.7.2",

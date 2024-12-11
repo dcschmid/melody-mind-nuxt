@@ -72,39 +72,6 @@
                     <a href="#" @click.prevent="isRegistering = false">{{ $t('register.hasAccount') }}</a>
                 </p>
             </form>
-            <div>
-                <h2 class="social-login-title">{{ $t('socialLogin.title') }}</h2>
-                <div class="social-login-group">
-                    <button v-if="!session?.data"
-                        @click="() => authClient.signIn.social({ provider: 'github', callbackURL: '/gamehome' })">
-                        <Icon name="line-md:github-loop" size="30" style="fill: #000;" /> GitHub
-                    </button>
-                    <button v-if="!session?.data"
-                        @click="() => authClient.signIn.social({ provider: 'google', callbackURL: '/gamehome' })">
-                        <Icon name="mage:google" size="30" style="fill: #000;" /> Google
-                    </button>
-                    <button v-if="!session?.data"
-                        @click="() => authClient.signIn.social({ provider: 'discord', callbackURL: '/gamehome' })">
-                        <Icon name="meteor-icons:discord" size="30" style="fill: #000;" /> Discord
-                    </button>
-                    <button v-if="!session?.data"
-                        @click="() => authClient.signIn.social({ provider: 'twitch', callbackURL: '/gamehome' })">
-                        <Icon name="mdi:twitch" size="30" style="fill: #000;" /> Twitch
-                    </button>
-                    <button v-if="!session?.data"
-                        @click="() => authClient.signIn.social({ provider: 'twitter', callbackURL: '/gamehome' })">
-                        <Icon name="prime:twitter" size="24" style="fill: #000;" /> Twitter
-                    </button>
-                    <button v-if="!session?.data"
-                        @click="() => authClient.signIn.oauth2({ providerId: 'spotify', callbackURL: '/gamehome' })">
-                        <Icon name="line-md:spotify" size="30" style="fill: #000;" />Spotify
-                    </button>
-                    <button v-if="!session?.data"
-                        @click="() => authClient.signIn.oauth2({ providerId: 'yahoo', callbackURL: '/gamehome' })">
-                        <Icon name="jam:yahoo" size="34" style="fill: #000;" /> Yahoo
-                    </button>
-                </div>
-            </div>
         </div>
     </NuxtLayout>
 </template>
