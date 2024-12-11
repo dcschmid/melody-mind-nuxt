@@ -1,55 +1,45 @@
 :root {
-  /* Light mode colors (WCAG AAA compliant) */
-  --secondary-color: #c4d8f0;
-  --highlight-color: #0056b3;
-  --background-color: #d0e4ff;
-  --text-color: #1a1a1a;
-  --error-color: #c62828;
-  --button-hover-color: #004080;
-  --button-text-color: #fff;
+  --primary-color: #bb86fc;
+  --secondary-color: #4a4a8f;
+  --highlight-color: #00e5ff;
+  --background-color: #121212;
+  --surface-color: #1e1e1e;
+  --text-color: #ffffff;
+  --text-secondary: #e1e1e1;
+  --error-color: #ff7597;
+  --success-color: #00e676;
+  --button-hover-color: #29b6f6;
+  --button-text-color: #000000;
 
-  /* Focus indicators */
-  --focus-outline-color: #0056b3;
+  --focus-outline-color: #00e5ff;
   --focus-outline-width: 3px;
-  --focus-outline-offset: 2px;
+  --focus-outline-offset: 3px;
 
-  /* Schrift */
   --font-family: "Source Sans Pro", system-ui, sans-serif;
-  --header-font-size: clamp(1.5rem, 2vw, 2rem);
-  --body-font-size: clamp(1.125rem, 1.5vw, 1.25rem);
-  --button-font-size: clamp(1rem, 1.25vw, 1.125rem);
+  --header-font-size: clamp(2rem, 4vw, 3rem);
+  --body-font-size: clamp(1.25rem, 2vw, 1.5rem);
+  --button-font-size: clamp(1.125rem, 1.5vw, 1.25rem);
 
-  /* Größen und Abstände */
-  --padding-small: max(10px, 0.625rem);
-  --padding-medium: max(20px, 1.25rem);
-  --padding-large: max(40px, 2.5rem);
+  --padding-small: max(12px, 0.75rem);
+  --padding-medium: max(24px, 1.5rem);
+  --padding-large: max(48px, 3rem);
   --border-radius: 8px;
 
-  /* Interaktive Elemente */
   --min-touch-target: 48px;
-  --box-shadow: 0 4px 8px rgb(0 0 0 / 25%);
+  --box-shadow: 0 4px 8px rgb(0 0 0 / 50%);
+  --box-shadow-hover: 0 6px 12px rgb(0 0 0 / 70%);
   --transition-speed: 0.3s;
 
-  /* Zusätzliche Barrierefreiheits-Variablen */
   --line-height-body: 1.8;
   --max-line-length: 70ch;
   --spacing-text: 0.08em;
 
-  /* Größen */
   --size-playlist-small: 7.438rem;
   --size-playlist-large: 10.313rem;
 
-  /* Overlay */
   --color-overlay: rgb(0 0 0 / 60%);
 
-  /* Opacity */
   --opacity-disabled: 0.4;
-
-  /* Z-Index */
-  --layer-above: 2;
-  --spinner-size-small: 40px;
-  --spinner-size-medium: 80px;
-  --spinner-size-large: 120px;
 }
 
 html {
@@ -70,12 +60,10 @@ body {
   max-width: 768px;
   margin: 0 auto;
   padding: 0 var(--padding-small);
-
   font-size: var(--body-font-size);
   line-height: var(--line-height-body);
   color: var(--text-color);
   letter-spacing: var(--spacing-text);
-
   background-color: var(--background-color);
 
   @media (width >= 768px) {
@@ -90,18 +78,14 @@ body {
   top: -100%;
   left: 50%;
   transform: translateX(-50%);
-
   padding: var(--padding-small) var(--padding-medium);
-
   font-size: var(--button-font-size);
   font-weight: bold;
   color: var(--button-text-color);
   text-decoration: none;
-
   background: var(--highlight-color);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
   box-shadow: var(--box-shadow);
-
   transition: top var(--transition-speed);
 
   &:focus {
@@ -119,9 +103,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   margin-bottom: var(--padding-medium);
-
   border-radius: var(--border-radius);
 
   @media (width >= 768px) {
@@ -175,14 +157,10 @@ nav {
 
 button {
   cursor: pointer;
-
   display: inline-block;
-
   padding: 0;
-
   background: none;
   border: none;
-
   transition: transform var(--transition-speed);
 }
 
@@ -190,18 +168,14 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-
   min-width: var(--min-touch-target);
   min-height: var(--min-touch-target);
   padding: var(--padding-small);
-
   color: var(--button-text-color);
   text-decoration: none;
-
   background-color: var(--highlight-color);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-
   transition: all var(--transition-speed);
 
   &:hover,
@@ -226,7 +200,6 @@ main {
   max-width: 100%;
   margin: 0 auto;
   padding: var(--padding-medium) 0;
-
   font-size: var(--body-font-size);
   line-height: 1.6;
   color: var(--text-color);
@@ -242,24 +215,19 @@ main {
 
 .button {
   cursor: pointer;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   min-height: var(--min-touch-target);
   padding: var(--padding-small) var(--padding-large);
-
   font-size: var(--button-font-size);
   color: var(--button-text-color);
   text-decoration: none;
-
   opacity: 1;
   background-color: var(--highlight-color);
   border: none;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-
   transition: all var(--transition-speed);
 
   &:hover {
@@ -276,25 +244,20 @@ main {
 
   &.hidden {
     overflow: hidden;
-
     height: 0;
     margin: 0;
     padding: 0;
-
     opacity: 0;
   }
 }
 
 .sr-only {
   position: absolute;
-
   overflow: hidden;
-
   width: 1px;
   height: 1px;
   margin: -1px;
   padding: 0;
-
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
@@ -305,17 +268,15 @@ main {
   top: 0;
   left: 0;
   transform: translateX(-100%);
-
   width: 100%;
   height: 100vh;
   padding: var(--padding-large);
-
   padding-top: calc(var(--padding-large) + 40px);
-
   visibility: hidden;
   opacity: 0;
-  background-color: var(--background-color);
-
+  background-color: var(--surface-color);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgb(255 255 255 / 10%);
   transition: all var(--transition-speed) ease-in-out;
 
   &.is-open {
@@ -329,26 +290,22 @@ main {
     display: flex;
     gap: var(--padding-small);
     align-items: center;
-
     width: 100%;
     margin-bottom: var(--padding-small);
     padding: var(--padding-medium);
-
     font-size: var(--body-font-size);
-    color: var(--text-color);
+    color: var(--text-secondary);
     text-align: left;
     text-decoration: none;
-
     background-color: transparent;
     border: none;
     border-radius: var(--border-radius);
-
     transition: background-color var(--transition-speed);
 
     &:hover,
     &:focus-visible {
       background-color: var(--secondary-color);
-      outline: none;
+      color: var(--text-color);
     }
 
     [astro-icon] {
@@ -365,11 +322,9 @@ main {
     position: absolute;
     top: var(--padding-medium);
     right: var(--padding-medium);
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 60px;
     height: 60px;
 
@@ -389,23 +344,6 @@ body.menu-open {
   position: relative;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Dark mode colors (WCAG AAA compliant) */
-
-    --secondary-color: #2a4d7f;
-    --highlight-color: #90caf9;
-    --background-color: #121212;
-    --text-color: #ffffff;
-    --error-color: #ef5350;
-    --button-hover-color: #64b5f6;
-    --button-text-color: #121212;
-
-    /* Adjust focus outline for better visibility in dark mode */
-    --focus-outline-color: #90caf9;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   * {
     scroll-behavior: auto !important;
@@ -415,7 +353,6 @@ body.menu-open {
   }
 }
 
-/* Media Queries für Barrierefreiheit */
 @media (prefers-reduced-motion: reduce) {
   :root {
     --transition-speed: 0s;
@@ -427,16 +364,6 @@ body.menu-open {
   }
 }
 
-@media (prefers-contrast: high) {
-  :root {
-    --highlight-color: #000;
-    --text-color: #000;
-    --background-color: #fff;
-    --button-text-color: #fff;
-    --button-hover-color: #000;
-  }
-}
-
 @media (width <= 767px) {
   :root {
     --padding-small: max(8px, 0.5rem);
@@ -445,4 +372,82 @@ body.menu-open {
     --body-font-size: 1rem;
     --button-font-size: 0.875rem;
   }
+}
+
+.game-card {
+  background-color: var(--surface-color);
+  border-radius: var(--border-radius);
+  padding: var(--padding-medium);
+  box-shadow: var(--box-shadow);
+  border: 1px solid rgb(255 255 255 / 10%);
+  transition: all var(--transition-speed);
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-4px);
+    box-shadow: var(--box-shadow-hover);
+  }
+
+  &:focus-visible {
+    outline: var(--focus-outline-width) solid var(--focus-outline-color);
+    outline-offset: var(--focus-outline-offset);
+  }
+}
+
+.score-display {
+  color: var(--primary-color);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: bold;
+  text-shadow: 0 0 10px rgb(187 134 252 / 30%);
+}
+
+@media (width <= 767px) {
+  :root {
+    --padding-small: max(16px, 1rem);
+    --padding-medium: max(24px, 1.5rem);
+    --header-font-size: 2rem;
+    --body-font-size: 1.25rem;
+  }
+
+  .game-card {
+    margin: var(--padding-small);
+  }
+
+  nav {
+    gap: var(--padding-medium);
+  }
+}
+
+@media (width >= 768px) and (width <= 1024px) {
+  :root {
+    --padding-small: max(20px, 1.25rem);
+    --padding-medium: max(32px, 2rem);
+    --header-font-size: 2.5rem;
+    --body-font-size: 1.375rem;
+  }
+}
+
+@media (width >= 1025px) {
+  :root {
+    --padding-small: max(24px, 1.5rem);
+    --padding-medium: max(40px, 2.5rem);
+    --header-font-size: 3rem;
+    --body-font-size: 1.5rem;
+  }
+}
+
+[role="button"],
+button,
+input,
+select {
+  &:focus-visible {
+    outline: var(--focus-outline-width) solid var(--focus-outline-color);
+    outline-offset: var(--focus-outline-offset);
+    transform: scale(1.05);
+  }
+}
+
+.keyboard-user *:focus {
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
 }
