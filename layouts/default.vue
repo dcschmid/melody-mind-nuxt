@@ -3,8 +3,9 @@
         <a href="#main-content" class="skip-link">{{ $t('navigation.skipToMain') }}</a>
 
         <header v-if="showHeader" role="banner">
-            <LanguagePicker />
+            <ShowPoints v-if="showCoins" ref="pointsDisplay" />
             <template v-if="showMenu">
+                <LanguagePicker />
 
                 <nav aria-label="Hauptnavigation">
                     <div class="slot left">
@@ -83,6 +84,13 @@ const handleSignOut = async () => {
     document.body.style.overflow = ''
     router.push('/')
 }
+
+const pointsDisplay = ref<any>(null)
+
+// Expose pointsDisplay ref
+defineExpose({
+    pointsDisplay
+})
 </script>
 
 <style scoped lang="scss">

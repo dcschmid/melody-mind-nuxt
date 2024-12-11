@@ -146,5 +146,8 @@
       "hard": "Difficile"
     },
     "noImage": "Aucune image disponible"
+  },
+  "coins": {
+    "collected": "Pièces collectées"
   }
 }

@@ -22,7 +22,7 @@
                     </h2>
                     <div class="buttonGroup" role="group" aria-label="Schwierigkeitsgrade">
                         <NuxtLink v-for="difficulty in ['easy', 'medium', 'hard']" :key="difficulty"
-                            :to="localePath(`/${currentCategory.slug}/${difficulty}`)" class="button"
+                            :to="localePath(`/game-${currentCategory.slug}/${difficulty}`)" class="button"
                             :aria-label="$t(`category.difficulty.${difficulty}.label`)">
                             <Icon name="mdi:play-outline" size="36" /> {{ $t(`category.difficulty.${difficulty}`) }}
                         </NuxtLink>

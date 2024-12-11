@@ -146,5 +146,8 @@
       "hard": "Hard"
     },
     "noImage": "No image available"
+  },
+  "coins": {
+    "collected": "Collected coins"
   }
 }

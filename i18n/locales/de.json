@@ -146,5 +146,8 @@
       "hard": "Schwer"
     },
     "noImage": "Kein Bild verfügbar"
+  },
+  "coins": {
+    "collected": "Gesammelte Münzen"
   }
 }

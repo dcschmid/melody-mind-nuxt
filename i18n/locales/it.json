@@ -146,5 +146,8 @@
       "hard": "Difficile"
     },
     "noImage": "Nessuna immagine disponibile"
+  },
+  "coins": {
+    "collected": "Monete raccolte"
   }
 }

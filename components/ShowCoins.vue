@@ -1,0 +1,132 @@
+<template>
+    <div class="coinsContainer" role="status" aria-label="Gesammelte Münzen" aria-live="polite" data-coins>
+        <div class="coinsDisplay">
+            <Icon name="iconoir:coins" class="coinIcon" size="24" aria-hidden="true" />
+            <span class="coinsCount" aria-atomic="true">
+                <span class="sr-only">{{ $t('coins.collected') }}:</span>
+                <span class="count">0</span>
+            </span>
+        </div>
+    </div>
+</template>
+
+
+<style lang="scss" scoped>
+.coinsContainer {
+    will-change: transform;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--min-touch-target);
+    max-width: min(120px, 100%);
+    padding: var(--padding-small);
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+
+    @media (hover: hover) {
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-elevated);
+        }
+    }
+
+    @media (hover: none) {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        transition:
+            transform var(--transition-speed) ease,
+            box-shadow var(--transition-speed) ease;
+    }
+}
+
+.coinsDisplay {
+    display: flex;
+    gap: var(--padding-small);
+    align-items: center;
+    padding: calc(var(--padding-small) / 2);
+}
+
+.coinIcon {
+    will-change: transform;
+    color: var(--highlight-color);
+    backface-visibility: hidden;
+    filter: drop-shadow(0 2px 4px rgb(0 0 0 / 15%));
+
+    @media (prefers-reduced-motion: no-preference) {
+        animation: bounce 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+}
+
+.coinsCount {
+    font-family: var(--font-family);
+    font-size: var(--body-font-size);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: var(--line-height-tight);
+    color: var(--text-color);
+
+    .count {
+        display: inline-block;
+        min-width: 1.5ch;
+        text-align: right;
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0) translateZ(0);
+    }
+
+    50% {
+        transform: translateY(-2px) translateZ(0);
+    }
+}
+
+@media (forced-colors: active) {
+    .coinsContainer {
+        border: 2px solid CanvasText;
+    }
+
+    .coinIcon {
+        color: LinkText;
+        forced-color-adjust: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .coinsContainer {
+        background-color: color-mix(in srgb, var(--secondary-color) 85%, #000);
+    }
+
+    .coinIcon {
+        filter: drop-shadow(0 2px 4px rgb(0 0 0 / 30%));
+    }
+}
+
+@media (width <=768px) {
+    .coinsContainer {
+        padding: calc(var(--padding-small) * 0.75);
+    }
+
+    .coinsCount {
+        font-size: calc(var(--body-font-size) * 0.9);
+    }
+}
+
+@media print {
+    .coinsContainer {
+        border: 1px solid #000;
+        box-shadow: none;
+    }
+
+    .coinIcon {
+        display: none;
+    }
+}
+</style>
