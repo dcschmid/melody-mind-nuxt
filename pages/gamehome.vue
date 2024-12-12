@@ -9,50 +9,44 @@
                 <div class="search-wrapper">
                     <div class="search-input-container">
                         <Icon name="ic:baseline-search" size="24" class="search-icon" aria-hidden="true" />
-                        <input
-                            id="category-search"
-                            v-model="searchQuery"
-                            type="search"
-                            class="filterInput"
+                        <input id="category-search" v-model="searchQuery" type="search" class="filterInput"
                             :placeholder="$t('gameHome.searchPlaceholder')"
-                            :aria-label="$t('gameHome.searchPlaceholder')"
-                            @input="filterCategories"
-                        />
+                            :aria-label="$t('gameHome.searchPlaceholder')" />
                     </div>
                 </div>
             </section>
 
-            <section class="categories-section" aria-label="Spielkategorien">
+            <section class="categories-section" aria-label="Spielkategorien">                                                                                                                                                                                                                                                                                                                                                                                                                
                 <div class="categories-grid">
-                    <div
-                        v-for="category in filteredCategories"
-                        :key="category.slug"
-                        class="category-card"
-                        :class="{ 'not-playable': !category.isPlayable }"
-                        :aria-disabled="!category.isPlayable"
-                    >
-                        <NuxtLink
-                            v-if="category.isPlayable"
-                            :to="localePath(category.categoryUrl)"
+                    <div v-for="category in filteredCategories" :key="category.slug" class="category-card"
+                        :class="{ 'not-playable': !category.isPlayable }" :aria-disabled="!category.isPlayable">
+                        <NuxtLink v-if="category.isPlayable" :to="localePath(category.categoryUrl)"
                             class="category-link"
-                            :aria-label="$t('gameHome.playCategory', { category: category.headline })"
-                        >
+                            :aria-label="$t('gameHome.playCategory', { category: category.headline })">
                             <div class="category-content">
                                 <div class="image-container">
-                                    <img :src="category.imageUrl" :alt="category.headline" loading="lazy" />
+                                    <picture>
+                                        <source
+                                            :srcset="`${category.imageUrl}?w=800 800w, ${category.imageUrl}?w=480 480w`"
+                                            :sizes="'(max-width: 768px) 480px, 800px'" />
+                                        <img :src="category.imageUrl" :alt="category.headline" loading="lazy"
+                                            decoding="async" :width="480" :height="270" />
+                                    </picture>
                                 </div>
                                 <div class="category-info">
                                     <h2>{{ category.headline }}</h2>
                                 </div>
                             </div>
                         </NuxtLink>
-                        <div
-                            v-else
-                            class="category-content coming-soon"
-                            :aria-label="$t('gameHome.comingSoon', { category: category.headline })"
-                        >
+                        <div v-else class="category-content coming-soon"
+                            :aria-label="$t('gameHome.comingSoon', { category: category.headline })">
                             <div class="image-container">
-                                <img :src="category.imageUrl" :alt="category.headline" loading="lazy" />
+                                <picture>
+                                    <source :srcset="`${category.imageUrl}?w=800 800w, ${category.imageUrl}?w=480 480w`"
+                                        :sizes="'(max-width: 768px) 480px, 800px'" />
+                                    <img :src="category.imageUrl" :alt="category.headline" loading="lazy"
+                                        decoding="async" :width="480" :height="270" />
+                                </picture>
                                 <div class="coming-soon-badge">
                                     {{ $t('gameHome.comingSoonLabel') }}
                                 </div>
@@ -69,6 +63,24 @@
 </template>
 
 <script setup>
+import { ref, watch, computed, onMounted } from 'vue';
+import { useIntersectionObserver } from '@vueuse/core'
+
+function useDebouncedRef(initialValue, delay) {
+    const state = ref(initialValue);
+    const debouncedState = ref(initialValue);
+
+    let timeout;
+    watch(state, (newValue) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            debouncedState.value = newValue;
+        }, delay);
+    });
+
+    return debouncedState;
+}
+
 definePageMeta({
     middleware: 'auth'
 })
@@ -80,36 +92,68 @@ onMounted(() => {
 })
 
 const searchQuery = ref('')
+const debouncedSearch = useDebouncedRef(searchQuery.value, 300)
+
+watch(searchQuery, (newValue) => {
+    debouncedSearch.value = newValue
+})
+
 const categories = ref([])
+const filteredCategories = computed(() => {
+    if (!debouncedSearch.value) return categories.value
+
+    const query = debouncedSearch.value.toLowerCase()
+    return categories.value.filter(category =>
+        category.headline.toLowerCase().includes(query)
+    )
+})
+
 const localePath = useLocalePath()
 
 const { locale } = useI18n()
+
+function preloadImages(categories) {
+    categories.slice(0, 4).forEach(category => {
+        const img = new Image();
+        img.src = category.imageUrl;
+    });
+}
+
 const loadCategories = async () => {
     const cacheKey = `categories_${locale.value}`
-    const cached = sessionStorage.getItem(cacheKey)
+    const cached = localStorage.getItem(cacheKey)
 
     if (cached) {
-        categories.value = JSON.parse(cached)
-        return
+        try {
+            const parsedData = JSON.parse(cached)
+            const cacheTimestamp = parsedData.timestamp
+            if (Date.now() - cacheTimestamp < 24 * 60 * 60 * 1000) {
+                categories.value = parsedData.data
+                preloadImages(parsedData.data)
+                return
+            }
+        } catch (error) {
+            console.error('Cache parsing error:', error)
+        }
     }
 
     try {
         const data = await import(`../json/${locale.value}_categories.json`)
         categories.value = data.default
-        sessionStorage.setItem(cacheKey, JSON.stringify(data.default))
+        localStorage.setItem(cacheKey, JSON.stringify({
+            data: data.default,
+            timestamp: Date.now()
+        }))
     } catch (error) {
         console.error('Fehler beim Laden der Kategorien:', error)
         categories.value = []
     }
 }
 
-const filteredCategories = computed(() => {
-    if (!searchQuery.value) return categories.value
-    const query = searchQuery.value.toLowerCase()
-    return categories.value.filter(category =>
-        category.headline.toLowerCase().includes(query) ||
-        category.introSubline.toLowerCase().includes(query)
-    )
+const imageRef = ref(null)
+const { isVisible } = useIntersectionObserver(imageRef, {
+    threshold: 0.1,
+    rootMargin: '50px'
 })
 
 onMounted(() => {
@@ -193,6 +237,15 @@ onMounted(() => {
     @media (min-width: 1024px) {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .category-card {
+            animation: fadeIn 0.5s ease-out;
+            transition: transform 0.3s var(--transition-bounce),
+                       box-shadow 0.3s ease-out,
+                       opacity 0.3s ease-out;
+        }
+    }
 }
 
 .category-card {
@@ -200,7 +253,6 @@ onMounted(() => {
     border-radius: var(--border-radius);
     overflow: hidden;
     background: var(--surface-color);
-    transition: all 0.3s var(--transition-bounce);
     border: 1px solid rgb(255 255 255 / 10%);
 
     &:hover {
@@ -209,6 +261,10 @@ onMounted(() => {
 
         .image-container img {
             transform: scale(1.1);
+        }
+
+        .category-info {
+            transform: translateY(-5px);
         }
     }
 
@@ -258,11 +314,9 @@ onMounted(() => {
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-            to bottom,
-            transparent 0%,
-            rgba(0, 0, 0, 0.8) 100%
-        );
+        background: linear-gradient(to bottom,
+                transparent 0%,
+                rgba(0, 0, 0, 0.8) 100%);
         z-index: 1;
     }
 }
@@ -273,7 +327,7 @@ onMounted(() => {
     left: 0;
     right: 0;
     padding: 15px;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 80%, transparent 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 80%, transparent 100%);
     color: var(--text-color);
     z-index: 2;
     text-align: left;
@@ -300,6 +354,28 @@ onMounted(() => {
     transform: translateY(0);
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.filtered-enter-active,
+.filtered-leave-active {
+    transition: all 0.3s ease-out;
+}
+
+.filtered-enter-from,
+.filtered-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
 @media (prefers-reduced-motion: reduce) {
     * {
         animation: none !important;
@@ -320,6 +396,40 @@ onMounted(() => {
         h2 {
             font-size: 1.1em;
         }
+    }
+}
+
+.category-link {
+    &:focus-visible {
+        outline: 2px solid var(--highlight-color);
+        outline-offset: 2px;
+    }
+}
+
+.search-input-container {
+    .filterInput {
+        transition: all 0.3s var(--transition-bounce);
+
+        &:focus {
+            transform: scale(1.01);
+            box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.2);
+        }
+    }
+}
+
+.coming-soon-badge {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.7;
     }
 }
 </style>
