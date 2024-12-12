@@ -7,15 +7,18 @@
     "it": "Italiano"
   },
   "welcome": "Benvenuto su Melody Mind",
-  "intro": "Metti alla prova le tue conoscenze musicali nel nostro quiz interattivo. Riconosci canzoni, album e artisti, accumula punti e diventa un campione della musica. Gioca ora gratuitamente!",
+  "intro": "Immergiti nel fascinante mondo della musica! Su Melody Mind, puoi dimostrare le tue conoscenze musicali in emozionanti round di quiz. Rispondi a domande su canzoni di diversi decenni, artisti, album e storia della musica. Accumula punti, guadagna dischi d'oro e sfida altri appassionati di musica. Dal rock al pop, dall'hip-hop al classico - metti alla prova le tue conoscenze nei tuoi generi preferiti. Inizia ora la tua avventura musicale!",
   "login": {
     "title": "Accedi",
     "methodLabel": "Scegli il metodo di accesso",
     "emailOption": "Accedi con email",
     "usernameOption": "Accedi con nome utente",
     "emailLabel": "Indirizzo email",
+    "emailPlaceholder": "Inserisci il tuo indirizzo email",
     "usernameLabel": "Nome utente",
+    "usernamePlaceholder": "Inserisci il tuo nome utente",
     "passwordLabel": "Password",
+    "passwordPlaceholder": "Inserisci la tua password",
     "submitButton": "Accedi",
     "noAccount": "Non hai un account? Registrati",
     "forgotPassword": "Password dimenticata?"
@@ -23,10 +26,14 @@
   "register": {
     "title": "Registrati",
     "nameLabel": "Nome",
+    "namePlaceholder": "Inserisci il tuo nome completo",
     "usernameLabel": "Nome utente",
+    "usernamePlaceholder": "Scegli un nome utente",
     "usernameLengthHint": "Minimo 3 caratteri, massimo 20 caratteri",
     "emailLabel": "Email",
+    "emailPlaceholder": "Inserisci il tuo indirizzo email",
     "passwordLabel": "Password",
+    "passwordPlaceholder": "Scegli una password sicura",
     "submitButton": "Registrati",
     "hasAccount": "Già registrato? Accedi"
   },
@@ -35,13 +42,18 @@
     "signOut": "Disconnetti"
   },
   "errors": {
-    "emailRequired": "Inserisci un indirizzo email valido.",
-    "passwordRequired": "Inserisci una password.",
-    "usernameRequired": "Inserisci un nome utente.",
-    "loginFailed": "Accesso fallito. Verifica le tue credenziali.",
-    "registrationFailed": "Registrazione fallita. Verifica i tuoi dati.",
-    "passwordResetFailed": "Reimpostazione password fallita. Riprova.",
-    "passwordResetSuccess": "Controlla la tua email per ulteriori istruzioni."
+    "emailRequired": "Inserisci un indirizzo email",
+    "invalidEmail": "Inserisci un indirizzo email valido",
+    "passwordRequired": "Inserisci una password",
+    "passwordTooShort": "La password deve contenere almeno 6 caratteri",
+    "usernameRequired": "Inserisci un nome utente",
+    "usernameTooShort": "Il nome utente deve contenere almeno 3 caratteri",
+    "nameRequired": "Inserisci il tuo nome",
+    "nameTooShort": "Il nome deve contenere almeno 2 caratteri",
+    "loginFailed": "Accesso fallito. Verifica le tue credenziali",
+    "registrationFailed": "Registrazione fallita. Riprova",
+    "passwordResetFailed": "Reimpostazione password fallita. Riprova più tardi",
+    "passwordResetSuccess": "Email per reimpostare la password inviata"
   },
   "navigation": {
     "skipToMain": "Vai al contenuto principale",
@@ -129,9 +141,10 @@
   "gameHome": {
     "title": "Scegli una categoria per giocare",
     "searchPlaceholder": "Cerca categoria...",
-    "playCategory": "Gioca a {category}",
+    "playCategory": "Gioca {category}",
     "comingSoon": "{category} - Prossimamente",
-    "categoryAlt": "Immagine per la categoria {category}"
+    "categoryAlt": "Immagine per la categoria {category}",
+    "comingSoonLabel": "Prossimamente"
   },
   "category": {
     "selected": "selezionato!",
@@ -149,5 +162,13 @@
   },
   "coins": {
     "collected": "Monete raccolte"
+  },
+  "forgotPassword": {
+    "title": "Reimposta Password",
+    "emailLabel": "Indirizzo Email",
+    "emailPlaceholder": "Inserisci il tuo indirizzo email",
+    "submitButton": "Invia Link di Reset",
+    "backToLogin": "Torna al Login",
+    "successMessage": "Se esiste un account con questa email, riceverai a breve un link per reimpostare la password."
   }
 }

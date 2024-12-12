@@ -7,15 +7,18 @@
     "it": "Italien"
   },
   "welcome": "Bienvenue sur Melody Mind",
-  "intro": "Testez vos connaissances musicales dans notre quiz interactif. Reconnaissez des chansons, des albums et des artistes, accumulez des points et devenez un champion de la musique. Jouez gratuitement maintenant !",
+  "intro": "Plongez dans le monde fascinant de la musique ! Sur Melody Mind, vous pouvez prouver vos connaissances musicales dans des quiz passionnants. Répondez aux questions sur les chansons de différentes décennies, les artistes, les albums et l'histoire de la musique. Accumulez des points, gagnez des disques d'or et défiez d'autres passionnés de musique. Du rock à la pop, du hip-hop au classique - testez vos connaissances dans vos genres préférés. Commencez votre aventure musicale maintenant !",
   "login": {
     "title": "Connexion",
     "methodLabel": "Choisir la méthode de connexion",
-    "emailOption": "Connexion par email",
-    "usernameOption": "Connexion par nom d'utilisateur",
+    "emailOption": "Se connecter avec email",
+    "usernameOption": "Se connecter avec nom d'utilisateur",
     "emailLabel": "Adresse email",
+    "emailPlaceholder": "Entrez votre adresse email",
     "usernameLabel": "Nom d'utilisateur",
+    "usernamePlaceholder": "Entrez votre nom d'utilisateur",
     "passwordLabel": "Mot de passe",
+    "passwordPlaceholder": "Entrez votre mot de passe",
     "submitButton": "Se connecter",
     "noAccount": "Pas encore de compte ? S'inscrire",
     "forgotPassword": "Mot de passe oublié ?"
@@ -23,10 +26,14 @@
   "register": {
     "title": "S'inscrire",
     "nameLabel": "Nom",
+    "namePlaceholder": "Entrez votre nom complet",
     "usernameLabel": "Nom d'utilisateur",
+    "usernamePlaceholder": "Choisissez un nom d'utilisateur",
     "usernameLengthHint": "Minimum 3 caractères, maximum 20 caractères",
     "emailLabel": "Email",
+    "emailPlaceholder": "Entrez votre adresse email",
     "passwordLabel": "Mot de passe",
+    "passwordPlaceholder": "Choisissez un mot de passe sécurisé",
     "submitButton": "S'inscrire",
     "hasAccount": "Déjà inscrit ? Se connecter"
   },
@@ -35,13 +42,18 @@
     "signOut": "Se déconnecter"
   },
   "errors": {
-    "emailRequired": "Veuillez entrer une adresse email valide.",
-    "passwordRequired": "Veuillez entrer un mot de passe.",
-    "usernameRequired": "Veuillez entrer un nom d'utilisateur.",
-    "loginFailed": "Échec de la connexion. Veuillez vérifier vos identifiants.",
-    "registrationFailed": "Échec de l'inscription. Veuillez vérifier vos informations.",
-    "passwordResetFailed": "Échec de la réinitialisation du mot de passe. Veuillez réessayer.",
-    "passwordResetSuccess": "Vérifiez votre email pour plus d'instructions."
+    "emailRequired": "Veuillez saisir une adresse e-mail",
+    "invalidEmail": "Veuillez saisir une adresse e-mail valide",
+    "passwordRequired": "Veuillez saisir un mot de passe",
+    "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères",
+    "usernameRequired": "Veuillez saisir un nom d'utilisateur",
+    "usernameTooShort": "Le nom d'utilisateur doit contenir au moins 3 caractères",
+    "nameRequired": "Veuillez saisir votre nom",
+    "nameTooShort": "Le nom doit contenir au moins 2 caractères",
+    "loginFailed": "Échec de la connexion. Veuillez vérifier vos identifiants",
+    "registrationFailed": "Échec de l'inscription. Veuillez réessayer",
+    "passwordResetFailed": "Échec de la réinitialisation du mot de passe. Veuillez réessayer plus tard",
+    "passwordResetSuccess": "Un e-mail de réinitialisation du mot de passe a été envoyé"
   },
   "navigation": {
     "skipToMain": "Passer au contenu principal",
@@ -129,9 +141,10 @@
   "gameHome": {
     "title": "Choisissez une catégorie pour jouer",
     "searchPlaceholder": "Rechercher une catégorie...",
-    "playCategory": "Jouer à {category}",
+    "playCategory": "Jouer {category}",
     "comingSoon": "{category} - Bientôt disponible",
-    "categoryAlt": "Image pour la catégorie {category}"
+    "categoryAlt": "Image pour la catégorie {category}",
+    "comingSoonLabel": "Bientôt disponible"
   },
   "category": {
     "selected": "sélectionné !",
@@ -149,5 +162,13 @@
   },
   "coins": {
     "collected": "Pièces collectées"
+  },
+  "forgotPassword": {
+    "title": "Réinitialiser le Mot de Passe",
+    "emailLabel": "Adresse E-mail",
+    "emailPlaceholder": "Saisissez votre adresse e-mail",
+    "submitButton": "Envoyer le Lien de Réinitialisation",
+    "backToLogin": "Retour à la Connexion",
+    "successMessage": "Si un compte existe avec cet e-mail, vous recevrez un lien de réinitialisation du mot de passe sous peu."
   }
 }

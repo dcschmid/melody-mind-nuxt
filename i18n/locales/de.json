@@ -7,15 +7,18 @@
     "it": "Italienisch"
   },
   "welcome": "Willkommen bei Melody Mind",
-  "intro": "Teste dein Musikwissen in unserem interaktiven Quiz. Erkenne Songs, Alben und Künstler, sammle Punkte und werde zum Musik-Champion. Jetzt kostenlos spielen!",
+  "intro": "Tauche ein in die faszinierende Welt der Musik! Bei Melody Mind stellst du dein Musikwissen in spannenden Quiz-Runden unter Beweis. Beantworte Fragen zu Songs aus verschiedenen Jahrzehnten, zu Künstlern, Alben und Musikgeschichte. Sammle Punkte, verdiene dir goldene Schallplatten und fordere andere Musikbegeisterte heraus. Von Rock über Pop bis Hip-Hop und Klassik - teste dein Wissen in deinen Lieblingsgenres. Starte jetzt dein musikalisches Quiz-Abenteuer!",
   "login": {
     "title": "Anmelden",
     "methodLabel": "Anmeldemethode wählen",
     "emailOption": "Mit E-Mail anmelden",
     "usernameOption": "Mit Benutzername anmelden",
     "emailLabel": "E-Mail Adresse",
+    "emailPlaceholder": "Deine E-Mail-Adresse eingeben",
     "usernameLabel": "Benutzername",
+    "usernamePlaceholder": "Deinen Benutzernamen eingeben",
     "passwordLabel": "Passwort",
+    "passwordPlaceholder": "Dein Passwort eingeben",
     "submitButton": "Anmelden",
     "noAccount": "Noch kein Konto? Registrieren",
     "forgotPassword": "Passwort vergessen?"
@@ -23,10 +26,14 @@
   "register": {
     "title": "Registrieren",
     "nameLabel": "Name",
+    "namePlaceholder": "Deinen vollständigen Namen eingeben",
     "usernameLabel": "Benutzername",
+    "usernamePlaceholder": "Wähle einen Benutzernamen",
     "usernameLengthHint": "Mindestens 3 Zeichen, maximal 20 Zeichen",
     "emailLabel": "E-Mail",
+    "emailPlaceholder": "Deine E-Mail-Adresse eingeben",
     "passwordLabel": "Passwort",
+    "passwordPlaceholder": "Wähle ein sicheres Passwort",
     "submitButton": "Registrieren",
     "hasAccount": "Bereits registriert? Anmelden"
   },
@@ -35,13 +42,18 @@
     "signOut": "Abmelden"
   },
   "errors": {
-    "emailRequired": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
-    "passwordRequired": "Bitte geben Sie ein Passwort ein.",
-    "usernameRequired": "Bitte geben Sie einen Benutzernamen ein.",
-    "loginFailed": "Login fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben.",
-    "registrationFailed": "Registrierung fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben.",
-    "passwordResetFailed": "Passwort-Reset fehlgeschlagen. Bitte versuchen Sie es erneut.",
-    "passwordResetSuccess": "Überprüfen Sie Ihre E-Mail für weitere Anweisungen."
+    "emailRequired": "Bitte geben Sie eine E-Mail-Adresse ein",
+    "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+    "passwordRequired": "Bitte geben Sie ein Passwort ein",
+    "passwordTooShort": "Das Passwort muss mindestens 6 Zeichen lang sein",
+    "usernameRequired": "Bitte geben Sie einen Benutzernamen ein",
+    "usernameTooShort": "Der Benutzername muss mindestens 3 Zeichen lang sein",
+    "nameRequired": "Bitte geben Sie Ihren Namen ein",
+    "nameTooShort": "Der Name muss mindestens 2 Zeichen lang sein",
+    "loginFailed": "Anmeldung fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben",
+    "registrationFailed": "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut",
+    "passwordResetFailed": "Passwort zurücksetzen fehlgeschlagen. Bitte versuchen Sie es später erneut",
+    "passwordResetSuccess": "Eine E-Mail zum Zurücksetzen des Passworts wurde gesendet"
   },
   "navigation": {
     "skipToMain": "Zum Hauptinhalt springen",
@@ -131,7 +143,8 @@
     "searchPlaceholder": "Kategorie suchen...",
     "playCategory": "{category} spielen",
     "comingSoon": "{category} - Demnächst verfügbar",
-    "categoryAlt": "Bild für die Kategorie {category}"
+    "categoryAlt": "Bild für die Kategorie {category}",
+    "comingSoonLabel": "Demnächst verfügbar"
   },
   "category": {
     "selected": "gewählt!",
@@ -149,5 +162,13 @@
   },
   "coins": {
     "collected": "Gesammelte Münzen"
+  },
+  "forgotPassword": {
+    "title": "Passwort zurücksetzen",
+    "emailLabel": "E-Mail-Adresse",
+    "emailPlaceholder": "Geben Sie Ihre E-Mail-Adresse ein",
+    "submitButton": "Zurücksetzen-Link senden",
+    "backToLogin": "Zurück zur Anmeldung",
+    "successMessage": "Wenn ein Konto mit dieser E-Mail existiert, erhalten Sie in Kürze einen Link zum Zurücksetzen des Passworts."
   }
 }

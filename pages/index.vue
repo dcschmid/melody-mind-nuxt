@@ -1,315 +1,521 @@
 <template>
     <NuxtLayout name="default" :show-header="true" :show-menu="false" :show-coins="false">
-        <div role="main">
-            <h1>{{ $t('welcome') }}</h1>
+        <main class="login-page" id="main-content">
+            <div class="content-wrapper">
+                <section class="welcome-section" v-motion-slide-top>
+                    <h1>{{ $t('welcome') }}</h1>
+                    <p class="intro-text">{{ $t('intro') }}</p>
+                </section>
 
-            <div>
-                {{ $t('intro') }}
+                <section class="auth-section" v-motion-slide-visible>
+                    <!-- Login Form -->
+                    <Form v-if="!formState.isRegistering && !formState.showForgotPassword" @submit="handleLogin" class="auth-form"
+                        aria-labelledby="login-title">
+                        <h2 id="login-title">{{ $t('login.title') }}</h2>
+
+                        <div class="form-group">
+                            <label for="login-method">{{ $t('login.methodLabel') }}</label>
+                            <div class="select-wrapper">
+                                <Field name="loginMethod" as="select" v-model="formState.loginMethod" class="form-control">
+                                    <option value="email">{{ $t('login.emailOption') }}</option>
+                                    <option value="username">{{ $t('login.usernameOption') }}</option>
+                                </Field>
+                                <Icon name="material-symbols:keyboard-arrow-down-rounded" size="24"
+                                    class="select-icon" />
+                            </div>
+                        </div>
+
+                        <div class="form-group" v-if="formState.loginMethod === 'email'">
+                            <label for="email">{{ $t('login.emailLabel') }}</label>
+                            <div class="input-wrapper">
+                                <Icon name="material-symbols:mail-outline" size="24" class="input-icon" />
+                                <Field name="email" type="email" :rules="validators.email" v-model="formState.email"
+                                    :placeholder="$t('login.emailPlaceholder')" />
+                            </div>
+                            <ErrorMessage name="email" class="error-message" />
+                        </div>
+
+                        <div class="form-group" v-else>
+                            <label for="username">{{ $t('login.usernameLabel') }}</label>
+                            <div class="input-wrapper">
+                                <Icon name="material-symbols:person-outline" size="24" class="input-icon" />
+                                <Field name="username" type="text" :rules="validators.username" v-model="formState.username"
+                                    :placeholder="$t('login.usernamePlaceholder')" />
+                            </div>
+                            <ErrorMessage name="username" class="error-message" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">{{ $t('login.passwordLabel') }}</label>
+                            <div class="input-wrapper">
+                                <Icon name="material-symbols:lock-outline" size="24" class="input-icon" />
+                                <Field name="password" type="password" :rules="validators.password" v-model="formState.password"
+                                    :placeholder="$t('login.passwordPlaceholder')" />
+                            </div>
+                            <ErrorMessage name="password" class="error-message" />
+                        </div>
+
+                        <button type="submit" class="submit-button">
+                            {{ $t('login.submitButton') }}
+                        </button>
+
+                        <div class="auth-links">
+                            <a href="#" @click.prevent="formState.isRegistering = true" class="link">
+                                {{ $t('login.noAccount') }}
+                            </a>
+                            <a href="#" @click.prevent="formState.showForgotPassword = true" class="link">
+                                {{ $t('login.forgotPassword') }}
+                            </a>
+                        </div>
+                    </Form>
+
+                    <!-- Register Form -->
+                    <Form v-else-if="formState.isRegistering && !formState.showForgotPassword" @submit="handleRegister" class="auth-form"
+                        aria-labelledby="register-title">
+                        <h2 id="register-title">{{ $t('register.title') }}</h2>
+
+                        <div class="form-group">
+                            <label for="name">{{ $t('register.nameLabel') }}</label>
+                            <div class="input-wrapper">
+                                <Icon name="material-symbols:person-outline" size="24" class="input-icon" />
+                                <Field name="name" type="text" :rules="validators.name" v-model="formState.name"
+                                    :placeholder="$t('register.namePlaceholder')" />
+                            </div>
+                            <ErrorMessage name="name" class="error-message" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reg-username">{{ $t('register.usernameLabel') }}</label>
+                            <div class="input-wrapper">
+                                <Icon name="material-symbols:alternate-email" size="24" class="input-icon" />
+                                <Field name="username" type="text" :rules="validators.username" v-model="formState.username"
+                                    :placeholder="$t('register.usernamePlaceholder')" />
+                            </div>
+                            <ErrorMessage name="username" class="error-message" />
+                            <small>{{ $t('register.usernameLengthHint') }}</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reg-email">{{ $t('register.emailLabel') }}</label>
+                            <div class="input-wrapper">
+                                <Icon name="material-symbols:mail-outline" size="24" class="input-icon" />
+                                <Field name="email" type="email" :rules="validators.email" v-model="formState.email"
+                                    :placeholder="$t('register.emailPlaceholder')" />
+                            </div>
+                            <ErrorMessage name="email" class="error-message" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reg-password">{{ $t('register.passwordLabel') }}</label>
+                            <div class="input-wrapper">
+                                <Icon name="material-symbols:lock-outline" size="24" class="input-icon" />
+                                <Field name="password" type="password" :rules="validators.password" v-model="formState.password"
+                                    :placeholder="$t('register.passwordPlaceholder')" />
+                            </div>
+                            <ErrorMessage name="password" class="error-message" />
+                        </div>
+
+                        <button type="submit" class="submit-button">
+                            {{ $t('register.submitButton') }}
+                        </button>
+
+                        <div class="auth-links">
+                            <a href="#" @click.prevent="formState.isRegistering = false" class="link">
+                                {{ $t('register.hasAccount') }}
+                            </a>
+                        </div>
+                    </Form>
+
+                    <!-- Forgot Password Form -->
+                    <Form v-else-if="formState.showForgotPassword" @submit="handleForgotPassword" class="auth-form"
+                        aria-labelledby="forgot-password-title">
+                        <h2 id="forgot-password-title">{{ $t('forgotPassword.title') }}</h2>
+
+                        <div class="form-group">
+                            <label for="reset-email">{{ $t('forgotPassword.emailLabel') }}</label>
+                            <div class="input-wrapper">
+                                <Icon name="material-symbols:mail-outline" size="24" class="input-icon" />
+                                <Field name="email" type="email" :rules="validators.email" v-model="formState.email"
+                                    :placeholder="$t('forgotPassword.emailPlaceholder')" />
+                            </div>
+                            <ErrorMessage name="email" class="error-message" />
+                        </div>
+
+                        <button type="submit" class="submit-button">
+                            {{ $t('forgotPassword.submitButton') }}
+                        </button>
+
+                        <div class="auth-links">
+                            <a href="#" @click.prevent="formState.showForgotPassword = false; formState.isRegistering = false" class="link">
+                                {{ $t('forgotPassword.backToLogin') }}
+                            </a>
+                        </div>
+                    </Form>
+                </section>
             </div>
-
-            <form v-if="!isRegistering" @submit.prevent="handleLogin" class="auth-form" aria-labelledby="login-title">
-                <h2 id="login-title">{{ $t('login.title') }}</h2>
-                <div v-if="errorMessage" class="error-message" role="alert" aria-live="assertive">
-                    {{ errorMessage }}
-                </div>
-                <div class="form-group">
-                    <label for="login-method">{{ $t('login.methodLabel') }}</label>
-                    <select id="login-method" v-model="loginMethod" class="form-control"
-                        aria-describedby="login-method-description">
-                        <option value="email">{{ $t('login.emailOption') }}</option>
-                        <option value="username">{{ $t('login.usernameOption') }}</option>
-                    </select>
-                </div>
-                <div class="form-group" v-if="loginMethod === 'email'">
-                    <label for="email">{{ $t('login.emailLabel') }}</label>
-                    <input type="email" id="email" v-model="email" aria-required="true" :aria-invalid="!!emailError">
-                    <span v-if="emailError" class="error-message">{{ $t('errors.emailRequired') }}</span>
-                </div>
-                <div class="form-group" v-else>
-                    <label for="username">{{ $t('login.usernameLabel') }}</label>
-                    <input type="text" id="username" v-model="username" required :aria-invalid="!!usernameError">
-                    <span v-if="usernameError" class="error-message">{{ $t('errors.usernameRequired') }}</span>
-                </div>
-                <div class="form-group">
-                    <label for="password">{{ $t('login.passwordLabel') }}</label>
-                    <input type="password" id="password" v-model="password" required :aria-invalid="!!passwordError">
-                    <span v-if="passwordError" class="error-message">{{ $t('errors.passwordRequired') }}</span>
-                </div>
-                <button type="submit">{{ $t('login.submitButton') }}</button>
-                <p>
-                    <a href="#" @click.prevent="isRegistering = true">{{ $t('login.noAccount') }}</a>
-                </p>
-                <p>
-                    <a href="#" @click.prevent="handleForgotPassword">{{ $t('login.forgotPassword') }}</a>
-                </p>
-            </form>
-
-            <!-- Registrierungs Formular -->
-            <form v-else @submit.prevent="handleRegister" class="auth-form">
-                <h2>{{ $t('register.title') }}</h2>
-                <div v-if="errorMessage" class="error-message" role="alert" aria-live="assertive">
-                    {{ errorMessage }}
-                </div>
-                <div class="form-group">
-                    <label for="name">{{ $t('register.nameLabel') }}</label>
-                    <input type="text" id="name" v-model="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="reg-username">{{ $t('register.usernameLabel') }}</label>
-                    <input type="text" id="reg-username" v-model="username" required>
-                    <small>{{ $t('register.usernameLengthHint') }}</small>
-                </div>
-                <div class="form-group">
-                    <label for="reg-email">{{ $t('register.emailLabel') }}</label>
-                    <input type="email" id="reg-email" v-model="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="reg-password">{{ $t('register.passwordLabel') }}</label>
-                    <input type="password" id="reg-password" v-model="password" required>
-                </div>
-                <button type="submit">{{ $t('register.submitButton') }}</button>
-                <p>
-                    <a href="#" @click.prevent="isRegistering = false">{{ $t('register.hasAccount') }}</a>
-                </p>
-            </form>
-        </div>
+        </main>
     </NuxtLayout>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { Form, Field, ErrorMessage } from 'vee-validate'
 import { authClient } from "../lib/auth-client";
 import { useRouter } from 'vue-router';
 
+const { t } = useI18n()
 const session = authClient.useSession()
-const isRegistering = ref(false)
-const loginMethod = ref('email')
-const email = ref('')
-const password = ref('')
-const name = ref('')
-const username = ref('')
 const router = useRouter();
-const errorMessage = ref('')
-const emailError = ref('')
-const passwordError = ref('')
-const usernameError = ref('')
 
-const validateForm = () => {
-    let isValid = true
-    emailError.value = ''
-    passwordError.value = ''
-    usernameError.value = ''
+// Typen für die Formulardaten definieren
+interface LoginCredentials {
+  email?: string;
+  username?: string;
+  password: string;
+}
 
-    if (loginMethod.value === 'email' && !email.value) {
-        emailError.value = 'errors.emailRequired'
-        isValid = false
+interface RegisterData extends LoginCredentials {
+  name: string;
+  email: string;
+  username: string;
+}
+
+// Formularstatus in einem reaktiven Objekt zusammenfassen
+const formState = reactive({
+  isRegistering: false,
+  showForgotPassword: false,
+  loginMethod: 'email' as 'email' | 'username',
+  errorMessage: '',
+})
+
+const validators = {
+    email: (value: string) => {
+        if (!value) return t('errors.emailRequired')
+        return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) || t('errors.invalidEmail')
+    },
+    username: (value: string) => {
+        if (!value) return t('errors.usernameRequired')
+        return value.length >= 3 || t('errors.usernameTooShort')
+    },
+    password: (value: string) => {
+        if (!value) return t('errors.passwordRequired')
+        return value.length >= 6 || t('errors.passwordTooShort')
+    },
+    name: (value: string) => {
+        if (!value) return t('errors.nameRequired')
+        return value.length >= 2 || t('errors.nameTooShort')
     }
-    if (!password.value) {
-        passwordError.value = 'errors.passwordRequired'
-        isValid = false
-    }
-    if (loginMethod.value === 'username' && !username.value) {
-        usernameError.value = 'errors.usernameRequired'
-        isValid = false
-    }
-    return isValid
 }
 
 const handleLogin = async () => {
-    if (!validateForm()) return
-
     try {
-        let result;
-        if (loginMethod.value === 'email') {
-            result = await authClient.signIn.email({
-                email: email.value,
-                password: password.value
-            })
-        } else {
-            result = await authClient.signIn.username({
-                username: username.value,
-                password: password.value
-            })
-        }
+        const credentials = formState.loginMethod === 'email'
+            ? { email: formState.email, password: formState.password }
+            : { username: formState.username, password: formState.password }
 
+        const result = await authClient.signIn[formState.loginMethod](credentials)
         if (result.error) throw result.error
 
         router.push('/gamehome')
     } catch (error) {
         console.error('Login error:', error)
-        errorMessage.value = 'errors.loginFailed'
+        formState.errorMessage = 'errors.loginFailed'
     }
 }
 
 const handleRegister = async () => {
     try {
-        const { data, error } = await authClient.signUp.email({
-            email: email.value,
-            password: password.value,
-            name: name.value,
-            username: username.value
-        })
+        const registrationData = {
+            email: formState.email,
+            password: formState.password,
+            name: formState.name,
+            username: formState.username
+        }
+
+        const { error } = await authClient.signUp.email(registrationData)
         if (error) throw error
-        isRegistering.value = false
+
+        formState.isRegistering = false
+        alert(t('register.successMessage'))
     } catch (error) {
         console.error('Registration error:', error)
-        errorMessage.value = 'errors.registrationFailed'
+        formState.errorMessage = 'errors.registrationFailed'
     }
 }
 
 const handleForgotPassword = async () => {
     try {
-        const { data, error } = await authClient.forgetPassword({
-            email: email.value,
-            redirectTo: '/reset-password'
+        const { error } = await authClient.forgetPassword({
+            email: formState.email,
+            redirectTo: `${window.location.origin}/reset-password`
         })
+
         if (error) throw error
-        errorMessage.value = 'errors.passwordResetSuccess'
+        alert(t('forgotPassword.successMessage'))
+        formState.showForgotPassword = false
     } catch (error) {
         console.error('Password reset error:', error)
-        errorMessage.value = 'errors.passwordResetFailed'
+        formState.errorMessage = 'errors.passwordResetFailed'
     }
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-large);
+    background: var(--background-color);
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: var(--padding-large);
+
+    h1 {
+        font-size: var(--header-font-size);
+        color: var(--text-color);
+        margin-bottom: var(--padding-medium);
+    }
+
+    .intro-text {
+        font-size: var(--body-font-size);
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+}
+
 .auth-form {
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: var(--background-color);
-    color: var(--text-color);
-}
+    background: var(--surface-color);
+    padding: var(--padding-large);
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 
-h2 {
-    font-size: var(--header-font-size);
-    margin-bottom: var(--padding-medium);
-    color: var(--text-color);
-    text-align: center;
-}
-
-.social-login-title {
-    text-align: center;
-    margin-bottom: var(--padding-medium);
+    h2 {
+        font-size: 1.5rem;
+        color: var(--text-color);
+        margin-bottom: var(--padding-large);
+        text-align: center;
+    }
 }
 
 .form-group {
     margin-bottom: var(--padding-medium);
+
+    label {
+        display: block;
+        margin-bottom: var(--padding-small);
+        color: var(--text-color);
+        font-weight: 500;
+    }
+
+    small {
+        display: block;
+        margin-top: 0.5rem;
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+    }
 }
 
-.form-control,
+.input-wrapper {
+    position: relative;
+
+    .input-icon {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-secondary);
+        pointer-events: none;
+    }
+}
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+
+    select {
+        appearance: none;
+        width: 100%;
+        padding: 1rem 3rem;
+        background: var(--surface-color);
+        border: 1px solid var(--secondary-color);
+        border-radius: var(--border-radius);
+        color: var(--text-color);
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s var(--transition-bounce);
+
+        &:hover {
+            border-color: var(--highlight-color);
+            background: var(--secondary-color);
+        }
+
+        &:focus {
+            outline: none;
+            border-color: var(--highlight-color);
+            box-shadow: 0 0 0 2px rgba(var(--highlight-color-rgb), 0.2);
+        }
+
+        option {
+            background: var(--surface-color);
+            color: var(--text-color);
+            padding: 1rem;
+        }
+    }
+
+    .select-icon {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--highlight-color);
+        pointer-events: none;
+        transition: transform 0.3s var(--transition-bounce);
+    }
+
+    &:hover .select-icon {
+        transform: translateY(-50%) translateY(-2px);
+        color: var(--highlight-color);
+    }
+}
+
+// Verbesserte Animation für das Dropdown
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+select[size] {
+    animation: slideDown 0.3s var(--transition-bounce);
+}
+
+// Dark mode Anpassungen
+@media (prefers-color-scheme: dark) {
+    .select-wrapper {
+        select {
+            option {
+                background: var(--surface-color);
+            }
+        }
+    }
+}
+
+// Mobile Optimierungen
+@media (max-width: 768px) {
+    .select-wrapper {
+        select {
+            padding: 0.875rem 2.5rem;
+            font-size: 0.9rem;
+        }
+    }
+}
+
 input,
 select {
     width: 100%;
-    min-height: 44px;
-    padding: 0.5rem 1rem;
-    font-size: var(--body-font-size);
-    color: var(--text-color);
-    background-color: var(--background-color);
-    border: 2px solid var(--highlight-color);
+    padding: 1rem 1rem 1rem 3rem;
+    background: var(--background-color);
+    border: 1px solid var(--secondary-color);
     border-radius: var(--border-radius);
-    transition: border-color var(--transition-speed);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: all 0.3s var(--transition-bounce);
+
+    &::placeholder {
+        color: var(--text-secondary);
+    }
+
+    &:focus {
+        outline: none;
+        border-color: var(--highlight-color);
+        box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.1);
+    }
+
+    &[aria-invalid="true"] {
+        border-color: var(--error-color);
+    }
 }
 
-.form-control:focus,
-input:focus,
-select:focus {
-    outline: none;
-    border-color: var(--button-hover-color);
-}
-
-button[type="submit"] {
+.submit-button {
     width: 100%;
-    min-height: var(--min-touch-target);
-    padding: var(--padding-small) var(--padding-medium);
-    font-size: var(--button-font-size);
+    padding: 1rem;
+    background: var(--highlight-color);
     color: var(--button-text-color);
-    background-color: var(--highlight-color);
     border: none;
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    transition: background-color var(--transition-speed);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s var(--transition-bounce);
+
+    &:hover {
+        background: var(--button-hover-color);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
 }
 
-button[type="submit"]:hover {
-    background-color: var(--button-hover-color);
-}
-
-a {
-    display: inline-block;
-    margin-top: var(--padding-small);
-    color: var(--highlight-color);
-    text-decoration: none;
-    transition: color var(--transition-speed);
-}
-
-a:hover {
-    color: var(--button-hover-color);
-}
-
-small {
-    display: block;
-    margin-top: 0.5rem;
-    color: var(--text-color);
-    opacity: 0.8;
-}
-
-/* Social Login Buttons */
-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 300px;
-    margin: var(--padding-small) 0;
-    min-height: var(--min-touch-target);
-    padding: var(--padding-small) var(--padding-medium);
-    font-size: var(--button-font-size);
-    color: var(--button-text-color);
-    background-color: var(--highlight-color);
-    border: none;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    transition: background-color var(--transition-speed);
-}
-
-button:hover {
-    background-color: var(--button-hover-color);
-}
-
-.social-login-group {
+.auth-links {
+    margin-top: var(--padding-medium);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: var(--padding-small);
-    margin-top: var(--padding-medium);
+    gap: 0.5rem;
+    text-align: center;
+
+    .link {
+        color: var(--highlight-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+            color: var(--button-hover-color);
+            text-decoration: underline;
+        }
+    }
 }
 
 .error-message {
-    color: var(--error-color);
-    background-color: var(--error-bg);
-    padding: 1rem;
-    border-radius: 4px;
-    margin: 1rem 0;
-    font-weight: bold;
+    background: var(--error-color);
+    color: white;
+    padding: var(--padding-small) var(--padding-medium);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--padding-medium);
+    font-size: 0.9rem;
+    font-weight: 500;
 }
 
-input:focus,
-select:focus,
-button:focus {
-    outline: 3px solid var(--highlight-color);
-    outline-offset: 2px;
-}
-
-@media (min-width: 768px) {
-    .social-login-group {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+@media (max-width: 768px) {
+    .login-page {
+        padding: var(--padding-medium);
     }
 
-    button {
-        flex: 0 0 calc(50% - var(--padding-small));
-        margin: var(--padding-small);
+    .auth-form {
+        padding: var(--padding-medium);
+    }
+
+    .welcome-section {
+        margin-bottom: var(--padding-medium);
     }
 }
 </style>

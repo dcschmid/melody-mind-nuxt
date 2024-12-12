@@ -7,41 +7,53 @@
     "it": "Italian"
   },
   "welcome": "Welcome to Melody Mind",
-  "intro": "Test your music knowledge in our interactive quiz. Recognize songs, albums and artists, collect points and become a music champion. Play now for free!",
+  "intro": "Dive into the fascinating world of music! At Melody Mind, you can prove your music knowledge in exciting quiz rounds. Answer questions about songs from different decades, artists, albums, and music history. Collect points, earn golden records, and challenge other music enthusiasts. From rock to pop, hip-hop to classical - test your knowledge in your favorite genres. Start your musical quiz adventure now!",
   "login": {
-    "title": "Login",
-    "methodLabel": "Choose login method",
-    "emailOption": "Login with email",
-    "usernameOption": "Login with username",
+    "title": "Sign In",
+    "methodLabel": "Choose sign in method",
+    "emailOption": "Sign in with email",
+    "usernameOption": "Sign in with username",
     "emailLabel": "Email address",
+    "emailPlaceholder": "Enter your email address",
     "usernameLabel": "Username",
+    "usernamePlaceholder": "Enter your username",
     "passwordLabel": "Password",
-    "submitButton": "Login",
+    "passwordPlaceholder": "Enter your password",
+    "submitButton": "Sign In",
     "noAccount": "No account yet? Register",
     "forgotPassword": "Forgot password?"
   },
   "register": {
     "title": "Register",
     "nameLabel": "Name",
+    "namePlaceholder": "Enter your full name",
     "usernameLabel": "Username",
+    "usernamePlaceholder": "Choose a username",
     "usernameLengthHint": "Minimum 3 characters, maximum 20 characters",
     "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email address",
     "passwordLabel": "Password",
+    "passwordPlaceholder": "Choose a secure password",
     "submitButton": "Register",
-    "hasAccount": "Already registered? Login"
+    "hasAccount": "Already registered? Sign in"
   },
   "socialLogin": {
     "title": "Login with social networks",
     "signOut": "Sign out"
   },
   "errors": {
-    "emailRequired": "Please enter a valid email address.",
-    "passwordRequired": "Please enter a password.",
-    "usernameRequired": "Please enter a username.",
-    "loginFailed": "Login failed. Please check your credentials.",
-    "registrationFailed": "Registration failed. Please check your input.",
-    "passwordResetFailed": "Password reset failed. Please try again.",
-    "passwordResetSuccess": "Check your email for further instructions."
+    "emailRequired": "Please enter an email address",
+    "invalidEmail": "Please enter a valid email address",
+    "passwordRequired": "Please enter a password",
+    "passwordTooShort": "Password must be at least 6 characters long",
+    "usernameRequired": "Please enter a username",
+    "usernameTooShort": "Username must be at least 3 characters long",
+    "nameRequired": "Please enter your name",
+    "nameTooShort": "Name must be at least 2 characters long",
+    "loginFailed": "Login failed. Please check your credentials",
+    "registrationFailed": "Registration failed. Please try again",
+    "passwordResetFailed": "Password reset failed. Please try again later",
+    "passwordResetSuccess": "Password reset email has been sent"
   },
   "navigation": {
     "skipToMain": "Skip to main content",
@@ -131,7 +143,8 @@
     "searchPlaceholder": "Search category...",
     "playCategory": "Play {category}",
     "comingSoon": "{category} - Coming Soon",
-    "categoryAlt": "Image for category {category}"
+    "categoryAlt": "Image for category {category}",
+    "comingSoonLabel": "Coming Soon"
   },
   "category": {
     "selected": "selected!",
@@ -149,5 +162,13 @@
   },
   "coins": {
     "collected": "Collected coins"
+  },
+  "forgotPassword": {
+    "title": "Reset Password",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Enter your email address",
+    "submitButton": "Send Reset Link",
+    "backToLogin": "Back to Login",
+    "successMessage": "If an account exists with this email, you will receive a password reset link shortly."
   }
 }

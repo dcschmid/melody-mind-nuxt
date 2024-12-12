@@ -16,13 +16,13 @@
   --focus-outline-offset: 3px;
 
   --font-family: "Source Sans Pro", system-ui, sans-serif;
-  --header-font-size: clamp(2rem, 4vw, 3rem);
-  --body-font-size: clamp(1.25rem, 2vw, 1.5rem);
+  --header-font-size: clamp(2rem, 5vw, 3.5rem);
+  --body-font-size: clamp(1rem, 2vw, 1.25rem);
   --button-font-size: clamp(1.125rem, 1.5vw, 1.25rem);
 
-  --padding-small: max(12px, 0.75rem);
-  --padding-medium: max(24px, 1.5rem);
-  --padding-large: max(48px, 3rem);
+  --padding-small: clamp(0.75rem, 2vw, 1rem);
+  --padding-medium: clamp(1.5rem, 4vw, 2rem);
+  --padding-large: clamp(2rem, 6vw, 3rem);
   --border-radius: 8px;
 
   --min-touch-target: 48px;
@@ -40,6 +40,21 @@
   --color-overlay: rgb(0 0 0 / 60%);
 
   --opacity-disabled: 0.4;
+
+  --z-index-menu: 9999;
+  --z-index-header: 100;
+  --z-index-overlay: 9998;
+
+  --overlay-background: rgb(30 30 30 / 98%);
+  --overlay-blur: blur(12px);
+
+  --menu-transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+
+  --content-width: min(100% - 2rem, 1200px);
+  --header-height: 80px;
+
+  --blur-strength: 12px;
+  --transition-bounce: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
@@ -57,18 +72,16 @@ html {
 
 body {
   width: 100%;
-  max-width: 768px;
-  margin: 0 auto;
-  padding: 0 var(--padding-small);
-  font-size: var(--body-font-size);
-  line-height: var(--line-height-body);
-  color: var(--text-color);
-  letter-spacing: var(--spacing-text);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
   background-color: var(--background-color);
 
-  @media (width >= 768px) {
-    max-width: 768px;
-    padding: 0 var(--padding-medium);
+  &:has(.menu.is-open) {
+    overflow: hidden;
+    padding-right: var(--scrollbar-width, 0px);
   }
 }
 
@@ -100,14 +113,24 @@ body {
 }
 
 header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: var(--header-height);
+  padding: 0 var(--padding-medium);
+  background-color: var(--surface-color);
+  backdrop-filter: blur(var(--blur-strength));
+  border-bottom: 1px solid rgb(255 255 255 / 10%);
   display: flex;
-  flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--padding-medium);
-  border-radius: var(--border-radius);
+  z-index: var(--z-index-header);
 
-  @media (width >= 768px) {
-    padding: var(--padding-medium);
+  nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--padding-medium);
   }
 }
 
@@ -165,41 +188,31 @@ button {
 }
 
 .icon-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: var(--min-touch-target);
-  min-height: var(--min-touch-target);
-  padding: var(--padding-small);
-  color: var(--button-text-color);
-  text-decoration: none;
-  background-color: var(--highlight-color);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  transition: all var(--transition-speed);
-
-  &:hover,
-  &:focus {
-    transform: translateY(-2px);
-    background-color: var(--button-hover-color);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--highlight-color);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
   }
 
-  &:focus-visible {
-    transform: none;
-    outline: var(--focus-outline-width) solid var(--focus-outline-color);
-    outline-offset: var(--focus-outline-offset);
-  }
-
-  [astro-icon] {
-    width: 24px;
-    height: 24px;
+  &:hover::before,
+  &:focus-visible::before {
+    opacity: 1;
   }
 }
 
 main {
-  max-width: 100%;
+  flex: 1;
+  width: var(--content-width);
   margin: 0 auto;
-  padding: var(--padding-medium) 0;
+  padding: var(--padding-large) var(--padding-medium);
   font-size: var(--body-font-size);
   line-height: 1.6;
   color: var(--text-color);
@@ -264,80 +277,66 @@ main {
 
 .menu {
   position: fixed;
-  z-index: var(--layer-above);
-  top: 0;
-  left: 0;
-  transform: translateX(-100%);
-  width: 100%;
-  height: 100vh;
-  padding: var(--padding-large);
-  padding-top: calc(var(--padding-large) + 40px);
-  visibility: hidden;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background-color: var(--overlay-background);
+  backdrop-filter: blur(var(--blur-strength));
   opacity: 0;
-  background-color: var(--surface-color);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgb(255 255 255 / 10%);
-  transition: all var(--transition-speed) ease-in-out;
+  visibility: hidden;
+  transition: all 0.3s var(--transition-bounce);
+
+  .menu-content {
+    width: min(90%, 400px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-medium);
+    padding: var(--padding-large);
+    transform: translateY(30px);
+    transition: transform 0.4s var(--transition-bounce);
+  }
 
   &.is-open {
-    transform: translateX(0);
-    visibility: visible;
     opacity: 1;
+    visibility: visible;
+
+    .menu-content {
+      transform: translateY(0);
+    }
   }
 
-  a,
-  button {
+  a, button {
+    position: relative;
     display: flex;
-    gap: var(--padding-small);
     align-items: center;
+    gap: var(--padding-medium);
     width: 100%;
-    margin-bottom: var(--padding-small);
     padding: var(--padding-medium);
-    font-size: var(--body-font-size);
-    color: var(--text-secondary);
-    text-align: left;
-    text-decoration: none;
-    background-color: transparent;
-    border: none;
+    font-size: var(--menu-font-size);
+    color: var(--text-color);
+    background: var(--surface-color);
     border-radius: var(--border-radius);
-    transition: background-color var(--transition-speed);
+    transition: all 0.3s var(--transition-bounce);
 
-    &:hover,
-    &:focus-visible {
-      background-color: var(--secondary-color);
-      color: var(--text-color);
+    .icon {
+      color: var(--highlight-color);
+      transition: color 0.3s ease;
     }
 
-    [astro-icon] {
-      width: 24px;
-      height: 24px;
-    }
-  }
+    &:hover, &:focus-visible {
+      background: var(--secondary-color);
+      transform: scale(1.03);
 
-  form {
-    width: 100%;
-  }
-
-  .close-button {
-    position: absolute;
-    top: var(--padding-medium);
-    right: var(--padding-medium);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-
-    &:hover,
-    &:focus-visible {
-      background-color: var(--secondary-color);
-      outline: none;
+      .icon {
+        color: var(--text-color);
+      }
     }
   }
 }
 
-body.menu-open {
+body:has(.menu.is-open) {
   overflow: hidden;
+  padding-right: var(--scrollbar-width, 0px);
 }
 
 .hamburger {

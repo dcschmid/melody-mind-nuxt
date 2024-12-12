@@ -7,15 +7,18 @@
     "it": "Italiano"
   },
   "welcome": "Bienvenido a Melody Mind",
-  "intro": "Pon a prueba tus conocimientos musicales en nuestro cuestionario interactivo. Reconoce canciones, álbumes y artistas, acumula puntos y conviértete en un campeón musical. ¡Juega gratis ahora!",
+  "intro": "¡Sumérgete en el fascinante mundo de la música! En Melody Mind, podrás demostrar tus conocimientos musicales en emocionantes rondas de preguntas. Responde preguntas sobre canciones de diferentes décadas, artistas, álbumes e historia de la música. Acumula puntos, gana discos de oro y desafía a otros entusiastas de la música. Desde rock hasta pop, hip-hop y clásica - pon a prueba tus conocimientos en tus géneros favoritos. ¡Comienza tu aventura musical ahora!",
   "login": {
     "title": "Iniciar sesión",
-    "methodLabel": "Elegir método de inicio de sesión",
+    "methodLabel": "Elige el método de inicio de sesión",
     "emailOption": "Iniciar sesión con correo",
-    "usernameOption": "Iniciar sesión con nombre de usuario",
+    "usernameOption": "Iniciar sesión con usuario",
     "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "Introduce tu correo electrónico",
     "usernameLabel": "Nombre de usuario",
+    "usernamePlaceholder": "Introduce tu nombre de usuario",
     "passwordLabel": "Contraseña",
+    "passwordPlaceholder": "Introduce tu contraseña",
     "submitButton": "Iniciar sesión",
     "noAccount": "¿No tienes cuenta? Regístrate",
     "forgotPassword": "¿Olvidaste tu contraseña?"
@@ -23,25 +26,34 @@
   "register": {
     "title": "Registrarse",
     "nameLabel": "Nombre",
+    "namePlaceholder": "Introduce tu nombre completo",
     "usernameLabel": "Nombre de usuario",
+    "usernamePlaceholder": "Elige un nombre de usuario",
     "usernameLengthHint": "Mínimo 3 caracteres, máximo 20 caracteres",
-    "emailLabel": "Correo electrónico",
+    "emailLabel": "Correo",
+    "emailPlaceholder": "Introduce tu correo electrónico",
     "passwordLabel": "Contraseña",
+    "passwordPlaceholder": "Elige una contraseña segura",
     "submitButton": "Registrarse",
-    "hasAccount": "¿Ya estás registrado? Inicia sesión"
+    "hasAccount": "¿Ya tienes cuenta? Inicia sesión"
   },
   "socialLogin": {
     "title": "Iniciar sesión con redes sociales",
     "signOut": "Cerrar sesión"
   },
   "errors": {
-    "emailRequired": "Por favor, introduce un correo electrónico válido.",
-    "passwordRequired": "Por favor, introduce una contraseña.",
-    "usernameRequired": "Por favor, introduce un nombre de usuario.",
-    "loginFailed": "Error al iniciar sesión. Por favor, verifica tus credenciales.",
-    "registrationFailed": "Error en el registro. Por favor, verifica tus datos.",
-    "passwordResetFailed": "Error al restablecer la contraseña. Por favor, inténtalo de nuevo.",
-    "passwordResetSuccess": "Revisa tu correo para más instrucciones."
+    "emailRequired": "Por favor, introduce un correo electrónico",
+    "invalidEmail": "Por favor, introduce un correo electrónico válido",
+    "passwordRequired": "Por favor, introduce una contraseña",
+    "passwordTooShort": "La contraseña debe tener al menos 6 caracteres",
+    "usernameRequired": "Por favor, introduce un nombre de usuario",
+    "usernameTooShort": "El nombre de usuario debe tener al menos 3 caracteres",
+    "nameRequired": "Por favor, introduce tu nombre",
+    "nameTooShort": "El nombre debe tener al menos 2 caracteres",
+    "loginFailed": "Error al iniciar sesión. Por favor, verifica tus credenciales",
+    "registrationFailed": "Error al registrarse. Por favor, inténtalo de nuevo",
+    "passwordResetFailed": "Error al restablecer la contraseña. Por favor, inténtalo más tarde",
+    "passwordResetSuccess": "Se ha enviado un correo para restablecer la contraseña"
   },
   "navigation": {
     "skipToMain": "Ir al contenido principal",
@@ -131,7 +143,8 @@
     "searchPlaceholder": "Buscar categoría...",
     "playCategory": "Jugar {category}",
     "comingSoon": "{category} - Próximamente",
-    "categoryAlt": "Imagen para la categoría {category}"
+    "categoryAlt": "Imagen para la categoría {category}",
+    "comingSoonLabel": "Próximamente"
   },
   "category": {
     "selected": "¡seleccionado!",
@@ -149,5 +162,13 @@
   },
   "coins": {
     "collected": "Monedas recolectadas"
+  },
+  "forgotPassword": {
+    "title": "Restablecer Contraseña",
+    "emailLabel": "Correo Electrónico",
+    "emailPlaceholder": "Introduce tu correo electrónico",
+    "submitButton": "Enviar Link de Restablecimiento",
+    "backToLogin": "Volver al Inicio de Sesión",
+    "successMessage": "Si existe una cuenta con este correo electrónico, recibirás un enlace para restablecer la contraseña en breve."
   }
 }
