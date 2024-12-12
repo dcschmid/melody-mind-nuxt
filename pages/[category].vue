@@ -99,14 +99,14 @@ onMounted(() => {
 <style scoped lang="scss">
 .categoryPage {
     width: var(--content-width);
-    margin: 0 auto;
-    padding: var(--padding-large);
+    margin: 1.5rem auto;
+    padding: clamp(var(--padding-medium), 4vw, var(--padding-large));
     color: var(--text-color);
 }
 
 .intro {
     text-align: center;
-    margin-bottom: var(--padding-large);
+    margin-bottom: clamp(var(--padding-medium), 5vw, var(--padding-large));
 
     h1 {
         font-size: var(--header-font-size);
@@ -128,9 +128,9 @@ onMounted(() => {
     box-shadow: var(--box-shadow);
     border: 1px solid rgb(255 255 255 / 10%);
     display: grid;
-    gap: var(--padding-large);
+    gap: clamp(var(--padding-medium), 3vw, var(--padding-large));
     place-items: center;
-    padding: var(--padding-large);
+    padding: clamp(var(--padding-medium), 3vw, var(--padding-large));
     transition: all var(--transition-speed);
 
     &:hover {
@@ -141,33 +141,24 @@ onMounted(() => {
 .cover {
     position: relative;
     width: 100%;
-    max-width: 500px;
+    max-width: clamp(280px, 35vw, 400px);
     aspect-ratio: 1;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
-    transition: transform var(--transition-speed);
-
-    &:hover {
-        transform: scale(1.05);
-    }
+    margin: 0 auto;
 }
 
 .coverImage {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: filter var(--transition-speed);
-
-    &:hover {
-        filter: brightness(1.1);
-    }
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 }
 
 .text {
-    font-size: var(--body-font-size);
+    font-size: clamp(1.125rem, 2vw, var(--body-font-size));
     line-height: var(--line-height-body);
-    max-width: var(--max-line-length);
+    max-width: min(90%, var(--max-line-length));
+    margin: 0 auto;
     text-align: center;
     color: var(--text-secondary);
 }
@@ -187,13 +178,18 @@ onMounted(() => {
 
 .buttonGroup {
     display: flex;
-    gap: var(--padding-medium);
+    gap: clamp(var(--padding-small), 2vw, var(--padding-medium));
+    flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
+    max-width: min(100%, 900px);
+    margin: 0 auto;
+    padding: var(--padding-medium) 0;
 
     .button {
         background: var(--highlight-color);
         color: var(--button-text-color);
-        padding: var(--padding-small) var(--padding-large);
+        padding: var(--padding-medium) var(--padding-large);
         border-radius: var(--border-radius);
         font-size: var(--button-font-size);
         font-weight: 600;
@@ -203,15 +199,17 @@ onMounted(() => {
         min-height: var(--min-touch-target);
         transition: all var(--transition-speed);
         box-shadow: var(--box-shadow);
+        flex: 1;
+        min-width: clamp(200px, 25%, 300px);
+        justify-content: center;
 
         &:hover {
             background: var(--button-hover-color);
-            transform: scale(1.05);
+            transform: translateY(-2px);
         }
 
-        &:focus-visible {
-            outline: var(--focus-outline-width) solid var(--focus-outline-color);
-            outline-offset: var(--focus-outline-offset);
+        &:active {
+            transform: translateY(0);
         }
     }
 }
@@ -219,11 +217,18 @@ onMounted(() => {
 @media (width <= 767px) {
     .buttonGroup {
         flex-direction: column;
-        width: 100%;
-        max-width: 300px;
+        padding: var(--padding-small) 0;
+        max-width: 350px;
+
+        .button {
+            width: 100%;
+            min-width: 100%;
+            padding: var(--padding-medium) var(--padding-medium);
+        }
     }
 
     .text {
+        font-size: clamp(1.125rem, 4vw, 1.25rem);
         padding: 0 var(--padding-small);
     }
 }
