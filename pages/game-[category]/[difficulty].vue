@@ -211,24 +211,16 @@
                     </div>
                     <p class="reward-text">
                         <template v-if="allQuestionsCorrect">
-                            Unglaublich! Du hast eine Goldene LP gewonnen! 🏆
-                            <br>Du bist ein absoluter Musik-Champion! Alle Fragen perfekt beantwortet - das schaffen nur
-                            die Besten der Besten!
+                            {{ goldMessages[Math.floor(Math.random() * goldMessages.length)] }}
                         </template>
                         <template v-else-if="correctAnswers >= (maxQuestions * 0.75)">
-                            Hervorragend! Du hast eine Silberne LP gewonnen! 🥈
-                            <br>Was für eine starke Leistung! Du bist schon fast ein Musik-Experte. Mit ein bisschen
-                            Feinschliff holst du dir beim nächsten Mal bestimmt Gold!
+                            {{ silverMessages[Math.floor(Math.random() * silverMessages.length)] }}
                         </template>
                         <template v-else-if="correctAnswers >= (maxQuestions * 0.5)">
-                            Klasse! Du hast eine Bronzene LP gewonnen! 🥉
-                            <br>Dein Musikwissen kann sich sehen lassen! Mach weiter so, und schon bald wirst du noch
-                            mehr Hits erkennen und höhere Auszeichnungen gewinnen!
+                            {{ bronzeMessages[Math.floor(Math.random() * bronzeMessages.length)] }}
                         </template>
                         <template v-else>
-                            Das war ein guter Anfang! 💪
-                            <br>Jeder Musikexperte hat mal klein angefangen. Lass uns gleich noch eine Runde spielen -
-                            mit jedem Versuch lernst du neue Songs kennen und wirst besser!
+                            {{ participationMessages[Math.floor(Math.random() * participationMessages.length)] }}
                         </template>
                     </p>
                 </div>
@@ -289,7 +281,7 @@ const audienceHelp = ref<{ [key: string]: number }>({})
 const jokerUsedForCurrentQuestion = ref(false)
 const hiddenOptions = ref<string[]>([])
 
-const phoneExpertOpinion = ref('')
+const phoneExpertOpinion = ref<{ expert: string; message: string } | null>(null)
 const phoneExpertConfidence = ref(0)
 
 // Musikspezifische Experten-Antworten
@@ -384,7 +376,7 @@ const expertTitles = [
 const useFiftyFiftyJoker = () => {
     if (remainingJokers.value > 0 && !jokerUsedForCurrentQuestion.value) {
         const wrongOptions = currentQuestion.value.options.filter(
-            option => option !== currentQuestion.value.correctAnswer
+            (option: string) => option !== currentQuestion.value.correctAnswer
         )
         const shuffledWrongOptions = wrongOptions.sort(() => Math.random() - 0.5)
         hiddenOptions.value = shuffledWrongOptions.slice(0, 2)
@@ -402,7 +394,7 @@ const useAudienceJoker = () => {
         })
 
         const total = distribution.reduce((acc, val) => acc + val, 0)
-        audienceHelp.value = currentQuestion.value.options.reduce((acc, option, i) => {
+        audienceHelp.value = currentQuestion.value.options.reduce((acc: { [key: string]: number }, option: string, i: number) => {
             acc[option] = Math.round((distribution[i] / total) * 100)
             return acc
         }, {} as { [key: string]: number })
@@ -424,16 +416,16 @@ const usePhoneJoker = () => {
         } else if (random < 0.8) {
             confidence = Math.floor(Math.random() * 20) + 60
             answer = Math.random() < 0.8 ? currentQuestion.value.correctAnswer :
-                currentQuestion.value.options.find(o => o !== currentQuestion.value.correctAnswer)
+                currentQuestion.value.options.find((o: string) => o !== currentQuestion.value.correctAnswer)
             confidenceLevel = 'medium'
         } else {
             confidence = Math.floor(Math.random() * 25) + 35
             answer = Math.random() < 0.5 ? currentQuestion.value.correctAnswer :
-                currentQuestion.value.options.find(o => o !== currentQuestion.value.correctAnswer)
+                currentQuestion.value.options.find((o: string) => o !== currentQuestion.value.correctAnswer)
             confidenceLevel = 'low'
         }
 
-        const responses = expertResponses[confidenceLevel]
+        const responses = expertResponses[confidenceLevel as keyof typeof expertResponses]
         const responseTemplate = responses[Math.floor(Math.random() * responses.length)]
         const expertTitle = expertTitles[Math.floor(Math.random() * expertTitles.length)]
 
@@ -459,7 +451,6 @@ const loadQuestions = async () => {
         }, [])
 
         questions.value = allQuestions
-        console.log('Questions:', questions.value)
         selectRandomQuestion()
     } catch (error) {
         console.error('Fehler beim Laden der Fragen:', error)
@@ -487,7 +478,7 @@ const selectRandomQuestion = () => {
     jokerUsedForCurrentQuestion.value = false
     audienceHelp.value = {}
     hiddenOptions.value = []
-    phoneExpertOpinion.value = ''
+    phoneExpertOpinion.value = null
     phoneExpertConfidence.value = 0
     startQuestionTimer()
 }
@@ -503,7 +494,6 @@ const MAX_TIME_BONUS = 100 // Erhöht auf 100
 const TIME_LIMIT = 30000 // 30 Sekunden für maximalen Bonus
 
 const questionStartTime = ref(0)
-const earnedPoints = ref(0)
 
 // Starte Timer wenn Frage angezeigt wird
 const startQuestionTimer = () => {
@@ -517,8 +507,6 @@ const calculateTimeBonus = () => {
     return timeBonus
 }
 
-const layout = ref<any>(null)
-
 const pointsDisplay = ref<any>(null)
 
 // Funktion zum Scrollen nach oben
@@ -531,29 +519,16 @@ const scrollToTop = () => {
 
 const totalPoints = ref(0)
 
-// Funktion zum Berechnen der Punkte
-const calculatePoints = () => {
-    const basePoints = BASE_POINTS
-    const timeBonus = calculateTimeBonus()
-    return basePoints + timeBonus
-}
-
 // Funktion zum Laden der Künstlerinformationen
 const loadCurrentArtist = async () => {
     try {
-        // Prüfen der Route-Parameter
-        console.log('Category:', category)
-        console.log('Difficulty:', difficulty)
 
         // JSON-Datei laden
         const response = await import(`~/json/genres/${locale.value}/${category}.json`)
-        console.log('Loaded JSON data:', response.default)
-
-        // Aktuelle Frage
-        console.log('Current question:', currentQuestion.value)
-
-        // Künstler finden
-        currentArtist.value = response.default.find((artist) => {
+        currentArtist.value = response.default.find((artist: {
+            artist: string;
+            questions: { [key: string]: any[] }
+        }) => {
             // Alle Fragen des Künstlers für die aktuelle Schwierigkeit
             const artistQuestions = artist.questions[difficulty]
 
@@ -563,11 +538,9 @@ const loadCurrentArtist = async () => {
                 q.correctAnswer === currentQuestion.value.correctAnswer
             )
 
-            console.log(`Checking ${artist.artist}:`, hasQuestion)
             return hasQuestion
         })
 
-        console.log('Found artist:', currentArtist.value?.artist)
 
         // Audio initialisieren wenn Künstler gefunden
         if (currentArtist.value && audioPlayer.value) {
@@ -578,7 +551,6 @@ const loadCurrentArtist = async () => {
             isPlaying.value = false
         }
     } catch (error) {
-        console.error('Error loading artist:', error)
         currentArtist.value = null
     }
 }
@@ -592,7 +564,7 @@ watch(() => currentQuestion.value, (newQuestion) => {
 }, { immediate: true })
 
 // Bei der Antwortauswahl
-const selectAnswer = async (selectedAnswer) => {
+const selectAnswer = async (selectedAnswer: string) => {
     if (showSolution.value) return
 
     isCorrectAnswer.value = selectedAnswer === currentQuestion.value.correctAnswer
@@ -644,7 +616,14 @@ const smoothScrollBehavior = computed(() => {
 
 const correctAnswers = ref(0)
 
-const gameFinished = computed(() => usedQuestions.value.length >= maxQuestions.value)
+const gameFinished = ref(false)
+
+watch(() => usedQuestions.value.length, (newLength) => {
+    if (newLength >= maxQuestions.value) {
+        gameFinished.value = true
+    }
+})
+
 const allQuestionsCorrect = computed(() => correctAnswers.value === maxQuestions.value)
 
 const restartGame = () => {
@@ -671,7 +650,7 @@ const recordClass = computed(() => {
 })
 
 // Audio Player Refs und Computed Properties
-const audioPlayer = ref(null)
+const audioPlayer = ref<HTMLAudioElement | null>(null)
 const isPlaying = ref(false)
 const currentTime = ref(0)
 const duration = ref(0)
@@ -703,7 +682,9 @@ onMounted(() => {
     })
 
     audioPlayer.value.addEventListener('timeupdate', () => {
-        currentTime.value = audioPlayer.value.currentTime
+        if (audioPlayer.value) {
+            currentTime.value = audioPlayer.value.currentTime
+        }
     })
 
     audioPlayer.value.addEventListener('ended', () => {
@@ -778,13 +759,6 @@ onUnmounted(() => {
     }
 })
 
-// Formatierung der Zeit
-const formatTime = (time) => {
-    const minutes = Math.floor(time / 60)
-    const seconds = Math.floor(time % 60)
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`
-}
-
 // Wenn zur nächsten Frage gewechselt wird, Audio stoppen
 watch(() => currentQuestion.value, () => {
     if (audioPlayer.value) {
@@ -815,54 +789,101 @@ onMounted(() => {
     // Bestehende Event Listener
     audioPlayer.value.addEventListener('loadeddata', () => {
         audioLoaded.value = true
-        duration.value = audioPlayer.value.duration
-        console.log('Audio loaded, duration:', duration.value)
+        if (audioPlayer.value) {
+            duration.value = audioPlayer.value.duration
+            console.log('Audio loaded, duration:', duration.value)
+        }
     })
 
     // Progress Bar Update häufiger ausführen
     audioPlayer.value.addEventListener('timeupdate', updateProgress)
 
-    // ... andere Event Listener bleiben gleich ...
 })
 
-// Optional: Progress Bar Click Handler für Seek-Funktion
-const handleProgressBarClick = (event) => {
-    if (!audioPlayer.value || !duration.value) return
-
-    const progressBar = event.currentTarget
-    const clickPosition = event.offsetX / progressBar.offsetWidth
-    const newTime = clickPosition * duration.value
-
-    audioPlayer.value.currentTime = newTime
-    currentTime.value = newTime
-}
 
 const points = ref(0)
 const isAnimating = ref(false)
 const showBonus = ref(false)
-const latestBonus = ref(0)
+const latestBonus = ref<{ base: number; time: number; total: number }>({ base: 0, time: 0, total: 0 })
 
 const formattedPoints = computed(() => {
     return points.value.toLocaleString()
 })
 
 const updatePoints = (basePoints: number, timeBonus: number) => {
-    const totalNewPoints = basePoints + timeBonus
     latestBonus.value = {
         base: basePoints,
         time: timeBonus,
-        total: totalNewPoints
+        total: basePoints + timeBonus
     }
     showBonus.value = true
     isAnimating.value = true
 
-    points.value += totalNewPoints
+    points.value += latestBonus.value.total
     totalPoints.value = points.value
 
     setTimeout(() => {
         showBonus.value = false
         isAnimating.value = false
     }, 2000)
+}
+
+const goldMessages = [
+    "Unglaublich! Du hast eine Goldene LP gewonnen! 🏆\nDu bist ein absoluter Musik-Champion! Alle Fragen perfekt beantwortet - das schaffen nur die Besten der Besten!",
+    "Sensationell! Eine Goldene LP ist dein! 🏆\nDeine Musikkenntnis ist wirklich außergewöhnlich - eine makellose Vorstellung!",
+    "Wahnsinn! Die Goldene LP gehört dir! 🏆\nDu bist ein wandelndes Musik-Lexikon! Eine perfekte Runde - einfach grandios!",
+    "Fantastisch! Du hast die Goldene LP mehr als verdient! 🏆\nDeine Performance war einfach makellos - du bist ein echter Musik-Virtuose!",
+    "Meisterhaft! Die Goldene LP ist dein! 🏆\nEine perfekte Runde - du bist definitiv ein Musik-Genie!",
+    "Brillant! Eine Goldene LP für dich! 🏆\nDeine Musikexpertise ist wirklich beeindruckend - alle Fragen richtig!",
+    "Phänomenal! Die Goldene LP gehört dir! 🏆\nDu bist ein wahrer Musik-Kenner - eine makellose Vorstellung!",
+    "Grandios! Du hast dir die Goldene LP erspielt! 🏆\nEine perfekte Runde - dein Musikwissen ist unschlagbar!",
+    "Überragend! Die Goldene LP ist dein! 🏆\nDu bist ein absoluter Musik-Profi - alle Fragen fehlerfrei beantwortet!",
+    "Legendär! Du hast die Goldene LP gewonnen! 🏆\nEine perfekte Performance - du bist ein echter Musik-Maestro!"
+]
+
+const silverMessages = [
+    "Hervorragend! Du hast eine Silberne LP gewonnen! 🥈\nWas für eine starke Leistung! Du bist schon fast ein Musik-Experte. Mit ein bisschen Feinschliff holst du dir beim nächsten Mal bestimmt Gold!",
+    "Klasse! Eine Silberne LP für dich! 🥈\nDein Musikwissen ist beachtlich! Nur noch ein kleiner Schritt bis zur Goldenen LP!",
+    "Super! Die Silberne LP gehört dir! 🥈\nDu kennst dich richtig gut aus! Beim nächsten Mal schaffst du bestimmt die perfekte Runde!",
+    "Toll gemacht! Eine Silberne LP ist dein! 🥈\nDeine Musikkenntnis ist beeindruckend! Gold ist zum Greifen nah!",
+    "Ausgezeichnet! Du hast die Silberne LP gewonnen! 🥈\nDas war eine sehr starke Vorstellung! Fast perfekt!",
+    "Großartig! Eine Silberne LP für deine Leistung! 🥈\nDu bist auf dem besten Weg zum Musik-Champion!",
+    "Stark! Die Silberne LP hast du dir verdient! 🥈\nDein Musikwissen kann sich sehen lassen! Gold ist das nächste Ziel!",
+    "Prima! Eine Silberne LP für dich! 🥈\nDu bist ein echter Musik-Kenner! Nur noch ein kleiner Schritt bis zur Perfektion!",
+    "Respekt! Die Silberne LP ist dein! 🥈\nDeine Performance war richtig gut! Gold ist in Reichweite!",
+    "Beeindruckend! Du hast dir die Silberne LP erspielt! 🥈\nDas war eine tolle Leistung! Beim nächsten Mal holst du dir Gold!"
+]
+
+const bronzeMessages = [
+    "Klasse! Du hast eine Bronzene LP gewonnen! 🥉\nDein Musikwissen kann sich sehen lassen! Mach weiter so, und schon bald wirst du noch mehr Hits erkennen!",
+    "Gut gemacht! Eine Bronzene LP für dich! 🥉\nDu bist auf einem guten Weg! Weiter so, dann klappt's auch bald mit Silber!",
+    "Prima! Die Bronzene LP gehört dir! 🥉\nDu hast schon einiges drauf! Mit etwas Übung erreichst du noch mehr!",
+    "Bravo! Eine Bronzene LP ist dein! 🥉\nDu entwickelst dich zum echten Musikkenner! Bleib dran!",
+    "Super! Du hast die Bronzene LP gewonnen! 🥉\nDein Musikwissen wächst! Mach weiter so!",
+    "Toll! Eine Bronzene LP für deine Leistung! 🥉\nDu bist auf dem richtigen Weg! Weiter so!",
+    "Schön! Die Bronzene LP hast du dir verdient! 🥉\nDu machst Fortschritte! Bleib am Ball!",
+    "Sehr gut! Eine Bronzene LP für dich! 🥉\nDu kennst dich schon gut aus! Weiter so!",
+    "Klasse! Die Bronzene LP ist dein! 🥉\nDu bist auf einem guten Weg! Mach weiter so!",
+    "Gut! Du hast dir die Bronzene LP erspielt! 🥉\nDein Musikwissen entwickelt sich prima! Bleib dran!"
+]
+
+const participationMessages = [
+    "Das war ein guter Anfang! 💪\nJeder Musikexperte hat mal klein angefangen. Lass uns gleich noch eine Runde spielen!",
+    "Weiter so! 💪\nMit jeder Runde lernst du neue Songs kennen. Probier's gleich nochmal!",
+    "Nicht aufgeben! 💪\nDu bist auf dem richtigen Weg! Übung macht den Meister!",
+    "Kopf hoch! 💪\nJeder fängt mal an! Mit der Zeit wird dein Musikwissen wachsen!",
+    "Bleib dran! 💪\nMit jeder Runde lernst du dazu! Versuch's gleich nochmal!",
+    "Das wird schon! 💪\nÜbung macht den Musik-Meister! Auf in die nächste Runde!",
+    "Guter Versuch! 💪\nMit der Zeit wirst du immer besser! Mach weiter so!",
+    "Nicht schlecht! 💪\nJeder Start ist ein Schritt nach vorn! Weiter so!",
+    "Das ist der Anfang! 💪\nMit jeder Runde wächst dein Wissen! Bleib dran!",
+    "Mach weiter! 💪\nAus jedem Spiel lernst du etwas Neues! Nächste Runde!"
+]
+
+const checkGameFinished = () => {
+    if (usedQuestions.value.length >= maxQuestions.value) {
+        gameFinished.value = true
+    }
 }
 
 </script>
@@ -966,14 +987,11 @@ const updatePoints = (basePoints: number, timeBonus: number) => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
-    margin: 0 var(--padding-small);
 
     .joker-buttons {
         display: flex;
         gap: var(--padding-medium);
-        margin-bottom: var(--padding-small);
+        margin: var(--padding-small) 0;
 
         @media (width >=768px) {
             gap: var(--padding-large);
@@ -1021,7 +1039,6 @@ const updatePoints = (basePoints: number, timeBonus: number) => {
 .content-wrapper {
     background: var(--background-secondary);
     border-radius: 16px;
-    padding: 24px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -1040,11 +1057,10 @@ const updatePoints = (basePoints: number, timeBonus: number) => {
         align-items: center;
         justify-content: center;
         gap: 8px;
-        margin-bottom: 8px;
 
         h2 {
             margin: 0;
-            font-size: 1.4em;
+            font-size: 1.125em;
         }
 
         .result-icon {
@@ -1251,7 +1267,6 @@ const updatePoints = (basePoints: number, timeBonus: number) => {
 .trivia-box {
     background: var(--background-secondary);
     border-radius: 12px;
-    padding: 20px;
     margin-top: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
@@ -1292,7 +1307,6 @@ const updatePoints = (basePoints: number, timeBonus: number) => {
 .trivia-box {
     background: white;
     border-radius: 12px;
-    padding: 20px;
     margin-bottom: 24px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
@@ -1428,8 +1442,6 @@ const updatePoints = (basePoints: number, timeBonus: number) => {
 }
 
 .phone-expert {
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
     margin: var(--padding-medium) 0;
 
     h3 {
@@ -1516,14 +1528,14 @@ const updatePoints = (basePoints: number, timeBonus: number) => {
 .trivia-box {
     background: var(--background-secondary);
     border-radius: 12px;
-    padding: 20px;
-    margin-top: 20px;
+    margin-top: 2rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     h3 {
         color: var(--primary-color);
         margin: 0 0 12px 0;
         font-size: 1.2em;
+        text-align: center;
     }
 
     p {
