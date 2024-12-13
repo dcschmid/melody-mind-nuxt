@@ -9,7 +9,22 @@
                             <p class="round-counter">Runde: {{ usedQuestions.length }} / {{ maxQuestions }}</p>
                         </div>
                         <div class="header-right">
-                            <ShowPoints ref="pointsDisplay" class="points-display" />
+                            <div class="points-display">
+                                <div class="points-container">
+                                    <span class="points" :class="{ 'points-update': isAnimating }">
+                                        {{ formattedPoints }}
+                                    </span>
+                                    <span class="points-label">Punkte</span>
+                                </div>
+                                <transition name="bonus">
+                                    <div v-if="showBonus" class="bonus-indicator">
+                                        <div class="bonus-total">+{{ latestBonus.base }}</div>
+                                        <div class="bonus-breakdown">
+                                            <span class="time">+{{ latestBonus.time }} Bonus</span>
+                                        </div>
+                                    </div>
+                                </transition>
+                            </div>
                         </div>
                     </div>
 
@@ -58,14 +73,16 @@
                             <h3>Publikumsmeinung</h3>
                             <div class="audience-bars">
                                 <div v-for="(percentage, option) in audienceHelp" :key="option" class="bar-item">
-                                    <div class="option-text">{{ option }}</div>
+                                    <div class="option-label">
+                                        <div class="option-text">{{ option }}</div>
+                                        <div class="percentage-text">{{ percentage }}%</div>
+                                    </div>
                                     <div class="bar-container">
                                         <div class="bar" :style="{ width: `${percentage}%` }" :class="{
                                             'high': percentage >= 70,
                                             'medium': percentage >= 40 && percentage < 70,
                                             'low': percentage < 40
                                         }">
-                                            <span class="percentage">{{ percentage }}%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -101,77 +118,81 @@
                     </div>
                 </div>
                 <div v-else class="solution-container">
+                    <!-- Ergebnis-Banner -->
                     <div class="result-banner" :class="{ 'correct': isCorrectAnswer }">
-                        <div class="result-content">
-                            <div class="result-header">
-                                <Icon
-                                    :name="isCorrectAnswer ? 'material-symbols:check-circle' : 'material-symbols:cancel'"
-                                    class="result-icon" aria-hidden="true" />
-                                <h2>{{ isCorrectAnswer ? 'Richtig!' : 'Leider falsch!' }}</h2>
+                        <div class="result-header">
+                            <Icon :name="isCorrectAnswer ? 'material-symbols:check-circle' : 'material-symbols:cancel'"
+                                class="result-icon" size="28" />
+                            <h2>{{ isCorrectAnswer ? 'Richtig!' : 'Leider falsch!' }}</h2>
+                        </div>
+                        <div v-if="isCorrectAnswer" class="points-breakdown">
+                            <div class="points">
+                                Punkte: +{{ latestBonus.base }} + {{ latestBonus.time }} Bonuspunkte
                             </div>
-
-                            <div class="points-info">
-                                <p v-if="isCorrectAnswer">
-                                    <span class="base-points">+{{ BASE_POINTS }} Punkte</span>
-                                </p>
-                                <p v-else class="no-points">+0 Punkte</p>
-                            </div>
-
-                            <div class="correct-answer">
-                                <div class="label">Richtige Antwort:</div>
-                                <div class="answer">{{ currentQuestion.correctAnswer }}</div>
-                            </div>
+                        </div>
+                        <div v-else class="points">+0 Punkte</div>
+                        <div class="correct-answer">
+                            <span class="label">Richtige Antwort:</span>
+                            <div class="text">{{ currentQuestion.correctAnswer }}</div>
                         </div>
                     </div>
 
-                    <div v-if="currentArtist" class="song-details">
-                        <div class="cover-and-player">
-                            <div class="cover-container" v-if="currentArtist.coverSrc">
+                    <!-- Content Container -->
+                    <div class="content-wrapper">
+
+                        <!-- Album Info -->
+                        <div v-if="currentArtist" class="album-box">
+                            <div class="cover-wrapper">
                                 <img :src="currentArtist.coverSrc"
-                                    :alt="`${currentArtist.artist} - ${currentArtist.album}`">
+                                    :alt="`${currentArtist.artist} - ${currentArtist.album}`" />
                             </div>
-
-                            <div class="preview-player">
-                                <audio controls :src="currentArtist.preview_link"></audio>
+                            <div class="player-info-wrapper">
+                                <div class="audio-player">
+                                    <button @click="togglePlay" class="play-button"
+                                        :disabled="!currentArtist?.preview_link"
+                                        :title="currentArtist?.preview_link ? 'Play/Pause' : 'No audio available'">
+                                        <Icon
+                                            :name="isPlaying ? 'material-symbols:pause' : 'material-symbols:play-arrow'"
+                                            size="36" />
+                                    </button>
+                                    <div class="progress-bar">
+                                        <div class="progress" :style="{ width: `${(currentTime / duration) * 100}%` }">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <h3>{{ currentArtist.album }}</h3>
+                                    <p class="artist">{{ currentArtist.artist }}</p>
+                                    <p class="year">{{ currentArtist.year }}</p>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="song-info">
-                            <div class="metadata">
-                                <h3>{{ currentArtist.album }}</h3>
-                                <p class="artist">{{ currentArtist.artist }}</p>
-                                <p class="year">{{ currentArtist.year }}</p>
-                            </div>
-
-                            <div class="music-links">
+                            <div class="streaming-links">
                                 <a v-if="currentArtist.spotify_link" :href="currentArtist.spotify_link" target="_blank"
-                                    class="button music-link spotify">
-                                    <Icon name="mdi:spotify" />
-                                    <span>Auf Spotify hören</span>
+                                    class="stream-link spotify" title="Auf Spotify hören">
+                                    <Icon name="mdi:spotify" size="36" />
                                 </a>
                                 <a v-if="currentArtist.apple_music_link" :href="currentArtist.apple_music_link"
-                                    target="_blank" class="button music-link apple">
-                                    <Icon name="mdi:apple" />
-                                    <span>Auf Apple Music hören</span>
+                                    target="_blank" class="stream-link apple" title="Auf Apple Music hören">
+                                    <Icon name="mdi:apple" size="36" />
                                 </a>
                                 <a v-if="currentArtist.deezer_link" :href="currentArtist.deezer_link" target="_blank"
-                                    class="button music-link deezer">
-                                    <Icon name="simple-icons:deezer" />
-                                    <span>Auf Deezer hören</span>
+                                    class="stream-link deezer" title="Auf Deezer hören">
+                                    <Icon name="simple-icons:deezer" size="36" />
                                 </a>
                             </div>
                         </div>
 
-                        <div class="trivia">
+                        <!-- Trivia Information -->
+                        <div class="trivia-box">
                             <h3>Wusstest du schon?</h3>
                             <p>{{ currentQuestion.trivia }}</p>
                         </div>
-                    </div>
 
-                    <button @click="nextQuestion" class="button next-button">
-                        <span>Nächste Frage</span>
-                        <Icon name="material-symbols:arrow-forward-rounded" />
-                    </button>
+                        <button @click="nextQuestion" class="next-button">
+                            <span>Nächste Frage</span>
+                            <Icon name="material-symbols:arrow-forward" />
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -226,7 +247,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 definePageMeta({
@@ -476,9 +497,10 @@ const isCorrectAnswer = ref(false)
 
 const currentArtist = ref<any>(null)
 
+// Konstanten für Zeitbonus
 const BASE_POINTS = 50
-const MAX_TIME_BONUS = 50
-const TIME_LIMIT = 10000 // 10 Sekunden für maximalen Bonus
+const MAX_TIME_BONUS = 100 // Erhöht auf 100
+const TIME_LIMIT = 30000 // 30 Sekunden für maximalen Bonus
 
 const questionStartTime = ref(0)
 const earnedPoints = ref(0)
@@ -490,7 +512,8 @@ const startQuestionTimer = () => {
 
 const calculateTimeBonus = () => {
     const timeElapsed = Date.now() - questionStartTime.value
-    const timeBonus = Math.max(0, Math.floor((1 - timeElapsed / TIME_LIMIT) * MAX_TIME_BONUS))
+    const timePercentage = Math.max(0, 1 - (timeElapsed / TIME_LIMIT))
+    const timeBonus = Math.floor(timePercentage * MAX_TIME_BONUS)
     return timeBonus
 }
 
@@ -515,32 +538,75 @@ const calculatePoints = () => {
     return basePoints + timeBonus
 }
 
-// Prüfen ob currentArtist existiert bevor wir auf Properties zugreifen
-const selectAnswer = async (selectedAnswer: string) => {
+// Funktion zum Laden der Künstlerinformationen
+const loadCurrentArtist = async () => {
+    try {
+        // Prüfen der Route-Parameter
+        console.log('Category:', category)
+        console.log('Difficulty:', difficulty)
+
+        // JSON-Datei laden
+        const response = await import(`~/json/genres/${locale.value}/${category}.json`)
+        console.log('Loaded JSON data:', response.default)
+
+        // Aktuelle Frage
+        console.log('Current question:', currentQuestion.value)
+
+        // Künstler finden
+        currentArtist.value = response.default.find((artist) => {
+            // Alle Fragen des Künstlers für die aktuelle Schwierigkeit
+            const artistQuestions = artist.questions[difficulty]
+
+            // Prüfen ob die aktuelle Frage in den Fragen des Künstlers vorkommt
+            const hasQuestion = artistQuestions.some(q =>
+                q.question === currentQuestion.value.question &&
+                q.correctAnswer === currentQuestion.value.correctAnswer
+            )
+
+            console.log(`Checking ${artist.artist}:`, hasQuestion)
+            return hasQuestion
+        })
+
+        console.log('Found artist:', currentArtist.value?.artist)
+
+        // Audio initialisieren wenn Künstler gefunden
+        if (currentArtist.value && audioPlayer.value) {
+            audioPlayer.value.src = currentArtist.value.preview_link // Hier war der Fehler - preview_link statt audioSrc
+            audioPlayer.value.load()
+            currentTime.value = 0
+            duration.value = 0
+            isPlaying.value = false
+        }
+    } catch (error) {
+        console.error('Error loading artist:', error)
+        currentArtist.value = null
+    }
+}
+
+// Wenn sich die Frage ändert, lade die entsprechenden Künstlerinformationen
+watch(() => currentQuestion.value, (newQuestion) => {
+    console.log('Question changed to:', newQuestion)
+    if (newQuestion) {
+        loadCurrentArtist()
+    }
+}, { immediate: true })
+
+// Bei der Antwortauswahl
+const selectAnswer = async (selectedAnswer) => {
     if (showSolution.value) return
 
     isCorrectAnswer.value = selectedAnswer === currentQuestion.value.correctAnswer
     showSolution.value = true
 
     if (isCorrectAnswer.value) {
+        const timeBonus = calculateTimeBonus()
+        updatePoints(BASE_POINTS, timeBonus)
         correctAnswers.value++
-        earnedPoints.value = calculatePoints()
-        totalPoints.value += earnedPoints.value
-        pointsDisplay.value?.updatePoints(earnedPoints.value)
     }
 
-    // Lade Künstlerinformationen
-    try {
-        const response = await import(`~/json/genres/${locale.value}/${category}.json`)
-        currentArtist.value = response.default.find((artist: any) =>
-            artist.questions[difficulty].some((q: any) => q.id === currentQuestion.value.id)
-        )
-    } catch (error) {
-        console.error('Fehler beim Laden der Künstlerinformationen:', error)
-        currentArtist.value = null
-    }
+    console.log('Selected answer, loading artist info...')
+    await loadCurrentArtist()
 
-    // Warte kurz und scrolle dann nach oben
     await nextTick()
     scrollToTop()
 }
@@ -603,10 +669,205 @@ const recordClass = computed(() => {
     if (correctAnswers.value >= (maxQuestions.value * 0.5)) return 'bronze'
     return ''
 })
+
+// Audio Player Refs und Computed Properties
+const audioPlayer = ref(null)
+const isPlaying = ref(false)
+const currentTime = ref(0)
+const duration = ref(0)
+const audioLoaded = ref(false)
+
+// Debug-Funktion
+const logAudioState = () => {
+    console.log('Audio State:', {
+        src: audioPlayer.value?.src,
+        isPlaying: isPlaying.value,
+        currentTime: currentTime.value,
+        duration: duration.value,
+        loaded: audioLoaded.value,
+        readyState: audioPlayer.value?.readyState,
+        artist: currentArtist.value?.artist,
+        preview_link: currentArtist.value?.preview_link
+    })
+}
+
+// Audio Player initialisieren
+onMounted(() => {
+    audioPlayer.value = new Audio()
+
+    // Event Listener
+    audioPlayer.value.addEventListener('loadeddata', () => {
+        audioLoaded.value = true
+        console.log('Audio loaded successfully')
+        logAudioState()
+    })
+
+    audioPlayer.value.addEventListener('timeupdate', () => {
+        currentTime.value = audioPlayer.value.currentTime
+    })
+
+    audioPlayer.value.addEventListener('ended', () => {
+        isPlaying.value = false
+        currentTime.value = 0
+        console.log('Audio playback ended')
+    })
+
+    audioPlayer.value.addEventListener('error', (e) => {
+        console.error('Audio error:', e)
+        isPlaying.value = false
+        audioLoaded.value = false
+    })
+})
+
+// Play/Pause Toggle
+const togglePlay = async () => {
+    if (!audioPlayer.value || !currentArtist.value?.preview_link) {
+        console.warn('No audio player or preview link available')
+        return
+    }
+
+    try {
+        // Wenn die Audio-Quelle sich geändert hat oder noch nicht gesetzt wurde
+        if (audioPlayer.value.src !== currentArtist.value.preview_link) {
+            console.log('Setting new audio source:', currentArtist.value.preview_link)
+            audioPlayer.value.src = currentArtist.value.preview_link
+            await audioPlayer.value.load()
+            audioLoaded.value = false
+        }
+
+        if (isPlaying.value) {
+            console.log('Pausing audio')
+            await audioPlayer.value.pause()
+        } else {
+            console.log('Playing audio')
+            const playPromise = audioPlayer.value.play()
+            if (playPromise !== undefined) {
+                await playPromise
+            }
+        }
+
+        isPlaying.value = !isPlaying.value
+        logAudioState()
+    } catch (error) {
+        console.error('Playback error:', error)
+        isPlaying.value = false
+    }
+}
+
+// Watch für currentArtist
+watch(() => currentArtist.value, (newArtist) => {
+    console.log('Artist changed:', newArtist?.artist)
+    if (audioPlayer.value && newArtist?.preview_link) {
+        audioPlayer.value.pause()
+        isPlaying.value = false
+        currentTime.value = 0
+        audioLoaded.value = false
+
+        console.log('Loading new audio source:', newArtist.preview_link)
+        audioPlayer.value.src = newArtist.preview_link
+        audioPlayer.value.load()
+    }
+}, { immediate: true })
+
+// Cleanup
+onUnmounted(() => {
+    if (audioPlayer.value) {
+        audioPlayer.value.pause()
+        audioPlayer.value.src = ''
+        audioPlayer.value.remove()
+    }
+})
+
+// Formatierung der Zeit
+const formatTime = (time) => {
+    const minutes = Math.floor(time / 60)
+    const seconds = Math.floor(time % 60)
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`
+}
+
+// Wenn zur nächsten Frage gewechselt wird, Audio stoppen
+watch(() => currentQuestion.value, () => {
+    if (audioPlayer.value) {
+        audioPlayer.value.pause()
+        isPlaying.value = false
+        currentTime.value = 0
+
+        // Neuen Audio Player für die neue Frage erstellen
+        if (currentArtist.value?.audioSrc) {
+            audioPlayer.value.src = currentArtist.value.audioSrc
+            audioPlayer.value.load()
+        }
+    }
+})
+
+// Progress Bar Update verbessern
+const updateProgress = () => {
+    if (audioPlayer.value) {
+        currentTime.value = audioPlayer.value.currentTime
+        duration.value = audioPlayer.value.duration
+    }
+}
+
+// Event Listener für Progress Bar
+onMounted(() => {
+    audioPlayer.value = new Audio()
+
+    // Bestehende Event Listener
+    audioPlayer.value.addEventListener('loadeddata', () => {
+        audioLoaded.value = true
+        duration.value = audioPlayer.value.duration
+        console.log('Audio loaded, duration:', duration.value)
+    })
+
+    // Progress Bar Update häufiger ausführen
+    audioPlayer.value.addEventListener('timeupdate', updateProgress)
+
+    // ... andere Event Listener bleiben gleich ...
+})
+
+// Optional: Progress Bar Click Handler für Seek-Funktion
+const handleProgressBarClick = (event) => {
+    if (!audioPlayer.value || !duration.value) return
+
+    const progressBar = event.currentTarget
+    const clickPosition = event.offsetX / progressBar.offsetWidth
+    const newTime = clickPosition * duration.value
+
+    audioPlayer.value.currentTime = newTime
+    currentTime.value = newTime
+}
+
+const points = ref(0)
+const isAnimating = ref(false)
+const showBonus = ref(false)
+const latestBonus = ref(0)
+
+const formattedPoints = computed(() => {
+    return points.value.toLocaleString()
+})
+
+const updatePoints = (basePoints: number, timeBonus: number) => {
+    const totalNewPoints = basePoints + timeBonus
+    latestBonus.value = {
+        base: basePoints,
+        time: timeBonus,
+        total: totalNewPoints
+    }
+    showBonus.value = true
+    isAnimating.value = true
+
+    points.value += totalNewPoints
+    totalPoints.value = points.value
+
+    setTimeout(() => {
+        showBonus.value = false
+        isAnimating.value = false
+    }, 2000)
+}
+
 </script>
 
-<style lang="scss">
-// Gemeinsame Überschriften-Styles
+<style lang="scss" scoped>
 @mixin section-heading {
     font-size: clamp(1.2rem, 3.5vw, 1.5rem);
     color: var(--text-color);
@@ -646,7 +907,9 @@ const recordClass = computed(() => {
     }
 }
 
-.question-container {
+
+/* Add scoped styles here */
+.difficulty {
     background: var(--surface-color);
     border-radius: var(--border-radius);
     padding: var(--padding-medium);
@@ -750,216 +1013,328 @@ const recordClass = computed(() => {
 }
 
 .solution-container {
-    display: flex;
-    flex-direction: column;
-    gap: var(--padding-large);
-    padding: 0 var(--padding-small);
+    max-width: 800px;
     margin: 0 auto;
-    width: 100%;
+    padding: 20px;
+}
 
-    @media (width >=768px) {
-        padding: 0;
-    }
+.content-wrapper {
+    background: var(--background-secondary);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .result-banner {
-    border-radius: var(--border-radius);
-    padding: var(--padding-medium);
+    background: var(--error-color, #ff4757);
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
     text-align: center;
-    background: #B91C1C; // Dunkleres Rot für besseren Kontrast
-    box-shadow: 0 4px 16px rgb(0 0 0 / 20%);
-    margin: 0 auto;
-    width: 100%;
-
-    &.correct {
-        background: #15803D; // Dunkleres Grün für besseren Kontrast
-    }
-
-    .result-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
 
     .result-header {
         display: flex;
         align-items: center;
-        gap: var(--padding-small);
-
-        .result-icon {
-            font-size: clamp(1.5rem, 4vw, 1.8rem);
-            color: #FFFFFF;
-        }
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 8px;
 
         h2 {
-            font-size: clamp(1.5rem, 4vw, 1.8rem);
             margin: 0;
-            color: #FFFFFF;
+            font-size: 1.4em;
+        }
+
+        .result-icon {
+            flex-shrink: 0;
         }
     }
 
-    .points-info {
-        font-size: clamp(1.1rem, 3vw, 1.3rem);
-        color: #FFFFFF;
-
-        .base-points {
-            font-weight: 700;
-        }
+    .points {
+        font-size: 1.1em;
+        opacity: 0.9;
+        margin-bottom: 8px;
     }
 
     .correct-answer {
-        font-size: clamp(1rem, 2.5vw, 1.1rem);
-        background: rgb(0 0 0 / 20%);
-        padding: var(--padding-small) var(--padding-medium);
-        border-radius: var(--border-radius);
-        color: #FFFFFF;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
 
         .label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .text {
+            font-size: 1em;
+            font-weight: 500;
+        }
+    }
+
+    &.correct {
+        background: var(--success-color, #257f4b);
+    }
+}
+
+.answer-box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    .label {
+        display: block;
+        color: var(--text-secondary);
+        margin-bottom: 8px;
+        font-size: 0.9em;
+    }
+
+    .text {
+        color: var(--text-primary);
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+}
+
+.album-box {
+    max-width: 320px;
+    margin: 0 auto 20px;
+
+    .cover-wrapper {
+        position: relative;
+        margin-bottom: 8px;
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            display: block;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    .player-info-wrapper {
+        padding: 0 4px;
+    }
+
+    .audio-player {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        border-radius: 4px;
+        margin: 8px 0;
+
+        .play-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0;
+
+            &:hover:not(:disabled) {
+                background: var(--primary-dark);
+                transform: scale(1.05);
+            }
+
+            &:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+        }
+
+        .progress-bar {
+            flex-grow: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+
+            &:hover {
+                height: 6px;
+                margin: -1px 0;
+            }
+
+            .progress {
+                height: 100%;
+                background: var(--primary-color);
+                transition: width 0.1s linear;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+    }
+
+    .info {
+        text-align: center;
+        color: white;
+
+        h3 {
+            margin: 0 0 2px 0;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .artist {
+            margin: 0 0 1px 0;
+            font-size: 0.8em;
             opacity: 0.9;
         }
 
-        .answer {
-            font-weight: 600;
+        .year {
+            margin: 0;
+            font-size: 0.75em;
+            opacity: 0.7;
+        }
+    }
+
+    .streaming-links {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+        .stream-link {
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.2s ease;
+            padding: 6px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                color: white;
+                transform: translateY(-1px);
+            }
+
+            .icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            &.spotify:hover {
+                color: #1DB954;
+            }
+
+            &.apple:hover {
+                color: #FA57C1;
+            }
+
+            &.deezer:hover {
+                color: #FF0092;
+            }
         }
     }
 }
 
-.song-details {
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
-    padding: var(--padding-medium);
-    border: 1px solid rgb(255 255 255 / 10%);
+.trivia-box {
+    background: var(--background-secondary);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-    .cover-and-player {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: var(--padding-medium);
-        margin-bottom: var(--padding-medium);
-
-        @media (width >=768px) {
-            flex-direction: row;
-            justify-content: center;
-        }
+    h3 {
+        color: var(--primary-color);
+        margin: 0 0 12px 0;
+        font-size: 1.2em;
     }
 
-    .cover-container {
-        width: 100%;
-        max-width: 300px;
-        aspect-ratio: 1;
-        border-radius: var(--border-radius);
-        overflow: hidden;
-        box-shadow: var(--box-shadow);
-        transition: transform var(--transition-speed);
+    p {
+        margin: 0;
+        line-height: 1.6;
+        color: var(--text-color);
+        font-size: 1em;
+    }
+}
 
-        &:hover {
-            transform: scale(1.05);
-        }
+.play-button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    &:hover {
+        transform: scale(1.05);
+        background: var(--primary-dark);
+    }
+}
+
+.trivia-box {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    h3 {
+        color: var(--primary-color);
+        margin: 0 0 12px 0;
+        font-size: 1.3em;
+        font-weight: 600;
     }
 
-    .preview-player {
-        width: 100%;
-        max-width: 300px;
-
-        audio {
-            width: 100%;
-        }
-    }
-
-    .song-info {
-        text-align: center;
-        margin-bottom: var(--padding-medium);
-    }
-
-    .metadata {
-        margin-bottom: var(--padding-medium);
-
-        h3 {
-            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
-            margin-bottom: var(--padding-small);
-        }
-
-        .artist {
-            font-size: clamp(1.1rem, 3vw, 1.3rem);
-            font-weight: 600;
-            margin-bottom: var(--padding-small);
-        }
-
-        .year {
-            font-size: clamp(1rem, 2.5vw, 1.1rem);
-            opacity: 0.8;
-        }
-    }
-
-    .music-links {
-        display: flex;
-        flex-direction: column;
-        gap: var(--padding-small);
-        max-width: 300px;
-        margin: 0 auto;
-
-        .music-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--padding-small);
-            width: 100%;
-            transition: all var(--transition-speed);
-
-            &:hover {
-                transform: translateY(-2px);
-            }
-
-            .icon {
-                font-size: 1.2rem;
-            }
-        }
-    }
-
-    .trivia {
-        background: rgb(255 255 255 / 5%);
-        border-radius: var(--border-radius);
-        padding: var(--padding-medium);
-        margin-top: var(--padding-medium);
-
-        h3 {
-            font-size: clamp(1.1rem, 3vw, 1.3rem);
-            margin-bottom: var(--padding-small);
-            text-align: center;
-        }
-
-        p {
-            font-size: clamp(1rem, 2.5vw, 1.1rem);
-            line-height: 1.6;
-        }
+    p {
+        margin: 0;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        font-size: 1.1em;
     }
 }
 
 .next-button {
+    width: 100%;
+    padding: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--padding-small);
-    font-size: clamp(1.1rem, 3vw, 1.3rem);
-    padding: var(--padding-medium) var(--padding-large);
-    margin: 0 auto;
-
-    .icon {
-        font-size: 1.2em;
-    }
+    gap: 8px;
+    font-size: 1.2em;
+    font-weight: 600;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     &:hover {
+        background: var(--primary-dark);
         transform: translateY(-2px);
+    }
+
+    .icon {
+        font-size: 24px;
     }
 }
 
@@ -983,186 +1358,306 @@ const recordClass = computed(() => {
             }
         }
     }
-}
 
-.audience-help {
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
-    margin: var(--padding-medium) 0;
 
-    h3 {
-        @include section-heading;
-    }
-
-    .audience-bars {
-        display: flex;
-        flex-direction: column;
-        gap: var(--padding-medium);
-    }
-
-    .bar-item {
-        display: flex;
-        flex-direction: column;
-        gap: var(--padding-small);
-    }
-
-    .option-text {
-        font-size: clamp(1.1rem, 3vw, 1.3rem);
-        color: var(--text-color);
-        text-align: left;
-        padding: 0 var(--padding-small);
-        font-weight: 500;
-    }
-
-    .bar-container {
-        background: rgb(255 255 255 / 10%);
+    .audience-help {
+        background: var(--surface-color);
         border-radius: var(--border-radius);
-        overflow: hidden;
-        height: 24px;
-        width: 100%;
-    }
-
-    .bar-item {
-        display: flex;
-        flex-direction: column;
-        gap: var(--padding-small);
-    }
-
-    .option-text {
-        font-size: clamp(1.1rem, 3vw, 1.3rem);
-        color: var(--text-color);
-        text-align: left;
-        padding: 0 var(--padding-small);
-        font-weight: 500;
-    }
-
-    .bar-container {
-        background: rgb(255 255 255 / 10%);
-        border-radius: var(--border-radius);
-        overflow: hidden;
-        height: 24px;
-        width: 100%;
-    }
-
-    .bar-item {
-        display: flex;
-        flex-direction: column;
-        gap: var(--padding-small);
-    }
-
-    .option-text {
-        font-size: clamp(1.1rem, 3vw, 1.3rem);
-        color: var(--text-color);
-        text-align: left;
-        padding: 0 var(--padding-small);
-        font-weight: 500;
-    }
-
-    .bar-container {
-        background: rgb(255 255 255 / 10%);
-        border-radius: var(--border-radius);
-        overflow: hidden;
-        height: 24px;
-        width: 100%;
-    }
-
-    .bar-item {
-        display: flex;
-        flex-direction: column;
-        gap: var(--padding-small);
-    }
-
-    .option-text {
-        font-size: clamp(1.1rem, 3vw, 1.3rem);
-        color: var(--text-color);
-        text-align: left;
-        padding: 0 var(--padding-small);
-        font-weight: 500;
-    }
-}
-
-.phone-expert {
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
-    margin: var(--padding-medium) 0;
-
-    h3 {
-        @include section-heading;
-    }
-
-    .expert-message {
-        background: rgb(255 255 255 / 5%);
-        border-radius: var(--border-radius);
-        padding: var(--padding-medium);
+        padding: var(--padding-large);
+        margin: var(--padding-medium) 0;
+        box-shadow: var(--box-shadow);
         border: 1px solid rgb(255 255 255 / 10%);
-    }
 
-    .expert-header {
-        display: flex;
-        align-items: center;
-        gap: var(--padding-small);
-        margin-bottom: var(--padding-medium);
-        padding-bottom: var(--padding-small);
-        border-bottom: 1px solid rgb(255 255 255 / 10%);
-
-        .phone-icon {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            color: var(--primary-color);
-        }
-
-        .expert-name {
-            font-size: clamp(1.1rem, 3vw, 1.3rem);
-            font-weight: 600;
+        h3 {
+            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
             color: var(--text-color);
+            text-align: center;
+            margin-bottom: var(--padding-large);
+            font-weight: 600;
+        }
+
+        .audience-bars {
+            display: flex;
+            flex-direction: column;
+            gap: var(--padding-medium);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bar-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .option-label {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 0 4px;
+        }
+
+        .option-text {
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .percentage-text {
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .bar-container {
+            background: rgb(255 255 255 / 8%);
+            border-radius: 12px;
+            overflow: hidden;
+            height: 12px;
+            width: 100%;
+            box-shadow: inset 0 2px 4px rgb(0 0 0 / 15%);
+        }
+
+        .bar {
+            height: 100%;
+            transition: width 1s var(--transition-bounce);
+            border-radius: 12px;
+
+            &.high {
+                background-color: var(--success-color);
+            }
+
+            &.medium {
+                background-color: var(--primary-color);
+            }
+
+            &.low {
+                background-color: var(--error-color);
+            }
         }
     }
 
-    .message-content {
-        display: flex;
-        flex-direction: column;
-        gap: var(--padding-medium);
-    }
-
-    .confidence-bar-container {
-        display: flex;
-        flex-direction: column;
-        gap: var(--padding-small);
-    }
-
-    .confidence-bar {
-        background: rgb(255 255 255 / 10%);
+    .phone-expert {
+        background: var(--surface-color);
         border-radius: var(--border-radius);
-        height: 8px;
-        overflow: hidden;
-        position: relative;
+        margin: var(--padding-medium) 0;
 
-        .confidence-level {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: var(--confidence);
-            transition: width 1s var(--transition-bounce);
+        h3 {
+            @include section-heading;
+        }
 
-            .high & {
-                background: linear-gradient(90deg, var(--success-color), var(--highlight-color));
+        .expert-message {
+            background: rgb(255 255 255 / 5%);
+            border-radius: var(--border-radius);
+            padding: var(--padding-medium);
+            border: 1px solid rgb(255 255 255 / 10%);
+        }
+
+        .expert-header {
+            display: flex;
+            align-items: center;
+            gap: var(--padding-small);
+            margin-bottom: var(--padding-medium);
+            padding-bottom: var(--padding-small);
+            border-bottom: 1px solid rgb(255 255 255 / 10%);
+
+            .phone-icon {
+                font-size: clamp(1.5rem, 4vw, 2rem);
+                color: var(--primary-color);
             }
 
-            .medium & {
-                background: linear-gradient(90deg, var(--primary-color), var(--highlight-color));
+            .expert-name {
+                font-size: clamp(1.1rem, 3vw, 1.3rem);
+                font-weight: 600;
+                color: var(--text-color);
             }
+        }
 
-            .low & {
-                background: linear-gradient(90deg, var(--error-color), var(--secondary-color));
+        .message-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--padding-medium);
+        }
+
+        .confidence-bar-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--padding-small);
+        }
+
+        .confidence-bar {
+            background: rgb(255 255 255 / 10%);
+            border-radius: var(--border-radius);
+            height: 8px;
+            overflow: hidden;
+            position: relative;
+
+            .confidence-level {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: var(--confidence);
+                transition: width 1s var(--transition-bounce);
+
+                .high & {
+                    background: linear-gradient(90deg, var(--success-color), var(--highlight-color));
+                }
+
+                .medium & {
+                    background: linear-gradient(90deg, var(--primary-color), var(--highlight-color));
+                }
+
+                .low & {
+                    background: linear-gradient(90deg, var(--error-color), var(--secondary-color));
+                }
             }
+        }
+    }
+
+    .confidence-text {
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        color: var(--text-color);
+        opacity: 0.8;
+        text-align: right;
+    }
+}
+
+.trivia-box {
+    background: var(--background-secondary);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    h3 {
+        color: var(--primary-color);
+        margin: 0 0 12px 0;
+        font-size: 1.2em;
+    }
+
+    p {
+        margin: 0;
+        line-height: 1.6;
+        color: var(--text-color);
+        font-size: 1em;
+    }
+}
+
+.points-display {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--padding-small);
+}
+
+.points-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.points {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: bold;
+    color: var(--text-color);
+    transition: transform 0.3s ease;
+
+    &.points-update {
+        transform: scale(1.2);
+        color: var(--highlight-color);
+    }
+}
+
+.points-label {
+    font-size: var(--body-font-size);
+    color: var(--text-color);
+}
+
+.bonus-indicator {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 8px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+    .bonus-total {
+        color: #FFD700;
+        font-weight: bold;
+        font-size: 1.2em;
+        text-align: center;
+        margin-bottom: 4px;
+    }
+
+    .bonus-breakdown {
+        display: flex;
+        gap: 8px;
+        font-size: 0.8em;
+
+        .time {
+            color: var(--highlight-color);
         }
     }
 }
 
-.confidence-text {
-    font-size: clamp(0.9rem, 2.5vw, 1rem);
-    color: var(--text-color);
-    opacity: 0.8;
-    text-align: right;
+.points-breakdown {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 12px 0;
+
+    .points-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 4px 0;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        &.total {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 4px;
+            padding-top: 8px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+        }
+    }
+}
+
+.bonus-enter-active,
+.bonus-leave-active {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bonus-enter-from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+}
+
+.bonus-leave-to {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8);
+}
+
+.points-update {
+    animation: pointsPulse 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes pointsPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+        color: var(--highlight-color);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 </style>
