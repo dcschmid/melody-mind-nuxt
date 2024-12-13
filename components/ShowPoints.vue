@@ -49,7 +49,6 @@ defineExpose({
     display: flex;
     align-items: center;
     gap: var(--padding-small);
-    padding: var(--padding-small);
 }
 
 .points-container {
@@ -59,7 +58,7 @@ defineExpose({
 }
 
 .points {
-    font-size: var(--header-font-size);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
     font-weight: bold;
     color: var(--text-color);
     transition: transform 0.3s ease;
@@ -98,4 +97,4 @@ defineExpose({
     opacity: 0;
     transform: translateY(-20px);
 }
-</style> 
+</style>

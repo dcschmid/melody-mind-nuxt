@@ -191,9 +191,9 @@ button {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     background: var(--highlight-color);
@@ -212,7 +212,6 @@ main {
   flex: 1;
   width: var(--content-width);
   margin: 0 auto;
-  padding: var(--padding-large) var(--padding-medium);
   font-size: var(--body-font-size);
   line-height: 1.6;
   color: var(--text-color);
@@ -305,7 +304,8 @@ main {
     }
   }
 
-  a, button {
+  a,
+  button {
     position: relative;
     display: flex;
     align-items: center;
@@ -323,7 +323,8 @@ main {
       transition: color 0.3s ease;
     }
 
-    &:hover, &:focus-visible {
+    &:hover,
+    &:focus-visible {
       background: var(--secondary-color);
       transform: scale(1.03);
 

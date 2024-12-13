@@ -1,14 +1,16 @@
 <template>
-    <NuxtLayout name="default" :show-header="true" :show-menu="false" :show-coins="false">
+    <NuxtLayout name="default" :show-header="false" :show-menu="false" :show-coins="false">
         <main>
-            <ShowPoints v-if="!gameFinished" ref="pointsDisplay" class="game-points" />
-
-            <!-- Spielscreen -->
             <div v-if="!gameFinished" class="game-content">
                 <div v-if="!showSolution">
                     <div class="game-header">
-                        <h1>{{ currentCategoryData?.name || category }}</h1>
-                        <p class="round-counter">Runde: {{ usedQuestions.length }} / {{ maxQuestions }}</p>
+                        <div class="header-left">
+                            <h1>{{ currentCategoryData?.name || category }}</h1>
+                            <p class="round-counter">Runde: {{ usedQuestions.length }} / {{ maxQuestions }}</p>
+                        </div>
+                        <div class="header-right">
+                            <ShowPoints ref="pointsDisplay" class="points-display" />
+                        </div>
                     </div>
 
                     <div v-if="currentQuestion" class="question-container">
@@ -28,18 +30,23 @@
 
                         <!-- Telefonjoker Antwort -->
                         <div v-if="phoneExpertOpinion" class="phone-expert">
+                            <h3>Experten-Meinung</h3>
                             <div class="expert-message">
-                                <Icon name="material-symbols:phone" class="phone-icon" />
+                                <div class="expert-header">
+                                    <Icon name="material-symbols:phone" class="phone-icon" />
+                                    <span class="expert-name">{{ phoneExpertOpinion.expert }}</span>
+                                </div>
                                 <div class="message-content">
-                                    <p class="expert-title">{{ phoneExpertOpinion.expert }}</p>
                                     <p class="expert-answer">{{ phoneExpertOpinion.message }}</p>
-                                    <div class="confidence-bar" :style="{ '--confidence': phoneExpertConfidence + '%' }"
-                                        :class="{
-                                            'high': phoneExpertConfidence >= 80,
-                                            'medium': phoneExpertConfidence >= 60 && phoneExpertConfidence < 80,
-                                            'low': phoneExpertConfidence < 60
-                                        }">
-                                        <div class="confidence-level"></div>
+                                    <div class="confidence-bar-container">
+                                        <div class="confidence-bar"
+                                            :style="{ '--confidence': phoneExpertConfidence + '%' }" :class="{
+                                                'high': phoneExpertConfidence >= 80,
+                                                'medium': phoneExpertConfidence >= 60 && phoneExpertConfidence < 80,
+                                                'low': phoneExpertConfidence < 60
+                                            }">
+                                            <div class="confidence-level"></div>
+                                        </div>
                                         <span class="confidence-text">{{ phoneExpertConfidence }}% Sicherheit</span>
                                     </div>
                                 </div>
@@ -48,80 +55,111 @@
 
                         <!-- Publikumsjoker Ergebnis -->
                         <div v-if="Object.keys(audienceHelp).length > 0" class="audience-help">
-                            <h3>Publikumsmeinung:</h3>
-                            <ul>
-                                <li v-for="(percentage, option) in audienceHelp" :key="option">
-                                    {{ option }}: {{ percentage }}%
-                                </li>
-                            </ul>
+                            <h3>Publikumsmeinung</h3>
+                            <div class="audience-bars">
+                                <div v-for="(percentage, option) in audienceHelp" :key="option" class="bar-item">
+                                    <div class="option-text">{{ option }}</div>
+                                    <div class="bar-container">
+                                        <div class="bar" :style="{ width: `${percentage}%` }" :class="{
+                                            'high': percentage >= 70,
+                                            'medium': percentage >= 40 && percentage < 70,
+                                            'low': percentage < 40
+                                        }">
+                                            <span class="percentage">{{ percentage }}%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Joker Section -->
                         <div class="jokers-section">
-                            <!-- 50:50 Joker -->
-                            <button class="button joker-button" @click="useFiftyFiftyJoker"
-                                :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion" title="50:50 Joker">
-                                <Icon name="material-symbols:balance" />
-                            </button>
+                            <div class="joker-buttons">
+                                <!-- 50:50 Joker -->
+                                <button class="button joker-button" @click="useFiftyFiftyJoker"
+                                    :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
+                                    title="50:50 Joker">
+                                    <Icon name="material-symbols:balance" size="30" />
+                                </button>
 
-                            <!-- Publikumsjoker -->
-                            <button class="button joker-button" @click="useAudienceJoker"
-                                :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion" title="Publikumsjoker">
-                                <Icon name="material-symbols:people" />
-                            </button>
+                                <!-- Publikumsjoker -->
+                                <button class="button joker-button" @click="useAudienceJoker"
+                                    :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
+                                    title="Publikumsjoker">
+                                    <Icon name="formkit:people" size="30" />
+                                </button>
 
-                            <!-- Telefonjoker -->
-                            <button class="button joker-button" @click="usePhoneJoker"
-                                :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion" title="Telefonjoker">
-                                <Icon name="material-symbols:phone" />
-                            </button>
-
+                                <!-- Telefonjoker -->
+                                <button class="button joker-button" @click="usePhoneJoker"
+                                    :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
+                                    title="Telefonjoker">
+                                    <Icon name="gg:phone" size="30" />
+                                </button>
+                            </div>
                             <span class="joker-count">Verbleibend: {{ remainingJokers }}</span>
                         </div>
                     </div>
                 </div>
                 <div v-else class="solution-container">
-                    <div class="result-banner" :class="{ 'correct': isCorrectAnswer, 'incorrect': !isCorrectAnswer }">
-                        <h2>{{ isCorrectAnswer ? 'Richtig!' : 'Leider falsch!' }}</h2>
-                        <p v-if="isCorrectAnswer">
-                            +{{ BASE_POINTS }} Punkte
-                            <span v-if="earnedPoints > BASE_POINTS" class="bonus-points">
-                                + {{ earnedPoints - BASE_POINTS }} Bonus
-                            </span>
-                        </p>
-                        <p v-else>+0 Punkte</p>
-                        <p class="correct-answer">Richtige Antwort: {{ currentQuestion.correctAnswer }}</p>
+                    <div class="result-banner" :class="{ 'correct': isCorrectAnswer }">
+                        <div class="result-content">
+                            <div class="result-header">
+                                <Icon
+                                    :name="isCorrectAnswer ? 'material-symbols:check-circle' : 'material-symbols:cancel'"
+                                    class="result-icon" aria-hidden="true" />
+                                <h2>{{ isCorrectAnswer ? 'Richtig!' : 'Leider falsch!' }}</h2>
+                            </div>
+
+                            <div class="points-info">
+                                <p v-if="isCorrectAnswer">
+                                    <span class="base-points">+{{ BASE_POINTS }} Punkte</span>
+                                </p>
+                                <p v-else class="no-points">+0 Punkte</p>
+                            </div>
+
+                            <div class="correct-answer">
+                                <div class="label">Richtige Antwort:</div>
+                                <div class="answer">{{ currentQuestion.correctAnswer }}</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="song-details">
-                        <div class="cover-container">
-                            <img :src="currentArtist.coverSrc"
-                                :alt="`${currentArtist.artist} - ${currentArtist.album}`">
+                    <div v-if="currentArtist" class="song-details">
+                        <div class="cover-and-player">
+                            <div class="cover-container" v-if="currentArtist.coverSrc">
+                                <img :src="currentArtist.coverSrc"
+                                    :alt="`${currentArtist.artist} - ${currentArtist.album}`">
+                            </div>
+
+                            <div class="preview-player">
+                                <audio controls :src="currentArtist.preview_link"></audio>
+                            </div>
                         </div>
 
-                        <div class="preview-player">
-                            <audio controls :src="currentArtist.preview_link"></audio>
-                        </div>
+                        <div class="song-info">
+                            <div class="metadata">
+                                <h3>{{ currentArtist.album }}</h3>
+                                <p class="artist">{{ currentArtist.artist }}</p>
+                                <p class="year">{{ currentArtist.year }}</p>
+                            </div>
 
-                        <div class="music-links">
-                            <a v-if="currentArtist.spotify_link" :href="currentArtist.spotify_link" target="_blank"
-                                class="button music-link spotify">
-                                <span>Auf Spotify hören</span>
-                            </a>
-                            <a v-if="currentArtist.apple_music_link" :href="currentArtist.apple_music_link"
-                                target="_blank" class="button music-link apple">
-                                <span>Auf Apple Music hören</span>
-                            </a>
-                            <a v-if="currentArtist.deezer_link" :href="currentArtist.deezer_link" target="_blank"
-                                class="button music-link deezer">
-                                <span>Auf Deezer hören</span>
-                            </a>
-                        </div>
-
-                        <div class="metadata">
-                            <h3>{{ currentArtist.album }}</h3>
-                            <p class="artist">{{ currentArtist.artist }}</p>
-                            <p class="year">{{ currentArtist.year }}</p>
+                            <div class="music-links">
+                                <a v-if="currentArtist.spotify_link" :href="currentArtist.spotify_link" target="_blank"
+                                    class="button music-link spotify">
+                                    <Icon name="mdi:spotify" />
+                                    <span>Auf Spotify hören</span>
+                                </a>
+                                <a v-if="currentArtist.apple_music_link" :href="currentArtist.apple_music_link"
+                                    target="_blank" class="button music-link apple">
+                                    <Icon name="mdi:apple" />
+                                    <span>Auf Apple Music hören</span>
+                                </a>
+                                <a v-if="currentArtist.deezer_link" :href="currentArtist.deezer_link" target="_blank"
+                                    class="button music-link deezer">
+                                    <Icon name="simple-icons:deezer" />
+                                    <span>Auf Deezer hören</span>
+                                </a>
+                            </div>
                         </div>
 
                         <div class="trivia">
@@ -131,7 +169,8 @@
                     </div>
 
                     <button @click="nextQuestion" class="button next-button">
-                        Nächste Frage
+                        <span>Nächste Frage</span>
+                        <Icon name="material-symbols:arrow-forward-rounded" />
                     </button>
                 </div>
             </div>
@@ -152,19 +191,23 @@
                     <p class="reward-text">
                         <template v-if="allQuestionsCorrect">
                             Unglaublich! Du hast eine Goldene LP gewonnen! 🏆
-                            <br>Du bist ein absoluter Musik-Champion! Alle Fragen perfekt beantwortet - das schaffen nur die Besten der Besten!
+                            <br>Du bist ein absoluter Musik-Champion! Alle Fragen perfekt beantwortet - das schaffen nur
+                            die Besten der Besten!
                         </template>
                         <template v-else-if="correctAnswers >= (maxQuestions * 0.75)">
                             Hervorragend! Du hast eine Silberne LP gewonnen! 🥈
-                            <br>Was für eine starke Leistung! Du bist schon fast ein Musik-Experte. Mit ein bisschen Feinschliff holst du dir beim nächsten Mal bestimmt Gold!
+                            <br>Was für eine starke Leistung! Du bist schon fast ein Musik-Experte. Mit ein bisschen
+                            Feinschliff holst du dir beim nächsten Mal bestimmt Gold!
                         </template>
                         <template v-else-if="correctAnswers >= (maxQuestions * 0.5)">
                             Klasse! Du hast eine Bronzene LP gewonnen! 🥉
-                            <br>Dein Musikwissen kann sich sehen lassen! Mach weiter so, und schon bald wirst du noch mehr Hits erkennen und höhere Auszeichnungen gewinnen!
+                            <br>Dein Musikwissen kann sich sehen lassen! Mach weiter so, und schon bald wirst du noch
+                            mehr Hits erkennen und höhere Auszeichnungen gewinnen!
                         </template>
                         <template v-else>
                             Das war ein guter Anfang! 💪
-                            <br>Jeder Musikexperte hat mal klein angefangen. Lass uns gleich noch eine Runde spielen - mit jedem Versuch lernst du neue Songs kennen und wirst besser!
+                            <br>Jeder Musikexperte hat mal klein angefangen. Lass uns gleich noch eine Runde spielen -
+                            mit jedem Versuch lernst du neue Songs kennen und wirst besser!
                         </template>
                     </p>
                 </div>
@@ -231,40 +274,90 @@ const phoneExpertConfidence = ref(0)
 // Musikspezifische Experten-Antworten
 const expertResponses = {
     high: [
-        "Als Musikhistoriker kann ich dir mit Sicherheit sagen, dass es '{answer}' ist. Ich habe darüber sogar einen Artikel veröffentlicht.",
-        "Ich bin Musikproduzent und kenne die Aufnahme sehr gut - definitiv '{answer}'.",
-        "Als DJ spiele ich diesen Track regelmäßig. Es ist zu 100% '{answer}'.",
-        "In meiner Zeit als Tontechniker habe ich viel mit dieser Musik gearbeitet. Es ist eindeutig '{answer}'.",
-        "Ich bin Musikjournalist und habe erst kürzlich darüber recherchiert. Die Antwort ist '{answer}'."
+        "Ohne jeden Zweifel - es ist '{answer}'. Ich habe die Original-Aufnahme-Session dokumentiert.",
+        "Als langjähriger Produzent des Labels kann ich dir garantieren: Das ist '{answer}'.",
+        "Oh, das kenne ich in- und auswendig! '{answer}' - darauf verwette ich meinen Plattenspieler.",
+        "Diese Frage ist ein Heimspiel für mich. Eindeutig '{answer}', ich war beim Recording dabei.",
+        "Das ist mein absolutes Lieblingsalbum! Natürlich ist es '{answer}'.",
+        "Diese Aufnahme hat Geschichte geschrieben - definitiv '{answer}'.",
+        "Ich habe den Song hunderte Male aufgelegt. Ohne Frage '{answer}'.",
+        "Diese Produktion ist legendär! Kann nur '{answer}' sein.",
+        "Da muss ich nicht mal nachdenken - '{answer}', zu 100%!",
+        "Diese Aufnahme hat mein Leben verändert. Es ist '{answer}'.",
+        "Diesen Sound würde ich unter Tausenden erkennen - '{answer}'!",
+        "Das war damals DER Hit schlechthin. Eindeutig '{answer}'.",
+        "Diese Frage ist fast zu einfach - natürlich '{answer}'!",
+        "Oh ja, ein Klassiker! Definitiv '{answer}'.",
+        "Diese Aufnahme ist unverkennbar - '{answer}'.",
+        "Da bin ich mir absolut sicher: '{answer}'.",
+        "Das ist einer meiner All-Time-Favorites: '{answer}'.",
+        "Diese Session ist legendär - eindeutig '{answer}'.",
+        "Ein Meilenstein der Musikgeschichte: '{answer}'.",
+        "Diese Produktion ist einzigartig - kann nur '{answer}' sein."
     ],
     medium: [
-        "Ich kenne den Song aus meiner Zeit als Club-DJ. Müsste '{answer}' sein, aber nagel mich nicht darauf fest.",
-        "Als Vinyl-Sammler habe ich das Album zuhause. Wenn ich mich richtig erinnere, ist es '{answer}'.",
-        "Ich habe früher in einem Plattenladen gearbeitet und würde sagen '{answer}'. War ein beliebter Track.",
-        "Von meiner Erfahrung als Musiklehrer würde ich auf '{answer}' tippen, aber es gibt ähnliche Produktionen aus der Zeit.",
-        "Aus meiner Radiozeit kenne ich den Song - sollte '{answer}' sein, bin aber nicht 100% sicher."
+        "Moment... ja, ich glaube das müsste '{answer}' sein. Die Produktion kommt mir sehr bekannt vor.",
+        "Wenn mich mein Gehör nicht täuscht, würde ich auf '{answer}' tippen.",
+        "Hmm, der Sound erinnert mich stark an '{answer}', aber lass mich kurz nachdenken...",
+        "Das klingt sehr nach '{answer}', aber es gab damals einige ähnliche Produktionen.",
+        "Ich würde zu 70% sagen '{answer}', aber nagel mich nicht darauf fest.",
+        "Kenne ich aus dem Club - sollte '{answer}' sein, wenn ich mich recht erinnere.",
+        "Hatte ich mal in meiner Sammlung... '{answer}', oder?",
+        "Das läuft öfter im Radio - müsste '{answer}' sein.",
+        "Ziemlich sicher '{answer}', aber keine Garantie.",
+        "Erinnert mich stark an '{answer}', bin aber nicht ganz sicher.",
+        "Mein Bauchgefühl sagt '{answer}', aber schwören würde ich nicht drauf.",
+        "Klingt sehr nach '{answer}', könnte mich aber auch täuschen.",
+        "War das nicht '{answer}'? Bin mir aber nicht hundertprozentig sicher.",
+        "Ich tippe auf '{answer}', aber es gibt ähnliche Tracks.",
+        "Das müsste '{answer}' sein, aber quote mich nicht darauf.",
+        "Spontan würde ich '{answer}' sagen, aber lass mich nochmal überlegen...",
+        "Klingt vertraut... wahrscheinlich '{answer}'.",
+        "Ich tendiere zu '{answer}', aber ganz sicher bin ich nicht.",
+        "Könnte gut '{answer}' sein, aber keine Gewähr.",
+        "Ich meine, das ist '{answer}', aber don't quote me on that!"
     ],
     low: [
-        "Puh, schwierige Frage. Als Hobby-Musiker würde ich auf '{answer}' tippen, aber das ist nur eine Vermutung.",
-        "Die Musik klingt vertraut... könnte '{answer}' sein, aber in der Zeit gab es viele ähnliche Produktionen.",
-        "Ich höre zwar viel Musik aus der Zeit, aber hier bin ich unsicher. Vielleicht '{answer}'?",
-        "Als Musikfan kenne ich den Sound, aber bei der Frage... spontan würde ich '{answer}' sagen.",
-        "Das ist nicht mein Hauptgenre, aber von der Produktion her könnte es '{answer}' sein. Nimm das aber nicht als garantiert."
+        "Puh, schwierige Frage... spontan würde ich '{answer}' raten, aber das ist echt nur geraten.",
+        "Oh Mann, das ist nicht meine Ära... vielleicht '{answer}'?",
+        "Musik ist normalerweise mein Ding, aber hier... '{answer}' maybe?",
+        "*kratzt sich am Kopf* '{answer}'? Aber das ist wirklich nur eine Vermutung!",
+        "Wenn ich jetzt raten müsste... '{answer}'? Aber ich bin mir echt unsicher.",
+        "Das ist nicht meine Expertise, aber könnte '{answer}' sein?",
+        "Uff, da fragst du den Falschen... '{answer}' vielleicht?",
+        "Keine Ahnung, aber '{answer}' klingt plausibel?",
+        "Schwer zu sagen... '{answer}'? Aber das ist echt nur geraten!",
+        "Da bin ich überfragt... '{answer}' würde ich mal tippen.",
+        "*nervöses Lachen* Vielleicht '{answer}'?",
+        "Boah, das ist aber eine harte Nuss... '{answer}'?",
+        "Mein Musikwissen lässt mich hier im Stich... '{answer}'?",
+        "Das ist nicht meine Stärke, aber eventuell '{answer}'?",
+        "Tut mir leid, aber da kann ich nur raten... '{answer}'?",
+        "*schwitzt* Äh... '{answer}'?",
+        "Oh je, das ist nicht mein Spezialgebiet... '{answer}'?",
+        "Da muss ich passen... '{answer}' vielleicht?",
+        "Schwierig... spontan würde ich '{answer}' sagen, aber...",
+        "Ohne Gewähr, aber könnte '{answer}' sein?"
     ]
 }
 
 // Zufällige Expertenbezeichnungen
 const expertTitles = [
-    "Musikhistoriker Dr. Schmidt",
-    "Musikproduzent Thomas",
-    "DJ Sarah",
-    "Tontechniker Michael",
-    "Musikjournalistin Lisa",
-    "Plattenladenbesitzer Mark",
-    "Vinyl-Experte Alex",
-    "Musikdozentin Julia",
-    "Radio-DJ Chris",
-    "Sound-Engineer Max"
+    "Dr. Schmidt",
+    "Thomas",
+    "Sarah",
+    "Michael",
+    "Lisa",
+    "Mark",
+    "Alex",
+    "Julia",
+    "Chris",
+    "Max",
+    "Emma",
+    "David",
+    "Sophie",
+    "Felix",
+    "Laura"
 ]
 
 const useFiftyFiftyJoker = () => {
@@ -415,6 +508,14 @@ const scrollToTop = () => {
 
 const totalPoints = ref(0)
 
+// Funktion zum Berechnen der Punkte
+const calculatePoints = () => {
+    const basePoints = BASE_POINTS
+    const timeBonus = calculateTimeBonus()
+    return basePoints + timeBonus
+}
+
+// Prüfen ob currentArtist existiert bevor wir auf Properties zugreifen
 const selectAnswer = async (selectedAnswer: string) => {
     if (showSolution.value) return
 
@@ -429,10 +530,15 @@ const selectAnswer = async (selectedAnswer: string) => {
     }
 
     // Lade Künstlerinformationen
-    const response = await import(`~/json/genres/${locale.value}/${category}.json`)
-    currentArtist.value = response.default.find((artist: any) =>
-        artist.questions[difficulty].some((q: any) => q.id === currentQuestion.value.id)
-    )
+    try {
+        const response = await import(`~/json/genres/${locale.value}/${category}.json`)
+        currentArtist.value = response.default.find((artist: any) =>
+            artist.questions[difficulty].some((q: any) => q.id === currentQuestion.value.id)
+        )
+    } catch (error) {
+        console.error('Fehler beim Laden der Künstlerinformationen:', error)
+        currentArtist.value = null
+    }
 
     // Warte kurz und scrolle dann nach oben
     await nextTick()
@@ -500,175 +606,147 @@ const recordClass = computed(() => {
 </script>
 
 <style lang="scss">
-.game-header {
+// Gemeinsame Überschriften-Styles
+@mixin section-heading {
+    font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+    color: var(--text-color);
     text-align: center;
     margin-bottom: var(--padding-medium);
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--padding-small);
     padding: 0 var(--padding-small);
 
-    @media (width >=768px) {
-        padding: 0;
+    .header-left {
+        text-align: left;
+
+        h1 {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            color: var(--text-color);
+            margin: 0;
+            margin-bottom: var(--padding-small);
+        }
+
+        .round-counter {
+            font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+            color: var(--text-color);
+            margin: 0;
+            font-weight: 600;
+        }
     }
 
-    h1 {
-        font-size: var(--header-font-size);
-        color: var(--text-color);
-        margin: 0;
-        margin-bottom: var(--padding-small);
-    }
-
-    .round-counter {
-        font-size: var(--body-font-size);
-        color: var(--text-color);
-        margin: 0;
+    .header-right {
+        display: flex;
+        align-items: flex-start;
+        font-size: clamp(1.2rem, 3vw, 1.8rem);
     }
 }
 
 .question-container {
-    display: flex;
-    flex-direction: column;
-    gap: var(--padding-large);
-    margin: 0 auto;
-    padding: 0 var(--padding-small);
-
-    @media (width >=768px) {
-        max-width: var(--max-line-length);
-        padding: 0;
-    }
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    padding: var(--padding-medium);
+    box-shadow: var(--box-shadow);
+    border: 1px solid rgb(255 255 255 / 10%);
 }
 
 .question {
-    text-align: center;
-
     h2 {
-        font-size: var(--body-font-size);
-        line-height: var(--line-height-body);
-        color: var(--text-color);
-        margin: 0;
-
-        @media (width >=768px) {
-            font-size: calc(var(--body-font-size) * 1.2);
-        }
+        font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+        text-align: center;
+        margin-bottom: var(--padding-medium);
     }
 }
 
 .options {
     display: flex;
     flex-direction: column;
-    gap: var(--padding-medium);
+    gap: var(--padding-small);
     width: 100%;
     margin-bottom: var(--padding-medium);
-
-    @media (width >=768px) {
-        gap: var(--padding-large);
-    }
 }
 
 .option-button {
-    width: 100%;
-    min-height: var(--min-touch-target);
-    padding: var(--padding-medium);
-    justify-content: flex-start;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    font-weight: 600;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    padding: var(--padding-small) var(--padding-medium);
 
-    font-size: var(--body-font-size);
-    text-align: left;
-    color: var(--button-text-color);
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--highlight-color);
+        opacity: 0;
+        transition: opacity var(--transition-speed);
+        z-index: -1;
+    }
 
-    background-color: var(--highlight-color);
-    border: none;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-
-    @media (width >=768px) {
-        padding: var(--padding-medium) var(--padding-large);
-        min-height: calc(var(--min-touch-target) * 1.2);
+    &:hover::before,
+    &:focus-visible::before {
+        opacity: 0.2;
     }
 
     &:hover {
-        background-color: var(--button-hover-color);
         transform: translateY(-2px);
+        box-shadow: var(--box-shadow-hover);
     }
-
-    &:focus-visible {
-        outline: var(--focus-outline-width) solid var(--focus-outline-color);
-        outline-offset: var(--focus-outline-offset);
-    }
-
-    @media (hover: hover) {
-        &:hover {
-            transform: translateY(-2px);
-        }
-    }
-
-    @media (hover: none) {
-        &:active {
-            background-color: var(--button-hover-color);
-        }
-    }
-
-    &.hidden {
-        display: none;
-    }
-}
-
-.loading {
-    text-align: center;
-    padding: var(--padding-medium);
-    color: var(--text-color);
 }
 
 .jokers-section {
-    margin-top: var(--padding-large);
-    padding-top: var(--padding-medium);
-    border-top: 1px solid var(--border-color);
     display: flex;
-    justify-content: center;
-    gap: var(--padding-medium);
+    flex-direction: column;
+    align-items: center;
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    margin: 0 var(--padding-small);
+
+    .joker-buttons {
+        display: flex;
+        gap: var(--padding-medium);
+        margin-bottom: var(--padding-small);
+
+        @media (width >=768px) {
+            gap: var(--padding-large);
+        }
+    }
+
+    @media (width >=768px) {
+        margin: 0;
+    }
 }
 
 .joker-button {
-    position: relative;
-    width: 48px;
-    height: 48px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--highlight-color);
     border-radius: 50%;
-    transition: all var(--transition-speed) ease;
+    background: var(--primary-color);
+    transition: all var(--transition-speed);
+    padding: 1rem;
+
+    .icon {
+        transition: color var(--transition-speed);
+    }
+
+    &:not(:disabled):hover {
+        transform: translateY(-2px);
+        background: var(--highlight-color);
+    }
 
     &:disabled {
-        opacity: var(--opacity-disabled);
+        opacity: 0.5;
         cursor: not-allowed;
     }
 }
 
 .joker-count {
-    margin-left: var(--padding-small);
-    font-size: var(--body-font-size);
+    font-size: clamp(0.875rem, 3vw, 1rem);
     color: var(--text-color);
-}
-
-.audience-help {
-    background-color: var(--secondary-color);
-    padding: var(--padding-medium);
-    border-radius: var(--border-radius);
-    margin-top: var(--padding-medium);
-    margin-bottom: var(--padding-medium);
-
-    h3 {
-        margin: 0 0 var(--padding-small);
-    }
-
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-
-        li {
-            margin: var(--padding-small) 0;
-        }
-    }
+    opacity: 0.8;
 }
 
 .solution-container {
@@ -676,6 +754,8 @@ const recordClass = computed(() => {
     flex-direction: column;
     gap: var(--padding-large);
     padding: 0 var(--padding-small);
+    margin: 0 auto;
+    width: 100%;
 
     @media (width >=768px) {
         padding: 0;
@@ -683,300 +763,406 @@ const recordClass = computed(() => {
 }
 
 .result-banner {
-    text-align: center;
-    padding: var(--padding-medium);
     border-radius: var(--border-radius);
-    margin-bottom: var(--padding-medium);
-
-    h2 {
-        margin: 0;
-        font-size: var(--header-font-size);
-    }
-
-    p {
-        margin: var(--padding-small) 0 0;
-        font-size: var(--body-font-size);
-    }
+    padding: var(--padding-medium);
+    text-align: center;
+    background: #B91C1C; // Dunkleres Rot für besseren Kontrast
+    box-shadow: 0 4px 16px rgb(0 0 0 / 20%);
+    margin: 0 auto;
+    width: 100%;
 
     &.correct {
-        background-color: #4caf50;
-        color: white;
+        background: #15803D; // Dunkleres Grün für besseren Kontrast
     }
 
-    &.incorrect {
-        background-color: var(--error-color);
-        color: white;
+    .result-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .result-header {
+        display: flex;
+        align-items: center;
+        gap: var(--padding-small);
+
+        .result-icon {
+            font-size: clamp(1.5rem, 4vw, 1.8rem);
+            color: #FFFFFF;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 1.8rem);
+            margin: 0;
+            color: #FFFFFF;
+        }
+    }
+
+    .points-info {
+        font-size: clamp(1.1rem, 3vw, 1.3rem);
+        color: #FFFFFF;
+
+        .base-points {
+            font-weight: 700;
+        }
     }
 
     .correct-answer {
-        margin-top: var(--padding-small);
-        font-size: var(--body-font-size);
-        color: var(--text-color);
+        font-size: clamp(1rem, 2.5vw, 1.1rem);
+        background: rgb(0 0 0 / 20%);
+        padding: var(--padding-small) var(--padding-medium);
+        border-radius: var(--border-radius);
+        color: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .label {
+            opacity: 0.9;
+        }
+
+        .answer {
+            font-weight: 600;
+        }
     }
 }
 
 .song-details {
-    display: flex;
-    flex-direction: column;
-    gap: var(--padding-medium);
-    align-items: center;
-}
-
-.cover-container {
-    width: 100%;
-    max-width: 300px;
-    aspect-ratio: 1;
+    background: var(--surface-color);
     border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
-
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-}
-
-.preview-player {
-    width: 100%;
-    max-width: 300px;
-
-    audio {
-        width: 100%;
-    }
-}
-
-.music-links {
-    display: flex;
-    flex-direction: column;
-    gap: var(--padding-small);
-    width: 100%;
-    max-width: 300px;
-
-    .music-link {
-        width: 100%;
-        justify-content: center;
-
-        &.spotify {
-            background-color: #1DB954;
-        }
-
-        &.apple {
-            background-color: #FA57C1;
-        }
-
-        &.deezer {
-            background-color: #00C7F2;
-        }
-    }
-}
-
-.metadata {
-    text-align: center;
-    margin: var(--padding-medium) 0;
-
-    h3 {
-        font-size: var(--header-font-size);
-        margin: 0 0 var(--padding-small);
-    }
-
-    p {
-        margin: var(--padding-small) 0;
-        font-size: var(--body-font-size);
-    }
-
-    .artist {
-        font-weight: bold;
-    }
-}
-
-.trivia {
-    text-align: center;
     padding: var(--padding-medium);
-    background-color: var(--secondary-color);
-    border-radius: var(--border-radius);
+    border: 1px solid rgb(255 255 255 / 10%);
 
-    h3 {
-        margin: 0 0 var(--padding-small);
-        font-size: calc(var(--body-font-size) * 1.1);
+    .cover-and-player {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--padding-medium);
+        margin-bottom: var(--padding-medium);
+
+        @media (width >=768px) {
+            flex-direction: row;
+            justify-content: center;
+        }
     }
 
-    p {
-        margin: 0;
-        font-size: var(--body-font-size);
-        line-height: var(--line-height-body);
+    .cover-container {
+        width: 100%;
+        max-width: 300px;
+        aspect-ratio: 1;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        transition: transform var(--transition-speed);
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .preview-player {
+        width: 100%;
+        max-width: 300px;
+
+        audio {
+            width: 100%;
+        }
+    }
+
+    .song-info {
+        text-align: center;
+        margin-bottom: var(--padding-medium);
+    }
+
+    .metadata {
+        margin-bottom: var(--padding-medium);
+
+        h3 {
+            font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+            margin-bottom: var(--padding-small);
+        }
+
+        .artist {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            font-weight: 600;
+            margin-bottom: var(--padding-small);
+        }
+
+        .year {
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            opacity: 0.8;
+        }
+    }
+
+    .music-links {
+        display: flex;
+        flex-direction: column;
+        gap: var(--padding-small);
+        max-width: 300px;
+        margin: 0 auto;
+
+        .music-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--padding-small);
+            width: 100%;
+            transition: all var(--transition-speed);
+
+            &:hover {
+                transform: translateY(-2px);
+            }
+
+            .icon {
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    .trivia {
+        background: rgb(255 255 255 / 5%);
+        border-radius: var(--border-radius);
+        padding: var(--padding-medium);
+        margin-top: var(--padding-medium);
+
+        h3 {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            margin-bottom: var(--padding-small);
+            text-align: center;
+        }
+
+        p {
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            line-height: 1.6;
+        }
     }
 }
 
 .next-button {
-    margin-top: var(--padding-medium);
-    width: 100%;
-    max-width: 300px;
-    align-self: center;
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--padding-small);
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+    padding: var(--padding-medium) var(--padding-large);
+    margin: 0 auto;
 
-.bonus-points {
-    color: #FFD700;
-    font-weight: bold;
-    margin-left: var(--padding-small);
-}
-
-.game-points {
-    position: fixed;
-    top: var(--padding-small);
-    right: var(--padding-medium);
-    z-index: var(--layer-above);
-    background-color: var(--background-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    padding: var(--padding-small);
-}
-
-.game-content,
-.solution-container {
-    padding-top: var(--padding-small);
-}
-
-.phone-expert {
-    background-color: var(--secondary-color);
-    padding: var(--padding-medium);
-    border-radius: var(--border-radius);
-    margin-top: var(--padding-medium);
-    margin-bottom: var(--padding-medium);
-
-    .expert-message {
-        display: flex;
-        gap: var(--padding-medium);
-        align-items: flex-start;
-
-        .phone-icon {
-            font-size: 24px;
-            color: var(--text-color);
-        }
-
-        .message-content {
-            flex: 1;
-
-            .expert-title {
-                font-weight: bold;
-                color: var(--highlight-color);
-                margin-bottom: var(--padding-small);
-            }
-
-            .expert-answer {
-                margin-bottom: var(--padding-small);
-                line-height: 1.4;
-            }
-        }
+    .icon {
+        font-size: 1.2em;
     }
 
-    .confidence-bar {
-        background-color: var(--background-color);
-        border-radius: var(--border-radius);
-        height: 24px;
-        position: relative;
-        overflow: hidden;
-
-        .confidence-level {
-            height: 100%;
-            width: var(--confidence);
-            transition: width 0.5s ease;
-        }
-
-        &.high .confidence-level {
-            background-color: #4CAF50;
-        }
-
-        &.medium .confidence-level {
-            background-color: #FFC107;
-        }
-
-        &.low .confidence-level {
-            background-color: #FF5722;
-        }
-
-        .confidence-text {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            color: var(--text-color);
-            font-size: 14px;
-            font-weight: bold;
-            text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-        }
+    &:hover {
+        transform: translateY(-2px);
     }
 }
 
 .game-end-screen {
     text-align: center;
-    padding: var(--padding-large);
+    max-width: var(--content-width);
+    margin: 0 auto;
 
-    h2 {
-        font-size: var(--header-font-size);
-        margin-bottom: var(--padding-large);
-    }
+    .reward-section {
+        background: var(--surface-color);
+        border-radius: var(--border-radius);
+        padding: var(--padding-large);
+        box-shadow: var(--box-shadow);
+        border: 1px solid rgb(255 255 255 / 10%);
 
-    .final-score {
-        margin: var(--padding-large) 0;
+        .record-icon {
+            transition: transform var(--transition-speed);
 
-        .points {
-            font-size: 2.5em;
-            font-weight: bold;
-            color: var(--highlight-color);
-        }
-    }
-
-    .performance-message {
-        margin: var(--padding-large) 0;
-
-        .perfect-score {
-            color: #4CAF50;
-            font-weight: bold;
-        }
-
-        .motivation {
-            color: var(--text-color);
-            line-height: 1.5;
-        }
-    }
-
-    .end-actions {
-        display: flex;
-        flex-direction: column;
-        gap: var(--padding-medium);
-        max-width: 300px;
-        margin: 0 auto;
-
-        .button {
-            width: 100%;
+            &:hover {
+                transform: rotate(20deg);
+            }
         }
     }
 }
 
-.reward-section {
-    margin: var(--padding-large) 0;
-    text-align: center;
+.audience-help {
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    margin: var(--padding-medium) 0;
 
-    .record-icon {
+    h3 {
+        @include section-heading;
+    }
+
+    .audience-bars {
+        display: flex;
+        flex-direction: column;
+        gap: var(--padding-medium);
+    }
+
+    .bar-item {
+        display: flex;
+        flex-direction: column;
+        gap: var(--padding-small);
+    }
+
+    .option-text {
+        font-size: clamp(1.1rem, 3vw, 1.3rem);
+        color: var(--text-color);
+        text-align: left;
+        padding: 0 var(--padding-small);
+        font-weight: 500;
+    }
+
+    .bar-container {
+        background: rgb(255 255 255 / 10%);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        height: 24px;
+        width: 100%;
+    }
+
+    .bar-item {
+        display: flex;
+        flex-direction: column;
+        gap: var(--padding-small);
+    }
+
+    .option-text {
+        font-size: clamp(1.1rem, 3vw, 1.3rem);
+        color: var(--text-color);
+        text-align: left;
+        padding: 0 var(--padding-small);
+        font-weight: 500;
+    }
+
+    .bar-container {
+        background: rgb(255 255 255 / 10%);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        height: 24px;
+        width: 100%;
+    }
+
+    .bar-item {
+        display: flex;
+        flex-direction: column;
+        gap: var(--padding-small);
+    }
+
+    .option-text {
+        font-size: clamp(1.1rem, 3vw, 1.3rem);
+        color: var(--text-color);
+        text-align: left;
+        padding: 0 var(--padding-small);
+        font-weight: 500;
+    }
+
+    .bar-container {
+        background: rgb(255 255 255 / 10%);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        height: 24px;
+        width: 100%;
+    }
+
+    .bar-item {
+        display: flex;
+        flex-direction: column;
+        gap: var(--padding-small);
+    }
+
+    .option-text {
+        font-size: clamp(1.1rem, 3vw, 1.3rem);
+        color: var(--text-color);
+        text-align: left;
+        padding: 0 var(--padding-small);
+        font-weight: 500;
+    }
+}
+
+.phone-expert {
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    margin: var(--padding-medium) 0;
+
+    h3 {
+        @include section-heading;
+    }
+
+    .expert-message {
+        background: rgb(255 255 255 / 5%);
+        border-radius: var(--border-radius);
+        padding: var(--padding-medium);
+        border: 1px solid rgb(255 255 255 / 10%);
+    }
+
+    .expert-header {
+        display: flex;
+        align-items: center;
+        gap: var(--padding-small);
         margin-bottom: var(--padding-medium);
+        padding-bottom: var(--padding-small);
+        border-bottom: 1px solid rgb(255 255 255 / 10%);
 
-        &.gold {
-            color: #FFD700;
+        .phone-icon {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--primary-color);
         }
 
-        &.silver {
-            color: #C0C0C0;
-        }
-
-        &.bronze {
-            color: #CD7F32;
+        .expert-name {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            font-weight: 600;
+            color: var(--text-color);
         }
     }
 
-    .reward-text {
-        font-size: 1.2em;
-        font-weight: bold;
+    .message-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--padding-medium);
     }
+
+    .confidence-bar-container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--padding-small);
+    }
+
+    .confidence-bar {
+        background: rgb(255 255 255 / 10%);
+        border-radius: var(--border-radius);
+        height: 8px;
+        overflow: hidden;
+        position: relative;
+
+        .confidence-level {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: var(--confidence);
+            transition: width 1s var(--transition-bounce);
+
+            .high & {
+                background: linear-gradient(90deg, var(--success-color), var(--highlight-color));
+            }
+
+            .medium & {
+                background: linear-gradient(90deg, var(--primary-color), var(--highlight-color));
+            }
+
+            .low & {
+                background: linear-gradient(90deg, var(--error-color), var(--secondary-color));
+            }
+        }
+    }
+}
+
+.confidence-text {
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    color: var(--text-color);
+    opacity: 0.8;
+    text-align: right;
 }
 </style>
