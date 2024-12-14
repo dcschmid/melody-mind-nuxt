@@ -95,21 +95,24 @@
                                 <!-- 50:50 Joker -->
                                 <button class="button joker-button" @click="useFiftyFiftyJoker"
                                     :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
-                                    title="50:50 Joker">
+                                    aria-label="50:50 Joker verwenden"
+                                    :class="{ 'disabled': remainingJokers === 0 || jokerUsedForCurrentQuestion }">
                                     <Icon name="material-symbols:balance" size="30" />
                                 </button>
 
                                 <!-- Publikumsjoker -->
                                 <button class="button joker-button" @click="useAudienceJoker"
                                     :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
-                                    title="Publikumsjoker">
+                                    aria-label="Publikumsjoker verwenden"
+                                    :class="{ 'disabled': remainingJokers === 0 || jokerUsedForCurrentQuestion }">
                                     <Icon name="formkit:people" size="30" />
                                 </button>
 
                                 <!-- Telefonjoker -->
                                 <button class="button joker-button" @click="usePhoneJoker"
                                     :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
-                                    title="Telefonjoker">
+                                    aria-label="Telefonjoker verwenden"
+                                    :class="{ 'disabled': remainingJokers === 0 || jokerUsedForCurrentQuestion }">
                                     <Icon name="gg:phone" size="30" />
                                 </button>
                             </div>
@@ -557,7 +560,6 @@ const loadCurrentArtist = async () => {
 
 // Wenn sich die Frage ändert, lade die entsprechenden Künstlerinformationen
 watch(() => currentQuestion.value, (newQuestion) => {
-    console.log('Question changed to:', newQuestion)
     if (newQuestion) {
         loadCurrentArtist()
     }
@@ -576,7 +578,6 @@ const selectAnswer = async (selectedAnswer: string) => {
         correctAnswers.value++
     }
 
-    console.log('Selected answer, loading artist info...')
     await loadCurrentArtist()
 
     await nextTick()
@@ -677,8 +678,6 @@ onMounted(() => {
     // Event Listener
     audioPlayer.value.addEventListener('loadeddata', () => {
         audioLoaded.value = true
-        console.log('Audio loaded successfully')
-        logAudioState()
     })
 
     audioPlayer.value.addEventListener('timeupdate', () => {
@@ -690,11 +689,9 @@ onMounted(() => {
     audioPlayer.value.addEventListener('ended', () => {
         isPlaying.value = false
         currentTime.value = 0
-        console.log('Audio playback ended')
     })
 
     audioPlayer.value.addEventListener('error', (e) => {
-        console.error('Audio error:', e)
         isPlaying.value = false
         audioLoaded.value = false
     })
@@ -703,24 +700,20 @@ onMounted(() => {
 // Play/Pause Toggle
 const togglePlay = async () => {
     if (!audioPlayer.value || !currentArtist.value?.preview_link) {
-        console.warn('No audio player or preview link available')
         return
     }
 
     try {
         // Wenn die Audio-Quelle sich geändert hat oder noch nicht gesetzt wurde
         if (audioPlayer.value.src !== currentArtist.value.preview_link) {
-            console.log('Setting new audio source:', currentArtist.value.preview_link)
             audioPlayer.value.src = currentArtist.value.preview_link
             await audioPlayer.value.load()
             audioLoaded.value = false
         }
 
         if (isPlaying.value) {
-            console.log('Pausing audio')
             await audioPlayer.value.pause()
         } else {
-            console.log('Playing audio')
             const playPromise = audioPlayer.value.play()
             if (playPromise !== undefined) {
                 await playPromise
@@ -728,23 +721,19 @@ const togglePlay = async () => {
         }
 
         isPlaying.value = !isPlaying.value
-        logAudioState()
     } catch (error) {
-        console.error('Playback error:', error)
         isPlaying.value = false
     }
 }
 
 // Watch für currentArtist
 watch(() => currentArtist.value, (newArtist) => {
-    console.log('Artist changed:', newArtist?.artist)
     if (audioPlayer.value && newArtist?.preview_link) {
         audioPlayer.value.pause()
         isPlaying.value = false
         currentTime.value = 0
         audioLoaded.value = false
 
-        console.log('Loading new audio source:', newArtist.preview_link)
         audioPlayer.value.src = newArtist.preview_link
         audioPlayer.value.load()
     }
@@ -791,7 +780,6 @@ onMounted(() => {
         audioLoaded.value = true
         if (audioPlayer.value) {
             duration.value = audioPlayer.value.duration
-            console.log('Audio loaded, duration:', duration.value)
         }
     })
 
@@ -880,11 +868,6 @@ const participationMessages = [
     "Mach weiter! 💪\nAus jedem Spiel lernst du etwas Neues! Nächste Runde!"
 ]
 
-const checkGameFinished = () => {
-    if (usedQuestions.value.length >= maxQuestions.value) {
-        gameFinished.value = true
-    }
-}
 
 </script>
 
@@ -1021,6 +1004,14 @@ const checkGameFinished = () => {
     &:disabled {
         opacity: 0.5;
         cursor: not-allowed;
+    }
+
+    &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background: var(--surface-color);
+        border: 1px solid rgb(255 255 255 / 10%);
+        color: rgb(255 255 255 / 50%);
     }
 }
 
@@ -1311,10 +1302,7 @@ const checkGameFinished = () => {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
     h3 {
-        color: var(--primary-color);
-        margin: 0 0 12px 0;
-        font-size: 1.3em;
-        font-weight: 600;
+        @include section-heading;
     }
 
     p {
