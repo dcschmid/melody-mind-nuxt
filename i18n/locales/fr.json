@@ -171,5 +171,55 @@
     "submitButton": "Envoyer le Lien de Réinitialisation",
     "backToLogin": "Retour à la Connexion",
     "successMessage": "Si un compte existe avec cet e-mail, vous recevrez un lien de réinitialisation du mot de passe sous peu."
+  },
+   "game": {
+    "audienceOpinion": "Opinion du Public",
+    "confidence": "Certitude",
+    "points": "Points: {base} + {time} points bonus",
+    "round": "Tour: {current} / {max}",
+    "points_label": "Points",
+    "expert": {
+      "title": "Avis d'Expert",
+      "name": "Expert"
+    },
+    "correct": "Correct !",
+    "wrong": "Incorrect !",
+    "correctAnswer": "Bonne réponse :",
+    "didYouKnow": "Le saviez-vous ?",
+    "nextQuestion": "Question Suivante",
+    "gameOver": {
+      "title": "Partie Terminée !",
+      "correctAnswers": "Réponses Correctes",
+      "backToMenu": "Retour au Menu Principal"
+    },
+    "jokers": {
+      "remaining": "Restant: {count}",
+      "fiftyFifty": "Utiliser le joker 50:50",
+      "audience": "Utiliser l'avis du public",
+      "phone": "Utiliser l'appel à un ami"
+    },
+    "audio": {
+      "play": "Lecture",
+      "pause": "Pause",
+      "noAudio": "Pas d'audio disponible"
+    },
+    "streaming": {
+      "spotify": "Écouter sur Spotify",
+      "apple": "Écouter sur Apple Music",
+      "deezer": "Écouter sur Deezer"
+    },
+    "album": {
+      "artist": "Artiste",
+      "year": "Année",
+      "noPreview": "Aucun aperçu disponible"
+    },
+    "loading": {
+      "question": "Chargement de la question...",
+      "game": "Chargement du jeu..."
+    },
+    "error": {
+      "loadFailed": "Échec du chargement des questions",
+      "retry": "Réessayer"
+    }
   }
 }

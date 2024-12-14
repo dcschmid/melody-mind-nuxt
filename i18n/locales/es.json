@@ -171,5 +171,55 @@
     "submitButton": "Enviar Link de Restablecimiento",
     "backToLogin": "Volver al Inicio de Sesión",
     "successMessage": "Si existe una cuenta con este correo electrónico, recibirás un enlace para restablecer la contraseña en breve."
+  },
+  "game": {
+    "audienceOpinion": "Opinión del Público",
+    "confidence": "Seguridad",
+    "points": "Puntos: {base} + {time} puntos bonus",
+    "round": "Ronda: {current} / {max}",
+    "points_label": "Puntos",
+    "expert": {
+      "title": "Opinión del Experto",
+      "name": "Experto"
+    },
+    "correct": "¡Correcto!",
+    "wrong": "¡Incorrecto!",
+    "correctAnswer": "Respuesta correcta:",
+    "didYouKnow": "¿Sabías que?",
+    "nextQuestion": "Siguiente Pregunta",
+    "gameOver": {
+      "title": "¡Juego Terminado!",
+      "correctAnswers": "Respuestas Correctas",
+      "backToMenu": "Volver al Menú Principal"
+    },
+    "jokers": {
+      "remaining": "Restantes: {count}",
+      "fiftyFifty": "Usar comodín 50:50",
+      "audience": "Usar comodín del público",
+      "phone": "Usar comodín telefónico"
+    },
+    "audio": {
+      "play": "Reproducir",
+      "pause": "Pausar",
+      "noAudio": "Audio no disponible"
+    },
+    "streaming": {
+      "spotify": "Escuchar en Spotify",
+      "apple": "Escuchar en Apple Music",
+      "deezer": "Escuchar en Deezer"
+    },
+    "album": {
+      "artist": "Artista",
+      "year": "Año",
+      "noPreview": "Vista previa no disponible"
+    },
+    "loading": {
+      "question": "Cargando pregunta...",
+      "game": "Cargando juego..."
+    },
+    "error": {
+      "loadFailed": "Error al cargar las preguntas",
+      "retry": "Intentar de nuevo"
+    }
   }
 }

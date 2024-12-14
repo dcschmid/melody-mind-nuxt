@@ -171,5 +171,55 @@
     "submitButton": "Zurücksetzen-Link senden",
     "backToLogin": "Zurück zur Anmeldung",
     "successMessage": "Wenn ein Konto mit dieser E-Mail existiert, erhalten Sie in Kürze einen Link zum Zurücksetzen des Passworts."
+  },
+  "game": {
+    "audienceOpinion": "Publikumsmeinung",
+    "confidence": "Sicherheit",
+    "points": "Punkte: {base} + {time} Bonuspunkte",
+    "round": "Runde: {current} / {max}",
+    "points_label": "Punkte",
+    "expert": {
+      "title": "Experten-Meinung",
+      "name": "Experte"
+    },
+    "correct": "Richtig!",
+    "wrong": "Leider falsch!",
+    "correctAnswer": "Richtige Antwort:",
+    "didYouKnow": "Wusstest du schon?",
+    "nextQuestion": "Nächste Frage",
+    "gameOver": {
+      "title": "Spiel beendet!",
+      "correctAnswers": "Richtige Antworten",
+      "backToMenu": "Zurück zum Hauptmenü"
+    },
+    "jokers": {
+      "remaining": "Verbleibend: {count}",
+      "fiftyFifty": "50:50 Joker verwenden",
+      "audience": "Publikumsjoker verwenden",
+      "phone": "Telefonjoker verwenden"
+    },
+    "audio": {
+      "play": "Abspielen",
+      "pause": "Pause",
+      "noAudio": "Keine Audiodatei verfügbar"
+    },
+    "streaming": {
+      "spotify": "Auf Spotify hören",
+      "apple": "Auf Apple Music hören",
+      "deezer": "Auf Deezer hören"
+    },
+    "album": {
+      "artist": "Künstler",
+      "year": "Jahr",
+      "noPreview": "Keine Vorschau verfügbar"
+    },
+    "loading": {
+      "question": "Lade Frage...",
+      "game": "Spiel wird geladen..."
+    },
+    "error": {
+      "loadFailed": "Fehler beim Laden der Fragen",
+      "retry": "Erneut versuchen"
+    }
   }
 }

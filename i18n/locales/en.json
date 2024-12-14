@@ -171,5 +171,55 @@
     "submitButton": "Send Reset Link",
     "backToLogin": "Back to Login",
     "successMessage": "If an account exists with this email, you will receive a password reset link shortly."
+  },
+  "game": {
+    "audienceOpinion": "Audience Opinion",
+    "confidence": "Confidence",
+    "points": "Points: {base} + {time} bonus points",
+    "round": "Round: {current} / {max}",
+    "points_label": "Points",
+    "expert": {
+      "title": "Expert Opinion",
+      "name": "Expert"
+    },
+    "correct": "Correct!",
+    "wrong": "Wrong!",
+    "correctAnswer": "Correct answer:",
+    "didYouKnow": "Did you know?",
+    "nextQuestion": "Next Question",
+    "gameOver": {
+      "title": "Game Over!",
+      "correctAnswers": "Correct Answers",
+      "backToMenu": "Back to Main Menu"
+    },
+    "jokers": {
+      "remaining": "Remaining: {count}",
+      "fiftyFifty": "Use 50:50 Joker",
+      "audience": "Use Audience Joker",
+      "phone": "Use Phone Joker"
+    },
+    "audio": {
+      "play": "Play",
+      "pause": "Pause",
+      "noAudio": "No audio available"
+    },
+    "streaming": {
+      "spotify": "Listen on Spotify",
+      "apple": "Listen on Apple Music",
+      "deezer": "Listen on Deezer"
+    },
+    "album": {
+      "artist": "Artist",
+      "year": "Year",
+      "noPreview": "No preview available"
+    },
+    "loading": {
+      "question": "Loading question...",
+      "game": "Loading game..."
+    },
+    "error": {
+      "loadFailed": "Failed to load questions",
+      "retry": "Try again"
+    }
   }
 }
