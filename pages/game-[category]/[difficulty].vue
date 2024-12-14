@@ -201,40 +201,51 @@
 
             <!-- Endscreen -->
             <div v-else class="game-end-screen">
-                <h2>Spiel beendet!</h2>
-
-                <div class="final-score">
-                    <h3>Deine Gesamtpunktzahl:</h3>
-                    <p class="points">{{ totalPoints }} Punkte</p>
-                </div>
-
-                <div class="reward-section">
-                    <div class="record-icon" :class="recordClass">
-                        <Icon v-if="earnedRecord" :name="recordIcon" size="64" />
+                <div class="end-content">
+                    <div class="end-header">
+                        <h2>Spiel beendet!</h2>
+                        <div class="final-score-container">
+                            <div class="score-circle">
+                                <div class="score-inner">
+                                    <span class="points">{{ totalPoints }}</span>
+                                    <span class="points-label">Punkte</span>
+                                </div>
+                            </div>
+                            <div class="stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">Richtige Antworten</span>
+                                    <span class="stat-value">{{ correctAnswers }} / {{ maxQuestions }}</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p class="reward-text">
-                        <template v-if="allQuestionsCorrect">
-                            {{ goldMessages[Math.floor(Math.random() * goldMessages.length)] }}
-                        </template>
-                        <template v-else-if="correctAnswers >= (maxQuestions * 0.75)">
-                            {{ silverMessages[Math.floor(Math.random() * silverMessages.length)] }}
-                        </template>
-                        <template v-else-if="correctAnswers >= (maxQuestions * 0.5)">
-                            {{ bronzeMessages[Math.floor(Math.random() * bronzeMessages.length)] }}
-                        </template>
-                        <template v-else>
-                            {{ participationMessages[Math.floor(Math.random() * participationMessages.length)] }}
-                        </template>
-                    </p>
-                </div>
 
-                <div class="end-actions">
-                    <button @click="restartGame" class="button restart-button">
-                        Nochmal spielen
-                    </button>
-                    <NuxtLink to="/gamehome" class="button home-button">
-                        Zurück zum Hauptmenü
-                    </NuxtLink>
+                    <div class="reward-section" :class="recordClass">
+                        <div class="record-icon">
+                            <Icon v-if="earnedRecord" :name="recordIcon" size="64" />
+                        </div>
+                        <p class="reward-text">
+                            <template v-if="allQuestionsCorrect">
+                                {{ goldMessages[Math.floor(Math.random() * goldMessages.length)] }}
+                            </template>
+                            <template v-else-if="correctAnswers >= (maxQuestions * 0.75)">
+                                {{ silverMessages[Math.floor(Math.random() * silverMessages.length)] }}
+                            </template>
+                            <template v-else-if="correctAnswers >= (maxQuestions * 0.5)">
+                                {{ bronzeMessages[Math.floor(Math.random() * bronzeMessages.length)] }}
+                            </template>
+                            <template v-else>
+                                {{ participationMessages[Math.floor(Math.random() * participationMessages.length)] }}
+                            </template>
+                        </p>
+                    </div>
+
+                    <div class="end-actions">
+                        <NuxtLink to="/gamehome" class="button home-button">
+                            <Icon name="material-symbols:home" size="36" />
+                            <span>Zurück zum Hauptmenü</span>
+                        </NuxtLink>
+                    </div>
                 </div>
             </div>
         </main>
@@ -626,14 +637,6 @@ watch(() => usedQuestions.value.length, (newLength) => {
 })
 
 const allQuestionsCorrect = computed(() => correctAnswers.value === maxQuestions.value)
-
-const restartGame = () => {
-    usedQuestions.value = []
-    correctAnswers.value = 0
-    totalPoints.value = 0
-    pointsDisplay.value?.resetPoints()
-    loadQuestions()
-}
 
 const earnedRecord = computed(() => correctAnswers.value >= (maxQuestions.value * 0.5))
 const recordIcon = computed(() => {
@@ -1341,26 +1344,187 @@ const participationMessages = [
 }
 
 .game-end-screen {
-    text-align: center;
-    max-width: var(--content-width);
-    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-large);
 
-    .reward-section {
+    .end-content {
         background: var(--surface-color);
         border-radius: var(--border-radius);
         padding: var(--padding-large);
         box-shadow: var(--box-shadow);
         border: 1px solid rgb(255 255 255 / 10%);
+        max-width: 600px;
+        width: 100%;
+        animation: slideUp 0.5s var(--transition-bounce);
+    }
 
-        .record-icon {
-            transition: transform var(--transition-speed);
+    .end-header {
+        text-align: center;
+        margin-bottom: var(--padding-large);
 
-            &:hover {
-                transform: rotate(20deg);
-            }
+        h2 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin-bottom: var(--padding-large);
+            background: linear-gradient(to right, var(--primary-color), var(--highlight-color));
+            -webkit-background-clip: text;
+            color: transparent;
         }
     }
 
+    .final-score-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--padding-large);
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+            justify-content: center;
+        }
+    }
+
+    .score-circle {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary-color), var(--highlight-color));
+        padding: 4px;
+        animation: pulse 2s infinite;
+
+        .score-inner {
+            width: 100%;
+            height: 100%;
+            background: var(--surface-color);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .points {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, var(--primary-color), var(--highlight-color));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .points-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+    }
+
+    .stats {
+        display: flex;
+        flex-direction: column;
+        gap: var(--padding-medium);
+
+        .stat-item {
+            background: rgb(255 255 255 / 5%);
+            padding: var(--padding-medium);
+            border-radius: var(--border-radius);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+    }
+
+    .reward-section {
+        text-align: center;
+        margin: var(--padding-large) 0;
+        padding: var(--padding-large);
+        border-radius: var(--border-radius);
+        background: rgb(255 255 255 / 5%);
+
+        &.gold {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.2));
+        }
+
+        &.silver {
+            background: linear-gradient(135deg, rgba(192, 192, 192, 0.1), rgba(192, 192, 192, 0.2));
+        }
+
+        &.bronze {
+            background: linear-gradient(135deg, rgba(205, 127, 50, 0.1), rgba(205, 127, 50, 0.2));
+        }
+
+        .record-icon {
+            margin-bottom: var(--padding-medium);
+
+            .icon {
+                filter: drop-shadow(0 0 8px currentColor);
+            }
+        }
+
+        .reward-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+    }
+
+    .end-actions {
+        display: flex;
+        justify-content: center;
+        margin-top: var(--padding-large);
+
+        .home-button {
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--padding-small);
+            padding: var(--padding-medium) var(--padding-large);
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all var(--transition-speed);
+            border-radius: var(--border-radius);
+
+            &:hover {
+                background: var(--primary-dark);
+                transform: translateY(-2px);
+                box-shadow: var(--box-shadow-hover);
+            }
+        }
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(var(--primary-color-rgb), 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(var(--primary-color-rgb), 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(var(--primary-color-rgb), 0);
+    }
 }
 
 .audience-help {
