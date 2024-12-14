@@ -255,10 +255,13 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { authClient } from '~/lib/auth-client';
 
 definePageMeta({
     middleware: 'auth'
 })
+
+const session = authClient.useSession()
 
 const route = useRoute()
 const { locale } = useI18n()
@@ -871,6 +874,41 @@ const participationMessages = [
     "Mach weiter! 💪\nAus jedem Spiel lernst du etwas Neues! Nächste Runde!"
 ]
 
+const { saveGameResult } = useGameScore()
+
+// At game end
+const finishGame = async () => {
+  try {
+    if (!session.value?.data?.user?.id) {
+      console.error('No active session')
+      return
+    }
+
+    let earnedLP = ''
+    if (allQuestionsCorrect.value) {
+      earnedLP = 'gold'
+    } else if (correctAnswers.value >= (maxQuestions.value * 0.75)) {
+      earnedLP = 'silver'
+    } else if (correctAnswers.value >= (maxQuestions.value * 0.5)) {
+      earnedLP = 'bronze'
+    }
+
+    await saveGameResult(
+      category,
+      totalPoints.value,
+      earnedLP,
+      locale.value
+    )
+  } catch (error) {
+    console.error('Error saving game results:', error)
+  }
+}
+
+watch(() => gameFinished.value, (isFinished) => {
+  if (isFinished) {
+    finishGame()
+  }
+})
 
 </script>
 
@@ -1509,6 +1547,7 @@ const participationMessages = [
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1519,9 +1558,11 @@ const participationMessages = [
     0% {
         box-shadow: 0 0 0 0 rgba(var(--primary-color-rgb), 0.4);
     }
+
     70% {
         box-shadow: 0 0 0 10px rgba(var(--primary-color-rgb), 0);
     }
+
     100% {
         box-shadow: 0 0 0 0 rgba(var(--primary-color-rgb), 0);
     }

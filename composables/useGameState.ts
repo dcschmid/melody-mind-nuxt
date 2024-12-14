@@ -1,15 +1,30 @@
+interface Question {
+  question: string;
+  options: string[];
+  correctAnswer: string;
+  trivia: string;
+}
+
 interface GameState {
-  currentQuestion: Question | null
-  questions: Question[]
-  usedQuestions: number[]
-  gameFinished: boolean
-  correctAnswers: number
-  totalPoints: number
-  remainingJokers: number
+  currentQuestion: Question | null;
+  questions: Question[];
+  usedQuestions: number[];
+  gameFinished: boolean;
+  correctAnswers: number;
+  totalPoints: number;
+  remainingJokers: number;
 }
 
 export function useGameState(difficulty: string) {
-  // Basis-State
+  const getTotalJokers = (difficulty: string): number => {
+    switch (difficulty) {
+      case 'easy': return 3
+      case 'medium': return 5
+      case 'hard': return 7
+      default: return 3
+    }
+  }
+
   const state = reactive<GameState>({
     currentQuestion: null,
     questions: [],
@@ -50,4 +65,4 @@ export function useGameState(difficulty: string) {
     maxQuestions,
     selectRandomQuestion
   }
-} 
+}

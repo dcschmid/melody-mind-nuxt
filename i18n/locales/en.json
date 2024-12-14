@@ -59,9 +59,10 @@
     "skipToMain": "Skip to main content",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
+    "mainMenu": "Main Menu",
     "home": "Home",
-    "rules": "Game Rules",
-    "highscores": "High Scores",
+    "rules": "Rules",
+    "highscores": "Highscores",
     "profile": "Profile",
     "signOut": "Sign Out"
   },

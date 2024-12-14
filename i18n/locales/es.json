@@ -59,8 +59,9 @@
     "skipToMain": "Ir al contenido principal",
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
+    "mainMenu": "Menú Principal",
     "home": "Inicio",
-    "rules": "Reglas del juego",
+    "rules": "Reglas",
     "highscores": "Puntuaciones",
     "profile": "Perfil",
     "signOut": "Cerrar sesión"

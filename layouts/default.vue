@@ -15,7 +15,7 @@
         </header>
 
         <div id="menu" class="menu" :class="{ 'is-open': isMenuOpen }" @keydown.esc="closeMenu" tabindex="-1"
-            role="dialog" aria-modal="true">
+            role="dialog" aria-modal="true" :aria-label="$t('navigation.mainMenu')">
             <button class="close-button" :aria-label="$t('navigation.closeMenu')" @click="closeMenu">
                 <Icon name="material-symbols:close" size="36" />
             </button>
