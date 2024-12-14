@@ -2060,7 +2060,6 @@ const resultMessage = ref('')
         }
     }
 }
-}
 
 .confidence-text {
     font-size: clamp(0.9rem, 2.5vw, 1rem);
