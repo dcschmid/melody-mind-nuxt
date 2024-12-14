@@ -1,247 +1,261 @@
 <template>
     <NuxtLayout name="default" :show-header="false" :show-menu="false" :show-coins="false">
         <main>
-            <div v-if="!gameFinished" class="game-content">
-                <div v-if="!showSolution">
-                    <div class="game-header">
-                        <div class="header-left">
-                            <h1>{{ currentCategoryData?.name || category }}</h1>
-                            <p class="round-counter">{{ $t('game.round', {
-                                current: usedQuestions.length, max:
-                                    maxQuestions
-                            }) }}</p>
-                        </div>
-                        <div class="header-right">
-                            <div class="points-display">
-                                <div class="points-container">
-                                    <span class="points" :class="{ 'points-update': isAnimating }">
-                                        {{ formattedPoints }}
-                                    </span>
-                                    <span class="points-label">{{ $t('game.points_label') }}</span>
+            <Transition name="slide" mode="out-in">
+                <!-- Game Content -->
+                <div v-if="!gameFinished" class="game-content" :key="'game'">
+                    <Transition name="slide" mode="out-in">
+                        <!-- Question View -->
+                        <div v-if="!showSolution" :key="'question'">
+                            <div class="game-header">
+                                <div class="header-left">
+                                    <h1>{{ currentCategoryData?.name || category }}</h1>
+                                    <p class="round-counter">{{ $t('game.round', {
+                                        current: usedQuestions.length, max:
+                                            maxQuestions
+                                    }) }}</p>
                                 </div>
-                                <transition name="bonus">
-                                    <div v-if="showBonus" class="bonus-indicator">
-                                        <div class="bonus-total">+{{ latestBonus.base }}</div>
-                                        <div class="bonus-breakdown">
-                                            <span class="time">+{{ latestBonus.time }} Bonus</span>
+                                <div class="header-right">
+                                    <div class="points-display">
+                                        <div class="points-container">
+                                            <span class="points" :class="{ 'points-update': isAnimating }">
+                                                {{ formattedPoints }}
+                                            </span>
+                                            <span class="points-label">{{ $t('game.points_label') }}</span>
                                         </div>
-                                    </div>
-                                </transition>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div v-if="currentQuestion" class="question-container">
-                        <!-- Frage -->
-                        <div class="question">
-                            <h2>{{ currentQuestion.question }}</h2>
-                        </div>
-
-                        <!-- Antwortmöglichkeiten -->
-                        <div class="options">
-                            <button v-for="(option, index) in currentQuestion.options" :key="index"
-                                class="button option-button" :class="{ 'hidden': hiddenOptions.includes(option) }"
-                                @click="selectAnswer(option)">
-                                <span>{{ option }}</span>
-                            </button>
-                        </div>
-
-                        <!-- Telefonjoker Antwort -->
-                        <div v-if="phoneExpertOpinion" class="phone-expert">
-                            <h3>{{ $t('game.expert.title') }}</h3>
-                            <div class="expert-message">
-                                <div class="expert-header">
-                                    <Icon name="material-symbols:phone" class="phone-icon" />
-                                    <span class="expert-name">{{ phoneExpertOpinion.expert }}</span>
-                                </div>
-                                <div class="message-content">
-                                    <p class="expert-answer">{{ phoneExpertOpinion.message }}</p>
-                                    <div class="confidence-bar-container">
-                                        <div class="confidence-bar"
-                                            :style="{ '--confidence': phoneExpertConfidence + '%' }" :class="{
-                                                'high': phoneExpertConfidence >= 80,
-                                                'medium': phoneExpertConfidence >= 60 && phoneExpertConfidence < 80,
-                                                'low': phoneExpertConfidence < 60
-                                            }">
-                                            <div class="confidence-level"></div>
-                                        </div>
-                                        <span class="confidence-text">{{ phoneExpertConfidence }}% {{
-                                            $t('game.confidence') }}</span>
+                                        <transition name="bonus">
+                                            <div v-if="showBonus" class="bonus-indicator">
+                                                <div class="bonus-total">+{{ latestBonus.base }}</div>
+                                                <div class="bonus-breakdown">
+                                                    <span class="time">+{{ latestBonus.time }} Bonus</span>
+                                                </div>
+                                            </div>
+                                        </transition>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Publikumsjoker Ergebnis -->
-                        <div v-if="Object.keys(audienceHelp).length > 0" class="audience-help">
-                            <h3>{{ $t('game.audienceOpinion') }}</h3>
-                            <div class="audience-bars">
-                                <div v-for="(percentage, option) in audienceHelp" :key="option" class="bar-item">
-                                    <div class="option-label">
-                                        <div class="option-text">{{ option }}</div>
-                                        <div class="percentage-text">{{ percentage }}%</div>
-                                    </div>
-                                    <div class="bar-container">
-                                        <div class="bar" :style="{ width: `${percentage}%` }" :class="{
-                                            'high': percentage >= 70,
-                                            'medium': percentage >= 40 && percentage < 70,
-                                            'low': percentage < 40
-                                        }">
-                                        </div>
-                                    </div>
+                            <div v-if="currentQuestion" class="question-container">
+                                <!-- Frage -->
+                                <div class="question">
+                                    <h2>{{ currentQuestion.question }}</h2>
                                 </div>
-                            </div>
-                        </div>
 
-                        <!-- Joker Section -->
-                        <div class="jokers-section">
-                            <div class="joker-buttons">
-                                <!-- 50:50 Joker -->
-                                <button class="button joker-button" @click="useFiftyFiftyJoker"
-                                    :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
-                                    :aria-label="$t('game.jokers.fiftyFifty')"
-                                    :class="{ 'disabled': remainingJokers === 0 || jokerUsedForCurrentQuestion }">
-                                    <Icon name="material-symbols:balance" size="30" />
-                                </button>
-
-                                <!-- Publikumsjoker -->
-                                <button class="button joker-button" @click="useAudienceJoker"
-                                    :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
-                                    :aria-label="$t('game.jokers.audience')"
-                                    :class="{ 'disabled': remainingJokers === 0 || jokerUsedForCurrentQuestion }">
-                                    <Icon name="formkit:people" size="30" />
-                                </button>
-
-                                <!-- Telefonjoker -->
-                                <button class="button joker-button" @click="usePhoneJoker"
-                                    :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
-                                    :aria-label="$t('game.jokers.phone')"
-                                    :class="{ 'disabled': remainingJokers === 0 || jokerUsedForCurrentQuestion }">
-                                    <Icon name="gg:phone" size="30" />
-                                </button>
-                            </div>
-                            <span class="joker-count">{{ $t('game.jokers.remaining', { count: remainingJokers })
-                                }}</span>
-                        </div>
-                    </div>
-                </div>
-                <div v-else class="solution-container">
-                    <!-- Ergebnis-Banner -->
-                    <div class="result-banner" :class="{ 'correct': isCorrectAnswer }">
-                        <div class="result-header">
-                            <Icon :name="isCorrectAnswer ? 'material-symbols:check-circle' : 'material-symbols:cancel'"
-                                class="result-icon" size="28" />
-                            <h2>{{ isCorrectAnswer ? $t('game.correct') : $t('game.wrong') }}</h2>
-                        </div>
-                        <div v-if="isCorrectAnswer" class="points-breakdown">
-                            <div class="points">
-                                {{ $t('game.points', { base: latestBonus.base, time: latestBonus.time }) }}
-                            </div>
-                        </div>
-                        <div v-else class="points"> 0 {{ $t('game.points_label') }}</div>
-
-                        <div class="correct-answer">
-                            <span class="label">{{ $t('game.correctAnswer') }}</span>
-                            <div class="text">{{ currentQuestion.correctAnswer }}</div>
-                        </div>
-                    </div>
-
-                    <!-- Content Container -->
-                    <div class="content-wrapper">
-
-                        <!-- Album Info -->
-                        <div v-if="currentArtist" class="album-box">
-                            <div class="cover-wrapper">
-                                <img :src="currentArtist.coverSrc"
-                                    :alt="`${currentArtist.artist} - ${currentArtist.album}`" />
-                            </div>
-                            <div class="player-info-wrapper">
-                                <div class="audio-player">
-                                    <button @click="togglePlay" class="play-button"
-                                        :disabled="!currentArtist?.preview_link"
-                                        :title="currentArtist?.preview_link ? (isPlaying ? $t('game.audio.pause') : $t('game.audio.play')) : $t('game.audio.noAudio')">
-                                        <Icon
-                                            :name="isPlaying ? 'material-symbols:pause' : 'material-symbols:play-arrow'"
-                                            size="36" />
+                                <!-- Antwortmöglichkeiten -->
+                                <div class="options">
+                                    <button v-for="(option, index) in currentQuestion.options" :key="index"
+                                        class="button option-button"
+                                        :class="{ 'hidden': hiddenOptions.includes(option) }"
+                                        @click="selectAnswer(option)">
+                                        <span>{{ option }}</span>
                                     </button>
-                                    <div class="progress-bar">
-                                        <div class="progress" :style="{ width: `${(currentTime / duration) * 100}%` }">
+                                </div>
+
+                                <!-- Telefonjoker Antwort -->
+                                <div v-if="phoneExpertOpinion" class="phone-expert">
+                                    <h3>{{ $t('game.expert.title') }}</h3>
+                                    <div class="expert-message">
+                                        <div class="expert-header">
+                                            <Icon name="material-symbols:phone" class="phone-icon" />
+                                            <span class="expert-name">{{ phoneExpertOpinion.expert }}</span>
+                                        </div>
+                                        <div class="message-content">
+                                            <p class="expert-answer">{{ phoneExpertOpinion.message }}</p>
+                                            <div class="confidence-bar-container">
+                                                <div class="confidence-bar"
+                                                    :style="{ '--confidence': phoneExpertConfidence + '%' }" :class="{
+                                                        'high': phoneExpertConfidence >= 80,
+                                                        'medium': phoneExpertConfidence >= 60 && phoneExpertConfidence < 80,
+                                                        'low': phoneExpertConfidence < 60
+                                                    }">
+                                                    <div class="confidence-level"></div>
+                                                </div>
+                                                <span class="confidence-text">{{ phoneExpertConfidence }}% {{
+                                                    $t('game.confidence') }}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="info">
-                                    <p class="artist">{{ $t('game.album.artist') }}: {{ currentArtist.artist }}</p>
-                                    <p class="year">{{ $t('game.album.year') }}: {{ currentArtist.year }}</p>
+
+                                <!-- Publikumsjoker Ergebnis -->
+                                <div v-if="Object.keys(audienceHelp).length > 0" class="audience-help">
+                                    <h3>{{ $t('game.audienceOpinion') }}</h3>
+                                    <div class="audience-bars">
+                                        <div v-for="(percentage, option) in audienceHelp" :key="option"
+                                            class="bar-item">
+                                            <div class="option-label">
+                                                <div class="option-text">{{ option }}</div>
+                                                <div class="percentage-text">{{ percentage }}%</div>
+                                            </div>
+                                            <div class="bar-container">
+                                                <div class="bar" :style="{ width: `${percentage}%` }" :class="{
+                                                    'high': percentage >= 70,
+                                                    'medium': percentage >= 40 && percentage < 70,
+                                                    'low': percentage < 40
+                                                }">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Joker Section -->
+                                <div class="jokers-section">
+                                    <div class="joker-buttons">
+                                        <!-- 50:50 Joker -->
+                                        <button class="button joker-button" @click="useFiftyFiftyJoker"
+                                            :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
+                                            :aria-label="$t('game.jokers.fiftyFifty')"
+                                            :class="{ 'disabled': remainingJokers === 0 || jokerUsedForCurrentQuestion }">
+                                            <Icon name="material-symbols:balance" size="30" />
+                                        </button>
+
+                                        <!-- Publikumsjoker -->
+                                        <button class="button joker-button" @click="useAudienceJoker"
+                                            :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
+                                            :aria-label="$t('game.jokers.audience')"
+                                            :class="{ 'disabled': remainingJokers === 0 || jokerUsedForCurrentQuestion }">
+                                            <Icon name="formkit:people" size="30" />
+                                        </button>
+
+                                        <!-- Telefonjoker -->
+                                        <button class="button joker-button" @click="usePhoneJoker"
+                                            :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
+                                            :aria-label="$t('game.jokers.phone')"
+                                            :class="{ 'disabled': remainingJokers === 0 || jokerUsedForCurrentQuestion }">
+                                            <Icon name="gg:phone" size="30" />
+                                        </button>
+                                    </div>
+                                    <span class="joker-count">{{ $t('game.jokers.remaining', { count: remainingJokers })
+                                        }}</span>
                                 </div>
                             </div>
-                            <div class="streaming-links">
-                                <a v-if="currentArtist.spotify_link" :href="currentArtist.spotify_link" target="_blank"
-                                    class="stream-link spotify" :title="$t('game.streaming.spotify')">
-                                    <Icon name="mdi:spotify" size="36" />
-                                </a>
-                                <a v-if="currentArtist.apple_music_link" :href="currentArtist.apple_music_link"
-                                    target="_blank" class="stream-link apple" :title="$t('game.streaming.apple')">
-                                    <Icon name="mdi:apple" size="36" />
-                                </a>
-                                <a v-if="currentArtist.deezer_link" :href="currentArtist.deezer_link" target="_blank"
-                                    class="stream-link deezer" :title="$t('game.streaming.deezer')">
-                                    <Icon name="simple-icons:deezer" size="36" />
-                                </a>
+                        </div>
+                        <!-- Solution View -->
+                        <div v-else :key="'solution'" class="solution-container">
+                            <!-- Ergebnis-Banner -->
+                            <div class="result-banner" :class="{ 'correct': isCorrectAnswer }">
+                                <div class="result-header">
+                                    <Icon
+                                        :name="isCorrectAnswer ? 'material-symbols:check-circle' : 'material-symbols:cancel'"
+                                        class="result-icon" size="28" />
+                                    <h2>{{ isCorrectAnswer ? $t('game.correct') : $t('game.wrong') }}</h2>
+                                </div>
+                                <div v-if="isCorrectAnswer" class="points-breakdown">
+                                    <div class="points">
+                                        {{ $t('game.points', { base: latestBonus.base, time: latestBonus.time }) }}
+                                    </div>
+                                </div>
+                                <div v-else class="points"> 0 {{ $t('game.points_label') }}</div>
+
+                                <div class="correct-answer">
+                                    <span class="label">{{ $t('game.correctAnswer') }}</span>
+                                    <div class="text">{{ currentQuestion.correctAnswer }}</div>
+                                </div>
+                            </div>
+
+                            <!-- Content Container -->
+                            <div class="content-wrapper">
+
+                                <!-- Album Info -->
+                                <div v-if="currentArtist" class="album-box">
+                                    <div class="cover-wrapper">
+                                        <img :src="currentArtist.coverSrc"
+                                            :alt="`${currentArtist.artist} - ${currentArtist.album}`" />
+                                    </div>
+                                    <div class="player-info-wrapper">
+                                        <div class="audio-player">
+                                            <button @click="togglePlay" class="play-button"
+                                                :disabled="!currentArtist?.preview_link"
+                                                :title="currentArtist?.preview_link ? (isPlaying ? $t('game.audio.pause') : $t('game.audio.play')) : $t('game.audio.noAudio')">
+                                                <Icon
+                                                    :name="isPlaying ? 'material-symbols:pause' : 'material-symbols:play-arrow'"
+                                                    size="36" />
+                                            </button>
+                                            <div class="progress-bar">
+                                                <div class="progress"
+                                                    :style="{ width: `${(currentTime / duration) * 100}%` }">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="info">
+                                            <p class="artist">{{ $t('game.album.artist') }}: {{ currentArtist.artist }}
+                                            </p>
+                                            <p class="year">{{ $t('game.album.year') }}: {{ currentArtist.year }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="streaming-links">
+                                        <a v-if="currentArtist.spotify_link" :href="currentArtist.spotify_link"
+                                            target="_blank" class="stream-link spotify"
+                                            :title="$t('game.streaming.spotify')">
+                                            <Icon name="mdi:spotify" size="36" />
+                                        </a>
+                                        <a v-if="currentArtist.apple_music_link" :href="currentArtist.apple_music_link"
+                                            target="_blank" class="stream-link apple"
+                                            :title="$t('game.streaming.apple')">
+                                            <Icon name="mdi:apple" size="36" />
+                                        </a>
+                                        <a v-if="currentArtist.deezer_link" :href="currentArtist.deezer_link"
+                                            target="_blank" class="stream-link deezer"
+                                            :title="$t('game.streaming.deezer')">
+                                            <Icon name="simple-icons:deezer" size="36" />
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Trivia Information -->
+                                <div class="trivia-box">
+                                    <h3>{{ $t('game.didYouKnow') }}</h3>
+                                    <p>{{ currentQuestion.trivia }}</p>
+                                </div>
+
+                                <button @click="nextQuestion" class="next-button">
+                                    <span>{{ $t('game.nextQuestion') }}</span>
+                                    <Icon name="material-symbols:arrow-forward" />
+                                </button>
+                            </div>
+                        </div>
+                    </Transition>
+                </div>
+                <!-- Game Over Screen -->
+                <div v-else class="game-end-screen" :key="'gameover'">
+                    <div class="end-content">
+                        <div class="end-header">
+                            <h2>{{ $t('game.gameOver.title') }}</h2>
+                            <div class="final-score-container">
+                                <div class="score-circle">
+                                    <div class="score-inner">
+                                        <span class="points">{{ totalPoints }}</span>
+                                        <span class="points-label">{{ $t('game.points_label') }}</span>
+                                    </div>
+                                </div>
+                                <div class="stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label">{{ $t('game.gameOver.correctAnswers') }}</span>
+                                        <span class="stat-value">{{ correctAnswers }} / {{ maxQuestions }}</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Trivia Information -->
-                        <div class="trivia-box">
-                            <h3>{{ $t('game.didYouKnow') }}</h3>
-                            <p>{{ currentQuestion.trivia }}</p>
+                        <div class="reward-section" :class="recordClass">
+                            <div class="record-icon">
+                                <Icon v-if="earnedRecord" :name="recordIcon" size="64" />
+                            </div>
+                            <p class="reward-text">
+                                {{ resultMessage }}
+                            </p>
                         </div>
 
-                        <button @click="nextQuestion" class="next-button">
-                            <span>{{ $t('game.nextQuestion') }}</span>
-                            <Icon name="material-symbols:arrow-forward" />
-                        </button>
+                        <div class="end-actions">
+                            <NuxtLink to="/gamehome" class="button home-button">
+                                <Icon name="material-symbols:home" size="36" />
+                                <span>{{ $t('game.gameOver.backToMenu') }}</span>
+                            </NuxtLink>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Endscreen -->
-            <div v-else class="game-end-screen">
-                <div class="end-content">
-                    <div class="end-header">
-                        <h2>{{ $t('game.gameOver.title') }}</h2>
-                        <div class="final-score-container">
-                            <div class="score-circle">
-                                <div class="score-inner">
-                                    <span class="points">{{ totalPoints }}</span>
-                                    <span class="points-label">{{ $t('game.points_label') }}</span>
-                                </div>
-                            </div>
-                            <div class="stats">
-                                <div class="stat-item">
-                                    <span class="stat-label">{{ $t('game.gameOver.correctAnswers') }}</span>
-                                    <span class="stat-value">{{ correctAnswers }} / {{ maxQuestions }}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="reward-section" :class="recordClass">
-                        <div class="record-icon">
-                            <Icon v-if="earnedRecord" :name="recordIcon" size="64" />
-                        </div>
-                        <p class="reward-text">
-                            {{ resultMessage }}
-                        </p>
-                    </div>
-
-                    <div class="end-actions">
-                        <NuxtLink to="/gamehome" class="button home-button">
-                            <Icon name="material-symbols:home" size="36" />
-                            <span>{{ $t('game.gameOver.backToMenu') }}</span>
-                        </NuxtLink>
-                    </div>
-                </div>
-            </div>
+            </Transition>
         </main>
     </NuxtLayout>
 </template>
@@ -314,8 +328,13 @@ const expertTitles = [
     "Laura"
 ]
 
-// Expertenantworten direkt aus der de.json übernehmen
-const expertResponsesByLocale = {
+type ResponseLocale = {
+    high: string[];
+    medium: string[];
+    low: string[];
+}
+
+const expertResponsesByLocale: Record<string, ResponseLocale> = {
     de: {
         high: [
             "Ohne jeden Zweifel - es ist '{answer}'. Ich habe die Original-Aufnahme-Session dokumentiert.",
@@ -2120,5 +2139,28 @@ const resultMessage = ref('')
     100% {
         transform: scale(1);
     }
+}
+
+// Slide transition
+.slide-enter-active,
+.slide-leave-active {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-enter-from {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+.slide-leave-to {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+// Optional: Add some base styling to prevent layout shifts
+.game-content,
+.game-end-screen {
+    position: relative;
+    min-height: 400px; // Adjust based on your content
 }
 </style>
