@@ -249,7 +249,7 @@
                         </div>
 
                         <div class="end-actions">
-                            <NuxtLink to="/gamehome" class="button home-button">
+                            <NuxtLink :to="$localePath('gamehome')" class="button home-button">
                                 <Icon name="material-symbols:home" size="36" />
                                 <span>{{ $t('game.gameOver.backToMenu') }}</span>
                             </NuxtLink>
