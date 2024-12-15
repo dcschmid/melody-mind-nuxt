@@ -1,5 +1,5 @@
 <template>
-    <NuxtLayout name="default" :show-header="true" :show-menu="false" :show-coins="false">
+    <NuxtLayout name="default" :show-header="true" :show-menu="false">
         <main class="login-page" id="main-content">
             <div class="content-wrapper">
                 <section class="welcome-section" v-motion-slide-top>

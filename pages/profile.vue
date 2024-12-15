@@ -1,5 +1,5 @@
 <template>
-    <NuxtLayout name="default" :show-header="true">
+    <NuxtLayout name="default" :show-header="true" :show-menu="true">
         <main class="profile-page">
             <!-- Profil-Header -->
             <section class="profile-header">
