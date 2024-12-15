@@ -221,5 +221,11 @@
       "loadFailed": "Échec du chargement des questions",
       "retry": "Réessayer"
     }
+  },
+  "highscore": {
+    "title": "Meilleurs Scores",
+    "total": "Classement Général",
+    "name": "Nom",
+    "points": "Points"
   }
 }

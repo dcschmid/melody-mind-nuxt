@@ -221,5 +221,11 @@
       "loadFailed": "Failed to load questions",
       "retry": "Try again"
     }
+  },
+  "highscore": {
+    "title": "Highscores",
+    "total": "Overall Ranking",
+    "name": "Name",
+    "points": "Points"
   }
 }

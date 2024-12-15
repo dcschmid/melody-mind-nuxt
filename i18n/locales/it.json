@@ -220,5 +220,11 @@
       "loadFailed": "Errore nel caricamento delle domande",
       "retry": "Riprova"
     }
+  },
+  "highscore": {
+    "title": "Punteggi Migliori",
+    "total": "Classifica Generale",
+    "name": "Nome",
+    "points": "Punti"
   }
 }

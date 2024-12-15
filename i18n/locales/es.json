@@ -221,5 +221,11 @@
       "loadFailed": "Error al cargar las preguntas",
       "retry": "Intentar de nuevo"
     }
+  },
+  "highscore": {
+    "title": "Puntuaciones",
+    "total": "Clasificación General",
+    "name": "Nombre",
+    "points": "Puntos"
   }
 }

@@ -221,5 +221,11 @@
       "loadFailed": "Fehler beim Laden der Fragen",
       "retry": "Erneut versuchen"
     }
+  },
+  "highscore": {
+    "title": "Bestenliste",
+    "total": "Gesamt-Rangliste",
+    "name": "Name",
+    "points": "Punkte"
   }
 }
