@@ -47,7 +47,7 @@ import { useI18n } from 'vue-i18n'
 import { authClient } from '~/lib/auth-client'
 
 const session = authClient.useSession()
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 const userData = ref({
     name: session.value?.data?.user?.name || '',
@@ -91,9 +91,11 @@ const formatDate = (dateString: string) => {
 const uniqueLPs = computed(() => {
     const unique = new Map();
     userData.value.wonLPs.forEach(lp => {
-        const key = `${lp.genre}-${lp.type}`;
-        if (!unique.has(key)) {
-            unique.set(key, lp);
+        if (lp.language === locale.value) {
+            const key = `${lp.genre}-${lp.type}`;
+            if (!unique.has(key)) {
+                unique.set(key, lp);
+            }
         }
     });
     return Array.from(unique.values());

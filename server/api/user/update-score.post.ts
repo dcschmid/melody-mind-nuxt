@@ -48,6 +48,13 @@ export default defineEventHandler(async (event) => {
       currentLPs = [];
     }
 
+    // Prüfe, ob bereits eine LP mit gleicher Kombination existiert
+    const lpExists = currentLPs.some(lp =>
+        lp.genre === genreName &&
+        lp.type === newLP &&
+        lp.language === language
+    );
+
     // Validiere pointsToAdd
     const numericPointsToAdd = Number(pointsToAdd);
     if (!Number.isFinite(numericPointsToAdd)) {
@@ -60,8 +67,8 @@ export default defineEventHandler(async (event) => {
     const currentPoints = Number(user?.total_user_points || 0);
     const newTotalPoints = currentPoints + numericPointsToAdd;
 
-    if (newLP) {
-      // Add new LP with metadata
+    // Nur hinzufügen wenn die LP noch nicht existiert
+    if (newLP && !lpExists) {
       currentLPs.push({
         genre: genreName,
         language,

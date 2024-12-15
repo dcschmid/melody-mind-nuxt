@@ -227,5 +227,18 @@
     "total": "Overall Ranking",
     "name": "Name",
     "points": "Points"
+  },
+  "profile": {
+    "title": "My Profile",
+    "points": "Total Points",
+    "lps": {
+      "title": "My Record Collection",
+      "none": "No records collected yet",
+      "types": {
+        "bronze": "Bronze LP",
+        "silver": "Silver LP",
+        "gold": "Gold LP"
+      }
+    }
   }
 }

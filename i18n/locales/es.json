@@ -227,5 +227,18 @@
     "total": "Clasificación General",
     "name": "Nombre",
     "points": "Puntos"
+  },
+  "profile": {
+    "title": "Mi Perfil",
+    "points": "Puntos Totales",
+    "lps": {
+      "title": "Mi Colección de Discos",
+      "none": "Aún no hay discos coleccionados",
+      "types": {
+        "bronze": "LP de Bronce",
+        "silver": "LP de Plata",
+        "gold": "LP de Oro"
+      }
+    }
   }
 }
