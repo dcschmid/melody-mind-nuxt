@@ -43,11 +43,12 @@
 
                                 <!-- Antwortmöglichkeiten -->
                                 <div class="options">
-                                    <button v-for="(option, index) in currentQuestion.options" :key="index"
+                                    <button v-for="(option, index) in currentOptions" :key="index"
                                         class="button option-button"
                                         :class="{ 'hidden': hiddenOptions.includes(option) }"
-                                        @click="selectAnswer(option)">
-                                        <span>{{ option }}</span>
+                                        @click="selectAnswer(option)"
+                                        :disabled="showSolution || hiddenOptions.includes(option)">
+                                        {{ option }}
                                     </button>
                                 </div>
 
@@ -626,7 +627,26 @@ const loadQuestions = async () => {
     }
 }
 
-// Verbesserte Funktion zum Auswählen einer zufälligen Frage
+// Funktion zum Mischen der Antwortoptionen
+const shuffleOptions = (question) => {
+    if (!question || !question.options) return []
+
+    // Erstelle eine Kopie des Arrays um das Original nicht zu verändern
+    const shuffledOptions = [...question.options]
+
+    // Fisher-Yates Shuffle Algorithmus
+    for (let i = shuffledOptions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+            ;[shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]]
+    }
+
+    return shuffledOptions
+}
+
+// Füge eine neue ref für die gemischten Optionen hinzu
+const currentOptions = ref([])
+
+// Aktualisiere die selectRandomQuestion Funktion
 const selectRandomQuestion = () => {
     // Wenn alle Fragen verwendet wurden, setze zurück
     if (usedQuestions.value.length === questions.value.length) {
@@ -643,7 +663,10 @@ const selectRandomQuestion = () => {
     usedQuestions.value.push(randomIndex)
     currentQuestion.value = questions.value[randomIndex]
 
-    // Reset Joker state for new question
+    // Mische die Antwortoptionen
+    currentOptions.value = shuffleOptions(currentQuestion.value)
+
+    // Reset Joker state für neue Frage
     jokerUsedForCurrentQuestion.value = false
     audienceHelp.value = {}
     hiddenOptions.value = []
