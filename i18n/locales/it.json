@@ -239,5 +239,114 @@
         "gold": "LP Oro"
       }
     }
+  },
+  "legal": {
+    "imprint": {
+      "title": "Note Legali",
+      "information": {
+        "title": "Informazioni ai sensi del § 5 TMG (Legge tedesca sui media telematici)",
+        "operator": "Daniel Schmid",
+        "address": "Hiltenspergerstr. 78, 80796 Monaco di Baviera",
+        "country": "Germania"
+      },
+      "contact": {
+        "title": "Contatto",
+        "emailLabel": "E-mail",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "responsible": {
+        "title": "Responsabile dei contenuti ai sensi del § 55 comma 2 RStV (Trattato interstatale tedesco sulla radiodiffusione)"
+      },
+      "lawReference": {
+        "title": "Riferimenti Legali",
+        "text": "Questo sito web è soggetto alla legge tedesca. Tutte le informazioni legali si riferiscono alla legislazione tedesca."
+      },
+      "disputeResolution": {
+        "title": "Risoluzione delle Controversie",
+        "text": "La Commissione Europea mette a disposizione una piattaforma per la risoluzione delle controversie online (OS)",
+        "link": "https://ec.europa.eu/consumers/odr/",
+        "additional": "Potete trovare il nostro indirizzo e-mail nelle note legali sopra riportate."
+      }
+    },
+    "privacy": {
+      "title": "Informativa sulla Privacy",
+      "overview": {
+        "title": "1. Privacy in Breve",
+        "general": {
+          "title": "Informazioni Generali",
+          "text": "Le seguenti note forniscono una semplice panoramica di ciò che accade ai vostri dati personali quando visitate questo sito web."
+        }
+      },
+      "dataCollection": {
+        "title": "2. Raccolta Dati sul Nostro Sito",
+        "cookies": {
+          "title": "Cookie",
+          "text": "Il nostro sito web utilizza i cookie. Questi sono piccoli file di testo che il vostro browser web memorizza sul vostro dispositivo."
+        },
+        "serverLogs": {
+          "title": "File di Log del Server",
+          "text": "Il fornitore delle pagine raccoglie e memorizza automaticamente le informazioni nei file di log del server che il vostro browser ci trasmette automaticamente."
+        }
+      },
+      "rights": {
+        "title": "3. I Vostri Diritti",
+        "intro": "Avete il diritto in qualsiasi momento di:",
+        "list": {
+          "information": "Ricevere informazioni sui vostri dati personali memorizzati",
+          "correction": "Richiedere la correzione o la cancellazione dei vostri dati personali",
+          "restriction": "Richiedere la limitazione del trattamento dei dati",
+          "objection": "Opporvi al trattamento dei dati",
+          "portability": "Ricevere i vostri dati in un formato strutturato"
+        }
+      },
+      "contact": {
+        "title": "4. Contatto",
+        "text": "Per domande sulla protezione dei dati potete contattarci in qualsiasi momento:",
+        "emailLabel": "E-mail",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "gameData": {
+        "title": "5. Trattamento dei Dati Specifici del Gioco",
+        "progress": {
+          "title": "Progressi di Gioco e Punteggi Migliori",
+          "intro": "Per la funzionalità del gioco, memorizziamo i seguenti dati:",
+          "list": {
+            "scores": "Risultati del gioco e punteggi ottenuti",
+            "awards": "Premi vinti (LP Oro, Argento e Bronzo)",
+            "rankings": "Posizione nelle classifiche"
+          },
+          "purpose": "Questi dati sono necessari per salvare i vostri progressi nel gioco e fornire la funzione dei punteggi migliori."
+        },
+        "localStorage": {
+          "title": "Archiviazione Locale",
+          "intro": "Utilizziamo l'archiviazione locale del vostro browser per:",
+          "list": {
+            "categories": "Memorizzazione nella cache delle informazioni sulle categorie",
+            "settings": "Impostazioni temporanee del gioco",
+            "language": "Impostazioni della lingua"
+          },
+          "storage": "Questi dati sono memorizzati esclusivamente sul vostro dispositivo e non vengono trasmessi ai nostri server."
+        },
+        "session": {
+          "title": "Gestione delle Sessioni",
+          "intro": "Per la funzionalità del gioco, utilizziamo i cookie di sessione che memorizzano le seguenti informazioni durante la vostra sessione di gioco:",
+          "list": {
+            "auth": "Stato di autenticazione",
+            "progress": "Progressi del gioco nella partita in corso",
+            "settings": "Impostazioni di gioco selezionate"
+          }
+        }
+      },
+      "deletion": {
+        "title": "6. Cancellazione dei Dati",
+        "intro": "Potete richiedere la cancellazione dei vostri dati di gioco in qualsiasi momento. Questo include:",
+        "list": {
+          "highscores": "Le vostre voci nei punteggi migliori",
+          "results": "Risultati di gioco memorizzati",
+          "account": "Informazioni collegate al vostro account"
+        },
+        "local": "Potete cancellare i dati locali nel vostro browser attraverso le impostazioni del browser."
+      }
+    }
   }
 }

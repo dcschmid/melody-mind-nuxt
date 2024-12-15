@@ -240,5 +240,114 @@
         "gold": "Gold LP"
       }
     }
+  },
+  "legal": {
+    "imprint": {
+      "title": "Legal Notice",
+      "information": {
+        "title": "Information according to § 5 TMG (German Telemedia Act)",
+        "operator": "Daniel Schmid",
+        "address": "Hiltenspergerstr. 78, 80796 Munich",
+        "country": "Germany"
+      },
+      "contact": {
+        "title": "Contact",
+        "emailLabel": "Email",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "responsible": {
+        "title": "Responsible for content according to § 55 para. 2 RStV (German Interstate Broadcasting Agreement)"
+      },
+      "lawReference": {
+        "title": "Legal References",
+        "text": "This website is subject to German law. All legal information refers to German legislation."
+      },
+      "disputeResolution": {
+        "title": "Dispute Resolution",
+        "text": "The European Commission provides a platform for online dispute resolution (OS)",
+        "link": "https://ec.europa.eu/consumers/odr/",
+        "additional": "You can find our email address in the legal notice above."
+      }
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "overview": {
+        "title": "1. Privacy at a Glance",
+        "general": {
+          "title": "General Information",
+          "text": "The following notes provide a simple overview of what happens to your personal data when you visit this website."
+        }
+      },
+      "dataCollection": {
+        "title": "2. Data Collection on Our Website",
+        "cookies": {
+          "title": "Cookies",
+          "text": "Our website uses cookies. These are small text files that your web browser stores on your device."
+        },
+        "serverLogs": {
+          "title": "Server Log Files",
+          "text": "The provider of the pages automatically collects and stores information in server log files that your browser automatically transmits to us."
+        }
+      },
+      "rights": {
+        "title": "3. Your Rights",
+        "intro": "You have the right at any time:",
+        "list": {
+          "information": "To receive information about your stored personal data",
+          "correction": "To request correction or deletion of your personal data",
+          "restriction": "To request restriction of data processing",
+          "objection": "To object to data processing",
+          "portability": "To receive your data in a structured format"
+        }
+      },
+      "contact": {
+        "title": "4. Contact",
+        "text": "If you have any questions about privacy, you can contact us at any time:",
+        "emailLabel": "Email",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "gameData": {
+        "title": "5. Game-Specific Data Processing",
+        "progress": {
+          "title": "Game Progress and Highscores",
+          "intro": "For the functionality of the game, we store the following data:",
+          "list": {
+            "scores": "Game results and achieved scores",
+            "awards": "Earned awards (Gold, Silver, and Bronze LPs)",
+            "rankings": "Position in the highscore lists"
+          },
+          "purpose": "This data is necessary to save your game progress and provide the highscore function."
+        },
+        "localStorage": {
+          "title": "Local Storage",
+          "intro": "We use your browser's local storage for:",
+          "list": {
+            "categories": "Caching category information",
+            "settings": "Temporary game settings",
+            "language": "Language settings"
+          },
+          "storage": "This data is stored exclusively on your device and is not transmitted to our servers."
+        },
+        "session": {
+          "title": "Session Management",
+          "intro": "For game functionality, we use session cookies that store the following information for the duration of your game session:",
+          "list": {
+            "auth": "Authentication status",
+            "progress": "Game progress in the current round",
+            "settings": "Selected game settings"
+          }
+        }
+      },
+      "deletion": {
+        "title": "6. Data Deletion",
+        "intro": "You can request the deletion of your game data at any time. This includes:",
+        "list": {
+          "highscores": "Your highscore entries",
+          "results": "Stored game results",
+          "account": "Information linked to your account"
+        },
+        "local": "You can delete local data in your browser through the browser settings."
+      }
+    }
   }
 }

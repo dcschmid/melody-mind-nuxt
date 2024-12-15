@@ -251,5 +251,114 @@
       "medium": "Mittel",
       "hard": "Schwer"
     }
+  },
+  "legal": {
+    "imprint": {
+      "title": "Impressum",
+      "information": {
+        "title": "Angaben gemäß § 5 TMG (Deutsches Telemediengesetz)",
+        "operator": "Daniel Schmid",
+        "address": "Hiltenspergerstr. 78, 80796 München",
+        "country": "Deutschland"
+      },
+      "contact": {
+        "title": "Kontakt",
+        "emailLabel": "E-Mail",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "responsible": {
+        "title": "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV (Deutscher Rundfunkstaatsvertrag)"
+      },
+      "lawReference": {
+        "title": "Rechtliche Hinweise",
+        "text": "Diese Website unterliegt deutschem Recht. Alle rechtlichen Angaben beziehen sich auf die deutsche Gesetzgebung."
+      },
+      "disputeResolution": {
+        "title": "Streitschlichtung",
+        "text": "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit",
+        "link": "https://ec.europa.eu/consumers/odr/",
+        "additional": "Unsere E-Mail-Adresse finden Sie oben im Impressum."
+      }
+    },
+    "privacy": {
+      "title": "Datenschutzerklärung",
+      "overview": {
+        "title": "1. Datenschutz auf einen Blick",
+        "general": {
+          "title": "Allgemeine Hinweise",
+          "text": "Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen."
+        }
+      },
+      "dataCollection": {
+        "title": "2. Datenerfassung auf unserer Website",
+        "cookies": {
+          "title": "Cookies",
+          "text": "Unsere Website verwendet Cookies. Das sind kleine Textdateien, die Ihr Webbrowser auf Ihrem Endgerät speichert."
+        },
+        "serverLogs": {
+          "title": "Server-Log-Dateien",
+          "text": "Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt."
+        }
+      },
+      "rights": {
+        "title": "3. Ihre Rechte",
+        "intro": "Sie haben jederzeit das Recht:",
+        "list": {
+          "information": "Auskunft über Ihre gespeicherten personenbezogenen Daten zu erhalten",
+          "correction": "Die Berichtigung oder Löschung Ihrer personenbezogenen Daten zu verlangen",
+          "restriction": "Die Einschränkung der Datenverarbeitung zu verlangen",
+          "objection": "Der Datenverarbeitung zu widersprechen",
+          "portability": "Ihre Daten in strukturierter Form zu erhalten"
+        }
+      },
+      "contact": {
+        "title": "4. Kontakt",
+        "text": "Bei Fragen zum Datenschutz können Sie sich jederzeit an uns wenden:",
+        "emailLabel": "E-Mail",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "gameData": {
+        "title": "5. Spielspezifische Datenverarbeitung",
+        "progress": {
+          "title": "Spielfortschritt und Highscores",
+          "intro": "Für die Funktionalität des Spiels speichern wir folgende Daten:",
+          "list": {
+            "scores": "Spielergebnisse und erreichte Punktzahlen",
+            "awards": "Errungene Auszeichnungen (Gold-, Silber- und Bronze-LPs)",
+            "rankings": "Position in den Bestenlisten"
+          },
+          "purpose": "Diese Daten sind notwendig, um Ihren Spielfortschritt zu speichern und die Highscore-Funktion bereitzustellen."
+        },
+        "localStorage": {
+          "title": "Lokale Speicherung",
+          "intro": "Wir verwenden den lokalen Speicher Ihres Browsers für:",
+          "list": {
+            "categories": "Zwischenspeicherung von Kategorieinformationen",
+            "settings": "Temporäre Spieleinstellungen",
+            "language": "Spracheinstellungen"
+          },
+          "storage": "Diese Daten werden ausschließlich lokal auf Ihrem Gerät gespeichert und nicht an unsere Server übertragen."
+        },
+        "session": {
+          "title": "Session-Management",
+          "intro": "Für die Spielfunktionalität verwenden wir Session-Cookies, die für die Dauer Ihrer Spielsitzung folgende Informationen speichern:",
+          "list": {
+            "auth": "Authentifizierungsstatus",
+            "progress": "Spielfortschritt in der aktuellen Runde",
+            "settings": "Ausgewählte Spieleinstellungen"
+          }
+        }
+      },
+      "deletion": {
+        "title": "6. Löschung von Daten",
+        "intro": "Sie können jederzeit die Löschung Ihrer Spieldaten beantragen. Dies umfasst:",
+        "list": {
+          "highscores": "Ihre Highscore-Einträge",
+          "results": "Gespeicherte Spielergebnisse",
+          "account": "Mit Ihrem Konto verknüpfte Informationen"
+        },
+        "local": "Lokale Daten in Ihrem Browser können Sie selbst über die Browser-Einstellungen löschen."
+      }
+    }
   }
 }

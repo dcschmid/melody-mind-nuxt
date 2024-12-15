@@ -240,5 +240,114 @@
         "gold": "LP Or"
       }
     }
+  },
+  "legal": {
+    "imprint": {
+      "title": "Mentions Légales",
+      "information": {
+        "title": "Informations selon § 5 TMG (Loi allemande sur les télémédias)",
+        "operator": "Daniel Schmid",
+        "address": "Hiltenspergerstr. 78, 80796 Munich",
+        "country": "Allemagne"
+      },
+      "contact": {
+        "title": "Contact",
+        "emailLabel": "E-mail",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "responsible": {
+        "title": "Responsable du contenu selon § 55 al. 2 RStV (Traité inter-états allemand sur la radiodiffusion)"
+      },
+      "lawReference": {
+        "title": "Références Légales",
+        "text": "Ce site web est soumis au droit allemand. Toutes les informations légales se réfèrent à la législation allemande."
+      },
+      "disputeResolution": {
+        "title": "Résolution des Litiges",
+        "text": "La Commission européenne met à disposition une plateforme de résolution des litiges en ligne (OS)",
+        "link": "https://ec.europa.eu/consumers/odr/",
+        "additional": "Vous trouverez notre adresse e-mail dans les mentions légales ci-dessus."
+      }
+    },
+    "privacy": {
+      "title": "Politique de Confidentialité",
+      "overview": {
+        "title": "1. Aperçu de la Protection des Données",
+        "general": {
+          "title": "Informations Générales",
+          "text": "Les notes suivantes donnent un aperçu simple de ce qui arrive à vos données personnelles lorsque vous visitez ce site web."
+        }
+      },
+      "dataCollection": {
+        "title": "2. Collecte de Données sur Notre Site",
+        "cookies": {
+          "title": "Cookies",
+          "text": "Notre site web utilise des cookies. Ce sont de petits fichiers texte que votre navigateur web stocke sur votre appareil."
+        },
+        "serverLogs": {
+          "title": "Fichiers Journaux du Serveur",
+          "text": "Le fournisseur des pages collecte et stocke automatiquement des informations dans des fichiers journaux que votre navigateur nous transmet automatiquement."
+        }
+      },
+      "rights": {
+        "title": "3. Vos Droits",
+        "intro": "Vous avez le droit à tout moment de :",
+        "list": {
+          "information": "Recevoir des informations sur vos données personnelles stockées",
+          "correction": "Demander la correction ou la suppression de vos données personnelles",
+          "restriction": "Demander la limitation du traitement des données",
+          "objection": "Vous opposer au traitement des données",
+          "portability": "Recevoir vos données dans un format structuré"
+        }
+      },
+      "contact": {
+        "title": "4. Contact",
+        "text": "Si vous avez des questions concernant la protection des données, vous pouvez nous contacter à tout moment :",
+        "emailLabel": "E-mail",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "gameData": {
+        "title": "5. Traitement des Données Spécifiques au Jeu",
+        "progress": {
+          "title": "Progression du Jeu et Meilleurs Scores",
+          "intro": "Pour la fonctionnalité du jeu, nous stockons les données suivantes :",
+          "list": {
+            "scores": "Résultats du jeu et scores obtenus",
+            "awards": "Récompenses gagnées (LP Or, Argent et Bronze)",
+            "rankings": "Position dans les classements"
+          },
+          "purpose": "Ces données sont nécessaires pour sauvegarder votre progression dans le jeu et fournir la fonction de meilleurs scores."
+        },
+        "localStorage": {
+          "title": "Stockage Local",
+          "intro": "Nous utilisons le stockage local de votre navigateur pour :",
+          "list": {
+            "categories": "Mise en cache des informations de catégories",
+            "settings": "Paramètres temporaires du jeu",
+            "language": "Paramètres de langue"
+          },
+          "storage": "Ces données sont stockées exclusivement sur votre appareil et ne sont pas transmises à nos serveurs."
+        },
+        "session": {
+          "title": "Gestion des Sessions",
+          "intro": "Pour la fonctionnalité du jeu, nous utilisons des cookies de session qui stockent les informations suivantes pendant la durée de votre session de jeu :",
+          "list": {
+            "auth": "Statut d'authentification",
+            "progress": "Progression du jeu dans la partie en cours",
+            "settings": "Paramètres de jeu sélectionnés"
+          }
+        }
+      },
+      "deletion": {
+        "title": "6. Suppression des Données",
+        "intro": "Vous pouvez demander la suppression de vos données de jeu à tout moment. Cela inclut :",
+        "list": {
+          "highscores": "Vos entrées de meilleurs scores",
+          "results": "Résultats de jeu stockés",
+          "account": "Informations liées à votre compte"
+        },
+        "local": "Vous pouvez supprimer les données locales dans votre navigateur via les paramètres du navigateur."
+      }
+    }
   }
 }
