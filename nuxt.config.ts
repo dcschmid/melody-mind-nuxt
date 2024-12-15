@@ -1,7 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
-  devtools: { enabled: true },
+  devtools: {
+    enabled: true,
+
+    timeline: {
+      enabled: true,
+    },
+  },
   css: ["~/assets/scss/main.scss"],
   modules: ["@nuxt/icon", "@nuxtjs/i18n", "@pinia/nuxt"],
   runtimeConfig: {

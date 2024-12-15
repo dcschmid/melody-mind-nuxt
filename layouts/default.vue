@@ -33,7 +33,7 @@
                     <Icon name="material-symbols:trophy-outline" size="36" />
                     <span>{{ $t('navigation.highscores') }}</span>
                 </NuxtLink>
-                <NuxtLink :to="localePath('user')" class="menu-item">
+                <NuxtLink :to="localePath('profile')" class="menu-item">
                     <Icon name="lucide:user-round" size="36" />
                     <span>{{ $t('navigation.profile') }}</span>
                 </NuxtLink>

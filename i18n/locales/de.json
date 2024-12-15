@@ -227,5 +227,29 @@
     "total": "Gesamt-Rangliste",
     "name": "Name",
     "points": "Punkte"
+  },
+  "profile": {
+    "title": "Mein Profil",
+    "points": "Gesammelte Punkte",
+    "lps": {
+      "title": "Meine Schallplatten-Sammlung",
+      "none": "Du hast noch keine Schallplatten gewonnen. Spiele ein paar Runden um welche zu gewinnen!",
+      "types": {
+        "gold": "Goldene LP",
+        "silver": "Silberne LP",
+        "bronze": "Bronze LP"
+      }
+    },
+    "statistics": {
+      "title": "Statistiken",
+      "gamesPlayed": "Gespielte Spiele",
+      "averageScore": "Durchschnittliche Punktzahl",
+      "totalLPs": "Gewonnene Schallplatten"
+    },
+    "difficulty": {
+      "easy": "Leicht",
+      "medium": "Mittel",
+      "hard": "Schwer"
+    }
   }
 }
