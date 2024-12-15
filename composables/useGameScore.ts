@@ -17,7 +17,7 @@ export const useGameScore = () => {
           pointsToAdd: points,
           newLP: earnedLP,
           category,
-          language
+          language,
         },
       });
 
@@ -26,7 +26,7 @@ export const useGameScore = () => {
         body: {
           userId,
           category,
-          points,
+          score: points,
           language: language,
         },
       });
@@ -35,7 +35,7 @@ export const useGameScore = () => {
         method: "POST",
         body: {
           userId,
-          points,
+          score: points,
           language: language,
         },
       });
