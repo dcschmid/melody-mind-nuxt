@@ -267,11 +267,6 @@
                                     <span>{{ t('game.gameOver.share.buttons.reddit') }}</span>
                                 </button>
 
-                                <button class="share-button linkedin" @click="shareToLinkedIn">
-                                    <Icon name="mdi:linkedin" size="24" />
-                                    <span>{{ t('game.gameOver.share.buttons.linkedin') }}</span>
-                                </button>
-
                                 <button v-if="isMobile" class="share-button whatsapp" @click="shareToWhatsApp">
                                     <Icon name="mdi:whatsapp" size="24" />
                                     <span>{{ t('game.gameOver.share.buttons.whatsapp') }}</span>
@@ -1396,11 +1391,6 @@ const shareToReddit = () => {
     window.open(url, '_blank')
 }
 
-const shareToLinkedIn = () => {
-    const text = getShareMessage()
-    const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}&summary=${encodeURIComponent(text)}`
-    window.open(url, '_blank')
-}
 
 </script>
 
@@ -2084,9 +2074,7 @@ const shareToLinkedIn = () => {
                 background-color: #666;
             }
 
-            &.linkedin {
-                background-color: #0077b5;
-            }
+
         }
     }
 }
@@ -2477,10 +2465,6 @@ const shareToLinkedIn = () => {
 
         &.share-api {
             background-color: #666;
-        }
-
-        &.linkedin {
-            background-color: #0077b5;
         }
     }
 }
