@@ -59,12 +59,16 @@
     "skipToMain": "Skip to main content",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "mainMenu": "Main Menu",
+    "mainMenu": "Main menu",
     "home": "Home",
-    "rules": "Rules",
+    "rules": "Game Rules",
     "highscores": "Highscores",
     "profile": "Profile",
-    "signOut": "Sign Out"
+    "signOut": "Sign out",
+    "support": "Support us",
+    "legal": "Legal",
+    "imprint": "Imprint",
+    "privacy": "Privacy Policy"
   },
   "gameRules": {
     "title": "Game Rules – MelodyMind",

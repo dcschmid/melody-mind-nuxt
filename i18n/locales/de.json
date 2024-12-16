@@ -64,7 +64,11 @@
     "rules": "Spielregeln",
     "highscores": "Bestenliste",
     "profile": "Profil",
-    "signOut": "Abmelden"
+    "signOut": "Abmelden",
+    "support": "Unterstütze uns",
+    "legal": "Rechtliches",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz"
   },
   "gameRules": {
     "title": "Spielregeln – MelodyMind",

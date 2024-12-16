@@ -59,12 +59,16 @@
     "skipToMain": "Ir al contenido principal",
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
-    "mainMenu": "Menú Principal",
+    "mainMenu": "Menú principal",
     "home": "Inicio",
-    "rules": "Reglas",
+    "rules": "Reglas del juego",
     "highscores": "Puntuaciones",
     "profile": "Perfil",
-    "signOut": "Cerrar sesión"
+    "signOut": "Cerrar sesión",
+    "support": "Apóyanos",
+    "legal": "Legal",
+    "imprint": "Aviso Legal",
+    "privacy": "Política de Privacidad"
   },
   "gameRules": {
     "title": "Reglas del juego – MelodyMind",

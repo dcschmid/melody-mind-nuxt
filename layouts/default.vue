@@ -15,32 +15,62 @@
         </header>
 
         <div id="menu" class="menu" :class="{ 'is-open': isMenuOpen }" @keydown.esc="closeMenu" tabindex="-1"
-            role="dialog" aria-modal="true" :aria-label="$t('navigation.mainMenu')">
-            <button class="close-button" :aria-label="$t('navigation.closeMenu')" @click="closeMenu">
-                <Icon name="material-symbols:close" size="36" />
+            role="dialog" aria-modal="true" :aria-label="$t('navigation.mainMenu')" ref="menuRef">
+            <button class="close-button" :aria-label="$t('navigation.closeMenu')" @click="closeMenu"
+                ref="closeButtonRef">
+                <Icon name="material-symbols:close" size="48" />
             </button>
 
             <div class="menu-content">
-                <NuxtLink :to="localePath('gamehome')" class="menu-item">
-                    <Icon name="material-symbols:home-outline" size="36" />
-                    <span>{{ $t('navigation.home') }}</span>
-                </NuxtLink>
-                <NuxtLink :to="localePath('gamerules')" class="menu-item">
-                    <Icon name="fluent:question-32-filled" size="36" />
-                    <span>{{ $t('navigation.rules') }}</span>
-                </NuxtLink>
-                <NuxtLink :to="localePath('highscores')" class="menu-item">
-                    <Icon name="material-symbols:trophy-outline" size="36" />
-                    <span>{{ $t('navigation.highscores') }}</span>
-                </NuxtLink>
-                <NuxtLink :to="localePath('profile')" class="menu-item">
-                    <Icon name="lucide:user-round" size="36" />
-                    <span>{{ $t('navigation.profile') }}</span>
-                </NuxtLink>
-                <button v-if="session.data" @click="handleSignOut" class="menu-item">
-                    <Icon name="ic:baseline-logout" size="36" />
-                    <span>{{ $t('navigation.signOut') }}</span>
-                </button>
+                <!-- Hauptnavigation -->
+                <div class="menu-section">
+                    <NuxtLink :to="localePath('gamehome')" class="menu-item">
+                        <Icon name="material-symbols:home-outline" size="36" />
+                        <span>{{ $t('navigation.home') }}</span>
+                    </NuxtLink>
+                    <NuxtLink :to="localePath('gamerules')" class="menu-item">
+                        <Icon name="fluent:question-32-filled" size="36" />
+                        <span>{{ $t('navigation.rules') }}</span>
+                    </NuxtLink>
+                    <NuxtLink :to="localePath('highscores')" class="menu-item">
+                        <Icon name="material-symbols:trophy-outline" size="36" />
+                        <span>{{ $t('navigation.highscores') }}</span>
+                    </NuxtLink>
+                    <NuxtLink :to="localePath('profile')" class="menu-item">
+                        <Icon name="lucide:user-round" size="36" />
+                        <span>{{ $t('navigation.profile') }}</span>
+                    </NuxtLink>
+                    <button v-if="session.data" @click="handleSignOut" class="menu-item">
+                        <Icon name="ic:baseline-logout" size="36" />
+                        <span>{{ $t('navigation.signOut') }}</span>
+                    </button>
+                </div>
+
+                <!-- Spenden-Bereich -->
+                <div class="menu-section">
+                    <h2 class="section-title">{{ $t('navigation.support') }}</h2>
+                    <a href="https://www.paypal.me/dcschmid" target="_blank" rel="noopener" class="menu-item">
+                        <Icon name="logos:paypal" size="36" />
+                        <span>PayPal</span>
+                    </a>
+                    <a href="https://www.buymeacoffee.com/dcschmid" target="_blank" rel="noopener" class="menu-item">
+                        <Icon name="simple-icons:buymeacoffee" size="36" />
+                        <span>Buy me a coffee</span>
+                    </a>
+                </div>
+
+                <!-- Rechtliches -->
+                <div class="menu-section">
+                    <h2 class="section-title">{{ $t('navigation.legal') }}</h2>
+                    <NuxtLink :to="localePath('imprint')" class="menu-item">
+                        <Icon name="material-symbols:info-outline" size="36" />
+                        <span>{{ $t('navigation.imprint') }}</span>
+                    </NuxtLink>
+                    <NuxtLink :to="localePath('privacy')" class="menu-item">
+                        <Icon name="material-symbols:privacy-tip-outline" size="36" />
+                        <span>{{ $t('navigation.privacy') }}</span>
+                    </NuxtLink>
+                </div>
             </div>
         </div>
 
@@ -49,30 +79,76 @@
 </template>
 
 <script setup lang="ts">
+import { useFocusTrap } from "@vueuse/integrations/useFocusTrap";
 import { authClient } from "../lib/auth-client"
 const localePath = useLocalePath()
 const session = authClient.useSession()
 const router = useRouter()
 
-const { showHeader, showMenu, showCoins } = defineProps({
+const { showHeader, showMenu } = defineProps({
     showHeader: { type: Boolean, default: false },
     showMenu: { type: Boolean, default: false },
-    showCoins: { type: Boolean, default: false }
 })
 
+const menuRef = ref<HTMLElement | null>(null)
+const closeButtonRef = ref<HTMLElement | null>(null)
 const isMenuOpen = ref(false)
-const toggleMenu = () => {
-    isMenuOpen.value = !isMenuOpen.value
-    document.body.style.overflow = isMenuOpen.value ? 'hidden' : ''
+
+// Focus Trap initialisieren
+const { activate, deactivate } = useFocusTrap(menuRef, {
+    initialFocus: 'first',
+    escapeDeactivates: true,
+    returnFocusOnDeactivate: true,
+    allowOutsideClick: true
+})
+
+// Menü öffnen
+const openMenu = () => {
+    isMenuOpen.value = true
+    document.body.style.overflow = 'hidden'
+    // Kurze Verzögerung für Animation
+    setTimeout(() => {
+        activate()
+        closeButtonRef.value?.focus()
+    }, 100)
 }
 
-const route = useRoute()
-watch(() => route.path, () => {
+// Menü schließen
+const closeMenu = () => {
     isMenuOpen.value = false
     document.body.style.overflow = ''
+    deactivate()
+}
+
+// Toggle Funktion
+const toggleMenu = () => {
+    if (isMenuOpen.value) {
+        closeMenu()
+    } else {
+        openMenu()
+    }
+}
+
+// Cleanup bei Route-Wechsel
+const route = useRoute()
+watch(() => route.path, () => {
+    if (isMenuOpen.value) {
+        closeMenu()
+    }
 })
 
+// Event Listener für Escape-Taste
+onMounted(() => {
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isMenuOpen.value) {
+            closeMenu()
+        }
+    })
+})
+
+// Cleanup
 onUnmounted(() => {
+    document.removeEventListener('keydown', closeMenu)
     document.body.style.overflow = ''
 })
 
@@ -105,24 +181,6 @@ onMounted(() => {
         window.removeEventListener('keydown', handleFirstTab);
     });
 });
-
-const closeMenu = () => {
-    isMenuOpen.value = false
-    document.body.style.overflow = ''
-}
-
-// Keyboard Event Listener
-onMounted(() => {
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isMenuOpen.value) {
-            closeMenu()
-        }
-    })
-})
-
-onUnmounted(() => {
-    document.removeEventListener('keydown', closeMenu)
-})
 </script>
 
 <style scoped lang="scss">
@@ -219,83 +277,106 @@ header {
     inset: 0;
     background-color: var(--overlay-background);
     backdrop-filter: blur(var(--blur-strength));
+    z-index: var(--z-index-menu);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: var(--header-height);
+    overflow-y: auto;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-    z-index: var(--z-index-menu);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: var(--header-height);
 
     &.is-open {
         opacity: 1;
         visibility: visible;
+
+        .menu-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
     }
 
     .menu-content {
-        width: min(90%, 500px);
+        position: relative;
+        width: min(90%, 400px);
+        margin-bottom: var(--padding-large);
         display: flex;
         flex-direction: column;
         gap: var(--padding-large);
-        padding: calc(var(--padding-large) * 2);
-    }
-
-    .menu-item {
-        display: flex;
-        align-items: center;
-        gap: var(--padding-medium);
         padding: var(--padding-large);
-        font-size: 1.5rem;
-        font-weight: 500;
-        color: var(--text-color);
-        background: var(--surface-color);
-        border-radius: var(--border-radius);
-        transition: all 0.3s var(--transition-bounce);
-        text-decoration: none;
-        border: 1px solid transparent;
+        transform: translateY(30px);
+        opacity: 0;
+        transition: all 0.4s var(--transition-bounce);
 
-        .icon {
-            font-size: 2rem;
-            width: 40px;
-            height: 40px;
-            color: var(--highlight-color);
+        // Scrollbar Styling
+        scrollbar-width: thin;
+        scrollbar-color: var(--highlight-color) transparent;
+
+        &::-webkit-scrollbar {
+            width: 6px;
         }
 
-        span {
-            font-weight: 500;
-            letter-spacing: 0.5px;
+        &::-webkit-scrollbar-track {
+            background: transparent;
         }
 
-        &:hover,
-        &:focus-visible {
-            background: var(--secondary-color);
-            transform: translateX(8px);
-            border-color: var(--highlight-color);
-
-            .icon {
-                transform: scale(1.1);
-            }
-        }
-
-        &:focus-visible {
-            outline: none;
-            border-color: var(--highlight-color);
-            box-shadow: 0 0 0 2px var(--highlight-color);
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--highlight-color);
+            border-radius: 3px;
         }
     }
 }
 
-@media (max-width: 768px) {
-    .menu {
-        .menu-content {
-            width: 100%;
-            padding: calc(var(--header-height) + var(--padding-medium)) var(--padding-medium);
-        }
+.menu-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-medium);
 
-        .menu-item {
-            padding: var(--padding-medium);
-            font-size: 1.25rem;
+    &:not(:last-child) {
+        padding-bottom: var(--padding-large);
+        border-bottom: 1px solid rgb(255 255 255 / 10%);
+    }
+}
+
+.section-title {
+    color: var(--text-color);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.7;
+    padding-left: var(--padding-medium);
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: var(--padding-medium);
+    padding: var(--padding-medium);
+    font-size: 1.125rem;
+    color: var(--text-color);
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    transition: all 0.3s var(--transition-bounce);
+    text-decoration: none;
+    border: 1px solid transparent;
+
+    .icon {
+        color: var(--text-color);
+        opacity: 0.8;
+        transition: all 0.3s var(--transition-bounce);
+    }
+
+    &:hover,
+    &:focus-visible {
+        background: var(--secondary-color);
+        transform: translateX(8px);
+        border-color: var(--highlight-color);
+
+        .icon {
+            color: var(--highlight-color);
+            transform: scale(1.1);
         }
     }
 }
@@ -304,49 +385,47 @@ header {
     position: absolute;
     top: var(--padding-medium);
     right: var(--padding-medium);
-    width: 48px;
-    height: 48px;
+    padding: 0;
+    max-width: 60px;
+    max-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
-    background: transparent;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
+    background: var(--surface-color);
     color: var(--text-color);
     cursor: pointer;
-    transition: all 0.3s var(--transition-bounce);
     z-index: calc(var(--z-index-menu) + 1);
+    border-radius: var(--border-radius);
+    transition: all 0.3s var(--transition-bounce);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 
     .icon {
-        transition: all 0.3s var(--transition-bounce);
+        display: block;
+        width: 24px;
+        height: 24px;
     }
 
     &:hover,
     &:focus-visible {
-        .icon {
-            color: transparent;
-            transform: rotate(180deg) scale(1.1);
-        }
-    }
-
-    &:focus-visible {
-        outline: none;
-        box-shadow: 0 0 0 2px var(--highlight-color);
+        color: var(--highlight-color);
+        transform: rotate(90deg);
+        background: var(--secondary-color);
     }
 }
 
-// Verbesserte Animation für das Menü
-.menu {
-    &.is-open {
+@media (max-width: 768px) {
+    .menu {
         .menu-content {
-            transform: translateY(0);
-            opacity: 1;
+            width: 100%;
+            height: calc(100vh - var(--header-height));
+            max-height: none;
+            padding: var(--padding-medium);
         }
-    }
 
-    .menu-content {
-        transform: translateY(30px);
-        opacity: 0;
-        transition: all 0.4s var(--transition-bounce);
+        .menu-item {
+            padding: var(--padding-medium);
+        }
     }
 }
 </style>

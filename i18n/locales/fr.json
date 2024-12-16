@@ -56,15 +56,19 @@
     "passwordResetSuccess": "Un e-mail de réinitialisation du mot de passe a été envoyé"
   },
   "navigation": {
-    "skipToMain": "Passer au contenu principal",
+    "skipToMain": "Aller au contenu principal",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
-    "mainMenu": "Menu Principal",
+    "mainMenu": "Menu principal",
     "home": "Accueil",
-    "rules": "Règles",
+    "rules": "Règles du jeu",
     "highscores": "Meilleurs scores",
     "profile": "Profil",
-    "signOut": "Déconnexion"
+    "signOut": "Déconnexion",
+    "support": "Nous soutenir",
+    "legal": "Mentions légales",
+    "imprint": "Mentions légales",
+    "privacy": "Politique de confidentialité"
   },
   "gameRules": {
     "title": "Règles du jeu – MelodyMind",
