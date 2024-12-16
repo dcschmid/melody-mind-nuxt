@@ -32,7 +32,7 @@
                         <Icon name="fluent:question-32-filled" size="36" />
                         <span>{{ $t('navigation.rules') }}</span>
                     </NuxtLink>
-                    <NuxtLink :to="localePath('highscores')" class="menu-item">
+                    <NuxtLink :to="localePath('highscore')" class="menu-item">
                         <Icon name="material-symbols:trophy-outline" size="36" />
                         <span>{{ $t('navigation.highscores') }}</span>
                     </NuxtLink>
