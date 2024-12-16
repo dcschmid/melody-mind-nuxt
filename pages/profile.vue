@@ -1,17 +1,59 @@
 <template>
     <NuxtLayout name="default" :show-header="true" :show-menu="true">
         <main class="profile-page">
-            <!-- Profil-Header -->
             <section class="profile-header">
                 <div class="profile-info">
                     <h1>{{ $t('profile.title') }}</h1>
-                    <div class="user-details">
-                        <p class="name">{{ userData.name }}</p>
-                        <p class="username">@{{ userData.username }}</p>
-                        <div class="points-container">
-                            <span class="points">{{ userData.totalPoints?.toLocaleString() }}</span>
-                            <span class="points-label">{{ $t('profile.points') }}</span>
+                    <div class="profile-edit-section">
+                        <div class="profile-image-container">
+                            <img :src="profileImageUrl" alt="Profilbild" class="profile-image">
+                            <label v-if="isEditing" class="image-upload-label">
+                                <input type="file" @change="handleImageUpload" accept="image/*" class="hidden">
+                                <Icon name="material-symbols:add-a-photo" size="24" />
+                            </label>
                         </div>
+
+                        <div class="edit-toggle">
+                            <button v-if="!isEditing" @click="startEditing" class="edit-button">
+                                <Icon name="material-symbols:edit" size="24" />
+                            </button>
+                            <div v-else class="edit-actions">
+                                <button @click="saveChanges" class="save-button">
+                                    <Icon name="material-symbols:save" size="24" />
+                                </button>
+                                <button @click="cancelEditing" class="cancel-button">
+                                    <Icon name="material-symbols:close" size="24" />
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="profile-form">
+                            <div class="form-group">
+                                <label>{{ $t('profile.name') }}</label>
+                                <input v-if="isEditing" v-model="editableUserData.name" type="text"
+                                    :placeholder="$t('profile.namePlaceholder')">
+                                <span v-else class="profile-value">{{ userData.name }}</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>{{ $t('profile.username') }}</label>
+                                <input v-if="isEditing" v-model="editableUserData.username" type="text"
+                                    :placeholder="$t('profile.usernamePlaceholder')">
+                                <span v-else class="profile-value">{{ userData.username }}</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>{{ $t('profile.email') }}</label>
+                                <input v-if="isEditing" v-model="editableUserData.email" type="email"
+                                    :placeholder="$t('profile.emailPlaceholder')">
+                                <span v-else class="profile-value">{{ userData.email }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="points-container">
+                        <span class="points">{{ userData.totalPoints?.toLocaleString() }}</span>
+                        <span class="points-label">{{ $t('profile.points') }}</span>
                     </div>
                 </div>
             </section>
@@ -48,19 +90,65 @@ import { authClient } from '~/lib/auth-client'
 
 const session = authClient.useSession()
 const { t, locale } = useI18n()
+const isEditing = ref(false)
 
 const userData = ref({
     name: session.value?.data?.user?.name || '',
     username: session.value?.data?.user?.username || '',
+    email: session.value?.data?.user?.email || '',
     totalPoints: 0,
-    wonLPs: []
+    wonLPs: [],
+    profileImage: null
 })
+
+const editableUserData = ref({
+    name: '',
+    username: '',
+    email: ''
+})
+
+const profileImageUrl = computed(() => {
+    return userData.value.profileImage || userData.value.image || '/default-profile.png'
+})
+
+const startEditing = () => {
+    editableUserData.value = {
+        name: userData.value.name,
+        username: userData.value.username,
+        email: userData.value.email
+    }
+    isEditing.value = true
+}
+
+const cancelEditing = () => {
+    isEditing.value = false
+}
+
+const saveChanges = async () => {
+    try {
+        const response = await fetch('/api/user/update-profile', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userId: session.value?.data?.user?.id,
+                ...editableUserData.value
+            })
+        })
+
+        if (!response.ok) throw new Error('Fehler beim Aktualisieren des Profils')
+
+        await loadUserData()
+        isEditing.value = false
+    } catch (error) {
+        console.error('Fehler beim Aktualisieren des Profils:', error)
+    }
+}
 
 // Lade Benutzerdaten
 const loadUserData = async () => {
-    if (!session.value?.data?.user) {
-        return
-    }
+    if (!session.value?.data?.user) return
 
     try {
         const response = await fetch('/api/user/profile', {
@@ -73,13 +161,41 @@ const loadUserData = async () => {
                 userId: session.value.data.user.id
             })
         })
-        if (!response.ok) {
-            throw new Error('Unauthorized')
-        }
+
+        if (!response.ok) throw new Error('Unauthorized')
+
         const data = await response.json()
-        userData.value = data
+        console.log('Geladene Benutzerdaten:', data)
+        userData.value = {
+            ...data,
+            email: data.email || session.value.data.user.email || ''
+        }
     } catch (error) {
         console.error('Error loading user data:', error)
+    }
+}
+
+const handleImageUpload = async (event: Event) => {
+    const file = (event.target as HTMLInputElement).files?.[0]
+    const userId = session.value?.data?.user?.id
+    if (!file || !userId) return
+
+    const formData = new FormData()
+    formData.append('image', file)
+    formData.append('userId', userId.toString())
+
+    try {
+        const response = await fetch('/api/user/upload-profile-image', {
+            method: 'POST',
+            body: formData
+        })
+
+        if (!response.ok) throw new Error('Fehler beim Hochladen des Bildes')
+
+        const data = await response.json()
+        userData.value.image = data.imageUrl
+    } catch (error) {
+        console.error('Fehler beim Bildupload:', error)
     }
 }
 
@@ -291,6 +407,120 @@ watchEffect(() => {
         .lp-grid {
             grid-template-columns: 1fr;
         }
+    }
+}
+
+.profile-edit-section {
+    position: relative;
+    margin-bottom: var(--padding-large);
+}
+
+.edit-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: var(--padding-small);
+}
+
+.edit-button,
+.save-button,
+.cancel-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--padding-small);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background: var(--surface-color-hover);
+    }
+}
+
+.edit-actions {
+    display: flex;
+    gap: var(--padding-small);
+
+    .save-button {
+        color: var(--success-color);
+    }
+
+    .cancel-button {
+        color: var(--error-color);
+    }
+}
+
+.profile-form {
+    max-width: 400px;
+    margin: 0 auto;
+
+    .form-group {
+        margin-bottom: var(--padding-medium);
+
+        label {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--text-secondary);
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background: var(--surface-color);
+            color: var(--text-primary);
+
+            &:focus {
+                border-color: var(--primary-color);
+                outline: none;
+            }
+        }
+
+        .profile-value {
+            display: block;
+            padding: 8px;
+            color: var(--text-primary);
+            background: var(--surface-color);
+            border-radius: var(--border-radius);
+        }
+    }
+}
+
+.profile-image-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto var(--padding-large);
+
+    .profile-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--primary-color);
+    }
+
+    .image-upload-label {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: var(--primary-color);
+        border-radius: 50%;
+        padding: 8px;
+        cursor: pointer;
+
+        &:hover {
+            background: var(--primary-color-dark);
+        }
+    }
+
+    .hidden {
+        display: none;
     }
 }
 </style>

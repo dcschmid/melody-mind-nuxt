@@ -259,6 +259,13 @@
   },
   "profile": {
     "title": "Mein Profil",
+    "name": "Name",
+    "namePlaceholder": "Dein Name",
+    "username": "Benutzername",
+    "usernamePlaceholder": "Dein Benutzername",
+    "email": "E-Mail",
+    "emailPlaceholder": "Deine E-Mail-Adresse",
+    "save": "Änderungen speichern",
     "points": "Gesammelte Punkte",
     "lps": {
       "title": "Meine Schallplatten-Sammlung",

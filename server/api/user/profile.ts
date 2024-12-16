@@ -10,6 +10,8 @@ export default defineEventHandler(async (event) => {
         SELECT
           name,
           username,
+          email,
+          image,
           total_user_points,
           won_lps
         FROM user
@@ -19,10 +21,13 @@ export default defineEventHandler(async (event) => {
     });
 
     const userData = rows[0];
+    console.log("Geladene Benutzerdaten:", userData); // Debug-Log
 
     return {
       name: userData.name,
       username: userData.username,
+      email: userData.email,
+      image: userData.image,
       totalPoints: Number(userData.total_user_points),
       wonLPs: typeof userData.won_lps === "string" ? JSON.parse(userData.won_lps) : [],
     };
