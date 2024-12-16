@@ -259,15 +259,33 @@
   },
   "profile": {
     "title": "Il Mio Profilo",
-    "points": "Punti Totali",
+    "name": "Nome",
+    "namePlaceholder": "Il tuo nome",
+    "username": "Nome utente",
+    "usernamePlaceholder": "Il tuo nome utente",
+    "email": "Email",
+    "emailPlaceholder": "Il tuo indirizzo email",
+    "save": "Salva modifiche",
+    "points": "Punti accumulati",
     "lps": {
       "title": "La Mia Collezione di Dischi",
-      "none": "Nessun disco collezionato",
+      "none": "Non hai ancora vinto nessun disco. Gioca qualche partita per vincerne!",
       "types": {
-        "bronze": "LP Bronzo",
-        "silver": "LP Argento",
-        "gold": "LP Oro"
+        "gold": "LP d'Oro",
+        "silver": "LP d'Argento",
+        "bronze": "LP di Bronzo"
       }
+    },
+    "statistics": {
+      "title": "Statistiche",
+      "gamesPlayed": "Partite giocate",
+      "averageScore": "Punteggio medio",
+      "totalLPs": "Dischi vinti"
+    },
+    "difficulty": {
+      "easy": "Facile",
+      "medium": "Medio",
+      "hard": "Difficile"
     }
   },
   "legal": {

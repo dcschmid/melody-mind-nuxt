@@ -259,15 +259,33 @@
   },
   "profile": {
     "title": "My Profile",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "username": "Username",
+    "usernamePlaceholder": "Your username",
+    "email": "Email",
+    "emailPlaceholder": "Your email address",
+    "save": "Save changes",
     "points": "Total Points",
     "lps": {
       "title": "My Record Collection",
-      "none": "No records collected yet",
+      "none": "You haven't won any records yet. Play some games to win some!",
       "types": {
-        "bronze": "Bronze LP",
+        "gold": "Gold LP",
         "silver": "Silver LP",
-        "gold": "Gold LP"
+        "bronze": "Bronze LP"
       }
+    },
+    "statistics": {
+      "title": "Statistics",
+      "gamesPlayed": "Games played",
+      "averageScore": "Average score",
+      "totalLPs": "Records won"
+    },
+    "difficulty": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
     }
   },
   "legal": {
