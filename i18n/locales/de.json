@@ -194,7 +194,32 @@
     "gameOver": {
       "title": "Spiel beendet!",
       "correctAnswers": "Richtige Antworten",
-      "backToMenu": "Zurück zum Hauptmenü"
+      "backToMenu": "Zurück zum Hauptmenü",
+      "share": {
+        "title": "Teile dein Ergebnis!",
+        "buttons": {
+          "twitter": "Auf X teilen",
+          "telegram": "Via Telegram teilen",
+          "reddit": "Auf Reddit teilen",
+          "whatsapp": "Via WhatsApp teilen",
+          "share": "Teilen",
+          "linkedin": "Auf LinkedIn teilen"
+        },
+        "message": {
+          "intro": "🎵 Ich habe gerade {points} Punkte in Melody Mind erreicht!",
+          "genre": "🎸 Genre: {genre}",
+          "perfect": "🏆 Perfekte Runde mit einer Goldenen LP in {difficulty} Schwierigkeit!",
+          "silver": "🥈 Silberne LP in {difficulty} Schwierigkeit gewonnen!",
+          "bronze": "🥉 Bronzene LP in {difficulty} Schwierigkeit gewonnen!",
+          "stats": "✨ {correct} von {total} Fragen richtig beantwortet!",
+          "challenge": "🎮 Fordere mich heraus: {url}",
+          "difficulty": {
+            "easy": "leichter",
+            "medium": "mittlerer",
+            "hard": "schwerer"
+          }
+        }
+      }
     },
     "jokers": {
       "remaining": "Verbleibend: {count}",

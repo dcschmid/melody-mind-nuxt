@@ -10,7 +10,7 @@
                             <div class="game-header">
                                 <div class="header-left">
                                     <h1>{{ currentCategoryData?.name || category }}</h1>
-                                    <p class="round-counter">{{ $t('game.round', {
+                                    <p class="round-counter">{{ t('game.round', {
                                         current: usedQuestions.length, max:
                                             maxQuestions
                                     }) }}</p>
@@ -21,7 +21,7 @@
                                             <span class="points" :class="{ 'points-update': isAnimating }">
                                                 {{ formattedPoints }}
                                             </span>
-                                            <span class="points-label">{{ $t('game.points_label') }}</span>
+                                            <span class="points-label">{{ t('game.points_label') }}</span>
                                         </div>
                                         <transition name="bonus">
                                             <div v-if="showBonus" class="bonus-indicator">
@@ -54,7 +54,7 @@
 
                                 <!-- Telefonjoker Antwort -->
                                 <div v-if="phoneExpertOpinion" class="phone-expert">
-                                    <h3>{{ $t('game.expert.title') }}</h3>
+                                    <h3>{{ t('game.expert.title') }}</h3>
                                     <div class="expert-message">
                                         <div class="expert-header">
                                             <Icon name="material-symbols:phone" class="phone-icon" />
@@ -72,7 +72,7 @@
                                                     <div class="confidence-level"></div>
                                                 </div>
                                                 <span class="confidence-text">{{ phoneExpertConfidence }}% {{
-                                                    $t('game.confidence') }}</span>
+                                                    t('game.confidence') }}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -80,7 +80,7 @@
 
                                 <!-- Publikumsjoker Ergebnis -->
                                 <div v-if="Object.keys(audienceHelp).length > 0" class="audience-help">
-                                    <h3>{{ $t('game.audienceOpinion') }}</h3>
+                                    <h3>{{ t('game.audienceOpinion') }}</h3>
                                     <div class="audience-bars">
                                         <div v-for="(percentage, option) in audienceHelp" :key="option"
                                             class="bar-item">
@@ -127,7 +127,7 @@
                                             <Icon name="gg:phone" size="30" />
                                         </button>
                                     </div>
-                                    <span class="joker-count">{{ $t('game.jokers.remaining', { count: remainingJokers })
+                                    <span class="joker-count">{{ t('game.jokers.remaining', { count: remainingJokers })
                                         }}</span>
                                 </div>
                             </div>
@@ -140,17 +140,17 @@
                                     <Icon
                                         :name="isCorrectAnswer ? 'material-symbols:check-circle' : 'material-symbols:cancel'"
                                         class="result-icon" size="28" />
-                                    <h2>{{ isCorrectAnswer ? $t('game.correct') : $t('game.wrong') }}</h2>
+                                    <h2>{{ isCorrectAnswer ? t('game.correct') : t('game.wrong') }}</h2>
                                 </div>
                                 <div v-if="isCorrectAnswer" class="points-breakdown">
                                     <div class="points">
-                                        {{ $t('game.points', { base: latestBonus.base, time: latestBonus.time }) }}
+                                        {{ t('game.points', { base: latestBonus.base, time: latestBonus.time }) }}
                                     </div>
                                 </div>
-                                <div v-else class="points"> 0 {{ $t('game.points_label') }}</div>
+                                <div v-else class="points"> 0 {{ t('game.points_label') }}</div>
 
                                 <div class="correct-answer">
-                                    <span class="label">{{ $t('game.correctAnswer') }}</span>
+                                    <span class="label">{{ t('game.correctAnswer') }}</span>
                                     <div class="text">{{ currentQuestion.correctAnswer }}</div>
                                 </div>
                             </div>
@@ -168,7 +168,7 @@
                                         <div class="audio-player">
                                             <button @click="togglePlay" class="play-button"
                                                 :disabled="!currentArtist?.preview_link"
-                                                :title="currentArtist?.preview_link ? (isPlaying ? $t('game.audio.pause') : $t('game.audio.play')) : $t('game.audio.noAudio')">
+                                                :title="currentArtist?.preview_link ? (isPlaying ? t('game.audio.pause') : t('game.audio.play')) : t('game.audio.noAudio')">
                                                 <Icon
                                                     :name="isPlaying ? 'material-symbols:pause' : 'material-symbols:play-arrow'"
                                                     size="36" />
@@ -180,9 +180,9 @@
                                             </div>
                                         </div>
                                         <div class="info">
-                                            <p class="artist">{{ $t('game.album.artist') }}: {{ currentArtist.artist }}
+                                            <p class="artist">{{ t('game.album.artist') }}: {{ currentArtist.artist }}
                                             </p>
-                                            <p class="year">{{ $t('game.album.year') }}: {{ currentArtist.year }}</p>
+                                            <p class="year">{{ t('game.album.year') }}: {{ currentArtist.year }}</p>
                                         </div>
                                     </div>
                                     <div class="streaming-links">
@@ -206,12 +206,12 @@
 
                                 <!-- Trivia Information -->
                                 <div class="trivia-box">
-                                    <h3>{{ $t('game.didYouKnow') }}</h3>
+                                    <h3>{{ t('game.didYouKnow') }}</h3>
                                     <p>{{ currentQuestion.trivia }}</p>
                                 </div>
 
                                 <button @click="nextQuestion" class="next-button">
-                                    <span>{{ $t('game.nextQuestion') }}</span>
+                                    <span>{{ t('game.nextQuestion') }}</span>
                                     <Icon name="material-symbols:arrow-forward" />
                                 </button>
                             </div>
@@ -222,17 +222,17 @@
                 <div v-else class="game-end-screen" :key="'gameover'">
                     <div class="end-content">
                         <div class="end-header">
-                            <h2>{{ $t('game.gameOver.title') }}</h2>
+                            <h2>{{ t('game.gameOver.title') }}</h2>
                             <div class="final-score-container">
                                 <div class="score-circle">
                                     <div class="score-inner">
                                         <span class="points">{{ totalPoints }}</span>
-                                        <span class="points-label">{{ $t('game.points_label') }}</span>
+                                        <span class="points-label">{{ t('game.points_label') }}</span>
                                     </div>
                                 </div>
                                 <div class="stats">
                                     <div class="stat-item">
-                                        <span class="stat-label">{{ $t('game.gameOver.correctAnswers') }}</span>
+                                        <span class="stat-label">{{ t('game.gameOver.correctAnswers') }}</span>
                                         <span class="stat-value">{{ correctAnswers }} / {{ maxQuestions }}</span>
                                     </div>
                                 </div>
@@ -248,10 +248,46 @@
                             </p>
                         </div>
 
+                        <!-- Im Game Over Screen, nach der final-score-container div -->
+                        <div class="share-section">
+                            <h3>{{ t('game.gameOver.share.title') }}</h3>
+                            <div class="share-buttons">
+                                <button class="share-button twitter" @click="shareToTwitter">
+                                    <Icon name="mdi:twitter" size="24" />
+                                    <span>{{ t('game.gameOver.share.buttons.twitter') }}</span>
+                                </button>
+
+                                <button class="share-button telegram" @click="shareToTelegram">
+                                    <Icon name="mdi:telegram" size="24" />
+                                    <span>{{ t('game.gameOver.share.buttons.telegram') }}</span>
+                                </button>
+
+                                <button class="share-button reddit" @click="shareToReddit">
+                                    <Icon name="mdi:reddit" size="24" />
+                                    <span>{{ t('game.gameOver.share.buttons.reddit') }}</span>
+                                </button>
+
+                                <button class="share-button linkedin" @click="shareToLinkedIn">
+                                    <Icon name="mdi:linkedin" size="24" />
+                                    <span>{{ t('game.gameOver.share.buttons.linkedin') }}</span>
+                                </button>
+
+                                <button v-if="isMobile" class="share-button whatsapp" @click="shareToWhatsApp">
+                                    <Icon name="mdi:whatsapp" size="24" />
+                                    <span>{{ t('game.gameOver.share.buttons.whatsapp') }}</span>
+                                </button>
+
+                                <button v-if="canShare" class="share-button share-api" @click="shareViaAPI">
+                                    <Icon name="material-symbols:share" size="24" />
+                                    <span>{{ t('game.gameOver.share.buttons.share') }}</span>
+                                </button>
+                            </div>
+                        </div>
+
                         <div class="end-actions">
                             <NuxtLink :to="$localePath('gamehome')" class="button home-button">
                                 <Icon name="material-symbols:home" size="36" />
-                                <span>{{ $t('game.gameOver.backToMenu') }}</span>
+                                <span>{{ t('game.gameOver.backToMenu') }}</span>
                             </NuxtLink>
                         </div>
                     </div>
@@ -273,10 +309,9 @@ definePageMeta({
 const session = authClient.useSession()
 
 const route = useRoute()
-const { locale } = useI18n()
+const { t, locale } = useI18n()
 const category = route.params.category as string
 const difficulty = route.params.difficulty as string
-const { t } = useI18n()
 
 // Referenzen für die Spiellogik
 const currentQuestion = ref<any>(null)
@@ -422,7 +457,7 @@ const expertResponsesByLocale: LocaleResponses = {
             "¡Fantástico! ¡Te has ganado más que merecidamente el LP de Oro! 🏆\n¡Tu actuación fue simplemente impecable - eres un verdadero virtuoso de la música!",
             "¡Magistral! ¡El LP de Oro es tuyo! 🏆\n¡Una ronda perfecta - definitivamente eres un genio de la música!",
             "¡Brillante! ¡Un LP de Oro para ti! 🏆\n¡Tu experiencia musical es verdaderamente impresionante - todas las preguntas correctas!",
-            "¡Fenomenal! ¡El LP de Oro te pertenece! 🏆\n¡Eres un verdadero conocedor de la música - una actuación impecable!",
+            "¡Fenomenal! ¡El LP de Oro te pertenece! 🏆\n¡Eres un verdadero conocedor de la música - una actuación impeccable!",
             "¡Magnífico! ¡Te has ganado el LP de Oro! 🏆\n¡Una ronda perfecta - tu conocimiento musical es imbatible!",
             "¡Sobresaliente! ¡El LP de Oro es tuyo! 🏆\n¡Eres un profesional absoluto de la música - todas las preguntas respondidas perfectamente!",
             "¡Legendario! ¡Has ganado el LP de Oro! 🏆\n¡Una actuación perfecta - eres un verdadero maestro de la música!"
@@ -507,7 +542,7 @@ const expertResponsesByLocale: LocaleResponses = {
             "Aspetta... sì, penso che debba essere '{answer}'. La produzione mi suona molto familiare.",
             "Se le mie orecchie non mi ingannano, direi '{answer}'.",
             "Hmm, il suono mi ricorda molto '{answer}', ma fammi pensare un momento...",
-            "Suona molto come '{answer}', ma c'erano diverse produzioni simili all'epoca.",
+            "Suona molto come '{answer}', ma c'erano diverse produzioni similari all'epoca.",
             "Direi al 70% che è '{answer}', ma non prenderlo per certo.",
             "Lo conosco dal club - dovrebbe essere '{answer}', se ricordo bene.",
             "Lo avevo nella mia collezione... '{answer}', giusto?",
@@ -1015,7 +1050,7 @@ const goldMessages = {
         "¡Fantástico! ¡Te has ganado más que merecidamente el LP de Oro! 🏆\n¡Tu actuación fue simplemente impecable - eres un verdadero virtuoso de la música!",
         "¡Magistral! ¡El LP de Oro es tuyo! 🏆\n¡Una ronda perfecta - definitivamente eres un genio de la música!",
         "¡Brillante! ¡Un LP de Oro para ti! 🏆\n¡Tu experiencia musical es verdaderamente impresionante - todas las preguntas correctas!",
-        "¡Fenomenal! ¡El LP de Oro te pertenece! 🏆\n¡Eres un verdadero conocedor de la música - una actuación impecable!",
+        "¡Fenomenal! ¡El LP de Oro te pertenece! 🏆\n¡Eres un verdadero conocedor de la música - una actuación impeccable!",
         "¡Magnífico! ¡Te has ganado el LP de Oro! 🏆\n¡Una ronda perfecta - tu conocimiento musical es imbatible!",
         "¡Sobresaliente! ¡El LP de Oro es tuyo! 🏆\n¡Eres un profesional absoluto de la música - todas las preguntas respondidas perfectamente!",
         "¡Legendario! ¡Has ganado el LP de Oro! 🏆\n¡Una actuación perfecta - eres un verdadero maestro de la música!"
@@ -1102,7 +1137,7 @@ const silverMessages = {
         "Ben fatto! Un LP d'Argento è tuo! 🥈\nLa tua conoscenza musicale è impressionante! L'oro è a portata di mano!",
         "Eccellente! Hai vinto l'LP d'Argento! 🥈\nÈ stata una performance molto forte! Quasi perfetto!",
         "Grandioso! Un LP d'Argento per la tua performance! 🥈\nSei sulla strada per diventare un campione della musica!",
-        "Forte! Ti sei guadagnato l'LP d'Argento! 🥈\nLa tua conoscenza musicale è impressionante! L'oro è il prossimo obiettivo!",
+        "Forte! Ti sei guadagnato l'LP d'Argento! ���\nLa tua conoscenza musicale è impressionante! L'oro è il prossimo obiettivo!",
         "Eccellente! Un LP d'Argento per te! 🥈\nSei un vero esperto di musica! Solo un piccolo passo verso la perfezione!",
         "Rispetto! L'LP d'Argento è tuo! 🥈\nLa tua performance è stata davvero buona! L'oro è a portata di mano!",
         "Impressionante! Ti sei guadagnato l'LP d'Argento! 🥈\nÈ stata una grande performance! Otterrai l'oro la prossima volta!"
@@ -1283,6 +1318,89 @@ watch(() => gameFinished.value, (isFinished) => {
 })
 
 const resultMessage = ref('')
+
+// Share-Funktionalität
+const isMobile = ref(false)
+const canShare = ref(false)
+
+onMounted(() => {
+    // Prüfe ob Gerät mobil ist
+    isMobile.value = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+
+    // Prüfe ob Web Share API verfügbar ist
+    canShare.value = !!navigator.share
+})
+
+// Erstelle die Share-Nachricht
+const getShareMessage = () => {
+    const difficultyText = t(`game.gameOver.share.message.difficulty.${difficulty}`)
+
+    let message = t('game.gameOver.share.message.intro', { points: totalPoints.value })
+    message += '\n' + t('game.gameOver.share.message.genre', { genre: currentCategoryData?.name || category })
+
+    if (allQuestionsCorrect.value) {
+        message += '\n' + t('game.gameOver.share.message.perfect', { difficulty: difficultyText })
+    } else if (correctAnswers.value >= (maxQuestions.value * 0.75)) {
+        message += '\n' + t('game.gameOver.share.message.silver', { difficulty: difficultyText })
+    } else if (correctAnswers.value >= (maxQuestions.value * 0.5)) {
+        message += '\n' + t('game.gameOver.share.message.bronze', { difficulty: difficultyText })
+    }
+
+    message += '\n\n' + t('game.gameOver.share.message.stats', {
+        correct: correctAnswers.value,
+        total: maxQuestions.value
+    })
+    message += '\n\n' + t('game.gameOver.share.message.challenge', {
+        url: window.location.origin
+    })
+
+    return message
+}
+
+const shareViaAPI = async () => {
+    try {
+        await navigator.share({
+            title: t('game.gameOver.share.message.intro', { points: totalPoints.value }),
+            text: getShareMessage(),
+            url: window.location.href
+        })
+    } catch (error) {
+        console.error('Fehler beim Teilen:', error)
+    }
+}
+
+// Für Twitter/X mit Hashtags
+const shareToTwitter = () => {
+    const text = getShareMessage()
+    const hashtags = ['Melody Mind', 'MusicQuiz', currentCategoryData?.name || category].join(',')
+    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&hashtags=${encodeURIComponent(hashtags)}`
+    window.open(url, '_blank')
+}
+
+// WhatsApp bleibt gleich, nutzt die neue getMessage Funktion
+const shareToWhatsApp = () => {
+    const text = getShareMessage()
+    const url = `whatsapp://send?text=${encodeURIComponent(text)}`
+    window.location.href = url
+}
+
+const shareToTelegram = () => {
+    const text = getShareMessage()
+    const url = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(text)}`
+    window.open(url, '_blank')
+}
+
+const shareToReddit = () => {
+    const text = getShareMessage()
+    const url = `https://www.reddit.com/submit?url=${encodeURIComponent(window.location.href)}&title=${encodeURIComponent(text)}`
+    window.open(url, '_blank')
+}
+
+const shareToLinkedIn = () => {
+    const text = getShareMessage()
+    const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}&summary=${encodeURIComponent(text)}`
+    window.open(url, '_blank')
+}
 
 </script>
 
@@ -1914,6 +2032,63 @@ const resultMessage = ref('')
             }
         }
     }
+
+    .share-section {
+        margin-top: var(--padding-large);
+        text-align: center;
+
+        h3 {
+            margin-bottom: var(--padding-medium);
+            font-size: 1.2rem;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .share-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            color: white;
+            cursor: pointer;
+            transition: opacity 0.2s;
+
+            &:hover {
+                opacity: 0.9;
+            }
+
+            &.twitter {
+                background-color: #1DA1F2;
+            }
+
+            &.telegram {
+                background-color: #0088cc;
+            }
+
+            &.reddit {
+                background-color: #ff4500;
+            }
+
+            &.whatsapp {
+                background-color: #25D366;
+            }
+
+            &.share-api {
+                background-color: #666;
+            }
+
+            &.linkedin {
+                background-color: #0077b5;
+            }
+        }
+    }
 }
 
 @keyframes slideUp {
@@ -2251,5 +2426,62 @@ const resultMessage = ref('')
 .game-end-screen {
     position: relative;
     min-height: 400px; // Adjust based on your content
+}
+
+.share-section {
+    margin-top: var(--padding-large);
+    text-align: center;
+
+    h3 {
+        margin-bottom: var(--padding-medium);
+        font-size: 1.2rem;
+    }
+
+    .share-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .share-button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        color: white;
+        cursor: pointer;
+        transition: opacity 0.2s;
+
+        &:hover {
+            opacity: 0.9;
+        }
+
+        &.twitter {
+            background-color: #1DA1F2;
+        }
+
+        &.telegram {
+            background-color: #0088cc;
+        }
+
+        &.reddit {
+            background-color: #ff4500;
+        }
+
+        &.whatsapp {
+            background-color: #25D366;
+        }
+
+        &.share-api {
+            background-color: #666;
+        }
+
+        &.linkedin {
+            background-color: #0077b5;
+        }
+    }
 }
 </style>
