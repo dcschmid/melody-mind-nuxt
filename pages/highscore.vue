@@ -24,15 +24,22 @@
 </template>
 
 <script setup lang="ts">
+// Core imports and setup
 import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { authClient } from '~/lib/auth-client'
 import { useHead, useSeoMeta } from '@unhead/vue'
 import { useRequestURL } from '#app'
 
+/**
+ * Authentication session management using authClient
+ */
 const session = authClient.useSession()
 const { locale } = useI18n()
 
+/**
+ * Type definitions for score and category data
+ */
 interface Score {
     id: string;
     name: string;
@@ -46,14 +53,20 @@ interface Category {
     name: string;
 }
 
-const totalHighscores = ref<Score[]>([])
-const categories = ref<Category[]>([])
-const categoryScores = ref<Record<string, any[]>>({})
-const isLoading = ref<boolean>(true)
+/**
+ * Reactive state management
+ */
+const totalHighscores = ref<Score[]>([])        // Stores overall highscores
+const categories = ref<Category[]>([])          // Stores available categories
+const categoryScores = ref<Record<string, any[]>>({})  // Stores scores per category
+const isLoading = ref<boolean>(true)           // Loading state indicator
 
-const currentUserRank = ref<number | null>(null)
-const currentUserScore = ref<Score | null>(null)
+const currentUserRank = ref<number | null>(null)      // Current user's rank
+const currentUserScore = ref<Score | null>(null)      // Current user's score
 
+/**
+ * Finds and sets the current user's rank in the highscore list
+ */
 const findCurrentUserRank = () => {
     const userId = session.value?.data?.user?.id
     if (!userId || !totalHighscores.value) return
@@ -65,9 +78,12 @@ const findCurrentUserRank = () => {
     }
 }
 
-// Caching-Strategie implementieren
+/**
+ * Caching implementation for API requests
+ * Caches responses for 1 minute to reduce API load
+ */
 const cache = new Map<string, { data: any, timestamp: number }>()
-const CACHE_DURATION = 60000 // 1 Minute Cache
+const CACHE_DURATION = 60000 // 1 minute cache duration
 
 const fetchWithCache = async (url: string) => {
     const cached = cache.get(url)
@@ -81,7 +97,9 @@ const fetchWithCache = async (url: string) => {
     return data
 }
 
-// Parallele Verarbeitung der Highscores
+/**
+ * Loads categories and total highscores in parallel
+ */
 const loadCategories = async () => {
     try {
         const [categoriesResponse, totalScores] = await Promise.all([
@@ -92,7 +110,6 @@ const loadCategories = async () => {
         categories.value = categoriesResponse.categories
         totalHighscores.value = totalScores.scores
 
-        // Lade Kategorie-Highscores parallel
         await loadCategoryHighscores(categoriesResponse.categories)
     } catch (error) {
         console.error('Error loading data:', error)
@@ -101,7 +118,9 @@ const loadCategories = async () => {
     }
 }
 
-// Optimierte Kategorie-Highscores-Ladung
+/**
+ * Loads highscores for each category in parallel
+ */
 const loadCategoryHighscores = async (categories: Category[]) => {
     const promises = categories.map(category =>
         fetchWithCache(`/api/highscore/category/list?category=${category.slug}&language=${locale.value}`)
@@ -114,20 +133,27 @@ const loadCategoryHighscores = async (categories: Category[]) => {
     })
 }
 
+/**
+ * Initialize data on component mount
+ */
 onMounted(async () => {
     await loadCategories()
     findCurrentUserRank()
 })
 
-// SEO Meta Tags
+/**
+ * SEO configuration
+ */
 useSeoMeta({
     title: 'Highscores - Melody Mind',
     ogTitle: 'Highscores - Melody Mind',
-    description: 'Entdecke die besten Spieler in unserem Musik-Quiz. Vergleiche deine Punktzahl mit anderen und steige in der Rangliste auf.',
-    ogDescription: 'Vergleiche deine Punktzahl mit anderen Spielern und steige in der Rangliste auf.',
+    description: 'Discover the top players in our music quiz. Compare your score with others and climb the rankings.',
+    ogDescription: 'Compare your score with other players and climb the rankings.',
 })
 
-// Dynamische kanonische URL
+/**
+ * Dynamic canonical URL and additional head tags
+ */
 const url = useRequestURL()
 
 useHead({
@@ -142,7 +168,7 @@ useHead({
     ],
     meta: [
         { name: 'robots', content: 'index, follow' },
-        { name: 'keywords', content: 'Melody Mind, Highscore, Rangliste, Bestenliste, Musikwissen, Quiz Punkte' }
+        { name: 'keywords', content: 'Melody Mind, Highscore, Rankings, Leaderboard, Music Knowledge, Quiz Points' }
     ]
 })
 </script>
