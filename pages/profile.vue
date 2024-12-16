@@ -178,7 +178,16 @@ const loadUserData = async () => {
 const handleImageUpload = async (event: Event) => {
     const file = (event.target as HTMLInputElement).files?.[0]
     const userId = session.value?.data?.user?.id
-    if (!file || !userId) return
+
+    if (!file) {
+        console.error('Keine Datei ausgewählt')
+        return
+    }
+
+    if (!userId) {
+        console.error('Kein Benutzer angemeldet')
+        return
+    }
 
     const formData = new FormData()
     formData.append('image', file)
@@ -190,7 +199,10 @@ const handleImageUpload = async (event: Event) => {
             body: formData
         })
 
-        if (!response.ok) throw new Error('Fehler beim Hochladen des Bildes')
+        if (!response.ok) {
+            const errorData = await response.json()
+            throw new Error(errorData.message || 'Fehler beim Hochladen des Bildes')
+        }
 
         const data = await response.json()
         userData.value.image = data.imageUrl
