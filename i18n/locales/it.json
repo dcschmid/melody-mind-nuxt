@@ -72,28 +72,28 @@
     "highscores": "Punteggi migliori",
     "profile": "Profilo",
     "signOut": "Esci",
-    "support": "Sostienici",
+    "support": "Supportare",
     "legal": "Note legali",
-    "imprint": "Informazioni legali",
+    "imprint": "Colophon",
     "privacy": "Informativa sulla privacy"
   },
-  "gameRules": {
-    "title": "Regole del gioco – MelodyMind",
+  "gameRules":
+    "title": "Regole del Gioco – MelodyMind",
     "overview": {
       "title": "Panoramica",
-      "text": "Benvenuto su MelodyMind! Il tuo obiettivo è rispondere a domande su canzoni, artisti e album di diversi generi musicali. Scegli un genere e metti alla prova le tue conoscenze. Più domande rispondi correttamente, più punti guadagnerai."
+      "text": "Benvenuto su MelodyMind! Il tuo obiettivo è rispondere a domande su canzoni, artisti e album di vari generi musicali. Scegli un genere e metti alla prova le tue conoscenze. Più risposte corrette dai, più punti guadagni."
     },
     "difficultyLevels": {
-      "title": "Livelli di difficoltà",
+      "title": "Livelli di Difficoltà",
       "intro": "Ci sono tre livelli di difficoltà tra cui scegliere:",
       "levels": {
         "easy": {
           "title": "Facile",
-          "description": "10 domande per round. Perfetto per rinfrescare le tue conoscenze e divertirti"
+          "description": "10 domande per round. Perfetto per rinfrescare le tue conoscenze e divertirti."
         },
         "medium": {
           "title": "Medio",
-          "description": "15 domande per round. Una sfida per gli amanti della musica avanzati"
+          "description": "15 domande per round. Una sfida per gli amanti della musica più esperti."
         },
         "hard": {
           "title": "Difficile",
@@ -101,53 +101,50 @@
         }
       },
       "titles": {
-        "intro": "Ogni livello di difficoltà ha il suo titolo che puoi sbloccare:",
+        "intro": "Ogni livello di difficoltà ha il suo titolo da sbloccare:",
         "novice": {
           "title": "Novizio Musicale",
-          "description": "Tutte le domande risposte correttamente in modalità facile"
+          "description": "Tutte le domande risposte correttamente in modalità facile."
         },
         "master": {
-          "title": "Maestro della Musica",
-          "description": "Tutte le domande risposte correttamente in modalità media"
+          "title": "Maestro Musicale",
+          "description": "Tutte le domande risposte correttamente in modalità media."
         },
         "legend": {
-          "title": "Leggenda della Musica",
-          "description": "Tutte le domande risposte correttamente in modalità difficile"
+          "title": "Leggenda Musicale",
+          "description": "Tutte le domande risposte correttamente in modalità difficile."
         }
       }
     },
-    "pointSystem": {
-      "title": "Sistema di punteggio",
-      "points": {
-        "correct": "50 punti per ogni risposta corretta",
-        "wrong": "Nessun punto per le risposte sbagliate"
-      }
+    "pointsSystem": {
+      "title": "Sistema di Punteggio",
+      "rules": ["50 punti per ogni risposta corretta.", "Nessun punto per le risposte sbagliate."]
     },
     "goldenRecords": {
       "title": "Dischi d'Oro",
-      "intro": "Quando rispondi correttamente a tutte le domande di una categoria, ricevi un disco d'oro:",
+      "intro": "Rispondendo correttamente a tutte le domande in una categoria, riceverai un disco d'oro:",
       "rewards": {
-        "easy": "Facile: Novizio Musicale",
-        "medium": "Medio: Maestro della Musica",
-        "hard": "Difficile: Leggenda della Musica"
+        "easy": "Facile: Novizio Musicale.",
+        "medium": "Medio: Maestro Musicale.",
+        "hard": "Difficile: Leggenda Musicale."
       }
     },
     "rankings": {
       "title": "Classifiche",
-      "description": "Il sistema di classifiche ti confronta con altri giocatori. Il tuo posizionamento nella Top 10 si basa sui punti accumulati in tutte le categorie",
-      "types": {
-        "genre": "Classifica per genere: Migliori giocatori di un genere",
-        "overall": "Classifica generale: Migliori giocatori in tutte le categorie"
-      }
+      "text": "Il sistema di classifiche ti confronta con altri giocatori. Il posizionamento nella top 10 si basa sui punti accumulati in tutte le categorie.",
+      "lists": [
+        "Classifica per genere: Migliori giocatori di un genere.",
+        "Classifica generale: Migliori giocatori in tutte le categorie."
+      ]
     },
     "tipsAndTricks": {
-      "title": "Suggerimenti e trucchi",
-      "tips": {
-        "startEasy": "Inizia in modalità facile per familiarizzare con il gioco",
-        "chooseStrengths": "Scegli i tuoi punti di forza e gioca nei generi in cui ti senti sicuro",
-        "practice": "Esercitati regolarmente per migliorare il tuo punteggio",
-        "accuracy": "Precisione prima della velocità – leggi attentamente ogni domanda"
-      }
+      "title": "Suggerimenti e Trucchi",
+      "tips": [
+        "Inizia in modalità facile per prendere confidenza con il gioco.",
+        "Scegli i tuoi punti di forza e gioca nei generi in cui ti senti sicuro.",
+        "Esercitati regolarmente per migliorare il tuo punteggio.",
+        "Precisione prima della velocità – leggi attentamente ogni domanda."
+      ]
     }
   },
   "gameHome": {
@@ -220,7 +217,7 @@
           "telegram": "Condividi via Telegram",
           "reddit": "Condividi su Reddit",
           "whatsapp": "Condividi via WhatsApp",
-          "share": "Condividi",
+          "share": "Condividi"
         },
         "message": {
           "intro": " Ho appena ottenuto {points} punti in Melody Mind!",

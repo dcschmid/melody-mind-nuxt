@@ -1,11 +1,11 @@
 <template>
     <div class="layout">
-        <a href="#main-content" class="skip-link">{{ $t('navigation.skipToMain') }}</a>
+        <a href="#main-content" class="skip-link">{{ $t('accessibility.skipToMain') }}</a>
 
         <header v-if="showHeader" role="banner">
             <LanguagePicker />
 
-            <nav v-if="showMenu" aria-label="Hauptnavigation">
+            <nav v-if="showMenu" :aria-label="$t('navigation.mainNavLabel')">
                 <button class="menu-button" :class="{ 'is-active': isMenuOpen }"
                     :aria-label="isMenuOpen ? $t('navigation.closeMenu') : $t('navigation.openMenu')"
                     :aria-expanded="isMenuOpen" aria-controls="menu" @click="toggleMenu">
@@ -34,7 +34,7 @@
                     </NuxtLink>
                     <NuxtLink :to="localePath('highscore')" class="menu-item">
                         <Icon name="material-symbols:trophy-outline" size="36" />
-                        <span>{{ $t('navigation.highscores') }}</span>
+                        <span>{{ $t('navigation.leaderboard') }}</span>
                     </NuxtLink>
                     <NuxtLink :to="localePath('profile')" class="menu-item">
                         <Icon name="lucide:user-round" size="36" />
@@ -42,7 +42,7 @@
                     </NuxtLink>
                     <button v-if="session.data" @click="handleSignOut" class="menu-item">
                         <Icon name="ic:baseline-logout" size="36" />
-                        <span>{{ $t('navigation.signOut') }}</span>
+                        <span>{{ $t('navigation.logout') }}</span>
                     </button>
                 </div>
 

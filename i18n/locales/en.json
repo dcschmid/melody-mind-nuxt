@@ -66,13 +66,13 @@
     "skipToMain": "Skip to main content",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "mainMenu": "Main menu",
+    "mainMenu": "Main Menu",
     "home": "Home",
     "rules": "Game Rules",
     "highscores": "Highscores",
     "profile": "Profile",
     "signOut": "Sign out",
-    "support": "Support us",
+    "support": "Support",
     "legal": "Legal",
     "imprint": "Imprint",
     "privacy": "Privacy Policy"
@@ -81,7 +81,7 @@
     "title": "Game Rules – MelodyMind",
     "overview": {
       "title": "Overview",
-      "text": "Welcome to MelodyMind! Your goal is to answer questions about songs, artists, and albums from different music genres. Choose a genre and test your knowledge. The more questions you answer correctly, the more points you'll earn."
+      "text": "Welcome to MelodyMind! Your goal is to answer questions about songs, artists, and albums from various music genres. Choose a genre and put your knowledge to the test. The more questions you answer correctly, the more points you'll earn."
     },
     "difficultyLevels": {
       "title": "Difficulty Levels",
@@ -89,11 +89,11 @@
       "levels": {
         "easy": {
           "title": "Easy",
-          "description": "10 questions per round. Perfect for refreshing your knowledge and having fun"
+          "description": "10 questions per round. Perfect for refreshing your knowledge and having fun."
         },
         "medium": {
           "title": "Medium",
-          "description": "15 questions per round. A challenge for advanced music lovers"
+          "description": "15 questions per round. A challenge for advanced music lovers."
         },
         "hard": {
           "title": "Hard",
@@ -104,50 +104,50 @@
         "intro": "Each difficulty level has its own title that you can unlock:",
         "novice": {
           "title": "Music Novice",
-          "description": "All questions answered correctly in easy mode"
+          "description": "Answered all questions correctly in easy mode."
         },
         "master": {
           "title": "Music Master",
-          "description": "All questions answered correctly in medium mode"
+          "description": "Answered all questions correctly in medium mode."
         },
         "legend": {
           "title": "Music Legend",
-          "description": "All questions answered correctly in hard mode"
+          "description": "Answered all questions correctly in hard mode."
         }
       }
     },
-    "pointSystem": {
-      "title": "Point System",
-      "points": {
-        "correct": "50 points for each correct answer",
-        "wrong": "No points for wrong answers"
-      }
+    "pointsSystem": {
+      "title": "Points System",
+      "rules": [
+        "50 points for each correct answer.",
+        "No points for wrong answers."
+      ]
     },
     "goldenRecords": {
       "title": "Golden Records",
-      "intro": "When you answer all questions in a category correctly, you'll receive a golden record:",
+      "intro": "When answering all questions correctly in a category, you'll receive a golden record:",
       "rewards": {
-        "easy": "Easy: Music Novice",
-        "medium": "Medium: Music Master",
-        "hard": "Hard: Music Legend"
+        "easy": "Easy: Music Novice.",
+        "medium": "Medium: Music Master.",
+        "hard": "Hard: Music Legend."
       }
     },
     "rankings": {
       "title": "Rankings",
-      "description": "The ranking system compares you with other players. Your placement in the Top 10 is based on your collected points in all categories",
-      "types": {
-        "genre": "Genre-specific ranking: Best players of a genre",
-        "overall": "Overall ranking: Best players across all categories"
-      }
+      "text": "The ranking system compares you with other players. Placement in the top 10 is based on your collected points across all categories.",
+      "lists": [
+        "Genre-specific ranking: Best players of a genre.",
+        "Overall ranking: Best players across all categories."
+      ]
     },
     "tipsAndTricks": {
       "title": "Tips & Tricks",
-      "tips": {
-        "startEasy": "Start in easy mode to get a feel for the game",
-        "chooseStrengths": "Choose your strengths and play the genres you're confident in",
-        "practice": "Practice regularly to improve your score",
-        "accuracy": "Accuracy over speed – read each question carefully"
-      }
+      "tips": [
+        "Start in easy mode to get a feel for the game.",
+        "Choose your strengths and play the genres you're confident in.",
+        "Practice regularly to improve your score.",
+        "Accuracy over speed – read each question carefully."
+      ]
     }
   },
   "gameHome": {
@@ -223,13 +223,13 @@
           "share": "Share",
         },
         "message": {
-          "intro": "🎵 I just scored {points} points in Melody Mind!",
-          "genre": "🎸 Genre: {genre}",
-          "perfect": "🏆 Perfect round with a Gold LP in {difficulty} difficulty!",
-          "silver": "🥈 Won Silver LP in {difficulty} difficulty!",
-          "bronze": "🥉 Won Bronze LP in {difficulty} difficulty!",
-          "stats": "✨ Got {correct} out of {total} questions right!",
-          "challenge": "🎮 Challenge me: {url}",
+          "intro": " I just scored {points} points in Melody Mind!",
+          "genre": " Genre: {genre}",
+          "perfect": " Perfect round with a Gold LP in {difficulty} difficulty!",
+          "silver": " Won Silver LP in {difficulty} difficulty!",
+          "bronze": " Won Bronze LP in {difficulty} difficulty!",
+          "stats": " Got {correct} out of {total} questions right!",
+          "challenge": " Challenge me: {url}",
           "difficulty": {
             "easy": "easy",
             "medium": "medium",

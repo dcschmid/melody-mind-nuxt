@@ -120,6 +120,79 @@
       "backToHome": "Zurück zur Startseite"
     }
   },
+  "gameRules": {
+    "title": "Spielregeln – MelodyMind",
+    "overview": {
+      "title": "Überblick",
+      "text": "Willkommen bei MelodyMind! Dein Ziel ist es, Fragen zu Liedern, Interpreten und Alben aus verschiedenen Musikrichtungen zu beantworten. Wähle ein Genre aus und stelle dein Wissen auf die Probe. Je mehr Fragen du richtig beantwortest, desto mehr Punkte bekommst du."
+    },
+    "difficultyLevels": {
+      "title": "Schwierigkeitsgrade",
+      "intro": "Es gibt drei Schwierigkeitsstufen, aus denen du eine auswählen kannst:",
+      "levels": {
+        "easy": {
+          "title": "Leicht",
+          "description": "10 Fragen pro Runde. Perfekt, um dein Wissen aufzufrischen und Spaß zu haben."
+        },
+        "medium": {
+          "title": "Mittel",
+          "description": "15 Fragen pro Runde. Eine Herausforderung für fortgeschrittene Musikliebhaber."
+        },
+        "hard": {
+          "title": "Schwer",
+          "description": "20 Fragen pro Runde. Nur für echte Musikkenner!"
+        }
+      },
+      "titles": {
+        "intro": "Jede Schwierigkeitsstufe hat einen eigenen Titel, den du freischalten kannst:",
+        "novice": {
+          "title": "Musik-Novize",
+          "description": "Alle Fragen im leichten Modus richtig beantwortet."
+        },
+        "master": {
+          "title": "Musik-Meister",
+          "description": "Alle Fragen im mittleren Modus richtig beantwortet."
+        },
+        "legend": {
+          "title": "Musik-Legende",
+          "description": "Alle Fragen im schweren Modus richtig beantwortet."
+        }
+      }
+    },
+    "pointsSystem": {
+      "title": "Punktesystem",
+      "rules": [
+        "50 Punkte für jede richtige Antwort.",
+        "Keine Punkte für falsche Antworten."
+      ]
+    },
+    "goldenRecords": {
+      "title": "Goldene Schallplatten",
+      "intro": "Bei vollständiger richtiger Beantwortung aller Fragen einer Kategorie erhältst du eine goldene Schallplatte:",
+      "rewards": {
+        "easy": "Leicht: Musik-Novize.",
+        "medium": "Mittel: Musik-Meister.",
+        "hard": "Schwer: Musik-Legende."
+      }
+    },
+    "rankings": {
+      "title": "Ranglisten",
+      "text": "Das Rankingsystem vergleicht dich mit anderen Spielern. Die Platzierung in den Top 10 basiert auf deinen gesammelten Punkten in allen Kategorien.",
+      "lists": [
+        "Genrespezifische Rangliste: Beste Spieler eines Genres.",
+        "Gesamtrangliste: Beste Spieler aller Kategorien."
+      ]
+    },
+    "tipsAndTricks": {
+      "title": "Tipps & Tricks",
+      "tips": [
+        "Starte im leichten Modus, um ein Gefühl für das Spiel zu bekommen.",
+        "Wähle deine Stärken und spiele die Genres, in denen du dich sicher fühlst.",
+        "Übe regelmäßig, um deine Punktzahl zu verbessern.",
+        "Genauigkeit geht vor Tempo – lies jede Frage sorgfältig durch."
+      ]
+    }
+  },
   "profile": {
     "title": "Profil",
     "stats": {
@@ -151,7 +224,15 @@
     "profile": "Profil",
     "leaderboard": "Bestenliste",
     "settings": "Einstellungen",
-    "logout": "Abmelden"
+    "logout": "Abmelden",
+    "rules": "Spielregeln",
+    "mainMenu": "Hauptmenü",
+    "support": "Unterstützen",
+    "legal": "Rechtliches",
+    "imprint": "Impressum",
+    "highscores": "Bestenliste",
+    "privacy": "Datenschutz",
+    "mainNavLabel": "Hauptnavigation"
   },
   "footer": {
     "about": "Über uns",
