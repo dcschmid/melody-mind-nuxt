@@ -6,7 +6,14 @@
     "fr": "Francés",
     "it": "Italiano"
   },
-  "welcome": "Bienvenido a Melody Mind",
+  "welcome": {
+    "title": "Bienvenido a Melody Mind",
+    "start": "Comenzar juego",
+    "about": {
+      "title": "Acerca de Melody Mind",
+      "description": "Pon a prueba tus conocimientos musicales en diferentes categorías"
+    }
+  },
   "intro": "¡Sumérgete en el fascinante mundo de la música! En Melody Mind, podrás demostrar tus conocimientos musicales en emocionantes rondas de preguntas. Responde preguntas sobre canciones de diferentes décadas, artistas, álbumes e historia de la música. Acumula puntos, gana discos de oro y desafía a otros entusiastas de la música. Desde rock hasta pop, hip-hop y clásica - pon a prueba tus conocimientos en tus géneros favoritos. ¡Comienza tu aventura musical ahora!",
   "login": {
     "title": "Iniciar sesión",
@@ -145,11 +152,22 @@
   },
   "gameHome": {
     "title": "Elige una categoría para jugar",
+    "description": "Descubre el fascinante mundo de la música a través de diferentes décadas y géneros",
     "searchPlaceholder": "Buscar categoría...",
     "playCategory": "Jugar {category}",
     "comingSoon": "{category} - Próximamente",
     "categoryAlt": "Imagen para la categoría {category}",
-    "comingSoonLabel": "Próximamente"
+    "comingSoonLabel": "Próximamente",
+    "categories": {
+      "50er": {
+        "title": "Años 50",
+        "description": "Sumérgete en la edad de oro del Rock 'n' Roll, Jazz y Blues con leyendas como Elvis Presley, Chuck Berry y Miles Davis"
+      },
+      "60er": {
+        "title": "Años 60",
+        "description": "Vive la época de la Invasión Británica, el Rock Psicodélico y Motown con The Beatles, The Rolling Stones y más"
+      }
+    }
   },
   "category": {
     "selected": "¡seleccionado!",
@@ -205,13 +223,13 @@
           "share": "Compartir",
         },
         "message": {
-          "intro": "🎵 ¡Acabo de conseguir {points} puntos en Melody Mind!",
-          "genre": "🎸 Género: {genre}",
-          "perfect": "🏆 ¡Ronda perfecta con un LP de Oro en dificultad {difficulty}!",
-          "silver": "🥈 ¡LP de Plata conseguido en dificultad {difficulty}!",
-          "bronze": "🥉 ¡LP de Bronce conseguido en dificultad {difficulty}!",
-          "stats": "✨ ¡{correct} de {total} preguntas correctas!",
-          "challenge": "🎮 Desafíame: {url}",
+          "intro": "¡Acabo de conseguir {points} puntos en Melody Mind!",
+          "genre": "Género: {genre}",
+          "perfect": "¡Ronda perfecta con un LP de Oro en dificultad {difficulty}!",
+          "silver": "¡LP de Plata conseguido en dificultad {difficulty}!",
+          "bronze": "¡LP de Bronce conseguido en dificultad {difficulty}!",
+          "stats": "{correct} de {total} preguntas correctas!",
+          "challenge": "Desafíame: {url}",
           "difficulty": {
             "easy": "fácil",
             "medium": "media",

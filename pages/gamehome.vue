@@ -2,27 +2,23 @@
     <NuxtLayout name="default" :show-header="true" :show-menu="true">
         <main class="gameHome" id="main-content">
             <section class="intro" v-motion-slide-top>
-                <h1>{{ $t('gameHome.title') }}</h1>
+                <h1 tabindex="-1">{{ $t('gameHome.title') }}</h1>
+                <p class="intro-text" v-if="$t('gameHome.description')">{{ $t('gameHome.description') }}</p>
             </section>
 
-            <section class="search-section" v-motion-slide-visible>
-                <SearchBar
-                    id="category-search"
-                    v-model="searchQuery"
-                    :placeholder="$t('gameHome.searchPlaceholder')"
-                />
+            <section class="search-section" v-motion-slide-visible role="search">
+                <SearchBar id="category-search" v-model="searchQuery" :placeholder="$t('gameHome.searchPlaceholder')" />
             </section>
 
-            <section class="categories-section" aria-label="Spielkategorien">
+            <section class="categories-section" role="region" aria-labelledby="categories-heading">
+                <h2 id="categories-heading" class="visually-hidden">{{ $t('gameHome.categoriesTitle') }}</h2>
                 <div class="categories-grid">
-                    <CategoryCard
-                        v-for="category in filteredCategories"
-                        :key="category.slug"
-                        :headline="category.headline"
+                    <CategoryCard v-for="category in filteredCategories" :key="category.slug"
+                        :headline="category.headline" 
                         :image-url="category.imageUrl"
-                        :category-url="localePath(category.categoryUrl)"
+                        :category-url="localePath(category.categoryUrl)" 
                         :is-playable="category.isPlayable"
-                    />
+                        :intro-subline="category.introSubline" />
                 </div>
             </section>
         </main>
@@ -30,11 +26,21 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 
 const { searchQuery, filteredCategories, loadCategories } = useCategories()
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 const localePath = useLocalePath()
+
+useHead({
+    title: computed(() => t('gameHome.title')),
+    meta: [
+        { name: 'description', content: computed(() => t('gameHome.description')) },
+        { property: 'og:title', content: computed(() => t('gameHome.title')) },
+        { property: 'og:description', content: computed(() => t('gameHome.description')) },
+        { name: 'robots', content: 'index, follow' }
+    ]
+})
 
 onMounted(() => {
     loadCategories(locale.value)
@@ -103,5 +109,17 @@ onMounted(() => {
     .categories-grid {
         gap: var(--padding-medium);
     }
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 </style>

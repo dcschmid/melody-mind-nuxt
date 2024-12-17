@@ -6,7 +6,14 @@
     "fr": "French",
     "it": "Italian"
   },
-  "welcome": "Welcome to Melody Mind",
+  "welcome": {
+    "title": "Welcome to Melody Mind",
+    "start": "Start Game",
+    "about": {
+      "title": "About Melody Mind",
+      "description": "Test your music knowledge in various categories"
+    }
+  },
   "intro": "Dive into the fascinating world of music! At Melody Mind, you can prove your music knowledge in exciting quiz rounds. Answer questions about songs from different decades, artists, albums, and music history. Collect points, earn golden records, and challenge other music enthusiasts. From rock to pop, hip-hop to classical - test your knowledge in your favorite genres. Start your musical quiz adventure now!",
   "login": {
     "title": "Sign In",
@@ -145,11 +152,22 @@
   },
   "gameHome": {
     "title": "Choose a category to play",
+    "description": "Discover the fascinating world of music through different decades and genres",
     "searchPlaceholder": "Search category...",
     "playCategory": "Play {category}",
     "comingSoon": "{category} - Coming Soon",
     "categoryAlt": "Image for category {category}",
-    "comingSoonLabel": "Coming Soon"
+    "comingSoonLabel": "Coming Soon",
+    "categories": {
+      "50er": {
+        "title": "50s",
+        "description": "Dive into the golden era of Rock 'n' Roll, Jazz, and Blues with legends like Elvis Presley, Chuck Berry, and Miles Davis"
+      },
+      "60er": {
+        "title": "60s",
+        "description": "Experience the era of the British Invasion, Psychedelic Rock, and Motown with The Beatles, The Rolling Stones, and more"
+      }
+    }
   },
   "category": {
     "selected": "selected!",

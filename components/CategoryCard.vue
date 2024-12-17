@@ -5,14 +5,13 @@
             <div class="category-content">
                 <div class="image-container">
                     <picture>
-                        <source :srcset="`${imageUrl}?w=800 800w, ${imageUrl}?w=480 480w`"
+                        <source :srcset="imageUrl" 
                             :sizes="'(max-width: 768px) 480px, 800px'" />
-                        <img :src="imageUrl" :alt="headline" loading="lazy" decoding="async" :width="480"
-                            :height="270" />
+                        <img :src="imageUrl" :alt="$t('gameHome.categoryAlt', { category: headline })" 
+                            loading="lazy" decoding="async" :width="480" :height="270" />
                     </picture>
-                </div>
-                <div class="category-info">
-                    <h2>{{ headline }}</h2>
+                    <div class="category-title">{{ headline }}</div>
+                    <div class="category-description">{{ introSubline }}</div>
                 </div>
             </div>
         </NuxtLink>
@@ -20,17 +19,16 @@
             :aria-label="$t('gameHome.comingSoon', { category: headline })">
             <div class="image-container">
                 <picture>
-                    <source :srcset="`${imageUrl}?w=800 800w, ${imageUrl}?w=480 480w`"
+                    <source :srcset="imageUrl" 
                         :sizes="'(max-width: 768px) 480px, 800px'" />
-                    <img :src="imageUrl" :alt="headline" loading="lazy" decoding="async" :width="480"
-                        :height="270" />
+                    <img :src="imageUrl" :alt="$t('gameHome.categoryAlt', { category: headline })" 
+                        loading="lazy" decoding="async" :width="480" :height="270" />
                 </picture>
+                <div class="category-title">{{ headline }}</div>
+                <div class="category-description">{{ introSubline }}</div>
                 <div class="coming-soon-badge">
                     {{ $t('gameHome.comingSoonLabel') }}
                 </div>
-            </div>
-            <div class="category-info">
-                <h2>{{ headline }}</h2>
             </div>
         </div>
     </div>
@@ -50,6 +48,10 @@ defineProps({
         type: String,
         required: true
     },
+    introSubline: {
+        type: String,
+        required: true
+    },
     isPlayable: {
         type: Boolean,
         default: true
@@ -60,69 +62,89 @@ defineProps({
 <style scoped lang="scss">
 .category-card {
     position: relative;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-lg);
     overflow: hidden;
-    background: var(--surface-color);
-    border: 1px solid rgb(255 255 255 / 10%);
-    backface-visibility: hidden;
-    transform: translateZ(0);
+    transition: transform 0.3s ease;
 
     &:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: var(--box-shadow-hover);
+        transform: translateY(-4px);
 
-        .image-container img {
-            transform: scale(1.1);
-        }
-
-        .category-info {
-            transform: translateY(-5px);
+        .category-description {
+            opacity: 1;
         }
     }
 
     &.not-playable {
-        opacity: 0.9;
-        filter: grayscale(20%);
-        pointer-events: none;
+        cursor: not-allowed;
+        opacity: 0.7;
     }
+}
+
+.category-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .category-content {
     position: relative;
+    width: 100%;
     height: 100%;
 }
 
 .image-container {
     position: relative;
-    overflow: hidden;
+    width: 100%;
+    height: 100%;
     aspect-ratio: 16/9;
 
     img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.3s ease-out;
+        border-radius: var(--border-radius-lg);
     }
 }
 
-.category-info {
-    padding: var(--padding-medium);
-    transition: transform 0.3s ease-out;
+.category-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
 
-    h2 {
-        font-size: var(--subtitle-font-size);
-        color: var(--text-color);
-        margin: 0;
-    }
+.category-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 .coming-soon-badge {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    background: rgba(0, 0, 0, 0.7);
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-primary);
     color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
+    border-radius: var(--border-radius-sm);
+    font-weight: bold;
+    font-size: 0.875rem;
 }
 </style>

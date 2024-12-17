@@ -6,7 +6,14 @@
     "fr": "Francese",
     "it": "Italiano"
   },
-  "welcome": "Benvenuto su Melody Mind",
+  "welcome": {
+    "title": "Benvenuto su Melody Mind",
+    "start": "Inizia il gioco",
+    "about": {
+      "title": "Su Melody Mind",
+      "description": "Metti alla prova le tue conoscenze musicali in diverse categorie"
+    }
+  },
   "intro": "Immergiti nel fascinante mondo della musica! Su Melody Mind, puoi dimostrare le tue conoscenze musicali in emozionanti round di quiz. Rispondi a domande su canzoni di diversi decenni, artisti, album e storia della musica. Accumula punti, guadagna dischi d'oro e sfida altri appassionati di musica. Dal rock al pop, dall'hip-hop al classico - metti alla prova le tue conoscenze nei tuoi generi preferiti. Inizia ora la tua avventura musicale!",
   "login": {
     "title": "Accedi",
@@ -145,11 +152,22 @@
   },
   "gameHome": {
     "title": "Scegli una categoria per giocare",
+    "description": "Scopri il mondo affascinante della musica attraverso diversi decenni e generi",
     "searchPlaceholder": "Cerca categoria...",
     "playCategory": "Gioca {category}",
     "comingSoon": "{category} - Prossimamente",
     "categoryAlt": "Immagine per la categoria {category}",
-    "comingSoonLabel": "Prossimamente"
+    "comingSoonLabel": "Prossimamente",
+    "categories": {
+      "50er": {
+        "title": "Anni '50",
+        "description": "Immergiti nell'età d'oro del Rock 'n' Roll, Jazz e Blues con leggende come Elvis Presley, Chuck Berry e Miles Davis"
+      },
+      "60er": {
+        "title": "Anni '60",
+        "description": "Vivi l'epoca della British Invasion, del Rock Psichedelico e della Motown con The Beatles, The Rolling Stones e altri"
+      }
+    }
   },
   "category": {
     "selected": "selezionato!",
@@ -205,13 +223,13 @@
           "share": "Condividi",
         },
         "message": {
-          "intro": "🎵 Ho appena ottenuto {points} punti in Melody Mind!",
-          "genre": "🎸 Genere: {genre}",
-          "perfect": "🏆 Round perfetto con un LP d'Oro in difficoltà {difficulty}!",
-          "silver": "🥈 LP d'Argento vinto in difficoltà {difficulty}!",
-          "bronze": "🥉 LP di Bronzo vinto in difficoltà {difficulty}!",
-          "stats": "✨ {correct} risposte corrette su {total} domande!",
-          "challenge": "🎮 Sfidami: {url}",
+          "intro": " Ho appena ottenuto {points} punti in Melody Mind!",
+          "genre": " Genere: {genre}",
+          "perfect": " Round perfetto con un LP d'Oro in difficoltà {difficulty}!",
+          "silver": " LP d'Argento vinto in difficoltà {difficulty}!",
+          "bronze": " LP di Bronzo vinto in difficoltà {difficulty}!",
+          "stats": " {correct} risposte corrette su {total} domande!",
+          "challenge": " Sfidami: {url}",
           "difficulty": {
             "easy": "facile",
             "medium": "media",

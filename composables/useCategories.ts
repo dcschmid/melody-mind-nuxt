@@ -4,6 +4,9 @@ import { ref, computed } from "vue";
 interface Category {
   headline: string;
   imageUrl: string;
+  categoryUrl: string;
+  isPlayable: boolean;
+  slug: string;
 }
 
 export const useCategories = () => {
