@@ -7,25 +7,33 @@
     "it": "Italiano"
   },
   "welcome": {
-    "title": "Benvenuto a Melody Mind",
+    "title": "Benvenuto su Melody Mind",
     "start": "Inizia il gioco",
     "about": {
       "title": "Su Melody Mind",
-      "description": "Metti alla prova la tua conoscenza musicale in diverse categorie"
+      "description": "Metti alla prova le tue conoscenze musicali in diverse categorie"
     }
   },
-  "intro": "Immergiti nel fantastico mondo della musica! Con Melody Mind metti alla prova la tua conoscenza musicale in emozionanti round di quiz. Rispondi a domande su canzoni di diversi decenni, artisti, album e storia della musica. Raccogli punti, guadagna dischi d'oro e sfida altri appassionati di musica. Dal rock al pop, dall'hip-hop alla classica - metti alla prova le tue conoscenze nei tuoi generi preferiti. Inizia ora la tua avventura musicale!",
+  "intro": "Immergiti nel fantastico mondo della musica! Su Melody Mind, metti alla prova le tue conoscenze musicali in emozionanti quiz. Rispondi a domande su canzoni di diversi decenni, artisti, album e storia della musica. Accumula punti, guadagna dischi d'oro e sfida altri appassionati di musica. Dal rock al pop all'hip-hop e alla classica - metti alla prova le tue conoscenze nei tuoi generi preferiti. Inizia ora la tua avventura musicale!",
   "login": {
     "title": "Accedi",
-    "email": "Email",
-    "password": "Password",
-    "submit": "Accedi",
-    "register": "Non hai un account? Registrati",
+    "methodLabel": "Metodo di accesso",
+    "emailOption": "Email",
+    "usernameOption": "Nome utente",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Il tuo indirizzo email",
+    "usernameLabel": "Nome utente",
+    "usernamePlaceholder": "Il tuo nome utente",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "La tua password",
+    "submitButton": "Accedi",
+    "noAccount": "Non hai un account?",
     "forgotPassword": "Password dimenticata?",
     "error": {
       "invalidEmail": "Indirizzo email non valido",
       "invalidPassword": "Password non valida",
-      "required": "Questo campo è obbligatorio"
+      "required": "Questo campo è obbligatorio",
+      "loginFailed": "Accesso fallito"
     }
   },
   "register": {
@@ -258,7 +266,18 @@
     "network": "Errore di rete",
     "retry": "Riprova",
     "pageNotFound": "Pagina non trovata",
-    "backToHome": "Torna alla home"
+    "backToHome": "Torna alla home",
+    "emailRequired": "L'indirizzo email è obbligatorio",
+    "invalidEmail": "Indirizzo email non valido",
+    "usernameRequired": "Il nome utente è obbligatorio",
+    "usernameTooShort": "Il nome utente deve contenere almeno 3 caratteri",
+    "passwordRequired": "La password è obbligatoria",
+    "passwordTooShort": "La password deve contenere almeno 6 caratteri",
+    "nameRequired": "Il nome è obbligatorio",
+    "nameTooShort": "Il nome deve contenere almeno 2 caratteri",
+    "loginFailed": "Accesso fallito",
+    "registrationFailed": "Registrazione fallita",
+    "passwordResetFailed": "Reimpostazione password fallita"
   },
   "accessibility": {
     "skipToMain": "Vai al contenuto principale",

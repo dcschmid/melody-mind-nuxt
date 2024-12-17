@@ -3,20 +3,20 @@
         <main class="login-page" id="main-content">
             <div class="content-wrapper">
                 <section class="welcome-section" v-motion-slide-top>
-                    <h1>{{ $t('welcome') }}</h1>
+                    <h1>{{ $t('welcome.title') }}</h1>
                     <p class="intro-text">{{ $t('intro') }}</p>
                 </section>
 
                 <section class="auth-section" v-motion-slide-visible>
                     <!-- Login Form -->
-                    <Form v-if="!formState.isRegistering && !formState.showForgotPassword" @submit="handleLogin" class="auth-form"
-                        aria-labelledby="login-title">
+                    <Form v-if="showLoginForm" @submit="handleLogin" class="auth-form" aria-labelledby="login-title">
                         <h2 id="login-title">{{ $t('login.title') }}</h2>
 
                         <div class="form-group">
                             <label for="login-method">{{ $t('login.methodLabel') }}</label>
                             <div class="select-wrapper">
-                                <Field name="loginMethod" as="select" v-model="formState.loginMethod" class="form-control">
+                                <Field name="loginMethod" as="select" v-model="formState.loginMethod"
+                                    class="form-control">
                                     <option value="email">{{ $t('login.emailOption') }}</option>
                                     <option value="username">{{ $t('login.usernameOption') }}</option>
                                 </Field>
@@ -39,8 +39,8 @@
                             <label for="username">{{ $t('login.usernameLabel') }}</label>
                             <div class="input-wrapper">
                                 <Icon name="material-symbols:person-outline" size="24" class="input-icon" />
-                                <Field name="username" type="text" :rules="validators.username" v-model="formState.username"
-                                    :placeholder="$t('login.usernamePlaceholder')" />
+                                <Field name="username" type="text" :rules="validators.username"
+                                    v-model="formState.username" :placeholder="$t('login.usernamePlaceholder')" />
                             </div>
                             <ErrorMessage name="username" class="error-message" />
                         </div>
@@ -49,8 +49,8 @@
                             <label for="password">{{ $t('login.passwordLabel') }}</label>
                             <div class="input-wrapper">
                                 <Icon name="material-symbols:lock-outline" size="24" class="input-icon" />
-                                <Field name="password" type="password" :rules="validators.password" v-model="formState.password"
-                                    :placeholder="$t('login.passwordPlaceholder')" />
+                                <Field name="password" type="password" :rules="validators.password"
+                                    v-model="formState.password" :placeholder="$t('login.passwordPlaceholder')" />
                             </div>
                             <ErrorMessage name="password" class="error-message" />
                         </div>
@@ -70,7 +70,7 @@
                     </Form>
 
                     <!-- Register Form -->
-                    <Form v-else-if="formState.isRegistering && !formState.showForgotPassword" @submit="handleRegister" class="auth-form"
+                    <Form v-else-if="showRegisterForm" @submit="handleRegister" class="auth-form"
                         aria-labelledby="register-title">
                         <h2 id="register-title">{{ $t('register.title') }}</h2>
 
@@ -88,8 +88,8 @@
                             <label for="reg-username">{{ $t('register.usernameLabel') }}</label>
                             <div class="input-wrapper">
                                 <Icon name="material-symbols:alternate-email" size="24" class="input-icon" />
-                                <Field name="username" type="text" :rules="validators.username" v-model="formState.username"
-                                    :placeholder="$t('register.usernamePlaceholder')" />
+                                <Field name="username" type="text" :rules="validators.username"
+                                    v-model="formState.username" :placeholder="$t('register.usernamePlaceholder')" />
                             </div>
                             <ErrorMessage name="username" class="error-message" />
                             <small>{{ $t('register.usernameLengthHint') }}</small>
@@ -109,8 +109,8 @@
                             <label for="reg-password">{{ $t('register.passwordLabel') }}</label>
                             <div class="input-wrapper">
                                 <Icon name="material-symbols:lock-outline" size="24" class="input-icon" />
-                                <Field name="password" type="password" :rules="validators.password" v-model="formState.password"
-                                    :placeholder="$t('register.passwordPlaceholder')" />
+                                <Field name="password" type="password" :rules="validators.password"
+                                    v-model="formState.password" :placeholder="$t('register.passwordPlaceholder')" />
                             </div>
                             <ErrorMessage name="password" class="error-message" />
                         </div>
@@ -127,7 +127,7 @@
                     </Form>
 
                     <!-- Forgot Password Form -->
-                    <Form v-else-if="formState.showForgotPassword" @submit="handleForgotPassword" class="auth-form"
+                    <Form v-else-if="showForgotPasswordForm" @submit="handleForgotPassword" class="auth-form"
                         aria-labelledby="forgot-password-title">
                         <h2 id="forgot-password-title">{{ $t('forgotPassword.title') }}</h2>
 
@@ -146,7 +146,9 @@
                         </button>
 
                         <div class="auth-links">
-                            <a href="#" @click.prevent="formState.showForgotPassword = false; formState.isRegistering = false" class="link">
+                            <a href="#"
+                                @click.prevent="formState.showForgotPassword = false; formState.isRegistering = false"
+                                class="link">
                                 {{ $t('forgotPassword.backToLogin') }}
                             </a>
                         </div>
@@ -158,42 +160,58 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { reactive, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import { authClient } from "../lib/auth-client";
 import { useRouter } from 'vue-router';
+import { useDebounceFn } from '@vueuse/core'
 
 const { t } = useI18n()
 const session = authClient.useSession()
 const router = useRouter();
 
+
 // Typen für die Formulardaten definieren
 interface LoginCredentials {
-  email?: string;
-  username?: string;
-  password: string;
+    email?: string;
+    username?: string;
+    password: string;
 }
 
 interface RegisterData extends LoginCredentials {
-  name: string;
-  email: string;
-  username: string;
+    name: string;
+    email: string;
+    username: string;
 }
 
 // Formularstatus in einem reaktiven Objekt zusammenfassen
 const formState = reactive({
-  isRegistering: false,
-  showForgotPassword: false,
-  loginMethod: 'email' as 'email' | 'username',
-  errorMessage: '',
+    isRegistering: false,
+    showForgotPassword: false,
+    loginMethod: 'email' as 'email' | 'username',
+    errorMessage: '',
+    email: '',
+    password: '',
+    name: '',
+    username: ''
 })
 
+// Computed Properties für häufig verwendete Bedingungen
+const showLoginForm = computed(() => !formState.isRegistering && !formState.showForgotPassword)
+const showRegisterForm = computed(() => formState.isRegistering && !formState.showForgotPassword)
+const showForgotPasswordForm = computed(() => formState.showForgotPassword)
+
+// Debounced Validierung
+const debouncedValidate = useDebounceFn((validator: Function, value: string) => {
+    return validator(value)
+}, 300)
+
 const validators = {
-    email: (value: string) => {
-        if (!value) return t('errors.emailRequired')
-        return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) || t('errors.invalidEmail')
-    },
+    email: (value: string) => debouncedValidate((v: string) => {
+        if (!v) return t('errors.emailRequired')
+        return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(v) || t('errors.invalidEmail')
+    }, value),
     username: (value: string) => {
         if (!value) return t('errors.usernameRequired')
         return value.length >= 3 || t('errors.usernameTooShort')
@@ -208,13 +226,26 @@ const validators = {
     }
 }
 
+// Memoisierte Formulardaten
+const getLoginCredentials = computed(() => {
+    if (formState.loginMethod === 'email') {
+        return {
+            email: formState.email,
+            password: formState.password
+        }
+    }
+    return {
+        username: formState.username,
+        password: formState.password
+    }
+})
+
 const handleLogin = async () => {
     try {
-        const credentials = formState.loginMethod === 'email'
-            ? { email: formState.email, password: formState.password }
-            : { username: formState.username, password: formState.password }
-
-        const result = await authClient.signIn[formState.loginMethod](credentials)
+        const result = await authClient.signIn.email({
+            email: formState.email,
+            password: formState.password
+        })
         if (result.error) throw result.error
 
         router.push('/gamehome')
@@ -226,7 +257,7 @@ const handleLogin = async () => {
 
 const handleRegister = async () => {
     try {
-        const registrationData = {
+        const registrationData: RegisterData = {
             email: formState.email,
             password: formState.password,
             name: formState.name,
@@ -496,13 +527,88 @@ select {
 }
 
 .error-message {
-    background: var(--error-color);
-    color: white;
+    background: var(--error-color-light);
+    color: var(--error-color-dark);
     padding: var(--padding-small) var(--padding-medium);
     border-radius: var(--border-radius);
-    margin-bottom: var(--padding-medium);
-    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    font-size: 0.875rem;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--error-color-border);
+    transition: all 0.3s ease;
+    animation: slideIn 0.3s ease;
+
+    &::before {
+        content: "!";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        background: var(--error-color);
+        color: white;
+        border-radius: 50%;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+}
+
+// Animation für Fehlermeldungen
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Anpassung der Formularfelder bei Fehler
+.form-group {
+    // ... existing styles ...
+
+    .input-wrapper {
+        // ... existing styles ...
+
+        input[aria-invalid="true"] {
+            border-color: var(--error-color);
+            background-color: var(--error-color-light);
+
+            &:focus {
+                box-shadow: 0 0 0 2px rgba(var(--error-color-rgb), 0.1);
+            }
+        }
+
+        // Icon-Farbe bei Fehler
+        &:has(input[aria-invalid="true"]) .input-icon {
+            color: var(--error-color);
+        }
+    }
+}
+
+// CSS-Variablen in :root oder Ihrer Themendatei hinzufügen
+:root {
+    --error-color: #ff4d4f;
+    --error-color-light: rgba(255, 77, 79, 0.1);
+    --error-color-dark: #cf1322;
+    --error-color-border: rgba(255, 77, 79, 0.2);
+    --error-color-rgb: 255, 77, 79;
+}
+
+// Dark Mode Anpassungen
+@media (prefers-color-scheme: dark) {
+    :root {
+        --error-color-light: rgba(255, 77, 79, 0.15);
+        --error-color-dark: #ff7875;
+        --error-color-border: rgba(255, 77, 79, 0.3);
+    }
 }
 
 @media (max-width: 768px) {

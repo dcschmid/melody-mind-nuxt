@@ -14,21 +14,27 @@
       "description": "Test your music knowledge in various categories"
     }
   },
-  "intro": "Dive into the fascinating world of music! At Melody Mind, you can prove your music knowledge in exciting quiz rounds. Answer questions about songs from different decades, artists, albums, and music history. Collect points, earn golden records, and challenge other music enthusiasts. From rock to pop, hip-hop to classical - test your knowledge in your favorite genres. Start your musical quiz adventure now!",
+  "intro": "Dive into the fascinating world of music! At Melody Mind, put your music knowledge to the test in exciting quiz rounds. Answer questions about songs from different decades, artists, albums, and music history. Collect points, earn golden records, and challenge other music enthusiasts. From rock to pop to hip-hop and classical - test your knowledge in your favorite genres. Start your musical quiz adventure now!",
   "login": {
     "title": "Sign In",
-    "methodLabel": "Choose sign in method",
-    "emailOption": "Sign in with email",
-    "usernameOption": "Sign in with username",
-    "emailLabel": "Email address",
-    "emailPlaceholder": "Enter your email address",
+    "methodLabel": "Sign in method",
+    "emailOption": "Email",
+    "usernameOption": "Username",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Your email address",
     "usernameLabel": "Username",
-    "usernamePlaceholder": "Enter your username",
+    "usernamePlaceholder": "Your username",
     "passwordLabel": "Password",
-    "passwordPlaceholder": "Enter your password",
+    "passwordPlaceholder": "Your password",
     "submitButton": "Sign In",
-    "noAccount": "No account yet? Register",
-    "forgotPassword": "Forgot password?"
+    "noAccount": "No account yet?",
+    "forgotPassword": "Forgot password?",
+    "error": {
+      "invalidEmail": "Invalid email address",
+      "invalidPassword": "Invalid password",
+      "required": "This field is required",
+      "loginFailed": "Login failed"
+    }
   },
   "register": {
     "title": "Register",
@@ -49,18 +55,22 @@
     "signOut": "Sign out"
   },
   "errors": {
-    "emailRequired": "Please enter an email address",
-    "invalidEmail": "Please enter a valid email address",
-    "passwordRequired": "Please enter a password",
-    "passwordTooShort": "Password must be at least 6 characters long",
-    "usernameRequired": "Please enter a username",
+    "general": "An error occurred",
+    "network": "Network error",
+    "retry": "Try again",
+    "pageNotFound": "Page not found",
+    "backToHome": "Back to home",
+    "emailRequired": "Email address is required",
+    "invalidEmail": "Invalid email address",
+    "usernameRequired": "Username is required",
     "usernameTooShort": "Username must be at least 3 characters long",
-    "nameRequired": "Please enter your name",
+    "passwordRequired": "Password is required",
+    "passwordTooShort": "Password must be at least 6 characters long",
+    "nameRequired": "Name is required",
     "nameTooShort": "Name must be at least 2 characters long",
-    "loginFailed": "Login failed. Please check your credentials",
-    "registrationFailed": "Registration failed. Please try again",
-    "passwordResetFailed": "Password reset failed. Please try again later",
-    "passwordResetSuccess": "Password reset email has been sent"
+    "loginFailed": "Login failed",
+    "registrationFailed": "Registration failed",
+    "passwordResetFailed": "Password reset failed"
   },
   "navigation": {
     "skipToMain": "Skip to main content",

@@ -17,30 +17,58 @@
   "intro": "Tauche ein in die faszinierende Welt der Musik! Bei Melody Mind stellst du dein Musikwissen in spannenden Quiz-Runden unter Beweis. Beantworte Fragen zu Songs aus verschiedenen Jahrzehnten, zu Künstlern, Alben und Musikgeschichte. Sammle Punkte, verdiene dir goldene Schallplatten und fordere andere Musikbegeisterte heraus. Von Rock über Pop bis Hip-Hop und Klassik - teste dein Wissen in deinen Lieblingsgenres. Starte jetzt dein musikalisches Quiz-Abenteuer!",
   "login": {
     "title": "Anmelden",
-    "email": "E-Mail",
-    "password": "Passwort",
-    "submit": "Anmelden",
-    "register": "Noch kein Konto? Registriere dich",
+    "methodLabel": "Anmeldemethode",
+    "emailOption": "E-Mail",
+    "usernameOption": "Benutzername",
+    "emailLabel": "E-Mail",
+    "emailPlaceholder": "Deine E-Mail-Adresse",
+    "usernameLabel": "Benutzername",
+    "usernamePlaceholder": "Dein Benutzername",
+    "passwordLabel": "Passwort",
+    "passwordPlaceholder": "Dein Passwort",
+    "submitButton": "Anmelden",
+    "noAccount": "Noch kein Konto?",
     "forgotPassword": "Passwort vergessen?",
     "error": {
       "invalidEmail": "Ungültige E-Mail-Adresse",
       "invalidPassword": "Ungültiges Passwort",
-      "required": "Dieses Feld ist erforderlich"
+      "required": "Dieses Feld ist erforderlich",
+      "loginFailed": "Anmeldung fehlgeschlagen"
     }
   },
   "register": {
     "title": "Registrieren",
-    "name": "Name",
-    "email": "E-Mail",
-    "password": "Passwort",
-    "confirmPassword": "Passwort bestätigen",
-    "submit": "Registrieren",
-    "login": "Bereits ein Konto? Anmelden",
+    "nameLabel": "Name",
+    "namePlaceholder": "Dein vollständiger Name",
+    "usernameLabel": "Benutzername",
+    "usernamePlaceholder": "Wähle einen Benutzernamen",
+    "usernameLengthHint": "Mindestens 3 Zeichen",
+    "emailLabel": "E-Mail",
+    "emailPlaceholder": "Deine E-Mail-Adresse",
+    "passwordLabel": "Passwort",
+    "passwordPlaceholder": "Wähle ein sicheres Passwort",
+    "submitButton": "Registrieren",
+    "hasAccount": "Bereits ein Konto?",
+    "successMessage": "Registrierung erfolgreich! Bitte überprüfe deine E-Mails.",
     "error": {
       "invalidEmail": "Ungültige E-Mail-Adresse",
-      "invalidPassword": "Das Passwort muss mindestens 8 Zeichen lang sein",
-      "passwordMismatch": "Die Passwörter stimmen nicht überein",
-      "required": "Dieses Feld ist erforderlich"
+      "invalidPassword": "Das Passwort muss mindestens 6 Zeichen lang sein",
+      "nameRequired": "Name ist erforderlich",
+      "nameTooShort": "Name muss mindestens 2 Zeichen lang sein",
+      "usernameRequired": "Benutzername ist erforderlich",
+      "usernameTooShort": "Benutzername muss mindestens 3 Zeichen lang sein",
+      "registrationFailed": "Registrierung fehlgeschlagen"
+    }
+  },
+  "forgotPassword": {
+    "title": "Passwort zurücksetzen",
+    "emailLabel": "E-Mail",
+    "emailPlaceholder": "Deine E-Mail-Adresse",
+    "submitButton": "Zurücksetzen",
+    "backToLogin": "Zurück zur Anmeldung",
+    "successMessage": "Anweisungen zum Zurücksetzen wurden per E-Mail verschickt.",
+    "error": {
+      "passwordResetFailed": "Passwort-Zurücksetzung fehlgeschlagen"
     }
   },
   "gameHome": {
@@ -258,7 +286,18 @@
     "network": "Netzwerkfehler",
     "retry": "Erneut versuchen",
     "pageNotFound": "Seite nicht gefunden",
-    "backToHome": "Zurück zur Startseite"
+    "backToHome": "Zurück zur Startseite",
+    "emailRequired": "E-Mail-Adresse ist erforderlich",
+    "invalidEmail": "Ungültige E-Mail-Adresse",
+    "usernameRequired": "Benutzername ist erforderlich",
+    "usernameTooShort": "Benutzername muss mindestens 3 Zeichen lang sein",
+    "passwordRequired": "Passwort ist erforderlich",
+    "passwordTooShort": "Passwort muss mindestens 6 Zeichen lang sein",
+    "nameRequired": "Name ist erforderlich",
+    "nameTooShort": "Name muss mindestens 2 Zeichen lang sein",
+    "loginFailed": "Anmeldung fehlgeschlagen",
+    "registrationFailed": "Registrierung fehlgeschlagen",
+    "passwordResetFailed": "Passwort-Zurücksetzung fehlgeschlagen"
   },
   "accessibility": {
     "skipToMain": "Zum Hauptinhalt springen",

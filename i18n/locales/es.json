@@ -10,25 +10,31 @@
     "title": "Bienvenido a Melody Mind",
     "start": "Comenzar juego",
     "about": {
-      "title": "Acerca de Melody Mind",
-      "description": "Pon a prueba tus conocimientos musicales en diferentes categorías"
+      "title": "Sobre Melody Mind",
+      "description": "Pon a prueba tus conocimientos musicales en varias categorías"
     }
   },
-  "intro": "¡Sumérgete en el fascinante mundo de la música! En Melody Mind, podrás demostrar tus conocimientos musicales en emocionantes rondas de preguntas. Responde preguntas sobre canciones de diferentes décadas, artistas, álbumes e historia de la música. Acumula puntos, gana discos de oro y desafía a otros entusiastas de la música. Desde rock hasta pop, hip-hop y clásica - pon a prueba tus conocimientos en tus géneros favoritos. ¡Comienza tu aventura musical ahora!",
+  "intro": "¡Sumérgete en el fascinante mundo de la música! En Melody Mind, pon a prueba tus conocimientos musicales en emocionantes rondas de preguntas. Responde preguntas sobre canciones de diferentes décadas, artistas, álbumes e historia de la música. Acumula puntos, gana discos de oro y desafía a otros entusiastas de la música. Desde rock hasta pop, hip-hop y clásica - prueba tus conocimientos en tus géneros favoritos. ¡Comienza tu aventura musical ahora!",
   "login": {
     "title": "Iniciar sesión",
-    "methodLabel": "Elige el método de inicio de sesión",
-    "emailOption": "Iniciar sesión con correo",
-    "usernameOption": "Iniciar sesión con usuario",
+    "methodLabel": "Método de inicio de sesión",
+    "emailOption": "Correo electrónico",
+    "usernameOption": "Nombre de usuario",
     "emailLabel": "Correo electrónico",
-    "emailPlaceholder": "Introduce tu correo electrónico",
+    "emailPlaceholder": "Tu correo electrónico",
     "usernameLabel": "Nombre de usuario",
-    "usernamePlaceholder": "Introduce tu nombre de usuario",
+    "usernamePlaceholder": "Tu nombre de usuario",
     "passwordLabel": "Contraseña",
-    "passwordPlaceholder": "Introduce tu contraseña",
+    "passwordPlaceholder": "Tu contraseña",
     "submitButton": "Iniciar sesión",
-    "noAccount": "¿No tienes cuenta? Regístrate",
-    "forgotPassword": "¿Olvidaste tu contraseña?"
+    "noAccount": "¿No tienes cuenta?",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "error": {
+      "invalidEmail": "Correo electrónico inválido",
+      "invalidPassword": "Contraseña inválida",
+      "required": "Este campo es obligatorio",
+      "loginFailed": "Error al iniciar sesión"
+    }
   },
   "register": {
     "title": "Registrarse",
@@ -49,18 +55,22 @@
     "signOut": "Cerrar sesión"
   },
   "errors": {
-    "emailRequired": "Por favor, introduce un correo electrónico",
-    "invalidEmail": "Por favor, introduce un correo electrónico válido",
-    "passwordRequired": "Por favor, introduce una contraseña",
-    "passwordTooShort": "La contraseña debe tener al menos 6 caracteres",
-    "usernameRequired": "Por favor, introduce un nombre de usuario",
+    "general": "Ha ocurrido un error",
+    "network": "Error de red",
+    "retry": "Intentar de nuevo",
+    "pageNotFound": "Página no encontrada",
+    "backToHome": "Volver al inicio",
+    "emailRequired": "El correo electrónico es obligatorio",
+    "invalidEmail": "Correo electrónico inválido",
+    "usernameRequired": "El nombre de usuario es obligatorio",
     "usernameTooShort": "El nombre de usuario debe tener al menos 3 caracteres",
-    "nameRequired": "Por favor, introduce tu nombre",
+    "passwordRequired": "La contraseña es obligatoria",
+    "passwordTooShort": "La contraseña debe tener al menos 6 caracteres",
+    "nameRequired": "El nombre es obligatorio",
     "nameTooShort": "El nombre debe tener al menos 2 caracteres",
-    "loginFailed": "Error al iniciar sesión. Por favor, verifica tus credenciales",
-    "registrationFailed": "Error al registrarse. Por favor, inténtalo de nuevo",
-    "passwordResetFailed": "Error al restablecer la contraseña. Por favor, inténtalo más tarde",
-    "passwordResetSuccess": "Se ha enviado un correo para restablecer la contraseña"
+    "loginFailed": "Error al iniciar sesión",
+    "registrationFailed": "Error en el registro",
+    "passwordResetFailed": "Error al restablecer la contraseña"
   },
   "navigation": {
     "skipToMain": "Ir al contenido principal",

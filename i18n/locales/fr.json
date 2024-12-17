@@ -14,21 +14,27 @@
       "description": "Testez vos connaissances musicales dans différentes catégories"
     }
   },
-  "intro": "Plongez dans le monde fascinant de la musique ! Sur Melody Mind, vous pouvez prouver vos connaissances musicales dans des quiz passionnants. Répondez aux questions sur les chansons de différentes décennies, les artistes, les albums et l'histoire de la musique. Accumulez des points, gagnez des disques d'or et défiez d'autres passionnés de musique. Du rock à la pop, du hip-hop au classique - testez vos connaissances dans vos genres préférés. Commencez votre aventure musicale maintenant !",
+  "intro": "Plongez dans le monde fascinant de la musique ! Sur Melody Mind, testez vos connaissances musicales dans des quiz passionnants. Répondez aux questions sur les chansons de différentes décennies, les artistes, les albums et l'histoire de la musique. Accumulez des points, gagnez des disques d'or et défiez d'autres passionnés de musique. Du rock à la pop en passant par le hip-hop et le classique - testez vos connaissances dans vos genres préférés. Commencez votre aventure musicale maintenant !",
   "login": {
     "title": "Connexion",
-    "methodLabel": "Choisir la méthode de connexion",
-    "emailOption": "Se connecter avec email",
-    "usernameOption": "Se connecter avec nom d'utilisateur",
-    "emailLabel": "Adresse email",
-    "emailPlaceholder": "Entrez votre adresse email",
+    "methodLabel": "Méthode de connexion",
+    "emailOption": "E-mail",
+    "usernameOption": "Nom d'utilisateur",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "Votre adresse e-mail",
     "usernameLabel": "Nom d'utilisateur",
-    "usernamePlaceholder": "Entrez votre nom d'utilisateur",
+    "usernamePlaceholder": "Votre nom d'utilisateur",
     "passwordLabel": "Mot de passe",
-    "passwordPlaceholder": "Entrez votre mot de passe",
+    "passwordPlaceholder": "Votre mot de passe",
     "submitButton": "Se connecter",
-    "noAccount": "Pas encore de compte ? S'inscrire",
-    "forgotPassword": "Mot de passe oublié ?"
+    "noAccount": "Pas encore de compte ?",
+    "forgotPassword": "Mot de passe oublié ?",
+    "error": {
+      "invalidEmail": "Adresse e-mail invalide",
+      "invalidPassword": "Mot de passe invalide",
+      "required": "Ce champ est obligatoire",
+      "loginFailed": "Échec de la connexion"
+    }
   },
   "register": {
     "title": "S'inscrire",
@@ -49,18 +55,22 @@
     "signOut": "Se déconnecter"
   },
   "errors": {
-    "emailRequired": "Veuillez saisir une adresse e-mail",
-    "invalidEmail": "Veuillez saisir une adresse e-mail valide",
-    "passwordRequired": "Veuillez saisir un mot de passe",
-    "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères",
-    "usernameRequired": "Veuillez saisir un nom d'utilisateur",
+    "general": "Une erreur s'est produite",
+    "network": "Erreur réseau",
+    "retry": "Réessayer",
+    "pageNotFound": "Page non trouvée",
+    "backToHome": "Retour à l'accueil",
+    "emailRequired": "L'adresse e-mail est obligatoire",
+    "invalidEmail": "Adresse e-mail invalide",
+    "usernameRequired": "Le nom d'utilisateur est obligatoire",
     "usernameTooShort": "Le nom d'utilisateur doit contenir au moins 3 caractères",
-    "nameRequired": "Veuillez saisir votre nom",
+    "passwordRequired": "Le mot de passe est obligatoire",
+    "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères",
+    "nameRequired": "Le nom est obligatoire",
     "nameTooShort": "Le nom doit contenir au moins 2 caractères",
-    "loginFailed": "Échec de la connexion. Veuillez vérifier vos identifiants",
-    "registrationFailed": "Échec de l'inscription. Veuillez réessayer",
-    "passwordResetFailed": "Échec de la réinitialisation du mot de passe. Veuillez réessayer plus tard",
-    "passwordResetSuccess": "Un e-mail de réinitialisation du mot de passe a été envoyé"
+    "loginFailed": "Échec de la connexion",
+    "registrationFailed": "Échec de l'inscription",
+    "passwordResetFailed": "Échec de la réinitialisation du mot de passe"
   },
   "navigation": {
     "skipToMain": "Aller au contenu principal",
