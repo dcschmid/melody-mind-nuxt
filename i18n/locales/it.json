@@ -7,149 +7,45 @@
     "it": "Italiano"
   },
   "welcome": {
-    "title": "Benvenuto su Melody Mind",
+    "title": "Benvenuto a Melody Mind",
     "start": "Inizia il gioco",
     "about": {
       "title": "Su Melody Mind",
-      "description": "Metti alla prova le tue conoscenze musicali in diverse categorie"
+      "description": "Metti alla prova la tua conoscenza musicale in diverse categorie"
     }
   },
-  "intro": "Immergiti nel fascinante mondo della musica! Su Melody Mind, puoi dimostrare le tue conoscenze musicali in emozionanti round di quiz. Rispondi a domande su canzoni di diversi decenni, artisti, album e storia della musica. Accumula punti, guadagna dischi d'oro e sfida altri appassionati di musica. Dal rock al pop, dall'hip-hop al classico - metti alla prova le tue conoscenze nei tuoi generi preferiti. Inizia ora la tua avventura musicale!",
+  "intro": "Immergiti nel fantastico mondo della musica! Con Melody Mind metti alla prova la tua conoscenza musicale in emozionanti round di quiz. Rispondi a domande su canzoni di diversi decenni, artisti, album e storia della musica. Raccogli punti, guadagna dischi d'oro e sfida altri appassionati di musica. Dal rock al pop, dall'hip-hop alla classica - metti alla prova le tue conoscenze nei tuoi generi preferiti. Inizia ora la tua avventura musicale!",
   "login": {
     "title": "Accedi",
-    "methodLabel": "Scegli il metodo di accesso",
-    "emailOption": "Accedi con email",
-    "usernameOption": "Accedi con nome utente",
-    "emailLabel": "Indirizzo email",
-    "emailPlaceholder": "Inserisci il tuo indirizzo email",
-    "usernameLabel": "Nome utente",
-    "usernamePlaceholder": "Inserisci il tuo nome utente",
-    "passwordLabel": "Password",
-    "passwordPlaceholder": "Inserisci la tua password",
-    "submitButton": "Accedi",
-    "noAccount": "Non hai un account? Registrati",
-    "forgotPassword": "Password dimenticata?"
+    "email": "Email",
+    "password": "Password",
+    "submit": "Accedi",
+    "register": "Non hai un account? Registrati",
+    "forgotPassword": "Password dimenticata?",
+    "error": {
+      "invalidEmail": "Indirizzo email non valido",
+      "invalidPassword": "Password non valida",
+      "required": "Questo campo è obbligatorio"
+    }
   },
   "register": {
     "title": "Registrati",
-    "nameLabel": "Nome",
-    "namePlaceholder": "Inserisci il tuo nome completo",
-    "usernameLabel": "Nome utente",
-    "usernamePlaceholder": "Scegli un nome utente",
-    "usernameLengthHint": "Minimo 3 caratteri, massimo 20 caratteri",
-    "emailLabel": "Email",
-    "emailPlaceholder": "Inserisci il tuo indirizzo email",
-    "passwordLabel": "Password",
-    "passwordPlaceholder": "Scegli una password sicura",
-    "submitButton": "Registrati",
-    "hasAccount": "Già registrato? Accedi"
-  },
-  "socialLogin": {
-    "title": "Accedi con i social network",
-    "signOut": "Disconnetti"
-  },
-  "errors": {
-    "emailRequired": "Inserisci un indirizzo email",
-    "invalidEmail": "Inserisci un indirizzo email valido",
-    "passwordRequired": "Inserisci una password",
-    "passwordTooShort": "La password deve contenere almeno 6 caratteri",
-    "usernameRequired": "Inserisci un nome utente",
-    "usernameTooShort": "Il nome utente deve contenere almeno 3 caratteri",
-    "nameRequired": "Inserisci il tuo nome",
-    "nameTooShort": "Il nome deve contenere almeno 2 caratteri",
-    "loginFailed": "Accesso fallito. Verifica le tue credenziali",
-    "registrationFailed": "Registrazione fallita. Riprova",
-    "passwordResetFailed": "Reimpostazione password fallita. Riprova più tardi",
-    "passwordResetSuccess": "Email per reimpostare la password inviata"
-  },
-  "navigation": {
-    "skipToMain": "Vai al contenuto principale",
-    "openMenu": "Apri menu",
-    "closeMenu": "Chiudi menu",
-    "mainMenu": "Menu principale",
-    "home": "Home",
-    "rules": "Regole del gioco",
-    "highscores": "Punteggi migliori",
-    "profile": "Profilo",
-    "signOut": "Esci",
-    "support": "Supportare",
-    "legal": "Note legali",
-    "imprint": "Colophon",
-    "privacy": "Informativa sulla privacy"
-  },
-  "gameRules":
-    "title": "Regole del Gioco – MelodyMind",
-    "overview": {
-      "title": "Panoramica",
-      "text": "Benvenuto su MelodyMind! Il tuo obiettivo è rispondere a domande su canzoni, artisti e album di vari generi musicali. Scegli un genere e metti alla prova le tue conoscenze. Più risposte corrette dai, più punti guadagni."
-    },
-    "difficultyLevels": {
-      "title": "Livelli di Difficoltà",
-      "intro": "Ci sono tre livelli di difficoltà tra cui scegliere:",
-      "levels": {
-        "easy": {
-          "title": "Facile",
-          "description": "10 domande per round. Perfetto per rinfrescare le tue conoscenze e divertirti."
-        },
-        "medium": {
-          "title": "Medio",
-          "description": "15 domande per round. Una sfida per gli amanti della musica più esperti."
-        },
-        "hard": {
-          "title": "Difficile",
-          "description": "20 domande per round. Solo per veri esperti di musica!"
-        }
-      },
-      "titles": {
-        "intro": "Ogni livello di difficoltà ha il suo titolo da sbloccare:",
-        "novice": {
-          "title": "Novizio Musicale",
-          "description": "Tutte le domande risposte correttamente in modalità facile."
-        },
-        "master": {
-          "title": "Maestro Musicale",
-          "description": "Tutte le domande risposte correttamente in modalità media."
-        },
-        "legend": {
-          "title": "Leggenda Musicale",
-          "description": "Tutte le domande risposte correttamente in modalità difficile."
-        }
-      }
-    },
-    "pointsSystem": {
-      "title": "Sistema di Punteggio",
-      "rules": ["50 punti per ogni risposta corretta.", "Nessun punto per le risposte sbagliate."]
-    },
-    "goldenRecords": {
-      "title": "Dischi d'Oro",
-      "intro": "Rispondendo correttamente a tutte le domande in una categoria, riceverai un disco d'oro:",
-      "rewards": {
-        "easy": "Facile: Novizio Musicale.",
-        "medium": "Medio: Maestro Musicale.",
-        "hard": "Difficile: Leggenda Musicale."
-      }
-    },
-    "rankings": {
-      "title": "Classifiche",
-      "text": "Il sistema di classifiche ti confronta con altri giocatori. Il posizionamento nella top 10 si basa sui punti accumulati in tutte le categorie.",
-      "lists": [
-        "Classifica per genere: Migliori giocatori di un genere.",
-        "Classifica generale: Migliori giocatori in tutte le categorie."
-      ]
-    },
-    "tipsAndTricks": {
-      "title": "Suggerimenti e Trucchi",
-      "tips": [
-        "Inizia in modalità facile per prendere confidenza con il gioco.",
-        "Scegli i tuoi punti di forza e gioca nei generi in cui ti senti sicuro.",
-        "Esercitati regolarmente per migliorare il tuo punteggio.",
-        "Precisione prima della velocità – leggi attentamente ogni domanda."
-      ]
+    "name": "Nome",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Conferma password",
+    "submit": "Registrati",
+    "login": "Hai già un account? Accedi",
+    "error": {
+      "invalidEmail": "Indirizzo email non valido",
+      "invalidPassword": "La password deve contenere almeno 8 caratteri",
+      "passwordMismatch": "Le password non coincidono",
+      "required": "Questo campo è obbligatorio"
     }
   },
   "gameHome": {
     "title": "Scegli una categoria per giocare",
-    "description": "Scopri il mondo affascinante della musica attraverso diversi decenni e generi",
+    "description": "Scopri il fantastico mondo della musica attraverso diversi decenni e generi",
     "searchPlaceholder": "Cerca categoria...",
     "playCategory": "Gioca {category}",
     "comingSoon": "{category} - Prossimamente",
@@ -158,256 +54,365 @@
     "categories": {
       "50er": {
         "title": "Anni '50",
-        "description": "Immergiti nell'età d'oro del Rock 'n' Roll, Jazz e Blues con leggende come Elvis Presley, Chuck Berry e Miles Davis"
+        "description": "Immergiti nell'era d'oro del rock 'n' roll, jazz e blues con leggende come Elvis Presley, Chuck Berry e Miles Davis"
       },
       "60er": {
         "title": "Anni '60",
-        "description": "Vivi l'epoca della British Invasion, del Rock Psichedelico e della Motown con The Beatles, The Rolling Stones e altri"
+        "description": "Vivi l'epoca della British Invasion, del rock psichedelico e del Motown con The Beatles, The Rolling Stones e altri"
       }
     }
   },
   "category": {
     "selected": "selezionato!",
-    "image": {
-      "alt": "Immagine della categoria"
-    },
     "difficulty": {
-      "groupLabel": "Livelli di difficoltà",
-      "heading": "Scegli il tuo livello di difficoltà",
+      "title": "Scegli la difficoltà",
       "easy": "Facile",
       "medium": "Medio",
-      "hard": "Difficile"
-    },
-    "noImage": "Nessuna immagine disponibile"
-  },
-  "coins": {
-    "collected": "Monete raccolte"
-  },
-  "forgotPassword": {
-    "title": "Reimposta Password",
-    "emailLabel": "Indirizzo Email",
-    "emailPlaceholder": "Inserisci il tuo indirizzo email",
-    "submitButton": "Invia Link di Reset",
-    "backToLogin": "Torna al Login",
-    "successMessage": "Se esiste un account con questa email, riceverai a breve un link per reimpostare la password."
+      "hard": "Difficile",
+      "description": {
+        "easy": "Perfetto per principianti",
+        "medium": "Per conoscitori esperti di musica",
+        "hard": "Per veri esperti di musica"
+      }
+    }
   },
   "game": {
-    "audienceOpinion": "Opinione del Pubblico",
-    "confidence": "Sicurezza",
-    "points": "Punti: {base} + {time} punti bonus",
-    "round": "Round: {current} / {max}",
-    "points_label": "Punti",
-    "expert": {
-      "title": "Opinione dell'Esperto",
-      "name": "Esperto"
-    },
+    "loading": "Caricamento del gioco...",
+    "question": "Domanda {current} di {total}",
+    "timeLeft": "Tempo rimanente",
+    "score": "Punteggio",
     "correct": "Corretto!",
     "wrong": "Sbagliato!",
-    "correctAnswer": "Risposta corretta:",
-    "didYouKnow": "Lo sapevi?",
-    "nextQuestion": "Prossima Domanda",
-    "gameOver": {
-      "title": "Gioco Finito!",
-      "correctAnswers": "Risposte Corrette",
-      "backToMenu": "Torna al Menu Principale",
+    "timeUp": "Tempo scaduto!",
+    "nextQuestion": "Prossima domanda",
+    "finish": "Termina gioco",
+    "results": {
+      "title": "Risultato del gioco",
+      "totalScore": "Punteggio totale",
+      "correctAnswers": "Risposte corrette",
+      "accuracy": "Precisione",
+      "timeTaken": "Tempo impiegato",
+      "newHighscore": "Nuovo record!",
       "share": {
-        "title": "Condividi il tuo risultato!",
+        "title": "Condividi il tuo risultato",
         "buttons": {
-          "twitter": "Condividi su X",
-          "telegram": "Condividi via Telegram",
-          "reddit": "Condividi su Reddit",
-          "whatsapp": "Condividi via WhatsApp",
+          "twitter": "Condividi su Twitter",
+          "facebook": "Condividi su Facebook",
+          "copy": "Copia link",
           "share": "Condividi"
         },
         "message": {
-          "intro": " Ho appena ottenuto {points} punti in Melody Mind!",
-          "genre": " Genere: {genre}",
-          "perfect": " Round perfetto con un LP d'Oro in difficoltà {difficulty}!",
-          "silver": " LP d'Argento vinto in difficoltà {difficulty}!",
-          "bronze": " LP di Bronzo vinto in difficoltà {difficulty}!",
-          "stats": " {correct} risposte corrette su {total} domande!",
-          "challenge": " Sfidami: {url}",
+          "intro": "Ho appena ottenuto {points} punti in Melody Mind!",
+          "genre": "Genere: {genre}",
+          "perfect": "Round perfetto con un LP d'Oro in difficoltà {difficulty}!",
+          "silver": "LP d'Argento vinto in difficoltà {difficulty}!",
+          "bronze": "LP di Bronzo vinto in difficoltà {difficulty}!",
+          "stats": "{correct} risposte corrette su {total} domande!",
+          "challenge": "Sfidami: {url}",
           "difficulty": {
             "easy": "facile",
             "medium": "media",
             "hard": "difficile"
           }
         }
+      },
+      "playAgain": "Gioca ancora",
+      "backToHome": "Torna alla home"
+    }
+  },
+  "gameRules": {
+    "title": "Regole del gioco – MelodyMind",
+    "overview": {
+      "title": "Panoramica",
+      "text": "Benvenuto a MelodyMind! Il tuo obiettivo è rispondere a domande su canzoni, artisti e album di diversi generi musicali. Scegli un genere e metti alla prova le tue conoscenze. Più risposte corrette dai, più punti ottieni."
+    },
+    "difficultyLevels": {
+      "title": "Livelli di difficoltà",
+      "intro": "Ci sono tre livelli di difficoltà tra cui scegliere:",
+      "levels": {
+        "easy": {
+          "title": "Facile",
+          "description": "10 domande per round. Perfetto per rinfrescare le tue conoscenze e divertirti."
+        },
+        "medium": {
+          "title": "Medio",
+          "description": "15 domande per round. Una sfida per gli appassionati di musica avanzati."
+        },
+        "hard": {
+          "title": "Difficile",
+          "description": "20 domande per round. Solo per veri esperti di musica!"
+        }
+      },
+      "titles": {
+        "intro": "Ogni livello di difficoltà ha un proprio titolo che puoi sbloccare:",
+        "novice": {
+          "title": "Novizio Musicale",
+          "description": "Tutte le domande corrette in modalità facile."
+        },
+        "master": {
+          "title": "Maestro di Musica",
+          "description": "Tutte le domande corrette in modalità media."
+        },
+        "legend": {
+          "title": "Leggenda della Musica",
+          "description": "Tutte le domande corrette in modalità difficile."
+        }
       }
     },
-    "jokers": {
-      "remaining": "Rimanenti: {count}",
-      "fiftyFifty": "Usa jolly 50:50",
-      "audience": "Usa aiuto del pubblico",
-      "phone": "Usa telefono amico"
+    "pointsSystem": {
+      "title": "Sistema di punteggio",
+      "rules": ["50 punti per ogni risposta corretta.", "Nessun punto per le risposte errate."]
     },
-    "audio": {
-      "play": "Riproduci",
-      "pause": "Pausa",
-      "noAudio": "Audio non disponibile"
+    "goldenRecords": {
+      "title": "Dischi d'Oro",
+      "intro": "Rispondendo correttamente a tutte le domande di una categoria, riceverai un disco d'oro:",
+      "rewards": {
+        "easy": "Facile: Novizio Musicale.",
+        "medium": "Medio: Maestro di Musica.",
+        "hard": "Difficile: Leggenda della Musica."
+      }
     },
-    "streaming": {
-      "spotify": "Ascolta su Spotify",
-      "apple": "Ascolta su Apple Music",
-      "deezer": "Ascolta su Deezer"
+    "rankings": {
+      "title": "Classifiche",
+      "text": "Il sistema di classifiche ti confronta con altri giocatori. Il posizionamento nella Top 10 si basa sui punti raccolti in tutte le categorie.",
+      "lists": [
+        "Classifica per genere: Migliori giocatori di un genere.",
+        "Classifica generale: Migliori giocatori di tutte le categorie."
+      ]
     },
-    "album": {
-      "artist": "Artista",
-      "year": "Anno",
-      "noPreview": "Anteprima non disponibile"
+    "tipsAndTricks": {
+      "title": "Suggerimenti e Trucchi",
+      "tips": [
+        "Inizia con la modalità facile per prendere confidenza con il gioco.",
+        "Scegli i tuoi punti di forza e gioca nei generi in cui ti senti sicuro.",
+        "Esercitati regolarmente per migliorare il tuo punteggio.",
+        "La precisione è più importante della velocità - leggi attentamente ogni domanda."
+      ]
+    }
+  },
+  "profile": {
+    "title": "Profilo",
+    "name": "Nome",
+    "username": "Nome utente",
+    "email": "Email",
+    "points": "Punti",
+    "namePlaceholder": "Il tuo nome",
+    "usernamePlaceholder": "Il tuo nome utente",
+    "emailPlaceholder": "Il tuo indirizzo email",
+    "lps": {
+      "title": "Collezione di Dischi",
+      "none": "Non hai ancora raccolto nessun disco",
+      "types": {
+        "gold": "Oro",
+        "silver": "Argento",
+        "bronze": "Bronzo"
+      }
     },
-    "loading": {
-      "question": "Caricamento domanda...",
-      "game": "Caricamento gioco..."
+    "stats": {
+      "title": "Statistiche",
+      "gamesPlayed": "Partite giocate",
+      "totalScore": "Punteggio totale",
+      "averageScore": "Punteggio medio",
+      "highestScore": "Punteggio più alto",
+      "accuracy": "Precisione media"
     },
-    "error": {
-      "loadFailed": "Errore nel caricamento delle domande",
-      "retry": "Riprova"
+    "achievements": {
+      "title": "Obiettivi",
+      "locked": "Non ancora sbloccato",
+      "progress": "{current} di {total}"
+    },
+    "settings": {
+      "title": "Impostazioni",
+      "language": "Lingua",
+      "sound": "Suono",
+      "music": "Musica",
+      "notifications": "Notifiche",
+      "theme": "Tema",
+      "save": "Salva",
+      "saved": "Salvato!"
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "profile": "Profilo",
+    "leaderboard": "Classifica",
+    "settings": "Impostazioni",
+    "logout": "Esci",
+    "rules": "Regole del gioco",
+    "mainMenu": "Menu principale",
+    "support": "Supporto",
+    "legal": "Note legali",
+    "imprint": "Informazioni legali",
+    "highscores": "Punteggi migliori",
+    "privacy": "Privacy",
+    "mainNavLabel": "Navigazione principale"
+  },
+  "footer": {
+    "about": "Chi siamo",
+    "contact": "Contatti",
+    "privacy": "Privacy",
+    "terms": "Termini di utilizzo"
+  },
+  "errors": {
+    "general": "Si è verificato un errore",
+    "network": "Errore di rete",
+    "retry": "Riprova",
+    "pageNotFound": "Pagina non trovata",
+    "backToHome": "Torna alla home"
+  },
+  "accessibility": {
+    "skipToMain": "Vai al contenuto principale",
+    "closeMenu": "Chiudi menu",
+    "openMenu": "Apri menu",
+    "darkMode": "Attiva/disattiva modalità scura",
+    "playButton": "Riproduci",
+    "pauseButton": "Pausa",
+    "nextButton": "Avanti",
+    "previousButton": "Indietro",
+    "closeButton": "Chiudi"
+  },
+  "cookies": {
+    "title": "Impostazioni cookie",
+    "message": "Questo sito utilizza i cookie per migliorare la tua esperienza",
+    "accept": "Accetta tutti",
+    "decline": "Rifiuta",
+    "customize": "Personalizza",
+    "preferences": {
+      "necessary": {
+        "title": "Cookie necessari",
+        "description": "Questi cookie sono necessari per il funzionamento del sito",
+        "required": "Obbligatorio"
+      },
+      "analytics": {
+        "title": "Cookie analitici",
+        "description": "Ci aiutano a capire come i visitatori interagiscono con il sito"
+      },
+      "marketing": {
+        "title": "Cookie di marketing",
+        "description": "Vengono utilizzati per mostrare pubblicità pertinente ai visitatori"
+      }
+    },
+    "save": "Salva impostazioni",
+    "moreInfo": "Maggiori informazioni",
+    "cookiePolicy": "Politica dei cookie"
+  },
+  "gdpr": {
+    "title": "Impostazioni privacy",
+    "description": "Rispettiamo la tua privacy",
+    "settings": {
+      "title": "Le tue impostazioni sulla privacy",
+      "data": {
+        "collection": "Raccolta dati",
+        "usage": "Utilizzo dei dati",
+        "sharing": "Condivisione dei dati"
+      },
+      "consent": {
+        "title": "Il tuo consenso",
+        "withdraw": "Puoi ritirare il tuo consenso in qualsiasi momento",
+        "manage": "Gestisci impostazioni"
+      },
+      "deletion": {
+        "title": "Cancellazione dei dati",
+        "request": "Richiedi la cancellazione dei dati",
+        "info": "Cancelleremo i tuoi dati entro 30 giorni",
+        "confirmation": "Conferma della cancellazione",
+        "local": "I dati locali nel tuo browser possono essere eliminati tramite le impostazioni del browser"
+      }
     }
   },
   "highscore": {
-    "title": "Punteggi Migliori",
-    "total": "Classifica Generale",
+    "title": "Classifica",
+    "total": "Punteggio totale",
+    "avatar": "Avatar",
     "name": "Nome",
     "points": "Punti"
   },
-  "profile": {
-    "title": "Il Mio Profilo",
-    "name": "Nome",
-    "namePlaceholder": "Il tuo nome",
-    "username": "Nome utente",
-    "usernamePlaceholder": "Il tuo nome utente",
-    "email": "Email",
-    "emailPlaceholder": "Il tuo indirizzo email",
-    "save": "Salva modifiche",
-    "points": "Punti accumulati",
-    "lps": {
-      "title": "La Mia Collezione di Dischi",
-      "none": "Non hai ancora vinto nessun disco. Gioca qualche partita per vincerne!",
-      "types": {
-        "gold": "LP d'Oro",
-        "silver": "LP d'Argento",
-        "bronze": "LP di Bronzo"
-      }
-    },
-    "statistics": {
-      "title": "Statistiche",
-      "gamesPlayed": "Partite giocate",
-      "averageScore": "Punteggio medio",
-      "totalLPs": "Dischi vinti"
-    },
-    "difficulty": {
-      "easy": "Facile",
-      "medium": "Medio",
-      "hard": "Difficile"
-    }
+  "common": {
+    "loading": "Caricamento..."
   },
   "legal": {
-    "imprint": {
-      "title": "Note Legali",
-      "information": {
-        "title": "Informazioni ai sensi del § 5 TMG (Legge tedesca sui media telematici)",
-        "operator": "Daniel Schmid",
-        "address": "Hiltenspergerstr. 78, 80796 Monaco di Baviera",
-        "country": "Germania"
-      },
-      "contact": {
-        "title": "Contatto",
-        "emailLabel": "E-mail",
-        "emailAddress": "daniel.schmid1980(at)icloud.com"
-      },
-      "responsible": {
-        "title": "Responsabile dei contenuti ai sensi del § 55 comma 2 RStV (Trattato interstatale tedesco sulla radiodiffusione)"
-      },
-      "lawReference": {
-        "title": "Riferimenti Legali",
-        "text": "Questo sito web è soggetto alla legge tedesca. Tutte le informazioni legali si riferiscono alla legislazione tedesca."
-      },
-      "disputeResolution": {
-        "title": "Risoluzione delle Controversie",
-        "text": "La Commissione Europea mette a disposizione una piattaforma per la risoluzione delle controversie online (OS)",
-        "link": "https://ec.europa.eu/consumers/odr/",
-        "additional": "Potete trovare il nostro indirizzo e-mail nelle note legali sopra riportate."
-      }
-    },
     "privacy": {
-      "title": "Informativa sulla Privacy",
+      "title": "Informativa sulla privacy",
       "overview": {
-        "title": "1. Privacy in Breve",
+        "title": "Panoramica",
         "general": {
-          "title": "Informazioni Generali",
-          "text": "Le seguenti note forniscono una semplice panoramica di ciò che accade ai vostri dati personali quando visitate questo sito web."
+          "title": "Informazioni generali",
+          "text": "Prendiamo molto seriamente la protezione dei tuoi dati personali. Questa informativa sulla privacy ti informa su come gestiamo i tuoi dati."
         }
       },
       "dataCollection": {
-        "title": "2. Raccolta Dati sul Nostro Sito",
+        "title": "Raccolta dati",
         "cookies": {
           "title": "Cookie",
-          "text": "Il nostro sito web utilizza i cookie. Questi sono piccoli file di testo che il vostro browser web memorizza sul vostro dispositivo."
+          "text": "Utilizziamo i cookie per offrirti la migliore esperienza possibile. Questi non memorizzano informazioni personali identificabili."
         },
         "serverLogs": {
-          "title": "File di Log del Server",
-          "text": "Il fornitore delle pagine raccoglie e memorizza automaticamente le informazioni nei file di log del server che il vostro browser ci trasmette automaticamente."
+          "title": "Log del server",
+          "text": "Per scopi tecnici, memorizziamo automaticamente i file di log del server trasmessi dal tuo browser."
+        },
+        "analytics": {
+          "title": "Dati analitici",
+          "text": "Utilizziamo dati analitici anonimizzati per migliorare la nostra esperienza di gioco. Questi dati includono statistiche di gioco, modelli di utilizzo e dati sulle prestazioni, ma nessuna informazione personale identificabile."
         }
       },
       "rights": {
-        "title": "3. I Vostri Diritti",
-        "intro": "Avete il diritto in qualsiasi momento di:",
+        "title": "I tuoi diritti",
+        "intro": "Hai i seguenti diritti riguardo ai tuoi dati personali:",
         "list": {
-          "information": "Ricevere informazioni sui vostri dati personali memorizzati",
-          "correction": "Richiedere la correzione o la cancellazione dei vostri dati personali",
-          "restriction": "Richiedere la limitazione del trattamento dei dati",
-          "objection": "Opporvi al trattamento dei dati",
-          "portability": "Ricevere i vostri dati in un formato strutturato"
+          "information": "Diritto di accesso ai tuoi dati memorizzati",
+          "correction": "Diritto di rettifica dei dati errati",
+          "restriction": "Diritto di limitazione del trattamento",
+          "objection": "Diritto di opposizione al trattamento",
+          "portability": "Diritto alla portabilità dei dati"
         }
       },
       "contact": {
-        "title": "4. Contatto",
-        "text": "Per domande sulla protezione dei dati potete contattarci in qualsiasi momento:",
-        "emailLabel": "E-mail",
+        "title": "Contatti",
+        "text": "Per domande sulla privacy puoi contattarci in qualsiasi momento.",
+        "emailLabel": "Email",
         "emailAddress": "daniel.schmid1980(at)icloud.com"
       },
       "gameData": {
-        "title": "5. Trattamento dei Dati Specifici del Gioco",
+        "title": "Dati di gioco",
         "progress": {
-          "title": "Progressi di Gioco e Punteggi Migliori",
-          "intro": "Per la funzionalità del gioco, memorizziamo i seguenti dati:",
+          "title": "Progresso di gioco",
+          "intro": "Vengono memorizzati i seguenti dati di gioco:",
           "list": {
-            "scores": "Risultati del gioco e punteggi ottenuti",
-            "awards": "Premi vinti (LP Oro, Argento e Bronzo)",
-            "rankings": "Posizione nelle classifiche"
+            "scores": "Punteggi",
+            "awards": "Obiettivi",
+            "rankings": "Posizioni in classifica"
           },
-          "purpose": "Questi dati sono necessari per salvare i vostri progressi nel gioco e fornire la funzione dei punteggi migliori."
+          "purpose": "Questi dati vengono utilizzati esclusivamente per migliorare la tua esperienza di gioco e mostrare i tuoi successi."
         },
         "localStorage": {
-          "title": "Archiviazione Locale",
-          "intro": "Utilizziamo l'archiviazione locale del vostro browser per:",
+          "title": "Archiviazione locale",
+          "intro": "Nel tuo browser vengono memorizzate localmente le seguenti informazioni:",
           "list": {
-            "categories": "Memorizzazione nella cache delle informazioni sulle categorie",
-            "settings": "Impostazioni temporanee del gioco",
-            "language": "Impostazioni della lingua"
+            "categories": "Categorie giocate",
+            "settings": "Impostazioni di gioco",
+            "language": "Impostazione della lingua"
           },
-          "storage": "Questi dati sono memorizzati esclusivamente sul vostro dispositivo e non vengono trasmessi ai nostri server."
+          "storage": "Questi dati rimangono memorizzati localmente sul tuo dispositivo e non vengono trasmessi ai nostri server. Puoi eliminarli in qualsiasi momento attraverso le impostazioni del tuo browser."
         },
         "session": {
-          "title": "Gestione delle Sessioni",
-          "intro": "Per la funzionalità del gioco, utilizziamo i cookie di sessione che memorizzano le seguenti informazioni durante la vostra sessione di gioco:",
+          "title": "Dati di sessione",
+          "intro": "Durante una sessione di gioco attiva, vengono temporaneamente memorizzati i seguenti dati:",
           "list": {
-            "auth": "Stato di autenticazione",
-            "progress": "Progressi del gioco nella partita in corso",
-            "settings": "Impostazioni di gioco selezionate"
+            "auth": "Stato di autenticazione per la sessione di gioco",
+            "progress": "Progresso di gioco attuale e punteggio",
+            "settings": "Impostazioni temporanee di gioco"
           }
         }
       },
       "deletion": {
-        "title": "6. Cancellazione dei Dati",
-        "intro": "Potete richiedere la cancellazione dei vostri dati di gioco in qualsiasi momento. Questo include:",
+        "title": "Cancellazione dei dati",
+        "intro": "Hai il diritto di richiedere la cancellazione dei seguenti dati:",
         "list": {
-          "highscores": "Le vostre voci nei punteggi migliori",
-          "results": "Risultati di gioco memorizzati",
-          "account": "Informazioni collegate al vostro account"
+          "highscores": "I tuoi punteggi personali più alti e le statistiche di gioco",
+          "results": "Risultati e achievement salvati del gioco",
+          "account": "Il tuo intero account utente e tutti i dati associati"
         },
-        "local": "Potete cancellare i dati locali nel vostro browser attraverso le impostazioni del browser."
+        "local": "I dati memorizzati localmente (cookie, progressi di gioco) possono essere eliminati autonomamente attraverso le impostazioni del browser."
       }
     }
   }

@@ -3,12 +3,17 @@
         <main class="highscore-page">
             <h1>{{ $t('highscore.title') }}</h1>
 
-            <div v-if="isLoading">Laden...</div>
+            <div v-if="isLoading">{{ $t('common.loading') }}</div>
             <div v-else>
                 <!-- Gesamt-Highscore -->
                 <section class="highscore-section">
                     <h2 class="section-title">{{ $t('highscore.total') }}</h2>
-                    <HighscoreTable :scores="totalHighscores" :user-id="session?.data?.user?.id" />
+                    <HighscoreTable :scores="totalHighscores" :user-id="session?.data?.user?.id" :column-labels="{
+                        rank: '#',
+                        avatar: $t('highscore.avatar'),
+                        name: $t('highscore.name'),
+                        points: $t('highscore.points')
+                    }" />
                 </section>
 
                 <!-- Kategorie-Highscores -->

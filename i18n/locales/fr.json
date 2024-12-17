@@ -275,22 +275,21 @@
     "points": "Points"
   },
   "profile": {
-    "title": "Mon Profil",
+    "title": "Profil",
     "name": "Nom",
-    "namePlaceholder": "Votre nom",
     "username": "Nom d'utilisateur",
-    "usernamePlaceholder": "Votre nom d'utilisateur",
     "email": "E-mail",
+    "points": "Points",
+    "namePlaceholder": "Votre nom",
+    "usernamePlaceholder": "Votre nom d'utilisateur",
     "emailPlaceholder": "Votre adresse e-mail",
-    "save": "Enregistrer les modifications",
-    "points": "Points accumulés",
     "lps": {
-      "title": "Ma Collection de Disques",
-      "none": "Vous n'avez pas encore gagné de disques. Jouez quelques parties pour en gagner !",
+      "title": "Collection de Disques",
+      "none": "Vous n'avez pas encore collectionné de disques",
       "types": {
-        "gold": "LP d'Or",
-        "silver": "LP d'Argent",
-        "bronze": "LP de Bronze"
+        "gold": "Or",
+        "silver": "Argent",
+        "bronze": "Bronze"
       }
     },
     "statistics": {
@@ -351,6 +350,10 @@
         "serverLogs": {
           "title": "Fichiers Journaux du Serveur",
           "text": "Le fournisseur des pages collecte et stocke automatiquement des informations dans des fichiers journaux que votre navigateur nous transmet automatiquement."
+        },
+        "analytics": {
+          "title": "Données Analytiques",
+          "text": "Nous utilisons des données analytiques anonymisées pour améliorer notre expérience de jeu. Ces données comprennent les statistiques de jeu, les modèles d'utilisation et les données de performance, mais aucune information personnellement identifiable."
         }
       },
       "rights": {
@@ -380,7 +383,7 @@
             "awards": "Récompenses gagnées (LP Or, Argent et Bronze)",
             "rankings": "Position dans les classements"
           },
-          "purpose": "Ces données sont nécessaires pour sauvegarder votre progression dans le jeu et fournir la fonction de meilleurs scores."
+          "purpose": "Ces données sont utilisées exclusivement pour améliorer votre expérience de jeu et afficher vos réalisations."
         },
         "localStorage": {
           "title": "Stockage Local",
@@ -390,27 +393,27 @@
             "settings": "Paramètres temporaires du jeu",
             "language": "Paramètres de langue"
           },
-          "storage": "Ces données sont stockées exclusivement sur votre appareil et ne sont pas transmises à nos serveurs."
+          "storage": "Ces données restent stockées localement sur votre appareil et ne sont pas transmises à nos serveurs. Vous pouvez les supprimer à tout moment via les paramètres de votre navigateur."
         },
         "session": {
           "title": "Gestion des Sessions",
           "intro": "Pour la fonctionnalité du jeu, nous utilisons des cookies de session qui stockent les informations suivantes pendant la durée de votre session de jeu :",
           "list": {
-            "auth": "Statut d'authentification",
-            "progress": "Progression du jeu dans la partie en cours",
-            "settings": "Paramètres de jeu sélectionnés"
+            "auth": "Statut d'authentification pour la session de jeu",
+            "progress": "Progression actuelle du jeu et score",
+            "settings": "Paramètres temporaires du jeu"
           }
         }
       },
       "deletion": {
         "title": "6. Suppression des Données",
-        "intro": "Vous pouvez demander la suppression de vos données de jeu à tout moment. Cela inclut :",
+        "intro": "Vous avez le droit de faire supprimer les données suivantes :",
         "list": {
-          "highscores": "Vos entrées de meilleurs scores",
-          "results": "Résultats de jeu stockés",
-          "account": "Informations liées à votre compte"
+          "highscores": "Vos meilleurs scores personnels et statistiques de jeu",
+          "results": "Résultats et réalisations de jeu sauvegardés",
+          "account": "Votre compte utilisateur complet et toutes les données associées"
         },
-        "local": "Vous pouvez supprimer les données locales dans votre navigateur via les paramètres du navigateur."
+        "local": "Les données stockées localement (cookies, progression du jeu) peuvent être supprimées indépendamment via les paramètres de votre navigateur."
       }
     }
   }

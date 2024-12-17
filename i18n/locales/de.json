@@ -161,10 +161,7 @@
     },
     "pointsSystem": {
       "title": "Punktesystem",
-      "rules": [
-        "50 Punkte für jede richtige Antwort.",
-        "Keine Punkte für falsche Antworten."
-      ]
+      "rules": ["50 Punkte für jede richtige Antwort.", "Keine Punkte für falsche Antworten."]
     },
     "goldenRecords": {
       "title": "Goldene Schallplatten",
@@ -195,6 +192,22 @@
   },
   "profile": {
     "title": "Profil",
+    "name": "Name",
+    "username": "Benutzername",
+    "email": "E-Mail",
+    "points": "Punkte",
+    "namePlaceholder": "Dein Name",
+    "usernamePlaceholder": "Dein Benutzername",
+    "emailPlaceholder": "Deine E-Mail-Adresse",
+    "lps": {
+      "title": "Schallplatten-Sammlung",
+      "none": "Du hast noch keine Schallplatten gesammelt",
+      "types": {
+        "gold": "Gold",
+        "silver": "Silber",
+        "bronze": "Bronze"
+      }
+    },
     "stats": {
       "title": "Statistiken",
       "gamesPlayed": "Gespielte Spiele",
@@ -304,6 +317,102 @@
         "info": "Wir werden Ihre Daten innerhalb von 30 Tagen löschen",
         "confirmation": "Bestätigung der Löschung",
         "local": "Lokale Daten in Ihrem Browser können Sie selbst über die Browser-Einstellungen löschen."
+      }
+    }
+  },
+  "highscore": {
+    "title": "Bestenliste",
+    "total": "Gesamtwertung",
+    "avatar": "Avatar",
+    "name": "Name",
+    "points": "Punkte"
+  },
+  "common": {
+    "loading": "Wird geladen..."
+  },
+  "legal": {
+    "privacy": {
+      "title": "Datenschutzerklärung",
+      "overview": {
+        "title": "Übersicht",
+        "general": {
+          "title": "Allgemeine Informationen",
+          "text": "Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Diese Datenschutzerklärung informiert Sie darüber, wie wir mit Ihren Daten umgehen."
+        }
+      },
+      "dataCollection": {
+        "title": "Datenerhebung",
+        "cookies": {
+          "title": "Cookies",
+          "text": "Wir verwenden Cookies, um Ihnen die bestmögliche Nutzererfahrung zu bieten. Diese speichern keine persönlich identifizierbaren Informationen."
+        },
+        "serverLogs": {
+          "title": "Server-Logs",
+          "text": "Für technische Zwecke speichern wir automatisch Server-Log-Dateien, die Ihr Browser übermittelt."
+        },
+        "analytics": {
+          "title": "Analytische Daten",
+          "text": "Wir verwenden anonymisierte Analysedaten, um unser Spielerlebnis zu verbessern. Diese Daten umfassen Spielstatistiken, Nutzungsmuster und Leistungsdaten, jedoch keine persönlich identifizierbaren Informationen."
+        }
+      },
+      "rights": {
+        "title": "Ihre Rechte",
+        "intro": "Sie haben folgende Rechte bezüglich Ihrer personenbezogenen Daten:",
+        "list": {
+          "information": "Recht auf Auskunft über Ihre gespeicherten Daten",
+          "correction": "Recht auf Berichtigung unrichtiger Daten",
+          "restriction": "Recht auf Einschränkung der Verarbeitung",
+          "objection": "Recht auf Widerspruch gegen die Verarbeitung",
+          "portability": "Recht auf Datenübertragbarkeit"
+        }
+      },
+      "contact": {
+        "title": "Kontakt",
+        "text": "Bei Fragen zum Datenschutz können Sie sich jederzeit an uns wenden.",
+        "emailLabel": "E-Mail",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "gameData": {
+        "title": "Spieldaten",
+        "progress": {
+          "title": "Spielfortschritt",
+          "intro": "Folgende Spieldaten werden gespeichert:",
+          "list": {
+            "scores": "Punktestände",
+            "awards": "Errungenschaften",
+            "rankings": "Ranglisten-Positionen"
+          },
+          "purpose": "Diese Daten werden ausschließlich zur Verbesserung Ihres Spielerlebnisses und zur Anzeige Ihrer Erfolge verwendet."
+        },
+        "localStorage": {
+          "title": "Lokale Speicherung",
+          "intro": "In Ihrem Browser werden folgende Informationen lokal gespeichert:",
+          "list": {
+            "categories": "Gespielte Kategorien",
+            "settings": "Spieleinstellungen",
+            "language": "Spracheinstellung"
+          },
+          "storage": "Diese Daten bleiben lokal auf Ihrem Gerät gespeichert und werden nicht an unsere Server übertragen. Sie können diese jederzeit über Ihre Browsereinstellungen löschen."
+        },
+        "session": {
+          "title": "Sitzungsdaten",
+          "intro": "Während einer aktiven Spielsitzung werden temporär folgende Daten gespeichert:",
+          "list": {
+            "auth": "Authentifizierungsstatus für die Spielsitzung",
+            "progress": "Aktueller Spielfortschritt und Punktestand",
+            "settings": "Temporäre Spieleinstellungen"
+          }
+        }
+      },
+      "deletion": {
+        "title": "Datenlöschung",
+        "intro": "Sie haben das Recht, folgende Daten löschen zu lassen:",
+        "list": {
+          "highscores": "Ihre persönlichen Highscores und Spielstatistiken",
+          "results": "Gespeicherte Spielergebnisse und Erfolge",
+          "account": "Ihr gesamtes Benutzerkonto und alle damit verbundenen Daten"
+        },
+        "local": "Lokal gespeicherte Daten (Cookies, Spielstände) können Sie selbstständig über Ihre Browsereinstellungen löschen."
       }
     }
   }

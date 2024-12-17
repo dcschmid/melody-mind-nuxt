@@ -275,22 +275,21 @@
     "points": "Puntos"
   },
   "profile": {
-    "title": "Mi Perfil",
+    "title": "Perfil",
     "name": "Nombre",
-    "namePlaceholder": "Tu nombre",
     "username": "Nombre de usuario",
-    "usernamePlaceholder": "Tu nombre de usuario",
     "email": "Correo electrónico",
-    "emailPlaceholder": "Tu dirección de correo electrónico",
-    "save": "Guardar cambios",
-    "points": "Puntos acumulados",
+    "points": "Puntos",
+    "namePlaceholder": "Tu nombre",
+    "usernamePlaceholder": "Tu nombre de usuario",
+    "emailPlaceholder": "Tu correo electrónico",
     "lps": {
-      "title": "Mi Colección de Discos",
-      "none": "Todavía no has ganado ningún disco. ¡Juega algunas rondas para ganar discos!",
+      "title": "Colección de Discos",
+      "none": "Aún no has coleccionado ningún disco",
       "types": {
-        "gold": "LP de Oro",
-        "silver": "LP de Plata",
-        "bronze": "LP de Bronce"
+        "gold": "Oro",
+        "silver": "Plata",
+        "bronze": "Bronce"
       }
     },
     "statistics": {
@@ -351,6 +350,10 @@
         "serverLogs": {
           "title": "Archivos de Registro del Servidor",
           "text": "El proveedor de las páginas recopila y almacena automáticamente información en archivos de registro del servidor que su navegador nos transmite automáticamente."
+        },
+        "analytics": {
+          "title": "Datos Analíticos",
+          "text": "Utilizamos datos analíticos anonimizados para mejorar nuestra experiencia de juego. Estos datos incluyen estadísticas de juego, patrones de uso y datos de rendimiento, pero no información personal identificable."
         }
       },
       "rights": {

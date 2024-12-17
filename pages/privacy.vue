@@ -18,31 +18,11 @@
                         <h3 class="subsection-title">{{ $t('legal.privacy.dataCollection.cookies.title') }}</h3>
                         <p>{{ $t('legal.privacy.dataCollection.cookies.text') }}</p>
 
+                        <h3 class="subsection-title">{{ $t('legal.privacy.dataCollection.analytics.title') }}</h3>
+                        <p>{{ $t('legal.privacy.dataCollection.analytics.text') }}</p>
+
                         <h3 class="subsection-title">{{ $t('legal.privacy.dataCollection.serverLogs.title') }}</h3>
                         <p>{{ $t('legal.privacy.dataCollection.serverLogs.text') }}</p>
-                    </div>
-                </section>
-
-                <section class="legal-section">
-                    <h2 class="section-title">{{ $t('legal.privacy.rights.title') }}</h2>
-                    <div class="content-block">
-                        <p>{{ $t('legal.privacy.rights.intro') }}</p>
-                        <ul class="privacy-list">
-                            <li>{{ $t('legal.privacy.rights.list.information') }}</li>
-                            <li>{{ $t('legal.privacy.rights.list.correction') }}</li>
-                            <li>{{ $t('legal.privacy.rights.list.restriction') }}</li>
-                            <li>{{ $t('legal.privacy.rights.list.objection') }}</li>
-                            <li>{{ $t('legal.privacy.rights.list.portability') }}</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section class="legal-section">
-                    <h2 class="section-title">{{ $t('legal.privacy.contact.title') }}</h2>
-                    <div class="content-block">
-                        <p>{{ $t('legal.privacy.contact.text') }}</p>
-                        <p>{{ $t('legal.privacy.contact.emailLabel') }}: {{ $t('legal.privacy.contact.emailAddress') }}
-                        </p>
                     </div>
                 </section>
 
@@ -78,6 +58,20 @@
                 </section>
 
                 <section class="legal-section">
+                    <h2 class="section-title">{{ $t('legal.privacy.rights.title') }}</h2>
+                    <div class="content-block">
+                        <p>{{ $t('legal.privacy.rights.intro') }}</p>
+                        <ul class="privacy-list">
+                            <li>{{ $t('legal.privacy.rights.list.information') }}</li>
+                            <li>{{ $t('legal.privacy.rights.list.correction') }}</li>
+                            <li>{{ $t('legal.privacy.rights.list.restriction') }}</li>
+                            <li>{{ $t('legal.privacy.rights.list.objection') }}</li>
+                            <li>{{ $t('legal.privacy.rights.list.portability') }}</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="legal-section">
                     <h2 class="section-title">{{ $t('legal.privacy.deletion.title') }}</h2>
                     <div class="content-block">
                         <p>{{ $t('legal.privacy.deletion.intro') }}</p>
@@ -87,6 +81,15 @@
                             <li>{{ $t('legal.privacy.deletion.list.account') }}</li>
                         </ul>
                         <p>{{ $t('legal.privacy.deletion.local') }}</p>
+                    </div>
+                </section>
+
+                <section class="legal-section">
+                    <h2 class="section-title">{{ $t('legal.privacy.contact.title') }}</h2>
+                    <div class="content-block">
+                        <p>{{ $t('legal.privacy.contact.text') }}</p>
+                        <p>{{ $t('legal.privacy.contact.emailLabel') }}: {{ $t('legal.privacy.contact.emailAddress') }}
+                        </p>
                     </div>
                 </section>
             </article>
