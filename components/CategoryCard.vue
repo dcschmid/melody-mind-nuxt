@@ -1,32 +1,51 @@
 <template>
-    <div class="category-card" :class="{ 'not-playable': !isPlayable }" :aria-disabled="!isPlayable">
-        <NuxtLink v-if="isPlayable" :to="categoryUrl" class="category-link"
-            :aria-label="$t('gameHome.playCategory', { category: headline })">
+    <div class="category-card" 
+        :class="{ 'not-playable': !isPlayable }" 
+        :aria-disabled="!isPlayable"
+        role="article">
+        <NuxtLink v-if="isPlayable" 
+            :to="categoryUrl" 
+            class="category-link"
+            :aria-label="$t('gameHome.playCategory', { category: headline })"
+            tabindex="0"
+            @keydown.enter="$emit('select')"
+            @keydown.space.prevent="$emit('select')">
             <div class="category-content">
                 <div class="image-container">
                     <picture>
                         <source :srcset="imageUrl" 
                             :sizes="'(max-width: 768px) 480px, 800px'" />
-                        <img :src="imageUrl" :alt="$t('gameHome.categoryAlt', { category: headline })" 
-                            loading="lazy" decoding="async" :width="480" :height="270" />
+                        <img :src="imageUrl" 
+                            :alt="$t('gameHome.categoryAlt', { category: headline })" 
+                            loading="lazy" 
+                            decoding="async" 
+                            :width="480" 
+                            :height="270" />
                     </picture>
-                    <div class="category-title">{{ headline }}</div>
-                    <div class="category-description">{{ introSubline }}</div>
+                    <div class="category-title" aria-hidden="true">{{ headline }}</div>
+                    <div class="category-description" aria-hidden="true">{{ introSubline }}</div>
                 </div>
             </div>
         </NuxtLink>
-        <div v-else class="category-content coming-soon"
-            :aria-label="$t('gameHome.comingSoon', { category: headline })">
+        <div v-else 
+            class="category-content coming-soon"
+            :aria-label="$t('gameHome.comingSoon', { category: headline })"
+            role="article"
+            tabindex="0">
             <div class="image-container">
                 <picture>
                     <source :srcset="imageUrl" 
                         :sizes="'(max-width: 768px) 480px, 800px'" />
-                    <img :src="imageUrl" :alt="$t('gameHome.categoryAlt', { category: headline })" 
-                        loading="lazy" decoding="async" :width="480" :height="270" />
+                    <img :src="imageUrl" 
+                        :alt="$t('gameHome.categoryAlt', { category: headline })" 
+                        loading="lazy" 
+                        decoding="async" 
+                        :width="480" 
+                        :height="270" />
                 </picture>
-                <div class="category-title">{{ headline }}</div>
-                <div class="category-description">{{ introSubline }}</div>
-                <div class="coming-soon-badge">
+                <div class="category-title" aria-hidden="true">{{ headline }}</div>
+                <div class="category-description" aria-hidden="true">{{ introSubline }}</div>
+                <div class="coming-soon-badge" role="status">
                     {{ $t('gameHome.comingSoonLabel') }}
                 </div>
             </div>
@@ -57,6 +76,8 @@ defineProps({
         default: true
     }
 })
+
+defineEmits(['select'])
 </script>
 
 <style scoped lang="scss">
@@ -66,7 +87,7 @@ defineProps({
     overflow: hidden;
     transition: transform 0.3s ease;
 
-    &:hover {
+    &:hover, &:focus-within {
         transform: translateY(-4px);
 
         .category-description {
@@ -84,12 +105,36 @@ defineProps({
     text-decoration: none;
     color: inherit;
     display: block;
+    outline: none;
+
+    &:focus {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+    }
+
+    &:focus:not(:focus-visible) {
+        outline: none;
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+    }
 }
 
 .category-content {
     position: relative;
     width: 100%;
     height: 100%;
+
+    &.coming-soon {
+        cursor: not-allowed;
+
+        &:focus {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+        }
+    }
 }
 
 .image-container {

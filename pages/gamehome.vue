@@ -12,13 +12,15 @@
 
             <section class="categories-section" role="region" aria-labelledby="categories-heading">
                 <h2 id="categories-heading" class="visually-hidden">{{ $t('gameHome.categoriesTitle') }}</h2>
-                <div class="categories-grid">
+                <div class="categories-grid" role="list">
                     <CategoryCard v-for="category in filteredCategories" :key="category.slug"
                         :headline="category.headline" 
                         :image-url="category.imageUrl"
                         :category-url="localePath(category.categoryUrl)" 
                         :is-playable="category.isPlayable"
-                        :intro-subline="category.introSubline" />
+                        :intro-subline="category.introSubline"
+                        role="listitem"
+                        @select="navigateToCategory(category)" />
                 </div>
             </section>
         </main>
@@ -27,6 +29,9 @@
 
 <script setup>
 import { computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const { searchQuery, filteredCategories, loadCategories } = useCategories()
 const { locale, t } = useI18n()
@@ -41,6 +46,12 @@ useHead({
         { name: 'robots', content: 'index, follow' }
     ]
 })
+
+const navigateToCategory = (category) => {
+    if (category.isPlayable) {
+        router.push(localePath(category.categoryUrl))
+    }
+}
 
 onMounted(() => {
     loadCategories(locale.value)
@@ -73,31 +84,32 @@ onMounted(() => {
 
 .categories-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
-    gap: var(--padding-large);
-    padding: var(--padding-small);
-    will-change: transform;
-    contain: content;
-
-    @media (min-width: 640px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (min-width: 1024px) {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-        .category-card {
-            animation: fadeIn 0.5s ease-out;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            transition: none !important;
         }
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation: none !important;
-        transition: none !important;
+@media (prefers-reduced-motion: no-preference) {
+    .category-card {
+        animation: fadeIn 0.5s ease-out;
+    }
+}
+
+@media (min-width: 640px) {
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .categories-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
