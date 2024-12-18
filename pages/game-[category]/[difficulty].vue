@@ -104,7 +104,7 @@
                                 <div class="jokers-section">
                                     <div class="joker-buttons">
                                         <!-- 50:50 Joker -->
-                                        <button class="button joker-button" @click="useFiftyFiftyJoker"
+                                        <button class="button joker-button" @click="useFiftyFiftyJoker(currentQuestion)"
                                             :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
                                             :aria-label="$t('game.jokers.fiftyFifty')"
                                             :class="{ 'disabled': remainingJokers === 0 || jokerUsedForCurrentQuestion }">
@@ -112,7 +112,7 @@
                                         </button>
 
                                         <!-- Publikumsjoker -->
-                                        <button class="button joker-button" @click="useAudienceJoker"
+                                        <button class="button joker-button" @click="useAudienceJoker(currentQuestion)"
                                             :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
                                             :aria-label="$t('game.jokers.audience')"
                                             :class="{ 'disabled': remainingJokers === 0 || jokerUsedForCurrentQuestion }">
@@ -120,7 +120,7 @@
                                         </button>
 
                                         <!-- Telefonjoker -->
-                                        <button class="button joker-button" @click="usePhoneJoker"
+                                        <button class="button joker-button" @click="usePhoneJoker(currentQuestion)"
                                             :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
                                             :aria-label="$t('game.jokers.phone')"
                                             :class="{ 'disabled': remainingJokers === 0 || jokerUsedForCurrentQuestion }">
@@ -296,6 +296,7 @@
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { authClient } from '~/lib/auth-client';
+import { useJokers } from '~/composables/useJokers'
 
 definePageMeta({
     middleware: 'auth'
@@ -329,316 +330,19 @@ const maxQuestions = computed(() => {
     }
 })
 
-// Gemeinsamer Joker-Count
-const totalJokers = difficulty === 'easy' ? 3 : difficulty === 'medium' ? 5 : 7
-const remainingJokers = ref(totalJokers)
+const {
+    remainingJokers,
+    jokerUsedForCurrentQuestion,
+    audienceHelp,
+    hiddenOptions,
+    phoneExpertOpinion,
+    phoneExpertConfidence,
+    useFiftyFiftyJoker,
+    useAudienceJoker,
+    usePhoneJoker,
+    resetJokers
+} = useJokers(difficulty)
 
-const audienceHelp = ref<{ [key: string]: number }>({})
-const jokerUsedForCurrentQuestion = ref(false)
-const hiddenOptions = ref<string[]>([])
-
-const phoneExpertOpinion = ref<{ expert: string; message: string } | null>(null)
-const phoneExpertConfidence = ref(0)
-
-// Musikspezifische Experten-Antworten
-const expertTitles = [
-    "Dr. Schmidt",
-    "Thomas",
-    "Sarah",
-    "Michael",
-    "Lisa",
-    "Mark",
-    "Alex",
-    "Julia",
-    "Chris",
-    "Max",
-    "Emma",
-    "David",
-    "Sophie",
-    "Felix",
-    "Laura"
-]
-
-interface ExpertResponses {
-    high: string[];
-    medium: string[];
-    low: string[];
-}
-
-type LocaleResponses = Record<string, ExpertResponses>;
-
-const expertResponsesByLocale: LocaleResponses = {
-    de: {
-        high: [
-            "Ohne jeden Zweifel - es ist '{answer}'. Ich habe die Original-Aufnahme-Session dokumentiert.",
-            "Als langjähriger Produzent des Labels kann ich dir garantieren: Das ist '{answer}'.",
-            "Oh, das kenne ich in- und auswendig! '{answer}' - darauf verwette ich meinen Plattenspieler.",
-            "Diese Frage ist ein Heimspiel für mich. Eindeutig '{answer}', ich war beim Recording dabei.",
-            "Das ist mein absolutes Lieblingsalbum! Natürlich ist es '{answer}'.",
-            "Diese Aufnahme hat Geschichte geschrieben - definitiv '{answer}'.",
-            "Ich habe den Song hunderte Male aufgelegt. Ohne Frage '{answer}'.",
-            "Diese Produktion ist legendär! Kann nur '{answer}' sein.",
-            "Da muss ich nicht mal nachdenken - '{answer}', zu 100%!",
-            "Diese Aufnahme hat mein Leben verändert. Es ist '{answer}'."
-        ],
-        medium: [
-            "Moment... ja, ich glaube das müsste '{answer}' sein. Die Produktion kommt mir sehr bekannt vor.",
-            "Wenn mich mein Gehör nicht täuscht, würde ich auf '{answer}' tippen.",
-            "Hmm, der Sound erinnert mich stark an '{answer}', aber lass mich kurz nachdenken...",
-            "Das klingt sehr nach '{answer}', aber es gab damals einige ähnliche Produktionen.",
-            "Ich würde zu 70% sagen '{answer}', aber nagel mich nicht darauf fest.",
-            "Kenne ich aus dem Club - sollte '{answer}' sein, wenn ich mich recht erinnere.",
-            "Hatte ich mal in meiner Sammlung... '{answer}', oder?",
-            "Das läuft öfter im Radio - müsste '{answer}' sein.",
-            "Ziemlich sicher '{answer}', aber keine Garantie.",
-            "Erinnert mich stark an '{answer}', bin aber nicht ganz sicher."
-        ],
-        low: [
-            "Puh, schwierige Frage... spontan würde ich '{answer}' raten, aber das ist echt nur geraten.",
-            "Oh Mann, das ist nicht meine Ära... vielleicht '{answer}'?",
-            "Musik ist normalerweise mein Ding, aber hier... '{answer}' maybe?",
-            "*kratzt sich am Kopf* '{answer}'? Aber das ist wirklich nur eine Vermutung!",
-            "Wenn ich jetzt raten müsste... '{answer}'? Aber ich bin mir echt unsicher.",
-            "Das ist nicht meine Expertise, aber könnte '{answer}' sein?",
-            "Uff, da fragst du den Falschen... '{answer}' vielleicht?",
-            "Keine Ahnung, aber '{answer}' klingt plausibel?",
-            "Schwer zu sagen... '{answer}'? Aber das ist echt nur geraten!",
-            "Da bin ich überfragt... '{answer}' würde ich mal tippen."
-        ]
-    },
-    en: {
-        high: [
-            "Without any doubt - it's '{answer}'. I documented the original recording session.",
-            "As a long-time producer of the label, I can guarantee you: This is '{answer}'.",
-            "Oh, I know this inside out! '{answer}' - I'd bet my turntable on it.",
-            "This question is home turf for me. Clearly '{answer}', I was there during the recording.",
-            "This is my absolute favorite album! Of course it's '{answer}'.",
-            "This recording made history - definitely '{answer}'.",
-            "I've played this song hundreds of times. No question '{answer}'.",
-            "This production is legendary! Can only be '{answer}'.",
-            "I don't even need to think about it - '{answer}', 100%!",
-            "This recording changed my life. It's '{answer}'."
-        ],
-        medium: [
-            "Hold on... yes, I think it must be '{answer}'. The production sounds very familiar.",
-            "If my ears don't deceive me, I'd say '{answer}'.",
-            "Hmm, the sound strongly reminds me of '{answer}', but let me think for a moment...",
-            "This sounds a lot like '{answer}', but there were several similar productions back then.",
-            "I'd say 70% it's '{answer}', but don't hold me to that.",
-            "I know it from the club - should be '{answer}', if I remember correctly.",
-            "Used to have it in my collection... '{answer}', right?",
-            "It plays often on the radio - must be '{answer}'.",
-            "Pretty sure it's '{answer}', but no guarantee.",
-            "Strongly reminds me of '{answer}', but I'm not entirely sure."
-        ],
-        low: [
-            "Phew, tough question... spontaneously I'd guess '{answer}', but that's really just a guess.",
-            "Oh man, this isn't my era... maybe '{answer}'?",
-            "Music is usually my thing, but here... '{answer}' maybe?",
-            "*scratches head* '{answer}'? But that's really just a guess!",
-            "If I had to guess now... '{answer}'? But I'm really not sure.",
-            "This isn't my expertise, but could be '{answer}'?",
-            "Ugh, you're asking the wrong person... '{answer}' perhaps?",
-            "No idea, but '{answer}' sounds plausible?",
-            "Hard to say... '{answer}'? But that's really just guessing!",
-            "I'm stumped here... I'd guess '{answer}'."
-        ]
-    },
-    es: {
-        high: [
-            "¡Increíble! ¡Has ganado un LP de Oro! 🏆\n¡Eres un campeón absoluto de la música! Todas las preguntas perfectamente respondidas - ¡solo los mejores de los mejores lo logran!",
-            "¡Sensacional! ¡El LP de Oro es tuyo! 🏆\n¡Tu conocimiento musical es verdaderamente extraordinario - una actuación impecable!",
-            "¡Asombroso! ¡El LP de Oro te pertenece! 🏆\n¡Eres una enciclopedia musical andante! Una ronda perfecta - ¡simplemente magnífico!",
-            "¡Fantástico! ¡Te has ganado más que merecidamente el LP de Oro! 🏆\n¡Tu actuación fue simplemente impecable - eres un verdadero virtuoso de la música!",
-            "¡Magistral! ¡El LP de Oro es tuyo! 🏆\n¡Una ronda perfecta - definitivamente eres un genio de la música!",
-            "¡Brillante! ¡Un LP de Oro para ti! 🏆\n¡Tu experiencia musical es verdaderamente impresionante - todas las preguntas correctas!",
-            "¡Fenomenal! ¡El LP de Oro te pertenece! 🏆\n¡Eres un verdadero conocedor de la música - una actuación impeccable!",
-            "¡Magnífico! ¡Te has ganado el LP de Oro! 🏆\n¡Una ronda perfecta - tu conocimiento musical es imbatible!",
-            "¡Sobresaliente! ¡El LP de Oro es tuyo! 🏆\n¡Eres un profesional absoluto de la música - todas las preguntas respondidas perfectamente!",
-            "¡Legendario! ¡Has ganado el LP de Oro! 🏆\n¡Una actuación perfecta - eres un verdadero maestro de la música!"
-        ],
-        medium: [
-            "Espera... sí, creo que debe ser '{answer}'. La producción me suena muy familiar.",
-            "Si mis oídos no me engañan, diría '{answer}'.",
-            "Hmm, el sonido me recuerda mucho a '{answer}', pero déjame pensar un momento...",
-            "Esto suena mucho a '{answer}', pero hubo varias producciones similares en ese entonces.",
-            "Diría con un 70% de seguridad que es '{answer}', pero no me hagas caso del todo.",
-            "Lo conozco del club - debería ser '{answer}', si mal no recuerdo.",
-            "Lo tenía en mi colección... '{answer}', ¿verdad?",
-            "Suena a menudo en la radio - debe ser '{answer}'.",
-            "Bastante seguro de que es '{answer}', pero sin garantías.",
-            "Me recuerda mucho a '{answer}', pero no estoy completamente seguro."
-        ],
-        low: [
-            "Uf, pregunta difícil... espontáneamente diría '{answer}', pero es solo una suposición.",
-            "Oh vaya, esta no es mi época... ¿tal vez '{answer}'?",
-            "La música suele ser lo mío, pero aquí... ¿'{answer}' quizás?",
-            "*se rasca la cabeza* ¿'{answer}'? ¡Pero es realmente solo una suposición!",
-            "Si tuviera que adivinar... ¿'{answer}'? Pero realmente no estoy seguro.",
-            "Esta no es mi especialidad, pero ¿podría ser '{answer}'?",
-            "Uf, le preguntas a la persona equivocada... ¿'{answer}' tal vez?",
-            "Ni idea, pero ¿'{answer}' suena plausible?",
-            "Difícil de decir... ¿'{answer}'? ¡Pero esto es solo una suposición!",
-            "Estoy perdido aquí... Yo diría '{answer}'."
-        ]
-    },
-    fr: {
-        high: [
-            "Incroyable ! Tu as gagné un LP d'Or ! 🏆\nTu es un champion absolu de la musique ! Toutes les questions parfaitement répondues - seuls les meilleurs y parviennent !",
-            "Sensationnel ! Le LP d'Or est à toi ! 🏆\nTes connaissances musicales sont vraiment extraordinaires - une performance impeccable !",
-            "Fantastique ! Le LP d'Or t'appartient ! 🏆\nTu es une encyclopédie musicale vivante ! Une manche parfaite - simplement grandiose !",
-            "Fantastique ! Tu as plus que mérité le LP d'Or ! 🏆\nTa performance était simplement impeccable - tu es un véritable virtuose de la musique !",
-            "Magistral ! Le LP d'Or est à toi ! 🏆\nUne manche parfaite - tu es définitivement un génie de la musique !",
-            "Brillant ! Un LP d'Or pour toi ! 🏆\nTon expertise musicale est vraiment impressionnante - toutes les réponses correctes !",
-            "Phénoménal ! Le LP d'Or t'appartient ! 🏆\nTu es un véritable connaisseur de musique - une performance impeccable !",
-            "Magnifique ! Tu as gagné le LP d'Or ! 🏆\nUne manche parfaite - tes connaissances musicales sont imbattables !",
-            "Exceptionnel ! Le LP d'Or est à toi ! 🏆\nTu es un pro absolu de la musique - toutes les questions parfaitement répondues !",
-            "Légendaire ! Tu as gagné le LP d'Or ! 🏆\nUne performance parfaite - tu es un véritable maestro de la musique !"
-        ],
-        medium: [
-            "Attends... oui, je pense que ça doit être '{answer}'. La production me semble très familière.",
-            "Si mes oreilles ne me trompent pas, je dirais '{answer}'.",
-            "Hmm, le son me rappelle fortement '{answer}', mais laisse-moi réfléchir un moment...",
-            "Ça ressemble beaucoup à '{answer}', mais il y avait plusieurs productions similaires à l'époque.",
-            "Je dirais à 70% que c'est '{answer}', mais ne me prends pas au mot.",
-            "Je le connais du club - ça devrait être '{answer}', si je me souviens bien.",
-            "Je l'avais dans ma collection... '{answer}', non ?",
-            "Ça passe souvent à la radio - ça doit être '{answer}'.",
-            "Assez sûr que c'est '{answer}', mais pas de garantie.",
-            "Ça me rappelle beaucoup '{answer}', mais je ne suis pas totalement sûr."
-        ],
-        low: [
-            "Ouf, question difficile... spontanément je dirais '{answer}', mais c'est vraiment juste une supposition.",
-            "Oh là là, ce n'est pas mon époque... peut-être '{answer}' ?",
-            "La musique c'est généralement mon truc, mais là... '{answer}' peut-être ?",
-            "*se gratte la tête* '{answer}' ? Mais c'est vraiment juste une supposition !",
-            "Si je devais deviner... '{answer}' ? Mais je ne suis vraiment pas sûr.",
-            "Ce n'est pas mon domaine d'expertise, mais ça pourrait être '{answer}' ?",
-            "Aïe, tu demandes à la mauvaise personne... '{answer}' peut-être ?",
-            "Aucune idée, mais '{answer}' semble plausible ?",
-            "Difficile à dire... '{answer}' ? Mais c'est vraiment juste une supposition !",
-            "Je sèche là... Je dirais '{answer}'."
-        ]
-    },
-    it: {
-        high: [
-            "Incredibile! Hai vinto un LP d'Oro! 🏆\nSei un campione assoluto della musica! Tutte le domande perfettamente risposte - solo i migliori dei migliori ci riescono!",
-            "Sensazionale! L'LP d'Oro è tuo! 🏆\nLa tua conoscenza musicale è davvero straordinaria - una performance impeccabile!",
-            "Fantastico! L'LP d'Oro è tuo! 🏆\nSei un'enciclopedia musicale ambulante! Un round perfetto - semplicemente grandioso!",
-            "Fantastico! Ti sei più che meritato l'LP d'Oro! 🏆\nLa tua performance è stata semplicemente impeccabile - sei un vero virtuoso della musica!",
-            "Magistrale! L'LP d'Oro è tuo! 🏆\nUn round perfetto - sei decisamente un genio della musica!",
-            "Brillante! Un LP d'Oro per te! 🏆\nLa tua competenza musicale è davvero impressionante - tutte le risposte corrette!",
-            "Fenomenale! L'LP d'Oro è tuo! 🏆\nSei un vero intenditore di musica - una performance impeccabile!",
-            "Magnifico! Ti sei guadagnato l'LP d'Oro! 🏆\nUn round perfetto - la tua conoscenza musicale è imbattibile!",
-            "Eccezionale! L'LP d'Oro è tuo! 🏆\nSei un professionista assoluto della musica - tutte le domande risposte perfettamente!",
-            "Leggendario! Hai vinto l'LP d'Oro! 🏆\nUna performance perfetta - sei un vero maestro della musica!"
-        ],
-        medium: [
-            "Aspetta... sì, penso che debba essere '{answer}'. La produzione mi suona molto familiare.",
-            "Se le mie orecchie non mi ingannano, direi '{answer}'.",
-            "Hmm, il suono mi ricorda molto '{answer}', ma fammi pensare un momento...",
-            "Suona molto come '{answer}', ma c'erano diverse produzioni similari all'epoca.",
-            "Direi al 70% che è '{answer}', ma non prenderlo per certo.",
-            "Lo conosco dal club - dovrebbe essere '{answer}', se ricordo bene.",
-            "Lo avevo nella mia collezione... '{answer}', giusto?",
-            "Passa spesso alla radio - deve essere '{answer}'.",
-            "Abbastanza sicuro che sia '{answer}', ma nessuna garanzia.",
-            "Mi ricorda molto '{answer}', ma non sono del tutto sicuro."
-        ],
-        low: [
-            "Uff, domanda difficile... spontaneamente direi '{answer}', ma è davvero solo un'ipotesi.",
-            "Oh cavolo, questa non è la mia epoca... forse '{answer}'?",
-            "La musica di solito è il mio forte, ma qui... '{answer}' forse?",
-            "*si gratta la testa* '{answer}'? Ma è davvero solo un'ipotesi!",
-            "Se dovessi indovinare... '{answer}'? Ma non sono proprio sicuro.",
-            "Questa non è la mia specialità, ma potrebbe essere '{answer}'?",
-            "Uff, stai chiedendo alla persona sbagliata... '{answer}' forse?",
-            "Non ne ho idea, ma '{answer}' suona plausibile?",
-            "Difficile da dire... '{answer}'? Ma è solo un'ipotesi!",
-            "Sono in difficoltà qui... Direi '{answer}'."
-        ]
-    }
-};
-
-const useFiftyFiftyJoker = () => {
-    if (remainingJokers.value > 0 && !jokerUsedForCurrentQuestion.value) {
-        const wrongOptions = currentQuestion.value.options.filter(
-            (option: string) => option !== currentQuestion.value.correctAnswer
-        )
-        const shuffledWrongOptions = wrongOptions.sort(() => Math.random() - 0.5)
-        hiddenOptions.value = shuffledWrongOptions.slice(0, 2)
-
-        remainingJokers.value--
-        jokerUsedForCurrentQuestion.value = true
-    }
-}
-
-const useAudienceJoker = () => {
-    if (remainingJokers.value > 0 && !jokerUsedForCurrentQuestion.value) {
-        const correctIndex = currentQuestion.value.options.indexOf(currentQuestion.value.correctAnswer)
-        const distribution = Array(currentQuestion.value.options.length).fill(0).map((_, i) => {
-            return i === correctIndex ? Math.floor(Math.random() * 30) + 50 : Math.floor(Math.random() * 20)
-        })
-
-        const total = distribution.reduce((acc, val) => acc + val, 0)
-        audienceHelp.value = currentQuestion.value.options.reduce((acc: { [key: string]: number }, option: string, i: number) => {
-            acc[option] = Math.round((distribution[i] / total) * 100)
-            return acc
-        }, {} as { [key: string]: number })
-
-        remainingJokers.value--
-        jokerUsedForCurrentQuestion.value = true
-    }
-}
-
-const usePhoneJoker = () => {
-    if (remainingJokers.value > 0 && !jokerUsedForCurrentQuestion.value) {
-        const random = Math.random()
-        let answer, confidence, confidenceLevel
-
-        if (random < 0.6) {
-            confidence = Math.floor(Math.random() * 15) + 85
-            answer = currentQuestion.value.correctAnswer
-            confidenceLevel = 'high'
-        } else if (random < 0.8) {
-            confidence = Math.floor(Math.random() * 20) + 60
-            answer = Math.random() < 0.8 ? currentQuestion.value.correctAnswer :
-                currentQuestion.value.options.find((o: string) => o !== currentQuestion.value.correctAnswer)
-            confidenceLevel = 'medium'
-        } else {
-            confidence = Math.floor(Math.random() * 25) + 35
-            answer = Math.random() < 0.5 ? currentQuestion.value.correctAnswer :
-                currentQuestion.value.options.find((o: string) => o !== currentQuestion.value.correctAnswer)
-            confidenceLevel = 'low'
-        }
-
-        try {
-            // Nutze die aktuelle Sprache
-            const currentLocale = locale.value || 'de'
-            const responses = expertResponsesByLocale[currentLocale][confidenceLevel as keyof ExpertResponses]
-
-            if (!Array.isArray(responses)) {
-                console.error('Responses is not an array:', responses)
-                return
-            }
-
-            const responseTemplate = responses[Math.floor(Math.random() * responses.length)]
-            const expertTitle = expertTitles[Math.floor(Math.random() * expertTitles.length)]
-
-            phoneExpertOpinion.value = {
-                expert: expertTitle,
-                message: responseTemplate.replace('{answer}', answer)
-            }
-            phoneExpertConfidence.value = confidence
-
-            remainingJokers.value--
-            jokerUsedForCurrentQuestion.value = true
-
-        } catch (error) {
-            console.error('Error in usePhoneJoker:', error)
-        }
-    }
-}
 
 // Funktion zum Laden der Fragen für die ausgewählte Schwierigkeit
 const loadQuestions = async () => {
@@ -697,11 +401,7 @@ const selectRandomQuestion = () => {
     currentOptions.value = shuffleOptions(currentQuestion.value)
 
     // Reset Joker state für neue Frage
-    jokerUsedForCurrentQuestion.value = false
-    audienceHelp.value = {}
-    hiddenOptions.value = []
-    phoneExpertOpinion.value = null
-    phoneExpertConfidence.value = 0
+    resetJokers()
     startQuestionTimer()
 }
 
@@ -810,11 +510,7 @@ const nextQuestion = () => {
     }
 
     showSolution.value = false
-    hiddenOptions.value = []
-    phoneExpertOpinion.value = null
-    audienceHelp.value = {}
-    jokerUsedForCurrentQuestion.value = false
-
+    resetJokers()
     selectRandomQuestion()
     scrollToTop()
 }
@@ -1046,7 +742,7 @@ const goldMessages = {
         "¡Magistral! ¡El LP de Oro es tuyo! 🏆\n¡Una ronda perfecta - definitivamente eres un genio de la música!",
         "¡Brillante! ¡Un LP de Oro para ti! 🏆\n¡Tu experiencia musical es verdaderamente impresionante - todas las preguntas correctas!",
         "¡Fenomenal! ¡El LP de Oro te pertenece! 🏆\n¡Eres un verdadero conocedor de la música - una actuación impeccable!",
-        "¡Magnífico! ¡Te has ganado el LP de Oro! 🏆\n¡Una ronda perfecta - tu conocimiento musical es imbatible!",
+        "¡Magnífico! ��Te has ganado el LP de Oro! 🏆\n¡Una ronda perfecta - tu conocimiento musical es imbatible!",
         "¡Sobresaliente! ¡El LP de Oro es tuyo! 🏆\n¡Eres un profesional absoluto de la música - todas las preguntas respondidas perfectamente!",
         "¡Legendario! ¡Has ganado el LP de Oro! 🏆\n¡Una actuación perfecta - eres un verdadero maestro de la música!"
     ],
@@ -1132,7 +828,7 @@ const silverMessages = {
         "Ben fatto! Un LP d'Argento è tuo! 🥈\nLa tua conoscenza musicale è impressionante! L'oro è a portata di mano!",
         "Eccellente! Hai vinto l'LP d'Argento! 🥈\nÈ stata una performance molto forte! Quasi perfetto!",
         "Grandioso! Un LP d'Argento per la tua performance! 🥈\nSei sulla strada per diventare un campione della musica!",
-        "Forte! Ti sei guadagnato l'LP d'Argento! ���\nLa tua conoscenza musicale è impressionante! L'oro è il prossimo obiettivo!",
+        "Forte! Ti sei guadagnato l'LP d'Argento! 🥈\nLa tua conoscenza musicale è impressionante! L'oro è il prossimo obiettivo!",
         "Eccellente! Un LP d'Argento per te! 🥈\nSei un vero esperto di musica! Solo un piccolo passo verso la perfezione!",
         "Rispetto! L'LP d'Argento è tuo! 🥈\nLa tua performance è stata davvero buona! L'oro è a portata di mano!",
         "Impressionante! Ti sei guadagnato l'LP d'Argento! 🥈\nÈ stata una grande performance! Otterrai l'oro la prossima volta!"
@@ -1142,7 +838,7 @@ const silverMessages = {
 const bronzeMessages = {
     de: [
         "Klasse! Du hast eine Bronzene LP gewonnen! 🥉\nDein Musikwissen kann sich sehen lassen! Mach weiter so, und schon bald wirst du noch mehr Hits erkennen!",
-        "Gut gemacht! Eine Bronzene LP für dich! 🥉\nDu bist auf einem guten Weg! Weiter so, dann klappt's auch bald mit Silber!",
+        "Gut gemacht! Eine Bronzene LP für dich! 🥉\nDu bist auf dem richtigen Weg! Weiter so, dann klappt's auch bald mit Silber!",
         "Prima! Die Bronzene LP gehört dir! 🥉\nDu hast schon einiges drauf! Mit etwas Übung erreichst du noch mehr!",
         "Bravo! Eine Bronzene LP ist dein! 🥉\nDu entwickelst dich zum echten Musikkenner! Bleib dran!",
         "Super! Du hast die Bronzene LP gewonnen! 🥉\nDein Musikwissen wächst! Mach weiter so!",
