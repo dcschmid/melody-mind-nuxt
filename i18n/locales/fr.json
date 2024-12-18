@@ -443,6 +443,39 @@
         },
         "local": "Les données stockées localement (cookies, progression du jeu) peuvent être supprimées indépendamment via les paramètres de votre navigateur."
       }
+    },
+    "imprint": {
+      "title": "Mentions Légales",
+      "information": {
+        "title": "Informations selon § 5 TMG",
+        "operator": "Daniel Schmid",
+        "address": "Hiltenspergerstr. 78, 80796 Munich",
+        "country": "Allemagne"
+      },
+      "contact": {
+        "title": "Contact",
+        "emailLabel": "E-mail",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "responsible": {
+        "title": "Responsable du contenu selon § 55 al. 2 RStV"
+      },
+      "disputeResolution": {
+        "title": "Résolution des litiges",
+        "text": "La Commission européenne fournit une plateforme de résolution des litiges en ligne (OS)",
+        "link": "https://ec.europa.eu/consumers/odr/",
+        "additional": "Nous ne sommes ni disposés ni obligés à participer à des procédures de résolution des litiges devant un conseil d'arbitrage des consommateurs."
+      },
+      "lawReference": {
+        "title": "Références légales",
+        "text": "Malgré un contrôle minutieux du contenu, nous n'assumons aucune responsabilité pour le contenu des liens externes. Les opérateurs des pages liées sont seuls responsables de leur contenu."
+      },
+      "jurisdiction": {
+        "title": "Base juridique",
+        "text": "Ce site web est soumis au droit allemand. Le lieu de juridiction est l'Allemagne.",
+        "applicableLaw": "Le droit allemand s'applique exclusivement, à l'exclusion de la Convention des Nations Unies sur les contrats de vente internationale de marchandises.",
+        "jurisdiction": "Le lieu d'exécution et de juridiction exclusive pour tous les litiges est l'Allemagne, dans la mesure où la loi le permet."
+      }
     }
   }
 }

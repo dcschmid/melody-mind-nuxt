@@ -443,6 +443,39 @@
         },
         "local": "Locally stored data (cookies, game progress) can be deleted independently through your browser settings."
       }
+    },
+    "imprint": {
+      "title": "Legal Notice",
+      "information": {
+        "title": "Information according to § 5 TMG",
+        "operator": "Daniel Schmid",
+        "address": "Hiltenspergerstr. 78, 80796 Munich",
+        "country": "Germany"
+      },
+      "contact": {
+        "title": "Contact",
+        "emailLabel": "Email",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "responsible": {
+        "title": "Responsible for content according to § 55 para. 2 RStV"
+      },
+      "disputeResolution": {
+        "title": "Dispute Resolution",
+        "text": "The European Commission provides a platform for online dispute resolution (OS)",
+        "link": "https://ec.europa.eu/consumers/odr/",
+        "additional": "We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board."
+      },
+      "lawReference": {
+        "title": "Legal References",
+        "text": "Despite careful content control, we assume no liability for the content of external links. The operators of the linked pages are solely responsible for their content."
+      },
+      "jurisdiction": {
+        "title": "Legal Basis",
+        "text": "This website is subject to German law. Place of jurisdiction is Germany.",
+        "applicableLaw": "German law applies exclusively, excluding the UN Convention on Contracts for the International Sale of Goods.",
+        "jurisdiction": "Place of fulfillment and exclusive place of jurisdiction for all disputes is Germany, as far as legally permissible."
+      }
     }
   }
 }

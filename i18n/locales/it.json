@@ -384,6 +384,38 @@
           "text": "Utilizziamo dati analitici anonimizzati per migliorare la nostra esperienza di gioco. Questi dati includono statistiche di gioco, modelli di utilizzo e dati sulle prestazioni, ma nessuna informazione personale identificabile."
         }
       },
+      "gameData": {
+        "title": "Dati di Gioco",
+        "progress": {
+          "title": "Progresso di Gioco",
+          "intro": "Vengono memorizzati i seguenti dati di gioco:",
+          "list": {
+            "scores": "Punteggi",
+            "awards": "Premi",
+            "rankings": "Posizioni in classifica"
+          },
+          "purpose": "Questi dati vengono utilizzati esclusivamente per migliorare la tua esperienza di gioco e mostrare i tuoi risultati."
+        },
+        "localStorage": {
+          "title": "Archiviazione Locale",
+          "intro": "Nel tuo browser vengono memorizzate localmente le seguenti informazioni:",
+          "list": {
+            "categories": "Categorie giocate",
+            "settings": "Impostazioni di gioco",
+            "language": "Impostazione della lingua"
+          },
+          "storage": "Questi dati rimangono memorizzati localmente sul tuo dispositivo e non vengono trasmessi ai nostri server. Puoi eliminarli in qualsiasi momento tramite le impostazioni del browser."
+        },
+        "session": {
+          "title": "Dati di Sessione",
+          "intro": "Durante una sessione di gioco attiva, vengono temporaneamente memorizzati i seguenti dati:",
+          "list": {
+            "auth": "Stato di autenticazione per la sessione di gioco",
+            "progress": "Progresso di gioco attuale e punteggio",
+            "settings": "Impostazioni temporanee di gioco"
+          }
+        }
+      },
       "rights": {
         "title": "I tuoi Diritti",
         "intro": "Hai i seguenti diritti riguardo ai tuoi dati personali:",
@@ -395,11 +427,54 @@
           "portability": "Diritto alla portabilità dei dati"
         }
       },
+      "deletion": {
+        "title": "Cancellazione Dati",
+        "intro": "Hai il diritto di far cancellare i seguenti dati:",
+        "list": {
+          "highscores": "I tuoi punteggi personali e statistiche di gioco",
+          "results": "Risultati di gioco salvati e risultati",
+          "account": "Il tuo intero account utente e tutti i dati associati"
+        },
+        "local": "I dati memorizzati localmente (cookie, progressi di gioco) possono essere eliminati autonomamente tramite le impostazioni del browser."
+      },
       "contact": {
         "title": "Contatto",
         "text": "Se hai domande sulla privacy, puoi contattarci in qualsiasi momento.",
-        "emailLabel": "E-mail",
+        "emailLabel": "Email",
         "emailAddress": "daniel.schmid1980(at)icloud.com"
+      }
+    },
+    "imprint": {
+      "title": "Note Legali",
+      "information": {
+        "title": "Informazioni secondo § 5 TMG",
+        "operator": "Daniel Schmid",
+        "address": "Hiltenspergerstr. 78, 80796 Monaco di Baviera",
+        "country": "Germania"
+      },
+      "contact": {
+        "title": "Contatto",
+        "emailLabel": "Email",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "responsible": {
+        "title": "Responsabile dei contenuti secondo § 55 comma 2 RStV"
+      },
+      "disputeResolution": {
+        "title": "Risoluzione delle controversie",
+        "text": "La Commissione Europea fornisce una piattaforma per la risoluzione delle controversie online (OS)",
+        "link": "https://ec.europa.eu/consumers/odr/",
+        "additional": "Non siamo disposti né obbligati a partecipare a procedure di risoluzione delle controversie davanti a un organismo di arbitrato dei consumatori."
+      },
+      "lawReference": {
+        "title": "Riferimenti legali",
+        "text": "Nonostante l'accurato controllo dei contenuti, non ci assumiamo alcuna responsabilità per i contenuti dei link esterni. I gestori delle pagine collegate sono gli unici responsabili dei loro contenuti."
+      },
+      "jurisdiction": {
+        "title": "Base giuridica",
+        "text": "Questo sito web è soggetto alla legge tedesca. Il foro competente è la Germania.",
+        "applicableLaw": "Si applica esclusivamente il diritto tedesco, ad esclusione della Convenzione delle Nazioni Unite sui contratti di vendita internazionale di merci.",
+        "jurisdiction": "Il luogo di adempimento e foro competente esclusivo per tutte le controversie è la Germania, nella misura consentita dalla legge."
       }
     }
   }

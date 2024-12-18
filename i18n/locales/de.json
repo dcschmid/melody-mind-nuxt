@@ -453,6 +453,39 @@
         },
         "local": "Lokal gespeicherte Daten (Cookies, Spielstände) können Sie selbstständig über Ihre Browsereinstellungen löschen."
       }
+    },
+    "imprint": {
+      "title": "Impressum",
+      "information": {
+        "title": "Angaben gemäß § 5 TMG",
+        "operator": "Daniel Schmid",
+        "address": "Hiltenspergerstr. 78, 80796 Münschen",
+        "country": "Deutschland"
+      },
+      "contact": {
+        "title": "Kontakt",
+        "emailLabel": "E-Mail",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "responsible": {
+        "title": "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV"
+      },
+      "disputeResolution": {
+        "title": "Streitschlichtung",
+        "text": "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit",
+        "link": "https://ec.europa.eu/consumers/odr/",
+        "additional": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
+      },
+      "lawReference": {
+        "title": "Rechtliche Hinweise",
+        "text": "Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich."
+      },
+      "jurisdiction": {
+        "title": "Rechtliche Grundlagen",
+        "text": "Diese Website unterliegt deutschem Recht. Gerichtsstand ist Deutschland.",
+        "applicableLaw": "Es gilt ausschließlich deutsches Recht unter Ausschluss des UN-Kaufrechts.",
+        "jurisdiction": "Erfüllungsort und ausschließlicher Gerichtsstand für alle Streitigkeiten ist Deutschland, soweit gesetzlich zulässig."
+      }
     }
   }
 }

@@ -445,6 +445,39 @@
                     "account": "Tu cuenta de usuario completa y todos los datos asociados"
                 },
                 "local": "Los datos almacenados localmente (cookies, progreso del juego) pueden eliminarse de forma independiente a través de la configuración de tu navegador."
+            },
+            "imprint": {
+                "title": "Aviso Legal",
+                "information": {
+                    "title": "Información según § 5 TMG",
+                    "operator": "Daniel Schmid",
+                    "address": "Hiltenspergerstr. 78, 80796 Múnich",
+                    "country": "Alemania"
+                },
+                "contact": {
+                    "title": "Contacto",
+                    "emailLabel": "Correo electrónico",
+                    "emailAddress": "daniel.schmid1980(at)icloud.com"
+                },
+                "responsible": {
+                    "title": "Responsable del contenido según § 55 párr. 2 RStV"
+                },
+                "disputeResolution": {
+                    "title": "Resolución de conflictos",
+                    "text": "La Comisión Europea proporciona una plataforma para la resolución de conflictos en línea (OS)",
+                    "link": "https://ec.europa.eu/consumers/odr/",
+                    "additional": "No estamos dispuestos ni obligados a participar en procedimientos de resolución de conflictos ante una junta de arbitraje de consumo."
+                },
+                "lawReference": {
+                    "title": "Referencias legales",
+                    "text": "A pesar del cuidadoso control del contenido, no asumimos ninguna responsabilidad por el contenido de los enlaces externos. Los operadores de las páginas enlazadas son los únicos responsables de su contenido."
+                },
+                "jurisdiction": {
+                    "title": "Base legal",
+                    "text": "Este sitio web está sujeto a la ley alemana. El lugar de jurisdicción es Alemania.",
+                    "applicableLaw": "Se aplica exclusivamente la ley alemana, excluyendo la Convención de las Naciones Unidas sobre los Contratos de Compraventa Internacional de Mercaderías.",
+                    "jurisdiction": "El lugar de cumplimiento y jurisdicción exclusiva para todas las disputas es Alemania, en la medida en que sea legalmente permisible."
+                }
             }
         }
     }

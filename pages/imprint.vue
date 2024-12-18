@@ -45,6 +45,15 @@
                 </section>
 
                 <section class="legal-section">
+                    <h2 class="section-title">{{ $t('legal.imprint.jurisdiction.title') }}</h2>
+                    <div class="content-block">
+                        <p>{{ $t('legal.imprint.jurisdiction.text') }}</p>
+                        <p>{{ $t('legal.imprint.jurisdiction.applicableLaw') }}</p>
+                        <p>{{ $t('legal.imprint.jurisdiction.jurisdiction') }}</p>
+                    </div>
+                </section>
+
+                <section class="legal-section">
                     <h2 class="section-title">{{ $t('legal.imprint.lawReference.title') }}</h2>
                     <div class="content-block">
                         <p>{{ $t('legal.imprint.lawReference.text') }}</p>
