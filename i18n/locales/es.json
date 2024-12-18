@@ -136,6 +136,50 @@
             },
             "playAgain": "Jugar de Nuevo",
             "backToHome": "Volver al Inicio"
+        },
+        "expert": {
+            "title": "Opinión del Experto",
+            "confidence": "Confianza"
+        },
+        "audienceOpinion": "Opinión del Público",
+        "correctAnswer": "Respuesta Correcta",
+        "didYouKnow": "¿Sabías que?",
+        "audio": {
+            "play": "Reproducir",
+            "pause": "Pausar",
+            "noAudio": "Audio no disponible"
+        },
+        "album": {
+            "artist": "Artista",
+            "year": "Año"
+        },
+        "streaming": {
+            "spotify": "Escuchar en Spotify",
+            "apple": "Escuchar en Apple Music",
+            "deezer": "Escuchar en Deezer"
+        },
+        "round": "Ronda {current} de {max}",
+        "points_label": "Puntos",
+        "points": "Puntos: {base} + {time} Bonus de Tiempo",
+        "confidence": "Confianza",
+        "jokers": {
+            "title": "Comodines",
+            "fiftyFifty": {
+                "title": "50:50",
+                "description": "Elimina dos respuestas incorrectas",
+                "remaining": "{count} comodines restantes"
+            },
+            "audience": {
+                "title": "Ayuda del Público",
+                "description": "Muestra la distribución de votos del público",
+                "remaining": "{count} comodines restantes"
+            },
+            "phone": {
+                "title": "Llamada a un Experto",
+                "description": "Obtén la opinión de un experto",
+                "remaining": "{count} comodines restantes"
+            },
+            "remaining": "{count} comodines restantes"
         }
     },
     "gameRules": {

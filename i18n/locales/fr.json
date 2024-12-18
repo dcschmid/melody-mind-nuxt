@@ -136,6 +136,50 @@
       },
       "playAgain": "Rejouer",
       "backToHome": "Retour à l'accueil"
+    },
+    "expert": {
+      "title": "Avis d'Expert",
+      "confidence": "Confiance"
+    },
+    "audienceOpinion": "Avis du Public",
+    "correctAnswer": "Bonne Réponse",
+    "didYouKnow": "Le saviez-vous ?",
+    "audio": {
+      "play": "Lecture",
+      "pause": "Pause",
+      "noAudio": "Audio non disponible"
+    },
+    "album": {
+      "artist": "Artiste",
+      "year": "Année"
+    },
+    "streaming": {
+      "spotify": "Écouter sur Spotify",
+      "apple": "Écouter sur Apple Music",
+      "deezer": "Écouter sur Deezer"
+    },
+    "round": "Tour {current} sur {max}",
+    "points_label": "Points",
+    "points": "Points : {base} + {time} Bonus Temps",
+    "confidence": "Confiance",
+    "jokers": {
+      "title": "Jokers",
+      "fiftyFifty": {
+        "title": "50:50",
+        "description": "Élimine deux mauvaises réponses",
+        "remaining": "{count} jokers restants"
+      },
+      "audience": {
+        "title": "Avis du Public",
+        "description": "Montre la distribution des votes du public",
+        "remaining": "{count} jokers restants"
+      },
+      "phone": {
+        "title": "Appel à un Expert",
+        "description": "Obtiens l'avis d'un expert",
+        "remaining": "{count} jokers restants"
+      },
+      "remaining": "{count} jokers restants"
     }
   },
   "gameRules": {

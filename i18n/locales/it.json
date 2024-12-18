@@ -136,6 +136,50 @@
       },
       "playAgain": "Gioca di Nuovo",
       "backToHome": "Torna alla Home"
+    },
+    "expert": {
+      "title": "Opinione dell'Esperto",
+      "confidence": "Sicurezza"
+    },
+    "audienceOpinion": "Opinione del Pubblico",
+    "correctAnswer": "Risposta Corretta",
+    "didYouKnow": "Lo sapevi?",
+    "audio": {
+      "play": "Riproduci",
+      "pause": "Pausa",
+      "noAudio": "Audio non disponibile"
+    },
+    "album": {
+      "artist": "Artista",
+      "year": "Anno"
+    },
+    "streaming": {
+      "spotify": "Ascolta su Spotify",
+      "apple": "Ascolta su Apple Music",
+      "deezer": "Ascolta su Deezer"
+    },
+    "round": "Round {current} di {max}",
+    "points_label": "Punti",
+    "points": "Punti: {base} + {time} Bonus Tempo",
+    "confidence": "Sicurezza",
+    "jokers": {
+      "title": "Jolly",
+      "fiftyFifty": {
+        "title": "50:50",
+        "description": "Rimuove due risposte sbagliate",
+        "remaining": "{count} jolly rimanenti"
+      },
+      "audience": {
+        "title": "Aiuto del Pubblico",
+        "description": "Mostra la distribuzione dei voti del pubblico",
+        "remaining": "{count} jolly rimanenti"
+      },
+      "phone": {
+        "title": "Chiama un Esperto",
+        "description": "Ottieni l'opinione di un esperto",
+        "remaining": "{count} jolly rimanenti"
+      },
+      "remaining": "{count} jolly rimanenti"
     }
   },
   "gameRules": {

@@ -146,7 +146,72 @@
       },
       "playAgain": "Nochmal spielen",
       "backToHome": "Zurück zur Startseite"
-    }
+    },      
+    "jokers": {
+      "title": "Joker",
+      "fiftyFifty": {
+        "title": "50:50",
+        "description": "Entfernt zwei falsche Antworten",
+        "remaining": "{count} Joker übrig"
+      },
+      "audience": {
+        "title": "Publikumsjoker",
+        "description": "Zeigt die Verteilung der Publikumsstimmen",
+        "remaining": "{count} Joker übrig"
+      },
+      "phone": {
+        "title": "Telefonjoker",
+        "description": "Ein Experte gibt seine Einschätzung",
+        "remaining": "{count} Joker übrig"
+      },
+      "remaining": "{count} Joker übrig"
+    },
+    "round": "Runde {current} von {max}",
+    "points_label": "Punkte",
+    "expert": {
+      "title": "Experten-Meinung",
+      "confidence": "Sicherheit"
+    },
+    "audienceOpinion": "Publikumsmeinung",
+    "correctAnswer": "Richtige Antwort",
+    "didYouKnow": "Wusstest du schon?",
+    "audio": {
+      "play": "Abspielen",
+      "pause": "Pause",
+      "noAudio": "Keine Audiowiedergabe verfügbar"
+    },
+    "album": {
+      "artist": "Künstler",
+      "year": "Jahr"
+    },
+    "streaming": {
+      "spotify": "Auf Spotify hören",
+      "apple": "Auf Apple Music hören",
+      "deezer": "Auf Deezer hören"
+    },
+    "gameOver": {
+      "title": "Spiel beendet",
+      "correctAnswers": "Richtige Antworten",
+      "backToMenu": "Zurück zum Hauptmenü",
+      "share": {
+        "message": {
+          "intro": "Ich habe {points} Punkte bei Melody Mind erreicht!",
+          "genre": "Genre: {genre}",
+          "perfect": "Perfekte Runde mit einer Goldenen LP in {difficulty} Schwierigkeit!",
+          "silver": "Silberne LP in {difficulty} Schwierigkeit gewonnen!",
+          "bronze": "Bronzene LP in {difficulty} Schwierigkeit gewonnen!",
+          "stats": "{correct} von {total} Fragen richtig beantwortet!",
+          "challenge": "Fordere mich heraus: {url}",
+          "difficulty": {
+            "easy": "leichter",
+            "medium": "mittlerer",
+            "hard": "schwerer"
+          }
+        }
+      }
+    },
+    "points": "Punkte: {base} + {time} Zeitbonus",
+    "confidence": "Sicherheit"
   },
   "gameRules": {
     "title": "Spielregeln – MelodyMind",

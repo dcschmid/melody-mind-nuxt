@@ -136,6 +136,50 @@
       },
       "playAgain": "Play Again",
       "backToHome": "Back to Home"
+    },
+    "expert": {
+      "title": "Expert Opinion",
+      "confidence": "Confidence"
+    },
+    "audienceOpinion": "Audience Opinion",
+    "correctAnswer": "Correct Answer",
+    "didYouKnow": "Did you know?",
+    "audio": {
+      "play": "Play",
+      "pause": "Pause",
+      "noAudio": "No audio available"
+    },
+    "album": {
+      "artist": "Artist",
+      "year": "Year"
+    },
+    "streaming": {
+      "spotify": "Listen on Spotify",
+      "apple": "Listen on Apple Music",
+      "deezer": "Listen on Deezer"
+    },
+    "round": "Round {current} of {max}",
+    "points_label": "Points",
+    "points": "Points: {base} + {time} Time Bonus",
+    "confidence": "Confidence",
+    "jokers": {
+      "title": "Jokers",
+      "fiftyFifty": {
+        "title": "50:50",
+        "description": "Removes two wrong answers",
+        "remaining": "{count} jokers remaining"
+      },
+      "audience": {
+        "title": "Audience Help",
+        "description": "Shows audience vote distribution",
+        "remaining": "{count} jokers remaining"
+      },
+      "phone": {
+        "title": "Phone a Friend",
+        "description": "Get an expert's opinion",
+        "remaining": "{count} jokers remaining"
+      },
+      "remaining": "{count} jokers remaining"
     }
   },
   "gameRules": {
