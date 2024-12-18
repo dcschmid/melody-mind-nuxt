@@ -115,12 +115,13 @@
         "title": "Condividi il tuo risultato",
         "buttons": {
           "twitter": "Condividi su Twitter",
-          "facebook": "Condividi su Facebook",
-          "copy": "Copia Link",
+          "telegram": "Condividi su Telegram",
+          "reddit": "Condividi su Reddit",
+          "whatsapp": "Condividi su WhatsApp",
           "share": "Condividi"
         },
         "message": {
-          "intro": "Ho appena ottenuto {points} punti su Melody Mind!",
+          "intro": "Ho ottenuto {points} punti su Melody Mind!",
           "genre": "Genere: {genre}",
           "perfect": "Giro perfetto con un LP d'Oro in difficoltà {difficulty}!",
           "silver": "LP d'Argento ottenuto in difficoltà {difficulty}!",

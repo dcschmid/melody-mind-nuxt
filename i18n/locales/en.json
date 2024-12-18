@@ -115,14 +115,15 @@
         "title": "Share your result",
         "buttons": {
           "twitter": "Share on Twitter",
-          "facebook": "Share on Facebook",
-          "copy": "Copy Link",
+          "telegram": "Share on Telegram",
+          "reddit": "Share on Reddit",
+          "whatsapp": "Share on WhatsApp",
           "share": "Share"
         },
         "message": {
-          "intro": "I just scored {points} points in Melody Mind!",
+          "intro": "I scored {points} points in Melody Mind!",
           "genre": "Genre: {genre}",
-          "perfect": "Perfect round with a Golden LP in {difficulty} difficulty!",
+          "perfect": "Perfect round with a Gold LP in {difficulty} difficulty!",
           "silver": "Won Silver LP in {difficulty} difficulty!",
           "bronze": "Won Bronze LP in {difficulty} difficulty!",
           "stats": "Got {correct} out of {total} questions right!",

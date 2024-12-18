@@ -125,12 +125,13 @@
         "title": "Teile dein Ergebnis",
         "buttons": {
           "twitter": "Auf Twitter teilen",
-          "facebook": "Auf Facebook teilen",
-          "copy": "Link kopieren",
+          "telegram": "Auf Telegram teilen",
+          "reddit": "Auf Reddit teilen",
+          "whatsapp": "Auf WhatsApp teilen",
           "share": "Teilen"
         },
         "message": {
-          "intro": "Ich habe gerade {points} Punkte in Melody Mind erreicht!",
+          "intro": "Ich habe {points} Punkte in Melody Mind erreicht!",
           "genre": "Genre: {genre}",
           "perfect": "Perfekte Runde mit einer Goldenen LP in {difficulty} Schwierigkeit!",
           "silver": "Silberne LP in {difficulty} Schwierigkeit gewonnen!",
@@ -146,7 +147,7 @@
       },
       "playAgain": "Nochmal spielen",
       "backToHome": "Zurück zur Startseite"
-    },      
+    },
     "jokers": {
       "title": "Joker",
       "fiftyFifty": {
@@ -516,7 +517,7 @@
           "results": "Gespeicherte Spielergebnisse und Erfolge",
           "account": "Ihr gesamtes Benutzerkonto und alle damit verbundenen Daten"
         },
-        "local": "Lokal gespeicherte Daten (Cookies, Spielstände) können Sie selbstständig über Ihre Browsereinstellungen löschen."
+        "local": "Lokal gespeicherte Daten (Cookies, Spielstatistiken) können Sie selbstständig über Ihre Browsereinstellungen löschen."
       }
     },
     "imprint": {

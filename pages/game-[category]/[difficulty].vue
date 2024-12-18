@@ -250,31 +250,31 @@
 
                         <!-- Im Game Over Screen, nach der final-score-container div -->
                         <div class="share-section">
-                            <h3>{{ t('game.gameOver.share.title') }}</h3>
+                            <h3>{{ t('game.results.share.title') }}</h3>
                             <div class="share-buttons">
                                 <button class="share-button twitter" @click="shareToTwitter">
                                     <Icon name="mdi:twitter" size="24" />
-                                    <span>{{ t('game.gameOver.share.buttons.twitter') }}</span>
+                                    <span>{{ t('game.results.share.buttons.twitter') }}</span>
                                 </button>
 
                                 <button class="share-button telegram" @click="shareToTelegram">
                                     <Icon name="mdi:telegram" size="24" />
-                                    <span>{{ t('game.gameOver.share.buttons.telegram') }}</span>
+                                    <span>{{ t('game.results.share.buttons.telegram') }}</span>
                                 </button>
 
                                 <button class="share-button reddit" @click="shareToReddit">
                                     <Icon name="mdi:reddit" size="24" />
-                                    <span>{{ t('game.gameOver.share.buttons.reddit') }}</span>
+                                    <span>{{ t('game.results.share.buttons.reddit') }}</span>
                                 </button>
 
                                 <button v-if="isMobile" class="share-button whatsapp" @click="shareToWhatsApp">
                                     <Icon name="mdi:whatsapp" size="24" />
-                                    <span>{{ t('game.gameOver.share.buttons.whatsapp') }}</span>
+                                    <span>{{ t('game.results.share.buttons.whatsapp') }}</span>
                                 </button>
 
                                 <button v-if="canShare" class="share-button share-api" @click="shareViaAPI">
                                     <Icon name="material-symbols:share" size="24" />
-                                    <span>{{ t('game.gameOver.share.buttons.share') }}</span>
+                                    <span>{{ t('game.results.share.buttons.share') }}</span>
                                 </button>
                             </div>
                         </div>
