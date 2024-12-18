@@ -7,7 +7,7 @@
 
             <nav v-if="showMenu" :aria-label="$t('navigation.mainNavLabel')">
                 <button class="menu-button" :class="{ 'is-active': isMenuOpen }"
-                    :aria-label="isMenuOpen ? $t('navigation.closeMenu') : $t('navigation.openMenu')"
+                    :aria-label="isMenuOpen ? $t('accessibility.closeMenu') : $t('navigation.openMenu')"
                     :aria-expanded="isMenuOpen" aria-controls="menu" @click="toggleMenu">
                     <span class="menu-button-line"></span>
                 </button>
@@ -16,7 +16,7 @@
 
         <div id="menu" class="menu" :class="{ 'is-open': isMenuOpen }" @keydown.esc="closeMenu" tabindex="-1"
             role="dialog" aria-modal="true" :aria-label="$t('navigation.mainMenu')" ref="menuRef">
-            <button class="close-button" :aria-label="$t('navigation.closeMenu')" @click="closeMenu"
+            <button class="close-button" :aria-label="$t('accessibility.closeMenu')" @click="closeMenu"
                 ref="closeButtonRef">
                 <Icon name="material-symbols:close" size="48" />
             </button>
