@@ -252,27 +252,32 @@
                         <div class="share-section">
                             <h3>{{ t('game.results.share.title') }}</h3>
                             <div class="share-buttons">
-                                <button class="share-button twitter" @click="shareToTwitter({ totalPoints, correctAnswers, maxQuestions })">
+                                <button class="share-button twitter"
+                                    @click="shareToTwitter({ totalPoints, correctAnswers, maxQuestions })">
                                     <Icon name="mdi:twitter" size="24" />
                                     <span>{{ t('game.results.share.buttons.twitter') }}</span>
                                 </button>
 
-                                <button class="share-button telegram" @click="shareToTelegram({ totalPoints, correctAnswers, maxQuestions })">
+                                <button class="share-button telegram"
+                                    @click="shareToTelegram({ totalPoints, correctAnswers, maxQuestions })">
                                     <Icon name="mdi:telegram" size="24" />
                                     <span>{{ t('game.results.share.buttons.telegram') }}</span>
                                 </button>
 
-                                <button class="share-button reddit" @click="shareToReddit({ totalPoints, correctAnswers, maxQuestions })">
+                                <button class="share-button reddit"
+                                    @click="shareToReddit({ totalPoints, correctAnswers, maxQuestions })">
                                     <Icon name="mdi:reddit" size="24" />
                                     <span>{{ t('game.results.share.buttons.reddit') }}</span>
                                 </button>
 
-                                <button v-if="isMobile" class="share-button whatsapp" @click="shareToWhatsApp({ totalPoints, correctAnswers, maxQuestions })">
+                                <button v-if="isMobile" class="share-button whatsapp"
+                                    @click="shareToWhatsApp({ totalPoints, correctAnswers, maxQuestions })">
                                     <Icon name="mdi:whatsapp" size="24" />
                                     <span>{{ t('game.results.share.buttons.whatsapp') }}</span>
                                 </button>
 
-                                <button v-if="canShare" class="share-button share-api" @click="shareViaAPI({ totalPoints, correctAnswers, maxQuestions })">
+                                <button v-if="canShare" class="share-button share-api"
+                                    @click="shareViaAPI({ totalPoints, correctAnswers, maxQuestions })">
                                     <Icon name="material-symbols:share" size="24" />
                                     <span>{{ t('game.results.share.buttons.share') }}</span>
                                 </button>
@@ -297,15 +302,12 @@ import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { authClient } from '~/lib/auth-client'
 import { useJokers } from '~/composables/useJokers'
-import { goldMessages } from '~/constants/messages/goldMessages'
-import { silverMessages } from '~/constants/messages/silverMessages'
-import { bronzeMessages } from '~/constants/messages/bronzeMessages'
-import { participationMessages } from '~/constants/messages/participationMessages'
 import { useAudioPlayer } from '~/composables/useAudioPlayer'
 import { useShare } from '~/composables/useShare'
 import { useGameState } from '~/composables/useGameState'
 import { useQuestions } from '~/composables/useQuestions'
 import { useArtist } from '~/composables/useArtist'
+import { useGameResults } from '~/composables/useGameResults'
 
 definePageMeta({
     middleware: 'auth'
@@ -438,7 +440,6 @@ const smoothScrollBehavior = computed(() => {
     return mediaQuery?.matches ? 'auto' : 'smooth'
 })
 
-const earnedRecord = computed(() => correctAnswers.value >= (maxQuestions.value * 0.5))
 const recordIcon = computed(() => {
     if (allQuestionsCorrect.value) return 'material-symbols:album-gold'
     if (correctAnswers.value >= (maxQuestions.value * 0.75)) return 'material-symbols:album-silver'
@@ -469,56 +470,28 @@ watch(() => currentArtist.value, (newArtist) => {
 }, { immediate: true })
 
 
-const { saveGameResult } = useGameScore()
-
-// Ursprüngliche Funktion umbenennen
-const saveGameResults = async () => {
-    try {
-        if (!session.value?.data?.user?.id) {
-            console.error('No active session')
-            return
-        }
-
-        let earnedLP = ''
-        let message = ''
-
-        // Bestimme LP und wähle passende Nachricht
-        if (allQuestionsCorrect.value) {
-            earnedLP = 'gold'
-            message = goldMessages[locale.value][Math.floor(Math.random() * goldMessages[locale.value].length)]
-        } else if (correctAnswers.value >= (maxQuestions.value * 0.75)) {
-            earnedLP = 'silver'
-            message = silverMessages[locale.value][Math.floor(Math.random() * silverMessages[locale.value].length)]
-        } else if (correctAnswers.value >= (maxQuestions.value * 0.5)) {
-            earnedLP = 'bronze'
-            message = bronzeMessages[locale.value][Math.floor(Math.random() * bronzeMessages[locale.value].length)]
-        } else {
-            message = participationMessages[locale.value][Math.floor(Math.random() * participationMessages[locale.value].length)]
-        }
-
-        // Zeige die Nachricht im Modal
-        resultMessage.value = message
-
-        await saveGameResult(
-            category,
-            totalPoints.value,
-            earnedLP,
-            locale.value
-        )
-    } catch (error) {
-        console.error('Error saving game results:', error)
-    }
-}
+const { resultMessage, earnedRecord, saveGameResults } = useGameResults({
+  thresholds: {
+    gold: 1,
+    silver: 0.75,
+    bronze: 0.5
+  }
+})
 
 // Bei Spielende beide Funktionen aufrufen
 watch(() => usedQuestions.value.length, (newLength) => {
     if (newLength >= maxQuestions.value) {
         completeGame()
-        saveGameResults()
+        saveGameResults(
+            category,
+            totalPoints.value,
+            correctAnswers.value,
+            maxQuestions.value,
+            allQuestionsCorrect.value,
+            session.value?.data?.user?.id
+        )
     }
 })
-
-const resultMessage = ref('')
 
 const {
     isMobile,
