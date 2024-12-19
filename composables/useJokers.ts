@@ -19,8 +19,7 @@ const JOKER_COUNTS: Record<Difficulty, number> = {
 /**
  * Helper function to generate random numbers within a range
  */
-const getRandomInRange = (min: number, max: number) =>
-  Math.floor(Math.random() * (max - min + 1)) + min;
+const getRandomInRange = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 /**
  * Composable for managing game jokers (lifelines)
@@ -72,9 +71,10 @@ export function useJokers(difficulty: string) {
 
     // Direkte Array-Manipulation statt map
     for (let i = 0; i < distribution.length; i++) {
-      distribution[i] = i === correctIndex
-        ? getRandomInRange(50, 80)  // 50-80% für richtige Antwort
-        : getRandomInRange(0, 20);  // 0-20% für falsche Antworten
+      distribution[i] =
+        i === correctIndex
+          ? getRandomInRange(50, 80) // 50-80% für richtige Antwort
+          : getRandomInRange(0, 20); // 0-20% für falsche Antworten
     }
 
     // Optimierte Summenberechnung
@@ -139,7 +139,7 @@ export function useJokers(difficulty: string) {
     phoneExpertOpinion.value = {
       expert: expertResponse.expert,
       message: expertResponse.message,
-      confidence: expertResponse.confidence
+      confidence: expertResponse.confidence,
     };
     phoneExpertConfidence.value = expertResponse.confidence;
 
@@ -157,23 +157,42 @@ export function useJokers(difficulty: string) {
     phoneExpertConfidence.value = 0;
   };
 
+  /**
+   * Reset the joker state for a new question
+   * This function:
+   * - Resets the joker usage flag for the current question
+   * - Clears the audience help results
+   * - Clears the phone expert's opinion
+   * - Clears any hidden options from the 50:50 joker
+   *
+   * Should be called whenever a new question is presented to the player
+   * to ensure all jokers are available again (if the player has remaining jokers)
+   */
+  const resetJokerForQuestion = () => {
+    jokerUsedForCurrentQuestion.value = false  // Allow joker usage for new question
+    audienceHelp.value = {}                    // Clear audience poll results
+    phoneExpertOpinion.value = null            // Clear expert's previous response
+    hiddenOptions.value = []                   // Clear hidden options from 50:50
+  }
+
   return {
     /**
      * State
      */
-    remainingJokers,        // Number of jokers left
+    remainingJokers, // Number of jokers left
     jokerUsedForCurrentQuestion, // Whether a joker was used for current question
-    audienceHelp,           // Audience vote distribution
-    hiddenOptions,          // Options hidden by 50:50 joker
-    phoneExpertOpinion,     // Expert's response
-    phoneExpertConfidence,  // Expert's confidence level
+    audienceHelp, // Audience vote distribution
+    hiddenOptions, // Options hidden by 50:50 joker
+    phoneExpertOpinion, // Expert's response
+    phoneExpertConfidence, // Expert's confidence level
 
     /**
      * Methods
      */
-    useFiftyFiftyJoker,    // Activates 50:50 joker
-    useAudienceJoker,      // Activates audience help
-    usePhoneJoker,         // Activates phone joker
-    resetJokers,           // Resets joker state
+    useFiftyFiftyJoker, // Activates 50:50 joker
+    useAudienceJoker, // Activates audience help
+    usePhoneJoker, // Activates phone joker
+    resetJokers, // Resets joker state
+    resetJokerForQuestion,
   };
 }

@@ -348,7 +348,8 @@ const {
     useFiftyFiftyJoker,
     useAudienceJoker,
     usePhoneJoker,
-    resetJokers
+    resetJokers,
+    resetJokerForQuestion
 } = useJokers(difficulty)
 
 const gameState = useGameState(maxQuestions.value)
@@ -367,6 +368,7 @@ const {
     setAnswer,
     finishGame: completeGame,
     allQuestionsCorrect,
+    prepareNextQuestion
 } = gameState
 
 const { currentArtist, loadCurrentArtist } = useArtist()
@@ -392,7 +394,7 @@ const calculateTimeBonus = () => {
 
 const pointsDisplay = ref<any>(null)
 
-const { scrollToTop, nextQuestion, isGameComplete } = useGameNavigation({
+const { scrollToTop, nextQuestion: navigateToNext } = useGameNavigation({
     usedQuestions,
     maxQuestions,
     gameFinished,
@@ -405,6 +407,7 @@ const { scrollToTop, nextQuestion, isGameComplete } = useGameNavigation({
 const selectAnswer = async (selectedAnswer: string) => {
     if (showSolution.value) return
 
+    if (!currentQuestion.value) return
     const isCorrect = selectedAnswer === currentQuestion.value.correctAnswer
     setAnswer(isCorrect)
 
@@ -491,6 +494,14 @@ const {
     category,
     difficulty
 })
+
+const nextQuestion = async () => {
+    await selectRandomQuestion()
+    prepareNextQuestion()
+    resetJokerForQuestion()
+    startQuestionTimer()
+    scrollToTop()
+}
 
 </script>
 
