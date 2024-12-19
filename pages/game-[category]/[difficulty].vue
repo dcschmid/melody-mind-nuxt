@@ -301,6 +301,8 @@ import { goldMessages } from '~/constants/messages/goldMessages'
 import { silverMessages } from '~/constants/messages/silverMessages'
 import { bronzeMessages } from '~/constants/messages/bronzeMessages'
 import { participationMessages } from '~/constants/messages/participationMessages'
+import { useAudioPlayer } from '~/composables/useAudioPlayer'
+
 
 definePageMeta({
     middleware: 'auth'
@@ -448,34 +450,18 @@ const totalPoints = ref(0)
 // Funktion zum Laden der Künstlerinformationen
 const loadCurrentArtist = async () => {
     try {
-
-        // JSON-Datei laden
         const response = await import(`~/json/genres/${locale.value}/${category}.json`)
         currentArtist.value = response.default.find((artist: {
             artist: string;
             questions: { [key: string]: any[] }
         }) => {
-            // Alle Fragen des Künstlers für die aktuelle Schwierigkeit
             const artistQuestions = artist.questions[difficulty]
-
-            // Prüfen ob die aktuelle Frage in den Fragen des Künstlers vorkommt
             const hasQuestion = artistQuestions.some(q =>
                 q.question === currentQuestion.value.question &&
                 q.correctAnswer === currentQuestion.value.correctAnswer
             )
-
             return hasQuestion
         })
-
-
-        // Audio initialisieren wenn Künstler gefunden
-        if (currentArtist.value && audioPlayer.value) {
-            audioPlayer.value.src = currentArtist.value.preview_link // Hier war der Fehler - preview_link statt audioSrc
-            audioPlayer.value.load()
-            currentTime.value = 0
-            duration.value = 0
-            isPlaying.value = false
-        }
     } catch (error) {
         currentArtist.value = null
     }
@@ -561,129 +547,21 @@ const recordClass = computed(() => {
     return ''
 })
 
-// Audio Player Refs und Computed Properties
-const audioPlayer = ref<HTMLAudioElement | null>(null)
-const isPlaying = ref(false)
-const currentTime = ref(0)
-const duration = ref(0)
-const audioLoaded = ref(false)
+const {
+    isPlaying,
+    currentTime,
+    duration,
+    togglePlay,
+    loadAudio
+} = useAudioPlayer()
 
-// Audio Player initialisieren
-onMounted(() => {
-    audioPlayer.value = new Audio()
-
-    // Event Listener
-    audioPlayer.value.addEventListener('loadeddata', () => {
-        audioLoaded.value = true
-    })
-
-    audioPlayer.value.addEventListener('timeupdate', () => {
-        if (audioPlayer.value) {
-            currentTime.value = audioPlayer.value.currentTime
-        }
-    })
-
-    audioPlayer.value.addEventListener('ended', () => {
-        isPlaying.value = false
-        currentTime.value = 0
-    })
-
-    audioPlayer.value.addEventListener('error', (e) => {
-        isPlaying.value = false
-        audioLoaded.value = false
-    })
-})
-
-// Play/Pause Toggle
-const togglePlay = async () => {
-    if (!audioPlayer.value || !currentArtist.value?.preview_link) {
-        return
-    }
-
-    try {
-        // Wenn die Audio-Quelle sich geändert hat oder noch nicht gesetzt wurde
-        if (audioPlayer.value.src !== currentArtist.value.preview_link) {
-            audioPlayer.value.src = currentArtist.value.preview_link
-            await audioPlayer.value.load()
-            audioLoaded.value = false
-        }
-
-        if (isPlaying.value) {
-            await audioPlayer.value.pause()
-        } else {
-            const playPromise = audioPlayer.value.play()
-            if (playPromise !== undefined) {
-                await playPromise
-            }
-        }
-
-        isPlaying.value = !isPlaying.value
-    } catch (error) {
-        isPlaying.value = false
-    }
-}
-
-// Watch für currentArtist
+// Wenn sich currentArtist ändert, lade neue Audio
 watch(() => currentArtist.value, (newArtist) => {
-    if (audioPlayer.value && newArtist?.preview_link) {
-        audioPlayer.value.pause()
-        isPlaying.value = false
-        currentTime.value = 0
-        audioLoaded.value = false
-
-        audioPlayer.value.src = newArtist.preview_link
-        audioPlayer.value.load()
+    if (newArtist?.preview_link) {
+        loadAudio(newArtist.preview_link)
     }
 }, { immediate: true })
 
-// Cleanup
-onUnmounted(() => {
-    if (audioPlayer.value) {
-        audioPlayer.value.pause()
-        audioPlayer.value.src = ''
-        audioPlayer.value.remove()
-    }
-})
-
-// Wenn zur nächsten Frage gewechselt wird, Audio stoppen
-watch(() => currentQuestion.value, () => {
-    if (audioPlayer.value) {
-        audioPlayer.value.pause()
-        isPlaying.value = false
-        currentTime.value = 0
-
-        // Neuen Audio Player für die neue Frage erstellen
-        if (currentArtist.value?.audioSrc) {
-            audioPlayer.value.src = currentArtist.value.audioSrc
-            audioPlayer.value.load()
-        }
-    }
-})
-
-// Progress Bar Update verbessern
-const updateProgress = () => {
-    if (audioPlayer.value) {
-        currentTime.value = audioPlayer.value.currentTime
-        duration.value = audioPlayer.value.duration
-    }
-}
-
-// Event Listener für Progress Bar
-onMounted(() => {
-    audioPlayer.value = new Audio()
-
-    // Bestehende Event Listener
-    audioPlayer.value.addEventListener('loadeddata', () => {
-        audioLoaded.value = true
-        if (audioPlayer.value) {
-            duration.value = audioPlayer.value.duration
-        }
-    })
-
-    // Progress Bar Update häufiger ausführen
-    audioPlayer.value.addEventListener('timeupdate', updateProgress)
-
-})
 
 
 const points = ref(0)
@@ -712,6 +590,7 @@ const updatePoints = (basePoints: number, timeBonus: number) => {
         isAnimating.value = false
     }, 2000)
 }
+
 
 const { saveGameResult } = useGameScore()
 
