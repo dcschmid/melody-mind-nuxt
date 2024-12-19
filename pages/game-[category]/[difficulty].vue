@@ -1,5 +1,5 @@
 <template>
-    <NuxtLayout name="default" :show-header="false" :show-menu="false" :show-coins="false">
+    <NuxtLayout name="default" :show-header="false" :show-menu="false">
         <main>
             <Transition name="slide" mode="out-in">
                 <!-- Game Content -->
@@ -305,6 +305,7 @@ import { useAudioPlayer } from '~/composables/useAudioPlayer'
 import { useShare } from '~/composables/useShare'
 import { useGameState } from '~/composables/useGameState'
 import { useQuestions } from '~/composables/useQuestions'
+import { useArtist } from '~/composables/useArtist'
 
 definePageMeta({
     middleware: 'auth'
@@ -365,7 +366,7 @@ const {
     allQuestionsCorrect,
 } = gameState
 
-const currentArtist = ref<any>(null)
+const { currentArtist, loadCurrentArtist } = useArtist()
 
 // Konstanten für Zeitbonus
 const BASE_POINTS = 50
@@ -396,33 +397,6 @@ const scrollToTop = () => {
     })
 }
 
-// Funktion zum Laden der Künstlerinformationen
-const loadCurrentArtist = async () => {
-    try {
-        const response = await import(`~/json/genres/${locale.value}/${category}.json`)
-        currentArtist.value = response.default.find((artist: {
-            artist: string;
-            questions: { [key: string]: any[] }
-        }) => {
-            const artistQuestions = artist.questions[difficulty]
-            const hasQuestion = artistQuestions.some(q =>
-                q.question === currentQuestion.value.question &&
-                q.correctAnswer === currentQuestion.value.correctAnswer
-            )
-            return hasQuestion
-        })
-    } catch (error) {
-        currentArtist.value = null
-    }
-}
-
-// Wenn sich die Frage ändert, lade die entsprechenden Künstlerinformationen
-watch(() => currentQuestion.value, (newQuestion) => {
-    if (newQuestion) {
-        loadCurrentArtist()
-    }
-}, { immediate: true })
-
 // Bei der Antwortauswahl
 const selectAnswer = async (selectedAnswer: string) => {
     if (showSolution.value) return
@@ -435,7 +409,7 @@ const selectAnswer = async (selectedAnswer: string) => {
         updatePoints(BASE_POINTS, timeBonus)
     }
 
-    await loadCurrentArtist()
+    await loadCurrentArtist(category, difficulty, currentQuestion)
     await nextTick()
     scrollToTop()
 }
