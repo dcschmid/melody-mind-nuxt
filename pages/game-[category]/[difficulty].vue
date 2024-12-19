@@ -167,15 +167,15 @@
                                     <div class="player-info-wrapper">
                                         <div class="audio-player">
                                             <button @click="togglePlay" class="play-button"
-                                                :disabled="!currentArtist?.preview_link"
-                                                :title="currentArtist?.preview_link ? (isPlaying ? t('game.audio.pause') : t('game.audio.play')) : t('game.audio.noAudio')">
+                                                :disabled="!currentArtist?.preview_link || !audioLoaded"
+                                                :title="isPlaying ? t('game.audio.pause') : t('game.audio.play')">
                                                 <Icon
                                                     :name="isPlaying ? 'material-symbols:pause' : 'material-symbols:play-arrow'"
                                                     size="36" />
                                             </button>
                                             <div class="progress-bar">
-                                                <div class="progress"
-                                                    :style="{ width: `${(currentTime / duration) * 100}%` }">
+                                                <div class="progress" :style="{ width: `${progress}%` }"
+                                                    :class="{ 'buffering': isBuffering }">
                                                 </div>
                                             </div>
                                         </div>
@@ -302,7 +302,7 @@ import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { authClient } from '~/lib/auth-client'
 import { useJokers } from '~/composables/useJokers'
-import { useAudioPlayer } from '~/composables/useAudioPlayer'
+import { useGameAudio } from '~/composables/useGameAudio'
 import { useShare } from '~/composables/useShare'
 import { useGameState } from '~/composables/useGameState'
 import { useQuestions } from '~/composables/useQuestions'
@@ -394,7 +394,7 @@ const calculateTimeBonus = () => {
 
 const pointsDisplay = ref<any>(null)
 
-const { scrollToTop, nextQuestion: navigateToNext } = useGameNavigation({
+const { scrollToTop } = useGameNavigation({
     usedQuestions,
     maxQuestions,
     gameFinished,
@@ -444,19 +444,21 @@ const recordClass = computed(() => {
 
 const {
     isPlaying,
-    currentTime,
-    duration,
+    audioLoaded,
+    isBuffering,
+    progress,
     togglePlay,
-    loadAudio
-} = useAudioPlayer()
+    handleArtistChange,
+    cleanup
+} = useGameAudio()
 
-// Wenn sich currentArtist ändert, lade neue Audio
-watch(() => currentArtist.value, (newArtist) => {
-    if (newArtist?.preview_link) {
-        loadAudio(newArtist.preview_link)
-    }
-}, { immediate: true })
+// Watch für Änderungen am currentArtist
+watch(() => currentArtist.value, handleArtistChange)
 
+// Cleanup beim Verlassen der Route
+onBeforeRouteLeave(() => {
+    cleanup()
+})
 
 const { resultMessage, earnedRecord, saveGameResults } = useGameResults({
     thresholds: {
