@@ -1,68 +1,150 @@
-interface Question {
-  question: string;
-  options: string[];
-  correctAnswer: string;
-  trivia: string;
+/**
+ * Game state management composable
+ * Handles points, answers, and game progression
+ */
+
+import { ref, computed, toRefs } from 'vue'
+
+/** Represents bonus point structure for scoring */
+interface BonusPoints {
+    base: number    // Base points earned
+    time: number    // Time-based bonus points
+    total: number   // Total points (base + time)
 }
 
+/** Main game state interface */
 interface GameState {
-  currentQuestion: Question | null;
-  questions: Question[];
-  usedQuestions: number[];
-  gameFinished: boolean;
-  correctAnswers: number;
-  totalPoints: number;
-  remainingJokers: number;
+    showSolution: boolean      // Controls solution visibility
+    isCorrectAnswer: boolean   // Tracks if current answer is correct
+    gameFinished: boolean      // Indicates if game is complete
+    correctAnswers: number     // Count of correct answers
+    totalPoints: number        // Accumulated total points
+    points: number            // Current points
+    isAnimating: boolean      // Controls point animation state
+    showBonus: boolean        // Controls bonus points display
+    latestBonus: BonusPoints  // Latest bonus points earned
 }
 
-export function useGameState(difficulty: string) {
-  const getTotalJokers = (difficulty: string): number => {
-    switch (difficulty) {
-      case 'easy': return 3
-      case 'medium': return 5
-      case 'hard': return 7
-      default: return 3
-    }
-  }
-
-  const state = reactive<GameState>({
-    currentQuestion: null,
-    questions: [],
-    usedQuestions: [],
+// Constants
+const BONUS_DISPLAY_DURATION = 2000 // Duration to show bonus points (in ms)
+const INITIAL_BONUS: BonusPoints = Object.freeze({ base: 0, time: 0, total: 0 })
+const INITIAL_STATE: GameState = Object.freeze({
+    showSolution: false,
+    isCorrectAnswer: false,
     gameFinished: false,
     correctAnswers: 0,
     totalPoints: 0,
-    remainingJokers: getTotalJokers(difficulty)
-  })
+    points: 0,
+    isAnimating: false,
+    showBonus: false,
+    latestBonus: INITIAL_BONUS
+})
 
-  // Computed Properties
-  const maxQuestions = computed(() => {
-    switch (difficulty) {
-      case 'easy': return 10
-      case 'medium': return 15
-      case 'hard': return 20
-      default: return 10
+/**
+ * Main game state composable
+ * @param maxQuestions - Maximum number of questions in the game
+ */
+export function useGameState(maxQuestions: number) {
+    // Timer reference for cleanup
+    let bonusTimer: NodeJS.Timeout | null = null
+    
+    // Initialize reactive game state
+    const state = ref<GameState>(structuredClone(INITIAL_STATE))
+
+    // Computed properties
+    const formattedPoints = computed(() => state.value.points.toLocaleString())
+    const allQuestionsCorrect = computed(() =>
+        state.value.correctAnswers === maxQuestions
+    )
+
+    /**
+     * Updates points and handles bonus point animation
+     * @param basePoints - Base points to award
+     * @param timeBonus - Time-based bonus points
+     */
+    const updatePoints = (basePoints: number, timeBonus: number) => {
+        // Clear existing timer if present
+        if (bonusTimer) {
+            clearTimeout(bonusTimer)
+        }
+
+        const total = basePoints + timeBonus
+        
+        // Batch update state for better performance
+        const updates = {
+            latestBonus: { base: basePoints, time: timeBonus, total },
+            showBonus: true,
+            isAnimating: true,
+            points: state.value.points + total,
+        }
+        Object.assign(state.value, updates)
+        state.value.totalPoints = state.value.points
+
+        // Hide bonus display after duration
+        bonusTimer = setTimeout(() => {
+            state.value.showBonus = false
+            state.value.isAnimating = false
+        }, BONUS_DISPLAY_DURATION)
     }
-  })
 
-  // Methoden
-  const selectRandomQuestion = () => {
-    if (state.usedQuestions.length === state.questions.length) {
-      state.usedQuestions = []
+    /**
+     * Increments the correct answers counter
+     */
+    const incrementCorrectAnswers = () => {
+        state.value.correctAnswers++
     }
 
-    let randomIndex
-    do {
-      randomIndex = Math.floor(Math.random() * state.questions.length)
-    } while (state.usedQuestions.includes(randomIndex))
+    /**
+     * Sets the answer state and updates correct answers if needed
+     * @param isCorrect - Whether the answer was correct
+     */
+    const setAnswer = (isCorrect: boolean) => {
+        state.value.isCorrectAnswer = isCorrect
+        state.value.showSolution = true
+        if (isCorrect) {
+            incrementCorrectAnswers()
+        }
+    }
 
-    state.usedQuestions.push(randomIndex)
-    state.currentQuestion = state.questions[randomIndex]
-  }
+    /**
+     * Marks the game as finished
+     */
+    const finishGame = () => {
+        state.value.gameFinished = true
+    }
 
-  return {
-    ...toRefs(state),
-    maxQuestions,
-    selectRandomQuestion
-  }
+    /**
+     * Resets the game state to initial values
+     */
+    const resetGameState = () => {
+        cleanup()
+        state.value = structuredClone(INITIAL_STATE)
+    }
+
+    /**
+     * Cleans up timers and resources
+     * Should be called on component unmount
+     */
+    const cleanup = () => {
+        if (bonusTimer) {
+            clearTimeout(bonusTimer)
+        }
+    }
+
+    return {
+        // Reactive state properties
+        ...toRefs(state.value),
+
+        // Computed properties
+        formattedPoints,
+        allQuestionsCorrect,
+
+        // Methods
+        updatePoints,
+        setAnswer,
+        finishGame,
+        resetGameState,
+        incrementCorrectAnswers,
+        cleanup
+    }
 }

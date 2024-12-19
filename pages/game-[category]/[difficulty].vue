@@ -303,6 +303,7 @@ import { bronzeMessages } from '~/constants/messages/bronzeMessages'
 import { participationMessages } from '~/constants/messages/participationMessages'
 import { useAudioPlayer } from '~/composables/useAudioPlayer'
 import { useShare } from '~/composables/useShare'
+import { useGameState } from '~/composables/useGameState'
 
 
 definePageMeta({
@@ -369,23 +370,14 @@ const loadQuestions = async () => {
 }
 
 // Funktion zum Mischen der Antwortoptionen
-const shuffleOptions = (question) => {
-    if (!question || !question.options) return []
-
-    // Erstelle eine Kopie des Arrays um das Original nicht zu verändern
-    const shuffledOptions = [...question.options]
-
-    // Fisher-Yates Shuffle Algorithmus
-    for (let i = shuffledOptions.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-            ;[shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]]
-    }
-
-    return shuffledOptions
+const shuffleOptions = (question: any): string[] => {
+    if (!question?.options) return []
+    return [...question.options]
+        .sort(() => Math.random() - 0.5)
 }
 
 // Füge eine neue ref für die gemischten Optionen hinzu
-const currentOptions = ref([])
+const currentOptions = ref<string[]>([])
 
 // Aktualisiere die selectRandomQuestion Funktion
 const selectRandomQuestion = () => {
@@ -412,8 +404,23 @@ const selectRandomQuestion = () => {
     startQuestionTimer()
 }
 
-const showSolution = ref(false)
-const isCorrectAnswer = ref(false)
+const gameState = useGameState(maxQuestions.value)
+
+const {
+    showSolution,
+    isCorrectAnswer,
+    gameFinished,
+    correctAnswers,
+    totalPoints,
+    formattedPoints,
+    isAnimating,
+    showBonus,
+    latestBonus,
+    updatePoints,
+    setAnswer,
+    finishGame: completeGame,
+    allQuestionsCorrect,
+} = gameState
 
 const currentArtist = ref<any>(null)
 
@@ -446,8 +453,6 @@ const scrollToTop = () => {
     })
 }
 
-const totalPoints = ref(0)
-
 // Funktion zum Laden der Künstlerinformationen
 const loadCurrentArtist = async () => {
     try {
@@ -479,17 +484,15 @@ watch(() => currentQuestion.value, (newQuestion) => {
 const selectAnswer = async (selectedAnswer: string) => {
     if (showSolution.value) return
 
-    isCorrectAnswer.value = selectedAnswer === currentQuestion.value.correctAnswer
-    showSolution.value = true
+    const isCorrect = selectedAnswer === currentQuestion.value.correctAnswer
+    setAnswer(isCorrect)
 
-    if (isCorrectAnswer.value) {
+    if (isCorrect) {
         const timeBonus = calculateTimeBonus()
         updatePoints(BASE_POINTS, timeBonus)
-        correctAnswers.value++
     }
 
     await loadCurrentArtist()
-
     await nextTick()
     scrollToTop()
 }
@@ -520,18 +523,6 @@ const smoothScrollBehavior = computed(() => {
     const mediaQuery = window?.matchMedia('(prefers-reduced-motion: reduce)')
     return mediaQuery?.matches ? 'auto' : 'smooth'
 })
-
-const correctAnswers = ref(0)
-
-const gameFinished = ref(false)
-
-watch(() => usedQuestions.value.length, (newLength) => {
-    if (newLength >= maxQuestions.value) {
-        gameFinished.value = true
-    }
-})
-
-const allQuestionsCorrect = computed(() => correctAnswers.value === maxQuestions.value)
 
 const earnedRecord = computed(() => correctAnswers.value >= (maxQuestions.value * 0.5))
 const recordIcon = computed(() => {
@@ -564,39 +555,10 @@ watch(() => currentArtist.value, (newArtist) => {
 }, { immediate: true })
 
 
-
-const points = ref(0)
-const isAnimating = ref(false)
-const showBonus = ref(false)
-const latestBonus = ref<{ base: number; time: number; total: number }>({ base: 0, time: 0, total: 0 })
-
-const formattedPoints = computed(() => {
-    return points.value.toLocaleString()
-})
-
-const updatePoints = (basePoints: number, timeBonus: number) => {
-    latestBonus.value = {
-        base: basePoints,
-        time: timeBonus,
-        total: basePoints + timeBonus
-    }
-    showBonus.value = true
-    isAnimating.value = true
-
-    points.value += latestBonus.value.total
-    totalPoints.value = points.value
-
-    setTimeout(() => {
-        showBonus.value = false
-        isAnimating.value = false
-    }, 2000)
-}
-
-
 const { saveGameResult } = useGameScore()
 
-// At game end
-const finishGame = async () => {
+// Ursprüngliche Funktion umbenennen
+const saveGameResults = async () => {
     try {
         if (!session.value?.data?.user?.id) {
             console.error('No active session')
@@ -634,9 +596,11 @@ const finishGame = async () => {
     }
 }
 
-watch(() => gameFinished.value, (isFinished) => {
-    if (isFinished) {
-        finishGame()
+// Bei Spielende beide Funktionen aufrufen
+watch(() => usedQuestions.value.length, (newLength) => {
+    if (newLength >= maxQuestions.value) {
+        completeGame()
+        saveGameResults()
     }
 })
 
