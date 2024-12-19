@@ -252,27 +252,27 @@
                         <div class="share-section">
                             <h3>{{ t('game.results.share.title') }}</h3>
                             <div class="share-buttons">
-                                <button class="share-button twitter" @click="shareToTwitter">
+                                <button class="share-button twitter" @click="shareToTwitter({ totalPoints, correctAnswers, maxQuestions })">
                                     <Icon name="mdi:twitter" size="24" />
                                     <span>{{ t('game.results.share.buttons.twitter') }}</span>
                                 </button>
 
-                                <button class="share-button telegram" @click="shareToTelegram">
+                                <button class="share-button telegram" @click="shareToTelegram({ totalPoints, correctAnswers, maxQuestions })">
                                     <Icon name="mdi:telegram" size="24" />
                                     <span>{{ t('game.results.share.buttons.telegram') }}</span>
                                 </button>
 
-                                <button class="share-button reddit" @click="shareToReddit">
+                                <button class="share-button reddit" @click="shareToReddit({ totalPoints, correctAnswers, maxQuestions })">
                                     <Icon name="mdi:reddit" size="24" />
                                     <span>{{ t('game.results.share.buttons.reddit') }}</span>
                                 </button>
 
-                                <button v-if="isMobile" class="share-button whatsapp" @click="shareToWhatsApp">
+                                <button v-if="isMobile" class="share-button whatsapp" @click="shareToWhatsApp({ totalPoints, correctAnswers, maxQuestions })">
                                     <Icon name="mdi:whatsapp" size="24" />
                                     <span>{{ t('game.results.share.buttons.whatsapp') }}</span>
                                 </button>
 
-                                <button v-if="canShare" class="share-button share-api" @click="shareViaAPI">
+                                <button v-if="canShare" class="share-button share-api" @click="shareViaAPI({ totalPoints, correctAnswers, maxQuestions })">
                                     <Icon name="material-symbols:share" size="24" />
                                     <span>{{ t('game.results.share.buttons.share') }}</span>
                                 </button>
@@ -293,7 +293,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { authClient } from '~/lib/auth-client';
 import { useJokers } from '~/composables/useJokers'
@@ -302,6 +302,7 @@ import { silverMessages } from '~/constants/messages/silverMessages'
 import { bronzeMessages } from '~/constants/messages/bronzeMessages'
 import { participationMessages } from '~/constants/messages/participationMessages'
 import { useAudioPlayer } from '~/composables/useAudioPlayer'
+import { useShare } from '~/composables/useShare'
 
 
 definePageMeta({
@@ -641,83 +642,19 @@ watch(() => gameFinished.value, (isFinished) => {
 
 const resultMessage = ref('')
 
-// Share-Funktionalität
-const isMobile = ref(false)
-const canShare = ref(false)
-
-onMounted(() => {
-    // Prüfe ob Gerät mobil ist
-    isMobile.value = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-
-    // Prüfe ob Web Share API verfügbar ist
-    canShare.value = !!navigator.share
+const {
+    isMobile,
+    canShare,
+    shareViaAPI,
+    shareToTwitter,
+    shareToWhatsApp,
+    shareToTelegram,
+    shareToReddit
+} = useShare({
+    currentCategoryData,
+    category,
+    difficulty
 })
-
-// Erstelle die Share-Nachricht
-const getShareMessage = () => {
-    const difficultyText = t(`game.gameOver.share.message.difficulty.${difficulty}`)
-
-    let message = t('game.gameOver.share.message.intro', { points: totalPoints.value })
-    message += '\n' + t('game.gameOver.share.message.genre', { genre: currentCategoryData?.name || category })
-
-    if (allQuestionsCorrect.value) {
-        message += '\n' + t('game.gameOver.share.message.perfect', { difficulty: difficultyText })
-    } else if (correctAnswers.value >= (maxQuestions.value * 0.75)) {
-        message += '\n' + t('game.gameOver.share.message.silver', { difficulty: difficultyText })
-    } else if (correctAnswers.value >= (maxQuestions.value * 0.5)) {
-        message += '\n' + t('game.gameOver.share.message.bronze', { difficulty: difficultyText })
-    }
-
-    message += '\n\n' + t('game.gameOver.share.message.stats', {
-        correct: correctAnswers.value,
-        total: maxQuestions.value
-    })
-    message += '\n\n' + t('game.gameOver.share.message.challenge', {
-        url: window.location.origin
-    })
-
-    return message
-}
-
-const shareViaAPI = async () => {
-    try {
-        await navigator.share({
-            title: t('game.gameOver.share.message.intro', { points: totalPoints.value }),
-            text: getShareMessage(),
-            url: window.location.href
-        })
-    } catch (error) {
-        console.error('Fehler beim Teilen:', error)
-    }
-}
-
-// Für Twitter/X mit Hashtags
-const shareToTwitter = () => {
-    const text = getShareMessage()
-    const hashtags = ['Melody Mind', 'MusicQuiz', currentCategoryData?.name || category].join(',')
-    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&hashtags=${encodeURIComponent(hashtags)}`
-    window.open(url, '_blank')
-}
-
-// WhatsApp bleibt gleich, nutzt die neue getMessage Funktion
-const shareToWhatsApp = () => {
-    const text = getShareMessage()
-    const url = `whatsapp://send?text=${encodeURIComponent(text)}`
-    window.location.href = url
-}
-
-const shareToTelegram = () => {
-    const text = getShareMessage()
-    const url = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(text)}`
-    window.open(url, '_blank')
-}
-
-const shareToReddit = () => {
-    const text = getShareMessage()
-    const url = `https://www.reddit.com/submit?url=${encodeURIComponent(window.location.href)}&title=${encodeURIComponent(text)}`
-    window.open(url, '_blank')
-}
-
 
 </script>
 
