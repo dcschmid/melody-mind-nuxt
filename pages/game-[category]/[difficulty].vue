@@ -308,6 +308,7 @@ import { useGameState } from '~/composables/useGameState'
 import { useQuestions } from '~/composables/useQuestions'
 import { useArtist } from '~/composables/useArtist'
 import { useGameResults } from '~/composables/useGameResults'
+import { useGameNavigation } from '~/composables/useGameNavigation'
 
 definePageMeta({
     middleware: 'auth'
@@ -391,13 +392,14 @@ const calculateTimeBonus = () => {
 
 const pointsDisplay = ref<any>(null)
 
-// Funktion zum Scrollen nach oben
-const scrollToTop = () => {
-    window.scrollTo({
-        top: 0,
-        behavior: smoothScrollBehavior.value
-    })
-}
+const { scrollToTop, nextQuestion, isGameComplete } = useGameNavigation({
+    usedQuestions,
+    maxQuestions,
+    gameFinished,
+    showSolution,
+    onReset: resetJokers,
+    onNextQuestion: selectRandomQuestion
+})
 
 // Bei der Antwortauswahl
 const selectAnswer = async (selectedAnswer: string) => {
@@ -416,28 +418,11 @@ const selectAnswer = async (selectedAnswer: string) => {
     scrollToTop()
 }
 
-const nextQuestion = () => {
-    if (usedQuestions.value.length >= maxQuestions.value) {
-        gameFinished.value = true
-        return
-    }
-
-    showSolution.value = false
-    resetJokers()
-    selectRandomQuestion()
-    scrollToTop()
-}
-
 // Initial Timer starten
 onMounted(() => {
     startQuestionTimer()
-    scrollToTop()
-})
 
-// Optional: Für Nutzer, die reduced motion bevorzugen
-const smoothScrollBehavior = computed(() => {
-    const mediaQuery = window?.matchMedia('(prefers-reduced-motion: reduce)')
-    return mediaQuery?.matches ? 'auto' : 'smooth'
+    scrollToTop()
 })
 
 const recordIcon = computed(() => {
@@ -471,11 +456,11 @@ watch(() => currentArtist.value, (newArtist) => {
 
 
 const { resultMessage, earnedRecord, saveGameResults } = useGameResults({
-  thresholds: {
-    gold: 1,
-    silver: 0.75,
-    bronze: 0.5
-  }
+    thresholds: {
+        gold: 1,
+        silver: 0.75,
+        bronze: 0.5
+    }
 })
 
 // Bei Spielende beide Funktionen aufrufen
