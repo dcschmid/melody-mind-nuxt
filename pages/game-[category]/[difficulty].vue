@@ -293,9 +293,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { authClient } from '~/lib/auth-client';
+import { authClient } from '~/lib/auth-client'
 import { useJokers } from '~/composables/useJokers'
 import { goldMessages } from '~/constants/messages/goldMessages'
 import { silverMessages } from '~/constants/messages/silverMessages'
@@ -304,39 +304,35 @@ import { participationMessages } from '~/constants/messages/participationMessage
 import { useAudioPlayer } from '~/composables/useAudioPlayer'
 import { useShare } from '~/composables/useShare'
 import { useGameState } from '~/composables/useGameState'
-
+import { useQuestions } from '~/composables/useQuestions'
 
 definePageMeta({
     middleware: 'auth'
 })
 
 const session = authClient.useSession()
-
 const route = useRoute()
 const { t, locale } = useI18n()
 const category = route.params.category as string
 const difficulty = route.params.difficulty as string
 
-// Referenzen für die Spiellogik
-const currentQuestion = ref<any>(null)
-const questions = ref<any[]>([])
+// Fragen-Logik aus der Composable
+const {
+    currentQuestion,
+    currentOptions,
+    maxQuestions,
+    usedQuestions,
+    loadQuestions,
+    selectRandomQuestion
+} = useQuestions(category, difficulty)
 
-// Neue Referenz für bereits gestellte Fragen
-const usedQuestions = ref<number[]>([])
+onMounted(() => {
+    loadQuestions()
+})
 
 // Dynamischer Import der Kategorien basierend auf der aktuellen Sprache
 const categories = await import(`~/json/${locale.value}_categories.json`)
 const currentCategoryData = categories.default.find((cat: any) => cat.slug === category)
-
-// Maximale Fragenanzahl basierend auf Schwierigkeit
-const maxQuestions = computed(() => {
-    switch (difficulty) {
-        case 'easy': return 10
-        case 'medium': return 15
-        case 'hard': return 20
-        default: return 10
-    }
-})
 
 const {
     remainingJokers,
@@ -350,59 +346,6 @@ const {
     usePhoneJoker,
     resetJokers
 } = useJokers(difficulty)
-
-
-// Funktion zum Laden der Fragen für die ausgewählte Schwierigkeit
-const loadQuestions = async () => {
-    try {
-        const response = await import(`~/json/genres/${locale.value}/${category}.json`)
-        // Sammle alle Fragen der gewählten Schwierigkeit von allen Künstlern
-        const allQuestions = response.default.reduce((acc: any[], artist: any) => {
-            const difficultyQuestions = artist.questions[difficulty] || []
-            return [...acc, ...difficultyQuestions]
-        }, [])
-
-        questions.value = allQuestions
-        selectRandomQuestion()
-    } catch (error) {
-        console.error('Fehler beim Laden der Fragen:', error)
-    }
-}
-
-// Funktion zum Mischen der Antwortoptionen
-const shuffleOptions = (question: any): string[] => {
-    if (!question?.options) return []
-    return [...question.options]
-        .sort(() => Math.random() - 0.5)
-}
-
-// Füge eine neue ref für die gemischten Optionen hinzu
-const currentOptions = ref<string[]>([])
-
-// Aktualisiere die selectRandomQuestion Funktion
-const selectRandomQuestion = () => {
-    // Wenn alle Fragen verwendet wurden, setze zurück
-    if (usedQuestions.value.length === questions.value.length) {
-        usedQuestions.value = []
-    }
-
-    // Finde eine noch nicht verwendete Frage
-    let randomIndex
-    do {
-        randomIndex = Math.floor(Math.random() * questions.value.length)
-    } while (usedQuestions.value.includes(randomIndex))
-
-    // Markiere die Frage als verwendet
-    usedQuestions.value.push(randomIndex)
-    currentQuestion.value = questions.value[randomIndex]
-
-    // Mische die Antwortoptionen
-    currentOptions.value = shuffleOptions(currentQuestion.value)
-
-    // Reset Joker state für neue Frage
-    resetJokers()
-    startQuestionTimer()
-}
 
 const gameState = useGameState(maxQuestions.value)
 
@@ -508,9 +451,6 @@ const nextQuestion = () => {
     selectRandomQuestion()
     scrollToTop()
 }
-
-// Lade die Fragen beim Mounten der Komponente
-loadQuestions()
 
 // Initial Timer starten
 onMounted(() => {
