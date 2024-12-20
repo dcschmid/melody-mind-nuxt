@@ -409,7 +409,7 @@ watch(() => artist.currentArtist.value, gameAudio.handleArtistChange)
 
 // Monitor game completion
 watch(() => questions.usedQuestions.value.length, (newLength) => {
-    if (newLength >= questions.maxQuestions.value) {
+    if (newLength > questions.maxQuestions.value) {
         gameState.finishGame()
         // Save final game results
         gameResults.saveGameResults(
