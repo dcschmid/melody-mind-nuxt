@@ -7,130 +7,18 @@
                     <Transition name="slide" mode="out-in">
                         <!-- Question View -->
                         <div v-if="!showSolution" :key="'question'">
-                            <div class="game-header">
-                                <div class="header-left">
-                                    <h1>{{ currentCategoryData?.name || category }}</h1>
-                                    <p class="round-counter">{{ t('game.round', {
-                                        current: usedQuestions.length, max:
-                                            maxQuestions
-                                    }) }}</p>
-                                </div>
-                                <div class="header-right">
-                                    <div class="points-display">
-                                        <div class="points-container">
-                                            <span class="points" :class="{ 'points-update': isAnimating }">
-                                                {{ formattedPoints }}
-                                            </span>
-                                            <span class="points-label">{{ t('game.points_label') }}</span>
-                                        </div>
-                                        <transition name="bonus">
-                                            <div v-if="showBonus" class="bonus-indicator">
-                                                <div class="bonus-total">+{{ latestBonus.base }}</div>
-                                                <div class="bonus-breakdown">
-                                                    <span class="time">+{{ latestBonus.time }} Bonus</span>
-                                                </div>
-                                            </div>
-                                        </transition>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div v-if="currentQuestion" class="question-container">
-                                <!-- Frage -->
-                                <div class="question">
-                                    <h2>{{ currentQuestion.question }}</h2>
-                                </div>
-
-                                <!-- Antwortmöglichkeiten -->
-                                <div class="options">
-                                    <button v-for="(option, index) in currentOptions" :key="index"
-                                        class="button option-button"
-                                        :class="{ 'hidden': hiddenOptions.includes(option) }"
-                                        @click="selectAnswer(option)"
-                                        :disabled="showSolution || hiddenOptions.includes(option)">
-                                        {{ option }}
-                                    </button>
-                                </div>
-
-                                <!-- Telefonjoker Antwort -->
-                                <div v-if="phoneExpertOpinion" class="phone-expert">
-                                    <h3>{{ t('game.expert.title') }}</h3>
-                                    <div class="expert-message">
-                                        <div class="expert-header">
-                                            <Icon name="material-symbols:phone" class="phone-icon" />
-                                            <span class="expert-name">{{ phoneExpertOpinion.expert }}</span>
-                                        </div>
-                                        <div class="message-content">
-                                            <p class="expert-answer">{{ phoneExpertOpinion.message }}</p>
-                                            <div class="confidence-bar-container">
-                                                <div class="confidence-bar"
-                                                    :style="{ '--confidence': phoneExpertConfidence + '%' }" :class="{
-                                                        'high': phoneExpertConfidence >= 80,
-                                                        'medium': phoneExpertConfidence >= 60 && phoneExpertConfidence < 80,
-                                                        'low': phoneExpertConfidence < 60
-                                                    }">
-                                                    <div class="confidence-level"></div>
-                                                </div>
-                                                <span class="confidence-text">{{ phoneExpertConfidence }}% {{
-                                                    t('game.confidence') }}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Publikumsjoker Ergebnis -->
-                                <div v-if="Object.keys(audienceHelp).length > 0" class="audience-help">
-                                    <h3>{{ t('game.audienceOpinion') }}</h3>
-                                    <div class="audience-bars">
-                                        <div v-for="(percentage, option) in audienceHelp" :key="option"
-                                            class="bar-item">
-                                            <div class="option-label">
-                                                <div class="option-text">{{ option }}</div>
-                                                <div class="percentage-text">{{ percentage }}%</div>
-                                            </div>
-                                            <div class="bar-container">
-                                                <div class="bar" :style="{ width: `${percentage}%` }" :class="{
-                                                    'high': percentage >= 70,
-                                                    'medium': percentage >= 40 && percentage < 70,
-                                                    'low': percentage < 40
-                                                }">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Joker Section -->
-                                <div class="jokers-section">
-                                    <div class="joker-buttons">
-                                        <!-- 50:50 Joker -->
-                                        <button class="button joker-button" @click="useFiftyFiftyJoker(currentQuestion)"
-                                            :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
-                                            :aria-label="$t('game.jokers.fiftyFifty')"
-                                            :class="{ 'disabled': remainingJokers === 0 || jokerUsedForCurrentQuestion }">
-                                            <Icon name="material-symbols:balance" size="30" />
-                                        </button>
-
-                                        <!-- Publikumsjoker -->
-                                        <button class="button joker-button" @click="useAudienceJoker(currentQuestion)"
-                                            :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
-                                            :aria-label="$t('game.jokers.audience')"
-                                            :class="{ 'disabled': remainingJokers === 0 || jokerUsedForCurrentQuestion }">
-                                            <Icon name="formkit:people" size="30" />
-                                        </button>
-
-                                        <!-- Telefonjoker -->
-                                        <button class="button joker-button" @click="usePhoneJoker(currentQuestion)"
-                                            :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
-                                            :aria-label="$t('game.jokers.phone')"
-                                            :class="{ 'disabled': remainingJokers === 0 || jokerUsedForCurrentQuestion }">
-                                            <Icon name="gg:phone" size="30" />
-                                        </button>
-                                    </div>
-                                    <span class="joker-count">{{ t('game.jokers.remaining', { count: remainingJokers })
-                                        }}</span>
-                                </div>
-                            </div>
+                            <GameHeader :category-name="currentCategoryData?.name || category"
+                                :current-round="usedQuestions.length" :max-rounds="maxQuestions" :points="points"
+                                :is-animating="isAnimating" :show-bonus="showBonus" :latest-bonus="latestBonus" />
+                            <GameQuestionView v-if="currentQuestion" :question="currentQuestion"
+                                :current-options="currentOptions" :hidden-options="hiddenOptions"
+                                :disabled="showSolution" :remaining-jokers="remainingJokers"
+                                :joker-used-for-current-question="jokerUsedForCurrentQuestion"
+                                :phone-expert-opinion="phoneExpertOpinion" :audience-opinion="audienceHelp"
+                                @select-answer="selectAnswer"
+                                @use-fifty-fifty="useFiftyFiftyJoker(currentQuestion)"
+                                @use-audience="useAudienceJoker(currentQuestion)"
+                                @use-phone="usePhoneJoker(currentQuestion)" />
                         </div>
                         <!-- Solution View -->
                         <div v-else :key="'solution'" class="solution-container">
@@ -325,6 +213,7 @@ const currentCategoryData = categories.default.find((cat: any) => cat.slug === c
 const questions = useQuestions(category, difficulty)     // Question management
 const jokers = useJokers(difficulty)                    // Lifeline/joker system
 const gameState = useGameState(questions.maxQuestions.value)  // Game state tracking
+const { points } = gameState
 const artist = useArtist()                             // Artist/music info handling
 const timeBonus = useTimeBonus()                       // Time-based bonus system
 
@@ -1021,8 +910,8 @@ const { isMobile, canShare, shareViaAPI, shareToTwitter,
         }
 
         .points-label {
-            font-size: 1rem;
-            opacity: 0.8;
+            font-size: var(--body-font-size);
+            color: var(--text-color);
         }
     }
 
@@ -1160,8 +1049,6 @@ const { isMobile, canShare, shareViaAPI, shareToTwitter,
             &.share-api {
                 background-color: #666;
             }
-
-
         }
     }
 }
