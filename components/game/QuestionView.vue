@@ -139,17 +139,11 @@ defineEmits<{
 
 <style scoped lang="scss">
 .question-container {
-    max-width: var(--content-width);
     margin: 0 auto;
-    padding: 0 var(--padding-small);
     display: flex;
     flex-direction: column;
     gap: clamp(var(--padding-medium), 4vw, var(--padding-large));
-
-    &:focus-within {
-        outline: none;
-        box-shadow: 0 0 0 3px var(--focus-outline-color);
-    }
+    margin-top: 2rem;
 }
 
 .question {
