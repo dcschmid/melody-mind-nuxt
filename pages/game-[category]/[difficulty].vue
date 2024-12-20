@@ -21,89 +21,20 @@
                                 @use-phone="usePhoneJoker(currentQuestion)" />
                         </div>
                         <!-- Solution View -->
-                        <div v-else :key="'solution'" class="solution-container">
-                            <!-- Ergebnis-Banner -->
-                            <div class="result-banner" :class="{ 'correct': isCorrectAnswer }">
-                                <div class="result-header">
-                                    <Icon
-                                        :name="isCorrectAnswer ? 'material-symbols:check-circle' : 'material-symbols:cancel'"
-                                        class="result-icon" size="28" />
-                                    <h2>{{ isCorrectAnswer ? t('game.correct') : t('game.wrong') }}</h2>
-                                </div>
-                                <div v-if="isCorrectAnswer" class="points-breakdown">
-                                    <div class="points">
-                                        {{ t('game.points', { base: latestBonus.base, time: latestBonus.time }) }}
-                                    </div>
-                                </div>
-                                <div v-else class="points"> 0 {{ t('game.points_label') }}</div>
-
-                                <div class="correct-answer">
-                                    <span class="label">{{ t('game.correctAnswer') }}</span>
-                                    <div class="text">{{ currentQuestion.correctAnswer }}</div>
-                                </div>
-                            </div>
-
-                            <!-- Content Container -->
-                            <div class="content-wrapper">
-
-                                <!-- Album Info -->
-                                <div v-if="currentArtist" class="album-box">
-                                    <div class="cover-wrapper">
-                                        <img :src="currentArtist.coverSrc"
-                                            :alt="`${currentArtist.artist} - ${currentArtist.album}`" />
-                                    </div>
-                                    <div class="player-info-wrapper">
-                                        <div class="audio-player">
-                                            <button @click="togglePlay" class="play-button"
-                                                :disabled="!currentArtist?.preview_link || !audioLoaded"
-                                                :title="isPlaying ? t('game.audio.pause') : t('game.audio.play')">
-                                                <Icon
-                                                    :name="isPlaying ? 'material-symbols:pause' : 'material-symbols:play-arrow'"
-                                                    size="36" />
-                                            </button>
-                                            <div class="progress-bar">
-                                                <div class="progress" :style="{ width: `${progress}%` }"
-                                                    :class="{ 'buffering': isBuffering }">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="info">
-                                            <p class="artist">{{ t('game.album.artist') }}: {{ currentArtist.artist }}
-                                            </p>
-                                            <p class="year">{{ t('game.album.year') }}: {{ currentArtist.year }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="streaming-links">
-                                        <a v-if="currentArtist.spotify_link" :href="currentArtist.spotify_link"
-                                            target="_blank" class="stream-link spotify"
-                                            :title="$t('game.streaming.spotify')">
-                                            <Icon name="mdi:spotify" size="36" />
-                                        </a>
-                                        <a v-if="currentArtist.apple_music_link" :href="currentArtist.apple_music_link"
-                                            target="_blank" class="stream-link apple"
-                                            :title="$t('game.streaming.apple')">
-                                            <Icon name="mdi:apple" size="36" />
-                                        </a>
-                                        <a v-if="currentArtist.deezer_link" :href="currentArtist.deezer_link"
-                                            target="_blank" class="stream-link deezer"
-                                            :title="$t('game.streaming.deezer')">
-                                            <Icon name="simple-icons:deezer" size="36" />
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- Trivia Information -->
-                                <div class="trivia-box">
-                                    <h3>{{ t('game.didYouKnow') }}</h3>
-                                    <p>{{ currentQuestion.trivia }}</p>
-                                </div>
-
-                                <button @click="nextQuestion" class="next-button">
-                                    <span>{{ t('game.nextQuestion') }}</span>
-                                    <Icon name="material-symbols:arrow-forward" />
-                                </button>
-                            </div>
-                        </div>
+                        <GameSolutionView 
+                            v-else-if="currentQuestion"
+                            :key="'solution'"
+                            :is-correct-answer="isCorrectAnswer"
+                            :latest-bonus="latestBonus"
+                            :question="currentQuestion"
+                            :artist="currentArtist"
+                            :is-playing="isPlaying"
+                            :audio-loaded="audioLoaded"
+                            :is-buffering="isBuffering"
+                            :progress="progress"
+                            @toggle-play="togglePlay"
+                            @next="nextQuestion"
+                        />
                     </Transition>
                 </div>
                 <!-- Game Over Screen -->
@@ -410,8 +341,6 @@ const { isMobile, canShare, shareViaAPI, shareToTwitter,
     }
 }
 
-
-/* Add scoped styles here */
 .difficulty {
     background: var(--surface-color);
     border-radius: var(--border-radius);
@@ -518,325 +447,6 @@ const { isMobile, canShare, shareViaAPI, shareToTwitter,
     font-size: clamp(0.875rem, 3vw, 1rem);
     color: var(--text-color);
     opacity: 0.8;
-}
-
-.solution-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.content-wrapper {
-    background: var(--background-secondary);
-    border-radius: 16px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.result-banner {
-    background: var(--error-color, #ff4757);
-    color: white;
-    padding: 16px;
-    border-radius: 8px;
-    text-align: center;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
-
-    .result-header {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-
-        h2 {
-            margin: 0;
-            font-size: 1.125em;
-        }
-
-        .result-icon {
-            flex-shrink: 0;
-        }
-    }
-
-    .points {
-        font-size: 1.1em;
-        opacity: 0.9;
-        margin-bottom: 8px;
-    }
-
-    .correct-answer {
-        margin-top: 12px;
-        padding-top: 12px;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-
-        .label {
-            font-size: 0.9em;
-            opacity: 0.9;
-            margin-bottom: 6px;
-            display: block;
-        }
-
-        .text {
-            font-size: 1em;
-            font-weight: 500;
-        }
-    }
-
-    &.correct {
-        background: #0D7A3D;
-    }
-}
-
-.answer-box {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    margin-bottom: 24px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-
-    .label {
-        display: block;
-        color: var(--text-secondary);
-        margin-bottom: 8px;
-        font-size: 0.9em;
-    }
-
-    .text {
-        color: var(--text-primary);
-        font-size: 1.2em;
-        font-weight: 600;
-    }
-}
-
-.album-box {
-    max-width: 320px;
-    margin: 0 auto 20px;
-
-    .cover-wrapper {
-        position: relative;
-        margin-bottom: 8px;
-
-        img {
-            width: 100%;
-            height: auto;
-            border-radius: 4px;
-            display: block;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
-    }
-
-    .player-info-wrapper {
-        padding: 0 4px;
-    }
-
-    .audio-player {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(10px);
-        border-radius: 4px;
-        margin: 8px 0;
-
-        .play-button {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            padding: 0;
-
-            &:hover:not(:disabled) {
-                background: var(--primary-dark);
-                transform: scale(1.05);
-            }
-
-            &:disabled {
-                opacity: 0.5;
-                cursor: not-allowed;
-            }
-        }
-
-        .progress-bar {
-            flex-grow: 1;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
-            overflow: hidden;
-            cursor: pointer;
-            position: relative;
-
-            &:hover {
-                height: 6px;
-                margin: -1px 0;
-            }
-
-            .progress {
-                height: 100%;
-                background: var(--primary-color);
-                transition: width 0.1s linear;
-                position: absolute;
-                left: 0;
-                top: 0;
-            }
-        }
-    }
-
-    .info {
-        text-align: center;
-        color: white;
-
-        h3 {
-            margin: 0 0 2px 0;
-            font-size: 0.9em;
-            font-weight: 600;
-        }
-
-        .artist {
-            margin: 0 0 1px 0;
-            font-size: 0.8em;
-            opacity: 0.9;
-        }
-
-        .year {
-            margin: 0;
-            font-size: 0.75em;
-            opacity: 0.7;
-        }
-    }
-
-    .streaming-links {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        margin-top: 8px;
-        padding-top: 8px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-
-        .stream-link {
-            color: rgba(255, 255, 255, 0.7);
-            transition: all 0.2s ease;
-            padding: 6px;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            &:hover {
-                color: white;
-                transform: translateY(-1px);
-            }
-
-            .icon {
-                width: 20px;
-                height: 20px;
-            }
-
-            &.spotify:hover {
-                color: #1DB954;
-            }
-
-            &.apple:hover {
-                color: #FA57C1;
-            }
-
-            &.deezer:hover {
-                color: #FF0092;
-            }
-        }
-    }
-}
-
-.trivia-box {
-    background: var(--background-secondary);
-    border-radius: 12px;
-    margin-top: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-    h3 {
-        color: var(--primary-color);
-        margin: 0 0 12px 0;
-        font-size: 1.2em;
-    }
-
-    p {
-        margin: 0;
-        line-height: 1.6;
-        color: var(--text-color);
-        font-size: 1em;
-    }
-}
-
-.play-button {
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
-    &:hover {
-        transform: scale(1.05);
-        background: var(--primary-dark);
-    }
-}
-
-.trivia-box {
-    background: white;
-    border-radius: 12px;
-    margin-bottom: 24px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-
-    h3 {
-        @include section-heading;
-    }
-
-    p {
-        margin: 0;
-        line-height: 1.6;
-        color: var(--text-secondary);
-        font-size: 1.1em;
-    }
-}
-
-.next-button {
-    width: 100%;
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-size: 1.2em;
-    font-weight: 600;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-    &:hover {
-        background: var(--primary-dark);
-        transform: translateY(-2px);
-    }
-
-    .icon {
-        font-size: 24px;
-    }
 }
 
 .game-end-screen {
@@ -1205,18 +815,18 @@ const { isMobile, canShare, shareViaAPI, shareToTwitter,
             height: 100%;
             width: var(--confidence);
             transition: width 1s var(--transition-bounce);
+        }
 
-            .high & {
-                background: linear-gradient(90deg, var(--success-color), var(--highlight-color));
-            }
+        &.high .confidence-level {
+            background: linear-gradient(90deg, var(--success-color), var(--highlight-color));
+        }
 
-            .medium & {
-                background: linear-gradient(90deg, var(--primary-color), var(--highlight-color));
-            }
+        &.medium .confidence-level {
+            background: linear-gradient(90deg, var(--primary-color), var(--highlight-color));
+        }
 
-            .low & {
-                background: linear-gradient(90deg, var(--error-color), var(--secondary-color));
-            }
+        &.low .confidence-level {
+            background: linear-gradient(90deg, var(--error-color), var(--secondary-color));
         }
     }
 }
@@ -1227,7 +837,6 @@ const { isMobile, canShare, shareViaAPI, shareToTwitter,
     opacity: 0.8;
     text-align: right;
 }
-
 
 .trivia-box {
     background: var(--background-secondary);
@@ -1387,7 +996,305 @@ const { isMobile, canShare, shareViaAPI, shareToTwitter,
 .game-content,
 .game-end-screen {
     position: relative;
-    min-height: 400px; // Adjust based on your content
+    min-height: 400px; /* Adjust based on your content */
+}
+
+.share-section {
+    margin-top: var(--padding-large);
+    text-align: center;
+
+    h3 {
+        margin-bottom: var(--padding-medium);
+        font-size: 1.2rem;
+    }
+
+    .share-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .share-button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        color: white;
+        cursor: pointer;
+        transition: opacity 0.2s;
+
+        &:hover {
+            opacity: 0.9;
+        }
+
+        &.twitter {
+            background-color: #1DA1F2;
+        }
+
+        &.telegram {
+            background-color: #0088cc;
+        }
+
+        &.reddit {
+            background-color: #ff4500;
+        }
+
+        &.whatsapp {
+            background-color: #25D366;
+        }
+
+        &.share-api {
+            background-color: #666;
+        }
+    }
+}
+
+.phone-expert {
+    margin: var(--padding-medium) 0;
+
+    h3 {
+        @include section-heading;
+    }
+
+    .expert-message {
+        background: rgb(255 255 255 / 5%);
+        border-radius: var(--border-radius);
+        padding: var(--padding-medium);
+        border: 1px solid rgb(255 255 255 / 10%);
+    }
+
+    .expert-header {
+        display: flex;
+        align-items: center;
+        gap: var(--padding-small);
+        margin-bottom: var(--padding-medium);
+        padding-bottom: var(--padding-small);
+        border-bottom: 1px solid rgb(255 255 255 / 10%);
+
+        .phone-icon {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: var(--primary-color);
+        }
+
+        .expert-name {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            font-weight: 600;
+            color: var(--text-color);
+        }
+    }
+
+    .message-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--padding-medium);
+    }
+
+    .confidence-bar-container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--padding-small);
+        margin: var(--padding-medium) 0;
+    }
+
+    .confidence-bar {
+        background: rgb(255 255 255 / 10%);
+        border-radius: var(--border-radius);
+        height: 8px;
+        overflow: hidden;
+        position: relative;
+
+        .confidence-level {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: var(--confidence);
+            transition: width 1s var(--transition-bounce);
+        }
+
+        &.high .confidence-level {
+            background: linear-gradient(90deg, var(--success-color), var(--highlight-color));
+        }
+
+        &.medium .confidence-level {
+            background: linear-gradient(90deg, var(--primary-color), var(--highlight-color));
+        }
+
+        &.low .confidence-level {
+            background: linear-gradient(90deg, var(--error-color), var(--secondary-color));
+        }
+    }
+}
+
+.confidence-text {
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    color: var(--text-color);
+    opacity: 0.8;
+    text-align: right;
+}
+
+.trivia-box {
+    background: var(--background-secondary);
+    border-radius: 12px;
+    margin-top: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    h3 {
+        color: var(--primary-color);
+        margin: 0 0 12px 0;
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+    p {
+        margin: 0;
+        line-height: 1.6;
+        color: var(--text-color);
+        font-size: 1em;
+    }
+}
+
+.points-display {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--padding-small);
+}
+
+.points-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.points {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: bold;
+    color: var(--text-color);
+    transition: transform 0.3s ease;
+
+    &.points-update {
+        transform: scale(1.2);
+        color: var(--highlight-color);
+    }
+}
+
+.points-label {
+    font-size: var(--body-font-size);
+    color: var(--text-color);
+}
+
+.bonus-indicator {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 8px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+    .bonus-total {
+        color: #FFD700;
+        font-weight: bold;
+        font-size: 1.2em;
+        text-align: center;
+        margin-bottom: 4px;
+    }
+
+    .bonus-breakdown {
+        display: flex;
+        gap: 8px;
+        font-size: 0.8em;
+
+        .time {
+            color: var(--highlight-color);
+        }
+    }
+}
+
+.points-breakdown {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 12px 0;
+
+    .points-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 4px 0;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        &.total {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 4px;
+            padding-top: 8px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+        }
+    }
+}
+
+.bonus-enter-active,
+.bonus-leave-active {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bonus-enter-from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+}
+
+.bonus-leave-to {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8);
+}
+
+.points-update {
+    animation: pointsPulse 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes pointsPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+        color: var(--highlight-color);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+// Slide transition
+.slide-enter-active,
+.slide-leave-active {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-enter-from {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+.slide-leave-to {
+    opacity: 0;
+    transform: translateX(-30px);
+}
+
+// Optional: Add some base styling to prevent layout shifts
+.game-content,
+.game-end-screen {
+    position: relative;
+    min-height: 400px; /* Adjust based on your content */
 }
 
 .share-section {

@@ -6,13 +6,14 @@ import { useI18n } from "vue-i18n";
  */
 interface Artist {
   artist: string;
-  album?: string;
-  coverSrc?: string;
+  album: string;
+  coverSrc: string;
   preview_link?: string;
   spotify_link?: string;
   apple_music_link?: string;
   deezer_link?: string;
-  year?: string;
+  year: string;
+  trivia?: string;
   questions: {
     [key: string]: any[]; // Questions organized by difficulty level
   };
@@ -68,10 +69,18 @@ export function useArtist() {
           if (!questions) return false;
 
           // Check if any question in the difficulty level matches the current question
-          return questions.some(
+          const matchingQuestion = questions.find(
             (q) =>
               q.question === currentQuestion.value?.question && q.correctAnswer === currentQuestion.value?.correctAnswer
           );
+
+          // If we found a matching question, add its trivia to the artist data
+          if (matchingQuestion) {
+            artist.trivia = matchingQuestion.trivia;
+            return true;
+          }
+
+          return false;
         }) || null;
     } catch (error) {
       console.error("Error loading artist:", error);

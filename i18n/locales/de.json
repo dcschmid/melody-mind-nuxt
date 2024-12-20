@@ -112,6 +112,7 @@
     "correct": "Richtig!",
     "wrong": "Falsch!",
     "timeUp": "Zeit abgelaufen!",
+    "next": "Weiter",
     "nextQuestion": "Nächste Frage",
     "finish": "Spiel beenden",
     "results": {
@@ -177,8 +178,9 @@
     "correctAnswer": "Richtige Antwort",
     "didYouKnow": "Wusstest du schon?",
     "audio": {
-      "play": "Abspielen",
-      "pause": "Pause",
+      "play": "Musik abspielen",
+      "pause": "Musik pausieren",
+      "progress": "Wiedergabefortschritt",
       "noAudio": "Keine Audiowiedergabe verfügbar"
     },
     "album": {
@@ -212,7 +214,10 @@
       }
     },
     "points": "Punkte: {base} + {time} Zeitbonus",
-    "confidence": "Sicherheit"
+    "confidence": "Sicherheit",
+    "trivia": {
+      "title": "Wissenswertes"
+    }
   },
   "gameRules": {
     "title": "Spielregeln – MelodyMind",
