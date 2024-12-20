@@ -5,7 +5,7 @@ import { useI18n } from "vue-i18n";
 interface Question {
   question: string;
   options: string[];
-  correct: string;
+  correctAnswer: string;
 }
 
 interface Artist {
@@ -94,7 +94,7 @@ export const useQuestions = (category: string, difficulty: string) => {
    * Resets used questions when all questions have been shown
    * Updates currentQuestion and shuffles its options
    */
-  const selectRandomQuestion = () => {
+  const selectRandomQuestion = async () => {
     if (questions.value.length === 0) return;
 
     const availableIndices = Array.from({ length: questions.value.length }, (_, i) => i).filter(
@@ -109,7 +109,10 @@ export const useQuestions = (category: string, difficulty: string) => {
     const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
 
     usedQuestions.value.push(randomIndex);
-    currentQuestion.value = questions.value[randomIndex];
+    currentQuestion.value = {
+      ...questions.value[randomIndex],
+      correctAnswer: questions.value[randomIndex].correctAnswer
+    };
     currentOptions.value = shuffleOptions(currentQuestion.value);
   };
 

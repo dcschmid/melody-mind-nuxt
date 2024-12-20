@@ -298,46 +298,146 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, watch, nextTick } from 'vue'
+import { watch, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { authClient } from '~/lib/auth-client'
-import { useJokers } from '~/composables/useJokers'
-import { useGameAudio } from '~/composables/useGameAudio'
-import { useShare } from '~/composables/useShare'
-import { useGameState } from '~/composables/useGameState'
-import { useQuestions } from '~/composables/useQuestions'
-import { useArtist } from '~/composables/useArtist'
-import { useGameResults } from '~/composables/useGameResults'
-import { useGameNavigation } from '~/composables/useGameNavigation'
 
-definePageMeta({
-    middleware: 'auth'
-})
+// Require authentication to access this page
+definePageMeta({ middleware: 'auth' })
 
+// Initialize core utilities
 const session = authClient.useSession()
 const route = useRoute()
 const { t, locale } = useI18n()
+
+// --- Route Parameters ---
+// Extract category and difficulty from URL parameters
 const category = route.params.category as string
 const difficulty = route.params.difficulty as string
 
-// Fragen-Logik aus der Composable
-const {
-    currentQuestion,
-    currentOptions,
-    maxQuestions,
-    usedQuestions,
-    loadQuestions,
-    selectRandomQuestion
-} = useQuestions(category, difficulty)
-
-onMounted(() => {
-    loadQuestions()
-})
-
-// Dynamischer Import der Kategorien basierend auf der aktuellen Sprache
+// --- Load Category Data ---
+// Import category data based on current locale
 const categories = await import(`~/json/${locale.value}_categories.json`)
 const currentCategoryData = categories.default.find((cat: any) => cat.slug === category)
 
+// --- Initialize Game Composables ---
+// Core game mechanics
+const questions = useQuestions(category, difficulty)     // Question management
+const jokers = useJokers(difficulty)                    // Lifeline/joker system
+const gameState = useGameState(questions.maxQuestions.value)  // Game state tracking
+const artist = useArtist()                             // Artist/music info handling
+const timeBonus = useTimeBonus()                       // Time-based bonus system
+
+// Game rewards and achievements
+const gameRewards = useGameRewards({
+    allQuestionsCorrect: gameState.allQuestionsCorrect,
+    correctAnswers: gameState.correctAnswers,
+    maxQuestions: questions.maxQuestions
+})
+
+// Audio playback management
+const gameAudio = useGameAudio()
+
+// Results and scoring system
+const gameResults = useGameResults({
+    thresholds: { gold: 1, silver: 0.75, bronze: 0.5 }
+})
+
+// Social sharing functionality
+const sharing = useShare({ currentCategoryData, category, difficulty })
+
+// Navigation utilities
+const { scrollToTop } = useGameNavigation({
+    usedQuestions: questions.usedQuestions,
+    maxQuestions: questions.maxQuestions,
+    gameFinished: gameState.gameFinished,
+    showSolution: gameState.showSolution
+})
+
+// --- Game Logic ---
+/**
+ * Handles progression to the next question
+ * - Selects a new random question
+ * - Resets game state
+ * - Resets jokers
+ * - Starts time bonus timer
+ * - Scrolls to top of page
+ */
+const nextQuestion = async () => {
+    await questions.selectRandomQuestion()
+    gameState.prepareNextQuestion()
+    jokers.resetJokerForQuestion()
+    timeBonus.startTimer()
+    scrollToTop()
+}
+
+/**
+ * Handles answer selection
+ * @param selectedAnswer - The answer chosen by the player
+ *
+ * - Validates if answer can be processed
+ * - Checks answer correctness
+ * - Updates game state and points
+ * - Loads artist information if needed
+ * - Handles UI updates
+ */
+const selectAnswer = async (selectedAnswer: string) => {
+    if (gameState.showSolution.value) return
+    if (!questions.currentQuestion.value) return
+
+    const isCorrect = selectedAnswer === questions.currentQuestion.value.correctAnswer
+    gameState.setAnswer(isCorrect)
+
+    if (isCorrect) {
+        const bonus = timeBonus.calculateBonus()
+        gameState.updatePoints(bonus.base, bonus.time)
+    }
+
+    await artist.loadCurrentArtist(category, difficulty, questions.currentQuestion)
+    await nextTick()
+    scrollToTop()
+}
+
+// --- Watchers & Lifecycle Hooks ---
+// Initialize questions on component mount
+onMounted(() => {
+    questions.loadQuestions()
+})
+
+// Handle artist changes for audio playback
+watch(() => artist.currentArtist.value, gameAudio.handleArtistChange)
+
+// Monitor game completion
+watch(() => questions.usedQuestions.value.length, (newLength) => {
+    if (newLength >= questions.maxQuestions.value) {
+        gameState.finishGame()
+        // Save final game results
+        gameResults.saveGameResults(
+            category,
+            gameState.totalPoints.value,
+            gameState.correctAnswers.value,
+            questions.maxQuestions.value,
+            gameState.allQuestionsCorrect.value,
+            session.value?.data?.user?.id
+        )
+    }
+})
+
+// Cleanup audio when leaving page
+onBeforeRouteLeave(() => {
+    gameAudio.cleanup()
+})
+
+// --- Template Exports ---
+// Destructure and export required properties for the template
+const {
+    currentQuestion,    // Current active question
+    currentOptions,     // Available answer options
+    maxQuestions,       // Total questions in game
+    usedQuestions      // Questions already answered
+} = questions
+
+// Joker/Lifeline system exports
 const {
     remainingJokers,
     jokerUsedForCurrentQuestion,
@@ -347,164 +447,38 @@ const {
     phoneExpertConfidence,
     useFiftyFiftyJoker,
     useAudienceJoker,
-    usePhoneJoker,
-    resetJokers,
-    resetJokerForQuestion
-} = useJokers(difficulty)
+    usePhoneJoker
+} = jokers
 
-const gameState = useGameState(maxQuestions.value)
-
+// Game state exports
 const {
-    showSolution,
-    isCorrectAnswer,
-    gameFinished,
-    correctAnswers,
-    totalPoints,
-    formattedPoints,
-    isAnimating,
-    showBonus,
-    latestBonus,
-    updatePoints,
-    setAnswer,
-    finishGame: completeGame,
-    allQuestionsCorrect,
-    prepareNextQuestion
+    showSolution,      // Whether to show answer
+    isCorrectAnswer,   // If last answer was correct
+    gameFinished,      // Game completion status
+    correctAnswers,    // Total correct answers
+    totalPoints,       // Total score
+    formattedPoints,   // Formatted score display
+    isAnimating,       // Animation state
+    showBonus,         // Bonus display state
+    latestBonus        // Latest bonus earned
 } = gameState
 
-const { currentArtist, loadCurrentArtist } = useArtist()
-
-// Konstanten für Zeitbonus
-const BASE_POINTS = 50
-const MAX_TIME_BONUS = 100 // Erhöht auf 100
-const TIME_LIMIT = 30000 // 30 Sekunden für maximalen Bonus
-
-const questionStartTime = ref(0)
-
-// Starte Timer wenn Frage angezeigt wird
-const startQuestionTimer = () => {
-    questionStartTime.value = Date.now()
-}
-
-const calculateTimeBonus = () => {
-    const timeElapsed = Date.now() - questionStartTime.value
-    const timePercentage = Math.max(0, 1 - (timeElapsed / TIME_LIMIT))
-    const timeBonus = Math.floor(timePercentage * MAX_TIME_BONUS)
-    return timeBonus
-}
-
-const pointsDisplay = ref<any>(null)
-
-const { scrollToTop } = useGameNavigation({
-    usedQuestions,
-    maxQuestions,
-    gameFinished,
-    showSolution,
-    onReset: resetJokers,
-    onNextQuestion: selectRandomQuestion
-})
-
-// Bei der Antwortauswahl
-const selectAnswer = async (selectedAnswer: string) => {
-    if (showSolution.value) return
-
-    if (!currentQuestion.value) return
-    const isCorrect = selectedAnswer === currentQuestion.value.correctAnswer
-    setAnswer(isCorrect)
-
-    if (isCorrect) {
-        const timeBonus = calculateTimeBonus()
-        updatePoints(BASE_POINTS, timeBonus)
-    }
-
-    await loadCurrentArtist(category, difficulty, currentQuestion)
-    await nextTick()
-    scrollToTop()
-}
-
-// Initial Timer starten
-onMounted(() => {
-    startQuestionTimer()
-
-    scrollToTop()
-})
-
-const recordIcon = computed(() => {
-    if (allQuestionsCorrect.value) return 'material-symbols:album-gold'
-    if (correctAnswers.value >= (maxQuestions.value * 0.75)) return 'material-symbols:album-silver'
-    if (correctAnswers.value >= (maxQuestions.value * 0.5)) return 'material-symbols:album-bronze'
-    return ''
-})
-
-const recordClass = computed(() => {
-    if (allQuestionsCorrect.value) return 'gold'
-    if (correctAnswers.value >= (maxQuestions.value * 0.75)) return 'silver'
-    if (correctAnswers.value >= (maxQuestions.value * 0.5)) return 'bronze'
-    return ''
-})
-
+// Audio player exports
 const {
-    isPlaying,
-    audioLoaded,
-    isBuffering,
-    progress,
-    togglePlay,
-    handleArtistChange,
-    cleanup
-} = useGameAudio()
+    isPlaying,         // Playback state
+    audioLoaded,       // Audio loading state
+    isBuffering,       // Buffer state
+    progress,          // Playback progress
+    togglePlay         // Play/pause function
+} = gameAudio
 
-// Watch für Änderungen am currentArtist
-watch(() => currentArtist.value, handleArtistChange)
+const { currentArtist } = artist  // Current artist information
 
-// Cleanup beim Verlassen der Route
-onBeforeRouteLeave(() => {
-    cleanup()
-})
-
-const { resultMessage, earnedRecord, saveGameResults } = useGameResults({
-    thresholds: {
-        gold: 1,
-        silver: 0.75,
-        bronze: 0.5
-    }
-})
-
-// Bei Spielende beide Funktionen aufrufen
-watch(() => usedQuestions.value.length, (newLength) => {
-    if (newLength >= maxQuestions.value) {
-        completeGame()
-        saveGameResults(
-            category,
-            totalPoints.value,
-            correctAnswers.value,
-            maxQuestions.value,
-            allQuestionsCorrect.value,
-            session.value?.data?.user?.id
-        )
-    }
-})
-
-const {
-    isMobile,
-    canShare,
-    shareViaAPI,
-    shareToTwitter,
-    shareToWhatsApp,
-    shareToTelegram,
-    shareToReddit
-} = useShare({
-    currentCategoryData,
-    category,
-    difficulty
-})
-
-const nextQuestion = async () => {
-    await selectRandomQuestion()
-    prepareNextQuestion()
-    resetJokerForQuestion()
-    startQuestionTimer()
-    scrollToTop()
-}
-
+// Rewards and sharing exports
+const { recordIcon, recordClass } = gameRewards          // Achievement indicators
+const { resultMessage, earnedRecord } = gameResults      // Game results
+const { isMobile, canShare, shareViaAPI, shareToTwitter,
+    shareToWhatsApp, shareToTelegram, shareToReddit } = sharing  // Sharing options
 </script>
 
 <style lang="scss" scoped>
