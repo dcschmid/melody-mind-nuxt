@@ -7,12 +7,14 @@
 
         <!-- Antwortmöglichkeiten -->
         <div class="options" role="group" aria-labelledby="question-text">
-            <button v-for="(option, index) in currentOptions" :key="index" class="button option-button"
-                :class="{ 'hidden': hiddenOptions.includes(option) }" @click="$emit('select-answer', option)"
-                :disabled="disabled || hiddenOptions.includes(option)" :aria-label="option"
-                :aria-hidden="hiddenOptions.includes(option)" :tabindex="hiddenOptions.includes(option) ? -1 : 0">
-                {{ option }}
-            </button>
+            <TransitionGroup name="fade-shrink">
+                <button v-for="(option, index) in currentOptions" :key="option" class="button option-button"
+                    v-show="!hiddenOptions.includes(option)" @click="$emit('select-answer', option)"
+                    :disabled="disabled || hiddenOptions.includes(option)" :aria-label="option"
+                    :aria-hidden="hiddenOptions.includes(option)" :tabindex="hiddenOptions.includes(option) ? -1 : 0">
+                    {{ option }}
+                </button>
+            </TransitionGroup>
         </div>
 
         <!-- Telefonjoker Antwort -->
@@ -173,64 +175,58 @@ defineEmits<{
 }
 
 .options {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(var(--padding-small), 2vw, var(--padding-medium));
+    display: grid;
+    gap: var(--padding-medium);
     width: 100%;
     max-width: min(100%, 800px);
     margin: 0 auto;
+    position: relative;
+}
 
-    .option-button {
-        width: 100%;
-        min-height: clamp(50px, 8vh, 70px);
-        padding: clamp(var(--padding-small), 2vw, var(--padding-medium));
-        font-size: clamp(0.9rem, 2vw, var(--body-font-size));
+.option-button {
+    width: 100%;
+    min-height: clamp(50px, 8vh, 70px);
+    padding: clamp(var(--padding-small), 2vw, var(--padding-medium));
+    font-size: clamp(0.9rem, 2vw, var(--body-font-size));
+    background: var(--surface-color);
+    color: var(--text-color);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-speed) var(--transition-bounce);
+    text-align: center;
+    line-height: 1.4;
+    letter-spacing: var(--spacing-text);
+    white-space: pre-line;
+    box-shadow: var(--box-shadow);
+
+    &:hover:not(:disabled) {
+        background: var(--primary-color);
+        color: var(--button-text-color);
+        transform: translateY(-2px);
+        box-shadow: var(--box-shadow-hover);
+    }
+
+    &:active:not(:disabled) {
+        transform: translateY(0);
+    }
+
+    &:disabled {
+        opacity: var(--opacity-disabled);
+        cursor: not-allowed;
         background: var(--surface-color);
-        color: var(--text-color);
-        border: 2px solid var(--primary-color);
-        border-radius: var(--border-radius);
-        transition: all var(--transition-speed) var(--transition-bounce);
-        text-align: center;
-        line-height: 1.4;
-        letter-spacing: var(--spacing-text);
-        white-space: pre-line;
-        box-shadow: var(--box-shadow);
+        color: var(--text-secondary);
+        border-color: var(--text-secondary);
+    }
 
-        &:hover:not(:disabled) {
-            background: var(--primary-color);
-            color: var(--button-text-color);
-            transform: translateY(-2px);
-            box-shadow: var(--box-shadow-hover);
-        }
+    &:focus-visible {
+        outline: var(--focus-outline-width) solid var(--focus-outline-color);
+        outline-offset: var(--focus-outline-offset);
+    }
 
-        &:active:not(:disabled) {
-            transform: translateY(0);
-        }
-
-        &:disabled {
-            opacity: var(--opacity-disabled);
-            cursor: not-allowed;
-            background: var(--surface-color);
-            color: var(--text-secondary);
-            border-color: var(--text-secondary);
-        }
-
-        &:focus-visible {
-            outline: var(--focus-outline-width) solid var(--focus-outline-color);
-            outline-offset: var(--focus-outline-offset);
-        }
-
-        &:focus:hover {
-            outline: none;
-            box-shadow: 0 0 0 3px var(--focus-outline-color),
-                var(--box-shadow-hover);
-        }
-
-        &.hidden {
-            opacity: 0;
-            pointer-events: none;
-            transform: scale(0.8);
-        }
+    &:focus:hover {
+        outline: none;
+        box-shadow: 0 0 0 3px var(--focus-outline-color),
+            var(--box-shadow-hover);
     }
 }
 
@@ -467,6 +463,22 @@ defineEmits<{
         color: var(--text-secondary);
         text-align: center;
     }
+}
+
+.fade-shrink-move,
+.fade-shrink-enter-active,
+.fade-shrink-leave-active {
+    transition: all 0.4s ease;
+}
+
+.fade-shrink-enter-from,
+.fade-shrink-leave-to {
+    opacity: 0;
+    transform: scale(0.6);
+}
+
+.fade-shrink-leave-active {
+    position: absolute;
 }
 
 @media (forced-colors: active) {
