@@ -9,7 +9,7 @@
 
                 <p class="text">{{ currentCategory.text }}</p>
 
-                <DifficultySelector :category-slug="currentCategory.slug" />
+                <CategoryDifficultySelector :categorySlug="currentCategory.slug" />
             </article>
         </div>
     </NuxtLayout>
