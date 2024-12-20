@@ -114,20 +114,20 @@
       "share": {
         "title": "Partager votre résultat",
         "buttons": {
-          "twitter": "Partager sur Twitter",
-          "telegram": "Partager sur Telegram",
-          "reddit": "Partager sur Reddit",
-          "whatsapp": "Partager sur WhatsApp",
-          "share": "Partager"
+          "twitter": "Partager sur Twitter 🐦",
+          "telegram": "Partager sur Telegram 📱",
+          "reddit": "Partager sur Reddit 📚",
+          "whatsapp": "Partager sur WhatsApp 📱",
+          "share": "Partager 🤩"
         },
         "message": {
-          "intro": "J'ai obtenu {points} points sur Melody Mind !",
+          "intro": "🎮 J'ai obtenu {points} points dans Melody Mind !",
           "genre": "Genre : {genre}",
           "perfect": "Tour parfait avec un LP d'Or en difficulté {difficulty} !",
           "silver": "LP d'Argent gagné en difficulté {difficulty} !",
           "bronze": "LP de Bronze gagné en difficulté {difficulty} !",
-          "stats": "{correct} bonnes réponses sur {total} questions !",
-          "challenge": "Défiez-moi : {url}",
+          "stats": "🎯 {correct} bonnes réponses sur {total} questions !",
+          "challenge": "🎵 Défiez-moi : {url}",
           "difficulty": {
             "easy": "facile",
             "medium": "moyenne",

@@ -29,79 +29,15 @@
                     </Transition>
                 </div>
                 <!-- Game Over Screen -->
-                <div v-else class="game-end-screen" :key="'gameover'">
-                    <div class="end-content">
-                        <div class="end-header">
-                            <h2>{{ t('game.gameOver.title') }}</h2>
-                            <div class="final-score-container">
-                                <div class="score-circle">
-                                    <div class="score-inner">
-                                        <span class="points">{{ totalPoints }}</span>
-                                        <span class="points-label">{{ t('game.points_label') }}</span>
-                                    </div>
-                                </div>
-                                <div class="stats">
-                                    <div class="stat-item">
-                                        <span class="stat-label">{{ t('game.gameOver.correctAnswers') }}</span>
-                                        <span class="stat-value">{{ correctAnswers }} / {{ maxQuestions }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="reward-section" :class="recordClass">
-                            <div class="record-icon">
-                                <Icon v-if="earnedRecord" :name="recordIcon" size="64" />
-                            </div>
-                            <p class="reward-text">
-                                {{ resultMessage }}
-                            </p>
-                        </div>
-
-                        <!-- Im Game Over Screen, nach der final-score-container div -->
-                        <div class="share-section">
-                            <h3>{{ t('game.results.share.title') }}</h3>
-                            <div class="share-buttons">
-                                <button class="share-button twitter"
-                                    @click="shareToTwitter({ totalPoints, correctAnswers, maxQuestions })">
-                                    <Icon name="mdi:twitter" size="24" />
-                                    <span>{{ t('game.results.share.buttons.twitter') }}</span>
-                                </button>
-
-                                <button class="share-button telegram"
-                                    @click="shareToTelegram({ totalPoints, correctAnswers, maxQuestions })">
-                                    <Icon name="mdi:telegram" size="24" />
-                                    <span>{{ t('game.results.share.buttons.telegram') }}</span>
-                                </button>
-
-                                <button class="share-button reddit"
-                                    @click="shareToReddit({ totalPoints, correctAnswers, maxQuestions })">
-                                    <Icon name="mdi:reddit" size="24" />
-                                    <span>{{ t('game.results.share.buttons.reddit') }}</span>
-                                </button>
-
-                                <button v-if="isMobile" class="share-button whatsapp"
-                                    @click="shareToWhatsApp({ totalPoints, correctAnswers, maxQuestions })">
-                                    <Icon name="mdi:whatsapp" size="24" />
-                                    <span>{{ t('game.results.share.buttons.whatsapp') }}</span>
-                                </button>
-
-                                <button v-if="canShare" class="share-button share-api"
-                                    @click="shareViaAPI({ totalPoints, correctAnswers, maxQuestions })">
-                                    <Icon name="material-symbols:share" size="24" />
-                                    <span>{{ t('game.results.share.buttons.share') }}</span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="end-actions">
-                            <NuxtLink :to="$localePath('gamehome')" class="button home-button">
-                                <Icon name="material-symbols:home" size="36" />
-                                <span>{{ t('game.gameOver.backToMenu') }}</span>
-                            </NuxtLink>
-                        </div>
-                    </div>
-                </div>
+                <GameOverScreen v-else
+                    :total-points="totalPoints"
+                    :correct-answers="correctAnswers"
+                    :max-questions="maxQuestions"
+                    :earned-record="earnedRecord !== 'none'"
+                    :record-icon="recordIcon"
+                    :record-class="recordClass"
+                    :result-message="resultMessage"
+                    :key="'gameover'" />
             </Transition>
         </main>
     </NuxtLayout>
@@ -255,7 +191,6 @@ const {
     audienceHelp,
     hiddenOptions,
     phoneExpertOpinion,
-    phoneExpertConfidence,
     useFiftyFiftyJoker,
     useAudienceJoker,
     usePhoneJoker
@@ -268,7 +203,6 @@ const {
     gameFinished,      // Game completion status
     correctAnswers,    // Total correct answers
     totalPoints,       // Total score
-    formattedPoints,   // Formatted score display
     isAnimating,       // Animation state
     showBonus,         // Bonus display state
     latestBonus        // Latest bonus earned
@@ -288,8 +222,6 @@ const { currentArtist } = artist  // Current artist information
 // Rewards and sharing exports
 const { recordIcon, recordClass } = gameRewards          // Achievement indicators
 const { resultMessage, earnedRecord } = gameResults      // Game results
-const { isMobile, canShare, shareViaAPI, shareToTwitter,
-    shareToWhatsApp, shareToTelegram, shareToReddit } = sharing  // Sharing options
 </script>
 
 <style lang="scss" scoped>

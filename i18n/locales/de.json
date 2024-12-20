@@ -125,20 +125,20 @@
       "share": {
         "title": "Teile dein Ergebnis",
         "buttons": {
-          "twitter": "Auf Twitter teilen",
-          "telegram": "Auf Telegram teilen",
-          "reddit": "Auf Reddit teilen",
-          "whatsapp": "Auf WhatsApp teilen",
-          "share": "Teilen"
+          "twitter": "Auf Twitter teilen 🐦",
+          "telegram": "Auf Telegram teilen 📱",
+          "reddit": "Auf Reddit teilen 📚",
+          "whatsapp": "Auf WhatsApp teilen 📱",
+          "share": "Teilen 🤩"
         },
         "message": {
-          "intro": "Ich habe {points} Punkte in Melody Mind erreicht!",
+          "intro": "🎮 Ich habe {points} Punkte in Melody Mind erreicht!",
           "genre": "Genre: {genre}",
           "perfect": "Perfekte Runde mit einer Goldenen LP in {difficulty} Schwierigkeit!",
           "silver": "Silberne LP in {difficulty} Schwierigkeit gewonnen!",
           "bronze": "Bronzene LP in {difficulty} Schwierigkeit gewonnen!",
-          "stats": "{correct} von {total} Fragen richtig beantwortet!",
-          "challenge": "Fordere mich heraus: {url}",
+          "stats": "🎯 {correct} von {total} Fragen richtig beantwortet!",
+          "challenge": "🎵 Fordere mich heraus: {url}",
           "difficulty": {
             "easy": "leichter",
             "medium": "mittlerer",
@@ -198,13 +198,13 @@
       "backToMenu": "Zurück zum Hauptmenü",
       "share": {
         "message": {
-          "intro": "Ich habe {points} Punkte bei Melody Mind erreicht!",
+          "intro": "🎮 Ich habe {points} Punkte bei Melody Mind erreicht!",
           "genre": "Genre: {genre}",
           "perfect": "Perfekte Runde mit einer Goldenen LP in {difficulty} Schwierigkeit!",
           "silver": "Silberne LP in {difficulty} Schwierigkeit gewonnen!",
           "bronze": "Bronzene LP in {difficulty} Schwierigkeit gewonnen!",
-          "stats": "{correct} von {total} Fragen richtig beantwortet!",
-          "challenge": "Fordere mich heraus: {url}",
+          "stats": "🎯 {correct} von {total} Fragen richtig beantwortet!",
+          "challenge": "🎵 Fordere mich heraus: {url}",
           "difficulty": {
             "easy": "leichter",
             "medium": "mittlerer",

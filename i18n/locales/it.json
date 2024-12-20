@@ -114,19 +114,19 @@
       "share": {
         "title": "Condividi il tuo risultato",
         "buttons": {
-          "twitter": "Condividi su Twitter",
-          "telegram": "Condividi su Telegram",
-          "reddit": "Condividi su Reddit",
-          "whatsapp": "Condividi su WhatsApp",
-          "share": "Condividi"
+          "twitter": "Condividi su Twitter ",
+          "telegram": "Condividi su Telegram ",
+          "reddit": "Condividi su Reddit ",
+          "whatsapp": "Condividi su WhatsApp ",
+          "share": "Condividi "
         },
         "message": {
-          "intro": "Ho ottenuto {points} punti su Melody Mind!",
+          "intro": " Ho ottenuto {points} punti in Melody Mind!",
           "genre": "Genere: {genre}",
           "perfect": "Giro perfetto con un LP d'Oro in difficoltà {difficulty}!",
           "silver": "LP d'Argento ottenuto in difficoltà {difficulty}!",
           "bronze": "LP di Bronzo ottenuto in difficoltà {difficulty}!",
-          "stats": "{correct} risposte corrette su {total} domande!",
+          "stats": " {correct} risposte corrette su {total} domande!",
           "challenge": "Sfidami: {url}",
           "difficulty": {
             "easy": "facile",
