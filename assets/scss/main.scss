@@ -1,3 +1,5 @@
+@use 'mixins' as *;
+
 :root {
   --primary-color: #bb86fc;
   --secondary-color: #4a4a8f;
@@ -208,6 +210,38 @@ button {
   }
 }
 
+.button {
+  @include flex-center;
+  @include transition(all);
+  cursor: pointer;
+  padding: var(--padding-small);
+  border-radius: var(--border-radius);
+  
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.container {
+  @include flex-between;
+  padding: var(--padding-medium);
+  
+  @include tablet {
+    flex-direction: column;
+    gap: var(--padding-medium);
+  }
+}
+
+.heading {
+  @include heading-1;
+  color: var(--text-color);
+  
+  &.secondary {
+    @include heading-2;
+    color: var(--text-secondary);
+  }
+}
+
 main {
   flex: 1;
   margin: 0 auto;
@@ -224,53 +258,31 @@ main {
   margin: 0 var(--padding-small);
 }
 
-.button {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: var(--min-touch-target);
-  padding: var(--padding-small) var(--padding-large);
-  font-size: var(--button-font-size);
-  color: var(--button-text-color);
-  text-decoration: none;
-  opacity: 1;
-  background-color: var(--highlight-color);
-  border: none;
+.game-card {
+  background-color: var(--surface-color);
   border-radius: var(--border-radius);
+  padding: var(--padding-medium);
   box-shadow: var(--box-shadow);
+  border: 1px solid rgb(255 255 255 / 10%);
   transition: all var(--transition-speed);
 
-  &:hover {
-    transform: scale(1.05);
-    color: var(--button-text-color);
-    background-color: var(--button-hover-color);
+  &:hover,
+  &:focus-within {
+    transform: translateY(-4px);
+    box-shadow: var(--box-shadow-hover);
   }
 
   &:focus-visible {
-    transform: none;
     outline: var(--focus-outline-width) solid var(--focus-outline-color);
     outline-offset: var(--focus-outline-offset);
   }
-
-  &.hidden {
-    overflow: hidden;
-    height: 0;
-    margin: 0;
-    padding: 0;
-    opacity: 0;
-  }
 }
 
-.sr-only {
-  position: absolute;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+.score-display {
+  color: var(--primary-color);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: bold;
+  text-shadow: 0 0 10px rgb(187 134 252 / 30%);
 }
 
 .menu {
@@ -311,7 +323,7 @@ main {
     gap: var(--padding-medium);
     width: 100%;
     padding: var(--padding-medium);
-    font-size: var(--menu-font-size);
+    font-size: var(--button-font-size);
     color: var(--text-color);
     background: var(--surface-color);
     border-radius: var(--border-radius);
@@ -371,33 +383,6 @@ body:has(.menu.is-open) {
     --body-font-size: 1rem;
     --button-font-size: 0.875rem;
   }
-}
-
-.game-card {
-  background-color: var(--surface-color);
-  border-radius: var(--border-radius);
-  padding: var(--padding-medium);
-  box-shadow: var(--box-shadow);
-  border: 1px solid rgb(255 255 255 / 10%);
-  transition: all var(--transition-speed);
-
-  &:hover,
-  &:focus-within {
-    transform: translateY(-4px);
-    box-shadow: var(--box-shadow-hover);
-  }
-
-  &:focus-visible {
-    outline: var(--focus-outline-width) solid var(--focus-outline-color);
-    outline-offset: var(--focus-outline-offset);
-  }
-}
-
-.score-display {
-  color: var(--primary-color);
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: bold;
-  text-shadow: 0 0 10px rgb(187 134 252 / 30%);
 }
 
 @media (width <= 767px) {

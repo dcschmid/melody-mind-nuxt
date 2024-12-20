@@ -162,6 +162,9 @@ const shareViaAPI = async () => {
 </script>
 
 <style scoped lang="scss">
+@use "sass:color";
+@use "@/assets/scss/mixins" as *;
+
 .game-end-screen {
     display: flex;
     flex-direction: column;
@@ -485,7 +488,7 @@ const shareViaAPI = async () => {
         color: white;
 
         &:hover {
-            background: darken(#25D366, 10%);
+            background-color: color.adjust(#25D366, $lightness: -10%);
         }
     }
 
