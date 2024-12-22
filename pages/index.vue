@@ -299,28 +299,34 @@ const formState = reactive({
 const validators = {
     email(value: unknown): string | true {
         if (typeof value !== 'string') {
-            return 'Email must be a string'
+            return t('login.error.required')
         }
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-        return emailRegex.test(value) ? true : 'Please enter a valid email address'
+        return emailRegex.test(value) ? true : t('login.error.invalidEmail')
     },
     password(value: unknown): string | true {
         if (typeof value !== 'string') {
-            return 'Password must be a string'
+            return t('login.error.required')
         }
-        return value.length >= 8 ? true : 'Password must be at least 8 characters'
+        return value.length >= 8 ? true : t('register.error.passwordTooShort')
     },
     username(value: unknown): string | true {
         if (typeof value !== 'string') {
-            return 'Username must be a string'
+            return t('login.error.required')
         }
-        return value.length >= 3 ? true : 'Username must be at least 3 characters'
+        if (value.length < 3) {
+            return t('register.error.usernameTooShort')
+        }
+        if (value.length > 20) {
+            return t('register.error.usernameTooLong')
+        }
+        return true
     },
     name(value: unknown): string | true {
         if (typeof value !== 'string') {
-            return 'Name must be a string'
+            return t('login.error.required')
         }
-        return value.length >= 2 ? true : 'Name must be at least 2 characters'
+        return value.length >= 2 ? true : t('register.error.nameTooShort')
     }
 }
 

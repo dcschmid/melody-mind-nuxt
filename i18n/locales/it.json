@@ -62,6 +62,7 @@
       "nameTooShort": "Il nome deve contenere almeno 2 caratteri",
       "usernameRequired": "Il nome utente è obbligatorio",
       "usernameTooShort": "Il nome utente deve contenere almeno 3 caratteri",
+      "passwordTooShort": "La password deve contenere almeno 8 caratteri",
       "registrationFailed": "Registrazione fallita"
     }
   },

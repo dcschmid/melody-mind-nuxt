@@ -8,6 +8,16 @@ const dialect = new LibsqlDialect({
   authToken: process.env.NUXT_TURSO_AUTH_TOKEN || "",
 });
 
+interface EmailUser {
+  email: string;
+}
+
+interface EmailParams {
+  user: EmailUser;
+  url: string;
+  token: string;
+}
+
 export const auth = betterAuth({
   database: {
     dialect,
@@ -20,31 +30,27 @@ export const auth = betterAuth({
       required: true,
       minLength: 3,
       maxLength: 20,
+      validate: (value: string) => {
+        if (!value) return 'login.error.required';
+        if (value.length < 3) return 'register.error.usernameTooShort';
+        if (value.length > 20) return 'register.error.usernameTooLong';
+        return true;
+      }
     },
-    sendResetPassword: async ({ user, url, token }) => {
-      await sendEmail({
-        to: user.email,
-        subject: "Passwort zurücksetzen",
-        text: `Klicken Sie auf diesen Link, um Ihr Passwort zurückzusetzen: ${url}`,
-        html: `
-          <h1>Passwort zurücksetzen</h1>
-          <p>Klicken Sie auf den folgenden Link, um Ihr Passwort zurückzusetzen:</p>
-          <p><a href="${url}">Passwort zurücksetzen</a></p>
-        `,
-      });
+    email: {
+      validate: (value: string) => {
+        if (!value) return 'login.error.required';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'login.error.invalidEmail';
+        return true;
+      }
     },
-    sendVerificationEmail: async ({ user, url, token }) => {
-      await sendEmail({
-        to: user.email,
-        subject: "E-Mail-Adresse bestätigen",
-        text: `Klicken Sie auf diesen Link, um Ihre E-Mail-Adresse zu bestätigen: ${url}`,
-        html: `
-          <h1>E-Mail-Adresse bestätigen</h1>
-          <p>Klicken Sie auf den folgenden Link, um Ihre E-Mail-Adresse zu bestätigen:</p>
-          <p><a href="${url}">E-Mail bestätigen</a></p>
-        `,
-      });
-    },
+    password: {
+      validate: (value: string) => {
+        if (!value) return 'login.error.required';
+        if (value.length < 8) return 'register.error.passwordTooShort';
+        return true;
+      }
+    }
   },
   account: {
     accountLinking: {
@@ -54,4 +60,28 @@ export const auth = betterAuth({
   plugins: [
     username(),
   ],
+  sendResetPassword: async ({ user, url, token }: EmailParams) => {
+    await sendEmail({
+      to: user.email,
+      subject: "Passwort zurücksetzen",
+      text: `Klicken Sie auf diesen Link, um Ihr Passwort zurückzusetzen: ${url}`,
+      html: `
+        <h1>Passwort zurücksetzen</h1>
+        <p>Klicken Sie auf den folgenden Link, um Ihr Passwort zurückzusetzen:</p>
+        <p><a href="${url}">Passwort zurücksetzen</a></p>
+      `,
+    });
+  },
+  sendVerificationEmail: async ({ user, url, token }: EmailParams) => {
+    await sendEmail({
+      to: user.email,
+      subject: "E-Mail-Adresse bestätigen",
+      text: `Klicken Sie auf diesen Link, um Ihre E-Mail-Adresse zu bestätigen: ${url}`,
+      html: `
+        <h1>E-Mail-Adresse bestätigen</h1>
+        <p>Klicken Sie auf den folgenden Link, um Ihre E-Mail-Adresse zu bestätigen:</p>
+        <p><a href="${url}">E-Mail bestätigen</a></p>
+      `,
+    });
+  },
 });
