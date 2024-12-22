@@ -11,6 +11,19 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page' }
   },
+  nitro: {
+    compressPublicAssets: {
+      brotli: true,
+      gzip: true
+    },
+    routeRules: {
+      '/**': { 
+        headers: {
+          'Cache-Control': 'public, max-age=31536000, immutable'
+        }
+      }
+    }
+  },
   css: ["~/assets/scss/main.scss"],
   modules: ["@nuxt/icon", "@nuxtjs/i18n", "@pinia/nuxt"],
   runtimeConfig: {
