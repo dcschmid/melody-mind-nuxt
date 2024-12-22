@@ -4,8 +4,8 @@ import { sendEmail } from "./email";
 import { username } from "better-auth/plugins";
 
 const dialect = new LibsqlDialect({
-  url: process.env.TURSO_DATABASE_URL || "",
-  authToken: process.env.TURSO_AUTH_TOKEN || "",
+  url: process.env.NUXT_TURSO_DATABASE_URL || "",
+  authToken: process.env.NUXT_TURSO_AUTH_TOKEN || "",
 });
 
 export const auth = betterAuth({
