@@ -38,19 +38,19 @@ export const auth = betterAuth({
       }
     },
     email: {
-      validate: (value: string) => {
+      validate: (value: string): string | true => {
         if (!value) return 'login.error.required';
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'login.error.invalidEmail';
         return true;
       }
-    },
+    } as any,
     password: {
-      validate: (value: string) => {
+      validate: (value: string): string | true => {
         if (!value) return 'login.error.required';
         if (value.length < 8) return 'register.error.passwordTooShort';
         return true;
       }
-    }
+    } as any,
   },
   account: {
     accountLinking: {

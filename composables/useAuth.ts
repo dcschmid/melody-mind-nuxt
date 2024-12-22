@@ -7,7 +7,7 @@ import { authClient } from "../lib/auth-client"
  * Interface for basic login credentials
  * @interface LoginCredentials
  */
-interface LoginCredentials {
+export interface LoginCredentials {
   /** User's email address */
   email: string
   /** User's password */
@@ -19,7 +19,7 @@ interface LoginCredentials {
  * @interface RegisterCredentials
  * @extends {LoginCredentials}
  */
-interface RegisterCredentials extends LoginCredentials {
+export interface RegisterCredentials extends LoginCredentials {
   /** User's display name */
   name: string
   /** User's unique username */

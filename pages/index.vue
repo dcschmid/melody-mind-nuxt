@@ -10,8 +10,11 @@
 
                 <div class="auth-container" role="region" aria-label="Authentication forms">
                     <!-- Login Form -->
-                    <Form v-if="showLoginForm" @submit="handleLogin" v-slot="{ errors, submitForm }" class="auth-form"
-                        aria-labelledby="login-title">
+                    <Form v-if="showLoginForm" 
+                          @submit="(values) => handleLogin(values as LoginCredentials)" 
+                          v-slot="{ errors, submitForm }" 
+                          class="auth-form"
+                          aria-labelledby="login-title">
                         <h2 id="login-title">{{ $t('login.title') }}</h2>
 
                         <div class="form-group">
@@ -72,8 +75,11 @@
                     </Form>
 
                     <!-- Register Form -->
-                    <Form v-else-if="showRegisterForm" @submit="handleRegister" v-slot="{ errors, submitForm }"
-                        class="auth-form" aria-labelledby="register-title">
+                    <Form v-else-if="showRegisterForm" 
+                          @submit="(values) => handleRegister(values as RegisterCredentials)" 
+                          v-slot="{ errors, submitForm }" 
+                          class="auth-form" 
+                          aria-labelledby="register-title">
                         <h2 id="register-title">{{ $t('register.title') }}</h2>
 
                         <div class="form-group">
@@ -131,8 +137,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label :for="'register-password'" class="form-label">{{ $t('register.passwordLabel')
-                                }}</label>
+                            <label :for="'register-password'" class="form-label">{{ $t('register.passwordLabel') }}</label>
                             <div class="input-wrapper">
                                 <Icon name="material-symbols:lock-outline" class="input-icon" aria-hidden="true" />
                                 <Field :id="'register-password'" name="password" type="password"
@@ -168,13 +173,15 @@
                     </Form>
 
                     <!-- Forgot Password Form -->
-                    <Form v-else-if="showForgotPasswordForm" @submit="handleForgotPassword"
-                        v-slot="{ errors, submitForm }" class="auth-form" aria-labelledby="forgot-password-title">
+                    <Form v-else-if="showForgotPasswordForm" 
+                          @submit="(values: any) => handleForgotPassword({ email: values.email })" 
+                          v-slot="{ errors, submitForm }" 
+                          class="auth-form" 
+                          aria-labelledby="forgot-password-title">
                         <h2 id="forgot-password-title">{{ $t('forgotPassword.title') }}</h2>
 
                         <div class="form-group">
-                            <label :for="'forgot-password-email'" class="form-label">{{ $t('forgotPassword.emailLabel')
-                                }}</label>
+                            <label :for="'forgot-password-email'" class="form-label">{{ $t('forgotPassword.emailLabel') }}</label>
                             <div class="input-wrapper">
                                 <Icon name="material-symbols:mail-outline" class="input-icon" aria-hidden="true" />
                                 <Field :id="'forgot-password-email'" name="email" type="email"
@@ -185,8 +192,7 @@
                             </div>
                             <ErrorMessage name="email">
                                 <template v-slot="{ message }">
-                                    <p class="error-message" :id="'forgot-password-email-error'" role="alert">{{ message
-                                        }}
+                                    <p class="error-message" :id="'forgot-password-email-error'" role="alert">{{ message }}
                                     </p>
                                 </template>
                             </ErrorMessage>
@@ -218,7 +224,7 @@
 
 <script setup lang="ts">
 import { useAuthForm } from '~/composables/useAuthForm'
-import { useAuth } from '~/composables/useAuth'
+import { useAuth, type LoginCredentials, type RegisterCredentials } from '~/composables/useAuth'
 import { useSeo } from '~/composables/useSeo'
 import { Form, Field, ErrorMessage } from 'vee-validate'
 
