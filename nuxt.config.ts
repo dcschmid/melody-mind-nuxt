@@ -8,6 +8,9 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
+  app: {
+    pageTransition: { name: 'page' }
+  },
   css: ["~/assets/scss/main.scss"],
   modules: ["@nuxt/icon", "@nuxtjs/i18n", "@pinia/nuxt"],
   runtimeConfig: {
