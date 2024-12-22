@@ -217,182 +217,20 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, computed } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { useAuthForm } from '~/composables/useAuthForm'
+import { useAuth } from '~/composables/useAuth'
+import { useSeo } from '~/composables/useSeo'
 import { Form, Field, ErrorMessage } from 'vee-validate'
-import { authClient } from "../lib/auth-client";
-import { useRouter } from 'vue-router';
-import { useHead } from '#imports'
 
-const { t, locale } = useI18n()
-const session = authClient.useSession()
-const router = useRouter();
+const { formState, validators, showLoginForm, showRegisterForm, showForgotPasswordForm } = useAuthForm()
+const { handleLogin, handleRegister, handleForgotPassword } = useAuth()
+const { setupSeo } = useSeo()
 
-// SEO Optimizations
-useHead({
-    title: computed(() => t('meta.homeTitle')),
-    meta: [
-        {
-            name: 'description',
-            content: computed(() => t('meta.homeDescription'))
-        },
-        {
-            name: 'keywords',
-            content: computed(() => t('meta.homeKeywords'))
-        },
-        // Open Graph tags for social media
-        {
-            property: 'og:title',
-            content: computed(() => t('meta.homeTitle'))
-        },
-        {
-            property: 'og:description',
-            content: computed(() => t('meta.homeDescription'))
-        },
-        {
-            property: 'og:type',
-            content: 'website'
-        },
-        {
-            property: 'og:url',
-            content: computed(() => window?.location?.origin || '')
-        },
-        // Twitter Card tags
-        {
-            name: 'twitter:card',
-            content: 'summary_large_image'
-        },
-        {
-            name: 'twitter:title',
-            content: computed(() => t('meta.homeTitle'))
-        },
-        {
-            name: 'twitter:description',
-            content: computed(() => t('meta.homeDescription'))
-        }
-    ],
-    link: [
-        {
-            rel: 'canonical',
-            href: computed(() => window?.location?.origin || '')
-        }
-    ],
-    htmlAttrs: {
-        lang: computed(() => locale.value)
-    }
+setupSeo({
+  pageName: 'home',
+  type: 'website',
+  imageUrl: '/images/melody-mind-social.jpg' // Assuming you have a social sharing image
 })
-
-// Form state
-const formState = reactive({
-    email: '',
-    password: '',
-    username: '',
-    name: '',
-    isSubmitting: false,
-    isRegistering: false,
-    showForgotPassword: false,
-    loginMethod: 'email',
-    errorMessage: ''
-})
-
-// Validation rules
-const validators = {
-    email(value: unknown): string | true {
-        if (typeof value !== 'string') {
-            return t('login.error.required')
-        }
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-        return emailRegex.test(value) ? true : t('login.error.invalidEmail')
-    },
-    password(value: unknown): string | true {
-        if (typeof value !== 'string') {
-            return t('login.error.required')
-        }
-        return value.length >= 8 ? true : t('register.error.passwordTooShort')
-    },
-    username(value: unknown): string | true {
-        if (typeof value !== 'string') {
-            return t('login.error.required')
-        }
-        if (value.length < 3) {
-            return t('register.error.usernameTooShort')
-        }
-        if (value.length > 20) {
-            return t('register.error.usernameTooLong')
-        }
-        return true
-    },
-    name(value: unknown): string | true {
-        if (typeof value !== 'string') {
-            return t('login.error.required')
-        }
-        return value.length >= 2 ? true : t('register.error.nameTooShort')
-    }
-}
-
-// Computed Properties für häufig verwendete Bedingungen
-const showLoginForm = computed(() => !formState.isRegistering && !formState.showForgotPassword)
-const showRegisterForm = computed(() => formState.isRegistering && !formState.showForgotPassword)
-const showForgotPasswordForm = computed(() => formState.showForgotPassword)
-
-// Form submission handlers
-const handleLogin = async (values: any) => {
-    try {
-        formState.isSubmitting = true
-        await authClient.signIn.email({
-            email: values.email,
-            password: values.password
-        })
-        router.push('/gamehome')
-    } catch (error) {
-        console.error('Login error:', error)
-        formState.errorMessage = 'errors.loginFailed'
-    } finally {
-        formState.isSubmitting = false
-    }
-}
-
-const handleRegister = async () => {
-    try {
-        formState.isSubmitting = true
-        const registrationData = {
-            email: formState.email,
-            password: formState.password,
-            name: formState.name,
-            username: formState.username
-        }
-
-        const { error } = await authClient.signUp.email(registrationData)
-        if (error) throw error
-
-        formState.isRegistering = false
-        alert(t('register.successMessage'))
-    } catch (error) {
-        console.error('Registration error:', error)
-        formState.errorMessage = 'errors.registrationFailed'
-    } finally {
-        formState.isSubmitting = false
-    }
-}
-
-const handleForgotPassword = async () => {
-    try {
-        formState.isSubmitting = true
-        const { error } = await authClient.forgetPassword({
-            email: formState.email,
-            redirectTo: `${window.location.origin}/reset-password`
-        })
-
-        if (error) throw error
-        alert(t('forgotPassword.successMessage'))
-        formState.showForgotPassword = false
-    } catch (error) {
-        console.error('Password reset error:', error)
-        formState.errorMessage = 'errors.passwordResetFailed'
-    } finally {
-        formState.isSubmitting = false
-    }
-}
 </script>
 
 <style scoped lang="scss">
