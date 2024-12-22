@@ -227,9 +227,12 @@ const { handleLogin, handleRegister, handleForgotPassword } = useAuth()
 const { setupSeo } = useSeo()
 
 setupSeo({
-  pageName: 'home',
-  type: 'website',
-  imageUrl: '/images/melody-mind-social.jpg' // Assuming you have a social sharing image
+    pageName: 'home',
+    type: 'website',
+    customTitle: 'MelodyMind - Das ultimative Musik-Quiz | Test dein Musikwissen',
+    customDescription: 'Teste dein Musikwissen mit MelodyMind! Ein spannendes Online-Quiz mit verschiedenen Musikgenres, Schwierigkeitsgraden und Highscores. Jetzt kostenlos spielen!',
+    customKeywords: 'musik quiz, musikquiz, musik spiel, musik rätsel, online quiz, musikwissen test, melodymind, musik trivia',
+    noIndex: false
 })
 </script>
 
