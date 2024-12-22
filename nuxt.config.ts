@@ -21,6 +21,11 @@ export default defineNuxtConfig({
         headers: {
           'Cache-Control': 'public, max-age=31536000, immutable'
         }
+      },
+      '/health': {
+        headers: {
+          'Cache-Control': 'no-cache, no-store'
+        }
       }
     }
   },
