@@ -6,6 +6,11 @@
     "fr": "Français",
     "it": "Italien"
   },
+  "meta": {
+    "homeTitle": "Melody Mind - Le Jeu Ultime de Quiz Musical",
+    "homeDescription": "Testez vos connaissances musicales dans notre jeu de quiz interactif. Répondez aux questions sur les chansons, les artistes et l'histoire de la musique à travers différents genres comme le rock, la pop, le hip-hop et le classique.",
+    "homeKeywords": "quiz musical, connaissances musicales, quiz en ligne, histoire de la musique, quiz artistes, quiz albums, genres musicaux, jeu interactif"
+  },
   "welcome": {
     "title": "Bienvenue sur Melody Mind",
     "start": "Commencer le jeu",
@@ -114,20 +119,20 @@
       "share": {
         "title": "Partager votre résultat",
         "buttons": {
-          "twitter": "Partager sur Twitter 🐦",
-          "telegram": "Partager sur Telegram 📱",
-          "reddit": "Partager sur Reddit 📚",
-          "whatsapp": "Partager sur WhatsApp 📱",
-          "share": "Partager 🤩"
+          "twitter": "Partager sur Twitter ",
+          "telegram": "Partager sur Telegram ",
+          "reddit": "Partager sur Reddit ",
+          "whatsapp": "Partager sur WhatsApp ",
+          "share": "Partager "
         },
         "message": {
-          "intro": "🎮 J'ai obtenu {points} points dans Melody Mind !",
+          "intro": " J'ai obtenu {points} points dans Melody Mind !",
           "genre": "Genre : {genre}",
           "perfect": "Tour parfait avec un LP d'Or en difficulté {difficulty} !",
           "silver": "LP d'Argent gagné en difficulté {difficulty} !",
           "bronze": "LP de Bronze gagné en difficulté {difficulty} !",
-          "stats": "🎯 {correct} bonnes réponses sur {total} questions !",
-          "challenge": "🎵 Défiez-moi : {url}",
+          "stats": "  bonnes réponses sur {total} questions !",
+          "challenge": " Défiez-moi : {url}",
           "difficulty": {
             "easy": "facile",
             "medium": "moyenne",

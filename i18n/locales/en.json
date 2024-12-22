@@ -6,6 +6,11 @@
     "fr": "French",
     "it": "Italian"
   },
+  "meta": {
+    "homeTitle": "Melody Mind - The Ultimate Music Quiz Game",
+    "homeDescription": "Test your music knowledge in our interactive quiz game. Answer questions about songs, artists, and music history across various genres including rock, pop, hip-hop, and classical.",
+    "homeKeywords": "music quiz, music knowledge, online quiz, music history, artist quiz, album quiz, music genres, interactive game"
+  },
   "welcome": {
     "title": "Welcome to Melody Mind",
     "start": "Start Game",

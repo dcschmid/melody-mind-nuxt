@@ -6,6 +6,11 @@
     "fr": "Francese",
     "it": "Italiano"
   },
+  "meta": {
+    "homeTitle": "Melody Mind - Il Quiz Musicale Definitivo",
+    "homeDescription": "Metti alla prova le tue conoscenze musicali nel nostro quiz interattivo. Rispondi a domande su canzoni, artisti e storia della musica attraverso vari generi come rock, pop, hip-hop e classica.",
+    "homeKeywords": "quiz musicale, conoscenze musicali, quiz online, storia della musica, quiz artisti, quiz album, generi musicali, gioco interattivo"
+  },
   "welcome": {
     "title": "Benvenuto su Melody Mind",
     "start": "Inizia il gioco",
