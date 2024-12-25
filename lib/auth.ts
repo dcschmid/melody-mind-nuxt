@@ -1,6 +1,5 @@
 import { betterAuth } from "better-auth";
 import { LibsqlDialect } from "@libsql/kysely-libsql";
-import { sendEmail } from "./email";
 import { username } from "better-auth/plugins";
 
 const dialect = new LibsqlDialect({
@@ -55,6 +54,7 @@ export const auth = betterAuth({
   account: {
     accountLinking: {
       enabled: true,
+      trustedProviders: ["discord", "github"]
     },
   },
   plugins: [
@@ -69,29 +69,5 @@ export const auth = betterAuth({
       clientId: process.env.NUXT_GITHUB_CLIENT_ID as string,
       clientSecret: process.env.NUXT_GITHUB_CLIENT_SECRET as string,
     },
-  },
-  sendResetPassword: async ({ user, url, token }: EmailParams) => {
-    await sendEmail({
-      to: user.email,
-      subject: "Passwort zurücksetzen",
-      text: `Klicken Sie auf diesen Link, um Ihr Passwort zurückzusetzen: ${url}`,
-      html: `
-        <h1>Passwort zurücksetzen</h1>
-        <p>Klicken Sie auf den folgenden Link, um Ihr Passwort zurückzusetzen:</p>
-        <p><a href="${url}">Passwort zurücksetzen</a></p>
-      `,
-    });
-  },
-  sendVerificationEmail: async ({ user, url, token }: EmailParams) => {
-    await sendEmail({
-      to: user.email,
-      subject: "E-Mail-Adresse bestätigen",
-      text: `Klicken Sie auf diesen Link, um Ihre E-Mail-Adresse zu bestätigen: ${url}`,
-      html: `
-        <h1>E-Mail-Adresse bestätigen</h1>
-        <p>Klicken Sie auf den folgenden Link, um Ihre E-Mail-Adresse zu bestätigen:</p>
-        <p><a href="${url}">E-Mail bestätigen</a></p>
-      `,
-    });
   },
 });
