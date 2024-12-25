@@ -106,5 +106,5 @@ defineEmits<{
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/components/_auth-forms.scss';
+@use '@/assets/scss/components/_auth-forms.scss';
 </style>

@@ -83,8 +83,9 @@ export const useAuth = () => {
 
       if (error) throw error
 
-      alert(t('register.successMessage'))
-      formState.isRegistering = false
+      // After successful registration, sign in automatically
+      await authClient.signIn.email({ email, password })
+      await router.push('/gamehome')
     } catch (error: any) {
       setError('registration', error)
     } finally {
@@ -92,35 +93,9 @@ export const useAuth = () => {
     }
   }
 
-  /**
-   * Handles password recovery request
-   * @param {{ email: string }} credentials - The user's email for password recovery
-   * @throws Will throw an error if password recovery request fails
-   */
-  const handleForgotPassword = async ({ email }: Pick<LoginCredentials, 'email'>) => {
-    try {
-      formState.isSubmitting = true
-      formState.errorMessage = ''
-
-      const { error } = await authClient.forgetPassword({
-        email,
-        redirectTo: `${window.location.origin}/reset-password`
-      })
-
-      if (error) throw error
-
-      alert(t('forgotPassword.successMessage'))
-      formState.showForgotPassword = false
-    } catch (error: any) {
-      setError('passwordReset', error)
-    } finally {
-      formState.isSubmitting = false
-    }
-  }
 
   return {
     handleLogin,
-    handleRegister,
-    handleForgotPassword
+    handleRegister
   }
 }
