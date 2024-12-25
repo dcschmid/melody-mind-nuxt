@@ -65,6 +65,10 @@ export const auth = betterAuth({
       clientId: process.env.DISCORD_CLIENT_ID as string,
       clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
     },
+    github: {
+      clientId: process.env.NUXT_GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.NUXT_GITHUB_CLIENT_SECRET as string,
+    },
   },
   sendResetPassword: async ({ user, url, token }: EmailParams) => {
     await sendEmail({

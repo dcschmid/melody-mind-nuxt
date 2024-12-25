@@ -36,12 +36,14 @@
         "forgotPassword": "¿Olvidaste tu contraseña?",
         "orContinueWith": "O continuar con",
         "continueWithDiscord": "Continuar con Discord",
+        "continueWithGithub": "Continuar con GitHub",
         "error": {
             "invalidEmail": "Correo electrónico inválido",
             "invalidPassword": "Contraseña inválida",
             "required": "Este campo es obligatorio",
             "loginFailed": "Error al iniciar sesión",
-            "discordLoginFailed": "Error al iniciar sesión con Discord"
+            "discordLoginFailed": "Error al iniciar sesión con Discord",
+            "githubLoginFailed": "Error al iniciar sesión con GitHub"
         }
     },
     "register": {

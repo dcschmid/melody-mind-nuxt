@@ -36,12 +36,14 @@
     "forgotPassword": "Forgot password?",
     "orContinueWith": "Or continue with",
     "continueWithDiscord": "Continue with Discord",
+    "continueWithGithub": "Continue with GitHub",
     "error": {
       "invalidEmail": "Invalid email address",
       "invalidPassword": "Invalid password",
       "required": "This field is required",
       "loginFailed": "Login failed",
-      "discordLoginFailed": "Failed to login with Discord"
+      "discordLoginFailed": "Failed to login with Discord",
+      "githubLoginFailed": "Failed to login with GitHub"
     }
   },
   "register": {

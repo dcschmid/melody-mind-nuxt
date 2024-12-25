@@ -1,6 +1,6 @@
 <template>
-    <Form @submit="(values) => handleLogin(values as LoginCredentials)" 
-          v-slot="{ errors }" 
+    <Form @submit="(values) => handleLogin(values as LoginCredentials)"
+          v-slot="{ errors }"
           class="auth-form"
           aria-labelledby="login-title">
         <h2 id="login-title">{{ $t('login.title') }}</h2>
@@ -48,10 +48,17 @@
             <span>{{ $t('login.orContinueWith') }}</span>
         </div>
 
-        <button type="button" @click="handleDiscordLogin" class="social-login-button discord">
-            <Icon name="mdi:discord" size="24" aria-hidden="true" />
-            <span>{{ $t('login.continueWithDiscord') }}</span>
-        </button>
+        <div class="social-login-buttons">
+            <button type="button" @click="handleDiscordLogin" class="social-login-button discord">
+                <Icon name="mdi:discord" size="24" aria-hidden="true" />
+                <span>{{ $t('login.continueWithDiscord') }}</span>
+            </button>
+
+            <button type="button" @click="handleGithubLogin" class="social-login-button github">
+                <Icon name="mdi:github" size="24" aria-hidden="true" />
+                <span>{{ $t('login.continueWithGithub') }}</span>
+            </button>
+        </div>
 
         <div class="auth-links" role="navigation" aria-label="Additional authentication options">
             <a href="#" @click.prevent="$emit('switch-form', 'register')" class="link">
@@ -71,6 +78,7 @@ import { useAuthForm } from '~/composables/useAuthForm'
 import { useAuth, type LoginCredentials } from '~/composables/useAuth'
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import { signInWithDiscord } from '~/lib/auth-client'
+import { authClient } from '~/lib/auth-client'
 
 const { formState, validators } = useAuthForm()
 const { handleLogin } = useAuth()
@@ -80,6 +88,16 @@ const handleDiscordLogin = async () => {
         await signInWithDiscord()
     } catch (error) {
         formState.errorMessage = 'login.error.discordLoginFailed'
+    }
+}
+
+const handleGithubLogin = async () => {
+    try {
+        await authClient.signIn.social({
+            provider: "github"
+        })
+    } catch (error) {
+        formState.errorMessage = 'login.error.githubLoginFailed'
     }
 }
 
@@ -122,6 +140,12 @@ defineEmits<{
     }
 }
 
+.social-login-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
 .social-login-button {
     display: flex;
     align-items: center;
@@ -148,6 +172,16 @@ defineEmits<{
 
         &:hover {
             background-color: #4752c4;
+        }
+    }
+
+    &.github {
+        background-color: #24292e;
+        border-color: #24292e;
+        color: white;
+
+        &:hover {
+            background-color: #1c2024;
         }
     }
 }
