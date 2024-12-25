@@ -9,26 +9,26 @@ export default defineNuxtConfig({
     },
   },
   app: {
-    pageTransition: { name: 'page' },
-    baseURL: '/',
+    pageTransition: { name: "page" },
+    baseURL: "/",
   },
   nitro: {
     compressPublicAssets: {
       brotli: true,
-      gzip: true
+      gzip: true,
     },
     routeRules: {
-      '/**': {
+      "/**": {
         headers: {
-          'Cache-Control': 'public, max-age=31536000, immutable'
-        }
+          "Cache-Control": "public, max-age=31536000, immutable",
+        },
       },
-      '/health': {
+      "/health": {
         headers: {
-          'Cache-Control': 'no-cache, no-store'
-        }
-      }
-    }
+          "Cache-Control": "no-cache, no-store",
+        },
+      },
+    },
   },
   css: ["~/assets/scss/main.scss"],
   modules: ["@nuxt/icon", "@nuxtjs/i18n", "@pinia/nuxt", "@nuxthub/core"],

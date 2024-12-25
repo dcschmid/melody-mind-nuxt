@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@better-auth/cli": "^1.1.1",
+    "@img/sharp-libvips-dev": "^1.0.6",
     "@libsql/client": "^0.14.0",
     "@libsql/kysely-libsql": "^0.4.1",
     "@nuxt/icon": "1.10.1",

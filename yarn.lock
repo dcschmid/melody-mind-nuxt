@@ -899,6 +899,11 @@
   resolved "https://registry.yarnpkg.com/@img/sharp-libvips-darwin-x64/-/sharp-libvips-darwin-x64-1.0.4.tgz#e0456f8f7c623f9dbfbdc77383caa72281d86062"
   integrity sha512-xnGR8YuZYfJGmWPvmlunFaWJsb9T/AO2ykoP3Fz/0X5XV2aoYBPkX6xqCQvUTKKiLddarLaxpzNe+b1hjeWHAQ==
 
+"@img/sharp-libvips-dev@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@img/sharp-libvips-dev/-/sharp-libvips-dev-1.0.6.tgz#8150e3dce3ed443f40f32f7fd40e09d44a84b48e"
+  integrity sha512-FlxircKUU2vEuyyg/bqUaCfSgkRKPB+RZkZlXww9LsMGHvuw/NT0vmoyiVEJ++kT3wNraCPvQL43w/GXUIMH7A==
+
 "@img/sharp-libvips-linux-arm64@1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@img/sharp-libvips-linux-arm64/-/sharp-libvips-linux-arm64-1.0.4.tgz#979b1c66c9a91f7ff2893556ef267f90ebe51704"
