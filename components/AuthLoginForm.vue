@@ -45,15 +45,9 @@
         </button>
 
         <div class="auth-links" role="navigation" aria-label="Additional authentication options">
-            <a href="#" @click.prevent="$emit('switch-form', 'register')" class="link"
-                aria-label="Create new account">
+            <a href="#" @click.prevent="$emit('switch-form', 'register')" class="link">
                 <Icon name="material-symbols:person-add-outline" size="20" aria-hidden="true" />
                 <span>{{ $t('login.noAccount') }}</span>
-            </a>
-            <a href="#" @click.prevent="$emit('switch-form', 'forgot-password')" class="link"
-                aria-label="Reset forgotten password">
-                <Icon name="material-symbols:key-outline" size="20" aria-hidden="true" />
-                <span>{{ $t('login.forgotPassword') }}</span>
             </a>
         </div>
 
@@ -72,7 +66,7 @@ const { formState, validators } = useAuthForm()
 const { handleLogin } = useAuth()
 
 defineEmits<{
-    'switch-form': [form: 'register' | 'forgot-password']
+    'switch-form': [form: 'register']
 }>()
 </script>
 

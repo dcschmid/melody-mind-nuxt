@@ -1,7 +1,4 @@
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
+// Email sending functionality has been removed
 export const sendEmail = async ({
   to,
   subject,
@@ -13,16 +10,7 @@ export const sendEmail = async ({
   text: string;
   html?: string;
 }) => {
-  try {
-    const data = await resend.emails.send({
-      from: 'noreply@deine-domain.de',
-      to,
-      subject,
-      text,
-      html
-    });
-    return { data, error: null };
-  } catch (error) {
-    return { data: null, error };
-  }
+  // Email functionality has been removed
+  console.log('Email sending has been disabled');
+  return { data: null, error: 'Email sending functionality has been removed' };
 };

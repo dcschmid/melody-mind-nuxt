@@ -12,7 +12,6 @@ interface AuthFormState {
   username: string
   isSubmitting: boolean
   isRegistering: boolean
-  showForgotPassword: boolean
   errorMessage: string
 }
 
@@ -40,7 +39,6 @@ interface AuthFormComposable {
   validators: FormValidators
   showLoginForm: ComputedRef<boolean>
   showRegisterForm: ComputedRef<boolean>
-  showForgotPasswordForm: ComputedRef<boolean>
 }
 
 /**
@@ -57,7 +55,6 @@ export const useAuthForm = (): AuthFormComposable => {
     username: '',
     isSubmitting: false,
     isRegistering: false,
-    showForgotPassword: false,
     errorMessage: ''
   })
 
@@ -113,15 +110,13 @@ export const useAuthForm = (): AuthFormComposable => {
   }
 
   // Computed properties for form visibility
-  const showLoginForm = computed(() => !formState.isRegistering && !formState.showForgotPassword)
-  const showRegisterForm = computed(() => formState.isRegistering && !formState.showForgotPassword)
-  const showForgotPasswordForm = computed(() => formState.showForgotPassword)
+  const showLoginForm = computed(() => !formState.isRegistering)
+  const showRegisterForm = computed(() => formState.isRegistering)
 
   return {
     formState,
     validators,
     showLoginForm,
-    showRegisterForm,
-    showForgotPasswordForm
+    showRegisterForm
   }
 }

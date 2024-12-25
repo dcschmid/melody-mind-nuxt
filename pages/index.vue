@@ -7,7 +7,6 @@
                 <Transition name="form-switch" mode="out-in">
                     <AuthLoginForm v-if="showLoginForm" @switch-form="handleFormSwitch" />
                     <AuthRegisterForm v-else-if="showRegisterForm" @switch-form="handleFormSwitch" />
-                    <AuthForgotPasswordForm v-else-if="showForgotPasswordForm" @switch-form="handleFormSwitch" />
                 </Transition>
             </div>
         </main>
@@ -29,19 +28,14 @@ setupSeo({
     noIndex: false
 })
 
-const showLoginForm = computed(() => !formState.isRegistering && !formState.showForgotPassword)
+const showLoginForm = computed(() => !formState.isRegistering)
 const showRegisterForm = computed(() => formState.isRegistering)
-const showForgotPasswordForm = computed(() => formState.showForgotPassword)
 
-const handleFormSwitch = (form: 'login' | 'register' | 'forgot-password') => {
+const handleFormSwitch = (form: 'login' | 'register') => {
     if (form === 'register') {
         formState.isRegistering = true
-        formState.showForgotPassword = false
     } else if (form === 'login') {
         formState.isRegistering = false
-        formState.showForgotPassword = false
-    } else if (form === 'forgot-password') {
-        formState.showForgotPassword = true
     }
 }
 </script>
