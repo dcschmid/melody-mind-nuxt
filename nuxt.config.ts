@@ -9,7 +9,8 @@ export default defineNuxtConfig({
     },
   },
   app: {
-    pageTransition: { name: 'page' }
+    pageTransition: { name: 'page' },
+    baseURL: '/',
   },
   nitro: {
     compressPublicAssets: {
@@ -17,7 +18,7 @@ export default defineNuxtConfig({
       gzip: true
     },
     routeRules: {
-      '/**': { 
+      '/**': {
         headers: {
           'Cache-Control': 'public, max-age=31536000, immutable'
         }
