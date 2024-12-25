@@ -34,11 +34,14 @@
         "submitButton": "Iniciar sesión",
         "noAccount": "¿No tienes una cuenta?",
         "forgotPassword": "¿Olvidaste tu contraseña?",
+        "orContinueWith": "O continuar con",
+        "continueWithDiscord": "Continuar con Discord",
         "error": {
             "invalidEmail": "Correo electrónico inválido",
             "invalidPassword": "Contraseña inválida",
             "required": "Este campo es obligatorio",
-            "loginFailed": "Error al iniciar sesión"
+            "loginFailed": "Error al iniciar sesión",
+            "discordLoginFailed": "Error al iniciar sesión con Discord"
         }
     },
     "register": {

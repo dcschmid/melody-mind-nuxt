@@ -34,11 +34,14 @@
     "submitButton": "Se connecter",
     "noAccount": "Pas encore de compte ?",
     "forgotPassword": "Mot de passe oublié ?",
+    "orContinueWith": "Ou continuer avec",
+    "continueWithDiscord": "Continuer avec Discord",
     "error": {
       "invalidEmail": "Adresse e-mail invalide",
       "invalidPassword": "Mot de passe invalide",
-      "required": "Ce champ est obligatoire",
-      "loginFailed": "Échec de la connexion"
+      "required": "Ce champ est requis",
+      "loginFailed": "Échec de la connexion",
+      "discordLoginFailed": "Échec de la connexion avec Discord"
     }
   },
   "register": {

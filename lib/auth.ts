@@ -60,6 +60,12 @@ export const auth = betterAuth({
   plugins: [
     username(),
   ],
+  socialProviders: {
+    discord: {
+      clientId: process.env.DISCORD_CLIENT_ID as string,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
+    },
+  },
   sendResetPassword: async ({ user, url, token }: EmailParams) => {
     await sendEmail({
       to: user.email,

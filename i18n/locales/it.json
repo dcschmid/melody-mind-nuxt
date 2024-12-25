@@ -21,12 +21,12 @@
   },
   "intro": "Immergiti nell'affascinante mondo della musica! In Melody Mind, metti alla prova le tue conoscenze musicali in emozionanti quiz. Rispondi a domande su canzoni di diversi decenni, artisti, album e storia della musica. Accumula punti, vinci dischi d'oro e sfida altri appassionati di musica. Dal rock al pop, dall'hip-hop al classico - metti alla prova le tue conoscenze nei tuoi generi preferiti. Inizia la tua avventura musicale ora!",
   "login": {
-    "title": "Accesso",
+    "title": "Accedi",
     "methodLabel": "Metodo di accesso",
-    "emailOption": "E-mail",
+    "emailOption": "Email",
     "usernameOption": "Nome utente",
-    "emailLabel": "E-mail",
-    "emailPlaceholder": "Il tuo indirizzo e-mail",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Il tuo indirizzo email",
     "usernameLabel": "Nome utente",
     "usernamePlaceholder": "Il tuo nome utente",
     "passwordLabel": "Password",
@@ -34,11 +34,14 @@
     "submitButton": "Accedi",
     "noAccount": "Non hai un account?",
     "forgotPassword": "Password dimenticata?",
+    "orContinueWith": "O continua con",
+    "continueWithDiscord": "Continua con Discord",
     "error": {
-      "invalidEmail": "Indirizzo e-mail non valido",
+      "invalidEmail": "Indirizzo email non valido",
       "invalidPassword": "Password non valida",
       "required": "Questo campo è obbligatorio",
-      "loginFailed": "Accesso fallito"
+      "loginFailed": "Accesso fallito",
+      "discordLoginFailed": "Accesso con Discord fallito"
     }
   },
   "register": {

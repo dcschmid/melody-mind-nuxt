@@ -44,6 +44,15 @@
             {{ $t('login.submitButton') }}
         </button>
 
+        <div class="social-login-divider">
+            <span>{{ $t('login.orContinueWith') }}</span>
+        </div>
+
+        <button type="button" @click="handleDiscordLogin" class="social-login-button discord">
+            <Icon name="mdi:discord" size="24" aria-hidden="true" />
+            <span>{{ $t('login.continueWithDiscord') }}</span>
+        </button>
+
         <div class="auth-links" role="navigation" aria-label="Additional authentication options">
             <a href="#" @click.prevent="$emit('switch-form', 'register')" class="link">
                 <Icon name="material-symbols:person-add-outline" size="20" aria-hidden="true" />
@@ -61,9 +70,18 @@
 import { useAuthForm } from '~/composables/useAuthForm'
 import { useAuth, type LoginCredentials } from '~/composables/useAuth'
 import { Form, Field, ErrorMessage } from 'vee-validate'
+import { signInWithDiscord } from '~/lib/auth-client'
 
 const { formState, validators } = useAuthForm()
 const { handleLogin } = useAuth()
+
+const handleDiscordLogin = async () => {
+    try {
+        await signInWithDiscord()
+    } catch (error) {
+        formState.errorMessage = 'login.error.discordLoginFailed'
+    }
+}
 
 defineEmits<{
     'switch-form': [form: 'register']
@@ -72,4 +90,65 @@ defineEmits<{
 
 <style lang="scss">
 @use '@/assets/scss/components/_auth-forms.scss';
+
+.social-login-divider {
+    margin: 1.5rem 0;
+    text-align: center;
+    position: relative;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: calc(50% - 1rem);
+        height: 1px;
+        background-color: var(--border-color);
+    }
+
+    &::before {
+        left: 0;
+    }
+
+    &::after {
+        right: 0;
+    }
+
+    span {
+        background-color: var(--background-color);
+        padding: 0 0.5rem;
+        color: var(--text-color-light);
+        font-size: 0.9rem;
+    }
+}
+
+.social-login-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background-color: transparent;
+    color: var(--text-color);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-color: var(--hover-color);
+    }
+
+    &.discord {
+        background-color: #5865F2;
+        border-color: #5865F2;
+        color: white;
+
+        &:hover {
+            background-color: #4752c4;
+        }
+    }
+}
 </style>

@@ -34,11 +34,14 @@
     "submitButton": "Anmelden",
     "noAccount": "Noch kein Konto?",
     "forgotPassword": "Passwort vergessen?",
+    "orContinueWith": "Oder fortfahren mit",
+    "continueWithDiscord": "Mit Discord fortfahren",
     "error": {
       "invalidEmail": "Ungültige E-Mail-Adresse",
       "invalidPassword": "Ungültiges Passwort",
       "required": "Dieses Feld ist erforderlich",
-      "loginFailed": "Anmeldung fehlgeschlagen"
+      "loginFailed": "Anmeldung fehlgeschlagen",
+      "discordLoginFailed": "Anmeldung mit Discord fehlgeschlagen"
     }
   },
   "register": {
@@ -451,7 +454,7 @@
     "privacy": {
       "title": "Datenschutzerklärung",
       "overview": {
-        "title": "Übersicht",
+        "title": "Überblick",
         "general": {
           "title": "Allgemeine Informationen",
           "text": "Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Diese Datenschutzerklärung informiert Sie darüber, wie wir mit Ihren Daten umgehen."
