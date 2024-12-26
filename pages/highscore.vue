@@ -4,24 +4,37 @@
             <h1>{{ $t('highscore.title') }}</h1>
 
             <div v-if="loading">{{ $t('common.loading') }}</div>
-            <div v-else-if="error">{{ error }}</div>
+            <div v-else-if="error">{{ $t('common.error') }}</div>
             <div v-else>
-                <!-- Gesamt-Highscore -->
+                <!-- Total Highscores -->
                 <section class="highscore-section">
-                    <h2 class="section-title">{{ $t('highscore.total') }}</h2>
-                    <HighscoreTable :scores="highscoreStore.totalHighscores" :column-labels="{
+                    <h2>{{ $t('highscore.total') }}</h2>
+                    <HighscoreTable 
+                      :scores="totalHighscores"
+                      :column-labels="{
                         rank: '#',
-                        avatar: $t('highscore.avatar'),
                         name: $t('highscore.name'),
-                        points: $t('highscore.points')
-                    }" />
+                        score: $t('highscore.score')
+                      }"
+                    />
                 </section>
 
-                <!-- Kategorie-Highscores -->
-                <template v-if="highscoreStore.categories.length > 0">
-                    <section v-for="category in highscoreStore.categories" :key="category.slug" class="highscore-section">
-                        <h2 class="section-title">{{ category.name }}</h2>
-                        <HighscoreTable :scores="highscoreStore.categoryScores[category.slug]" />
+                <!-- Category Highscores -->
+                <template v-if="categories.length > 0">
+                    <section 
+                      v-for="category in categories" 
+                      :key="category.slug" 
+                      class="highscore-section"
+                    >
+                      <h2>{{ category.name }}</h2>
+                      <HighscoreTable 
+                        :scores="categoryScores[category.slug]"
+                        :column-labels="{
+                          rank: '#',
+                          name: $t('highscore.name'),
+                          score: $t('highscore.score')
+                        }"
+                      />
                     </section>
                 </template>
             </div>
@@ -32,22 +45,42 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useHighscoreStore } from '~/stores/highscore'
 
 const { t } = useI18n()
-const highscoreStore = useHighscoreStore()
 
 const loading = ref(true)
 const error = ref(null)
+const totalHighscores = ref([])
+const categoryScores = ref({})
+const categories = ref([])
 
-onMounted(async () => {
+async function fetchHighscores() {
   try {
-    await highscoreStore.fetchHighscores()
+    const [categoriesRes, scoresRes] = await Promise.all([
+      fetch('/api/categories').then(r => r.json()),
+      fetch('/api/highscore/total').then(r => r.json())
+    ])
+
+    categories.value = categoriesRes.categories
+    totalHighscores.value = scoresRes.scores
+
+    // Fetch category scores
+    const categoryPromises = categories.value.map(async category => {
+      const res = await fetch(`/api/highscore/category/${category.slug}`)
+      const data = await res.json()
+      categoryScores.value[category.slug] = data.scores
+    })
+
+    await Promise.all(categoryPromises)
   } catch (err) {
     error.value = err
   } finally {
     loading.value = false
   }
+}
+
+onMounted(() => {
+  fetchHighscores()
 })
 </script>
 
