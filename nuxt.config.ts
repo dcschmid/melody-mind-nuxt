@@ -10,7 +10,6 @@ export default defineNuxtConfig({
   },
   app: {
     pageTransition: { name: "page" },
-    baseURL: "/",
   },
   nitro: {
     preset: 'node-server',
