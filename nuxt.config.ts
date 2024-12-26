@@ -28,8 +28,8 @@ export default defineNuxtConfig({
       authBaseUrl: process.env.NUXT_AUTH_BASE_URL || 'http://localhost:3000',
     },
     turso: {
-      databaseUrl: "",
-      authToken: "",
+      databaseUrl: process.env.NUXT_TURSO_DATABASE_URL || "",
+      authToken: process.env.NUXT_TURSO_AUTH_TOKEN || "",
     },
   },
   i18n: {
