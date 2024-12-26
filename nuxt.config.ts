@@ -24,6 +24,9 @@ export default defineNuxtConfig({
   css: ["~/assets/scss/main.scss"],
   modules: ["@nuxt/icon", "@nuxtjs/i18n"],
   runtimeConfig: {
+    public: {
+      authBaseUrl: process.env.NUXT_AUTH_BASE_URL || 'http://localhost:3000',
+    },
     turso: {
       databaseUrl: "",
       authToken: "",
