@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     baseURL: "/",
   },
   nitro: {
+    preset: 'node-server',
     routeRules: {
       "/health": {
         headers: {
