@@ -29,15 +29,9 @@
                     </Transition>
                 </div>
                 <!-- Game Over Screen -->
-                <GameOverScreen v-else
-                    :total-points="totalPoints"
-                    :correct-answers="correctAnswers"
-                    :max-questions="maxQuestions"
-                    :earned-record="earnedRecord !== 'none'"
-                    :record-icon="recordIcon"
-                    :record-class="recordClass"
-                    :result-message="resultMessage"
-                    :key="'gameover'" />
+                <GameOverScreen v-else :total-points="totalPoints" :correct-answers="correctAnswers"
+                    :max-questions="maxQuestions" :earned-record="earnedRecord !== 'none'" :record-icon="recordIcon"
+                    :record-class="recordClass" :result-message="resultMessage" :key="'gameover'" />
             </Transition>
         </main>
     </NuxtLayout>
@@ -46,16 +40,6 @@
 <script setup lang="ts">
 import { watch, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
-
-// Validate route parameters
-definePageMeta({
-    validate: (route) => {
-        const validCategories = ['pop', 'rock', 'rap', 'klassik']
-        const validDifficulties = ['easy', 'medium', 'hard']
-        return validCategories.includes(route.params.category as string) && 
-               validDifficulties.includes(route.params.difficulty as string)
-    }
-})
 
 // Initialize core utilities
 const route = useRoute()

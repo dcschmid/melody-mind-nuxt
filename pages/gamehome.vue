@@ -6,7 +6,7 @@
                 <p class="intro-text" v-if="$t('gameHome.description')">{{ $t('gameHome.description') }}</p>
             </section>
 
-            <section class="search-section" v-motion-slide-visible role="search">
+            <section class="search-section" role="search">
                 <SearchBar id="category-search" v-model="searchQuery" :placeholder="$t('gameHome.searchPlaceholder')" />
             </section>
 

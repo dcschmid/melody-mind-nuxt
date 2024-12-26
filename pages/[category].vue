@@ -16,12 +16,6 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-    validate: (route) => {
-        return ['pop', 'rock', 'rap', 'klassik'].includes(route.params.category as string)
-    }
-})
-
 const route = useRoute()
 const { locale } = useI18n()
 const url = useRequestURL()
