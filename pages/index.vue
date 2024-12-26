@@ -1,108 +1,91 @@
 <template>
-    <NuxtLayout name="default" :show-header="false" :show-menu="false">
-        <main class="login-page" id="main-content">
-            <div class="content-wrapper">
-                <AuthWelcomeSection />
-
-                <Transition name="form-switch" mode="out-in">
-                    <AuthLoginForm v-if="showLoginForm" @switch-form="handleFormSwitch" />
-                    <AuthRegisterForm v-else-if="showRegisterForm" @switch-form="handleFormSwitch" />
-                </Transition>
+    <div class="landing-page">
+        <div class="container">
+            <div class="content">
+                <div class="welcome-section">
+                    <h1>{{ $t('landing.title') }}</h1>
+                    <p>{{ $t('landing.description') }}</p>
+                    <div class="cta-buttons">
+                        <NuxtLink to="/categories" class="button primary">
+                            {{ $t('landing.startPlaying') }}
+                        </NuxtLink>
+                    </div>
+                </div>
             </div>
-        </main>
-    </NuxtLayout>
+        </div>
+    </div>
 </template>
 
 <script setup lang="ts">
-import { useAuthForm } from '~/composables/useAuthForm'
-import { useSeo } from '~/composables/useSeo'
-
-const { formState } = useAuthForm()
-const { setupSeo } = useSeo()
-
-setupSeo({
-    pageName: 'login',
-    customTitle: 'MelodyMind - Login',
-    customDescription: 'Logge dich ein oder registriere dich bei MelodyMind, dem interaktiven Musikquiz.',
-    customKeywords: 'musik quiz, musikquiz, musik spiel, musik rätsel, online quiz, musikwissen test, melodymind, musik trivia',
-    noIndex: false
-})
-
-const showLoginForm = computed(() => !formState.isRegistering)
-const showRegisterForm = computed(() => formState.isRegistering)
-
-const handleFormSwitch = (form: 'login' | 'register') => {
-    if (form === 'register') {
-        formState.isRegistering = true
-    } else if (form === 'login') {
-        formState.isRegistering = false
-    }
-}
 </script>
 
-<style scoped lang="scss">
-.login-page {
-    min-height: 100vh;
+<style lang="scss" scoped>
+.landing-page {
+    min-height: calc(100vh - var(--header-height));
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--padding-large);
-    background: var(--background-color);
-}
+    padding: 2rem;
+    background: var(--background-gradient);
 
-.content-wrapper {
-    width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
-}
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 
-.auth-container {
-    width: 100%;
-    padding: var(--padding-large);
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    margin-bottom: var(--padding-large);
-}
+    .content {
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+        padding: 2rem;
+    }
 
-:root {
-    --color-primary: #0056b3;
-    --color-primary-dark: #004085;
-    --color-primary-rgb: 0, 86, 179;
-    --error-color: #dc3545;
-    --error-color-rgb: 220, 53, 69;
-    --error-color-light: rgba(220, 53, 69, 0.1);
-    --error-color-border: rgba(220, 53, 69, 0.2);
-}
+    .welcome-section {
+        text-align: center;
+        max-width: 600px;
 
-.form-switch-enter-active,
-.form-switch-leave-active {
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
 
-.form-switch-enter-from,
-.form-switch-leave-to {
-    opacity: 0;
-    transform: translateX(20px);
-}
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+    }
 
-.form-switch-enter-to,
-.form-switch-leave-from {
-    opacity: 1;
-    transform: translateX(0);
+    .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+
+        .button {
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+        }
+    }
 }
 
 @media (max-width: 768px) {
-    .login-page {
-        padding: var(--padding-medium);
-    }
+    .landing-page {
+        .content {
+            flex-direction: column;
+            gap: 2rem;
+        }
 
-    .content-wrapper {
-        margin-bottom: var(--padding-medium);
-    }
+        .welcome-section {
+            h1 {
+                font-size: 2rem;
+            }
 
-    .auth-container {
-        padding: var(--padding-medium);
+            p {
+                font-size: 1rem;
+            }
+        }
     }
 }
 </style>

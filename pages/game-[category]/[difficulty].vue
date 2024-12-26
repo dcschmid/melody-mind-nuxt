@@ -46,13 +46,18 @@
 <script setup lang="ts">
 import { watch, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { authClient } from '~/lib/auth-client'
 
-// Require authentication to access this page
-definePageMeta({ middleware: 'auth' })
+// Validate route parameters
+definePageMeta({
+    validate: (route) => {
+        const validCategories = ['pop', 'rock', 'rap', 'klassik']
+        const validDifficulties = ['easy', 'medium', 'hard']
+        return validCategories.includes(route.params.category as string) && 
+               validDifficulties.includes(route.params.difficulty as string)
+    }
+})
 
 // Initialize core utilities
-const session = authClient.useSession()
 const route = useRoute()
 const { t, locale } = useI18n()
 
@@ -165,7 +170,7 @@ watch(() => questions.usedQuestions.value.length, (newLength) => {
             gameState.correctAnswers.value,
             questions.maxQuestions.value,
             gameState.allQuestionsCorrect.value,
-            session.value?.data?.user?.id
+            null
         )
     }
 })

@@ -94,10 +94,8 @@
     </NuxtLayout>
 </template>
 
-<script setup>
-definePageMeta({
-    middleware: 'auth'
-})
+<script setup lang="ts">
+definePageMeta({})
 </script>
 
 <style lang="scss" scoped>

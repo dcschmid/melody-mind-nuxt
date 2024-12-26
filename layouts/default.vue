@@ -3,8 +3,6 @@
         <a href="#main-content" class="skip-link">{{ $t('accessibility.skipToMain') }}</a>
 
         <header v-if="showHeader" role="banner">
-            <LanguagePicker />
-
             <nav v-if="showMenu" :aria-label="$t('navigation.mainNavLabel')">
                 <button class="menu-button" :class="{ 'is-active': isMenuOpen }"
                     :aria-label="isMenuOpen ? $t('accessibility.closeMenu') : $t('navigation.openMenu')"
@@ -36,27 +34,6 @@
                         <Icon name="material-symbols:trophy-outline" size="36" />
                         <span>{{ $t('navigation.leaderboard') }}</span>
                     </NuxtLink>
-                    <NuxtLink :to="localePath('profile')" class="menu-item">
-                        <Icon name="lucide:user-round" size="36" />
-                        <span>{{ $t('navigation.profile') }}</span>
-                    </NuxtLink>
-                    <button v-if="session.data" @click="handleSignOut" class="menu-item">
-                        <Icon name="ic:baseline-logout" size="36" />
-                        <span>{{ $t('navigation.logout') }}</span>
-                    </button>
-                </div>
-
-                <!-- Spenden-Bereich -->
-                <div class="menu-section">
-                    <h2 class="section-title">{{ $t('navigation.support') }}</h2>
-                    <a href="https://www.paypal.me/dcschmid" target="_blank" rel="noopener" class="menu-item">
-                        <Icon name="logos:paypal" size="36" />
-                        <span>PayPal</span>
-                    </a>
-                    <a href="https://www.buymeacoffee.com/dcschmid" target="_blank" rel="noopener" class="menu-item">
-                        <Icon name="simple-icons:buymeacoffee" size="36" />
-                        <span>Buy me a coffee</span>
-                    </a>
                 </div>
 
                 <!-- Rechtliches -->
@@ -79,108 +56,25 @@
 </template>
 
 <script setup lang="ts">
-import { useFocusTrap } from "@vueuse/integrations/useFocusTrap";
-import { authClient } from "../lib/auth-client"
-const localePath = useLocalePath()
-const session = authClient.useSession()
-const router = useRouter()
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useLocalePath } from '#i18n'
 
-const { showHeader, showMenu } = defineProps({
-    showHeader: { type: Boolean, default: false },
-    showMenu: { type: Boolean, default: false },
-})
+const { t } = useI18n()
+const localePath = useLocalePath()
+
+const isMenuOpen = ref(false)
+
+const toggleMenu = () => {
+    isMenuOpen.value = !isMenuOpen.value
+}
+
+const closeMenu = () => {
+    isMenuOpen.value = false
+}
 
 const menuRef = ref<HTMLElement | null>(null)
 const closeButtonRef = ref<HTMLElement | null>(null)
-const isMenuOpen = ref(false)
-
-// Focus Trap initialisieren
-const { activate, deactivate } = useFocusTrap(menuRef, {
-    initialFocus: 'first',
-    escapeDeactivates: true,
-    returnFocusOnDeactivate: true,
-    allowOutsideClick: true
-})
-
-// Menü öffnen
-const openMenu = () => {
-    isMenuOpen.value = true
-    document.body.style.overflow = 'hidden'
-    // Kurze Verzögerung für Animation
-    setTimeout(() => {
-        activate()
-        closeButtonRef.value?.focus()
-    }, 100)
-}
-
-// Menü schließen
-const closeMenu = () => {
-    isMenuOpen.value = false
-    document.body.style.overflow = ''
-    deactivate()
-}
-
-// Toggle Funktion
-const toggleMenu = () => {
-    if (isMenuOpen.value) {
-        closeMenu()
-    } else {
-        openMenu()
-    }
-}
-
-// Cleanup bei Route-Wechsel
-const route = useRoute()
-watch(() => route.path, () => {
-    if (isMenuOpen.value) {
-        closeMenu()
-    }
-})
-
-// Event Listener für Escape-Taste
-onMounted(() => {
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isMenuOpen.value) {
-            closeMenu()
-        }
-    })
-})
-
-// Cleanup
-onUnmounted(() => {
-    document.removeEventListener('keydown', closeMenu)
-    document.body.style.overflow = ''
-})
-
-const handleSignOut = async () => {
-    await authClient.signOut()
-    isMenuOpen.value = false
-    document.body.style.overflow = ''
-    router.push('/')
-}
-
-const pointsDisplay = ref<any>(null)
-
-// Expose pointsDisplay ref
-defineExpose({
-    pointsDisplay
-})
-
-// Add keyboard navigation detection
-onMounted(() => {
-    function handleFirstTab(e: KeyboardEvent) {
-        if (e.key === 'Tab') {
-            document.body.classList.add('keyboard-user');
-            window.removeEventListener('keydown', handleFirstTab);
-        }
-    }
-    window.addEventListener('keydown', handleFirstTab);
-
-    // Cleanup
-    onUnmounted(() => {
-        window.removeEventListener('keydown', handleFirstTab);
-    });
-});
 </script>
 
 <style scoped lang="scss">

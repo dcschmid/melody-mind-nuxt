@@ -17,7 +17,9 @@
 
 <script setup lang="ts">
 definePageMeta({
-    middleware: 'auth'
+    validate: (route) => {
+        return ['pop', 'rock', 'rap', 'klassik'].includes(route.params.category as string)
+    }
 })
 
 const route = useRoute()
