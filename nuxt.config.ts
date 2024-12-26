@@ -12,7 +12,6 @@ export default defineNuxtConfig({
     pageTransition: { name: "page" },
   },
   nitro: {
-    preset: 'node-server',
     routeRules: {
       "/health": {
         headers: {
@@ -25,10 +24,6 @@ export default defineNuxtConfig({
   modules: ["@nuxt/icon", "@nuxtjs/i18n"],
   runtimeConfig: {
     public: {},
-    turso: {
-      databaseUrl: process.env.NUXT_TURSO_DATABASE_URL || "",
-      authToken: process.env.NUXT_TURSO_AUTH_TOKEN || "",
-    },
   },
   i18n: {
     strategy: "prefix",
