@@ -3,6 +3,8 @@
         <a href="#main-content" class="skip-link">{{ $t('accessibility.skipToMain') }}</a>
 
         <header v-if="showHeader" role="banner">
+            <LanguagePicker />
+
             <nav v-if="showMenu" :aria-label="$t('navigation.mainNavLabel')">
                 <button class="menu-button" :class="{ 'is-active': isMenuOpen }"
                     :aria-label="isMenuOpen ? $t('accessibility.closeMenu') : $t('navigation.openMenu')"
@@ -36,6 +38,19 @@
                     </NuxtLink>
                 </div>
 
+                <!-- Spenden-Bereich -->
+                <div class="menu-section">
+                    <h2 class="section-title">{{ $t('navigation.support') }}</h2>
+                    <a href="https://www.paypal.me/dcschmid" target="_blank" rel="noopener" class="menu-item">
+                        <Icon name="logos:paypal" size="36" />
+                        <span>PayPal</span>
+                    </a>
+                    <a href="https://www.buymeacoffee.com/dcschmid" target="_blank" rel="noopener" class="menu-item">
+                        <Icon name="simple-icons:buymeacoffee" size="36" />
+                        <span>Buy me a coffee</span>
+                    </a>
+                </div>
+
                 <!-- Rechtliches -->
                 <div class="menu-section">
                     <h2 class="section-title">{{ $t('navigation.legal') }}</h2>
@@ -56,25 +71,52 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, defineProps, onMounted, onUnmounted, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useLocalePath } from '#i18n'
+import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
+
+const props = defineProps({
+    showHeader: {
+        type: Boolean,
+        default: true
+    },
+    showMenu: {
+        type: Boolean,
+        default: true
+    }
+})
 
 const { t } = useI18n()
 const localePath = useLocalePath()
 
 const isMenuOpen = ref(false)
+const menuRef = ref<HTMLElement | null>(null)
+const closeButtonRef = ref<HTMLElement | null>(null)
+
+const { activate, deactivate } = useFocusTrap(menuRef)
 
 const toggleMenu = () => {
     isMenuOpen.value = !isMenuOpen.value
+    if (isMenuOpen.value) {
+        activate()
+        nextTick(() => {
+            closeButtonRef.value?.focus()
+        })
+    } else {
+        deactivate()
+    }
 }
 
 const closeMenu = () => {
     isMenuOpen.value = false
+    deactivate()
 }
 
-const menuRef = ref<HTMLElement | null>(null)
-const closeButtonRef = ref<HTMLElement | null>(null)
+// Cleanup
+onUnmounted(() => {
+    deactivate()
+})
 </script>
 
 <style scoped lang="scss">

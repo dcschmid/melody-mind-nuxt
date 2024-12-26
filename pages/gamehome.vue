@@ -14,13 +14,9 @@
                 <h2 id="categories-heading" class="visually-hidden">{{ $t('gameHome.categoriesTitle') }}</h2>
                 <div class="categories-grid" role="list">
                     <CategoryCard v-for="category in filteredCategories" :key="category.slug"
-                        :headline="category.headline" 
-                        :image-url="category.imageUrl"
-                        :category-url="localePath(category.categoryUrl)" 
-                        :is-playable="category.isPlayable"
-                        :intro-subline="category.introSubline"
-                        role="listitem"
-                        @select="navigateToCategory(category)" />
+                        :headline="category.headline" :image-url="category.imageUrl"
+                        :category-url="localePath(category.categoryUrl)" :is-playable="category.isPlayable"
+                        :intro-subline="category.introSubline" role="listitem" @select="navigateToCategory(category)" />
                 </div>
             </section>
         </main>
@@ -87,7 +83,7 @@ onMounted(() => {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
     padding: 2rem;
-    
+
     @media (prefers-reduced-motion: reduce) {
         * {
             transition: none !important;
