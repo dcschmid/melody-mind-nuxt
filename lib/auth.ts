@@ -1,6 +1,5 @@
 import { betterAuth } from "better-auth";
 import { LibsqlDialect } from "@libsql/kysely-libsql";
-import { username } from "better-auth/plugins";
 
 const dialect = new LibsqlDialect({
   url: process.env.NUXT_TURSO_DATABASE_URL || "",
@@ -57,9 +56,6 @@ export const auth = betterAuth({
       trustedProviders: ["discord", "github"]
     },
   },
-  plugins: [
-    username(),
-  ],
   socialProviders: {
     discord: {
       clientId: process.env.DISCORD_CLIENT_ID as string,
