@@ -1,14 +1,12 @@
-import { authClient } from "~/lib/auth-client";
-
 export const useGameScore = () => {
-  export async function saveGameScore(
+  const saveGameScore = async (
     category: string,
     difficulty: string,
     correctAnswers: number,
     totalQuestions: number,
     allCorrect: boolean,
     userId: string | null = null
-  ) {
+  ) => {
     try {
       const response = await fetch('/api/game/save-score', {
         method: 'POST',
@@ -38,5 +36,5 @@ export const useGameScore = () => {
 
   return {
     saveGameScore,
-  };
-};
+  }
+}
