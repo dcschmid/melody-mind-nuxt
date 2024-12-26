@@ -1,51 +1,42 @@
 import { authClient } from "~/lib/auth-client";
 
 export const useGameScore = () => {
-  const session = authClient.useSession();
-
-  const saveGameResult = async (category: string, points: number, earnedLP: string, language: string) => {
-    const userId = session.value?.data?.user?.id;
-    if (!userId) {
-      throw new Error("User not logged in");
-    }
-
+  export async function saveGameScore(
+    category: string,
+    difficulty: string,
+    correctAnswers: number,
+    totalQuestions: number,
+    allCorrect: boolean,
+    userId: string | null = null
+  ) {
     try {
-      await $fetch("/api/user/update-score", {
-        method: "POST",
-        body: {
-          userId,
-          pointsToAdd: points,
-          newLP: earnedLP,
+      const response = await fetch('/api/game/save-score', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
           category,
-          language,
-        },
-      });
+          difficulty,
+          correctAnswers,
+          totalQuestions,
+          allCorrect,
+          userId
+        }),
+      })
 
-      await $fetch("/api/highscore/category", {
-        method: "POST",
-        body: {
-          userId,
-          category,
-          score: points,
-          language: language,
-        },
-      });
+      if (!response.ok) {
+        throw new Error('Failed to save score')
+      }
 
-      await $fetch("/api/highscore/total", {
-        method: "POST",
-        body: {
-          userId,
-          score: points,
-          language: language,
-        },
-      });
+      return await response.json()
     } catch (error) {
-      console.error("Error saving game result:", error);
-      throw error;
+      console.error('Error saving game score:', error)
+      throw error
     }
-  };
+  }
 
   return {
-    saveGameResult,
+    saveGameScore,
   };
 };
