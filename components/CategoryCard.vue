@@ -87,17 +87,12 @@ defineEmits(['select'])
     overflow: hidden;
     transition: transform 0.3s ease;
 
-    &:hover, &:focus-within {
-        transform: translateY(-4px);
-
-        .category-description {
+    &:not(.not-playable):hover {
+        transform: scale(1.02);
+        
+        .category-content::after {
             opacity: 1;
         }
-    }
-
-    &.not-playable {
-        cursor: not-allowed;
-        opacity: 0.7;
     }
 }
 
@@ -126,6 +121,15 @@ defineEmits(['select'])
     position: relative;
     width: 100%;
     height: 100%;
+    
+    &:not(.coming-soon)::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
 
     &.coming-soon {
         cursor: not-allowed;
@@ -183,13 +187,20 @@ defineEmits(['select'])
 
 .coming-soon-badge {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: var(--color-primary);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
     color: white;
-    border-radius: var(--border-radius-sm);
-    font-weight: bold;
-    font-size: 0.875rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 10;
 }
 </style>
