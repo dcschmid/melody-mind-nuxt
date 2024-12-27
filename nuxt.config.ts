@@ -11,6 +11,12 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: "page" },
   },
+  runtimeConfig: {
+    turso: {
+      databaseUrl: "",
+      authToken: "",
+    },
+  },
   nitro: {
     routeRules: {
       "/health": {
@@ -22,9 +28,6 @@ export default defineNuxtConfig({
   },
   css: ["~/assets/scss/main.scss"],
   modules: ["nuxt-icon", "@nuxtjs/i18n", "nuxt-og-image"],
-  runtimeConfig: {
-    public: {},
-  },
   i18n: {
     strategy: "prefix",
     defaultLocale: "de",
