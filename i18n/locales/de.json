@@ -125,7 +125,7 @@
     "timeLeft": "Verbleibende Zeit",
     "score": "Punktzahl",
     "correct": "Richtig!",
-    "wrong": "Falsch!",
+    "wrong": "Leider falsch!",
     "timeUp": "Zeit abgelaufen!",
     "next": "Weiter",
     "nextQuestion": "Nächste Frage",
@@ -190,13 +190,18 @@
       "confidence": "Sicherheit"
     },
     "audienceOpinion": "Publikumsmeinung",
-    "correctAnswer": "Richtige Antwort",
+    "correctAnswer": "Die richtige Antwort ist:",
     "didYouKnow": "Wusstest du schon?",
     "audio": {
       "play": "Musik abspielen",
       "pause": "Musik pausieren",
-      "progress": "Wiedergabefortschritt",
-      "noAudio": "Keine Audiowiedergabe verfügbar"
+      "progress": "Wiedergabe-Fortschritt"
+    },
+    "links": {
+      "listen_on": "Anhören auf",
+      "spotify": "Auf Spotify anhören",
+      "apple": "Auf Apple Music anhören",
+      "deezer": "Auf Deezer anhören"
     },
     "album": {
       "artist": "Künstler",

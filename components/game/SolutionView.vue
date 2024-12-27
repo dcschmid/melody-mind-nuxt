@@ -47,6 +47,35 @@
                         <h3 id="album-title" class="artist">{{ artist.artist }}</h3>
                         <p class="album">{{ artist.album }}</p>
                         <p class="year">{{ artist.year }}</p>
+                        <div class="music-links"
+                            v-if="artist.spotify_link || artist.apple_music_link || artist.deezer_link"
+                            role="region"
+                            :aria-label="t('game.links.listen_on')">
+                            <h4 class="music-links-title" id="streaming-services-title">
+                                {{ t('game.links.listen_on') }}
+                                <Icon name="material-symbols:headphones" aria-hidden="true" />
+                            </h4>
+                            <div class="music-links-container" role="list" aria-labelledby="streaming-services-title">
+                                <a v-if="artist.spotify_link" :href="artist.spotify_link" target="_blank"
+                                    rel="noopener noreferrer" class="music-link spotify" :aria-label="t('game.links.spotify')"
+                                    role="listitem">
+                                    <Icon name="mdi:spotify" size="24" aria-hidden="true" />
+                                    <span class="visually-hidden">{{ t('game.links.spotify') }}</span>
+                                </a>
+                                <a v-if="artist.apple_music_link" :href="artist.apple_music_link" target="_blank"
+                                    rel="noopener noreferrer" class="music-link apple" :aria-label="t('game.links.apple')"
+                                    role="listitem">
+                                    <Icon name="mdi:apple" size="24" aria-hidden="true" />
+                                    <span class="visually-hidden">{{ t('game.links.apple') }}</span>
+                                </a>
+                                <a v-if="artist.deezer_link" :href="artist.deezer_link" target="_blank"
+                                    rel="noopener noreferrer" class="music-link deezer" :aria-label="t('game.links.deezer')"
+                                    role="listitem">
+                                    <Icon name="simple-icons:deezer" size="24" aria-hidden="true" />
+                                    <span class="visually-hidden">{{ t('game.links.deezer') }}</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </article>
@@ -89,6 +118,9 @@ interface Props {
         year: string
         preview_link?: string
         trivia?: string
+        spotify_link?: string
+        apple_music_link?: string
+        deezer_link?: string
     } | null
     isPlaying: boolean
     audioLoaded: boolean
@@ -285,6 +317,66 @@ onMounted(() => {
                         color: var(--text-tertiary);
                         margin: 0;
                     }
+
+                    .music-links {
+                        display: flex;
+                        flex-direction: column;
+                        gap: var(--padding-small);
+                        margin-top: var(--padding-small);
+
+                        .music-links-title {
+                            font-size: clamp(1rem, 2vw, 1.25rem);
+                            color: var(--text-secondary);
+                            margin-bottom: var(--padding-small);
+                            display: flex;
+                            align-items: center;
+                            gap: var(--padding-small);
+                        }
+
+                        .music-links-container {
+                            display: flex;
+                            gap: var(--padding-small);
+                        }
+
+                        .music-link {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 36px;
+                            height: 36px;
+                            border-radius: 50%;
+                            background: var(--surface-color-light);
+                            color: var(--text-secondary);
+                            transition: all 0.2s ease;
+                            position: relative;
+
+                            &:hover, &:focus {
+                                transform: scale(1.1);
+                                outline: 2px solid var(--color-primary);
+                                outline-offset: 2px;
+                            }
+
+                            &:focus-visible {
+                                outline: 3px solid var(--color-primary);
+                                outline-offset: 2px;
+                            }
+
+                            &.spotify:hover, &.spotify:focus {
+                                background: #1DB954;
+                                color: white;
+                            }
+
+                            &.apple:hover, &.apple:focus {
+                                background: #FA243C;
+                                color: white;
+                            }
+
+                            &.deezer:hover, &.deezer:focus {
+                                background: #FF0092;
+                                color: white;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -342,6 +434,18 @@ onMounted(() => {
             transform: translateY(1px);
         }
     }
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 @keyframes pulse {

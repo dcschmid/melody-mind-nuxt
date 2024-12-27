@@ -160,9 +160,15 @@
     "correctAnswer": "Risposta Corretta",
     "didYouKnow": "Lo sapevi?",
     "audio": {
-      "play": "Riproduci",
-      "pause": "Pausa",
-      "noAudio": "Audio non disponibile"
+      "play": "Riproduci musica",
+      "pause": "Metti in pausa",
+      "progress": "Avanzamento riproduzione"
+    },
+    "links": {
+      "listen_on": "Ascolta su",
+      "spotify": "Ascolta su Spotify",
+      "apple": "Ascolta su Apple Music",
+      "deezer": "Ascolta su Deezer"
     },
     "album": {
       "artist": "Artista",

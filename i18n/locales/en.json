@@ -160,18 +160,21 @@
     "correctAnswer": "Correct Answer",
     "didYouKnow": "Did you know?",
     "audio": {
-      "play": "Play",
-      "pause": "Pause",
-      "noAudio": "No audio available"
+      "play": "Play music",
+      "pause": "Pause music",
+      "progress": "Playback progress"
     },
     "album": {
       "artist": "Artist",
       "year": "Year"
     },
     "streaming": {
-      "spotify": "Listen on Spotify",
-      "apple": "Listen on Apple Music",
-      "deezer": "Listen on Deezer"
+      "links": {
+        "listen_on": "Listen on",
+        "spotify": "Listen on Spotify",
+        "apple": "Listen on Apple Music",
+        "deezer": "Listen on Deezer"
+      }
     },
     "round": "Round {current} of {max}",
     "points_label": "Points",
