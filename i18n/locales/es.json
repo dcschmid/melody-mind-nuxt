@@ -17,6 +17,9 @@
         "about": {
             "title": "Sobre Melody Mind",
             "description": "Pon a prueba tus conocimientos musicales en diferentes categorías"
+        },
+        "seo": {
+            "description": "Pon a prueba tus conocimientos musicales en varias categorías. Un emocionante juego de preguntas para amantes de la música de todos los géneros."
         }
     },
     "intro": "¡Sumérgete en el fascinante mundo de la música! En Melody Mind, pon a prueba tus conocimientos musicales en emocionantes rondas de preguntas. Responde preguntas sobre canciones de diferentes décadas, artistas, álbumes e historia de la música. Acumula puntos, gana discos de oro y desafía a otros entusiastas de la música. Desde rock hasta pop, hip-hop y clásica - pon a prueba tus conocimientos en tus géneros favoritos. ¡Comienza tu aventura musical ahora!",
@@ -536,5 +539,10 @@
                 }
             }
         }
+    },
+    "username": {
+        "title": "¿Cómo te llamas?",
+        "placeholder": "Ingresa tu nombre",
+        "submit": "Guardar"
     }
 }

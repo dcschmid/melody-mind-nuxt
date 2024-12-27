@@ -17,6 +17,9 @@
     "about": {
       "title": "Über Melody Mind",
       "description": "Teste dein Musikwissen in verschiedenen Kategorien"
+    },
+    "seo": {
+      "description": "Teste dein Musikwissen in verschiedenen Kategorien. Ein spannendes Quiz-Spiel für Musikliebhaber aller Genres. Melody Mind ist das ultimative Musik-Quiz für dich!"
     }
   },
   "intro": "Tauche ein in die faszinierende Welt der Musik! Bei Melody Mind stellst du dein Musikwissen in spannenden Quiz-Runden unter Beweis. Beantworte Fragen zu Songs aus verschiedenen Jahrzehnten, zu Künstlern, Alben und Musikgeschichte. Sammle Punkte, verdiene dir goldene Schallplatten und fordere andere Musikbegeisterte heraus. Von Rock über Pop bis Hip-Hop und Klassik - teste dein Wissen in deinen Lieblingsgenres. Starte jetzt dein musikalisches Quiz-Abenteuer!",
@@ -137,20 +140,20 @@
       "share": {
         "title": "Teile dein Ergebnis",
         "buttons": {
-          "twitter": "Auf Twitter teilen 🐦",
-          "telegram": "Auf Telegram teilen 📱",
-          "reddit": "Auf Reddit teilen 📚",
-          "whatsapp": "Auf WhatsApp teilen 📱",
-          "share": "Teilen 🤩"
+          "twitter": "Auf Twitter teilen ",
+          "telegram": "Auf Telegram teilen ",
+          "reddit": "Auf Reddit teilen ",
+          "whatsapp": "Auf WhatsApp teilen ",
+          "share": "Teilen "
         },
         "message": {
-          "intro": "🎮 Ich habe {points} Punkte in Melody Mind erreicht!",
+          "intro": " Ich habe {points} Punkte in Melody Mind erreicht!",
           "genre": "Genre: {genre}",
           "perfect": "Perfekte Runde mit einer Goldenen LP in {difficulty} Schwierigkeit!",
           "silver": "Silberne LP in {difficulty} Schwierigkeit gewonnen!",
           "bronze": "Bronzene LP in {difficulty} Schwierigkeit gewonnen!",
-          "stats": "🎯 {correct} von {total} Fragen richtig beantwortet!",
-          "challenge": "🎵 Fordere mich heraus: {url}",
+          "stats": "{correct} von {total} Fragen richtig beantwortet!",
+          "challenge": " Fordere mich heraus: {url}",
           "difficulty": {
             "easy": "leichter",
             "medium": "mittlerer",
@@ -210,13 +213,13 @@
       "backToMenu": "Zurück zum Hauptmenü",
       "share": {
         "message": {
-          "intro": "🎮 Ich habe {points} Punkte bei Melody Mind erreicht!",
+          "intro": " Ich habe {points} Punkte bei Melody Mind erreicht!",
           "genre": "Genre: {genre}",
           "perfect": "Perfekte Runde mit einer Goldenen LP in {difficulty} Schwierigkeit!",
           "silver": "Silberne LP in {difficulty} Schwierigkeit gewonnen!",
           "bronze": "Bronzene LP in {difficulty} Schwierigkeit gewonnen!",
-          "stats": "🎯 {correct} von {total} Fragen richtig beantwortet!",
-          "challenge": "🎵 Fordere mich heraus: {url}",
+          "stats": "{correct} von {total} Fragen richtig beantwortet!",
+          "challenge": " Fordere mich heraus: {url}",
           "difficulty": {
             "easy": "leichter",
             "medium": "mittlerer",
@@ -570,5 +573,10 @@
         "jurisdiction": "Erfüllungsort und ausschließlicher Gerichtsstand für alle Streitigkeiten ist Deutschland, soweit gesetzlich zulässig."
       }
     }
+  },
+  "username": {
+    "title": "Wie ist dein Name?",
+    "placeholder": "Gib deinen Namen ein",
+    "submit": "Speichern"
   }
 }

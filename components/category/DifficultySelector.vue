@@ -31,23 +31,25 @@ const getDifficultyPath = (difficulty: string) => {
     gap: var(--padding-medium);
     place-items: center;
     width: 100%;
+    padding: 0 var(--padding-medium);
 }
 
 .buttonHeadline {
     font-size: var(--header-font-size);
     font-weight: 700;
     color: var(--text-color);
+    text-align: center;
 }
 
 .buttonGroup {
     display: flex;
-    gap: clamp(var(--padding-small), 2vw, var(--padding-medium));
     flex-wrap: wrap;
-    justify-content: center;
+    gap: var(--padding-medium);
     width: 100%;
-    max-width: min(100%, 900px);
+    max-width: 900px;
     margin: 0 auto;
     padding: var(--padding-medium) 0;
+    justify-content: center;
 
     .button {
         background: var(--highlight-color);
@@ -62,9 +64,11 @@ const getDifficultyPath = (difficulty: string) => {
         min-height: var(--min-touch-target);
         transition: all var(--transition-speed);
         box-shadow: var(--box-shadow);
-        flex: 1;
-        min-width: clamp(200px, 25%, 300px);
         justify-content: center;
+        text-align: center;
+        flex: 1;
+        min-width: 200px;
+        max-width: 300px;
 
         &:hover {
             background: var(--button-hover-color);
@@ -73,20 +77,6 @@ const getDifficultyPath = (difficulty: string) => {
 
         &:active {
             transform: translateY(0);
-        }
-    }
-}
-
-@media (width <=767px) {
-    .buttonGroup {
-        flex-direction: column;
-        padding: var(--padding-small) 0;
-        max-width: 350px;
-
-        .button {
-            width: 100%;
-            min-width: 100%;
-            padding: var(--padding-medium) var(--padding-medium);
         }
     }
 }

@@ -27,21 +27,32 @@
 import { computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
+
+
 const router = useRouter()
 
 const { searchQuery, filteredCategories, loadCategories } = useCategories()
 const { locale, t } = useI18n()
 const localePath = useLocalePath()
 
-useHead({
+useSeoMeta({
     title: computed(() => t('gameHome.title')),
-    meta: [
-        { name: 'description', content: computed(() => t('gameHome.description')) },
-        { property: 'og:title', content: computed(() => t('gameHome.title')) },
-        { property: 'og:description', content: computed(() => t('gameHome.description')) },
-        { name: 'robots', content: 'index, follow' }
-    ]
+    ogTitle: computed(() => t('gameHome.title')),
+    description: computed(() => t('gameHome.description')),
+    ogDescription: computed(() => t('gameHome.description')),
+    ogType: 'website',
+    robots: 'index, follow',
+    viewport: 'width=device-width, initial-scale=1',
+    twitterCard: 'summary_large_image',
 })
+
+defineOgImageComponent('NuxtSeo', {
+    title: computed(() => t('gameHome.title')),
+    description: computed(() => t('gameHome.description')),
+    theme: '#4F46E5',
+    colorMode: 'dark',
+    layout: 'default'
+});
 
 const navigateToCategory = (category) => {
     if (category.isPlayable) {

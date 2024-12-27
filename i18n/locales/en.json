@@ -17,6 +17,9 @@
     "about": {
       "title": "About Melody Mind",
       "description": "Test your music knowledge in various categories"
+    },
+    "seo": {
+      "description": "Test your music knowledge in various categories. An exciting quiz game for music lovers of all genres."
     }
   },
   "intro": "Dive into the fascinating world of music! At Melody Mind, put your music knowledge to the test in exciting quiz rounds. Answer questions about songs from different decades, artists, albums, and music history. Collect points, earn golden records, and challenge other music enthusiasts. From rock to pop to hip-hop and classical - test your knowledge in your favorite genres. Start your musical quiz adventure now!",
@@ -533,5 +536,10 @@
         "jurisdiction": "Place of fulfillment and exclusive place of jurisdiction for all disputes is Germany, as far as legally permissible."
       }
     }
+  },
+  "username": {
+    "title": "What's your name?",
+    "placeholder": "Enter your name",
+    "submit": "Save"
   }
 }

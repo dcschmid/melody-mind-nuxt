@@ -17,6 +17,9 @@
     "about": {
       "title": "Informazioni su Melody Mind",
       "description": "Metti alla prova le tue conoscenze musicali in diverse categorie"
+    },
+    "seo": {
+      "description": "Metti alla prova le tue conoscenze musicali in diverse categorie. Un emozionante gioco a quiz per gli amanti della musica di tutti i generi."
     }
   },
   "intro": "Immergiti nell'affascinante mondo della musica! In Melody Mind, metti alla prova le tue conoscenze musicali in emozionanti quiz. Rispondi a domande su canzoni di diversi decenni, artisti, album e storia della musica. Accumula punti, vinci dischi d'oro e sfida altri appassionati di musica. Dal rock al pop, dall'hip-hop al classico - metti alla prova le tue conoscenze nei tuoi generi preferiti. Inizia la tua avventura musicale ora!",
@@ -533,5 +536,10 @@
         "jurisdiction": "Il luogo di adempimento e foro competente esclusivo per tutte le controversie è la Germania, nella misura consentita dalla legge."
       }
     }
+  },
+  "username": {
+    "title": "Come ti chiami?",
+    "placeholder": "Inserisci il tuo nome",
+    "submit": "Salva"
   }
 }

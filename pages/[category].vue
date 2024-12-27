@@ -9,7 +9,8 @@
 
                 <p class="text">{{ currentCategory.text }}</p>
 
-                <CategoryDifficultySelector :categorySlug="currentCategory.slug" />
+                <UsernameInput ref="usernameInput" v-if="!hasUsername" @username-set="onUsernameSet" />
+                <CategoryDifficultySelector v-if="hasUsername" :categorySlug="currentCategory.slug" />
             </article>
         </div>
     </NuxtLayout>
@@ -29,6 +30,8 @@ interface Category {
 }
 
 const categories = ref<Category[]>([])
+const usernameInput = ref(null)
+const hasUsername = ref(false)
 
 const loadCategories = async () => {
     const cacheKey = `categories_${locale.value}`
@@ -111,7 +114,15 @@ useHead(() => ({
     ]
 }))
 
+const onUsernameSet = () => {
+    hasUsername.value = true
+}
+
 onMounted(() => {
+    const storedUsername = localStorage.getItem('username')
+    if (storedUsername) {
+        hasUsername.value = true
+    }
     loadCategories()
 })
 </script>

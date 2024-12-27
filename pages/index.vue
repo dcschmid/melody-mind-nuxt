@@ -16,20 +16,27 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 // SEO Meta Tags
 useSeoMeta({
-    title: 'MelodyMind - Das ultimative Musik-Quiz',
-    description: 'Teste dein Musikwissen in verschiedenen Kategorien. Ein spannendes Quiz-Spiel für Musikliebhaber aller Genres.',
-    ogTitle: 'MelodyMind - Das ultimative Musik-Quiz',
-    ogDescription: 'Teste dein Musikwissen in verschiedenen Kategorien. Ein spannendes Quiz-Spiel für Musikliebhaber aller Genres.',
+    title: computed(() => t('welcome.title')),
+    description: computed(() => t('welcome.seo.description')),
+    ogTitle: computed(() => t('welcome.title')),
+    ogDescription: computed(() => t('welcome.seo.description')),
+    ogType: 'website',
+    robots: 'index, follow',
+    viewport: 'width=device-width, initial-scale=1',
     twitterCard: 'summary_large_image',
 });
 
 // Define OG Image
 defineOgImageComponent('NuxtSeo', {
-    title: 'MelodyMind',
-    description: 'Das ultimative Musik-Quiz für echte Musikliebhaber',
-    theme: '#4F46E5', // Indigo Farbe, passend zu einem modernen Musik-Theme
+    title: computed(() => t('welcome.title')),
+    description: computed(() => t('welcome.seo.description')),
+    theme: '#4F46E5',
     colorMode: 'dark',
     layout: 'default'
 });
