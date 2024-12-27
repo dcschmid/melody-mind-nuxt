@@ -1,25 +1,29 @@
 export const useGameScore = () => {
   const saveGameScore = async (
     category: string,
+    points: number,
+    reward: "gold" | "silver" | "bronze" | "none",
+    language: string,
     difficulty: string,
-    correctAnswers: number,
-    totalQuestions: number,
-    allCorrect: boolean,
-    userId: string | null = null
   ) => {
     try {
-      const response = await fetch('/api/game/save-score', {
+      const storedUsername = localStorage.getItem('username')
+      const username = storedUsername || 'anonymous'
+
+      const response = await fetch('/api/highscores', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          username,
+          points,
           category,
           difficulty,
-          correctAnswers,
-          totalQuestions,
-          allCorrect,
-          userId
+          language,
+          goldLP: reward === 'gold',
+          silverLP: reward === 'silver',
+          bronzeLP: reward === 'bronze'
         }),
       })
 

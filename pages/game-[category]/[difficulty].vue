@@ -30,16 +30,17 @@
                 </div>
                 <!-- Game Over Screen -->
                 <GameOverScreen v-else :total-points="totalPoints" :correct-answers="correctAnswers"
-                    :max-questions="maxQuestions" :earned-record="earnedRecord !== 'none'" :record-icon="recordIcon"
-                    :record-class="recordClass" :result-message="resultMessage" :key="'gameover'" />
+                    :max-questions="maxQuestions" :earned-record="currentReward !== 'none'" :record-icon="recordIcon"
+                    :record-class="recordClass" :result-message="currentResultMessage" :key="'gameover'" />
             </Transition>
         </main>
     </NuxtLayout>
 </template>
 
 <script setup lang="ts">
-import { watch, nextTick } from 'vue'
+import { watch, nextTick, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import GameOverScreen from '~/components/game/GameOverScreen.vue';
 
 // Initialize core utilities
 const route = useRoute()
@@ -63,21 +64,11 @@ const gameState = useGameState(questions.maxQuestions.value)  // Game state trac
 const { points } = gameState
 const artist = useArtist()                             // Artist/music info handling
 const timeBonus = useTimeBonus()                       // Time-based bonus system
-
-// Game rewards and achievements
-const gameRewards = useGameRewards({
-    allQuestionsCorrect: gameState.allQuestionsCorrect,
-    correctAnswers: gameState.correctAnswers,
-    maxQuestions: questions.maxQuestions
-})
+const gameScore = useGameScore()
+const { resultMessage, earnedRecord, calculateReward, getResultMessage, saveGameResults } = useGameResults()
 
 // Audio playback management
 const gameAudio = useGameAudio()
-
-// Results and scoring system
-const gameResults = useGameResults({
-    thresholds: { gold: 1, silver: 0.75, bronze: 0.5 }
-})
 
 // Social sharing functionality
 const sharing = useShare({ currentCategoryData, category, difficulty })
@@ -144,24 +135,56 @@ onMounted(() => {
 watch(() => artist.currentArtist.value, gameAudio.handleArtistChange)
 
 // Monitor game completion
-watch(() => questions.usedQuestions.value.length, (newLength) => {
+watch(() => questions.usedQuestions.value.length, async (newLength) => {
     if (newLength > questions.maxQuestions.value) {
-        gameState.finishGame()
         // Save final game results
-        gameResults.saveGameResults(
+        await saveGameResults(
             category,
             gameState.totalPoints.value,
             gameState.correctAnswers.value,
             questions.maxQuestions.value,
             gameState.allQuestionsCorrect.value,
-            null
+            difficulty,
         )
+        // Set game as finished to show end screen
+        gameState.finishGame()
     }
 })
 
 // Cleanup audio when leaving page
 onBeforeRouteLeave(() => {
     gameAudio.cleanup()
+})
+
+// --- Computed Properties for Game Over Screen ---
+const currentReward = computed(() => {
+    return calculateReward(
+        gameState.correctAnswers.value,
+        questions.maxQuestions.value,
+        gameState.allQuestionsCorrect.value
+    )
+})
+
+const currentResultMessage = computed(() => {
+    const reward = calculateReward(
+        gameState.correctAnswers.value,
+        questions.maxQuestions.value,
+        gameState.allQuestionsCorrect.value
+    )
+    return getResultMessage(reward)
+})
+
+const recordIcon = computed(() => {
+    switch (currentReward.value) {
+        case 'gold': return 'material-symbols:workspace-premium'
+        case 'silver': return 'material-symbols:stars'
+        case 'bronze': return 'material-symbols:military-tech'
+        default: return ''
+    }
+})
+
+const recordClass = computed(() => {
+    return currentReward.value !== 'none' ? 'new-record' : ''
 })
 
 // --- Template Exports ---
@@ -207,10 +230,6 @@ const {
 } = gameAudio
 
 const { currentArtist } = artist  // Current artist information
-
-// Rewards and sharing exports
-const { recordIcon, recordClass } = gameRewards          // Achievement indicators
-const { resultMessage, earnedRecord } = gameResults      // Game results
 </script>
 
 <style lang="scss" scoped>

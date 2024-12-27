@@ -74,7 +74,10 @@
 import { ref, onMounted } from 'vue'
 
 const { t } = useI18n()
+const route = useRoute()
 const localePath = useLocalePath()
+const { locale } = useI18n()
+const { saveGameResults } = useGameResults()
 
 const props = defineProps<{
     totalPoints: number
@@ -90,34 +93,84 @@ const isMobile = ref(false)
 const canShare = ref(false)
 const isWhatsAppSupported = ref(false)
 
-onMounted(() => {
-    // Prüfe ob es ein mobiles Gerät ist
-    isMobile.value = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-    
-    // Prüfe ob der Browser die Web Share API unterstützt
-    canShare.value = !!navigator?.share
-    
-    // Prüfe ob WhatsApp installiert ist (nur auf Mobilgeräten möglich)
-    if (isMobile.value) {
-        isWhatsAppSupported.value = true // Wir nehmen an, dass WhatsApp auf Mobilgeräten verfügbar ist
+// Hole den Username aus dem LocalStorage
+const username = localStorage.getItem('username')
+const category = route.params.category as string
+const difficulty = route.params.difficulty as string
+
+// Bestimme die LPs basierend auf den Punkten und der Schwierigkeit
+const determineRecords = () => {
+    const percentage = (props.correctAnswers / props.maxQuestions) * 100
+    return {
+        goldLP: percentage >= 90,
+        silverLP: percentage >= 75 && percentage < 90,
+        bronzeLP: percentage >= 60 && percentage < 75
     }
+}
+
+// Speichere das Ergebnis in der Datenbank
+const saveScore = async () => {
+    if (!username) return
+
+    const { goldLP, silverLP, bronzeLP } = determineRecords()
+
+    // Zuerst das Ergebnis mit der bestehenden Logik speichern
+    await saveGameResults(
+        category,
+        props.totalPoints,
+        props.correctAnswers,
+        props.maxQuestions,
+        props.correctAnswers === props.maxQuestions,
+        difficulty
+    )
+
+    // Dann in Turso speichern
+    try {
+        await $fetch('/api/highscores', {
+            method: 'POST',
+            body: {
+                username,
+                points: props.totalPoints,
+                category,
+                difficulty,
+                language: locale.value,
+                goldLP,
+                silverLP,
+                bronzeLP
+            }
+        })
+    } catch (error) {
+        console.error('Failed to save score:', error)
+    }
+}
+
+onMounted(() => {
+    // Mobile und Share API Checks
+    isMobile.value = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+    canShare.value = !!navigator?.share
+    if (isMobile.value) {
+        isWhatsAppSupported.value = true
+    }
+
+    // Score speichern
+    saveScore()
 })
 
 const getShareText = () => {
     let text = t('game.results.share.message.intro', {
         points: props.totalPoints
     })
-    
+
     text += ' ' + t('game.results.share.message.stats', {
         correct: props.correctAnswers,
         total: props.maxQuestions
     })
-    
+
     // Füge die Challenge-URL hinzu
     text += ' ' + t('game.results.share.message.challenge', {
         url: window.location.href
     })
-    
+
     return text
 }
 

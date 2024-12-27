@@ -41,7 +41,7 @@ export const useGameResults = (
   }
 ) => {
   const { locale } = useI18n();
-  const { saveGameResult } = useGameScore();
+  const { saveGameScore } = useGameScore();
   const resultMessage = ref("");
   const earnedRecord = ref<RewardType>("none");
 
@@ -99,12 +99,6 @@ export const useGameResults = (
 
   /**
    * Saves game results and sets appropriate reward message
-   * @param category Game category
-   * @param totalPoints Total points earned
-   * @param correctAnswers Number of correct answers
-   * @param maxQuestions Total number of questions
-   * @param allQuestionsCorrect Whether all questions were answered correctly
-   * @param userId User ID for saving results
    */
   const saveGameResults = async (
     category: string,
@@ -112,26 +106,30 @@ export const useGameResults = (
     correctAnswers: number,
     maxQuestions: number,
     allQuestionsCorrect: boolean,
-    userId?: string
+    difficulty: string,
   ) => {
-    if (!userId) return;
-
     try {
       const reward = calculateReward(correctAnswers, maxQuestions, allQuestionsCorrect);
       resultMessage.value = getRandomMessage(messageMap[reward]);
       earnedRecord.value = reward;
 
       if (reward !== "none") {
-        await saveGameResult(category, totalPoints, reward, locale.value);
+        await saveGameScore(category, totalPoints, reward, locale.value, difficulty);
       }
     } catch (error) {
       console.error("Error saving game results:", error);
     }
   };
 
+  const getResultMessage = (reward: RewardType) => {
+    return getRandomMessage(messageMap[reward]);
+  };
+
   return {
     resultMessage,
     earnedRecord,
     saveGameResults,
+    calculateReward,
+    getResultMessage,
   };
 };
