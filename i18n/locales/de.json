@@ -457,6 +457,15 @@
     "name": "Name",
     "points": "Punkte"
   },
+  "highscores": {
+    "title": "Highscores",
+    "searchPlaceholder": "Nach Kategorie suchen...",
+    "rank": "Rang",
+    "player": "Spieler",
+    "difficulty": "Schwierigkeit",
+    "points": "Punkte",
+    "noResults": "Keine Ergebnisse gefunden"
+  },
   "common": {
     "loading": "Wird geladen..."
   },
@@ -583,5 +592,10 @@
     "title": "Wie ist dein Name?",
     "placeholder": "Gib deinen Namen ein",
     "submit": "Speichern"
+  },
+  "difficulty": {
+    "easy": "Leicht",
+    "medium": "Mittel",
+    "hard": "Schwer"
   }
 }

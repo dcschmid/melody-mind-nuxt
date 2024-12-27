@@ -421,6 +421,15 @@
     "name": "Nome",
     "points": "Punti"
   },
+  "highscores": {
+    "title": "Punteggi migliori",
+    "searchPlaceholder": "Cerca per categoria...",
+    "rank": "Posizione",
+    "player": "Giocatore",
+    "difficulty": "Difficoltà",
+    "points": "Punti",
+    "noResults": "Nessun risultato trovato"
+  },
   "common": {
     "loading": "Caricamento..."
   },
@@ -547,5 +556,10 @@
     "title": "Come ti chiami?",
     "placeholder": "Inserisci il tuo nome",
     "submit": "Salva"
+  },
+  "difficulty": {
+    "easy": "Facile",
+    "medium": "Medio",
+    "hard": "Difficile"
   }
 }

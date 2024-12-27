@@ -421,6 +421,15 @@
     "name": "Nom",
     "points": "Points"
   },
+  "highscores": {
+    "title": "Meilleurs scores",
+    "searchPlaceholder": "Rechercher par catégorie...",
+    "rank": "Rang",
+    "player": "Joueur",
+    "difficulty": "Difficulté",
+    "points": "Points",
+    "noResults": "Aucun résultat trouvé"
+  },
   "common": {
     "loading": "Chargement..."
   },
@@ -676,5 +685,10 @@
         "jurisdiction": "Le lieu d'exécution et de juridiction exclusive pour tous les litiges est l'Allemagne, dans la mesure où la loi le permet."
       }
     }
+  },
+  "difficulty": {
+    "easy": "Facile",
+    "medium": "Moyen",
+    "hard": "Difficile"
   }
 }

@@ -425,6 +425,15 @@
         "name": "Nombre",
         "points": "Puntos"
     },
+    "highscores": {
+        "title": "Puntuaciones",
+        "searchPlaceholder": "Buscar por categoría...",
+        "rank": "Posición",
+        "player": "Jugador",
+        "difficulty": "Dificultad",
+        "points": "Puntos",
+        "noResults": "No se encontraron resultados"
+    },
     "common": {
         "loading": "Cargando..."
     },
@@ -551,5 +560,10 @@
         "title": "¿Cómo te llamas?",
         "placeholder": "Ingresa tu nombre",
         "submit": "Guardar"
+    },
+    "difficulty": {
+        "easy": "Fácil",
+        "medium": "Medio",
+        "hard": "Difícil"
     }
 }
