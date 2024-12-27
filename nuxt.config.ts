@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/scss/main.scss"],
-  modules: ["@nuxt/icon", "@nuxtjs/i18n", "nuxt-og-image"],
+  modules: ["nuxt-icon", "@nuxtjs/i18n", "nuxt-og-image"],
   runtimeConfig: {
     public: {},
   },
