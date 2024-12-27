@@ -1,22 +1,22 @@
 <template>
     <div class="layout">
-        <a href="#main-content" class="skip-link">{{ $t('accessibility.skipToMain') }}</a>
+        <a href="#main-content" class="skip-link">{{ t('accessibility.skipToMain') }}</a>
 
         <header v-if="showHeader" role="banner">
-            <LanguagePicker />
+            <LanguagePicker v-if="showMenu" />
 
-            <nav v-if="showMenu" :aria-label="$t('navigation.mainNavLabel')">
+            <nav v-if="showMenu" :aria-label="t('navigation.mainNavLabel')">
                 <button class="menu-button" :class="{ 'is-active': isMenuOpen }"
-                    :aria-label="isMenuOpen ? $t('accessibility.closeMenu') : $t('navigation.openMenu')"
+                    :aria-label="isMenuOpen ? t('accessibility.closeMenu') : t('navigation.openMenu')"
                     :aria-expanded="isMenuOpen" aria-controls="menu" @click="toggleMenu">
                     <span class="menu-button-line"></span>
                 </button>
             </nav>
         </header>
 
-        <div id="menu" class="menu" :class="{ 'is-open': isMenuOpen }" @keydown.esc="closeMenu" tabindex="-1"
-            role="dialog" aria-modal="true" :aria-label="$t('navigation.mainMenu')" ref="menuRef">
-            <button class="close-button" :aria-label="$t('accessibility.closeMenu')" @click="closeMenu"
+        <div id="menu" v-if="showMenu" class="menu" :class="{ 'is-open': isMenuOpen }" @keydown.esc="closeMenu"
+            tabindex="-1" role="dialog" aria-modal="true" :aria-label="t('navigation.mainMenu')" ref="menuRef">
+            <button class="close-button" :aria-label="t('accessibility.closeMenu')" @click="closeMenu"
                 ref="closeButtonRef">
                 <Icon name="material-symbols:close" size="48" />
             </button>
@@ -26,21 +26,21 @@
                 <div class="menu-section">
                     <NuxtLink :to="localePath('gamehome')" class="menu-item">
                         <Icon name="material-symbols:home-outline" size="36" />
-                        <span>{{ $t('navigation.home') }}</span>
+                        <span>{{ t('navigation.home') }}</span>
                     </NuxtLink>
                     <NuxtLink :to="localePath('gamerules')" class="menu-item">
                         <Icon name="fluent:question-32-filled" size="36" />
-                        <span>{{ $t('navigation.rules') }}</span>
+                        <span>{{ t('navigation.rules') }}</span>
                     </NuxtLink>
                     <NuxtLink :to="localePath('highscore')" class="menu-item">
                         <Icon name="material-symbols:trophy-outline" size="36" />
-                        <span>{{ $t('navigation.leaderboard') }}</span>
+                        <span>{{ t('navigation.leaderboard') }}</span>
                     </NuxtLink>
                 </div>
 
                 <!-- Spenden-Bereich -->
                 <div class="menu-section">
-                    <h2 class="section-title">{{ $t('navigation.support') }}</h2>
+                    <h2 class="section-title">{{ t('navigation.support') }}</h2>
                     <a href="https://www.paypal.me/dcschmid" target="_blank" rel="noopener" class="menu-item">
                         <Icon name="logos:paypal" size="36" />
                         <span>PayPal</span>
@@ -53,70 +53,71 @@
 
                 <!-- Rechtliches -->
                 <div class="menu-section">
-                    <h2 class="section-title">{{ $t('navigation.legal') }}</h2>
+                    <h2 class="section-title">{{ t('navigation.legal') }}</h2>
                     <NuxtLink :to="localePath('imprint')" class="menu-item">
                         <Icon name="material-symbols:info-outline" size="36" />
-                        <span>{{ $t('navigation.imprint') }}</span>
+                        <span>{{ t('navigation.imprint') }}</span>
                     </NuxtLink>
                     <NuxtLink :to="localePath('privacy')" class="menu-item">
                         <Icon name="material-symbols:privacy-tip-outline" size="36" />
-                        <span>{{ $t('navigation.privacy') }}</span>
+                        <span>{{ t('navigation.privacy') }}</span>
                     </NuxtLink>
                 </div>
             </div>
         </div>
 
-        <slot />
+        <main id="main-content" role="main">
+            <slot />
+        </main>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick } from 'vue'
+import { ref, onUnmounted, nextTick } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useLocalePath } from '#i18n'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 
-const props = defineProps({
-    showHeader: {
-        type: Boolean,
-        default: true
-    },
-    showMenu: {
-        type: Boolean,
-        default: true
-    }
+const { t } = useI18n();
+const localePath = useLocalePath();
+
+const { showHeader, showMenu } = defineProps({
+    showHeader: { type: Boolean, default: false },
+    showMenu: { type: Boolean, default: false },
 })
 
-const { t } = useI18n()
-const localePath = useLocalePath()
+const isMenuOpen = ref(false);
+const menuRef = ref<HTMLElement | null>(null);
+const closeButtonRef = ref<HTMLElement | null>(null);
 
-const isMenuOpen = ref(false)
-const menuRef = ref<HTMLElement | null>(null)
-const closeButtonRef = ref<HTMLElement | null>(null)
+const { activate, deactivate } = useFocusTrap(menuRef, {
+    immediate: false,
+    escapeDeactivates: true,
+    allowOutsideClick: true,
+    fallbackFocus: () => closeButtonRef.value as HTMLElement,
+});
 
-const { activate, deactivate } = useFocusTrap(menuRef)
-
-const toggleMenu = () => {
-    isMenuOpen.value = !isMenuOpen.value
+function toggleMenu() {
+    isMenuOpen.value = !isMenuOpen.value;
     if (isMenuOpen.value) {
-        activate()
         nextTick(() => {
-            closeButtonRef.value?.focus()
-        })
+            activate();
+            closeButtonRef.value?.focus();
+        });
     } else {
-        deactivate()
+        deactivate();
     }
 }
 
-const closeMenu = () => {
-    isMenuOpen.value = false
-    deactivate()
+function closeMenu() {
+    isMenuOpen.value = false;
+    deactivate();
 }
 
 // Cleanup
 onUnmounted(() => {
-    deactivate()
-})
+    deactivate();
+});
 </script>
 
 <style scoped lang="scss">

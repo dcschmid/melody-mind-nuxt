@@ -1,7 +1,7 @@
 <template>
     <NuxtLayout name="default" :show-header="true" :show-menu="true">
         <main class="gameHome" id="main-content">
-            <section class="intro" v-motion-slide-top>
+            <section class="intro">
                 <h1 tabindex="-1">{{ $t('gameHome.title') }}</h1>
                 <p class="intro-text" v-if="$t('gameHome.description')">{{ $t('gameHome.description') }}</p>
             </section>

@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: {
-    enabled: false,
+    enabled: true,
 
     timeline: {
       enabled: false,
@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/scss/main.scss"],
-  modules: ["@nuxt/icon", "@nuxtjs/i18n"],
+  modules: ["@nuxt/icon", "@nuxtjs/i18n", "nuxt-og-image"],
   runtimeConfig: {
     public: {},
   },
