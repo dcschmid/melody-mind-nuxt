@@ -425,6 +425,7 @@
     "player": "Player",
     "difficulty": "Difficulty",
     "points": "Points",
+    "lps": "LPs",
     "noResults": "No results found"
   },
   "common": {

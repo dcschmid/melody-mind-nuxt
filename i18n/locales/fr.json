@@ -428,6 +428,7 @@
     "player": "Joueur",
     "difficulty": "Difficulté",
     "points": "Points",
+    "lps": "PNs",
     "noResults": "Aucun résultat trouvé"
   },
   "common": {

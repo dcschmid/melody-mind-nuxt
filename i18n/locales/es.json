@@ -426,12 +426,12 @@
         "points": "Puntos"
     },
     "highscores": {
-        "title": "Puntuaciones",
+        "title": "Puntuaciones más altas",
         "searchPlaceholder": "Buscar por categoría...",
-        "rank": "Posición",
+        "rank": "Rango",
         "player": "Jugador",
-        "difficulty": "Dificultad",
         "points": "Puntos",
+        "lps": "PNs",
         "noResults": "No se encontraron resultados"
     },
     "common": {

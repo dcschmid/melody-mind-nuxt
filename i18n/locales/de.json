@@ -455,7 +455,8 @@
     "total": "Gesamtwertung",
     "avatar": "Avatar",
     "name": "Name",
-    "points": "Punkte"
+    "points": "Punkte",
+    "lps": "LPs"
   },
   "highscores": {
     "title": "Highscores",
@@ -464,6 +465,7 @@
     "player": "Spieler",
     "difficulty": "Schwierigkeit",
     "points": "Punkte",
+    "lps": "LPs",
     "noResults": "Keine Ergebnisse gefunden"
   },
   "common": {

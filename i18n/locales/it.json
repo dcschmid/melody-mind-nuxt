@@ -419,7 +419,8 @@
     "total": "Punteggio Totale",
     "avatar": "Avatar",
     "name": "Nome",
-    "points": "Punti"
+    "points": "Punti",
+    "lps": "PL"
   },
   "highscores": {
     "title": "Punteggi migliori",
@@ -428,6 +429,7 @@
     "player": "Giocatore",
     "difficulty": "Difficoltà",
     "points": "Punti",
+    "lps": "PL",
     "noResults": "Nessun risultato trovato"
   },
   "common": {
