@@ -466,6 +466,7 @@
     "difficulty": "Schwierigkeit",
     "points": "Punkte",
     "lps": "LPs",
+    "noScores": "Noch keine Einträge in der Bestenliste",
     "noResults": "Keine Ergebnisse gefunden"
   },
   "common": {

@@ -431,7 +431,8 @@
         "rank": "Rango",
         "player": "Jugador",
         "points": "Puntos",
-        "lps": "PNs",
+        "lps": "LPs",
+        "noScores": "Aún no hay entradas en la tabla de puntuaciones",
         "noResults": "No se encontraron resultados"
     },
     "common": {

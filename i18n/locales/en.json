@@ -426,7 +426,8 @@
     "difficulty": "Difficulty",
     "points": "Points",
     "lps": "LPs",
-    "noResults": "No results found"
+    "noResults": "No results found",
+    "noScores": "No entries in the highscores yet"
   },
   "common": {
     "loading": "Loading..."

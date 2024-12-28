@@ -429,7 +429,8 @@
     "difficulty": "Difficulté",
     "points": "Points",
     "lps": "PNs",
-    "noResults": "Aucun résultat trouvé"
+    "noResults": "Aucun résultat trouvé",
+    "noScores": "Pas encore d'entrées dans le tableau des scores"
   },
   "common": {
     "loading": "Chargement..."
