@@ -50,7 +50,7 @@ defineOgImageComponent('NuxtSeo', {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 1rem;
     background: var(--background-color);
     overflow: hidden;
     position: relative;
@@ -60,7 +60,6 @@ defineOgImageComponent('NuxtSeo', {
     text-align: center;
     max-width: 800px;
     width: 100%;
-    margin: var(--padding-small);
 }
 
 .language-picker-container {
@@ -109,19 +108,6 @@ defineOgImageComponent('NuxtSeo', {
 
     &:active {
         transform: translateY(0);
-    }
-}
-
-@include mobile {
-    .welcome-section {
-        padding: var(--padding-medium);
-        margin: calc(var(--padding-small) / 2);
-    }
-}
-
-@include tablet {
-    .welcome-section {
-        padding: var(--padding-medium);
     }
 }
 </style>
