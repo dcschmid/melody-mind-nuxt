@@ -1,6 +1,6 @@
 <template>
     <NuxtLayout name="default" :show-header="true" :show-menu="true">
-        <main class="gameHome" id="main-content">
+        <div class="gameHome" id="main-content">
             <section class="intro">
                 <h1 tabindex="-1">{{ $t('gameHome.title') }}</h1>
                 <p class="intro-text" v-if="$t('gameHome.description')">{{ $t('gameHome.description') }}</p>
@@ -19,7 +19,7 @@
                         :intro-subline="category.introSubline" role="listitem" @select="navigateToCategory(category)" />
                 </div>
             </section>
-        </main>
+        </div>
     </NuxtLayout>
 </template>
 
@@ -68,9 +68,7 @@ onMounted(() => {
 <style scoped lang="scss">
 .gameHome {
     width: 100%;
-    max-width: var(--content-width);
     margin: 0 auto;
-    padding: var(--padding-medium);
 }
 
 .intro {
@@ -79,7 +77,7 @@ onMounted(() => {
 
     h1 {
         font-size: var(--header-font-size);
-        color: var(--text-color);
+        color: var(--primary-color);
         margin-bottom: var(--padding-medium);
         font-weight: 700;
     }
@@ -93,7 +91,6 @@ onMounted(() => {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
-    padding: 2rem;
 
     @media (prefers-reduced-motion: reduce) {
         * {
@@ -121,9 +118,6 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
-    .gameHome {
-        padding: var(--padding-small);
-    }
 
     .categories-grid {
         gap: var(--padding-medium);

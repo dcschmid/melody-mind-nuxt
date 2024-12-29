@@ -129,26 +129,14 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .categoryPage {
-    width: var(--content-width);
-    margin: 1.5rem auto;
-    padding: clamp(var(--padding-medium), 4vw, var(--padding-large));
     color: var(--text-color);
 }
 
 .category {
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    border: 1px solid rgb(255 255 255 / 10%);
     display: grid;
     gap: clamp(var(--padding-medium), 3vw, var(--padding-large));
     place-items: center;
-    padding: clamp(var(--padding-medium), 3vw, var(--padding-large));
     transition: all var(--transition-speed);
-
-    &:hover {
-        box-shadow: var(--box-shadow-hover);
-    }
 }
 
 .text {

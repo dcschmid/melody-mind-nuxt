@@ -73,7 +73,7 @@ defineOgImageComponent('NuxtSeo', {
     font-weight: bold;
     margin-bottom: var(--padding-large);
     line-height: 1.2;
-    color: var(--text-color);
+    color: var(--primary-color);
 }
 
 .intro-text {

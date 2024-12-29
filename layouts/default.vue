@@ -128,12 +128,8 @@ onUnmounted(() => {
 }
 
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    position: flex;
     height: var(--header-height);
-    padding: 0 var(--padding-medium);
     background-color: var(--surface-color);
     backdrop-filter: blur(var(--blur-strength));
     border-bottom: 1px solid rgb(255 255 255 / 10%);

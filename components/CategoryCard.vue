@@ -1,47 +1,27 @@
 <template>
-    <div class="category-card" 
-        :class="{ 'not-playable': !isPlayable }" 
-        :aria-disabled="!isPlayable"
-        role="article">
-        <NuxtLink v-if="isPlayable" 
-            :to="categoryUrl" 
-            class="category-link"
-            :aria-label="$t('gameHome.playCategory', { category: headline })"
-            tabindex="0"
-            @keydown.enter="$emit('select')"
-            @keydown.space.prevent="$emit('select')">
+    <div class="category-card" :class="{ 'not-playable': !isPlayable }" :aria-disabled="!isPlayable" role="article">
+        <NuxtLink v-if="isPlayable" :to="categoryUrl" class="category-link"
+            :aria-label="$t('gameHome.playCategory', { category: headline })" tabindex="0"
+            @keydown.enter="$emit('select')" @keydown.space.prevent="$emit('select')">
             <div class="category-content">
                 <div class="image-container">
                     <picture>
-                        <source :srcset="imageUrl" 
-                            :sizes="'(max-width: 768px) 480px, 800px'" />
-                        <img :src="imageUrl" 
-                            :alt="$t('gameHome.categoryAlt', { category: headline })" 
-                            loading="lazy" 
-                            decoding="async" 
-                            :width="480" 
-                            :height="270" />
+                        <source :srcset="imageUrl" :sizes="'(max-width: 768px) 480px, 800px'" />
+                        <img :src="imageUrl" :alt="$t('gameHome.categoryAlt', { category: headline })" loading="lazy"
+                            decoding="async" :width="480" :height="270" />
                     </picture>
                     <div class="category-title" aria-hidden="true">{{ headline }}</div>
                     <div class="category-description" aria-hidden="true">{{ introSubline }}</div>
                 </div>
             </div>
         </NuxtLink>
-        <div v-else 
-            class="category-content coming-soon"
-            :aria-label="$t('gameHome.comingSoon', { category: headline })"
-            role="article"
-            tabindex="0">
+        <div v-else class="category-content coming-soon" :aria-label="$t('gameHome.comingSoon', { category: headline })"
+            role="article" tabindex="0">
             <div class="image-container">
                 <picture>
-                    <source :srcset="imageUrl" 
-                        :sizes="'(max-width: 768px) 480px, 800px'" />
-                    <img :src="imageUrl" 
-                        :alt="$t('gameHome.categoryAlt', { category: headline })" 
-                        loading="lazy" 
-                        decoding="async" 
-                        :width="480" 
-                        :height="270" />
+                    <source :srcset="imageUrl" :sizes="'(max-width: 768px) 480px, 800px'" />
+                    <img :src="imageUrl" :alt="$t('gameHome.categoryAlt', { category: headline })" loading="lazy"
+                        decoding="async" :width="480" :height="270" />
                 </picture>
                 <div class="category-title" aria-hidden="true">{{ headline }}</div>
                 <div class="category-description" aria-hidden="true">{{ introSubline }}</div>
@@ -89,7 +69,7 @@ defineEmits(['select'])
 
     &:not(.not-playable):hover {
         transform: scale(1.02);
-        
+
         .category-content::after {
             opacity: 1;
         }
@@ -121,12 +101,12 @@ defineEmits(['select'])
     position: relative;
     width: 100%;
     height: 100%;
-    
+
     &:not(.coming-soon)::after {
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
         opacity: 0;
         transition: opacity 0.3s ease;
     }
@@ -198,7 +178,7 @@ defineEmits(['select'])
     font-weight: 600;
     text-transform: uppercase;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3),
-                0 0 30px rgba(255, 255, 255, 0.1);
+        0 0 30px rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 10;
