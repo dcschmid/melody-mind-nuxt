@@ -73,23 +73,13 @@ definePageMeta({
 <style lang="scss" scoped>
 .legal-page {
     width: 100%;
-    max-width: var(--content-width);
     margin: 0 auto;
-    padding: var(--padding-medium);
-}
-
-.legal-container {
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
-    padding: clamp(var(--padding-medium), 4vw, var(--padding-large));
-    box-shadow: var(--box-shadow);
-    border: 1px solid rgb(255 255 255 / 10%);
 }
 
 .main-title {
     font-size: var(--header-font-size);
     font-weight: 700;
-    color: var(--text-color);
+    color: var(--primary-color);
     text-align: center;
     margin-bottom: var(--padding-large);
 }
@@ -129,13 +119,6 @@ definePageMeta({
 }
 
 @media (max-width: 768px) {
-    .legal-page {
-        padding: var(--padding-small);
-    }
-
-    .legal-container {
-        padding: var(--padding-medium);
-    }
 
     .main-title {
         font-size: calc(var(--header-font-size) * 0.8);

@@ -46,9 +46,7 @@ const getDifficultyPath = (difficulty: string) => {
     flex-wrap: wrap;
     gap: var(--padding-medium);
     width: 100%;
-    max-width: 900px;
     margin: 0 auto;
-    padding: var(--padding-medium) 0;
     justify-content: center;
 
     .button {

@@ -48,8 +48,7 @@
                         <p class="album">{{ artist.album }}</p>
                         <p class="year">{{ artist.year }}</p>
                         <div class="music-links"
-                            v-if="artist.spotify_link || artist.apple_music_link || artist.deezer_link"
-                            role="region"
+                            v-if="artist.spotify_link || artist.apple_music_link || artist.deezer_link" role="region"
                             :aria-label="t('game.links.listen_on')">
                             <h4 class="music-links-title" id="streaming-services-title">
                                 {{ t('game.links.listen_on') }}
@@ -57,20 +56,20 @@
                             </h4>
                             <div class="music-links-container" role="list" aria-labelledby="streaming-services-title">
                                 <a v-if="artist.spotify_link" :href="artist.spotify_link" target="_blank"
-                                    rel="noopener noreferrer" class="music-link spotify" :aria-label="t('game.links.spotify')"
-                                    role="listitem">
+                                    rel="noopener noreferrer" class="music-link spotify"
+                                    :aria-label="t('game.links.spotify')" role="listitem">
                                     <Icon name="mdi:spotify" size="24" aria-hidden="true" />
                                     <span class="visually-hidden">{{ t('game.links.spotify') }}</span>
                                 </a>
                                 <a v-if="artist.apple_music_link" :href="artist.apple_music_link" target="_blank"
-                                    rel="noopener noreferrer" class="music-link apple" :aria-label="t('game.links.apple')"
-                                    role="listitem">
+                                    rel="noopener noreferrer" class="music-link apple"
+                                    :aria-label="t('game.links.apple')" role="listitem">
                                     <Icon name="mdi:apple" size="24" aria-hidden="true" />
                                     <span class="visually-hidden">{{ t('game.links.apple') }}</span>
                                 </a>
                                 <a v-if="artist.deezer_link" :href="artist.deezer_link" target="_blank"
-                                    rel="noopener noreferrer" class="music-link deezer" :aria-label="t('game.links.deezer')"
-                                    role="listitem">
+                                    rel="noopener noreferrer" class="music-link deezer"
+                                    :aria-label="t('game.links.deezer')" role="listitem">
                                     <Icon name="simple-icons:deezer" size="24" aria-hidden="true" />
                                     <span class="visually-hidden">{{ t('game.links.deezer') }}</span>
                                 </a>
@@ -97,7 +96,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -150,13 +149,7 @@ onMounted(() => {
     flex-direction: column;
     gap: var(--padding-medium);
     width: 100%;
-    max-width: var(--content-width);
     margin: 0 auto;
-    padding: var(--padding-medium);
-
-    @media (min-width: 768px) {
-        padding: var(--padding-large);
-    }
 
     .result-banner {
         background-color: var(--surface-color);
@@ -350,7 +343,8 @@ onMounted(() => {
                             transition: all 0.2s ease;
                             position: relative;
 
-                            &:hover, &:focus {
+                            &:hover,
+                            &:focus {
                                 transform: scale(1.1);
                                 outline: 2px solid var(--color-primary);
                                 outline-offset: 2px;
@@ -361,17 +355,20 @@ onMounted(() => {
                                 outline-offset: 2px;
                             }
 
-                            &.spotify:hover, &.spotify:focus {
+                            &.spotify:hover,
+                            &.spotify:focus {
                                 background: #1DB954;
                                 color: white;
                             }
 
-                            &.apple:hover, &.apple:focus {
+                            &.apple:hover,
+                            &.apple:focus {
                                 background: #FA243C;
                                 color: white;
                             }
 
-                            &.deezer:hover, &.deezer:focus {
+                            &.deezer:hover,
+                            &.deezer:focus {
                                 background: #FF0092;
                                 color: white;
                             }

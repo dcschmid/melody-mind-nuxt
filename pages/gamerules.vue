@@ -101,23 +101,17 @@ definePageMeta({})
 <style lang="scss" scoped>
 .rules-page {
     width: 100%;
-    max-width: var(--content-width);
     margin: 0 auto;
-    padding: var(--padding-medium);
 }
 
 .rulesContainer {
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
     padding: clamp(var(--padding-medium), 4vw, var(--padding-large));
-    box-shadow: var(--box-shadow);
-    border: 1px solid rgb(255 255 255 / 10%);
 }
 
 .mainTitle {
     font-size: var(--header-font-size);
     font-weight: 700;
-    color: var(--text-color);
+    color: var(--primary-color);
     text-align: center;
     margin-bottom: var(--padding-large);
 }
@@ -167,9 +161,6 @@ definePageMeta({})
 }
 
 @media (max-width: 768px) {
-    .rules-page {
-        padding: var(--padding-small);
-    }
 
     .rulesContainer {
         padding: var(--padding-medium);

@@ -223,8 +223,6 @@ const shareViaAPI = async () => {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: var(--padding-large);
-    width: var(--content-width);
     margin: 0 auto;
     min-height: calc(100vh - var(--header-height));
     animation: fadeIn 0.5s ease-out;
@@ -616,10 +614,6 @@ const shareViaAPI = async () => {
 }
 
 @media (max-width: 640px) {
-    .game-end-screen {
-        padding: var(--padding-medium);
-    }
-
     .share-buttons {
         flex-direction: column;
         align-items: stretch;

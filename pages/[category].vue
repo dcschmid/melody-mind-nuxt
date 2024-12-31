@@ -142,7 +142,6 @@ onMounted(() => {
 .text {
     font-size: clamp(1.125rem, 2vw, var(--body-font-size));
     line-height: var(--line-height-body);
-    max-width: min(90%, var(--max-line-length));
     margin: 0 auto;
     text-align: center;
     color: var(--text-secondary);
@@ -151,7 +150,6 @@ onMounted(() => {
 @media (width <=767px) {
     .text {
         font-size: clamp(1.125rem, 4vw, 1.25rem);
-        padding: 0 var(--padding-small);
     }
 }
 </style>
