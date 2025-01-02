@@ -116,8 +116,20 @@
         "correct": "¡Correcto!",
         "wrong": "¡Incorrecto!",
         "timeUp": "¡Se acabó el tiempo!",
-        "nextQuestion": "Siguiente Pregunta",
-        "finish": "Terminar Juego",
+        "next": "Siguiente",
+        "nextQuestion": "Siguiente pregunta",
+        "finish": "Terminar juego",
+        "links": {
+            "listen_on": "Escuchar en"
+        },
+        "trivia": {
+            "title": "Curiosidades"
+        },
+        "gameOver": {
+            "title": "Juego terminado",
+            "correctAnswers": "Respuestas correctas",
+            "backToMenu": "Volver al menú"
+        },
         "results": {
             "title": "Resultados del Juego",
             "totalScore": "Puntuación Total",
@@ -321,18 +333,11 @@
     },
     "navigation": {
         "home": "Inicio",
+        "login": "Iniciar sesión",
+        "register": "Registrarse",
         "profile": "Perfil",
-        "leaderboard": "Clasificación",
-        "settings": "Configuración",
         "logout": "Cerrar sesión",
-        "rules": "Reglas del juego",
-        "mainMenu": "Menú principal",
-        "support": "Soporte",
-        "legal": "Legal",
-        "imprint": "Aviso legal",
-        "highscores": "Puntuaciones",
-        "privacy": "Privacidad",
-        "mainNavLabel": "Navegación principal"
+        "openMenu": "Abrir menú"
     },
     "footer": {
         "about": "Sobre nosotros",

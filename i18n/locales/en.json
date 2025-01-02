@@ -116,8 +116,20 @@
     "correct": "Correct!",
     "wrong": "Wrong!",
     "timeUp": "Time's up!",
+    "next": "Next",
     "nextQuestion": "Next Question",
-    "finish": "End Game",
+    "finish": "Finish Game",
+    "links": {
+      "listen_on": "Listen on"
+    },
+    "trivia": {
+      "title": "Fun Facts"
+    },
+    "gameOver": {
+      "title": "Game Over",
+      "correctAnswers": "Correct Answers",
+      "backToMenu": "Back to Menu"
+    },
     "results": {
       "title": "Game Results",
       "totalScore": "Total Score",
@@ -314,10 +326,13 @@
   },
   "navigation": {
     "home": "Home",
+    "login": "Login",
+    "register": "Register",
     "profile": "Profile",
+    "logout": "Logout",
+    "openMenu": "Open Menu",
     "leaderboard": "Leaderboard",
     "settings": "Settings",
-    "logout": "Logout",
     "rules": "Game Rules",
     "mainMenu": "Main Menu",
     "support": "Support",

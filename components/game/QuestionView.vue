@@ -22,7 +22,7 @@
             <h3 id="expert-title">{{ t('game.expert.title') }}</h3>
             <div class="expert-message" aria-labelledby="expert-title">
                 <div class="expert-header">
-                    <Icon name="material-symbols:phone" class="phone-icon" aria-hidden="true" />
+                    <Icon name="material-symbols:call" class="phone-icon" aria-hidden="true" />
                     <span class="expert-name">{{ phoneExpertOpinion.expert }}</span>
                 </div>
                 <div class="message-content">

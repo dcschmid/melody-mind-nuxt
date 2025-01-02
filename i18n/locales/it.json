@@ -109,15 +109,30 @@
     }
   },
   "game": {
-    "loading": "Caricamento gioco...",
+    "loading": "Caricamento del gioco...",
     "question": "Domanda {current} di {total}",
     "timeLeft": "Tempo rimanente",
     "score": "Punteggio",
     "correct": "Corretto!",
     "wrong": "Sbagliato!",
     "timeUp": "Tempo scaduto!",
-    "nextQuestion": "Prossima Domanda",
-    "finish": "Termina Gioco",
+    "next": "Avanti",
+    "nextQuestion": "Prossima domanda",
+    "finish": "Termina gioco",
+    "links": {
+      "listen_on": "Ascolta su",
+      "spotify": "Ascolta su Spotify",
+      "apple": "Ascolta su Apple Music",
+      "deezer": "Ascolta su Deezer"
+    },
+    "trivia": {
+      "title": "Curiosità"
+    },
+    "gameOver": {
+      "title": "Partita finita",
+      "correctAnswers": "Risposte corrette",
+      "backToMenu": "Torna al menu"
+    },
     "results": {
       "title": "Risultati del Gioco",
       "totalScore": "Punteggio Totale",
@@ -163,12 +178,6 @@
       "play": "Riproduci musica",
       "pause": "Metti in pausa",
       "progress": "Avanzamento riproduzione"
-    },
-    "links": {
-      "listen_on": "Ascolta su",
-      "spotify": "Ascolta su Spotify",
-      "apple": "Ascolta su Apple Music",
-      "deezer": "Ascolta su Deezer"
     },
     "album": {
       "artist": "Artista",
@@ -317,18 +326,11 @@
   },
   "navigation": {
     "home": "Home",
+    "login": "Accedi",
+    "register": "Registrati",
     "profile": "Profilo",
-    "leaderboard": "Classifica",
-    "settings": "Impostazioni",
     "logout": "Esci",
-    "rules": "Regole del gioco",
-    "mainMenu": "Menu principale",
-    "support": "Supporto",
-    "legal": "Note legali",
-    "imprint": "Informazioni legali",
-    "highscores": "Punteggi",
-    "privacy": "Privacy",
-    "mainNavLabel": "Navigazione principale"
+    "openMenu": "Apri menu"
   },
   "footer": {
     "about": "Chi siamo",

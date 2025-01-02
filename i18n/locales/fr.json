@@ -116,8 +116,20 @@
     "correct": "Correct !",
     "wrong": "Incorrect !",
     "timeUp": "Temps écoulé !",
+    "next": "Suivant",
     "nextQuestion": "Question suivante",
     "finish": "Terminer le jeu",
+    "links": {
+      "listen_on": "Écouter sur"
+    },
+    "trivia": {
+      "title": "Le saviez-vous"
+    },
+    "gameOver": {
+      "title": "Partie terminée",
+      "correctAnswers": "Réponses correctes",
+      "backToMenu": "Retour au menu"
+    },
     "results": {
       "title": "Résultats du jeu",
       "totalScore": "Score total",
@@ -317,10 +329,11 @@
   },
   "navigation": {
     "home": "Accueil",
+    "login": "Connexion",
+    "register": "S'inscrire",
     "profile": "Profil",
-    "leaderboard": "Classement",
-    "settings": "Paramètres",
     "logout": "Déconnexion",
+    "openMenu": "Ouvrir le menu",
     "rules": "Règles du jeu",
     "mainMenu": "Menu principal",
     "support": "Support",

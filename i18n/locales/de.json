@@ -130,6 +130,15 @@
     "next": "Weiter",
     "nextQuestion": "Nächste Frage",
     "finish": "Spiel beenden",
+    "links": {
+      "listen_on": "Anhören auf",
+      "spotify": "Auf Spotify anhören",
+      "apple": "Auf Apple Music anhören",
+      "deezer": "Auf Deezer anhören"
+    },
+    "trivia": {
+      "title": "Wissenswertes"
+    },
     "results": {
       "title": "Spielergebnis",
       "totalScore": "Gesamtpunktzahl",
@@ -353,18 +362,11 @@
   },
   "navigation": {
     "home": "Startseite",
+    "login": "Anmelden",
+    "register": "Registrieren",
     "profile": "Profil",
-    "leaderboard": "Bestenliste",
-    "settings": "Einstellungen",
     "logout": "Abmelden",
-    "rules": "Spielregeln",
-    "mainMenu": "Hauptmenü",
-    "support": "Unterstützen",
-    "legal": "Rechtliches",
-    "imprint": "Impressum",
-    "highscores": "Bestenliste",
-    "privacy": "Datenschutz",
-    "mainNavLabel": "Hauptnavigation"
+    "openMenu": "Menü öffnen"
   },
   "footer": {
     "about": "Über uns",
