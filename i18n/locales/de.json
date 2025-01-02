@@ -366,7 +366,13 @@
     "register": "Registrieren",
     "profile": "Profil",
     "logout": "Abmelden",
-    "openMenu": "Menü öffnen"
+    "openMenu": "Menü öffnen",
+    "support": "Support",
+    "legal": "Rechtliches",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz",
+    "rules": "Spielregeln",
+    "leaderboard": "Bestenliste"
   },
   "footer": {
     "about": "Über uns",

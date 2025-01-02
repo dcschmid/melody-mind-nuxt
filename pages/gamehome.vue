@@ -46,13 +46,8 @@ useSeoMeta({
     twitterCard: 'summary_large_image',
 })
 
-defineOgImageComponent('NuxtSeo', {
-    title: computed(() => t('gameHome.title')),
-    description: computed(() => t('gameHome.description')),
-    theme: '#4F46E5',
-    colorMode: 'dark',
-    layout: 'default'
-});
+
+
 
 const navigateToCategory = (category) => {
     if (category.isPlayable) {

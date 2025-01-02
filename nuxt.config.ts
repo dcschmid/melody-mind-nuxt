@@ -27,7 +27,7 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/scss/main.scss"],
-  modules: ["nuxt-icon", "@nuxtjs/i18n", "nuxt-og-image"],
+  modules: ["nuxt-icon", "@nuxtjs/i18n"],
   i18n: {
     strategy: "prefix",
     defaultLocale: "de",

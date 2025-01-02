@@ -337,7 +337,13 @@
         "register": "Registrarse",
         "profile": "Perfil",
         "logout": "Cerrar sesión",
-        "openMenu": "Abrir menú"
+        "openMenu": "Abrir menú",
+        "support": "Soporte",
+        "legal": "Legal",
+        "imprint": "Aviso Legal",
+        "privacy": "Privacidad",
+        "rules": "Reglas del Juego",
+        "leaderboard": "Tabla de Clasificación"
     },
     "footer": {
         "about": "Sobre nosotros",

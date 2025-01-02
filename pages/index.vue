@@ -31,15 +31,6 @@ useSeoMeta({
     viewport: 'width=device-width, initial-scale=1',
     twitterCard: 'summary_large_image',
 });
-
-// Define OG Image
-defineOgImageComponent('NuxtSeo', {
-    title: computed(() => t('welcome.title')),
-    description: computed(() => t('welcome.seo.description')),
-    theme: '#4F46E5',
-    colorMode: 'dark',
-    layout: 'default'
-});
 </script>
 
 <style lang="scss" scoped>

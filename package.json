@@ -29,7 +29,6 @@
   "devDependencies": {
     "@nuxt/image": "^1.8.1",
     "nuxt-icon": "^0.6.8",
-    "nuxt-og-image": "^4.0.2",
     "sass": "^1.83.0"
   }
 }

@@ -1,5 +1,5 @@
 <template>
-    <NuxtLayout name="default" :show-header="true" :show-menu="true" :show-coins="false">
+    <NuxtLayout name="default" :show-header="true" :show-menu="true">
         <h1 class="title">{{ t('highscores.title') }}</h1>
 
         <section class="search-section" role="search">
@@ -182,7 +182,6 @@ onMounted(() => {
 .title {
     font-size: 2.5rem;
     font-weight: 700;
-    margin-top: 5rem;
     margin-bottom: var(--padding-small);
     text-align: center;
     color: var(--primary-color);
@@ -190,7 +189,6 @@ onMounted(() => {
 
 .search-section {
     width: 100%;
-    max-width: 500px;
     margin-bottom: var(--padding-small);
 }
 
@@ -245,7 +243,12 @@ onMounted(() => {
 
 .scores-table {
     @media (max-width: 768px) {
-        table, thead, tbody, tr, td {
+
+        table,
+        thead,
+        tbody,
+        tr,
+        td {
             display: block;
         }
 
@@ -281,8 +284,8 @@ onMounted(() => {
                 text-align: left;
             }
 
-            &.rank-cell, 
-            &.points-cell, 
+            &.rank-cell,
+            &.points-cell,
             &.lps-cell {
                 justify-content: space-between;
             }
@@ -304,12 +307,14 @@ onMounted(() => {
 
         tr {
             border-bottom: 1px solid var(--border-color-light);
+
             &:last-child {
                 border-bottom: none;
             }
         }
 
-        td, th {
+        td,
+        th {
             padding: 1rem;
             text-align: right;
         }

@@ -8,10 +8,10 @@
                     <picture>
                         <source :srcset="imageUrl" :sizes="'(max-width: 768px) 480px, 800px'" />
                         <img :src="imageUrl" :alt="$t('gameHome.categoryAlt', { category: headline })" loading="lazy"
-                            decoding="async" :width="480" :height="270" />
+                            decoding="async" />
                     </picture>
-                    <div class="category-title" aria-hidden="true">{{ headline }}</div>
-                    <div class="category-description" aria-hidden="true">{{ introSubline }}</div>
+                    <div class="category-title">{{ headline }}</div>
+                    <div class="category-description">{{ introSubline }}</div>
                 </div>
             </div>
         </NuxtLink>
@@ -21,10 +21,10 @@
                 <picture>
                     <source :srcset="imageUrl" :sizes="'(max-width: 768px) 480px, 800px'" />
                     <img :src="imageUrl" :alt="$t('gameHome.categoryAlt', { category: headline })" loading="lazy"
-                        decoding="async" :width="480" :height="270" />
+                        decoding="async" />
                 </picture>
-                <div class="category-title" aria-hidden="true">{{ headline }}</div>
-                <div class="category-description" aria-hidden="true">{{ introSubline }}</div>
+                <div class="category-title">{{ headline }}</div>
+                <div class="category-description">{{ introSubline }}</div>
                 <div class="coming-soon-badge" role="status">
                     {{ $t('gameHome.comingSoonLabel') }}
                 </div>
@@ -63,44 +63,42 @@ defineEmits(['select'])
 <style scoped lang="scss">
 .category-card {
     position: relative;
-    border-radius: var(--border-radius-lg);
-    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 16/9;
     transition: transform 0.3s ease;
+    cursor: pointer;
 
     &:not(.not-playable):hover {
         transform: scale(1.02);
-
+        
         .category-content::after {
             opacity: 1;
+        }
+        
+        .category-title {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .category-description {
+            opacity: 1;
+            transform: translateY(0);
         }
     }
 }
 
 .category-link {
+    display: block;
+    height: 100%;
     text-decoration: none;
     color: inherit;
-    display: block;
-    outline: none;
-
-    &:focus {
-        outline: 2px solid var(--color-primary);
-        outline-offset: 2px;
-    }
-
-    &:focus:not(:focus-visible) {
-        outline: none;
-    }
-
-    &:focus-visible {
-        outline: 2px solid var(--color-primary);
-        outline-offset: 2px;
-    }
 }
 
 .category-content {
     position: relative;
     width: 100%;
     height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
 
     &:not(.coming-soon)::after {
         content: '';
@@ -110,59 +108,57 @@ defineEmits(['select'])
         opacity: 0;
         transition: opacity 0.3s ease;
     }
-
-    &.coming-soon {
-        cursor: not-allowed;
-
-        &:focus {
-            outline: 2px solid var(--color-primary);
-            outline-offset: 2px;
-        }
-    }
 }
 
 .image-container {
     position: relative;
     width: 100%;
     height: 100%;
-    aspect-ratio: 16/9;
 
     img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: var(--border-radius-lg);
+        border-radius: 8px;
     }
 }
 
 .category-title {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1rem;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
+    transition: background-color 0.3s ease;
+    padding: 1rem;
+    text-align: center;
 }
 
 .category-description {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    bottom: 0;
     padding: 1rem;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.8);
     color: white;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    display: flex;
-    align-items: center;
     text-align: center;
-    font-size: 1rem;
-    line-height: 1.5;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.3s ease;
+}
+
+.coming-soon {
+    cursor: not-allowed;
+    
+    .category-title {
+        background: rgba(0, 0, 0, 0.7);
+        font-size: 1.2rem;
+    }
 }
 
 .coming-soon-badge {
@@ -170,17 +166,10 @@ defineEmits(['select'])
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.8);
     color: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3),
-        0 0 30px rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    z-index: 10;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: bold;
 }
 </style>

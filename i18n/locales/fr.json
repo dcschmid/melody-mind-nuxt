@@ -334,14 +334,15 @@
     "profile": "Profil",
     "logout": "Déconnexion",
     "openMenu": "Ouvrir le menu",
-    "rules": "Règles du jeu",
+    "rules": "Règles du Jeu",
     "mainMenu": "Menu principal",
     "support": "Support",
-    "legal": "Mentions légales",
-    "imprint": "Mentions légales",
+    "legal": "Mentions Légales",
+    "imprint": "Mentions Légales",
     "highscores": "Meilleurs scores",
     "privacy": "Confidentialité",
-    "mainNavLabel": "Navigation principale"
+    "mainNavLabel": "Navigation principale",
+    "leaderboard": "Classement"
   },
   "footer": {
     "about": "À propos",

@@ -330,7 +330,13 @@
     "register": "Registrati",
     "profile": "Profilo",
     "logout": "Esci",
-    "openMenu": "Apri menu"
+    "openMenu": "Apri menu",
+    "support": "Supporto",
+    "legal": "Note Legali",
+    "imprint": "Note Legali",
+    "privacy": "Privacy",
+    "rules": "Regole del Gioco",
+    "leaderboard": "Classifica"
   },
   "footer": {
     "about": "Chi siamo",
