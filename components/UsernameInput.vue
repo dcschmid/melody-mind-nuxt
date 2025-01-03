@@ -50,6 +50,8 @@ defineExpose({
 </script>
 
 <style lang="scss" scoped>
+@use '@/assets/scss/mixins' as *;
+
 .username-input {
     text-align: center;
     margin: 2rem auto;
@@ -90,36 +92,8 @@ defineExpose({
     }
 
     .save-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include button-primary;
         gap: 0.5rem;
-        padding: 0.75rem 1.5rem;
-        background: var(--primary-color);
-        color: white;
-        border: none;
-        border-radius: 0.5rem;
-        font-size: 1rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        
-        svg {
-            transition: transform 0.3s ease;
-        }
-
-        &:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-
-            svg {
-                transform: translateX(4px);
-            }
-        }
-
-        &:active {
-            transform: translateY(0);
-        }
     }
 }
 </style>

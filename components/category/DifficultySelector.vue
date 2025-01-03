@@ -26,6 +26,8 @@ const getDifficultyPath = (difficulty: string) => {
 </script>
 
 <style scoped lang="scss">
+@use '@/assets/scss/mixins' as *;
+
 .difficultySection {
     display: grid;
     gap: var(--padding-medium);
@@ -50,31 +52,11 @@ const getDifficultyPath = (difficulty: string) => {
     justify-content: center;
 
     .button {
-        background: var(--highlight-color);
-        color: var(--button-text-color);
-        padding: var(--padding-medium) var(--padding-large);
-        border-radius: var(--border-radius);
-        font-size: var(--button-font-size);
-        font-weight: 600;
-        display: inline-flex;
-        align-items: center;
-        gap: var(--padding-small);
+        @include button-primary;
         min-height: var(--min-touch-target);
-        transition: all var(--transition-speed);
-        box-shadow: var(--box-shadow);
-        justify-content: center;
-        text-align: center;
+        gap: var(--padding-small);
         flex: 1;
         max-width: 200px;
-
-        &:hover {
-            background: var(--button-hover-color);
-            transform: translateY(-2px);
-        }
-
-        &:active {
-            transform: translateY(0);
-        }
     }
 }
 </style>

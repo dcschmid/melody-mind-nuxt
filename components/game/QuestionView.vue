@@ -8,10 +8,15 @@
         <!-- Antwortmöglichkeiten -->
         <div class="options" role="group" aria-labelledby="question-text">
             <TransitionGroup name="fade-shrink">
-                <button v-for="(option, index) in currentOptions" :key="option" class="button option-button"
-                    v-show="!hiddenOptions.includes(option)" @click="$emit('select-answer', option)"
-                    :disabled="disabled || hiddenOptions.includes(option)" :aria-label="option"
-                    :aria-hidden="hiddenOptions.includes(option)" :tabindex="hiddenOptions.includes(option) ? -1 : 0">
+                <button v-for="(option, index) in currentOptions" :key="option" 
+                    class="option-button"
+                    v-show="!hiddenOptions.includes(option)" 
+                    @click="$emit('select-answer', option)"
+                    :disabled="disabled || hiddenOptions.includes(option)" 
+                    :aria-label="$t('game.selectAnswer', { answer: option })"
+                    :aria-hidden="hiddenOptions.includes(option)"
+                    :aria-disabled="disabled || hiddenOptions.includes(option)"
+                    :tabindex="hiddenOptions.includes(option) ? -1 : 0">
                     {{ option }}
                 </button>
             </TransitionGroup>
@@ -66,26 +71,30 @@
         <!-- Joker -->
         <div class="jokers-section" role="group" aria-label="Verfügbare Joker">
             <div class="joker-buttons">
-                <button class="button joker-button" @click="$emit('use-fifty-fifty')"
-                    :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion" aria-label="50:50 Joker"
+                <button class="joker-button" 
+                    @click="$emit('use-fifty-fifty')"
+                    :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion" 
+                    :aria-label="$t('game.jokers.fiftyFifty.ariaLabel')"
                     :aria-disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion">
                     <div class="joker-icon" aria-hidden="true">
                         <Icon name="material-symbols:balance" />
                     </div>
                     <span class="joker-label">{{ t('game.jokers.fiftyFifty.title') }}</span>
                 </button>
-                <button class="button joker-button" @click="$emit('use-audience')"
+                <button class="joker-button" 
+                    @click="$emit('use-audience')"
                     :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
-                    :aria-label="t('game.audience') + ' Joker'"
+                    :aria-label="$t('game.jokers.audience.ariaLabel')"
                     :aria-disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion">
                     <div class="joker-icon" aria-hidden="true">
                         <Icon name="material-symbols:group" />
                     </div>
                     <span class="joker-label">{{ t('game.jokers.audience.title') }}</span>
                 </button>
-                <button class="button joker-button" @click="$emit('use-phone')"
+                <button class="joker-button" 
+                    @click="$emit('use-phone')"
                     :disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion"
-                    :aria-label="t('game.phone') + ' Joker'"
+                    :aria-label="$t('game.jokers.phone.ariaLabel')"
                     :aria-disabled="remainingJokers === 0 || jokerUsedForCurrentQuestion">
                     <div class="joker-icon" aria-hidden="true">
                         <Icon name="tabler:phone" />
@@ -138,6 +147,8 @@ defineEmits<{
 </script>
 
 <style scoped lang="scss">
+@use '@/assets/scss/mixins' as *;
+
 .question-container {
     margin: 0 auto;
     display: flex;
@@ -178,49 +189,43 @@ defineEmits<{
 }
 
 .option-button {
+    @include button-primary;
     width: 100%;
-    min-height: clamp(50px, 8vh, 70px);
-    padding: clamp(var(--padding-small), 2vw, var(--padding-medium));
-    font-size: clamp(0.9rem, 2vw, var(--body-font-size));
-    background: var(--surface-color);
-    color: var(--text-color);
-    border: 2px solid var(--primary-color);
-    border-radius: var(--border-radius);
-    transition: all var(--transition-speed) var(--transition-bounce);
+    max-width: min(100%, 800px);
+    min-height: var(--min-touch-target);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     text-align: center;
-    line-height: 1.4;
-    letter-spacing: var(--spacing-text);
-    white-space: pre-line;
+    padding: clamp(var(--padding-small), 2vw, var(--padding-medium));
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    border: none;
     box-shadow: var(--box-shadow);
-
+    transition: all 0.3s ease;
+    
     &:hover:not(:disabled) {
-        background: var(--primary-color);
-        color: var(--button-text-color);
+        background-color: var(--primary-color-dark);
         transform: translateY(-2px);
         box-shadow: var(--box-shadow-hover);
     }
-
+    
     &:active:not(:disabled) {
         transform: translateY(0);
     }
-
-    &:disabled {
-        opacity: var(--opacity-disabled);
-        cursor: not-allowed;
-        background: var(--surface-color);
-        color: var(--text-secondary);
-        border-color: var(--text-secondary);
-    }
-
+    
+    // Verbesserter Focus-State für Barrierefreiheit
     &:focus-visible {
-        outline: var(--focus-outline-width) solid var(--focus-outline-color);
-        outline-offset: var(--focus-outline-offset);
+        outline: none;
+        box-shadow: 0 0 0 var(--focus-outline-width) var(--focus-outline-color),
+                    var(--box-shadow);
     }
 
-    &:focus:hover {
-        outline: none;
-        box-shadow: 0 0 0 3px var(--focus-outline-color),
-            var(--box-shadow-hover);
+    // Verbesserter Disabled-State
+    &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+        background-color: var(--surface-color);
+        color: var(--text-secondary);
+        box-shadow: none;
     }
 }
 
@@ -397,57 +402,54 @@ defineEmits<{
     }
 
     .joker-button {
+        @include button-secondary;
         flex: 1;
-        min-width: clamp(80px, 20vw, 120px);
+        min-width: 120px;
+        max-width: 200px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: var(--padding-small);
-        padding: clamp(var(--padding-small), 2vw, var(--padding-medium));
-        background: var(--surface-color);
-        border-radius: var(--border-radius);
+        gap: 0.5rem;
+        padding: 1rem;
+        background-color: var(--secondary-color);
         color: var(--text-color);
-        transition: all var(--transition-speed) var(--transition-bounce);
+        border: none;
         box-shadow: var(--box-shadow);
-
+        transition: all 0.3s ease;
+        
         &:hover:not(:disabled) {
+            background-color: var(--secondary-color-dark);
             transform: translateY(-2px);
-            background: var(--primary-color);
-            color: var(--button-text-color);
             box-shadow: var(--box-shadow-hover);
         }
-
+        
         &:active:not(:disabled) {
             transform: translateY(0);
         }
-
-        &:disabled {
-            opacity: var(--opacity-disabled);
-            cursor: not-allowed;
-            background: var(--surface-color);
-            color: var(--text-secondary);
-            border-color: var(--text-secondary);
-        }
-
+        
+        // Verbesserter Focus-State für Barrierefreiheit
         &:focus-visible {
-            outline: var(--focus-outline-width) solid var(--focus-outline-color);
-            outline-offset: var(--focus-outline-offset);
-        }
-
-        &:focus:hover {
             outline: none;
-            box-shadow: 0 0 0 3px var(--focus-outline-color),
-                var(--box-shadow-hover);
+            box-shadow: 0 0 0 var(--focus-outline-width) var(--focus-outline-color),
+                        var(--box-shadow);
         }
 
+        // Verbesserter Disabled-State
+        &:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            background-color: var(--surface-color);
+            color: var(--text-secondary);
+            box-shadow: none;
+        }
+        
         .joker-icon {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-size: 1.5rem;
         }
-
+        
         .joker-label {
-            font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+            font-size: 0.9rem;
             text-align: center;
-            white-space: nowrap;
         }
     }
 

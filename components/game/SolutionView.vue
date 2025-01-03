@@ -249,22 +249,14 @@ onMounted(() => {
                     gap: var(--padding-small);
 
                     .play-button {
-                        background: var(--primary-color);
-                        color: var(--button-text-color);
-                        border: none;
-                        border-radius: 50%;
+                        @include button-primary;
                         width: 48px;
                         height: 48px;
+                        border-radius: 50%;
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        cursor: pointer;
-                        transition: background-color 0.3s ease, transform 0.2s ease;
-
-                        &:hover:not(:disabled) {
-                            background-color: var(--button-hover-color);
-                            transform: scale(1.05);
-                        }
+                        padding: 0;
 
                         &:disabled {
                             opacity: 0.5;

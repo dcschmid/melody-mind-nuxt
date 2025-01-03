@@ -475,17 +475,8 @@ const shareViaAPI = async () => {
 }
 
 .share-button {
-    display: inline-flex;
-    align-items: center;
+    @include button-secondary;
     gap: calc(var(--padding-small) / 2);
-    padding: var(--padding-small) var(--padding-medium);
-    border-radius: var(--border-radius);
-    border: none;
-    cursor: pointer;
-    font-size: var(--body-font-size);
-    font-weight: 600;
-    min-height: var(--min-touch-target);
-    transition: all var(--transition-speed) var(--transition-bounce);
     position: relative;
     overflow: hidden;
 
@@ -501,55 +492,32 @@ const shareViaAPI = async () => {
         transition: transform 0.3s ease;
     }
 
-    &:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--box-shadow-hover);
-
-        &::before {
-            transform: translateY(0);
-        }
-    }
-
-    &:active {
-        transform: translateY(1px);
-    }
-
-    &:focus-visible {
-        outline: var(--focus-outline-width) solid var(--focus-outline-color);
-        outline-offset: var(--focus-outline-offset);
+    &:hover::before {
+        transform: translateY(0);
     }
 
     &.twitter {
-        background: #1DA1F2;
-        color: white;
+        --color-secondary: #1DA1F2;
+        --color-secondary-dark: color.adjust(#1DA1F2, $lightness: -10%);
     }
 
     &.telegram {
-        background: #0088cc;
-        color: white;
+        --color-secondary: #0088cc;
+        --color-secondary-dark: color.adjust(#0088cc, $lightness: -10%);
     }
 
     &.reddit {
-        background: #FF4500;
-        color: white;
+        --color-secondary: #FF4500;
+        --color-secondary-dark: color.adjust(#FF4500, $lightness: -10%);
     }
 
     &.whatsapp {
-        background: #25D366;
-        color: white;
-
-        &:hover {
-            background-color: color.adjust(#25D366, $lightness: -10%);
-        }
+        --color-secondary: #25D366;
+        --color-secondary-dark: color.adjust(#25D366, $lightness: -10%);
     }
 
     &.share-api {
-        background: var(--primary-color);
-        color: var(--button-text-color);
-
-        &:hover {
-            background: var(--button-hover-color);
-        }
+        @include button-primary;
     }
 
     span {
@@ -565,51 +533,12 @@ const shareViaAPI = async () => {
     opacity: 0;
 
     .home-button {
-        display: inline-flex;
+        @include button-primary;
+        display: flex;
         align-items: center;
         gap: var(--padding-small);
-        padding: var(--padding-small) var(--padding-medium);
-        border-radius: var(--border-radius);
-        background: var(--primary-color);
-        color: var(--button-text-color);
-        text-decoration: none;
-        font-weight: 600;
-        min-height: var(--min-touch-target);
-        transition: all var(--transition-speed) var(--transition-bounce);
-        box-shadow: var(--box-shadow);
-        position: relative;
-        overflow: hidden;
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
-            transform: translateY(-100%);
-            transition: transform 0.3s ease;
-        }
-
-        &:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--box-shadow-hover);
-            background: var(--button-hover-color);
-
-            &::before {
-                transform: translateY(0);
-            }
-        }
-
-        &:active {
-            transform: translateY(1px);
-        }
-
-        &:focus-visible {
-            outline: var(--focus-outline-width) solid var(--focus-outline-color);
-            outline-offset: var(--focus-outline-offset);
-        }
+        min-width: 200px;
+        margin: 0 auto;
     }
 }
 

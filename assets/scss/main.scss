@@ -2,18 +2,36 @@
 
 :root {
   --primary-color: #bb86fc;
+  --primary-color-rgb: 187, 134, 252;
+  --primary-color-dark: #a55eea;
   --secondary-color: #4a4a8f;
+  --secondary-color-rgb: 74, 74, 143;
+  --secondary-color-dark: #37377a;
   --highlight-color: #00e5ff;
+  --highlight-color-rgb: 0, 229, 255;
+  --highlight-color-dark: #00b8d8;
   --background-color: #121212;
+  --background-color-rgb: 18, 18, 18;
   --surface-color: #1e1e1e;
+  --surface-color-rgb: 30, 30, 30;
+  --surface-color-light: #2d2d2d;
+  --surface-color-hover: #333333;
   --text-color: #ffffff;
+  --text-color-rgb: 255, 255, 255;
   --text-secondary: #e1e1e1;
+  --text-secondary-rgb: 225, 225, 225;
   --error-color: #ff7597;
+  --error-color-rgb: 255, 117, 151;
+  --error-color-dark: #ff3b47;
   --success-color: #00e676;
+  --success-color-rgb: 0, 230, 118;
+  --success-color-dark: #00b359;
   --button-hover-color: #29b6f6;
+  --button-hover-color-rgb: 41, 182, 246;
   --button-text-color: #000000;
-
+  --button-text-color-rgb: 0, 0, 0;
   --focus-outline-color: #00e5ff;
+  --focus-outline-color-rgb: 0, 229, 255;
   --focus-outline-width: 3px;
   --focus-outline-offset: 3px;
 
