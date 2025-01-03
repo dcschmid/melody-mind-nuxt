@@ -144,6 +144,8 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+@use '@/assets/scss/mixins' as *;
+
 .solution-container {
     display: flex;
     flex-direction: column;
@@ -252,15 +254,24 @@ onMounted(() => {
                         @include button-primary;
                         width: 48px;
                         height: 48px;
+                        padding: 0;
                         border-radius: 50%;
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        padding: 0;
+
+                        &:hover:not(:disabled) {
+                            transform: scale(1.05) translateY(-1px);
+                        }
+
+                        &:active:not(:disabled) {
+                            transform: scale(1);
+                        }
 
                         &:disabled {
                             opacity: 0.5;
                             cursor: not-allowed;
+                            background-color: var(--surface-color);
                         }
                     }
 
