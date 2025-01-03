@@ -106,6 +106,13 @@
         "medium": "Pour les amateurs expérimentés",
         "hard": "Pour les vrais experts en musique"
       }
+    },
+    "playlist": {
+      "title": "Écouter la playlist",
+      "description": "Plongez dans l'univers du {genre} ! Nous avons sélectionné les meilleures chansons pour vous. Écoutez la playlist sur votre plateforme de streaming préférée et préparez-vous pour le jeu.",
+      "spotify": "Écouter sur Spotify",
+      "deezer": "Écouter sur Deezer",
+      "apple": "Écouter sur Apple Music"
     }
   },
   "game": {

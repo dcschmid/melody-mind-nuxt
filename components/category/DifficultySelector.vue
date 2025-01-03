@@ -65,8 +65,7 @@ const getDifficultyPath = (difficulty: string) => {
         justify-content: center;
         text-align: center;
         flex: 1;
-        min-width: 200px;
-        max-width: 300px;
+        max-width: 200px;
 
         &:hover {
             background: var(--button-hover-color);

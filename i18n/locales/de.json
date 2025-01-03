@@ -117,6 +117,13 @@
         "medium": "Für erfahrene Musikkenner",
         "hard": "Für echte Musikexperten"
       }
+    },
+    "playlist": {
+      "title": "Playlist anhören",
+      "description": "Tauche ein in die Welt von {genre}! Wir haben die besten Songs für dich zusammengestellt. Höre dir die Playlist auf deiner bevorzugten Streaming-Plattform an und stimme dich auf das Spiel ein.",
+      "spotify": "Auf Spotify anhören",
+      "deezer": "Auf Deezer anhören",
+      "apple": "Auf Apple Music anhören"
     }
   },
   "game": {
