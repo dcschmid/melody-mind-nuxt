@@ -1,9 +1,9 @@
 import { ref, computed, markRaw } from "vue";
 import { useI18n } from "vue-i18n";
-import { goldMessages } from "~/constants/messages/goldMessages";
-import { silverMessages } from "~/constants/messages/silverMessages";
-import { bronzeMessages } from "~/constants/messages/bronzeMessages";
-import { participationMessages } from "~/constants/messages/participationMessages";
+import { goldMessages } from "../constants/messages/goldMessages";
+import { silverMessages } from "../constants/messages/silverMessages";
+import { bronzeMessages } from "../constants/messages/bronzeMessages";
+import { participationMessages } from "../constants/messages/participationMessages";
 import { useGameScore } from "~/composables/useGameScore";
 
 /**
