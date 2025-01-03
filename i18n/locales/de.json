@@ -361,6 +361,8 @@
     }
   },
   "navigation": {
+    "mainNavLabel": "Hauptnavigation",
+    "mainMenu": "Hauptmenü",
     "home": "Startseite",
     "login": "Anmelden",
     "register": "Registrieren",

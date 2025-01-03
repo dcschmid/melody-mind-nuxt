@@ -332,6 +332,8 @@
         }
     },
     "navigation": {
+        "mainNavLabel": "Navegación Principal",
+        "mainMenu": "Menú Principal",
         "home": "Inicio",
         "login": "Iniciar sesión",
         "register": "Registrarse",

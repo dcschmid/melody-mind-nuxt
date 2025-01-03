@@ -325,6 +325,8 @@
     }
   },
   "navigation": {
+    "mainNavLabel": "Main Navigation",
+    "mainMenu": "Main Menu",
     "home": "Home",
     "login": "Login",
     "register": "Register",
@@ -334,13 +336,12 @@
     "leaderboard": "Leaderboard",
     "settings": "Settings",
     "rules": "Game Rules",
-    "mainMenu": "Main Menu",
     "support": "Support",
     "legal": "Legal",
     "imprint": "Legal Notice",
     "highscores": "Highscores",
     "privacy": "Privacy",
-    "mainNavLabel": "Main Navigation"
+    "backToHome": "Back to Home"
   },
   "footer": {
     "about": "About Us",
@@ -353,7 +354,6 @@
     "network": "Network error",
     "retry": "Try again",
     "pageNotFound": "Page not found",
-    "backToHome": "Back to Home",
     "emailRequired": "Email address is required",
     "invalidEmail": "Invalid email address",
     "usernameRequired": "Username is required",

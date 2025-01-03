@@ -328,6 +328,8 @@
     }
   },
   "navigation": {
+    "mainNavLabel": "Navigation Principale",
+    "mainMenu": "Menu Principal",
     "home": "Accueil",
     "login": "Connexion",
     "register": "S'inscrire",
@@ -335,13 +337,11 @@
     "logout": "Déconnexion",
     "openMenu": "Ouvrir le menu",
     "rules": "Règles du Jeu",
-    "mainMenu": "Menu principal",
     "support": "Support",
     "legal": "Mentions Légales",
     "imprint": "Mentions Légales",
     "highscores": "Meilleurs scores",
     "privacy": "Confidentialité",
-    "mainNavLabel": "Navigation principale",
     "leaderboard": "Classement"
   },
   "footer": {
