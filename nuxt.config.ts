@@ -16,8 +16,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     turso: {
-      databaseUrl: process.env.TURSO_DB_URL,
-      authToken: process.env.TURSO_DB_AUTH_TOKEN,
+      databaseUrl: process.env.NUXT_TURSO_DATABASE_URL,
+      authToken: process.env.NUXT_TURSO_AUTH_TOKEN,
     }
   },
   nitro: {
