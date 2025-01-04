@@ -17,8 +17,10 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { useRequestURL } from '#imports'
 
 const { t } = useI18n()
+const url = useRequestURL()
 
 // SEO Meta Tags
 useSeoMeta({
@@ -30,6 +32,7 @@ useSeoMeta({
     robots: 'index, follow',
     viewport: 'width=device-width, initial-scale=1',
     twitterCard: 'summary_large_image',
+    ogUrl: computed(() => url.href)
 });
 </script>
 

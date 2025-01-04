@@ -8,8 +8,8 @@
     },
     "meta": {
         "homeTitle": "Melody Mind - El Juego Definitivo de Trivia Musical",
-        "homeDescription": "Pon a prueba tus conocimientos musicales en nuestro juego interactivo de preguntas. Responde preguntas sobre canciones, artistas e historia de la música en varios géneros como rock, pop, hip-hop y clásica.",
-        "homeKeywords": "trivia musical, conocimientos musicales, quiz online, historia de la música, trivia de artistas, trivia de álbumes, géneros musicales, juego interactivo"
+        "homeDescription": "Pon a prueba tus conocimientos musicales en nuestro juego interactivo de preguntas. Responde preguntas sobre canciones, artistas e historia de la música de varios géneros como rock, pop, hip-hop y clásica.",
+        "homeKeywords": "Trivia Musical, Conocimientos Musicales, Quiz Online, Historia de la Música, Trivia de Artistas, Trivia de Álbumes, Géneros Musicales, Juego Interactivo"
     },
     "welcome": {
         "title": "Bienvenido a Melody Mind",
@@ -590,5 +590,31 @@
         "easy": "Fácil",
         "medium": "Medio",
         "hard": "Difícil"
+    },
+    "seo": {
+        "category": {
+            "defaultTitle": "Categorías de Trivia Musical - Melody Mind",
+            "defaultDescription": "Descubre varias categorías de trivia musical en Melody Mind. Pon a prueba tus conocimientos en diferentes géneros y épocas de la historia de la música."
+        },
+        "gameRules": {
+            "title": "Reglas del Juego - Melody Mind",
+            "description": "Conoce las reglas del juego de Melody Mind. Descubre todo sobre los modos de juego, sistema de puntuación y funciones bonus en nuestra trivia musical."
+        },
+        "highscores": {
+            "title": "Tabla de Clasificación - Melody Mind",
+            "description": "Mira las puntuaciones más altas de los mejores jugadores en todas las categorías. Compara tu rendimiento con otros entusiastas de la música."
+        },
+        "game": {
+            "title": "Trivia de {category} - Modo {difficulty}",
+            "description": "¡Juega la trivia musical de {category} en modo {difficulty}! Pon a prueba tus conocimientos musicales y compite por las mejores puntuaciones."
+        },
+        "privacy": {
+            "title": "Política de Privacidad - Melody Mind",
+            "description": "Conoce nuestras políticas de privacidad. Descubre cómo protegemos y utilizamos tus datos en Melody Mind."
+        },
+        "imprint": {
+            "title": "Aviso Legal - Melody Mind",
+            "description": "Información legal y datos de contacto de Melody Mind."
+        }
     }
 }

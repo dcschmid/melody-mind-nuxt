@@ -67,9 +67,23 @@
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useSeoMeta, useRequestURL } from '#imports'
 import SearchBar from '@/components/SearchBar.vue'
 
-const { locale, t } = useI18n()
+const { t, locale } = useI18n()
+const url = useRequestURL()
+
+useSeoMeta({
+    title: computed(() => t('seo.highscores.title')),
+    ogTitle: computed(() => t('seo.highscores.title')),
+    description: computed(() => t('seo.highscores.description')),
+    ogDescription: computed(() => t('seo.highscores.description')),
+    ogUrl: url.href,
+    ogType: 'website',
+    robots: 'index, follow',
+    viewport: 'width=device-width, initial-scale=1'
+})
+
 const highscores = ref([])
 const searchQuery = ref('')
 const selectedDifficulties = ref({})

@@ -7,9 +7,9 @@
     "it": "Italiano"
   },
   "meta": {
-    "homeTitle": "Melody Mind - Il Quiz Musicale Definitivo",
-    "homeDescription": "Metti alla prova le tue conoscenze musicali nel nostro quiz interattivo. Rispondi a domande su canzoni, artisti e storia della musica attraverso vari generi come rock, pop, hip-hop e classica.",
-    "homeKeywords": "quiz musicale, conoscenze musicali, quiz online, storia della musica, quiz artisti, quiz album, generi musicali, gioco interattivo"
+    "homeTitle": "Melody Mind - L'Ultimo Quiz Musicale",
+    "homeDescription": "Metti alla prova le tue conoscenze musicali nel nostro quiz interattivo. Rispondi a domande su canzoni, artisti e storia della musica di vari generi come rock, pop, hip-hop e classica.",
+    "homeKeywords": "Quiz Musicale, Conoscenze Musicali, Quiz Online, Storia della Musica, Quiz Artisti, Quiz Album, Generi Musicali, Gioco Interattivo"
   },
   "welcome": {
     "title": "Benvenuto su Melody Mind",
@@ -585,5 +585,31 @@
     "easy": "Facile",
     "medium": "Medio",
     "hard": "Difficile"
+  },
+  "seo": {
+    "category": {
+      "defaultTitle": "Categorie Quiz Musicale - Melody Mind",
+      "defaultDescription": "Scopri varie categorie di quiz musicali su Melody Mind. Metti alla prova le tue conoscenze in diversi generi ed epoche della storia della musica."
+    },
+    "gameRules": {
+      "title": "Regole del Gioco - Melody Mind",
+      "description": "Scopri le regole del gioco di Melody Mind. Impara tutto sulle modalità di gioco, il sistema di punteggio e le funzioni bonus nel nostro quiz musicale."
+    },
+    "highscores": {
+      "title": "Classifica - Melody Mind",
+      "description": "Visualizza i punteggi più alti dei migliori giocatori in tutte le categorie. Confronta le tue prestazioni con altri appassionati di musica."
+    },
+    "game": {
+      "title": "Quiz {category} - Modalità {difficulty}",
+      "description": "Gioca al quiz musicale {category} in modalità {difficulty}! Metti alla prova le tue conoscenze musicali e competi per i punteggi più alti."
+    },
+    "privacy": {
+      "title": "Informativa sulla Privacy - Melody Mind",
+      "description": "Scopri le nostre politiche sulla privacy. Scopri come proteggiamo e utilizziamo i tuoi dati su Melody Mind."
+    },
+    "imprint": {
+      "title": "Note Legali - Melody Mind",
+      "description": "Informazioni legali e dettagli di contatto di Melody Mind."
+    }
   }
 }

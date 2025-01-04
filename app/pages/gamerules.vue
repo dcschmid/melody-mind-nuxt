@@ -95,7 +95,24 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+import { useRequestURL } from '#imports'
+
 definePageMeta({})
+
+const { t } = useI18n()
+const url = useRequestURL()
+
+useSeoMeta({
+    title: computed(() => t('seo.gameRules.title')),
+    ogTitle: computed(() => t('seo.gameRules.title')),
+    description: computed(() => t('seo.gameRules.description')),
+    ogDescription: computed(() => t('seo.gameRules.description')),
+    ogUrl: url.href,
+    ogType: 'website',
+    robots: 'index, follow',
+    viewport: 'width=device-width, initial-scale=1'
+})
 </script>
 
 <style lang="scss" scoped>

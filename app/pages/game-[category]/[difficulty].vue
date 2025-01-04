@@ -40,16 +40,29 @@
 <script setup lang="ts">
 import { watch, nextTick, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useSeoMeta, useRequestURL, useRoute } from '#imports'
 import GameOverScreen from '~/components/game/GameOverScreen.vue';
 
 // Initialize core utilities
 const route = useRoute()
 const { t, locale } = useI18n()
+const url = useRequestURL()
 
 // --- Route Parameters ---
 // Extract category and difficulty from URL parameters
 const category = route.params.category as string
 const difficulty = route.params.difficulty as string
+
+useSeoMeta({
+    title: computed(() => t('seo.game.title', { category, difficulty: t(`difficulty.${difficulty}`) })),
+    ogTitle: computed(() => t('seo.game.title', { category, difficulty: t(`difficulty.${difficulty}`) })),
+    description: computed(() => t('seo.game.description', { category, difficulty: t(`difficulty.${difficulty}`) })),
+    ogDescription: computed(() => t('seo.game.description', { category, difficulty: t(`difficulty.${difficulty}`) })),
+    ogUrl: url.href,
+    ogType: 'website',
+    robots: 'index, follow',
+    viewport: 'width=device-width, initial-scale=1'
+})
 
 // --- Load Category Data ---
 // Import category data based on current locale

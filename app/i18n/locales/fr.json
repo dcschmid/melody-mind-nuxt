@@ -7,9 +7,35 @@
     "it": "Italien"
   },
   "meta": {
-    "homeTitle": "Melody Mind - Le Jeu Ultime de Quiz Musical",
-    "homeDescription": "Testez vos connaissances musicales dans notre jeu de quiz interactif. Répondez aux questions sur les chansons, les artistes et l'histoire de la musique à travers différents genres comme le rock, la pop, le hip-hop et le classique.",
-    "homeKeywords": "quiz musical, connaissances musicales, quiz en ligne, histoire de la musique, quiz artistes, quiz albums, genres musicaux, jeu interactif"
+    "homeTitle": "Melody Mind - Le Jeu de Quiz Musical Ultime",
+    "homeDescription": "Testez vos connaissances musicales dans notre jeu de quiz interactif. Répondez aux questions sur les chansons, les artistes et l'histoire de la musique de différents genres comme le rock, la pop, le hip-hop et le classique.",
+    "homeKeywords": "Quiz Musical, Connaissances Musicales, Quiz en Ligne, Histoire de la Musique, Quiz d'Artistes, Quiz d'Albums, Genres Musicaux, Jeu Interactif"
+  },
+  "seo": {
+    "category": {
+      "defaultTitle": "Catégories de Quiz Musical - Melody Mind",
+      "defaultDescription": "Découvrez différentes catégories de quiz musical sur Melody Mind. Testez vos connaissances dans différents genres et époques de l'histoire de la musique."
+    },
+    "gameRules": {
+      "title": "Règles du Jeu - Melody Mind",
+      "description": "Découvrez les règles du jeu de Melody Mind. Apprenez tout sur les modes de jeu, le système de points et les fonctionnalités bonus dans notre quiz musical."
+    },
+    "highscores": {
+      "title": "Classement - Melody Mind",
+      "description": "Consultez les meilleurs scores des joueurs dans toutes les catégories. Comparez vos performances avec d'autres passionnés de musique."
+    },
+    "game": {
+      "title": "Quiz {category} - Mode {difficulty}",
+      "description": "Jouez au quiz musical {category} en mode {difficulty} ! Testez vos connaissances musicales et battez-vous pour les meilleurs scores."
+    },
+    "privacy": {
+      "title": "Politique de Confidentialité - Melody Mind",
+      "description": "Découvrez notre politique de confidentialité. Apprenez comment nous protégeons et utilisons vos données sur Melody Mind."
+    },
+    "imprint": {
+      "title": "Mentions Légales - Melody Mind",
+      "description": "Informations légales et coordonnées de Melody Mind."
+    }
   },
   "welcome": {
     "title": "Bienvenue sur Melody Mind",

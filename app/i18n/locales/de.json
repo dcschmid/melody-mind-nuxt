@@ -11,6 +11,32 @@
     "homeDescription": "Teste dein Musikwissen in unserem interaktiven Quiz-Spiel. Beantworte Fragen zu Songs, Künstlern und Musikgeschichte aus verschiedenen Genres wie Rock, Pop, Hip-Hop und Klassik.",
     "homeKeywords": "Musik Quiz, Musikwissen, Online Quiz, Musikgeschichte, Künstler Quiz, Album Quiz, Musikgenres, Interaktives Spiel"
   },
+  "seo": {
+    "category": {
+      "defaultTitle": "Musik-Quiz Kategorien - Melody Mind",
+      "defaultDescription": "Entdecke verschiedene Musik-Quiz Kategorien bei Melody Mind. Teste dein Wissen in verschiedenen Genres und Epochen der Musikgeschichte."
+    },
+    "gameRules": {
+      "title": "Spielregeln - Melody Mind",
+      "description": "Lerne die Spielregeln von Melody Mind kennen. Erfahre alles über Spielmodi, Punktesystem und Bonus-Funktionen in unserem Musik-Quiz."
+    },
+    "highscores": {
+      "title": "Bestenliste - Melody Mind",
+      "description": "Sieh dir die Highscores der besten Spieler in allen Kategorien an. Vergleiche deine Leistung mit anderen Musik-Enthusiasten."
+    },
+    "game": {
+      "title": "{category} Quiz - {difficulty} Modus",
+      "description": "Spiele das {category} Musik-Quiz im {difficulty} Modus! Teste dein Musikwissen und kämpfe um die Highscores."
+    },
+    "privacy": {
+      "title": "Datenschutzerklärung - Melody Mind",
+      "description": "Informiere dich über unsere Datenschutzrichtlinien. Erfahre, wie wir deine Daten bei Melody Mind schützen und verwenden."
+    },
+    "imprint": {
+      "title": "Impressum - Melody Mind",
+      "description": "Rechtliche Informationen und Kontaktdaten von Melody Mind."
+    }
+  },
   "welcome": {
     "title": "Willkommen bei Melody Mind",
     "start": "Spiel starten",

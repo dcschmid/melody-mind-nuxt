@@ -53,6 +53,21 @@ const route = useRoute()
 const { locale, t } = useI18n()
 const url = useRequestURL()
 
+const currentCategory = computed(() => {
+    return categories.value.find(cat => cat.slug === route.params.category)
+})
+
+useSeoMeta({
+    title: computed(() => currentCategory.value?.headline || t('seo.category.defaultTitle')),
+    ogTitle: computed(() => currentCategory.value?.headline || t('seo.category.defaultTitle')),
+    description: computed(() => currentCategory.value?.introSubline || t('seo.category.defaultDescription')),
+    ogDescription: computed(() => currentCategory.value?.introSubline || t('seo.category.defaultDescription')),
+    ogUrl: url.href,
+    ogType: 'website',
+    robots: 'index, follow',
+    viewport: 'width=device-width, initial-scale=1'
+})
+
 interface Category {
     slug: string
     headline: string
@@ -88,66 +103,6 @@ const loadCategories = async () => {
         categories.value = []
     }
 }
-
-const currentCategory = computed(() => {
-    return categories.value.find(cat => cat.slug === route.params.category)
-})
-
-const jsonLd = computed(() => ({
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: currentCategory.value?.headline,
-    description: currentCategory.value?.introSubline,
-    url: url.href,
-    image: currentCategory.value?.imageUrl
-}))
-
-useHead(() => ({
-    title: currentCategory.value
-        ? `${currentCategory.value.headline} - Melody Mind`
-        : 'Kategorien - Melody Mind',
-    titleTemplate: (titleChunk) => {
-        return titleChunk ? `${titleChunk} - Melody Mind` : 'Melody Mind';
-    },
-    meta: [
-        {
-            name: 'description',
-            content: currentCategory.value?.introSubline || 'Entdecken Sie unsere Kategorien'
-        },
-        {
-            name: 'robots',
-            content: 'index, follow'
-        },
-        {
-            name: 'og:title',
-            content: currentCategory.value?.headline || 'Kategorien'
-        },
-        {
-            name: 'og:description',
-            content: currentCategory.value?.introSubline || 'Entdecken Sie unsere Kategorien'
-        },
-        {
-            name: 'og:type',
-            content: 'website'
-        },
-        {
-            name: 'og:url',
-            content: url.href
-        }
-    ],
-    link: [
-        {
-            rel: 'canonical',
-            href: url.href
-        }
-    ],
-    script: [
-        {
-            type: 'application/ld+json',
-            children: JSON.stringify(jsonLd.value)
-        }
-    ]
-}))
 
 const onUsernameSet = () => {
     hasUsername.value = true

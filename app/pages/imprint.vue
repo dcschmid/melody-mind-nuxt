@@ -65,6 +65,24 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
+import { useSeoMeta, useRequestURL } from '#imports'
+import { computed } from 'vue'
+
+const { t } = useI18n()
+const url = useRequestURL()
+
+useSeoMeta({
+    title: computed(() => t('seo.imprint.title')),
+    ogTitle: computed(() => t('seo.imprint.title')),
+    description: computed(() => t('seo.imprint.description')),
+    ogDescription: computed(() => t('seo.imprint.description')),
+    ogUrl: url.href,
+    ogType: 'website',
+    robots: 'noindex, follow',  // Usually imprint pages should not be indexed
+    viewport: 'width=device-width, initial-scale=1'
+})
+
 definePageMeta({
     layout: 'default'
 })

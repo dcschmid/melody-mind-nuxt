@@ -8,8 +8,34 @@
   },
   "meta": {
     "homeTitle": "Melody Mind - The Ultimate Music Quiz Game",
-    "homeDescription": "Test your music knowledge in our interactive quiz game. Answer questions about songs, artists, and music history across various genres including rock, pop, hip-hop, and classical.",
-    "homeKeywords": "music quiz, music knowledge, online quiz, music history, artist quiz, album quiz, music genres, interactive game"
+    "homeDescription": "Test your music knowledge in our interactive quiz game. Answer questions about songs, artists, and music history from various genres like rock, pop, hip-hop, and classical.",
+    "homeKeywords": "Music Quiz, Music Knowledge, Online Quiz, Music History, Artist Quiz, Album Quiz, Music Genres, Interactive Game"
+  },
+  "seo": {
+    "category": {
+      "defaultTitle": "Music Quiz Categories - Melody Mind",
+      "defaultDescription": "Discover various music quiz categories at Melody Mind. Test your knowledge across different genres and eras of music history."
+    },
+    "gameRules": {
+      "title": "Game Rules - Melody Mind",
+      "description": "Learn about Melody Mind's game rules. Find out everything about game modes, scoring system, and bonus features in our music quiz."
+    },
+    "highscores": {
+      "title": "Leaderboard - Melody Mind",
+      "description": "View the high scores of the best players in all categories. Compare your performance with other music enthusiasts."
+    },
+    "game": {
+      "title": "{category} Quiz - {difficulty} Mode",
+      "description": "Play the {category} music quiz in {difficulty} mode! Test your music knowledge and compete for high scores."
+    },
+    "privacy": {
+      "title": "Privacy Policy - Melody Mind",
+      "description": "Learn about our privacy policies. Find out how we protect and use your data at Melody Mind."
+    },
+    "imprint": {
+      "title": "Imprint - Melody Mind",
+      "description": "Legal information and contact details for Melody Mind."
+    }
   },
   "welcome": {
     "title": "Welcome to Melody Mind",

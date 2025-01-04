@@ -98,6 +98,24 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
+import { useSeoMeta, useRequestURL } from '#imports'
+import { computed } from 'vue'
+
+const { t } = useI18n()
+const url = useRequestURL()
+
+useSeoMeta({
+    title: computed(() => t('seo.privacy.title')),
+    ogTitle: computed(() => t('seo.privacy.title')),
+    description: computed(() => t('seo.privacy.description')),
+    ogDescription: computed(() => t('seo.privacy.description')),
+    ogUrl: url.href,
+    ogType: 'website',
+    robots: 'noindex, follow',
+    viewport: 'width=device-width, initial-scale=1'
+})
+
 definePageMeta({
     layout: 'default'
 })

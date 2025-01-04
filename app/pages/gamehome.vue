@@ -26,14 +26,14 @@
 <script setup>
 import { computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-
-
+import { useRequestURL } from '#imports'
 
 const router = useRouter()
 
 const { searchQuery, filteredCategories, loadCategories } = useCategories()
 const { locale, t } = useI18n()
 const localePath = useLocalePath()
+const url = useRequestURL()
 
 useSeoMeta({
     title: computed(() => t('gameHome.title')),
@@ -44,10 +44,8 @@ useSeoMeta({
     robots: 'index, follow',
     viewport: 'width=device-width, initial-scale=1',
     twitterCard: 'summary_large_image',
+    ogUrl: computed(() => url.href)
 })
-
-
-
 
 const navigateToCategory = (category) => {
     if (category.isPlayable) {
