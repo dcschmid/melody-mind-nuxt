@@ -13,17 +13,18 @@
     "@libsql/client": "^0.14.0",
     "@nuxthub/core": "0.8.10",
     "@nuxtjs/i18n": "^8.0.0",
+    "@types/node": "^20.10.4",
     "@vueuse/core": "^12.3.0",
     "@vueuse/integrations": "^12.3.0",
     "dotenv": "^16.4.7",
     "focus-trap": "^7.6.2",
+    "hash-sum": "^2.0.0",
     "nanoid": "^5.0.9",
     "nuxt": "^3.15.0",
     "sharp": "^0.33.5",
     "typescript": "^5.7.2",
     "vue": "latest",
-    "vue-router": "latest",
-    "@types/node": "^20.10.4"
+    "vue-router": "latest"
   },
   "devDependencies": {
     "@nuxt/image": "^1.8.1",

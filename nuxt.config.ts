@@ -41,7 +41,7 @@ export default defineNuxtConfig({
       redirectOn: "root",
     },
     lazy: true,
-    langDir: "i18n/locales",
+    langDir: "./i18n/locales",
     locales: [
       {
         code: "de",
