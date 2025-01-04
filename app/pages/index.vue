@@ -7,9 +7,9 @@
                 </div>
                 <h1 class="title">{{ $t('welcome.title') }}</h1>
                 <p class="intro-text">{{ $t('intro') }}</p>
-                <NuxtLink to="/gamehome" class="primary-button">
+                <NuxtLinkLocale to="/gamehome" class="primary-button">
                     {{ $t('welcome.start') }}
-                </NuxtLink>
+                </NuxtLinkLocale>
             </div>
         </div>
     </NuxtLayout>
