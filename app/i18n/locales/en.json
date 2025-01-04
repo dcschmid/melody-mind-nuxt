@@ -204,20 +204,24 @@
       "fiftyFifty": {
         "title": "50:50",
         "description": "Removes two wrong answers",
-        "remaining": "{count} jokers remaining"
+        "remaining": "{count} jokers remaining",
+        "ariaLabel": "Fifty-Fifty Joker"
       },
       "audience": {
         "title": "Audience Help",
         "description": "Shows audience vote distribution",
-        "remaining": "{count} jokers remaining"
+        "remaining": "{count} jokers remaining",
+        "ariaLabel": "Ask the Audience"
       },
       "phone": {
         "title": "Phone a Friend",
         "description": "Get an expert's opinion",
-        "remaining": "{count} jokers remaining"
+        "remaining": "{count} jokers remaining",
+        "ariaLabel": "Phone a Friend"
       },
       "remaining": "{count} jokers remaining"
-    }
+    },
+    "selectAnswer": "Select answer"
   },
   "gameRules": {
     "title": "Game Rules – MelodyMind",

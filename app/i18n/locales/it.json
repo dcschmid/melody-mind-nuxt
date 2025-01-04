@@ -204,20 +204,24 @@
       "fiftyFifty": {
         "title": "50:50",
         "description": "Rimuove due risposte sbagliate",
-        "remaining": "{count} jolly rimanenti"
+        "remaining": "{count} jolly rimanenti",
+        "ariaLabel": "Jolly 50:50"
       },
       "audience": {
         "title": "Aiuto del Pubblico",
         "description": "Mostra la distribuzione dei voti del pubblico",
-        "remaining": "{count} jolly rimanenti"
+        "remaining": "{count} jolly rimanenti",
+        "ariaLabel": "Aiuto del Pubblico"
       },
       "phone": {
         "title": "Chiama un Esperto",
         "description": "Ottieni l'opinione di un esperto",
-        "remaining": "{count} jolly rimanenti"
+        "remaining": "{count} jolly rimanenti",
+        "ariaLabel": "Chiama un Amico"
       },
       "remaining": "{count} jolly rimanenti"
-    }
+    },
+    "selectAnswer": "Seleziona la risposta"
   },
   "gameRules": {
     "title": "Regole del Gioco – MelodyMind",

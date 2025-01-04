@@ -208,20 +208,24 @@
             "fiftyFifty": {
                 "title": "50:50",
                 "description": "Elimina dos respuestas incorrectas",
-                "remaining": "{count} comodines restantes"
+                "remaining": "{count} comodines restantes",
+                "ariaLabel": "Comodín 50:50"
             },
             "audience": {
                 "title": "Ayuda del Público",
                 "description": "Muestra la distribución de votos del público",
-                "remaining": "{count} comodines restantes"
+                "remaining": "{count} comodines restantes",
+                "ariaLabel": "Ayuda del Público"
             },
             "phone": {
                 "title": "Llamada a un Experto",
                 "description": "Obtén la opinión de un experto",
-                "remaining": "{count} comodines restantes"
+                "remaining": "{count} comodines restantes",
+                "ariaLabel": "Llamada a un Amigo"
             },
             "remaining": "{count} comodines restantes"
-        }
+        },
+        "selectAnswer": "Seleccionar respuesta"
     },
     "gameRules": {
         "title": "Reglas del Juego – MelodyMind",

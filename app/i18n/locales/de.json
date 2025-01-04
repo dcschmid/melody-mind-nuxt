@@ -185,17 +185,20 @@
       "fiftyFifty": {
         "title": "50:50",
         "description": "Entfernt zwei falsche Antworten",
-        "remaining": "{count} Joker übrig"
+        "remaining": "{count} Joker übrig",
+        "ariaLabel": "50:50 Joker"
       },
       "audience": {
         "title": "Publikumsjoker",
         "description": "Zeigt die Verteilung der Publikumsstimmen",
-        "remaining": "{count} Joker übrig"
+        "remaining": "{count} Joker übrig",
+        "ariaLabel": "Publikumsjoker"
       },
       "phone": {
         "title": "Telefonjoker",
         "description": "Ein Experte gibt seine Einschätzung",
-        "remaining": "{count} Joker übrig"
+        "remaining": "{count} Joker übrig",
+        "ariaLabel": "Telefonjoker"
       },
       "remaining": "{count} Joker übrig"
     },
@@ -253,7 +256,8 @@
     "confidence": "Sicherheit",
     "trivia": {
       "title": "Wissenswertes"
-    }
+    },
+    "selectAnswer": "Antwort auswählen"
   },
   "gameRules": {
     "title": "Spielregeln – MelodyMind",

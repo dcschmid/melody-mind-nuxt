@@ -60,7 +60,7 @@ const formattedPoints = computed(() => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: calc(var(--padding-medium) * 1.5) var(--padding-medium);
+    padding: calc(var(--padding-small) * 1.5) var(--padding-small);
     background: var(--surface-color);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);

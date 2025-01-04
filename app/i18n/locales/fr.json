@@ -207,20 +207,24 @@
       "fiftyFifty": {
         "title": "50:50",
         "description": "Élimine deux mauvaises réponses",
-        "remaining": "{count} jokers restants"
+        "remaining": "{count} jokers restants",
+        "ariaLabel": "Joker 50:50"
       },
       "audience": {
         "title": "Avis du Public",
         "description": "Montre la distribution des votes du public",
-        "remaining": "{count} jokers restants"
+        "remaining": "{count} jokers restants",
+        "ariaLabel": "L'avis du public"
       },
       "phone": {
         "title": "Appel à un Expert",
         "description": "Obtiens l'avis d'un expert",
-        "remaining": "{count} jokers restants"
+        "remaining": "{count} jokers restants",
+        "ariaLabel": "Appel à un ami"
       },
       "remaining": "{count} jokers restants"
-    }
+    },
+    "selectAnswer": "Sélectionner la réponse"
   },
   "gameRules": {
     "title": "Règles du Jeu – MelodyMind",
