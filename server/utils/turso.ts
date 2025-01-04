@@ -1,4 +1,5 @@
 import { createClient } from "@libsql/client";
+import { useRuntimeConfig } from "#imports";
 // You can optionally pass in the event to useRuntimeConfig
 // import { H3Event } from "h3";
 

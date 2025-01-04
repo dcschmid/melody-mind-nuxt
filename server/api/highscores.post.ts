@@ -48,30 +48,28 @@ export default defineEventHandler(async (event) => {
         bronze_lp: Boolean(row.bronze_lp)
       };
       
-      // Nur aktualisieren, wenn der neue Score höher ist
-      if (points > currentScore.points) {
-        await db.execute({
-          sql: `UPDATE highscores 
-                SET points = ?, 
-                    gold_lp = CASE 
-                      WHEN ? = true THEN true 
-                      ELSE gold_lp 
-                    END,
-                    silver_lp = CASE 
-                      WHEN ? = true THEN true 
-                      ELSE silver_lp 
-                    END,
-                    bronze_lp = CASE 
-                      WHEN ? = true THEN true 
-                      ELSE bronze_lp 
-                    END,
-                    updated_at = CURRENT_TIMESTAMP
-                WHERE username = ? AND category = ? AND difficulty = ? AND language = ?`,
-          args: [points, goldLP, silverLP, bronzeLP, username, category, difficulty, language],
-        });
-        return { status: 'updated', message: 'Score updated successfully' };
-      }
-      return { status: 'unchanged', message: 'Existing score is higher' };
+      // Add the new points to the existing score
+      const newTotalPoints = currentScore.points + points;
+      await db.execute({
+        sql: `UPDATE highscores 
+              SET points = ?, 
+                  gold_lp = CASE 
+                    WHEN ? = true THEN true 
+                    ELSE gold_lp 
+                  END,
+                  silver_lp = CASE 
+                    WHEN ? = true THEN true 
+                    ELSE silver_lp 
+                  END,
+                  bronze_lp = CASE 
+                    WHEN ? = true THEN true 
+                    ELSE bronze_lp 
+                  END,
+                  updated_at = CURRENT_TIMESTAMP
+              WHERE username = ? AND category = ? AND difficulty = ? AND language = ?`,
+        args: [newTotalPoints, goldLP, silverLP, bronzeLP, username, category, difficulty, language],
+      });
+      return { status: 'updated', message: 'Score updated successfully' };
     }
 
     // Neuen Eintrag erstellen

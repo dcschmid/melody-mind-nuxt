@@ -49,24 +49,10 @@
 </template>
 
 <script setup lang="ts">
-const route = useRoute()
-const { locale, t } = useI18n()
-const url = useRequestURL()
-
-const currentCategory = computed(() => {
-    return categories.value.find(cat => cat.slug === route.params.category)
-})
-
-useSeoMeta({
-    title: computed(() => currentCategory.value?.headline || t('seo.category.defaultTitle')),
-    ogTitle: computed(() => currentCategory.value?.headline || t('seo.category.defaultTitle')),
-    description: computed(() => currentCategory.value?.introSubline || t('seo.category.defaultDescription')),
-    ogDescription: computed(() => currentCategory.value?.introSubline || t('seo.category.defaultDescription')),
-    ogUrl: url.href,
-    ogType: 'website',
-    robots: 'index, follow',
-    viewport: 'width=device-width, initial-scale=1'
-})
+import { ref, computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { useHead } from '#imports'
 
 interface Category {
     slug: string
@@ -79,9 +65,25 @@ interface Category {
     appleMusicPlaylist: string
 }
 
+const { t, locale } = useI18n()
+const route = useRoute()
 const categories = ref<Category[]>([])
 const usernameInput = ref(null)
 const hasUsername = ref(false)
+
+const currentCategory = computed(() => {
+    return categories.value.find(cat => cat.slug === route.params.category)
+})
+
+useHead({
+    title: computed(() => currentCategory.value ? `${currentCategory.value.headline} - Melody Mind` : 'Melody Mind'),
+    meta: [
+        {
+            name: 'description',
+            content: computed(() => currentCategory.value ? currentCategory.value.text : '')
+        }
+    ]
+})
 
 const loadCategories = async () => {
     const cacheKey = `categories_${locale.value}`
