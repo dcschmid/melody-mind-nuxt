@@ -15,10 +15,18 @@ export const useCategories = () => {
   const debouncedSearch = useDebounce(searchQuery, 300);
 
   const filteredCategories = computed(() => {
-    if (!debouncedSearch.value) return categories.value;
+    let result = categories.value;
+    
+    if (debouncedSearch.value) {
+      const query = debouncedSearch.value.toLowerCase();
+      result = result.filter((category) => category.headline.toLowerCase().includes(query));
+    }
 
-    const query = debouncedSearch.value.toLowerCase();
-    return categories.value.filter((category) => category.headline.toLowerCase().includes(query));
+    // Sort playable categories first
+    return result.sort((a, b) => {
+      if (a.isPlayable === b.isPlayable) return 0;
+      return a.isPlayable ? -1 : 1;
+    });
   });
 
   const preloadImages = (categoryData: any[]) => {
