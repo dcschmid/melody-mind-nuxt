@@ -16,7 +16,7 @@ export const useCategories = () => {
 
   const filteredCategories = computed(() => {
     let result = categories.value;
-    
+
     if (debouncedSearch.value) {
       const query = debouncedSearch.value.toLowerCase();
       result = result.filter((category) => category.headline.toLowerCase().includes(query));
@@ -40,37 +40,10 @@ export const useCategories = () => {
   };
 
   const loadCategories = async (locale: string) => {
-    const cacheKey = `categories_${locale}`;
-
-    if (typeof window !== "undefined") {
-      try {
-        const cached = localStorage.getItem(cacheKey);
-        if (cached) {
-          const { data, timestamp } = JSON.parse(cached);
-          if (Date.now() - timestamp < 24 * 60 * 60 * 1000) {
-            categories.value = data;
-            preloadImages(data);
-            return;
-          }
-        }
-      } catch (error) {
-        console.error("Cache-Fehler:", error);
-      }
-    }
-
     try {
       const { default: data } = await import(`../json/${locale}_categories.json`);
       categories.value = data;
-      if (typeof window !== "undefined") {
-        localStorage.setItem(
-          cacheKey,
-          JSON.stringify({
-            data,
-            timestamp: Date.now(),
-          })
-        );
-        preloadImages(data);
-      }
+      preloadImages(data);
     } catch (error) {
       console.error("Fehler beim Laden der Kategorien:", error);
       categories.value = [];
