@@ -136,6 +136,49 @@ Total entries updated in /app/json/genres/en/50er.json: 2
 No changes needed for /app/json/genres/es/50er.json
 ```
 
+### Preview Link Checker
+
+The `scripts/check_preview_links.py` script verifies the accessibility of all preview audio links in the music database. It generates a detailed HTML report showing the status of each link across all language versions.
+
+Features:
+- Checks preview links across all language versions
+- Automatic retries for failed requests with exponential backoff
+- Service-specific handling for different streaming platforms (Apple Music, Deezer, Spotify)
+- Detailed HTML report with:
+  - Summary statistics
+  - Service distribution
+  - Detailed error information for inaccessible links
+  - File locations for problematic entries
+- Multi-threaded processing for faster checks
+- Language filtering option
+
+Requirements:
+- Python 3.x
+- `requests` library (`sudo apt install python3-requests` on Ubuntu/Debian)
+
+Usage:
+```bash
+# Check all languages
+python3 scripts/check_preview_links.py
+
+# Check specific languages
+python3 scripts/check_preview_links.py --languages en de fr
+
+# Customize retry behavior
+python3 scripts/check_preview_links.py --retries 5 --retry-delay 2.0
+```
+
+The script generates an HTML report in the `reports` directory with a timestamp in the filename. The report includes:
+- Total number of links checked
+- Number of accessible and inaccessible links
+- Distribution of links by streaming service
+- Detailed information about any inaccessible links, including:
+  - Artist and album information
+  - URL and error details
+  - File path where the link was found
+  - Content type information
+  - Retry attempt details
+
 ## Production
 
 Build the application for production:
