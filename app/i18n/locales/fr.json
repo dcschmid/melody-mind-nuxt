@@ -370,21 +370,17 @@
     }
   },
   "navigation": {
-    "mainNavLabel": "Navigation",
-    "mainMenu": "Menu",
+    "mainNavLabel": "Navigation Principale",
+    "mainMenu": "Menu Principal",
+    "openMenu": "Ouvrir le Menu",
     "home": "Accueil",
-    "login": "Connexion",
-    "register": "S'inscrire",
-    "profile": "Profil",
-    "logout": "Déconnexion",
-    "openMenu": "Menu",
+    "knowledge": "Base de Connaissances",
     "rules": "Règles du Jeu",
-    "support": "Support",
-    "legal": "Mentions Légales",
+    "leaderboard": "Classement",
+    "support": "Soutenez-nous",
     "imprint": "Mentions Légales",
-    "highscores": "Meilleurs scores",
-    "privacy": "Confidentialité",
-    "leaderboard": "Classement"
+    "privacy": "Politique de Confidentialité",
+    "legal": "Mentions Légales"
   },
   "footer": {
     "about": "À propos",
@@ -502,7 +498,7 @@
         }
       },
       "dataCollection": {
-        "title": "Collecte des Données",
+        "title": "Collecte de Données",
         "cookies": {
           "title": "Cookies",
           "text": "Nous utilisons des cookies pour vous offrir la meilleure expérience utilisateur possible. Ceux-ci ne stockent aucune information personnelle identifiable."
@@ -750,15 +746,18 @@
     "hard": "Difficile"
   },
   "knowledge": {
-    "loading": "Chargement du contenu...",
-    "playAndListen": "Jouer & Écouter",
-    "playNow": "Jouer Maintenant",
-    "playlists": "Playlists",
-    "playlist": {
-      "spotify": "Écouter sur Spotify",
-      "deezer": "Écouter sur Deezer",
-      "apple": "Écouter sur Apple Music",
-      "description": "Plongez dans l'univers de {genre} ! Nous avons sélectionné les meilleures chansons pour vous. Écoutez la playlist sur votre plateforme de streaming préférée et préparez-vous pour le jeu."
-    }
+    "title": "Base de Connaissances Musicales",
+    "overview": "Aperçu des Connaissances",
+    "description": "Explorez notre base complète de connaissances musicales"
+  },
+  "loading": "Chargement du contenu...",
+  "playAndListen": "Jouer & Écouter",
+  "playNow": "Jouer Maintenant",
+  "playlists": "Playlists",
+  "playlist": {
+    "spotify": "Écouter sur Spotify",
+    "deezer": "Écouter sur Deezer",
+    "apple": "Écouter sur Apple Music",
+    "description": "Plongez dans l'univers de {genre} ! Nous avons sélectionné les meilleures chansons pour vous. Écoutez la playlist sur votre plateforme de streaming préférée et préparez-vous pour le jeu."
   }
 }

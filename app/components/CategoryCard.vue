@@ -68,7 +68,7 @@ defineEmits(['select'])
     transition: transform 0.3s ease;
     cursor: pointer;
 
-    &:not(.not-playable):hover {
+    &:hover {
         transform: scale(1.02);
         
         .category-content::after {
@@ -81,7 +81,6 @@ defineEmits(['select'])
         
         .category-description {
             opacity: 1;
-            transform: translateY(0);
         }
     }
 }
@@ -148,8 +147,8 @@ defineEmits(['select'])
     color: white;
     text-align: center;
     opacity: 0;
-    transform: translateY(100%);
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .coming-soon {

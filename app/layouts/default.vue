@@ -28,6 +28,10 @@
                         <Icon name="material-symbols:home-outline" size="36" />
                         <span>{{ t('navigation.home') }}</span>
                     </NuxtLink>
+                    <NuxtLink :to="localePath('knowledge-overview')" class="menu-item">
+                        <Icon name="material-symbols:library-music" size="36" />
+                        <span>{{ t('navigation.knowledge') }}</span>
+                    </NuxtLink>
                     <NuxtLink :to="localePath('gamerules')" class="menu-item">
                         <Icon name="fluent:question-32-filled" size="36" />
                         <span>{{ t('navigation.rules') }}</span>

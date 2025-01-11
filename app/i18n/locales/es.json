@@ -348,20 +348,17 @@
         }
     },
     "navigation": {
-        "mainNavLabel": "Navegación",
-        "mainMenu": "Menú",
+        "mainNavLabel": "Navegación Principal",
+        "mainMenu": "Menú Principal",
+        "openMenu": "Abrir Menú",
         "home": "Inicio",
-        "login": "Iniciar sesión",
-        "register": "Registrarse",
-        "profile": "Perfil",
-        "logout": "Cerrar sesión",
-        "openMenu": "Abrir menú",
-        "support": "Soporte",
-        "legal": "Legal",
-        "imprint": "Aviso Legal",
-        "privacy": "Privacidad",
+        "knowledge": "Base de Conocimientos",
         "rules": "Reglas del Juego",
-        "leaderboard": "Tabla de Clasificación"
+        "leaderboard": "Tabla de Posiciones",
+        "support": "Apóyanos",
+        "imprint": "Aviso Legal",
+        "privacy": "Política de Privacidad",
+        "legal": "Legal"
     },
     "footer": {
         "about": "Sobre nosotros",
@@ -623,6 +620,9 @@
         }
     },
     "knowledge": {
+        "title": "Base de Conocimientos Musicales",
+        "overview": "Resumen del Conocimiento",
+        "description": "Explora nuestra completa base de conocimientos musicales",
         "loading": "Cargando contenido...",
         "playAndListen": "Jugar y Escuchar",
         "playNow": "Jugar Ahora",

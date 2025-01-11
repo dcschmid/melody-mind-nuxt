@@ -35,6 +35,10 @@
       "imprint": {
           "title": "Impressum - Melody Mind",
           "description": "Rechtliche Informationen und Kontaktinformationen für Melody Mind."
+      },
+      "legal": {
+          "title": "Rechtliche Hinweise - Melody Mind",
+          "description": "Erfahre mehr über unsere rechtlichen Hinweise und die Nutzungsbedingungen von Melody Mind."
       }
   },
   "welcome": {
@@ -372,21 +376,15 @@
   "navigation": {
       "mainNavLabel": "Hauptnavigation",
       "mainMenu": "Hauptmenü",
-      "home": "Startseite",
-      "login": "Anmeldung",
-      "register": "Registrierung",
-      "profile": "Profil",
-      "logout": "Abmelden",
       "openMenu": "Menü öffnen",
-      "leaderboard": "Rangliste",
-      "settings": "Einstellungen",
+      "home": "Startseite",
+      "knowledge": "Wissensdatenbank",
       "rules": "Spielregeln",
-      "support": "Hilfe",
-      "legal": "Rechtliches",
-      "imprint": "Rechtlicher Hinweis",
-      "highscores": "Highscores",
+      "leaderboard": "Bestenliste",
+      "support": "Unterstütze uns",
+      "imprint": "Impressum",
       "privacy": "Datenschutz",
-      "backToHome": "Zurück zur Startseite"
+      "legal": "Rechtliches"
   },
   "footer": {
       "about": "Über uns",
@@ -622,17 +620,20 @@
       "hard": "Schwer"
   },
   "knowledge": {
-      "loading": "Inhalt laden...",
-      "playAndListen": "Spielen & Musik hören",
-      "playNow": "Jetzt spielen",
-      "playlists": "Wiedergabelisten",
-      "playlist": {
-          "spotify": "Auf Spotify hören",
-          "deezer": "Auf Deezer hören",
-          "apple": "Auf Apple Music anhören",
-          "description": "Tauche ein in die Welt von {genre}! Wir haben die besten Songs für dich kuratiert. Hör dir die Playlist auf deiner bevorzugten Streaming-Plattform an und mach dich bereit für das Spiel."
-      },
-      "error": "Fehler beim Laden des Inhalts",
-      "backToGame": "Zurück zum Spiel"
+    "overview": "Wissensübersicht",
+    "title": "Musik-Wissensdatenbank",
+    "description": "Entdecke unsere umfassende Musik-Wissensdatenbank",
+    "loading": "Inhalt laden...",
+    "playAndListen": "Spielen & Musik hören",
+    "playNow": "Jetzt spielen",
+    "playlists": "Wiedergabelisten",
+    "playlist": {
+      "spotify": "Auf Spotify hören",
+      "deezer": "Auf Deezer hören",
+      "apple": "Auf Apple Music anhören",
+      "description": "Tauche ein in die Welt von {genre}! Wir haben die besten Songs für dich kuratiert. Hör dir die Playlist auf deiner bevorzugten Streaming-Plattform an und mach dich bereit für das Spiel."
+    },
+    "error": "Fehler beim Laden des Inhalts",
+    "backToGame": "Zurück zum Spiel"
   }
 }

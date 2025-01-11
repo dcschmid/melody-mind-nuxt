@@ -1,10 +1,11 @@
 ---
 title: L'Âge d'Or du Rock 'n' Roll
+description: Les années 1950 - Une révolution musicale entre prospérité économique et changement social
+image: /category/1950er.jpg
 category:
   spotifyPlaylist: https://open.spotify.com/playlist/3TcWOAPjycLukArGqHNWhJ
   deezerPlaylist: https://www.deezer.com/fr/playlist/13429959023
   appleMusicPlaylist: https://music.apple.com/fr/playlist/top-1950s-hits/pl.u-aZb0ky0F1xpM8zM
-description: Les années 1950 - Une révolution musicale entre prospérité économique et changement social
 ---
 
 ## Développement historique
