@@ -70,7 +70,7 @@
       "invalidEmail": "Adresse e-mail invalide",
       "invalidPassword": "Mot de passe invalide",
       "required": "Ce champ est requis",
-      "loginFailed": "Échec de la connexion",
+      "loginFailed": "La connexion a échoué. Veuillez réessayer.",
       "discordLoginFailed": "Échec de la connexion avec Discord",
       "githubLoginFailed": "Échec de la connexion avec GitHub"
     }
@@ -97,7 +97,7 @@
       "usernameRequired": "Le nom d'utilisateur est obligatoire",
       "usernameTooShort": "Le nom d'utilisateur doit contenir au moins 3 caractères",
       "passwordTooShort": "Le mot de passe doit contenir au moins 8 caractères",
-      "registrationFailed": "Échec de l'inscription"
+      "registrationFailed": "L'inscription a échoué. Veuillez réessayer."
     }
   },
   "forgotPassword": {
@@ -108,7 +108,7 @@
     "backToLogin": "Retour à la connexion",
     "successMessage": "Les instructions de réinitialisation ont été envoyées par e-mail.",
     "error": {
-      "passwordResetFailed": "Échec de la réinitialisation du mot de passe"
+      "passwordResetFailed": "La réinitialisation du mot de passe a échoué. Veuillez réessayer."
     }
   },
   "gameHome": {
@@ -141,8 +141,9 @@
       "apple": "Écouter sur Apple Music"
     },
     "knowledge": {
-      "title": "Connaissances",
-      "link": "En savoir plus sur {genre}"
+      "title": "Connaissance",
+      "link": "En savoir plus sur {genre}",
+      "description": "Voulez-vous en savoir plus sur l'histoire et le développement de {genre} ? Vous trouverez ici des informations fascinantes et des faits intéressants."
     }
   },
   "game": {
@@ -211,7 +212,7 @@
     "audio": {
       "play": "Lancer la musique",
       "pause": "Mettre en pause",
-      "progress": "Progression de la lecture"
+      "progress": "Progression du morceau"
     },
     "links": {
       "listen_on": "Écouter sur",
@@ -230,29 +231,29 @@
     },
     "round": "Tour {current} sur {max}",
     "points_label": "Points",
-    "points": "Points : {base} + {time} Bonus Temps",
-    "confidence": "Confiance",
+    "points": "Score : {base} + Bonus de Temps : {time}",
+    "confidence": "Niveau de Confiance",
     "jokers": {
-      "title": "Jokers",
+      "title": "Aides",
       "fiftyFifty": {
         "title": "50:50",
         "description": "Élimine deux mauvaises réponses",
-        "remaining": "{count} jokers restants",
-        "ariaLabel": "Joker 50:50"
+        "remaining": "{count} aides restantes",
+        "ariaLabel": "Aide 50:50"
       },
       "audience": {
         "title": "Avis du Public",
         "description": "Montre la distribution des votes du public",
-        "remaining": "{count} jokers restants",
-        "ariaLabel": "L'avis du public"
+        "remaining": "{count} aides restantes",
+        "ariaLabel": "Consulter l'avis du public"
       },
       "phone": {
-        "title": "Appel à un Expert",
-        "description": "Obtiens l'avis d'un expert",
-        "remaining": "{count} jokers restants",
-        "ariaLabel": "Appel à un ami"
+        "title": "Avis d'Expert",
+        "description": "Obtenir l'avis d'un expert",
+        "remaining": "{count} aides restantes",
+        "ariaLabel": "Consulter l'avis d'expert"
       },
-      "remaining": "{count} jokers restants"
+      "remaining": "{count} aides restantes"
     },
     "selectAnswer": "Sélectionner la réponse"
   },
@@ -369,14 +370,14 @@
     }
   },
   "navigation": {
-    "mainNavLabel": "Navigation Principale",
-    "mainMenu": "Menu Principal",
+    "mainNavLabel": "Navigation",
+    "mainMenu": "Menu",
     "home": "Accueil",
     "login": "Connexion",
     "register": "S'inscrire",
     "profile": "Profil",
     "logout": "Déconnexion",
-    "openMenu": "Ouvrir le menu",
+    "openMenu": "Menu",
     "rules": "Règles du Jeu",
     "support": "Support",
     "legal": "Mentions Légales",
@@ -405,15 +406,15 @@
     "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères",
     "nameRequired": "Le nom est obligatoire",
     "nameTooShort": "Le nom doit contenir au moins 2 caractères",
-    "loginFailed": "Échec de la connexion",
-    "registrationFailed": "Échec de l'inscription",
-    "passwordResetFailed": "Échec de la réinitialisation du mot de passe"
+    "loginFailed": "La connexion a échoué. Veuillez réessayer.",
+    "registrationFailed": "L'inscription a échoué. Veuillez réessayer.",
+    "passwordResetFailed": "La réinitialisation du mot de passe a échoué. Veuillez réessayer."
   },
   "accessibility": {
-    "skipToMain": "Passer au contenu principal",
+    "skipToMain": "Aller au contenu",
     "closeMenu": "Fermer le menu",
     "openMenu": "Ouvrir le menu",
-    "darkMode": "Basculer le mode sombre",
+    "darkMode": "Activer/désactiver le mode sombre",
     "playButton": "Jouer",
     "pauseButton": "Pause",
     "nextButton": "Suivant",
@@ -446,10 +447,10 @@
     "cookiePolicy": "Politique des Cookies"
   },
   "gdpr": {
-    "title": "Paramètres de Confidentialité",
+    "title": "Protection des Données",
     "description": "Nous respectons votre vie privée",
     "settings": {
-      "title": "Vos Paramètres de Confidentialité",
+      "title": "Vos Paramètres de Protection",
       "data": {
         "collection": "Collecte de Données",
         "usage": "Utilisation des Données",
@@ -483,9 +484,9 @@
     "player": "Joueur",
     "difficulty": "Difficulté",
     "points": "Points",
-    "lps": "PNs",
+    "lps": "Disques",
     "noResults": "Aucun résultat trouvé",
-    "noScores": "Pas encore d'entrées dans le tableau des scores"
+    "noScores": "Aucun score enregistré pour le moment"
   },
   "common": {
     "loading": "Chargement..."
@@ -501,14 +502,14 @@
         }
       },
       "dataCollection": {
-        "title": "Collecte de Données",
+        "title": "Collecte des Données",
         "cookies": {
           "title": "Cookies",
           "text": "Nous utilisons des cookies pour vous offrir la meilleure expérience utilisateur possible. Ceux-ci ne stockent aucune information personnelle identifiable."
         },
         "serverLogs": {
-          "title": "Journaux Serveur",
-          "text": "Pour des raisons techniques, nous stockons automatiquement les fichiers journaux du serveur que votre navigateur transmet."
+          "title": "Journaux du Serveur",
+          "text": "Pour des raisons techniques, nous conservons automatiquement les journaux du serveur transmis par votre navigateur."
         },
         "analytics": {
           "title": "Données Analytiques",
@@ -517,7 +518,7 @@
       },
       "rights": {
         "title": "Vos Droits",
-        "intro": "Vous disposez des droits suivants concernant vos données personnelles :",
+        "intro": "Conformément au RGPD, vous disposez des droits suivants concernant vos données personnelles :",
         "list": {
           "information": "Droit à l'information sur vos données stockées",
           "correction": "Droit à la correction des données incorrectes",

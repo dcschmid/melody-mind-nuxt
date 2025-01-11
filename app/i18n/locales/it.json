@@ -116,7 +116,8 @@
     },
     "knowledge": {
       "title": "Conoscenza",
-      "link": "Scopri di più su {genre}"
+      "link": "Scopri di più su {genre}",
+      "description": "Vuoi saperne di più sulla storia e lo sviluppo di {genre}? Qui troverai informazioni interessanti e fatti curiosi."
     }
   },
   "game": {
@@ -201,29 +202,29 @@
     },
     "round": "Round {current} di {max}",
     "points_label": "Punti",
-    "points": "Punti: {base} + {time} Bonus Tempo",
-    "confidence": "Sicurezza",
+    "points": "Punteggio: {base} + Bonus Tempo: {time}",
+    "confidence": "Livello di Sicurezza",
     "jokers": {
-      "title": "Jolly",
+      "title": "Aiuti",
       "fiftyFifty": {
         "title": "50:50",
-        "description": "Rimuove due risposte sbagliate",
-        "remaining": "{count} jolly rimanenti",
-        "ariaLabel": "Jolly 50:50"
+        "description": "Elimina due risposte errate",
+        "remaining": "{count} aiuti rimanenti",
+        "ariaLabel": "Aiuto 50:50"
       },
       "audience": {
         "title": "Aiuto del Pubblico",
-        "description": "Mostra la distribuzione dei voti del pubblico",
-        "remaining": "{count} jolly rimanenti",
-        "ariaLabel": "Aiuto del Pubblico"
+        "description": "Mostra le preferenze del pubblico",
+        "remaining": "{count} aiuti rimanenti",
+        "ariaLabel": "Consulta il Pubblico"
       },
       "phone": {
-        "title": "Chiama un Esperto",
-        "description": "Ottieni l'opinione di un esperto",
-        "remaining": "{count} jolly rimanenti",
-        "ariaLabel": "Chiama un Amico"
+        "title": "Consulta un Esperto",
+        "description": "Chiedi il parere di un esperto",
+        "remaining": "{count} aiuti rimanenti",
+        "ariaLabel": "Consulta un Esperto"
       },
-      "remaining": "{count} jolly rimanenti"
+      "remaining": "{count} aiuti rimanenti"
     },
     "selectAnswer": "Seleziona la risposta"
   },
@@ -340,8 +341,8 @@
     }
   },
   "navigation": {
-    "mainNavLabel": "Navigazione Principale",
-    "mainMenu": "Menu Principale",
+    "mainNavLabel": "Navigazione",
+    "mainMenu": "Menu",
     "home": "Home",
     "login": "Accedi",
     "register": "Registrati",
@@ -349,8 +350,8 @@
     "logout": "Esci",
     "openMenu": "Apri menu",
     "support": "Supporto",
-    "legal": "Note Legali",
-    "imprint": "Note Legali",
+    "legal": "Informazioni Legali",
+    "imprint": "Informazioni di Contatto",
     "privacy": "Privacy",
     "rules": "Regole del Gioco",
     "leaderboard": "Classifica"
@@ -375,9 +376,9 @@
     "passwordTooShort": "La password deve contenere almeno 6 caratteri",
     "nameRequired": "Il nome è obbligatorio",
     "nameTooShort": "Il nome deve contenere almeno 2 caratteri",
-    "loginFailed": "Accesso fallito",
-    "registrationFailed": "Registrazione fallita",
-    "passwordResetFailed": "Reimpostazione password fallita"
+    "loginFailed": "Non è stato possibile accedere. Riprova per favore",
+    "registrationFailed": "Non è stato possibile completare la registrazione. Riprova per favore",
+    "passwordResetFailed": "Non è stato possibile reimpostare la password. Riprova per favore"
   },
   "accessibility": {
     "skipToMain": "Vai al contenuto principale",
@@ -416,14 +417,14 @@
     "cookiePolicy": "Politica dei Cookie"
   },
   "gdpr": {
-    "title": "Impostazioni Privacy",
-    "description": "Rispettiamo la tua privacy",
+    "title": "Protezione dei Dati",
+    "description": "La tua privacy è importante per noi",
     "settings": {
-      "title": "Le tue Impostazioni Privacy",
+      "title": "Impostazioni Protezione Dati",
       "data": {
-        "collection": "Raccolta Dati",
-        "usage": "Utilizzo Dati",
-        "sharing": "Condivisione Dati"
+        "collection": "Raccolta dei Dati",
+        "usage": "Utilizzo dei Dati",
+        "sharing": "Condivisione dei Dati"
       },
       "consent": {
         "title": "Il tuo Consenso",
@@ -445,17 +446,17 @@
     "avatar": "Avatar",
     "name": "Nome",
     "points": "Punti",
-    "lps": "PL"
+    "lps": "Dischi"
   },
   "highscores": {
-    "title": "Punteggi migliori",
+    "title": "Classifica dei Punteggi",
     "searchPlaceholder": "Cerca per categoria...",
     "rank": "Posizione",
     "player": "Giocatore",
     "difficulty": "Difficoltà",
     "points": "Punti",
-    "lps": "PL",
-    "noScores": "Nessuna voce ancora nella classifica dei punteggi",
+    "lps": "Dischi",
+    "noScores": "La classifica è ancora vuota",
     "noResults": "Nessun risultato trovato"
   },
   "common": {
@@ -520,7 +521,7 @@
       },
       "rights": {
         "title": "I tuoi Diritti",
-        "intro": "Hai i seguenti diritti riguardo ai tuoi dati personali:",
+        "intro": "Secondo il Regolamento Generale sulla Protezione dei Dati (GDPR), hai i seguenti diritti:",
         "list": {
           "information": "Diritto all'informazione sui tuoi dati memorizzati",
           "correction": "Diritto alla correzione di dati errati",

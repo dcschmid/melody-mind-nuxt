@@ -7,9 +7,9 @@
         "it": "Italiano"
     },
     "meta": {
-        "homeTitle": "Melody Mind - El Juego Definitivo de Trivia Musical",
+        "homeTitle": "Melody Mind - El Quiz Musical Definitivo",
         "homeDescription": "Pon a prueba tus conocimientos musicales en nuestro juego interactivo de preguntas. Responde preguntas sobre canciones, artistas e historia de la música de varios géneros como rock, pop, hip-hop y clásica.",
-        "homeKeywords": "Trivia Musical, Conocimientos Musicales, Quiz Online, Historia de la Música, Trivia de Artistas, Trivia de Álbumes, Géneros Musicales, Juego Interactivo"
+        "homeKeywords": "Quiz Musical, Conocimientos Musicales, Quiz Online, Historia de la Música, Quiz de Artistas, Quiz de Álbumes, Géneros Musicales, Juego Interactivo"
     },
     "welcome": {
         "title": "Bienvenido a Melody Mind",
@@ -41,12 +41,12 @@
         "continueWithDiscord": "Continuar con Discord",
         "continueWithGithub": "Continuar con GitHub",
         "error": {
-            "invalidEmail": "Correo electrónico inválido",
-            "invalidPassword": "Contraseña inválida",
-            "required": "Este campo es obligatorio",
-            "loginFailed": "Error al iniciar sesión",
-            "discordLoginFailed": "Error al iniciar sesión con Discord",
-            "githubLoginFailed": "Error al iniciar sesión con GitHub"
+            "invalidEmail": "El correo electrónico no es válido",
+            "invalidPassword": "La contraseña no es válida",
+            "required": "Este campo es necesario",
+            "loginFailed": "No se pudo iniciar sesión. Por favor, inténtalo de nuevo",
+            "discordLoginFailed": "No se pudo iniciar sesión con Discord. Por favor, inténtalo de nuevo",
+            "githubLoginFailed": "No se pudo iniciar sesión con GitHub. Por favor, inténtalo de nuevo"
         }
     },
     "register": {
@@ -116,14 +116,15 @@
         },
         "knowledge": {
           "title": "Conocimiento",
-          "link": "Aprende más sobre {genre}"
+          "link": "Aprende más sobre {genre}",
+          "description": "¿Te gustaría aprender más sobre la historia y el desarrollo de {genre}? Aquí encontrarás información fascinante y datos interesantes."
         }
     },
     "game": {
         "loading": "Cargando juego...",
         "question": "Pregunta {current} de {total}",
         "timeLeft": "Tiempo restante",
-        "score": "Puntuación",
+        "score": "Puntaje",
         "correct": "¡Correcto!",
         "wrong": "¡Incorrecto!",
         "timeUp": "¡Se acabó el tiempo!",
@@ -143,7 +144,7 @@
         },
         "results": {
             "title": "Resultados del Juego",
-            "totalScore": "Puntuación Total",
+            "totalScore": "Puntaje Total",
             "correctAnswers": "Respuestas Correctas",
             "accuracy": "Precisión",
             "timeTaken": "Tiempo Empleado",
@@ -160,9 +161,9 @@
                 "message": {
                     "intro": "¡He conseguido {points} puntos en Melody Mind!",
                     "genre": "Género: {genre}",
-                    "perfect": "¡Ronda perfecta con un LP de Oro en dificultad {difficulty}!",
-                    "silver": "¡LP de Plata conseguido en dificultad {difficulty}!",
-                    "bronze": "¡LP de Bronce conseguido en dificultad {difficulty}!",
+                    "perfect": "¡Ronda perfecta con un Disco de Oro en dificultad {difficulty}!",
+                    "silver": "¡Disco de Plata conseguido en dificultad {difficulty}!",
+                    "bronze": "¡Disco de Bronce conseguido en dificultad {difficulty}!",
                     "stats": "¡{correct} respuestas correctas de {total} preguntas!",
                     "challenge": "¡Desafíame: {url}",
                     "difficulty": {
@@ -173,11 +174,11 @@
                 }
             },
             "playAgain": "Jugar de Nuevo",
-            "backToHome": "Volver al Inicio"
+            "backToHome": "Volver a Categorías"
         },
         "expert": {
             "title": "Opinión del Experto",
-            "confidence": "Confianza"
+            "confidence": "Nivel de Confianza"
         },
         "audienceOpinion": "Opinión del Público",
         "correctAnswer": "Respuesta Correcta",
@@ -205,29 +206,29 @@
         },
         "round": "Ronda {current} de {max}",
         "points_label": "Puntos",
-        "points": "Puntos: {base} + {time} Bonus de Tiempo",
-        "confidence": "Confianza",
+        "points": "Puntaje: {base} + Bonificación de Tiempo: {time}",
+        "confidence": "Nivel de Confianza",
         "jokers": {
-            "title": "Comodines",
+            "title": "Ayudas",
             "fiftyFifty": {
                 "title": "50:50",
                 "description": "Elimina dos respuestas incorrectas",
-                "remaining": "{count} comodines restantes",
-                "ariaLabel": "Comodín 50:50"
+                "remaining": "{count} ayudas restantes",
+                "ariaLabel": "Ayuda 50:50"
             },
             "audience": {
                 "title": "Ayuda del Público",
                 "description": "Muestra la distribución de votos del público",
-                "remaining": "{count} comodines restantes",
-                "ariaLabel": "Ayuda del Público"
+                "remaining": "{count} ayudas restantes",
+                "ariaLabel": "Consultar al Público"
             },
             "phone": {
-                "title": "Llamada a un Experto",
+                "title": "Consulta a un Experto",
                 "description": "Obtén la opinión de un experto",
-                "remaining": "{count} comodines restantes",
-                "ariaLabel": "Llamada a un Amigo"
+                "remaining": "{count} ayudas restantes",
+                "ariaLabel": "Consultar a un Experto"
             },
-            "remaining": "{count} comodines restantes"
+            "remaining": "{count} ayudas restantes"
         },
         "selectAnswer": "Seleccionar respuesta"
     },
@@ -325,10 +326,10 @@
         "stats": {
             "title": "Estadísticas",
             "gamesPlayed": "Partidas jugadas",
-            "totalScore": "Puntuación total",
-            "averageScore": "Puntuación media",
-            "highestScore": "Puntuación más alta",
-            "accuracy": "Precisión media"
+            "totalScore": "Puntaje total",
+            "averageScore": "Puntaje promedio",
+            "highestScore": "Puntaje más alto",
+            "accuracy": "Precisión promedio"
         },
         "achievements": {
             "title": "Logros",
@@ -347,8 +348,8 @@
         }
     },
     "navigation": {
-        "mainNavLabel": "Navegación Principal",
-        "mainMenu": "Menú Principal",
+        "mainNavLabel": "Navegación",
+        "mainMenu": "Menú",
         "home": "Inicio",
         "login": "Iniciar sesión",
         "register": "Registrarse",
@@ -382,15 +383,15 @@
         "passwordTooShort": "La contraseña debe tener al menos 6 caracteres",
         "nameRequired": "El nombre es obligatorio",
         "nameTooShort": "El nombre debe tener al menos 2 caracteres",
-        "loginFailed": "Error al iniciar sesión",
-        "registrationFailed": "Error en el registro",
-        "passwordResetFailed": "Error al restablecer la contraseña"
+        "loginFailed": "No se pudo iniciar sesión. Por favor, inténtalo de nuevo",
+        "registrationFailed": "No se pudo completar el registro. Por favor, inténtalo de nuevo",
+        "passwordResetFailed": "No se pudo restablecer la contraseña. Por favor, inténtalo de nuevo"
     },
     "accessibility": {
-        "skipToMain": "Ir al contenido principal",
+        "skipToMain": "Saltar al contenido",
         "closeMenu": "Cerrar menú",
         "openMenu": "Abrir menú",
-        "darkMode": "Alternar modo oscuro",
+        "darkMode": "Cambiar a modo oscuro/claro",
         "playButton": "Reproducir",
         "pauseButton": "Pausar",
         "nextButton": "Siguiente",
@@ -423,10 +424,10 @@
         "cookiePolicy": "Política de Cookies"
     },
     "gdpr": {
-        "title": "Configuración de Privacidad",
+        "title": "Protección de Datos",
         "description": "Respetamos tu privacidad",
         "settings": {
-            "title": "Tu Configuración de Privacidad",
+            "title": "Configuración de Protección de Datos",
             "data": {
                 "collection": "Recopilación de Datos",
                 "usage": "Uso de Datos",
@@ -439,28 +440,28 @@
             },
             "deletion": {
                 "title": "Eliminación de Datos",
-                "request": "Solicitar Eliminación de Datos",
-                "info": "Eliminaremos tus datos en un plazo de 30 días",
+                "request": "Solicitar Eliminación",
+                "info": "Procesaremos tu solicitud y eliminaremos tus datos en un plazo de 30 días",
                 "confirmation": "Confirmación de Eliminación",
                 "local": "Los datos locales en tu navegador pueden eliminarse a través de la configuración del navegador."
             }
         }
     },
     "highscore": {
-        "title": "Puntuaciones",
-        "total": "Puntuación Total",
+        "title": "Tabla de Puntajes",
+        "total": "Puntaje Total",
         "avatar": "Avatar",
         "name": "Nombre",
         "points": "Puntos"
     },
     "highscores": {
-        "title": "Puntuaciones más altas",
-        "searchPlaceholder": "Buscar por categoría...",
+        "title": "Tabla de Puntajes",
+        "searchPlaceholder": "Buscar categoría...",
         "rank": "Rango",
         "player": "Jugador",
         "points": "Puntos",
-        "lps": "LPs",
-        "noScores": "Aún no hay entradas en la tabla de puntuaciones",
+        "lps": "Discos",
+        "noScores": "No hay puntajes registrados todavía",
         "noResults": "No se encontraron resultados"
     },
     "common": {
@@ -493,7 +494,7 @@
             },
             "rights": {
                 "title": "Tus Derechos",
-                "intro": "Tienes los siguientes derechos respecto a tus datos personales:",
+                "intro": "De acuerdo con la ley de protección de datos, tienes los siguientes derechos:",
                 "list": {
                     "information": "Derecho a la información sobre tus datos almacenados",
                     "correction": "Derecho a la corrección de datos incorrectos",

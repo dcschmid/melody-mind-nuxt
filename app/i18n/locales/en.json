@@ -112,7 +112,7 @@
     }
   },
   "gameHome": {
-    "title": "Choose a Category to Play",
+    "title": "Select Your Musical Journey",
     "description": "Discover the fascinating world of music through different decades and genres",
     "searchPlaceholder": "Search category...",
     "playCategory": "Play {category}",
@@ -135,7 +135,7 @@
     },
     "playlist": {
       "title": "Playlists",
-      "description": "Listen to a curated playlist with the best {genre} songs",
+      "description": "Dive into our curated playlist featuring the best {genre} songs",
       "spotify": "Listen on Spotify",
       "deezer": "Listen on Deezer",
       "appleMusic": "Listen on Apple Music"
@@ -156,17 +156,17 @@
     "timeUp": "Time's up!",
     "next": "Next",
     "nextQuestion": "Next Question",
-    "finish": "Finish Game",
+    "finish": "Complete Game",
     "links": {
       "listen_on": "Listen on"
     },
     "trivia": {
-      "title": "Fun Facts"
+      "title": "Did You Know?"
     },
     "gameOver": {
-      "title": "Game Over",
+      "title": "Game Complete",
       "correctAnswers": "Correct Answers",
-      "backToMenu": "Back to Menu"
+      "backToMenu": "Back to Category Selection"
     },
     "results": {
       "title": "Game Results",
@@ -178,18 +178,18 @@
       "share": {
         "title": "Share your result",
         "buttons": {
-          "twitter": "Share on Twitter ",
-          "telegram": "Share on Telegram ",
-          "reddit": "Share on Reddit ",
-          "whatsapp": "Share on WhatsApp ",
-          "share": "Share "
+          "twitter": "Share on Twitter",
+          "telegram": "Share on Telegram",
+          "reddit": "Share on Reddit",
+          "whatsapp": "Share on WhatsApp",
+          "share": "Share"
         },
         "message": {
           "intro": " I scored {points} points in Melody Mind!",
           "genre": "Genre: {genre}",
-          "perfect": "Perfect round with a Gold LP in {difficulty} difficulty!",
-          "silver": "Won Silver LP in {difficulty} difficulty!",
-          "bronze": "Won Bronze LP in {difficulty} difficulty!",
+          "perfect": "Perfect round! You've earned a Gold LP in {difficulty} difficulty!",
+          "silver": "You've earned a Silver LP in {difficulty} difficulty!",
+          "bronze": "You've earned a Bronze LP in {difficulty} difficulty!",
           "stats": "Got {correct} out of {total} questions right!",
           "challenge": "Challenge me: {url}",
           "difficulty": {
@@ -228,34 +228,34 @@
     },
     "round": "Round {current} of {max}",
     "points_label": "Points",
-    "points": "Points: {base} + {time} Time Bonus",
-    "confidence": "Confidence",
+    "points": "Score: {base} + Time Bonus: {time}",
+    "confidence": "Certainty",
     "jokers": {
-      "title": "Jokers",
+      "title": "Lifelines",
       "fiftyFifty": {
         "title": "50:50",
         "description": "Removes two wrong answers",
-        "remaining": "{count} jokers remaining",
-        "ariaLabel": "Fifty-Fifty Joker"
+        "remaining": "{count} lifelines remaining",
+        "ariaLabel": "Fifty-Fifty Lifeline"
       },
       "audience": {
-        "title": "Audience Help",
+        "title": "Audience Poll",
         "description": "Shows audience vote distribution",
-        "remaining": "{count} jokers remaining",
-        "ariaLabel": "Ask the Audience"
+        "remaining": "{count} lifelines remaining",
+        "ariaLabel": "View Audience Poll"
       },
       "phone": {
-        "title": "Phone a Friend",
+        "title": "Expert Advice",
         "description": "Get an expert's opinion",
-        "remaining": "{count} jokers remaining",
-        "ariaLabel": "Phone a Friend"
+        "remaining": "{count} lifelines remaining",
+        "ariaLabel": "Get Expert Advice"
       },
-      "remaining": "{count} jokers remaining"
+      "remaining": "{count} lifelines remaining"
     },
     "selectAnswer": "Select answer"
   },
   "gameRules": {
-    "title": "Game Rules – MelodyMind",
+    "title": "Game Rules - MelodyMind",
     "overview": {
       "title": "Overview",
       "text": "Welcome to MelodyMind! Your goal is to answer questions about songs, artists, and albums from various music genres. Choose a genre and put your knowledge to the test. The more questions you answer correctly, the more points you'll earn."
@@ -348,11 +348,11 @@
       "totalScore": "Total Score",
       "averageScore": "Average Score",
       "highestScore": "Highest Score",
-      "accuracy": "Average Accuracy"
+      "accuracy": "Accuracy Rate"
     },
     "achievements": {
       "title": "Achievements",
-      "locked": "Not yet unlocked",
+      "locked": "Locked",
       "progress": "{current} of {total}"
     },
     "settings": {
@@ -367,14 +367,14 @@
     }
   },
   "navigation": {
-    "mainNavLabel": "Main Navigation",
-    "mainMenu": "Main Menu",
+    "mainNavLabel": "Navigation",
+    "mainMenu": "Menu",
     "home": "Home",
     "login": "Login",
     "register": "Register",
     "profile": "Profile",
     "logout": "Logout",
-    "openMenu": "Open Menu",
+    "openMenu": "Menu",
     "leaderboard": "Leaderboard",
     "settings": "Settings",
     "rules": "Game Rules",
@@ -383,7 +383,7 @@
     "imprint": "Legal Notice",
     "highscores": "Highscores",
     "privacy": "Privacy",
-    "backToHome": "Back to Home"
+    "backToHome": "Back to Categories"
   },
   "footer": {
     "about": "About Us",
@@ -412,7 +412,7 @@
     "skipToMain": "Skip to main content",
     "closeMenu": "Close menu",
     "openMenu": "Open menu",
-    "darkMode": "Toggle dark mode",
+    "darkMode": "Switch between light and dark mode",
     "playButton": "Play",
     "pauseButton": "Pause",
     "nextButton": "Next",
@@ -477,14 +477,14 @@
   },
   "highscores": {
     "title": "Highscores",
-    "searchPlaceholder": "Search by category...",
+    "searchPlaceholder": "Search categories...",
     "rank": "Rank",
     "player": "Player",
     "difficulty": "Difficulty",
     "points": "Points",
     "lps": "LPs",
     "noResults": "No results found",
-    "noScores": "No entries in the highscores yet"
+    "noScores": "No highscores available"
   },
   "common": {
     "loading": "Loading..."
@@ -507,11 +507,11 @@
         },
         "serverLogs": {
           "title": "Server Logs",
-          "text": "For technical purposes, we automatically store server log files that your browser transmits."
+          "text": "For technical purposes, we automatically store server logs transmitted by your browser."
         },
         "analytics": {
           "title": "Analytics Data",
-          "text": "We use anonymized analytics data to improve our gaming experience. This data includes game statistics, usage patterns, and performance data, but no personally identifiable information."
+          "text": "We use anonymous analytics data to improve your gaming experience. This includes game statistics, usage patterns, and performance metrics, without any personally identifiable information."
         }
       },
       "rights": {
@@ -545,13 +545,13 @@
         },
         "localStorage": {
           "title": "Local Storage",
-          "intro": "The following information is stored locally in your browser:",
+          "intro": "The following data is stored locally in your browser:",
           "list": {
             "categories": "Played categories",
             "settings": "Game settings",
             "language": "Language setting"
           },
-          "storage": "This data remains stored locally on your device and is not transmitted to our servers. You can delete it at any time through your browser settings."
+          "storage": "This data remains on your device and is not transmitted to our servers. You can delete it at any time through your browser settings."
         },
         "session": {
           "title": "Session Data",

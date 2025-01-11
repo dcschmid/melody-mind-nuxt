@@ -51,7 +51,7 @@
   "intro": "Tauche ein in die faszinierende Welt der Musik! Bei Melody Mind kannst du dein Musikwissen in spannenden Quizrunden auf die Probe stellen. Beantworte Fragen zu Songs aus verschiedenen Jahrzehnten, Künstlern, Alben und der Musikgeschichte. Sammle Punkte, verdiene goldene Schallplatten und fordere andere Musikbegeisterte heraus. Von Rock über Pop bis hin zu Hip-Hop und Klassik - teste dein Wissen in deinen Lieblingsgenres. Beginne jetzt dein musikalisches Quiz-Abenteuer!",
   "login": {
       "title": "Anmeldung",
-      "methodLabel": "Login-Methode",
+      "methodLabel": "Anmeldemethode",
       "emailOption": "E-Mail",
       "usernameOption": "Benutzername",
       "emailLabel": "E-Mail",
@@ -60,7 +60,7 @@
       "usernamePlaceholder": "Dein Nutzername",
       "passwordLabel": "Passwort",
       "passwordPlaceholder": "Dein Passwort",
-      "submitButton": "Anmeldung",
+      "submitButton": "Anmelden",
       "noAccount": "Du hast noch kein Konto?",
       "forgotPassword": "Passwort vergessen?",
       "orContinueWith": "Oder weiter mit",
@@ -76,7 +76,7 @@
       }
   },
   "register": {
-      "title": "Register",
+      "title": "Registrierung",
       "nameLabel": "Name",
       "namePlaceholder": "Dein vollständiger Name",
       "usernameLabel": "Benutzername",
@@ -86,7 +86,7 @@
       "emailPlaceholder": "Deine E-Mail Adresse",
       "passwordLabel": "Passwort",
       "passwordPlaceholder": "Wähle ein sicheres Passwort",
-      "submitButton": "Register",
+      "submitButton": "Registrieren",
       "hasAccount": "Du hast bereits ein Konto?",
       "successMessage": "Anmeldung erfolgreich! Bitte prüfe deine E-Mails.",
       "error": {
@@ -105,7 +105,7 @@
       "emailLabel": "E-Mail",
       "emailPlaceholder": "Deine E-Mail Adresse",
       "submitButton": "Zurücksetzen",
-      "backToLogin": "Zurück zu Login",
+      "backToLogin": "Zurück zur Anmeldung",
       "successMessage": "Die Anweisungen zum Zurücksetzen des Passworts wurden an deine E-Mail geschickt.",
       "error": {
           "passwordResetFailed": "Passwort zurücksetzen fehlgeschlagen"
@@ -125,8 +125,8 @@
       "difficulty": {
           "title": "Schwierigkeitsgrad wählen",
           "easy": "Einfach",
-          "medium": "Medium",
-          "hard": "Hart",
+          "medium": "Mittel",
+          "hard": "Schwer",
           "description": {
               "easy": "Perfekt für Anfänger",
               "medium": "Für erfahrene Musikliebhaber",
@@ -154,7 +154,7 @@
       "correct": "Richtig!",
       "wrong": "Falsch!",
       "timeUp": "Die Zeit ist um!",
-      "next": "Nächste",
+      "next": "Weiter",
       "nextQuestion": "Nächste Frage",
       "finish": "Spiel beenden",
       "links": {
@@ -164,47 +164,47 @@
           "title": "Wissenswertes"
       },
       "gameOver": {
-          "title": "Game Over",
+          "title": "Spiel vorbei",
           "correctAnswers": "Richtige Antworten",
           "backToMenu": "Zurück zum Menü"
       },
       "results": {
-          "title": "Spiel Ergebnisse",
+          "title": "Spielergebnisse",
           "totalScore": "Gesamtpunktzahl",
           "correctAnswers": "Richtige Antworten",
-          "accuracy": "Genauigkeit",
-          "timeTaken": "Genommene Zeit",
+          "accuracy": "Trefferquote",
+          "timeTaken": "Benötigte Zeit",
           "newHighscore": "Neuer Highscore!",
           "share": {
               "title": "Teile dein Ergebnis",
               "buttons": {
-                  "twitter": "Auf Twitter teilen ",
-                  "telegram": "Auf Telegramm teilen ",
-                  "reddit": "Auf Reddit teilen ",
-                  "whatsapp": "Auf WhatsApp teilen ",
-                  "share": "Teilen "
+                  "twitter": "Auf Twitter teilen",
+                  "telegram": "Auf Telegram teilen",
+                  "reddit": "Auf Reddit teilen",
+                  "whatsapp": "Auf WhatsApp teilen",
+                  "share": "Teilen"
               },
               "message": {
                   "intro": " Ich habe {Punkte} in Melody Mind erzielt!",
                   "genre": "Genre: {Genre}",
                   "perfect": "Perfekte Runde mit einer Gold-LP im Schwierigkeitsgrad {Schwierigkeit}!",
-                  "silver": "Habe Silber-LP im Schwierigkeitsgrad {Schwierigkeit} gewonnen!",
-                  "bronze": "Habe Bronze-LP im Schwierigkeitsgrad {Schwierigkeit} gewonnen!",
+                  "silver": "Silber-LP im Schwierigkeitsgrad {Schwierigkeit} erreicht!",
+                  "bronze": "Bronze-LP im Schwierigkeitsgrad {Schwierigkeit} erreicht!",
                   "stats": "Du hast {richtig} von {insgesamt} Fragen richtig!",
-                  "challenge": "Fordere mich heraus: {url}",
+                  "challenge": "Fordere mich heraus!: {url}",
                   "difficulty": {
                       "easy": "einfach",
                       "medium": "mittel",
-                      "hard": "hart"
+                      "hard": "schwer"
                   }
               }
           },
           "playAgain": "Nochmal spielen",
-          "backToHome": "Zurück zu Home"
+          "backToHome": "Zurück zur Startseite"
       },
       "expert": {
           "title": "Expertenmeinung",
-          "confidence": "Zuversicht"
+          "confidence": "Sicherheit"
       },
       "audienceOpinion": "Meinung des Publikums",
       "correctAnswer": "Richtige Antwort",
@@ -229,7 +229,7 @@
       "round": "Runde {aktuell} von {max}",
       "points_label": "Punkte",
       "points": "Punkte: {Basis} + {Zeit} Zeitbonus",
-      "confidence": "Zuversicht",
+      "confidence": "Sicherheit",
       "jokers": {
           "title": "Joker",
           "fiftyFifty": {
@@ -242,13 +242,13 @@
               "title": "Publikum Hilfe",
               "description": "Zeigt die Verteilung der Publikumsstimmen",
               "remaining": "{Anzahl} verbleibende Joker",
-              "ariaLabel": "Frag die Zuhörerschaft"
+              "ariaLabel": "Publikum befragen"
           },
           "phone": {
-              "title": "Einen Freund anrufen",
+              "title": "Expertenrat",
               "description": "Hol dir die Meinung eines Experten ein",
               "remaining": "{Anzahl} verbleibende Joker",
-              "ariaLabel": "Einen Freund anrufen"
+              "ariaLabel": "Expertenrat einholen"
           },
           "remaining": "{Anzahl} verbleibende Joker"
       },
@@ -269,11 +269,11 @@
                   "description": "10 Fragen pro Runde. Perfekt, um dein Wissen aufzufrischen und Spaß zu haben."
               },
               "medium": {
-                  "title": "Medium",
+                  "title": "Mittel",
                   "description": "15 Fragen pro Runde. Eine Herausforderung für fortgeschrittene Musikliebhaber."
               },
               "hard": {
-                  "title": "Hart",
+                  "title": "Schwer",
                   "description": "20 Fragen pro Runde. Nur für echte Musikexperten!"
               }
           },
@@ -306,7 +306,7 @@
           "rewards": {
               "easy": "Leicht: Musik-Anfänger.",
               "medium": "Medium: Musik Meister.",
-              "hard": "Hart: Musiklegende."
+              "hard": "Schwer: Musiklegende."
           }
       },
       "rankings": {
@@ -338,7 +338,7 @@
       "emailPlaceholder": "Deine E-Mail Adresse",
       "lps": {
           "title": "Plattensammlung",
-          "none": "Du hast noch keine Datensätze gesammelt",
+          "none": "Du hast noch keine Schallplatten gesammelt",
           "types": {
               "gold": "Gold",
               "silver": "Silber",
@@ -351,7 +351,7 @@
           "totalScore": "Gesamtpunktzahl",
           "averageScore": "Durchschnittliche Punktzahl",
           "highestScore": "Höchste Punktzahl",
-          "accuracy": "Durchschnittliche Genauigkeit"
+          "accuracy": "Trefferquote"
       },
       "achievements": {
           "title": "Errungenschaften",
@@ -366,27 +366,27 @@
           "notifications": "Benachrichtigungen",
           "theme": "Thema",
           "save": "Speichern",
-          "saved": "Gerettet!"
+          "saved": "Gespeichert!"
       }
   },
   "navigation": {
       "mainNavLabel": "Hauptnavigation",
       "mainMenu": "Hauptmenü",
-      "home": "Zuhause",
+      "home": "Startseite",
       "login": "Anmeldung",
-      "register": "Register",
+      "register": "Registrierung",
       "profile": "Profil",
       "logout": "Abmelden",
       "openMenu": "Menü öffnen",
       "leaderboard": "Rangliste",
       "settings": "Einstellungen",
       "rules": "Spielregeln",
-      "support": "Unterstütze",
-      "legal": "Legal",
+      "support": "Hilfe",
+      "legal": "Rechtliches",
       "imprint": "Rechtlicher Hinweis",
       "highscores": "Highscores",
       "privacy": "Datenschutz",
-      "backToHome": "Zurück zu Home"
+      "backToHome": "Zurück zur Startseite"
   },
   "footer": {
       "about": "Über uns",
@@ -415,18 +415,18 @@
       "skipToMain": "Zum Hauptinhalt springen",
       "closeMenu": "Menü schließen",
       "openMenu": "Menü öffnen",
-      "darkMode": "Dunkelmodus umschalten",
+      "darkMode": "Zwischen Hell- und Dunkelmodus wechseln",
       "playButton": "Spielen",
       "pauseButton": "Pause",
-      "nextButton": "Nächste",
-      "previousButton": "Vorherige",
+      "nextButton": "Weiter",
+      "previousButton": "Zurück",
       "closeButton": "Schließen"
   },
   "cookies": {
       "title": "Cookie-Einstellungen",
       "message": "Diese Website verwendet Cookies, um dein Erlebnis zu verbessern",
       "accept": "Alle akzeptieren",
-      "decline": "Abstieg",
+      "decline": "Ablehnen",
       "customize": "Anpassen",
       "preferences": {
           "necessary": {
@@ -435,7 +435,7 @@
               "required": "Erforderlich"
           },
           "analytics": {
-              "title": "Analytics Cookies",
+              "title": "Analyse-Cookies",
               "description": "Helfen uns zu verstehen, wie Besucher mit der Website interagieren"
           },
           "marketing": {
@@ -480,14 +480,14 @@
   },
   "highscores": {
       "title": "Highscores",
-      "searchPlaceholder": "Suche nach Kategorie...",
+      "searchPlaceholder": "Nach Kategorie suchen...",
       "rank": "Rang",
       "player": "Spieler",
       "difficulty": "Schwierigkeit",
       "points": "Punkte",
       "lps": "LPs",
       "noResults": "Keine Ergebnisse gefunden",
-      "noScores": "Noch keine Einträge in den Highscores"
+      "noScores": "Keine Highscores vorhanden"
   },
   "common": {
       "loading": "Laden..."
@@ -509,11 +509,11 @@
                   "text": "Wir verwenden Cookies, um dir das bestmögliche Nutzererlebnis zu bieten. Diese speichern keine persönlich identifizierbaren Informationen."
               },
               "serverLogs": {
-                  "title": "Server Logs",
-                  "text": "Zu technischen Zwecken speichern wir automatisch Server-Log-Dateien, die dein Browser übermittelt."
+                  "title": "Server-Protokolle",
+                  "text": "Zu technischen Zwecken speichern wir automatisch Server-Protokolldateien, die dein Browser übermittelt."
               },
               "analytics": {
-                  "title": "Analytische Daten",
+                  "title": "Analysedaten",
                   "text": "Wir verwenden anonymisierte Analysedaten, um unser Spielerlebnis zu verbessern. Diese Daten umfassen Spielstatistiken, Nutzungsmuster und Leistungsdaten, aber keine persönlich identifizierbaren Informationen."
               }
           },
@@ -535,7 +535,7 @@
               "emailAddress": "daniel.schmid1980(at)icloud.com"
           },
           "gameData": {
-              "title": "Spiel-Daten",
+              "title": "Spieldaten",
               "progress": {
                   "title": "Spielfortschritt",
                   "intro": "Die folgenden Spieldaten werden gespeichert:",
@@ -551,13 +551,13 @@
                   "intro": "Die folgenden Informationen werden lokal in deinem Browser gespeichert:",
                   "list": {
                       "categories": "Gespielte Kategorien",
-                      "settings": "Spiel-Einstellungen",
+                      "settings": "Spieleinstellungen",
                       "language": "Spracheinstellung"
                   },
                   "storage": "Diese Daten bleiben lokal auf deinem Gerät gespeichert und werden nicht an unsere Server übertragen. Du kannst sie jederzeit über deine Browsereinstellungen löschen."
               },
               "session": {
-                  "title": "Session Daten",
+                  "title": "Sitzungsdaten",
                   "intro": "Während einer aktiven Spielsitzung werden die folgenden Daten vorübergehend gespeichert:",
                   "list": {
                       "auth": "Authentifizierungsstatus für die Spielsitzung",
@@ -604,10 +604,10 @@
               "text": "Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich."
           },
           "jurisdiction": {
-              "title": "Rechtsgrundlage",
-              "text": "Diese Website unterliegt dem deutschen Recht. Der Gerichtsstand ist Deutschland.",
+              "title": "Rechtliche Grundlage",
+              "text": "Diese Website unterliegt deutschem Recht.",
               "applicableLaw": "Es gilt ausschließlich deutsches Recht unter Ausschluss des UN-Übereinkommens über Verträge über den internationalen Warenkauf.",
-              "jurisdiction": "Erfüllungsort und ausschließlicher Gerichtsstand für alle Streitigkeiten ist Deutschland, soweit gesetzlich zulässig."
+              "jurisdiction": "Gerichtsstand für alle Streitigkeiten aus diesem Vertrag ist Deutschland, soweit gesetzlich zulässig."
           }
       }
   },
@@ -618,12 +618,12 @@
   },
   "difficulty": {
       "easy": "Einfach",
-      "medium": "Medium",
-      "hard": "Hart"
+      "medium": "Mittel",
+      "hard": "Schwer"
   },
   "knowledge": {
       "loading": "Inhalt laden...",
-      "playAndListen": "Spielen & Verstärken Hören",
+      "playAndListen": "Spielen & Musik hören",
       "playNow": "Jetzt spielen",
       "playlists": "Wiedergabelisten",
       "playlist": {
