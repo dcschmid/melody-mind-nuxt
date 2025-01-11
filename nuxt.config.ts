@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { resolve } from 'path'
+
 export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
@@ -30,7 +32,23 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/scss/main.scss"],
-  modules: ["nuxt-icon", "@nuxtjs/i18n"],
+  modules: ["nuxt-icon", "@nuxtjs/i18n", '@nuxt/content'],
+  content: {
+    documentDriven: true,
+    navigation: {
+      fields: ['title', 'description', 'category']
+    },
+    experimental: {
+      clientDB: true
+    },
+    markdown: {
+      toc: {
+        depth: 3,
+        searchDepth: 3
+      },
+      anchorLinks: false
+    }
+  },
   i18n: {
     strategy: "prefix",
     defaultLocale: "de",

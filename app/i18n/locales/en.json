@@ -134,11 +134,16 @@
       }
     },
     "playlist": {
-      "title": "Listen to Playlist",
-      "description": "Dive into the world of {genre}! We've curated the best songs for you. Listen to the playlist on your preferred streaming platform and get ready for the game.",
+      "title": "Playlists",
+      "description": "Listen to a curated playlist with the best {genre} songs",
       "spotify": "Listen on Spotify",
       "deezer": "Listen on Deezer",
-      "apple": "Listen on Apple Music"
+      "appleMusic": "Listen on Apple Music"
+    },
+    "knowledge": {
+      "title": "Knowledge",
+      "link": "Learn more about {genre}",
+      "description": "Would you like to learn more about the history and development of {genre}? Here you'll find fascinating background information and interesting facts."
     }
   },
   "game": {
@@ -612,5 +617,19 @@
     "easy": "Easy",
     "medium": "Medium",
     "hard": "Hard"
+  },
+  "knowledge": {
+    "loading": "Loading content...",
+    "playAndListen": "Play & Listen",
+    "playNow": "Play Now",
+    "playlists": "Playlists",
+    "playlist": {
+      "spotify": "Listen on Spotify",
+      "deezer": "Listen on Deezer",
+      "apple": "Listen on Apple Music",
+      "description": "Dive into the world of {genre}! We've curated the best songs for you. Listen to the playlist on your preferred streaming platform and get ready for the game."
+    },
+    "error": "Error loading content",
+    "backToGame": "Back to Game"
   }
 }

@@ -133,18 +133,15 @@ body {
 }
 
 header {
-  position: sticky;
-  top: 0;
   width: 100%;
   height: var(--header-height);
   padding: 0 var(--padding-medium);
-  background-color: var(--surface-color);
-  backdrop-filter: blur(var(--blur-strength));
-  border-bottom: 1px solid rgb(255 255 255 / 10%);
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: var(--z-index-header);
+
+  margin: 0 auto;
 
   nav {
     height: 100%;

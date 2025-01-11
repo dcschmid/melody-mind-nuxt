@@ -206,10 +206,7 @@ header {
 }
 
 .menu {
-    position: fixed;
     inset: 0;
-    background-color: var(--overlay-background);
-    backdrop-filter: blur(var(--blur-strength));
     z-index: var(--z-index-menu);
     display: flex;
     align-items: flex-start;

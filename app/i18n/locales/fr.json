@@ -139,6 +139,10 @@
       "spotify": "Écouter sur Spotify",
       "deezer": "Écouter sur Deezer",
       "apple": "Écouter sur Apple Music"
+    },
+    "knowledge": {
+      "title": "Connaissances",
+      "link": "En savoir plus sur {genre}"
     }
   },
   "game": {
@@ -743,5 +747,17 @@
     "easy": "Facile",
     "medium": "Moyen",
     "hard": "Difficile"
+  },
+  "knowledge": {
+    "loading": "Chargement du contenu...",
+    "playAndListen": "Jouer & Écouter",
+    "playNow": "Jouer Maintenant",
+    "playlists": "Playlists",
+    "playlist": {
+      "spotify": "Écouter sur Spotify",
+      "deezer": "Écouter sur Deezer",
+      "apple": "Écouter sur Apple Music",
+      "description": "Plongez dans l'univers de {genre} ! Nous avons sélectionné les meilleures chansons pour vous. Écoutez la playlist sur votre plateforme de streaming préférée et préparez-vous pour le jeu."
+    }
   }
 }

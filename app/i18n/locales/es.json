@@ -108,11 +108,15 @@
             }
         },
         "playlist": {
-            "title": "Escuchar la lista",
-            "description": "¡Sumérgete en el mundo del {genre}! Hemos seleccionado las mejores canciones para ti. Escucha la lista en tu plataforma de streaming preferida y prepárate para el juego.",
-            "spotify": "Escuchar en Spotify",
-            "deezer": "Escuchar en Deezer",
-            "apple": "Escuchar en Apple Music"
+          "title": "Listas de reproducción",
+          "description": "Escucha una lista de reproducción seleccionada de las mejores canciones de {genre}",
+          "spotify": "Escuchar en Spotify",
+          "deezer": "Escuchar en Deezer",
+          "appleMusic": "Escuchar en Apple Music"
+        },
+        "knowledge": {
+          "title": "Conocimiento",
+          "link": "Aprende más sobre {genre}"
         }
     },
     "game": {
@@ -544,7 +548,7 @@
                     "results": "Resultados de juego almacenados y logros",
                     "account": "Tu cuenta de usuario completa y todos los datos asociados"
                 },
-                "local": "Los datos almacenados localmente (cookies, progreso del juego) pueden eliminarse de forma independiente a través de la configuración de tu navegador."
+                "local": "Los datos almacenados localmente (cookies, progreso del juego) pueden eliminarse de forma independiente a través de la configuración del navegador."
             },
             "imprint": {
                 "title": "Aviso Legal",
@@ -616,5 +620,19 @@
             "title": "Aviso Legal - Melody Mind",
             "description": "Información legal y datos de contacto de Melody Mind."
         }
+    },
+    "knowledge": {
+        "loading": "Cargando contenido...",
+        "playAndListen": "Jugar y Escuchar",
+        "playNow": "Jugar Ahora",
+        "playlists": "Listas de reproducción",
+        "playlist": {
+          "spotify": "Escuchar en Spotify",
+          "deezer": "Escuchar en Deezer",
+          "apple": "Escuchar en Apple Music",
+          "description": "¡Sumérgete en el mundo de {genre}! Hemos seleccionado las mejores canciones para ti. Escucha la lista de reproducción en tu plataforma de streaming preferida y prepárate para el juego."
+        },
+        "error": "Error al cargar el contenido",
+        "backToGame": "Volver al juego"
     }
 }

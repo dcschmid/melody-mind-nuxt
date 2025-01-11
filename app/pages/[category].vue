@@ -9,6 +9,18 @@
 
                 <p class="text">{{ currentCategory.text }}</p>
 
+                <div v-if="currentCategory.knowledgeUrl" class="knowledge-section">
+                    <p class="knowledge-intro">{{ t('category.knowledge.description', { genre: currentCategory.headline }) }}</p>
+                    <NuxtLink 
+                        :to="localePath(`${currentCategory.knowledgeUrl}`)" 
+                        class="knowledge-link"
+                        :aria-label="t('category.knowledge.link', { genre: currentCategory.headline })"
+                    >
+                        <Icon name="material-symbols:menu-book" aria-hidden="true" class="knowledge-icon" />
+                        {{ t('category.knowledge.title') }}
+                    </NuxtLink>
+                </div>
+
                 <div class="music-links"
                     v-if="currentCategory.spotifyPlaylist || currentCategory.deezerPlaylist || currentCategory.appleMusicPlaylist"
                     role="region" :aria-label="t('category.playlist.title')">
@@ -52,7 +64,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { useHead } from '#imports'
+import { useHead, useLocalePath } from '#imports'
 
 interface Category {
     slug: string
@@ -63,10 +75,12 @@ interface Category {
     spotifyPlaylist: string
     deezerPlaylist: string
     appleMusicPlaylist: string
+    knowledgeUrl: string
 }
 
 const { t, locale } = useI18n()
 const route = useRoute()
+const localePath = useLocalePath()
 const categories = ref<Category[]>([])
 const usernameInput = ref(null)
 const hasUsername = ref(false)
@@ -239,6 +253,36 @@ onMounted(() => {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border-width: 0;
+}
+
+.knowledge-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+.knowledge-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--primary-color);
+    color: black;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    width: fit-content;
+    margin: 2rem 0;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: var(--primary-color-dark);
+    }
+
+    .knowledge-icon {
+        font-size: 1.5rem;
+    }
 }
 
 @media (width <=767px) {

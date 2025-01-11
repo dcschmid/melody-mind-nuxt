@@ -113,6 +113,10 @@
       "spotify": "Ascolta su Spotify",
       "deezer": "Ascolta su Deezer",
       "apple": "Ascolta su Apple Music"
+    },
+    "knowledge": {
+      "title": "Conoscenza",
+      "link": "Scopri di più su {genre}"
     }
   },
   "game": {
@@ -611,5 +615,19 @@
       "title": "Note Legali - Melody Mind",
       "description": "Informazioni legali e dettagli di contatto di Melody Mind."
     }
+  },
+  "knowledge": {
+    "loading": "Caricamento contenuti...",
+    "playAndListen": "Gioca & Ascolta",
+    "playNow": "Gioca Ora",
+    "playlists": "Playlist",
+    "playlist": {
+      "spotify": "Ascolta su Spotify",
+      "deezer": "Ascolta su Deezer",
+      "apple": "Ascolta su Apple Music",
+      "description": "Immergiti nel mondo di {genre}! Abbiamo selezionato le migliori canzoni per te. Ascolta la playlist sulla tua piattaforma di streaming preferita e preparati per il gioco."
+    },
+    "error": "Errore durante il caricamento dei contenuti",
+    "backToGame": "Torna al gioco"
   }
 }
