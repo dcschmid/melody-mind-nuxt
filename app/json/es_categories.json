@@ -47,7 +47,6 @@
     "deezerPlaylist": "https://www.deezer.com/de/playlist/13429959023",
     "appleMusicPlaylist": "https://music.apple.com/de/playlist/top-1950s-hits/pl.u-aZb0ky0F1xpM8zM",
     "knowledgeUrl": "/knowledge/es/anos-1950"
-
   },
   {
     "categoryUrl": "/anos-1960",
@@ -58,7 +57,8 @@
     "slug": "anos-1960",
     "text": "Los años 1960 fueron una década de cambio e innovación musical. Esta era produjo algunos de los artistas y bandas más influyentes que siguen dando forma al mundo de la música hasta hoy. Con leyendas como The Beatles, The Rolling Stones, Jimi Hendrix, The Supremes y Bob Dylan, la música de los 60 representa el nacimiento del rock, Motown, folk y rock psicodélico. Los años 60 también fueron una década de cambio social y cultural, lo que se refleja en las poderosas letras y melodías. Desde los pegadizos himnos pop de la Invasión Británica hasta los sonidos experimentales del movimiento hippie y las canciones protesta del folk, los 60 fueron una década decisiva para la historia de la música. Déjate cautivar por las melodías atemporales y la energía innovadora de los años 60 y experimenta una era que cambió el mundo.",
     "spotifyPlaylist": "https://open.spotify.com/playlist/2cRTgKpt2PUtZquuJjmmNv",
-    "appleMusicPlaylist": "https://music.apple.com/de/playlist/top-1960s-hits/pl.u-mJy8150CNVL5Jl5"
+    "appleMusicPlaylist": "https://music.apple.com/de/playlist/top-1960s-hits/pl.u-mJy8150CNVL5Jl5",
+    "knowledgeUrl": "/knowledge/es/anos-1960"
   },
   {
     "categoryUrl": "/70er",
