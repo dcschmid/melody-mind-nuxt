@@ -4,7 +4,7 @@ description: Los años sesenta - Una década que transformó la música, con los
 image: /category/1960er.jpg
 category:
   spotifyPlaylist: https://open.spotify.com/playlist/2cRTgKpt2PUtZquuJjmmNv
-  deezerPlaylist: 
+  deezerPlaylist: https://www.deezer.com/de/playlist/13449351943 
   appleMusicPlaylist: https://music.apple.com/de/playlist/top-1960s-hits/pl.u-mJy8150CNVL5Jl5
 ---
 
