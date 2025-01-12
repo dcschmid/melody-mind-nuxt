@@ -79,10 +79,6 @@ const loadContent = async () => {
   try {
     error.value = null
     const { lang, genre: genreSlug } = route.params
-
-    const allContent = await queryContent().find()
-    
-    const knowledgeContent = await queryContent('knowledge').find()
     
     // Try to load the specific content
     const content = await queryContent()
@@ -169,12 +165,7 @@ watch(() => route.params, loadContent)
 
   .music-links {
     width: 100%;
-    max-width: 800px;
-    background-color: var(--surface-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    padding: var(--padding-large);
-    margin-top: var(--padding-large);
+    margin-bottom: var(--padding-large);
   }
 
   .music-links-inner {
@@ -188,7 +179,7 @@ watch(() => route.params, loadContent)
     display: flex;
     align-items: center;
     gap: var(--padding-small);
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     margin-bottom: var(--padding-medium);
     color: var(--text-primary);
@@ -202,9 +193,6 @@ watch(() => route.params, loadContent)
   .music-links-description {
     color: var(--text-secondary);
     margin-bottom: var(--padding-large);
-    max-width: 600px;
-    line-height: 1.6;
-    font-size: 1.1rem;
   }
 
   .play-button {
@@ -217,8 +205,8 @@ watch(() => route.params, loadContent)
     border-radius: var(--border-radius);
     font-size: 1.2rem;
     font-weight: bold;
-    margin: var(--padding-large) 0;
     transition: all 0.3s ease;
+    text-decoration: none;
 
     &:hover {
       transform: translateY(-2px);
