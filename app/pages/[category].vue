@@ -1,63 +1,65 @@
 <template>
-    <NuxtLayout name="default" :show-header="true" :show-menu="true" :show-coins="false">
-        <div class="categoryPage">
-            <CategoryIntro :category="currentCategory || null" />
+    <div>
+        <NuxtLayout name="default" :show-header="true" :show-menu="true" :show-coins="false">
+            <div class="categoryPage">
+                <CategoryIntro :category="currentCategory || null" />
 
-            <article class="category" :data-category="currentCategory?.slug" aria-labelledby="difficulty-heading"
-                v-if="currentCategory">
-                <CategoryCover :image-url="currentCategory.imageUrl" :headline="currentCategory.headline" />
+                <article class="category" :data-category="currentCategory?.slug" aria-labelledby="difficulty-heading"
+                    v-if="currentCategory">
+                    <CategoryCover :image-url="currentCategory.imageUrl" :headline="currentCategory.headline" />
 
-                <p class="text">{{ currentCategory.text }}</p>
+                    <p class="text">{{ currentCategory.text }}</p>
 
-                <div v-if="currentCategory.knowledgeUrl" class="knowledge-section">
-                    <p class="knowledge-intro">{{ t('category.knowledge.description', { genre: currentCategory.headline }) }}</p>
-                    <NuxtLink 
-                        :to="localePath(`${currentCategory.knowledgeUrl}`)" 
-                        class="knowledge-link"
-                        :aria-label="t('category.knowledge.link', { genre: currentCategory.headline })"
-                    >
-                        <Icon name="material-symbols:menu-book" aria-hidden="true" class="knowledge-icon" />
-                        {{ t('category.knowledge.title') }}
-                    </NuxtLink>
-                </div>
-
-                <div class="music-links"
-                    v-if="currentCategory.spotifyPlaylist || currentCategory.deezerPlaylist || currentCategory.appleMusicPlaylist"
-                    role="region" :aria-label="t('category.playlist.title')">
-                    <h4 class="music-links-title" id="streaming-services-title">
-                        <Icon name="material-symbols:headphones" aria-hidden="true" class="headphone-icon" />
-                        {{ t('category.playlist.title') }}
-                    </h4>
-                    <p class="music-links-description">
-                        {{ t('category.playlist.description', { genre: currentCategory.headline }) }}
-                    </p>
-                    <div class="music-links-container" role="list" aria-labelledby="streaming-services-title">
-                        <a v-if="currentCategory.spotifyPlaylist" :href="currentCategory.spotifyPlaylist"
-                            target="_blank" rel="noopener noreferrer" class="music-link spotify"
-                            :aria-label="t('category.playlist.spotify')" role="listitem">
-                            <Icon name="mdi:spotify" size="28" aria-hidden="true" />
-                            <span class="visually-hidden">{{ t('category.playlist.spotify') }}</span>
-                        </a>
-                        <a v-if="currentCategory.deezerPlaylist" :href="currentCategory.deezerPlaylist" target="_blank"
-                            rel="noopener noreferrer" class="music-link deezer"
-                            :aria-label="t('category.playlist.deezer')" role="listitem">
-                            <Icon name="simple-icons:deezer" size="28" aria-hidden="true" />
-                            <span class="visually-hidden">{{ t('category.playlist.deezer') }}</span>
-                        </a>
-                        <a v-if="currentCategory.appleMusicPlaylist" :href="currentCategory.appleMusicPlaylist"
-                            target="_blank" rel="noopener noreferrer" class="music-link apple"
-                            :aria-label="t('category.playlist.apple')" role="listitem">
-                            <Icon name="mdi:apple" size="28" aria-hidden="true" />
-                            <span class="visually-hidden">{{ t('category.playlist.apple') }}</span>
-                        </a>
+                    <div v-if="currentCategory.knowledgeUrl" class="knowledge-section">
+                        <p class="knowledge-intro">{{ t('category.knowledge.description', { genre: currentCategory.headline }) }}</p>
+                        <NuxtLink 
+                            :to="localePath(`${currentCategory.knowledgeUrl}`)" 
+                            class="knowledge-link"
+                            :aria-label="t('category.knowledge.link', { genre: currentCategory.headline })"
+                        >
+                            <Icon name="material-symbols:menu-book" aria-hidden="true" class="knowledge-icon" />
+                            {{ t('category.knowledge.title') }}
+                        </NuxtLink>
                     </div>
-                </div>
 
-                <UsernameInput ref="usernameInput" v-if="!hasUsername" @username-set="onUsernameSet" />
-                <CategoryDifficultySelector v-if="hasUsername" :categorySlug="currentCategory.slug" />
-            </article>
-        </div>
-    </NuxtLayout>
+                    <div class="music-links"
+                        v-if="currentCategory.spotifyPlaylist || currentCategory.deezerPlaylist || currentCategory.appleMusicPlaylist"
+                        role="region" :aria-label="t('category.playlist.title')">
+                        <h4 class="music-links-title" id="streaming-services-title">
+                            <Icon name="material-symbols:headphones" aria-hidden="true" class="headphone-icon" />
+                            {{ t('category.playlist.title') }}
+                        </h4>
+                        <p class="music-links-description">
+                            {{ t('category.playlist.description', { genre: currentCategory.headline }) }}
+                        </p>
+                        <div class="music-links-container" role="list" aria-labelledby="streaming-services-title">
+                            <a v-if="currentCategory.spotifyPlaylist" :href="currentCategory.spotifyPlaylist"
+                                target="_blank" rel="noopener noreferrer" class="music-link spotify"
+                                :aria-label="t('category.playlist.spotify')" role="listitem">
+                                <Icon name="mdi:spotify" size="28" aria-hidden="true" />
+                                <span class="visually-hidden">{{ t('category.playlist.spotify') }}</span>
+                            </a>
+                            <a v-if="currentCategory.deezerPlaylist" :href="currentCategory.deezerPlaylist" target="_blank"
+                                rel="noopener noreferrer" class="music-link deezer"
+                                :aria-label="t('category.playlist.deezer')" role="listitem">
+                                <Icon name="simple-icons:deezer" size="28" aria-hidden="true" />
+                                <span class="visually-hidden">{{ t('category.playlist.deezer') }}</span>
+                            </a>
+                            <a v-if="currentCategory.appleMusicPlaylist" :href="currentCategory.appleMusicPlaylist"
+                                target="_blank" rel="noopener noreferrer" class="music-link apple"
+                                :aria-label="t('category.playlist.apple')" role="listitem">
+                                <Icon name="mdi:apple" size="28" aria-hidden="true" />
+                                <span class="visually-hidden">{{ t('category.playlist.apple') }}</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <UsernameInput ref="usernameInput" v-if="!hasUsername" @username-set="onUsernameSet" />
+                    <CategoryDifficultySelector v-if="hasUsername" :categorySlug="currentCategory.slug" />
+                </article>
+            </div>
+        </NuxtLayout>
+    </div>
 </template>
 
 <script setup lang="ts">

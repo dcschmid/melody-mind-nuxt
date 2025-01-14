@@ -62,13 +62,14 @@
     "knowledgeUrl": "/knowledge/es/anos-1960"
   },
   {
-    "categoryUrl": "/70er",
-    "headline": "Años 70",
-    "imageUrl": "/category/70er.jpg",
-    "introSubline": "¡Experimenta los clásicos atemporales y el sonido inconfundible de los años 70!",
-    "isPlayable": false,
-    "slug": "70er",
-    "text": "Los años 70 fueron una década de revolución musical que dio origen a muchos géneros influyentes como la música disco, el rock clásico, el funk y el punk. Esta categoría reúne los mayores éxitos de artistas como ABBA, Queen, Led Zeppelin, The Rolling Stones, David Bowie y Stevie Wonder. Ya sea que quieras sentir los grooves energéticos de la era disco con artistas como Donna Summer y los Bee Gees o experimentar los poderosos riffs de guitarra del rock, la música de los 70 ofrece una increíble diversidad. Desde los beats funky del funk hasta los sonidos rebeldes del punk, esta década ha dejado una huella duradera en el mundo de la música. Déjate llevar por las melodías icónicas y el encanto atemporal de los años 70 y disfruta de un viaje musical a través de una década única."
+    "categoryUrl": "/anos-1970",
+    "headline": "Años 1970",
+    "imageUrl": "/category/1970er.jpg",
+    "introSubline": "¡Experimenta los clásicos atemporales y el sonido inconfundible de los años 1970!",
+    "isPlayable": true,
+    "slug": "anos-1970",
+    "text": "Los años 1970 fueron una década de revolución musical que dio origen a muchos géneros influyentes como la música disco, el rock clásico, el funk y el punk. Esta categoría reúne los mayores éxitos de artistas como ABBA, Queen, Led Zeppelin, The Rolling Stones, David Bowie y Stevie Wonder. Ya sea que quieras sentir los grooves energéticos de la era disco con artistas como Donna Summer y los Bee Gees o experimentar los poderosos riffs de guitarra del rock, la música de los 70 ofrece una increíble diversidad. Desde los beats funky del funk hasta los sonidos rebeldes del punk, esta década ha dejado una huella duradera en el mundo de la música. Déjate llevar por las melodías icónicas y el encanto atemporal de los años 70 y disfruta de un viaje musical a través de una década única.",
+    "knowledgeUrl": "/knowledge/es/anos-1970"
   },
   {
     "categoryUrl": "/80er",

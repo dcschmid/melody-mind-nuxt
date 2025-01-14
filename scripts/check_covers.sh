@@ -5,10 +5,10 @@ GENRES_DIR="../app/json/genres"
 BASE_PATH="../public"
 
 # Check if jq is installed
-if ! command -v jq &> /dev/null; then
-    echo "Error: jq is not installed. Please install it using 'brew install jq'"
-    exit 1
-fi
+# if ! command -v jq &> /dev/null; then
+#     echo "Error: jq is not installed. Please install it using 'brew install jq'"
+#     exit 1
+# fi
 
 # Temporary file for tracking checked covers
 TEMP_FILE=$(mktemp)

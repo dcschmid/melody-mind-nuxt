@@ -71,13 +71,14 @@
     "knowledgeUrl": "/knowledge/it/anni-1960"
   },
   {
-    "categoryUrl": "/70er",
-    "headline": "Anni '70",
-    "imageUrl": "/category/70er.jpg",
-    "introSubline": "Scopri i classici senza tempo e il suono inconfondibile degli anni '70!",
-    "isPlayable": false,
-    "slug": "70er",
-    "text": "Gli anni '70 sono stati un decennio di rivoluzione musicale che ha dato vita a molti generi influenti come la disco, il classic rock, il funk e il punk. Questa categoria riunisce i più grandi successi di artisti come ABBA, Queen, Led Zeppelin, The Rolling Stones, David Bowie e Stevie Wonder. Che tu voglia sentire i groove energici dell'era disco con artisti come Donna Summer e i Bee Gees o sperimentare i potenti riff di chitarra del rock - la musica degli anni '70 offre un'incredibile varietà. Dai beat funky del funk ai suoni ribelli del punk, questo decennio ha lasciato un'impronta duratura nel mondo della musica. Lasciati trasportare dalle melodie iconiche e dal fascino senza tempo degli anni '70 e goditi un viaggio musicale attraverso un decennio unico."
+    "categoryUrl": "/anni-1970",
+    "headline": "Anni 1970",
+    "imageUrl": "/category/1970er.jpg",
+    "introSubline": "Scopri i classici senza tempo e il suono inconfondibile degli anni 1970!",
+    "isPlayable": true,
+    "slug": "anni-1970",
+    "text": "Gli anni 1970 sono stati un decennio di rivoluzione musicale che ha dato vita a molti generi influenti come la disco, il classic rock, il funk e il punk. Questa categoria riunisce i più grandi successi di artisti come ABBA, Queen, Led Zeppelin, The Rolling Stones, David Bowie e Stevie Wonder. Che tu voglia sentire i groove energici dell'era disco con artisti come Donna Summer e i Bee Gees o sperimentare i potenti riff di chitarra del rock - la musica degli anni '70 offre un'incredibile varietà. Dai beat funky del funk ai suoni ribelli del punk, questo decennio ha lasciato un'impronta duratura nel mondo della musica. Lasciati trasportare dalle melodie iconiche e dal fascino senza tempo degli anni '70 e goditi un viaggio musicale attraverso un decennio unico.",
+    "knowledgeUrl": "/knowledge/it/anni-1970"
   },
   {
     "categoryUrl": "/80er",

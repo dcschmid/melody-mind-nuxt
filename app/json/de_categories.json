@@ -24,16 +24,16 @@
     "deezerPlaylist": "https://www.deezer.com/de/playlist/13449351943",
     "appleMusicPlaylist": "https://music.apple.com/de/playlist/top-1960s-hits/pl.u-mJy8150CNVL5Jl5",
     "knowledgeUrl": "/knowledge/de/1960er"
-
   },
   {
-    "categoryUrl": "/70er",
-    "headline": "70er",
-    "imageUrl": "/category/70er.jpg",
-    "introSubline": "Erlebe die zeitlosen Klassiker und den unverwechselbaren Sound der 70er!",
-    "isPlayable": false,
-    "slug": "70er",
-    "text": "Die 70er Jahre waren ein Jahrzehnt der musikalischen Revolution, das viele prägende Genres wie Disco, Classic Rock, Funk und Punk hervorgebracht hat. Diese Kategorie vereint die größten Hits von Künstlern wie ABBA, Queen, Led Zeppelin, The Rolling Stones, David Bowie und Stevie Wonder. Ob du die energiegeladenen Grooves der Disco-Ära mit Künstlern wie Donna Summer und Bee Gees spüren oder die kraftvollen Gitarrenriffs des Rock erleben möchtest – die Musik der 70er bietet eine unglaubliche Vielfalt. Von den funky Beats des Funk bis hin zu den rebellischen Klängen des Punks hat dieses Jahrzehnt die Musikwelt nachhaltig geprägt. Lass dich von den ikonischen Melodien und dem zeitlosen Charme der 70er Jahre mitreißen und genieße eine musikalische Reise durch ein einzigartiges Jahrzehnt."
+    "categoryUrl": "/1970er",
+    "headline": "1970er",
+    "imageUrl": "/category/1970er.jpg",
+    "introSubline": "Erlebe die zeitlosen Klassiker und den unverwechselbaren Sound der 1970er!",
+    "isPlayable": true,
+    "slug": "1970er",
+    "text": "Die 1970er Jahre waren ein Jahrzehnt der musikalischen Revolution, das viele prägende Genres wie Disco, Classic Rock, Funk und Punk hervorgebracht hat. Diese Kategorie vereint die größten Hits von Künstlern wie ABBA, Queen, Led Zeppelin, The Rolling Stones, David Bowie und Stevie Wonder. Ob du die energiegeladenen Grooves der Disco-Ära mit Künstlern wie Donna Summer und Bee Gees spüren oder die kraftvollen Gitarrenriffs des Rock erleben möchtest – die Musik der 70er bietet eine unglaubliche Vielfalt. Von den funky Beats des Funk bis hin zu den rebellischen Klängen des Punks hat dieses Jahrzehnt die Musikwelt nachhaltig geprägt. Lass dich von den ikonischen Melodien und dem zeitlosen Charme der 70er Jahre mitreißen und genieße eine musikalische Reise durch ein einzigartiges Jahrzehnt.",
+    "knowledgeUrl": "/knowledge/de/1970er"
   },
   {
     "categoryUrl": "/80er",

@@ -26,13 +26,14 @@
     "knowledgeUrl": "/knowledge/en/1960s"
   },
   {
-    "categoryUrl": "/70er",
-    "headline": "70s",
-    "imageUrl": "/category/70er.jpg",
+    "categoryUrl": "/1970s",
+    "headline": "1970s",
+    "imageUrl": "/category/1970er.jpg",
     "introSubline": "Experience the timeless classics and distinctive sound of the 1970s!",
-    "isPlayable": false,
-    "slug": "70er",
-    "text": "The 1970s were a decade of musical revolution that produced many defining genres such as Disco, Classic Rock, Funk, and Punk. This category unites the greatest hits from artists like ABBA, Queen, Led Zeppelin, The Rolling Stones, David Bowie, and Stevie Wonder. Whether you want to feel the energetic grooves of the Disco era with artists like Donna Summer and the Bee Gees or experience the powerful guitar riffs of rock – the music of the 70s offers incredible diversity. From the funky beats of Funk to the rebellious sounds of Punk, this decade has left a lasting impact on the music world. Let yourself be carried away by the iconic melodies and timeless charm of the 1970s and enjoy a musical journey through a unique decade."
+    "isPlayable": true,
+    "slug": "1970s",
+    "text": "The 1970s were a decade of musical revolution that produced many defining genres such as Disco, Classic Rock, Funk, and Punk. This category unites the greatest hits from artists like ABBA, Queen, Led Zeppelin, The Rolling Stones, David Bowie, and Stevie Wonder. Whether you want to feel the energetic grooves of the Disco era with artists like Donna Summer and the Bee Gees or experience the powerful guitar riffs of rock – the music of the 70s offers incredible diversity. From the funky beats of Funk to the rebellious sounds of Punk, this decade has left a lasting impact on the music world. Let yourself be carried away by the iconic melodies and timeless charm of the 1970s and enjoy a musical journey through a unique decade.",
+    "knowledgeUrl": "/knowledge/en/1970s"
   },
   {
     "categoryUrl": "/80er",
