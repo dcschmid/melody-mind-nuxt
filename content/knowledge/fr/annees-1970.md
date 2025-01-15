@@ -3,7 +3,7 @@ title: Les Années 70 Diversifiées - L'Âge d'Or du Rock
 description: Les Années 70 - Une décennie entre Rock Progressif, Disco et Punk qui a changé à jamais le paysage musical
 image: /category/1970er.jpg
 category:
-  spotifyPlaylist: 
+  spotifyPlaylist: https://open.spotify.com/playlist/5NQ2NVn1zAPdKENrknRkXV
   deezerPlaylist: 
   appleMusicPlaylist: 
 ---
