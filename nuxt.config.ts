@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/scss/main.scss"],
-  modules: ["nuxt-icon", "@nuxtjs/i18n", '@nuxt/content'],
+  modules: ["nuxt-icon", "@nuxtjs/i18n", '@nuxt/content', 'nuxt-fathom'],
   content: {
     documentDriven: true,
     navigation: {
@@ -48,6 +48,9 @@ export default defineNuxtConfig({
       },
       anchorLinks: false
     }
+  },
+  fathom: {
+    siteId: "RKHOWTTO",
   },
   i18n: {
     strategy: "prefix",
@@ -88,4 +91,5 @@ export default defineNuxtConfig({
       },
     ],
   },
+  
 });
