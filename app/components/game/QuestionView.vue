@@ -150,27 +150,22 @@ defineEmits<{
 @use '@/assets/scss/mixins' as *;
 
 .question-container {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
+    @include flex-stack;
+    @include container;
+    @include spacing-y(2rem);
     gap: clamp(var(--padding-medium), 4vw, var(--padding-large));
     margin-top: 2rem;
 }
 
 .question {
+    @include surface-card;
     text-align: center;
-    padding: clamp(var(--padding-small), 3vw, var(--padding-medium));
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
 
     h2 {
         margin: 0;
-        font-size: clamp(1rem, 2.5vw, 1.5rem);
-        line-height: 1.4;
+        @include responsive-text(1rem, 1.5rem);
         color: var(--text-color);
         font-weight: 500;
-        letter-spacing: var(--spacing-text);
     }
 
     &:focus-within {
@@ -181,11 +176,14 @@ defineEmits<{
 
 .options {
     display: grid;
+    @include custom-scrollbar;
     gap: var(--padding-medium);
     width: 100%;
     max-width: min(100%, 800px);
     margin: 0 auto;
     position: relative;
+    max-height: 60vh;
+    overflow-y: auto;
 }
 
 .option-button {
@@ -212,17 +210,14 @@ defineEmits<{
         transform: translateY(0);
     }
     
-    // Verbesserter Focus-State für Barrierefreiheit
     &:focus-visible {
         outline: none;
         box-shadow: 0 0 0 var(--focus-outline-width) var(--focus-outline-color),
                     var(--box-shadow);
     }
 
-    // Verbesserter Disabled-State
     &:disabled {
-        opacity: 0.7;
-        cursor: not-allowed;
+        @include disabled-state;
         background-color: var(--surface-color);
         color: var(--text-secondary);
         box-shadow: none;
@@ -230,20 +225,12 @@ defineEmits<{
 }
 
 .phone-expert {
-    padding: clamp(var(--padding-small), 3vw, var(--padding-medium));
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    max-width: min(100%, 800px);
-    margin: 0 auto;
-    width: 100%;
+    @include surface-card;
+    @include responsive-container;
 
     h3 {
-        margin: 0 0 var(--padding-medium);
-        font-size: clamp(1rem, 2.5vw, 1.2rem);
-        color: var(--text-color);
-        text-align: center;
-        letter-spacing: var(--spacing-text);
+        @include section-title;
+        @include responsive-text(1rem, 1.2rem);
     }
 
     .expert-message {
@@ -259,14 +246,14 @@ defineEmits<{
             }
 
             .expert-name {
-                font-weight: 500;
-                color: var(--text-color);
-                font-size: clamp(0.9rem, 2vw, 1.1rem);
+                @include label-text;
+                @include responsive-text(0.9rem, 1.1rem);
             }
         }
 
         .message-content {
             .expert-answer {
+                @include text-truncate;
                 margin: 0 0 var(--padding-medium);
                 color: var(--text-color);
                 font-style: italic;
@@ -276,6 +263,7 @@ defineEmits<{
 
             .confidence-bar-container {
                 .confidence-bar {
+                    @include progress-bar;
                     height: 6px;
                     background: var(--surface-color);
                     border-radius: 3px;
@@ -312,21 +300,12 @@ defineEmits<{
 }
 
 .audience-opinion {
-    padding: clamp(var(--padding-small), 3vw, var(--padding-medium));
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    max-width: min(100%, 800px);
-    margin: 0 auto;
-    width: 100%;
+    @include surface-card;
+    @include responsive-container;
 
     h3 {
-        margin: 0 0 var(--padding-large);
-        font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-        color: var(--text-color);
-        text-align: center;
-        letter-spacing: var(--spacing-text);
-        font-weight: 600;
+        @include section-title;
+        @include responsive-text(1.1rem, 1.3rem);
     }
 
     .audience-results {
@@ -359,6 +338,7 @@ defineEmits<{
         }
 
         .audience-bar {
+            @include progress-bar;
             height: 28px;
             background: var(--surface-color-alt);
             border-radius: var(--border-radius);
@@ -385,23 +365,21 @@ defineEmits<{
 }
 
 .jokers-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include flex-stack;
+    @include responsive-container;
     gap: clamp(var(--padding-small), 2vw, var(--padding-medium));
     width: 100%;
     max-width: min(100%, 800px);
     margin: 0 auto;
 
     .joker-buttons {
-        display: flex;
-        gap: clamp(var(--padding-small), 2vw, var(--padding-medium));
+        @include flex-row(clamp(var(--padding-small), 2vw, var(--padding-medium)));
         justify-content: center;
-        flex-wrap: wrap;
         width: 100%;
     }
 
     .joker-button {
+        @include icon-button;
         @include button-secondary;
         flex: 1;
         min-width: 120px;
@@ -411,11 +389,6 @@ defineEmits<{
         align-items: center;
         gap: 0.5rem;
         padding: 1rem;
-        background-color: var(--secondary-color);
-        color: var(--text-color);
-        border: none;
-        box-shadow: var(--box-shadow);
-        transition: all 0.3s ease;
         
         &:hover:not(:disabled) {
             background-color: var(--secondary-color-dark);
@@ -427,17 +400,14 @@ defineEmits<{
             transform: translateY(0);
         }
         
-        // Verbesserter Focus-State für Barrierefreiheit
         &:focus-visible {
             outline: none;
             box-shadow: 0 0 0 var(--focus-outline-width) var(--focus-outline-color),
                         var(--box-shadow);
         }
 
-        // Verbesserter Disabled-State
         &:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
+            @include disabled-state;
             background-color: var(--surface-color);
             color: var(--text-secondary);
             box-shadow: none;
@@ -454,6 +424,8 @@ defineEmits<{
     }
 
     .jokers-remaining {
+        @include secondary-text;
+        text-align: center;
         margin: 0;
         font-size: clamp(0.8rem, 1.8vw, 0.9rem);
         color: var(--text-secondary);
@@ -478,7 +450,6 @@ defineEmits<{
 }
 
 @media (forced-colors: active) {
-
     .option-button,
     .joker-button {
         border: 2px solid ButtonText;
@@ -500,7 +471,6 @@ defineEmits<{
 }
 
 @media (prefers-reduced-motion: reduce) {
-
     .option-button,
     .joker-button {
         transition: none;
@@ -528,6 +498,33 @@ defineEmits<{
 @media (prefers-reduced-motion: reduce) {
     .percentage-bar {
         transition: none;
+    }
+}
+
+.sr-only {
+  @include sr-only;
+}
+
+.expert-answer {
+  @include text-truncate;
+  margin: 0 0 var(--padding-medium);
+  color: var(--text-color);
+  font-style: italic;
+}
+
+.audience-bar {
+  @include progress-bar;
+}
+
+@include high-contrast {
+    .option-button,
+    .joker-button {
+        border: 2px solid ButtonText;
+        
+        &:disabled {
+            border-color: GrayText;
+            color: GrayText;
+        }
     }
 }
 </style>

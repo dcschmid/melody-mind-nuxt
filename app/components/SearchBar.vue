@@ -34,13 +34,35 @@ defineProps({
 defineEmits(['update:modelValue', 'input'])
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
+@use '@/assets/scss/mixins' as *;
+
 .search-wrapper {
+    @include container(600px);
     max-width: min(600px, 90%);
     margin: 0 auto;
 }
 
+.search-input {
+    @include input-base;
+    @include scale-transition;
+    padding-left: 2.5rem;
+
+    &:focus {
+        transform: scale(1.01);
+    }
+}
+
+.search-icon {
+    @include absolute-center;
+    left: var(--padding-medium);
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
 .search-input-container {
+    @include font-smoothing;
+    @include z-index('above');
     position: relative;
     display: flex;
     align-items: center;
@@ -53,6 +75,8 @@ defineEmits(['update:modelValue', 'input'])
 }
 
 .filterInput {
+    @include input-base;
+    @include focus-ring;
     width: 100%;
     padding: var(--padding-medium) var(--padding-medium) var(--padding-medium) calc(var(--padding-medium) * 3);
     font-size: var(--body-font-size);
@@ -70,6 +94,7 @@ defineEmits(['update:modelValue', 'input'])
     }
 
     &::placeholder {
+        @include text-truncate;
         color: var(--text-secondary);
     }
 }

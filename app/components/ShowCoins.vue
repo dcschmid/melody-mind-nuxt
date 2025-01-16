@@ -12,35 +12,17 @@
 
 
 <style lang="scss" scoped>
+@use '@/assets/scss/mixins' as *;
+
 .coinsContainer {
-    will-change: transform;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include surface-card;
+    @include hover-lift;
+    @include touch-optimized;
+    width: auto;
+    padding: var(--padding-small);
     min-width: var(--min-touch-target);
     max-width: min(120px, 100%);
-    padding: var(--padding-small);
-    background-color: var(--secondary-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-
-    @media (hover: hover) {
-        &:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-elevated);
-        }
-    }
-
-    @media (hover: none) {
-        touch-action: manipulation;
-        -webkit-tap-highlight-color: transparent;
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-        transition:
-            transform var(--transition-speed) ease,
-            box-shadow var(--transition-speed) ease;
-    }
+    @include transition(transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease);
 }
 
 .coinsDisplay {
@@ -51,17 +33,13 @@
 }
 
 .coinIcon {
-    will-change: transform;
+    @include icon-base;
     color: var(--highlight-color);
-    backface-visibility: hidden;
-    filter: drop-shadow(0 2px 4px rgb(0 0 0 / 15%));
-
-    @media (prefers-reduced-motion: no-preference) {
-        animation: bounce 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    }
+    @include bounce-animation;
 }
 
 .coinsCount {
+    @include label-text;
     font-family: var(--font-family);
     font-size: var(--body-font-size);
     font-weight: 700;
@@ -77,12 +55,9 @@
 }
 
 @keyframes bounce {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: translateY(0) translateZ(0);
     }
-
     50% {
         transform: translateY(-2px) translateZ(0);
     }

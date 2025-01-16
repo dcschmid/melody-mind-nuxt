@@ -1,4 +1,6 @@
 @use "sass:color";
+@use "sass:math";
+@use "sass:map";
 
 // Flexbox mixins
 @mixin flex-center {
@@ -13,6 +15,13 @@
   align-items: center;
 }
 
+// Flexbox Variations
+@mixin flex-row($gap: var(--padding-medium)) {
+  display: flex;
+  gap: $gap;
+  flex-wrap: wrap;
+}
+
 // Media query mixins
 @mixin mobile {
   @media (max-width: 767px) { @content; }
@@ -24,6 +33,25 @@
 
 @mixin desktop {
   @media (min-width: 1024px) { @content; }
+}
+
+// Media Mode Mixins
+@mixin forced-colors-mode {
+  @media (forced-colors: active) {
+    @content;
+  }
+}
+
+@mixin reduced-motion-mode {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+@mixin dark-mode {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
 }
 
 // Color adjustment mixins
@@ -55,9 +83,102 @@
   line-height: 1.3;
 }
 
+// Text Styles
+@mixin heading-style($size: 1.5rem) {
+  font-size: $size;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
 // Animation mixin
 @mixin transition($property: all, $duration: 0.3s, $timing: ease) {
   transition: $property $duration $timing;
+}
+
+// Animation Mixins
+@mixin hover-lift {
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-elevated);
+    }
+  }
+}
+
+@mixin touch-optimized {
+  @media (hover: none) {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+// Animation mixins
+@mixin bounce-animation {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: bounce 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+}
+
+@mixin icon-base {
+  will-change: transform;
+  backface-visibility: hidden;
+  filter: drop-shadow(0 2px 4px rgb(0 0 0 / 15%));
+}
+
+// Animation Transitions
+@mixin fade-transition {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+@mixin scale-transition {
+  transition: transform 0.3s var(--transition-bounce);
+}
+
+// Media Query Combinations
+@mixin accessible-hover {
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+// Interactive Elements
+@mixin interactive-element {
+  & {
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  @include accessible-hover {
+    transition: all 0.3s ease;
+  }
+}
+
+// Glass Effect
+@mixin glass-morphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+// Container Constraints
+@mixin content-width($max-width: 800px) {
+  width: min(90%, $max-width);
+  margin-inline: auto;
+}
+
+// Print Styles
+@mixin print-friendly {
+  @media print {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    
+    * {
+      print-color-adjust: exact;
+    }
+  }
 }
 
 // Button mixins
@@ -65,73 +186,454 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
+  padding: var(--padding-small) var(--padding-medium);
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed) ease;
   cursor: pointer;
-  transition: all 0.2s ease;
-  text-decoration: none;
-  
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
+  border: none;
 
-  &:focus {
-    outline: 2px solid var(--focus-outline-color);
-    outline-offset: 2px;
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    box-shadow: none;
   }
 }
 
 @mixin button-primary {
   @include button-base;
   background-color: var(--primary-color);
-  color: var(--text-color-light);
-  border: none;
-
+  color: var(--button-text-color);
+  box-shadow: var(--box-shadow);
+  
   &:hover:not(:disabled) {
     background-color: var(--primary-color-dark);
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-hover);
   }
-
+  
   &:active:not(:disabled) {
     transform: translateY(0);
+  }
+  
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 var(--focus-outline-width) var(--focus-outline-color),
+                var(--box-shadow);
+  }
+  
+  &:disabled {
+    background-color: var(--surface-color);
+    color: var(--text-secondary);
   }
 }
 
 @mixin button-secondary {
   @include button-base;
-  background-color: var(--surface-color);
+  background-color: var(--secondary-color);
   color: var(--text-color);
-  border: 1px solid var(--border-color);
-
+  box-shadow: var(--box-shadow);
+  
   &:hover:not(:disabled) {
-    background-color: var(--surface-color-hover);
-    transform: translateY(-1px);
+    background-color: var(--secondary-color-dark); 
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-hover);
   }
-
+  
   &:active:not(:disabled) {
     transform: translateY(0);
+  }
+  
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 var(--focus-outline-width) var(--focus-outline-color),
+                var(--box-shadow);
+  }
+  
+  &:disabled {
+    background-color: var(--surface-color);
+    color: var(--text-secondary);
   }
 }
 
-@mixin button-outline {
+// Button Variations
+@mixin icon-button {
   @include button-base;
-  background-color: transparent;
+  @include flex-center;
+  gap: 0.5rem;
+  padding: 1rem;
+  flex-direction: column;
+  font-size: 0.9rem;
+  
+  .icon {
+    font-size: 1.5rem;
+  }
+}
+
+// Card/Container Mixins
+@mixin surface-card {
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: clamp(var(--padding-small), 3vw, var(--padding-medium));
+}
+
+@mixin responsive-container {
+  width: 100%;
+  max-width: min(100%, 800px);
+  margin: 0 auto;
+}
+
+// Responsive Container Variations
+@mixin flex-container($max-width: 800px) {
+  display: flex;
+  gap: var(--padding-medium);
+  justify-content: center;
+  width: 100%;
+  max-width: min(100%, $max-width);
+  margin: 0 auto;
+}
+
+// Layout Mixins
+@mixin grid-center {
+  display: grid;
+  gap: var(--padding-medium);
+  place-items: center;
+}
+
+@mixin flex-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// Layout mixins
+@mixin center-content {
+  text-align: center;
+  max-width: var(--max-line-length);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin full-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+// Typography Mixins
+@mixin responsive-text($min, $max) {
+  font-size: clamp($min, 2.5vw, $max);
+  line-height: 1.4;
+}
+
+@mixin section-title {
+  margin: 0 0 var(--padding-medium);
   color: var(--text-color);
-  border: 2px solid var(--border-color);
+  text-align: center;
+  letter-spacing: var(--spacing-text);
+  font-weight: 600;
+}
 
-  &:hover:not(:disabled) {
-    background-color: var(--surface-color);
+// Text Style Mixins
+@mixin label-text {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+@mixin secondary-text {
+  color: var(--text-secondary);
+  font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+}
+
+// Form mixins
+@mixin input-base {
+  padding: var(--padding-medium);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background: var(--surface-color);
+  color: var(--text-color);
+  width: 100%;
+  
+  &:focus {
+    outline: none;
     border-color: var(--primary-color);
-    transform: translateY(-1px);
+    box-shadow: 0 0 0 2px var(--primary-color-light);
   }
+}
 
-  &:active:not(:disabled) {
-    transform: translateY(0);
+// Progress Bar Mixin
+@mixin progress-bar {
+  height: 28px;
+  background: var(--surface-color-alt);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+  
+  .progress-fill {
+    height: 100%;
+    background: var(--primary-color);
+    transition: width var(--transition-speed) var(--transition-bounce);
+    border-radius: var(--border-radius);
   }
+}
 
+// List Styles
+@mixin clean-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+// Background Effects
+@mixin gradient-overlay($direction: to bottom, $start-color: rgba(0, 0, 0, 0.2), $end-color: rgba(0, 0, 0, 0.6)) {
+  background: linear-gradient($direction, $start-color, $end-color);
+}
+
+// Accessibility Focus
+@mixin focus-ring {
   &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--focus-outline-color);
     border-color: var(--primary-color);
   }
+}
+
+// Common Positioning
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin absolute-fill {
+  position: absolute;
+  inset: 0;
+}
+
+// Responsive Images
+@mixin responsive-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// Truncate Text
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Screen Reader Only
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Spacing Mixins
+@mixin spacing-y($value) {
+  margin-top: $value;
+  margin-bottom: $value;
+}
+
+@mixin padding-x($value) {
+  padding-left: $value;
+  padding-right: $value;
+}
+
+// Animation Keyframes
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+// Loading States
+@mixin loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface-color) 25%,
+    var(--surface-color-alt) 50%,
+    var(--surface-color) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+// Scroll Area
+@mixin custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) transparent;
+  
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 3px;
+  }
+}
+
+// Container with Max Width
+@mixin container($max: 1200px, $padding: var(--padding-medium)) {
+  width: min(100% - ($padding * 2), $max);
+  margin-inline: auto;
+  padding-inline: $padding;
+}
+
+// Z-Index Management
+@mixin z-index($layer) {
+  $layers: (
+    modal: 100,
+    overlay: 90,
+    dropdown: 80,
+    header: 70,
+    above: 10,
+    default: 1,
+    below: -1
+  );
+  z-index: map.get($layers, $layer);
+}
+
+// Font Smoothing
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// Forms & Inputs
+@mixin input-placeholder {
+  &::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+  }
+}
+
+// Component Layout
+@mixin aspect-ratio($width, $height) {
+  & {
+    position: relative;
+    width: 100%;
+  }
+  
+  &::before {
+    content: '';
+    display: block;
+    padding-top: math.div($height, $width) * 100%;
+  }
+  
+  & > :not(.coming-soon) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  & > .coming-soon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+  }
+}
+
+// Animation States
+@mixin hover-focus-active {
+  @include accessible-hover {
+    &:hover {
+      @content;
+    }
+  }
+  &:focus-visible {
+    @content;
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+// Motion Effects
+@mixin animation($name, $duration: 1s, $timing: ease) {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: $name $duration $timing;
+  }
+}
+
+// Component States
+@mixin disabled-state {
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
+  filter: grayscale(30%);
+}
+
+// Border Styles
+@mixin border-focus {
+  border: 1px solid var(--border-color);
+  transition: border-color 0.2s ease;
+  
+  &:focus-within {
+    border-color: var(--primary-color);
+  }
+}
+
+// Media Support
+@mixin high-contrast {
+  @media (forced-colors: active), (-ms-high-contrast: active) {
+    @content;
+  }
+}
+
+// Layout Utilities
+@mixin overlay-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+// Common Component Layouts
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-small);
+}
+
+// Background Opacity Variations
+@mixin overlay-background($opacity: 0.8) {
+  background: rgba(0, 0, 0, $opacity);
+  color: white;
+}
+
+// Common Transitions
+@mixin property-transition($property) {
+  transition: $property 0.3s ease;
+}
+
+// Image Containers
+@mixin image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }

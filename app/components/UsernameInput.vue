@@ -52,14 +52,21 @@ defineExpose({
 <style lang="scss" scoped>
 @use '@/assets/scss/mixins' as *;
 
+.input-container {
+    @include surface-card;
+    @include responsive-container;
+}
+
 .username-input {
+    @include font-smoothing;
+    @include container(400px);
+    @include glass-morphism;
+    @include content-width(400px);
+    @include input-base;
     text-align: center;
     margin: 2rem auto;
-    max-width: 400px;
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.1);
     border-radius: 1rem;
-    backdrop-filter: blur(10px);
 
     h2 {
         margin-bottom: 1.5rem;
@@ -69,26 +76,16 @@ defineExpose({
 }
 
 .username-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    @include flex-column;
 
     input {
+        @include input-base;
+        @include input-placeholder;
+        @include border-focus;
         padding: 0.75rem 1rem;
         border: 2px solid rgba(255, 255, 255, 0.2);
         border-radius: 0.5rem;
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-        font-size: 1rem;
-
-        &:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        &::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
+        @include glass-morphism;
     }
 
     .save-button {

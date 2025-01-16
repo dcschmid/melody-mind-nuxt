@@ -60,28 +60,22 @@ defineProps({
 defineEmits(['select'])
 </script>
 
-<style scoped lang="scss">
-.category-card {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16/9;
-    transition: transform 0.3s ease;
-    cursor: pointer;
+<style lang="scss" scoped>
+@use '@/assets/scss/mixins' as *;
 
-    &:hover {
+.category-card {
+    & {
+        position: relative;
+        width: 100%;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    @include interactive-element;
+    @include aspect-ratio(16, 9);
+
+    @include hover-focus-active {
         transform: scale(1.02);
-        
-        .category-content::after {
-            opacity: 1;
-        }
-        
-        .category-title {
-            background: rgba(0, 0, 0, 0.8);
-        }
-        
-        .category-description {
-            opacity: 1;
-        }
     }
 }
 
@@ -93,6 +87,7 @@ defineEmits(['select'])
 }
 
 .category-content {
+    @include fade-transition;
     position: relative;
     width: 100%;
     height: 100%;
@@ -109,45 +104,47 @@ defineEmits(['select'])
     }
 }
 
-.image-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
+.category-content::after {
+    @include overlay-layer;
+    @include gradient-overlay;
+    content: '';
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
+.image-container {
+    @include image-wrapper;
+    
     img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        @include responsive-image;
         border-radius: 8px;
     }
 }
 
+.image-container img {
+    @include responsive-image;
+    border-radius: 8px;
+}
+
 .category-title {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
+    @include flex-center;
+    @include absolute-fill;
+    @include overlay-background(0.5);
     font-size: 1.5rem;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    @include property-transition(background-color);
     padding: 1rem;
     text-align: center;
 }
 
 .category-description {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    @include absolute-fill;
+    @include overlay-background(0.8);
+    top: auto; // Override absolute-fill für bottom-only
     padding: 1rem;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
     text-align: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    @include property-transition(opacity);
     pointer-events: none;
 }
 
@@ -161,14 +158,35 @@ defineEmits(['select'])
 }
 
 .coming-soon-badge {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    @include absolute-center;
     background: rgba(0, 0, 0, 0.8);
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     font-weight: bold;
+}
+
+.category-content.coming-soon {
+    cursor: not-allowed;
+    height: 100%;
+    
+    .image-container {
+        height: 100%;
+    }
+    
+    .category-title {
+        @include flex-center;
+        @include absolute-fill;
+        @include overlay-background(0.7);
+        font-size: 1.2rem;
+    }
+
+    .category-description {
+        @include absolute-fill;
+        @include overlay-background(0.8);
+        top: auto;
+        padding: 1rem;
+        text-align: center;
+    }
 }
 </style>

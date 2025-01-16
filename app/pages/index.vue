@@ -40,20 +40,16 @@ useSeoMeta({
 @use '@/assets/scss/mixins' as *;
 
 .landing-page {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
+    @include full-page;
     background: var(--background-color);
     overflow: hidden;
     position: relative;
 }
 
 .welcome-section {
-    text-align: center;
-    max-width: 800px;
+    @include center-content;
     width: 100%;
+    max-width: 800px;
 }
 
 .language-picker-container {
@@ -81,6 +77,7 @@ useSeoMeta({
 }
 
 .primary-button {
+    @include button-primary;
     display: inline-block;
     padding: var(--padding-small) var(--padding-medium);
     font-size: var(--button-font-size);

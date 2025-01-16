@@ -29,27 +29,19 @@ const getDifficultyPath = (difficulty: string) => {
 @use '@/assets/scss/mixins' as *;
 
 .difficultySection {
-    display: grid;
-    gap: var(--padding-medium);
-    place-items: center;
+    @include grid-center;
     width: 100%;
     padding: 0 var(--padding-medium);
 }
 
 .buttonHeadline {
-    font-size: var(--header-font-size);
-    font-weight: 700;
-    color: var(--text-color);
+    @include heading-style;
     text-align: center;
 }
 
 .buttonGroup {
-    display: flex;
+    @include flex-container;
     flex-wrap: wrap;
-    gap: var(--padding-medium);
-    width: 100%;
-    margin: 0 auto;
-    justify-content: center;
 
     .button {
         @include button-primary;
