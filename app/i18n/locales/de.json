@@ -256,7 +256,7 @@
           },
           "remaining": "{Anzahl} verbleibende Joker"
       },
-      "selectAnswer": "Antwort auswählen"
+      "selectAnswer": "Antwort auswählen",
   },
   "gameRules": {
       "title": "Spielregeln - MelodyMind",

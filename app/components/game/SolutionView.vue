@@ -2,14 +2,15 @@
     <div class="solution-container" role="region" :aria-label="isCorrectAnswer ? t('game.correct') : t('game.wrong')">
         <!-- Ergebnis-Banner -->
         <div class="result-banner" :class="{ 'correct': isCorrectAnswer }" role="alert">
+            
             <div class="result-header">
                 <Icon :name="isCorrectAnswer ? 'material-symbols:check-circle' : 'material-symbols:cancel'"
                     class="result-icon" :class="{ 'wrong': !isCorrectAnswer }" size="28" :aria-hidden="true" />
                 <h2 id="result-status">{{ isCorrectAnswer ? t('game.correct') : t('game.wrong') }}</h2>
             </div>
             <div v-if="isCorrectAnswer" class="points-breakdown" aria-live="polite">
-                <div class="points">
-                    {{ t('game.points', { base: latestBonus.base, time: latestBonus.time }) }}
+                <div class="points-inline">
+                    {{ t('game.points', { Basis: latestBonus.base, Zeit: latestBonus.time }) }}
                 </div>
             </div>
             <div v-else class="points" aria-live="polite">0 {{ t('game.points_label') }}</div>
@@ -96,7 +97,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -136,11 +137,6 @@ const emit = defineEmits<{
 const togglePlay = () => {
     emit('togglePlay')
 }
-
-// Debug log to check if trivia exists
-onMounted(() => {
-    console.log('Artist data:', props.artist)
-})
 </script>
 
 <style lang="scss" scoped>
@@ -189,6 +185,18 @@ onMounted(() => {
         .points-breakdown {
             font-size: clamp(1rem, 2vw, 1.25rem);
             margin-bottom: var(--padding-medium);
+        }
+
+        .points-breakdown {
+            margin: var(--padding-medium) 0;;
+
+            .points-inline {
+                display: inline-flex;
+                align-items: flex-start;
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: var(--text-color);
+            }
         }
 
         .correct-answer {
@@ -304,7 +312,7 @@ onMounted(() => {
 
                     .album {
                         font-size: clamp(1rem, 2vw, 1.25rem);
-                        color: var(--text-secondary);
+                        color: var (--text-secondary);
                         margin: 0 0 0.25rem;
                     }
 

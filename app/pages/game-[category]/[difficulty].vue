@@ -22,7 +22,8 @@
                         </div>
                         <!-- Solution View -->
                         <GameSolutionView v-else-if="currentQuestion" :key="'solution'"
-                            :is-correct-answer="isCorrectAnswer" :latest-bonus="latestBonus" :question="currentQuestion"
+                            :is-correct-answer="isCorrectAnswer" :latest-bonus="latestBonus"
+                            :current-round="usedQuestions.length" :max-rounds="maxQuestions" :question="currentQuestion"
                             :artist="currentArtist" :is-playing="isPlaying" :audio-loaded="audioLoaded"
                             :is-buffering="isBuffering" :progress="progress" @toggle-play="togglePlay"
                             @next="nextQuestion" />

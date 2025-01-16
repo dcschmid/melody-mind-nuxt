@@ -2,7 +2,9 @@
     <div class="game-header">
         <div class="header-left">
             <h1>{{ categoryName }}</h1>
-            <p class="round-counter">{{ roundText }}</p>
+            <p class="round-counter">
+                {{ roundText }}
+            </p>
         </div>
         <div class="header-right">
             <div class="points-display">
@@ -45,7 +47,7 @@ const props = defineProps<{
 
 const roundText = computed(() => {
     return t('game.round', {
-        current: props.currentRound,
+        aktuell: props.currentRound,
         max: props.maxRounds
     })
 })
