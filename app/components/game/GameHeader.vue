@@ -63,9 +63,6 @@ const formattedPoints = computed(() => {
     justify-content: space-between;
     align-items: center;
     padding: calc(var(--padding-small) * 1.5) var(--padding-small);
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
     transition: var(--menu-transition);
 
     .header-left {
