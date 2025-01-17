@@ -98,4 +98,31 @@ defineEmits(['update:modelValue', 'input'])
         color: var(--text-secondary);
     }
 }
+
+.clear-button {
+  @include button-icon;
+  position: absolute;
+  right: var(--padding-small);
+}
+
+.search-button {
+  @include button-icon;
+  position: absolute;
+  left: var(--padding-small);
+}
+
+.search-button,
+.clear-button {
+  @include button-icon;
+  position: absolute;
+  color: var(--text-secondary);
+}
+
+.search-button {
+  left: var(--padding-small);
+}
+
+.clear-button {
+  right: var(--padding-small);
+}
 </style>

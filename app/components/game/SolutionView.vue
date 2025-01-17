@@ -259,7 +259,7 @@ const togglePlay = () => {
                     gap: var(--padding-small);
 
                     .play-button {
-                        @include button-primary;
+                        @include button-icon;
                         width: 48px;
                         height: 48px;
                         padding: 0;
@@ -411,6 +411,7 @@ const togglePlay = () => {
     }
 
     .next-button {
+        @include button-primary;
         display: flex;
         align-items: center;
         justify-content: center;

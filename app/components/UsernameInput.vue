@@ -93,4 +93,10 @@ defineExpose({
         gap: 0.5rem;
     }
 }
+
+.submit-button {
+  @include button-primary;
+  width: 100%;
+  margin-top: var(--padding-medium);
+}
 </style>

@@ -106,6 +106,7 @@ body {
 }
 
 .skip-link {
+  @include button-primary;
   position: absolute;
   z-index: 1000;
   top: -100%;
@@ -193,6 +194,36 @@ nav {
 .logo img {
   max-width: 100%;
   height: auto;
+}
+
+// Base button styles
+button {
+  @include button-base;
+}
+
+// Primary buttons
+.button, 
+.button-primary {
+  @include button-primary;
+}
+
+// Secondary buttons
+.button-secondary {
+  @include button-secondary;
+}
+
+// Icon buttons
+.icon-button,
+.button-icon {
+  @include button-icon;
+}
+
+// Menu buttons
+.menu {
+  a,
+  button {
+    @include button-secondary;
+  }
 }
 
 button {
@@ -332,6 +363,7 @@ main {
 
   a,
   button {
+    @include button-base;
     position: relative;
     display: flex;
     align-items: center;
@@ -367,7 +399,20 @@ body:has(.menu.is-open) {
 }
 
 .hamburger {
+  @include button-icon;
   position: relative;
+}
+
+// Game action buttons (if they exist)
+.game-button {
+  @include button-primary;
+  @include flex-center;
+}
+
+// Generic action buttons
+.action-button {
+  @include button-primary;
+  @include flex-center;
 }
 
 @media (prefers-reduced-motion: reduce) {

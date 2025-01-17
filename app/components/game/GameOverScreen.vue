@@ -476,53 +476,10 @@ const shareViaAPI = async () => {
 
 .share-button {
     @include button-secondary;
-    gap: calc(var(--padding-small) / 2);
-    position: relative;
-    overflow: hidden;
-
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(rgba(255, 255, 255, 0.1), transparent);
-        transform: translateY(-100%);
-        transition: transform 0.3s ease;
-    }
-
-    &:hover::before {
-        transform: translateY(0);
-    }
-
-    &.twitter {
-        --color-secondary: #1DA1F2;
-        --color-secondary-dark: color.adjust(#1DA1F2, $lightness: -10%);
-    }
-
-    &.telegram {
-        --color-secondary: #0088cc;
-        --color-secondary-dark: color.adjust(#0088cc, $lightness: -10%);
-    }
-
-    &.reddit {
-        --color-secondary: #FF4500;
-        --color-secondary-dark: color.adjust(#FF4500, $lightness: -10%);
-    }
-
-    &.whatsapp {
-        --color-secondary: #25D366;
-        --color-secondary-dark: color.adjust(#25D366, $lightness: -10%);
-    }
-
+    gap: var(--padding-small);
+    
     &.share-api {
         @include button-primary;
-    }
-
-    span {
-        position: relative;
-        z-index: 1;
     }
 }
 
@@ -537,8 +494,6 @@ const shareViaAPI = async () => {
         display: flex;
         align-items: center;
         gap: var(--padding-small);
-        min-width: 200px;
-        margin: 0 auto;
     }
 }
 

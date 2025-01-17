@@ -42,11 +42,11 @@ const getDifficultyPath = (difficulty: string) => {
 .buttonGroup {
     @include flex-container;
     flex-wrap: wrap;
+    gap: var(--padding-small);
 
     .button {
         @include button-primary;
         min-height: var(--min-touch-target);
-        gap: var(--padding-small);
         flex: 1;
         max-width: 200px;
     }

@@ -72,6 +72,8 @@ onUnmounted(() => {
 </template>
 
 <style scoped lang="scss">
+@use '@/assets/scss/mixins' as *;
+
 .language-picker {
     position: relative;
     z-index: var(--z-index-header);
@@ -190,5 +192,26 @@ onUnmounted(() => {
     .language-name {
         font-size: 0.9rem;
     }
+}
+
+.language-button {
+  @include button-secondary;
+  padding: var(--padding-small);
+  min-width: 120px;
+}
+
+.current-language {
+  @include button-primary;
+}
+
+.current-language {
+  @include button-secondary;
+  min-width: 120px;
+}
+
+.language-option {
+  @include button-secondary;
+  width: 100%;
+  justify-content: flex-start;
 }
 </style>

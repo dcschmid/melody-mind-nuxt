@@ -183,75 +183,78 @@
 
 // Button mixins
 @mixin button-base {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--padding-small) var(--padding-medium);
-  border-radius: var(--border-radius);
-  transition: all var(--transition-speed) ease;
   cursor: pointer;
   border: none;
-
-  &:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-    box-shadow: none;
+  background: none;
+  transition: all var(--transition-speed) var(--transition-bounce);
+  font-family: var(--font-family);
+  
+  &:focus-visible {
+    outline: var(--focus-outline-width) solid var(--focus-outline-color);
+    outline-offset: var(--focus-outline-offset);
   }
 }
 
 @mixin button-primary {
   @include button-base;
+  @include flex-center;
   background-color: var(--primary-color);
   color: var(--button-text-color);
+  padding: var(--padding-small) var(--padding-medium);
+  border-radius: var(--border-radius);
+  font-size: var(--button-font-size);
+  font-weight: bold;
   box-shadow: var(--box-shadow);
-  
+
   &:hover:not(:disabled) {
     background-color: var(--primary-color-dark);
     transform: translateY(-2px);
     box-shadow: var(--box-shadow-hover);
   }
-  
-  &:active:not(:disabled) {
-    transform: translateY(0);
-  }
-  
-  &:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 var(--focus-outline-width) var(--focus-outline-color),
-                var(--box-shadow);
-  }
-  
+
   &:disabled {
-    background-color: var(--surface-color);
-    color: var(--text-secondary);
+    opacity: var(--opacity-disabled);
+    cursor: not-allowed;
   }
 }
 
 @mixin button-secondary {
   @include button-base;
+  @include flex-center;
   background-color: var(--secondary-color);
   color: var(--text-color);
+  padding: var(--padding-small) var(--padding-medium);
+  border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   
   &:hover:not(:disabled) {
-    background-color: var(--secondary-color-dark); 
+    background-color: var(--secondary-color-dark);
     transform: translateY(-2px);
-    box-shadow: var(--box-shadow-hover);
   }
-  
-  &:active:not(:disabled) {
-    transform: translateY(0);
+}
+
+@mixin button-icon {
+  @include button-base;
+  @include flex-center;
+  min-width: var(--min-touch-target);
+  min-height: var(--min-touch-target);
+  border-radius: 50%;
+  padding: var(--padding-small);
+  color: var(--text-color);
+
+  &:hover:not(:disabled) {
+    background-color: var(--surface-color-hover);
+    transform: scale(1.05);
   }
+}
+
+@mixin button-text {
+  @include button-base;
+  color: var(--text-color);
+  padding: var(--padding-small);
   
-  &:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 var(--focus-outline-width) var(--focus-outline-color),
-                var(--box-shadow);
-  }
-  
-  &:disabled {
-    background-color: var(--surface-color);
-    color: var(--text-secondary);
+  &:hover {
+    color: var(--primary-color);
   }
 }
 
