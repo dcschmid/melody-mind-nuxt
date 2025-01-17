@@ -218,14 +218,6 @@ button {
   @include button-icon;
 }
 
-// Menu buttons
-.menu {
-  a,
-  button {
-    @include button-secondary;
-  }
-}
-
 button {
   cursor: pointer;
   display: inline-block;

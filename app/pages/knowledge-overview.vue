@@ -20,7 +20,6 @@
                         :image-url="item.image"
                         :category-url="localePath(`/knowledge/${item._file.split('/')[1]}/${item._file.split('/').pop().replace('.md', '')}`)"
                         :is-playable="true"
-                        :intro-subline="item.description"
                         role="listitem"
                         @select="navigateToKnowledge(item)"
                     />

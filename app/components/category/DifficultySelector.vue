@@ -32,6 +32,7 @@ const getDifficultyPath = (difficulty: string) => {
     @include grid-center;
     width: 100%;
     padding: 0 var(--padding-medium);
+    margin-bottom:  var(--padding-large)
 }
 
 .buttonHeadline {
@@ -49,6 +50,7 @@ const getDifficultyPath = (difficulty: string) => {
         min-height: var(--min-touch-target);
         flex: 1;
         max-width: 200px;
+        text-decoration: none;
     }
 }
 </style>

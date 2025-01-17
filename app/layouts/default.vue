@@ -134,9 +134,6 @@ onUnmounted(() => {
 header {
     position: flex;
     height: var(--header-height);
-    background-color: var(--surface-color);
-    backdrop-filter: blur(var(--blur-strength));
-    border-bottom: 1px solid rgb(255 255 255 / 10%);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -290,11 +287,8 @@ header {
     padding: var(--padding-medium);
     font-size: 1.125rem;
     color: var(--text-color);
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
     transition: all 0.3s var(--transition-bounce);
     text-decoration: none;
-    border: 1px solid transparent;
 
     .icon {
         color: var(--text-color);
@@ -304,9 +298,7 @@ header {
 
     &:hover,
     &:focus-visible {
-        background: var(--secondary-color);
         transform: translateX(8px);
-        border-color: var(--highlight-color);
 
         .icon {
             color: var(--highlight-color);

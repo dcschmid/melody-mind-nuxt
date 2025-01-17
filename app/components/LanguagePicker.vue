@@ -186,7 +186,6 @@ onUnmounted(() => {
 @media (max-width: 768px) {
     .current-language {
         min-width: 120px;
-        padding: 0.5rem 0.75rem;
     }
 
     .language-name {
