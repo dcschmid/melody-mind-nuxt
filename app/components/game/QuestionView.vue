@@ -152,8 +152,7 @@ defineEmits<{
 .question-container {
     @include flex-stack;
     @include container;
-    @include spacing-y(2rem);
-    gap: clamp(var(--padding-medium), 4vw, var(--padding-large));
+    gap: clamp(var(--padding-medium), 4vw, var(--padding-medium));
     margin-top: 2rem;
 }
 
@@ -163,7 +162,7 @@ defineEmits<{
 
     h2 {
         margin: 0;
-        @include responsive-text(1rem, 1.5rem);
+        @include responsive-text(1.25rem, 1.5rem);
         color: var(--text-color);
         font-weight: 500;
     }
@@ -191,7 +190,7 @@ defineEmits<{
     width: 100%;
     max-width: min(100%, 800px);
     min-height: var(--min-touch-target);
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-size: clamp(1.125rem, 2.5vw, 1.2rem);
     text-align: center;
     padding: clamp(var(--padding-small), 2vw, var(--padding-medium));
     background-color: var(--primary-color);

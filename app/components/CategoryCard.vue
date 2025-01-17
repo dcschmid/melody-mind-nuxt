@@ -130,7 +130,7 @@ defineEmits(['select'])
     @include flex-center;
     @include absolute-fill;
     @include overlay-background(0.5);
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: bold;
     @include property-transition(background-color);
     padding: 1rem;

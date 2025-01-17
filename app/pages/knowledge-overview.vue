@@ -19,7 +19,9 @@
                         :headline="item.title"
                         :image-url="item.image"
                         :category-url="localePath(`/knowledge/${item._file.split('/')[1]}/${item._file.split('/').pop().replace('.md', '')}`)"
+                        :description="item.description"
                         :is-playable="true"
+                        class="category-card"
                         role="listitem"
                         @select="navigateToKnowledge(item)"
                     />
@@ -102,6 +104,20 @@ const navigateToKnowledge = (item) => {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
+    padding: var(--padding-medium);
+
+    @media (min-width: 640px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 768px) {
+        gap: var(--padding-medium);
+        padding: var(--padding-small);
+    }
 
     @media (prefers-reduced-motion: reduce) {
         * {
@@ -110,27 +126,27 @@ const navigateToKnowledge = (item) => {
     }
 }
 
+.category-card {
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow-small);
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-medium);
+    }
+
+    &:focus-within {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+}
+
 @media (prefers-reduced-motion: no-preference) {
     .category-card {
         animation: fadeIn 0.5s ease-out;
-    }
-}
-
-@media (min-width: 640px) {
-    .categories-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1024px) {
-    .categories-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .categories-grid {
-        gap: var(--padding-medium);
     }
 }
 

@@ -274,9 +274,7 @@
 
 // Card/Container Mixins
 @mixin surface-card {
-  background: var(--surface-color);
   border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
   padding: clamp(var(--padding-small), 3vw, var(--padding-medium));
 }
 
@@ -495,9 +493,8 @@
 
 // Container with Max Width
 @mixin container($max: 1200px, $padding: var(--padding-medium)) {
-  width: min(100% - ($padding * 2), $max);
+  width: min(100%, $max);
   margin-inline: auto;
-  padding-inline: $padding;
 }
 
 // Z-Index Management

@@ -289,6 +289,7 @@ main {
 
   @media (width >= 768px) {
     max-width: var(--max-line-length);
+    width: 100%;
   }
 }
 
