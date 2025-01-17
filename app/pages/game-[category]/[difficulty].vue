@@ -21,12 +21,22 @@
                                 @use-phone="usePhoneJoker(currentQuestion)" />
                         </div>
                         <!-- Solution View -->
-                        <GameSolutionView v-else-if="currentQuestion" :key="'solution'"
-                            :is-correct-answer="isCorrectAnswer" :latest-bonus="latestBonus"
-                            :current-round="usedQuestions.length" :max-rounds="maxQuestions" :question="currentQuestion"
-                            :artist="currentArtist" :is-playing="isPlaying" :audio-loaded="audioLoaded"
-                            :is-buffering="isBuffering" :progress="progress" @toggle-play="togglePlay"
-                            @next="nextQuestion" />
+                        <SolutionView 
+                            v-else-if="currentQuestion" 
+                            :key="'solution'"
+                            :is-correct-answer="isCorrectAnswer"
+                            :latest-bonus="latestBonus"
+                            :current-round="usedQuestions.length"
+                            :max-rounds="maxQuestions"
+                            :question="currentQuestion"
+                            :artist="currentArtist"
+                            :is-playing="isPlaying"
+                            :audio-loaded="audioLoaded"
+                            :is-buffering="isBuffering"
+                            :progress="progress"
+                            @toggle-play="togglePlay"
+                            @next="nextQuestion"
+                        />
                     </Transition>
                 </div>
                 <!-- Game Over Screen -->
@@ -43,6 +53,7 @@ import { watch, nextTick, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useSeoMeta, useRequestURL, useRoute } from '#imports'
 import GameOverScreen from '~/components/game/GameOverScreen.vue';
+import SolutionView from '~/components/game/SolutionView.vue'
 
 // Initialize core utilities
 const route = useRoute()
