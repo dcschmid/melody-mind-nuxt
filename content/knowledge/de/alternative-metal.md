@@ -1,7 +1,19 @@
 ---
-title: Alternative Metal - Die experimentelle Evolution des Heavy Metal
-description: Eine Reise durch die Entwicklung des Alternative Metal - Von seinen experimentellen Wurzeln bis zur modernen Interpretation
+title: Alternative Metal - Die experimentelle Seite des Heavy Metal
+description: Entdecke die Verschmelzung von Metal mit alternativen Musikstilen - Von Nu Metal bis Progressive Metal
 image: /category/alternative-metal.jpg
+createdAt: 2024-01-20
+updatedAt: 2024-01-20
+keywords:
+  - Alternative Metal
+  - Nu Metal
+  - Progressive Metal
+  - Heavy Metal
+  - Crossover Metal
+  - Experimental Metal
+  - Rock Musik
+author: MelodyMind
+locale: de-DE
 category:
   spotifyPlaylist: 
   deezerPlaylist: 

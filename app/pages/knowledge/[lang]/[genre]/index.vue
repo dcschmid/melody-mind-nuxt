@@ -64,11 +64,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { queryContent } from '#imports'
+import { queryContent, useRequestURL, useSeoMeta, useHead } from '#imports'
 
 const route = useRoute()
+const url = useRequestURL()
 
 const genre = ref(null)
 const category = ref(null)
@@ -104,6 +105,75 @@ const loadContent = async () => {
     error.value = err.message || 'Content not found'
   }
 }
+
+// SEO Meta Tags
+watch(genre, (newGenre) => {
+  if (newGenre) {
+    // Konvertiere relative Bild-URL zu absoluter URL
+    const absoluteImageUrl = computed(() => 
+      newGenre.image?.startsWith('http') 
+        ? newGenre.image 
+        : `${url.origin}${newGenre.image}`
+    )
+
+    useSeoMeta({
+      title: computed(() => `${newGenre.title} - MelodyMind`),
+      description: computed(() => newGenre.description),
+      ogTitle: computed(() => `${newGenre.title} - MelodyMind`),
+      ogDescription: computed(() => newGenre.description),
+      ogType: 'article',
+      ogImage: absoluteImageUrl,
+      ogUrl: computed(() => url.href),
+      twitterCard: 'summary_large_image',
+      twitterTitle: computed(() => `${newGenre.title} - MelodyMind`),
+      twitterDescription: computed(() => newGenre.description),
+      twitterImage: absoluteImageUrl,
+      canonical: computed(() => url.href),
+      keywords: computed(() => newGenre.keywords?.join(', ')),
+      author: computed(() => newGenre.author || 'MelodyMind'),
+      'article:published_time': computed(() => newGenre.createdAt),
+      'article:modified_time': computed(() => newGenre.updatedAt),
+      'og:locale': computed(() => newGenre.locale),
+      'og:site_name': 'MelodyMind'
+    })
+
+    // Add structured data
+    useHead({
+      script: [
+        {
+          type: 'application/ld+json',
+          children: computed(() => JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: newGenre.title,
+            description: newGenre.description,
+            image: absoluteImageUrl.value,
+            datePublished: newGenre.createdAt,
+            dateModified: newGenre.updatedAt,
+            keywords: newGenre.keywords,
+            inLanguage: newGenre.locale,
+            author: {
+              '@type': 'Organization',
+              name: newGenre.author || 'MelodyMind'
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'MelodyMind',
+              logo: {
+                '@type': 'ImageObject',
+                url: `${url.origin}/images/logo.png`
+              }
+            },
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': url.href
+            }
+          }))
+        }
+      ]
+    })
+  }
+})
 
 onMounted(loadContent)
 

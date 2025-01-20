@@ -1,7 +1,18 @@
 ---
-title: Alternative Rock - Die rebellische Evolution der Rockmusik
-description: Eine Reise durch die Geschichte des Alternative Rock - Von Underground-Bewegung zum kulturellen Phänomen
+title: Alternative Rock - Rebellion und Innovation in der Rockmusik
+description: Entdecke die Vielfalt des Alternative Rock - Von seinen Underground-Wurzeln bis zum modernen Indie-Sound
 image: /category/alternative-rock.jpg
+createdAt: 2024-01-20
+updatedAt: 2024-01-20
+keywords:
+  - Alternative Rock
+  - Indie Rock
+  - Underground Rock
+  - Grunge
+  - Independent Musik
+  - Rock Musik
+author: MelodyMind
+locale: de-DE
 category:
   spotifyPlaylist: 
   deezerPlaylist: 

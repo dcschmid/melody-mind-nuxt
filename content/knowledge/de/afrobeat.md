@@ -1,7 +1,19 @@
 ---
-title: Afrobeat - Die revolutionäre Fusion afrikanischer Rhythmen
-description: Eine musikalische Reise durch die Geschichte des Afrobeat - Von den Wurzeln in Nigeria bis zur globalen Bewegung
+title: Afrobeat - Rhythmus und Revolution aus Afrika
+description: Entdecke die kraftvolle Fusion aus afrikanischen Rhythmen, Jazz und Funk - Von Fela Kuti bis zur modernen Afrobeat-Szene
 image: /category/afrobeat.jpg
+createdAt: 2024-01-20
+updatedAt: 2024-01-20
+keywords:
+  - Afrobeat
+  - Afrikanische Musik
+  - Fela Kuti
+  - Westafrikanische Musik
+  - Jazz Fusion
+  - Funk
+  - Weltmusik
+author: MelodyMind
+locale: de-DE
 category:
   spotifyPlaylist: 
   deezerPlaylist: 

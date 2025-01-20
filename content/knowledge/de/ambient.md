@@ -2,6 +2,17 @@
 title: Ambient - Die Kunst der atmosphärischen Klanglandschaften
 description: Eine Reise durch die Welt der Ambient-Musik - Von ihren experimentellen Ursprüngen bis zur modernen Klangkunst
 image: /category/ambient.jpg
+createdAt: 2024-01-20
+updatedAt: 2024-01-20
+keywords:
+  - Ambient Musik
+  - Elektronische Musik
+  - Brian Eno
+  - Atmosphärische Musik
+  - Klanglandschaften
+  - Experimentelle Musik
+author: MelodyMind
+locale: de-DE
 category:
   spotifyPlaylist: 
   deezerPlaylist: 

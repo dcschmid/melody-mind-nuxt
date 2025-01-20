@@ -1,7 +1,19 @@
 ---
-title: Avant-Garde Metal - Die experimentelle Grenzüberschreitung des Metal
-description: Eine Reise durch die Welt des Avant-Garde Metal - Wo musikalische Konventionen aufgebrochen und neue Ausdrucksformen geschaffen werden
+title: Avant-garde Metal - Grenzenlose Experimentierfreude im Metal
+description: Erlebe die experimentellste Form des Metal - Von progressiven Kompositionen bis zu genreübergreifenden Innovationen
 image: /category/avant-garde-metal.jpg
+createdAt: 2024-01-20
+updatedAt: 2024-01-20
+keywords:
+  - Avant-garde Metal
+  - Experimenteller Metal
+  - Progressive Metal
+  - Art Metal
+  - Avantgarde
+  - Experimentelle Musik
+  - Innovative Metal
+author: MelodyMind
+locale: de-DE
 category:
   spotifyPlaylist: 
   deezerPlaylist: 

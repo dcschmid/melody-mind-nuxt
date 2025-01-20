@@ -1,7 +1,19 @@
 ---
-title: Acoustic Metal - Die Verschmelzung von Metal und akustischer Musik
-description: Eine faszinierende Reise durch die Welt des Acoustic Metal - Von seinen Ursprüngen bis zur modernen Interpretation
+title: Acoustic Metal - Die sanfte Seite der harten Musik
+description: Entdecke die akustischen Interpretationen von Metal-Klassikern - Von Unplugged Sessions bis zu Neo-Folk
 image: /category/acoustic-metal.jpg
+createdAt: 2024-01-20
+updatedAt: 2024-01-20
+keywords:
+  - Acoustic Metal
+  - Unplugged Metal
+  - Metal Balladen
+  - Akustische Gitarre
+  - Neo-Folk
+  - Akustische Versionen
+  - Metal Acoustic Covers
+author: MelodyMind
+locale: de-DE
 category:
   spotifyPlaylist: 
   deezerPlaylist: 

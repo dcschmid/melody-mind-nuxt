@@ -1,7 +1,19 @@
 ---
-title: Ambient Metal - Die atmosphärische Verschmelzung von Schwere und Raum
-description: Eine Reise durch die Welt des Ambient Metal - Wo atmosphärische Klanglandschaften auf die Intensität des Metal treffen
+title: Ambient Metal - Atmosphärische Klangwelten des Metal
+description: Tauche ein in die Verschmelzung von Metal und atmosphärischen Klanglandschaften - Von Atmospheric Black Metal bis Post-Metal
 image: /category/ambient-metal.jpg
+createdAt: 2024-01-20
+updatedAt: 2024-01-20
+keywords:
+  - Ambient Metal
+  - Atmospheric Black Metal
+  - Post-Metal
+  - Atmospheric Metal
+  - Drone Metal
+  - Dark Ambient
+  - Experimenteller Metal
+author: MelodyMind
+locale: de-DE
 category:
   spotifyPlaylist: 
   deezerPlaylist: 

@@ -2,6 +2,16 @@
 title: Argentinische Musik - Zwischen Tradition und Innovation
 description: Eine Reise durch die vielfältige Musiklandschaft Argentiniens - Von traditionellem Tango bis zu modernem Rock Nacional
 image: /category/argentinisch.jpg
+createdAt: 2024-01-20
+updatedAt: 2024-01-20
+keywords: 
+  - Argentinische Musik
+  - Tango
+  - Rock Nacional
+  - Folklore Argentino
+  - Lateinamerikanische Musik
+author: MelodyMind
+locale: de-DE
 category:
   spotifyPlaylist: 
   deezerPlaylist: 
