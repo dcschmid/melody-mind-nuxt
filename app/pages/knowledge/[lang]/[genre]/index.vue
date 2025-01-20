@@ -5,7 +5,7 @@
           <!-- Main Content -->
            <div class="knowledge-header">
             <h1>{{ genre.title }}</h1>
-            <p>{{ genre.description }}</p>
+            <img :src="genre.image" :alt="genre.title" class="genre-image" />
           </div>
 
           <article class="main-content prose prose-invert">
@@ -117,6 +117,15 @@ watch(() => route.params, loadContent)
 
   .knowledge-header {
       text-align: center;
+
+    img.genre-image {
+      width: 100%;
+      max-width: clamp(280px, 35vw, 400px);
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
 
     h1 {
       font-size: 3rem;
