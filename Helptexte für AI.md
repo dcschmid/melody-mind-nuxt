@@ -36,6 +36,77 @@ ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz
 ## Entwicklung und Evolution (1500-2000 Zeichen, Wichtige Entwicklungsphasen, Moderne Interpretationen, Aktuelle Trends, Fusion mit anderen Genres)
 ## Vermächtnis und Einfluss (1000-1200 Zeichen, Einfluss auf andere Genres, Bedeutung in der heutigen Musiklandschaft, Kulturelles Erbe)
 
+Bitte nur die internationale Musik berücksichtigen und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar 
+ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen
+
+
+
+# Für Länder Genres
+
+## Einleitung (800-1000 Zeichen, Überblick über die Musiklandschaft des Landes, Kulturelle Bedeutung der Musik in der Gesellschaft, Besondere Merkmale der nationalen Musikszene)
+## Historischer und kultureller Kontext (1500-2000 Zeichen, Geschichtliche Entwicklung der Musikkultur, Einfluss von Politik und Gesellschaft, Wichtige historische Ereignisse und deren Auswirkungen, Kulturelle Traditionen und deren Einfluss)
+## Traditionelle Musik (2000-2500 Zeichen, Volksmusikinstrumente und traditionelle Klänge, Bedeutende Volksmusikstile, Regionale Besonderheiten, Traditionelle Aufführenspraktiken)
+## Moderne Musikentwicklung (2000-2500 Zeichen, Entstehung der modernen MusikszeneWichtige Genres und Stilrichtungen, Fusion von Tradition und Moderne, Einflüsse aus dem Ausland)
+## Bedeutende Künstler und Bands (2500-3000 Zeichen, Pioniere der nationalen Musikszene, Erfolgreiche , zeitgenössische Künstler, International bekannte Musiker,Wichtige Bands verschiedener Genres)
+## Musikindustrie und Infrastruktur (1500-2000 Zeichen, Plattenlabels und ProduktionsfirmenAufnahmestudios und Produktionszentren, Vertriebswege und Vermarktung,Digitale Transformation)
+## Live-Musik und Veranstaltungen (1500-2000 Zeichen, Wichtige Konzerthallen und Venues, Bedeutende Festivals,Musikmessen und Conventions, Club- und Underground-Szene)
+## Medien und Promotion (1500-2000 Zeichen, Musikmedien und Fachzeitschriften, Radio und Fernsehen, Digitale Plattformen, Soziale Medien und Online-Präsenz)
+## Ausbildung und Förderung (1500-2000 Zeichen, Musikschulen und Konservatorien, Staatliche Förderung, Private Initiativen, Nachwuchsförderung)
+## Internationale Vernetzung (1500-2000 Zeichen, Export nationaler Musik, Internationale Kooperationen, Kultureller Austausch, Globale Einflüsse)
+## Aktuelle Trends und Zukunft (1000-1200 Zeichen, Gegenwärtige Entwicklungen, Neue Stilrichtungen, Herausforderungen und Chancen, Zukunftsperspektiven)
+
+Bitte nur die internationale Musik berücksichtigen und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar 
+ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen
+
+
+
+# Für emotionsbezogene Musikartikel (fröhlich, traurig, melancholisch, etc.)
+
+## Einleitung (800-1000 Zeichen, Definition der emotionalen Qualität, Bedeutung in der Musik, Psychologische Grundlagen, Universelle Aspekte der Emotion in der Musik)
+## Musikpsychologie (2000-2500 Zeichen, Wissenschaftliche Erkenntnisse, Neurologische Wirkungen, Emotionale Resonanz, Kulturübergreifende Aspekte)
+## Musikalische Merkmale (2000-2500 Zeichen, Harmonische Strukturen, Melodische Charakteristika, Rhythmische Elemente, Instrumentierung und Klangfarben, Tempo und Dynamik)
+## Genre-übergreifende Beispiele (2000-2500 Zeichen, Klassische Musik, Populäre Musik, Folk und traditionelle Musik, Moderne experimentelle Musik, Filmmusik)
+## Kulturelle Perspektiven (1500-2000 Zeichen, Kulturelle Unterschiede, Historische Entwicklung, Gesellschaftliche Bedeutung, Rituelle und zeremonielle Verwendung)
+## Therapeutische Anwendungen (1500-2000 Zeichen, Musiktherapie, Emotionale Regulation, Heilende Wirkungen, Praktische Anwendungen)
+## Bedeutende Werke und Künstler (2000-2500 Zeichen, Ikonische Songs und Kompositionen, Einflussreiche Interpreten, Wegweisende Alben, Zeitgenössische Beispiele)
+## Verwendung in Medien (1500-2000 Zeichen, Film und Fernsehen, Werbung, Videospiele, Soziale Medien)
+## Moderne Interpretationen (1500-2000 Zeichen, Aktuelle Trends, Neue musikalische Ansätze, Experimentelle Formen, Digitale Innovationen)
+## Praktische Bedeutung (1000-1200 Zeichen, Alltägliche Anwendungen, Persönliche Entwicklung, Soziale Funktionen, Zukunftsperspektiven)
+
+Bitte nur die internationale Musik berücksichtigen und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar 
+ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen
+
+
+
+# saisonale Musikartikel (sommer, herbst, winter, frühlingszeit)
+
+## Einleitung (800-1000 Zeichen, Charakteristik der Jahreszeit in der Musik, Kulturelle Bedeutung, Atmosphärische Eigenschaften, Allgemeine musikalische Merkmale)
+## Kulturelle Tradition (2000-2500 Zeichen, Historische Entwicklung, Volkstümliche Bräuche, Traditionelle Feste und Feiern, Regionale Besonderheiten)
+## Musikalische Charakteristika (2000-2500 Zeichen, Typische Melodien und Harmonien, Bevorzugte Instrumentierung, Rhythmische Besonderheiten, Stimmung und Atmosphäre, Textliche Themen)
+## Klassische Kompositionen (1500-2000 Zeichen, Bedeutende Werke, Einflussreiche Komponisten, Programmatische Musik, Orchestrale Interpretationen)
+## Populære Musik (2000-2500 Zeichen, Bekannte Songs und Hits, Genre-übergreifende Beispiele, Moderne Interpretationen, Zeitgenössische Künstler)
+## Festliche Ereignisse (1500-2000 Zeichen, Saisonale Festivals, Konzerttraditionen, Open-Air-Veranstaltungen, Besondere Aufführungsorte)
+## Mediale Präsenz (1500-2000 Zeichen, Film- und Fernsehmusik, Werbung und Marketing, Streaming-Trends, Playlist-Kultur)
+## Internationale Perspektiven (1500-2000 Zeichen, Kulturübergreifende Gemeinsamkeiten, Regionale Unterschiede, Globale Einflüsse, Kultureller Austausch)
+## Moderne Interpretation (1500-2000 Zeichen, Aktuelle Trends, Neue musikalische Ansätze, Crossover-Projekte, Experimentelle Formen)
+## Bedeutung und Ausblick (1000-1200 Zeichen, Gesellschaftliche Relevanz, Kommerzielle Aspekte, Zukünftige Entwicklungen, Nachhaltige Einflüsse)
+
+Bitte nur die internationale Musik berücksichtigen und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar 
+ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen
+
+
+# situativen oder aktivitätsbezogenen Musik (Roadtrip, Party, Gymnastik, etc.)
+
+## Einleitung (800-1000 Zeichen, Definition und Charakteristik, Psychologische Bedeutung, Kulturelle Relevanz, Historische Entwicklung)
+## Musikalische Merkmale (2000-2500 Zeichen, Typische Rhythmen und Tempi, Charakteristische Harmonien, Bevorzugte Instrumentierung, Stimmung und Energie, Textliche Elemente)
+## Genre-Vielfalt (2000-2500 Zeichen, Dominierende Musikstile, Genre-übergreifende Aspekte, Regionale Besonderheiten, Zeitgenössische Entwicklungen)
+## Kulturelle Dimension (1500-2000 Zeichen, Gesellschaftliche Bedeutung, Soziale Funktionen, Internationale Perspektiven, Lifestyle-Aspekte)
+## Bedeutende Musik (2000-2500 Zeichen, Klassische Beispiele, Einflussreiche Künstler, Wichtige Alben und Songs, Moderne Interpretationen)
+## Medien und Marketing (1500-2000 Zeichen, Verwendung in Medien, Kommerzielle Aspekte, Streaming und Playlists, Social Media Einflüsse)
+## Praktische Anwendung (1500-2000 Zeichen, Playlist-Gestaltung, Technische Aspekte, Situative Besonderheiten, Praktische Tipps)
+## Soziale Komponenten (1500-2000 Zeichen, Gemeinschaftserlebnis, Zielgruppen, Kultureller Austausch, Community-Aspekte)
+## Aktuelle Entwicklungen (1500-2000 Zeichen, Moderne Trends,Technologische Innovationen, Neue Nutzungsformen, Zukünftige Perspektiven)
+## Fazit (1000-1200 Zeichen, Zusammenfassung, Bedeutung, Ausblick, Nachhaltige Wirkung)
 
 Bitte nur die internationale Musik berücksichtigen und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar 
 ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen
