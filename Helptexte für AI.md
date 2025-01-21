@@ -18,8 +18,7 @@
 ### Nachhaltige Einflüsse (2500-3000 Zeichen, Einfluss auf spätere Entwicklungen, Bleibende Innovationen)
 ## Fazit (2000-2500 Zeichen, Zusammenfassung der wichtigsten Punkte, Gesamtbedeutung der Ära)
 
-Bitte nur die internationalen Musik berücksichtige und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar 
-ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen
+Ganz wichtig auf die geforderte Zeichenlänge achten. Bitte nur die internationalen Musik berücksichtige und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen.
 
 
 
@@ -36,8 +35,7 @@ ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz
 ## Entwicklung und Evolution (3000-3500 Zeichen, Wichtige Entwicklungsphasen, Moderne Interpretationen, Aktuelle Trends, Fusion mit anderen Genres)
 ## Vermächtnis und Einfluss (2000-2500 Zeichen, Einfluss auf andere Genres, Bedeutung in der heutigen Musiklandschaft, Kulturelles Erbe)
 
-Bitte nur die internationale Musik berücksichtigen und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar 
-ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen
+Ganz wichtig auf die geforderte Zeichenlänge achten. Bitte nur die internationalen Musik berücksichtige und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen.
 
 
 
@@ -55,8 +53,7 @@ ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz
 ## Internationale Vernetzung (3000-3500 Zeichen, Export nationaler Musik, Internationale Kooperationen, Kultureller Austausch, Globale Einflüsse)
 ## Aktuelle Trends und Zukunft (2500-3000 Zeichen, Gegenwärtige Entwicklungen, Neue Stilrichtungen, Herausforderungen und Chancen, Zukunftsperspektiven)
 
-Bitte nur die internationale Musik berücksichtigen und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar 
-ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen
+Ganz wichtig auf die geforderte Zeichenlänge achten. Bitte nur die internationalen Musik berücksichtige und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen.
 
 
 
@@ -73,8 +70,7 @@ ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz
 ## Moderne Interpretationen (3000-3500 Zeichen, Aktuelle Trends, Neue musikalische Ansätze, Experimentelle Formen, Digitale Innovationen)
 ## Praktische Bedeutung (2500-3000 Zeichen, Alltägliche Anwendungen, Persönliche Entwicklung, Soziale Funktionen, Zukunftsperspektiven)
 
-Bitte nur die internationale Musik berücksichtigen und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar 
-ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen
+Ganz wichtig auf die geforderte Zeichenlänge achten. Bitte nur die internationalen Musik berücksichtige und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen.
 
 
 
@@ -91,8 +87,7 @@ ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz
 ## Moderne Interpretation (3500-4000 Zeichen, Aktuelle Trends, Neue musikalische Ansätze, Crossover-Projekte, Experimentelle Formen)
 ## Bedeutung und Ausblick (2500-3000 Zeichen, Gesellschaftliche Relevanz, Kommerzielle Aspekte, Zukünftige Entwicklungen, Nachhaltige Einflüsse)
 
-Bitte nur die internationale Musik berücksichtigen und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar 
-ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen
+Ganz wichtig auf die geforderte Zeichenlänge achten. Bitte nur die internationalen Musik berücksichtige und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen.
 
 
 # situativen oder aktivitätsbezogenen Musik (Roadtrip, Party, Gymnastik, etc.)
@@ -108,5 +103,4 @@ ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz
 ## Aktuelle Entwicklungen (3500-4000 Zeichen, Moderne Trends,Technologische Innovationen, Neue Nutzungsformen, Zukünftige Perspektiven)
 ## Fazit (2500-3000 Zeichen, Zusammenfassung, Bedeutung, Ausblick, Nachhaltige Wirkung)
 
-Bitte nur die internationale Musik berücksichtigen und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar 
-ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen
+Ganz wichtig auf die geforderte Zeichenlänge achten. Bitte nur die internationalen Musik berücksichtige und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen.
