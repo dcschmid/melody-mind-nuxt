@@ -142,13 +142,19 @@ header {
 
 .menu-button {
     position: relative;
-    width: 48px;
-    height: 48px;
+    width: var(--min-touch-target);
+    height: var(--min-touch-target);
     background: transparent;
-    border: none;
+    border: 2px solid transparent;
     cursor: pointer;
     padding: 12px;
     z-index: calc(var(--z-index-menu) + 1);
+    border-radius: var(--border-radius);
+
+    &:focus-visible {
+        border-color: var(--focus-outline-color);
+        outline: none;
+    }
 
     .menu-button-line {
         position: relative;
@@ -197,7 +203,6 @@ header {
     }
 
     &:hover {
-
         .menu-button-line,
         .menu-button-line::before,
         .menu-button-line::after {
@@ -285,25 +290,37 @@ header {
     align-items: center;
     gap: var(--padding-medium);
     padding: var(--padding-medium);
+    min-height: var(--min-touch-target);
     font-size: 1.125rem;
+    font-weight: 500;
     color: var(--text-color);
     transition: all 0.3s var(--transition-bounce);
     text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
 
     .icon {
         color: var(--text-color);
-        opacity: 0.8;
+        opacity: 0.9;
         transition: all 0.3s var(--transition-bounce);
+        flex-shrink: 0;
     }
 
     &:hover,
     &:focus-visible {
         transform: translateX(8px);
+        background-color: var(--surface-color-light);
+        border-color: var(--highlight-color);
 
         .icon {
             color: var(--highlight-color);
             transform: scale(1.1);
+            opacity: 1;
         }
+    }
+
+    &:focus-visible {
+        outline: none;
     }
 }
 
@@ -311,13 +328,13 @@ header {
     position: absolute;
     top: var(--padding-medium);
     right: var(--padding-medium);
-    padding: 0;
-    max-width: 60px;
-    max-height: 60px;
+    padding: var(--padding-small);
+    width: 100px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
+    border: 2px solid transparent;
     background: var(--surface-color);
     color: var(--text-color);
     cursor: pointer;
@@ -327,16 +344,21 @@ header {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 
     .icon {
-        display: block;
-        width: 24px;
-        height: 24px;
+        width: 80px;
+        height: 80px;
+        color: currentColor;
     }
 
     &:hover,
     &:focus-visible {
         color: var(--highlight-color);
         transform: rotate(90deg);
-        background: var(--secondary-color);
+        background: var(--surface-color-light);
+        border-color: var(--highlight-color);
+    }
+
+    &:focus-visible {
+        outline: none;
     }
 }
 
