@@ -26,8 +26,16 @@
             <!-- Album Info -->
             <article v-if="artist" class="album-box" aria-labelledby="album-title">
                 <div class="cover-wrapper">
-                    <img :src="artist.coverSrc" :alt="`Album Cover: ${artist.artist} - ${artist.album}`" loading="lazy"
-                        decoding="async" />
+                    <img :src="artist.coverSrc" 
+                        :alt="`Album Cover: ${artist.artist} - ${artist.album}`" 
+                        loading="lazy"
+                        decoding="async" 
+                        width="300"
+                        height="300"
+                        :srcset="`${artist.coverSrc} 1x, ${artist.coverSrc} 2x`"
+                        sizes="(max-width: 768px) 100vw, 300px"
+                        class="album-cover"
+                        fetchpriority="high" />
                 </div>
                 <div class="player-info-wrapper">
                     <div class="audio-player" role="region" aria-label="Audio Player">
@@ -97,7 +105,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, watch } from 'vue'
+import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -130,12 +138,79 @@ interface Props {
 
 const props = defineProps<Props>()
 const emit = defineEmits<{
-    (e: 'togglePlay'): void
+    (e: 'update:isPlaying', value: boolean): void
+    (e: 'update:audioLoaded', value: boolean): void
+    (e: 'update:isBuffering', value: boolean): void
+    (e: 'update:progress', value: number): void
     (e: 'next'): void
 }>()
 
-const togglePlay = () => {
-    emit('togglePlay')
+const audio = ref<HTMLAudioElement | null>(null)
+const audioContext = ref<AudioContext | null>(null)
+
+const audioLoaded = ref(props.audioLoaded)
+const isPlaying = ref(props.isPlaying)
+const isBuffering = ref(props.isBuffering)
+const progress = ref(props.progress)
+
+// Watch für Änderungen der Props
+watch(() => props.audioLoaded, (val) => audioLoaded.value = val)
+watch(() => props.isPlaying, (val) => isPlaying.value = val)
+watch(() => props.isBuffering, (val) => isBuffering.value = val)
+watch(() => props.progress, (val) => progress.value = val)
+
+onMounted(() => {
+    if (props.artist?.preview_link) {
+        audio.value = new Audio()
+        audio.value.preload = "metadata"
+        audio.value.src = props.artist.preview_link
+        
+        audio.value.addEventListener('canplaythrough', () => {
+            audioLoaded.value = true
+            isBuffering.value = false
+            emit('update:audioLoaded', audioLoaded.value)
+            emit('update:isBuffering', isBuffering.value)
+        })
+        
+        audio.value.addEventListener('waiting', () => {
+            isBuffering.value = true
+            emit('update:isBuffering', isBuffering.value)
+        })
+        
+        audio.value.addEventListener('timeupdate', () => {
+            if (audio.value) {
+                progress.value = (audio.value.currentTime / audio.value.duration) * 100
+                emit('update:progress', progress.value)
+            }
+        })
+    }
+})
+
+onBeforeUnmount(() => {
+    if (audio.value) {
+        audio.value.pause()
+        audio.value.src = ''
+    }
+})
+
+const togglePlay = async () => {
+    if (!audio.value || !props.artist?.preview_link) return
+    
+    try {
+        if (isPlaying.value) {
+            await audio.value.pause()
+            isPlaying.value = false
+            emit('update:isPlaying', isPlaying.value)
+        } else {
+            await audio.value.play()
+            isPlaying.value = true
+            emit('update:isPlaying', isPlaying.value)
+        }
+    } catch (error) {
+        console.error('Playback error:', error)
+        audioLoaded.value = false
+        emit('update:audioLoaded', audioLoaded.value)
+    }
 }
 </script>
 
@@ -311,22 +386,25 @@ const togglePlay = () => {
 
             .cover-wrapper {
                 width: 100%;
-                max-width: 280px;
+                max-width: 300px;
                 margin: 0 auto;
                 aspect-ratio: 1;
+                background-color: var(--surface-color-light);
                 border-radius: var(--border-radius);
                 overflow: hidden;
-                box-shadow: var(--box-shadow);
+                will-change: transform;
 
-                @media (min-width: 768px) {
-                    margin: 0;
-                    max-width: 300px;
-                }
-
-                img {
+                .album-cover {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                    transform: translateZ(0);
+                    backface-visibility: hidden;
+                    transition: transform 0.3s ease;
+
+                    &:hover {
+                        transform: scale(1.05);
+                    }
                 }
             }
 
