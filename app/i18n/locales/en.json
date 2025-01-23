@@ -173,9 +173,26 @@
       "title": "Did You Know?"
     },
     "gameOver": {
-      "title": "Game Complete",
+      "title": "Game Over",
       "correctAnswers": "Correct Answers",
-      "backToMenu": "Back to Category Selection"
+      "backToMenu": "Back to Menu",
+      "newHighscore": "New Highscore!",
+      "share": {
+        "title": "Share your result",
+        "message": {
+          "intro": "Wow! I scored {points} points in Melody Mind in the category {category} ({difficulty})!",
+          "stats": "Score: {correct} out of {total} correct!",
+          "challenge": "Challenge me at {url}"
+        },
+        "buttons": {
+          "share": "Share",
+          "copy": "Copy text",
+          "twitter": "Share on Twitter",
+          "telegram": "Share on Telegram",
+          "reddit": "Share on Reddit",
+          "whatsapp": "Share on WhatsApp"
+        }
+      }
     },
     "results": {
       "title": "Game Results",

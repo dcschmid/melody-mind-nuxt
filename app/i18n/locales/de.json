@@ -220,28 +220,18 @@
           "newHighscore": "Neuer Highscore!",
           "share": {
               "title": "Teile dein Ergebnis",
+              "message": {
+                  "intro": "Wow! Ich habe {points} Punkte bei Melody Mind in der Kategorie {category} ({difficulty}) erreicht!",
+                  "stats": "Score: {correct} von {total} richtig beantwortet!",
+                  "challenge": "Fordere mich heraus auf {url}"
+              },
               "buttons": {
+                  "share": "Teilen",
+                  "copy": "Text kopieren",
                   "twitter": "Auf Twitter teilen",
                   "telegram": "Auf Telegram teilen",
                   "reddit": "Auf Reddit teilen",
-                  "whatsapp": "Auf WhatsApp teilen",
-                  "share": "Teilen"
-              },
-              "message": {
-                  "intro": "Wow! Ich habe {Punkte} Punkte bei Melody Mind erreicht! ",
-                  "genre": "Genre: {Genre} | Schwierigkeit: {Schwierigkeit} ",
-                  "perfect": " UNGLAUBLICH! Perfekte Runde auf {Schwierigkeit}! Du bist ein echter Musikexperte! ",
-                  "gold": " Fantastische Leistung auf {Schwierigkeit}! Gold-LP verdient! Weiter so! ",
-                  "silver": " Super stark auf {Schwierigkeit}! Silber-LP gewonnen - du bist auf dem richtigen Weg! ",
-                  "bronze": " Tolle Leistung auf {Schwierigkeit}! Bronze-LP erreicht - beim nächsten Mal holst du dir Silber! ",
-                  "encouragement": " Guter Start! Mit etwas Übung wirst du noch besser - bleib dran! ",
-                  "stats": "Score: {richtig} von {insgesamt} richtig beantwortet! ",
-                  "challenge": " Fordere mich heraus auf {url} ",
-                  "difficulty": {
-                      "easy": "Einfach",
-                      "medium": "Mittel",
-                      "hard": "Schwer"
-                  }
+                  "whatsapp": "Auf WhatsApp teilen"
               }
           },
           "playAgain": "Nochmal spielen",

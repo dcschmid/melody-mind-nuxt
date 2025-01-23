@@ -147,9 +147,25 @@
             "title": "Curiosidades"
         },
         "gameOver": {
-            "title": "Juego terminado",
-            "correctAnswers": "Respuestas correctas",
-            "backToMenu": "Volver al menú"
+            "title": "Juego Terminado",
+            "backToMenu": "Volver al Menú",
+            "newHighscore": "¡Nueva Puntuación Máxima!",
+            "share": {
+              "title": "Comparte tu resultado",
+              "message": {
+                "intro": "¡Guau! ¡He conseguido {points} puntos en Melody Mind en la categoría {category} ({difficulty})!",
+                "stats": "Puntuación: ¡{correct} de {total} correctas!",
+                "challenge": "Desafíame en {url}"
+              },
+              "buttons": {
+                "share": "Compartir",
+                "copy": "Copiar texto",
+                "twitter": "Compartir en Twitter",
+                "telegram": "Compartir en Telegram",
+                "reddit": "Compartir en Reddit",
+                "whatsapp": "Compartir en WhatsApp"
+              }
+            }
         },
         "results": {
             "title": "Resultados del Juego",

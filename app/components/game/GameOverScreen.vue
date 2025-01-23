@@ -40,6 +40,13 @@
                     </button>
 
                     <template v-else>
+                        <button class="share-button copy" 
+                            @click="copyShareText"
+                            aria-label="Text kopieren">
+                            <Icon name="material-symbols:content-copy" size="24" aria-hidden="true" />
+                            <span>{{ t('game.results.share.buttons.copy') }}</span>
+                        </button>
+
                         <button class="share-button twitter" 
                             @click="shareToTwitter"
                             aria-label="Share on Twitter">
@@ -172,7 +179,9 @@ onMounted(() => {
 
 const getShareText = () => {
     let text = t('game.results.share.message.intro', {
-        points: props.totalPoints
+        points: props.totalPoints,
+        category: route.params.category,
+        difficulty: route.params.difficulty
     })
 
     text += ' ' + t('game.results.share.message.stats', {
@@ -181,8 +190,9 @@ const getShareText = () => {
     })
 
     // Füge die Challenge-URL hinzu
+    const shareUrl = getShareUrl()
     text += ' ' + t('game.results.share.message.challenge', {
-        url: window.location.href
+        url: shareUrl
     })
 
     return text
@@ -190,6 +200,16 @@ const getShareText = () => {
 
 const getShareUrl = () => {
     return window.location.href
+}
+
+const copyShareText = async () => {
+    const text = getShareText()
+    try {
+        await navigator.clipboard.writeText(text)
+        // Optional: Show success message
+    } catch (err) {
+        console.error('Failed to copy text:', err)
+    }
 }
 
 const shareToTwitter = () => {
@@ -435,14 +455,16 @@ const shareViaAPI = async () => {
     width: 100%;
     justify-content: center;
     gap: var(--padding-small);
-    min-height: 48px;
-    font-size: clamp(0.95rem, 3.5vw, 1rem);
-    
-    @media (min-width: 640px) {
-        width: auto;
-        min-width: 160px;
+
+    &.copy {
+        background-color: var(--color-secondary);
+        color: var(--color-white);
+        
+        &:hover {
+            background-color: var(--color-secondary-dark);
+        }
     }
-    
+
     &.share-api {
         @include button-primary;
     }

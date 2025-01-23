@@ -173,9 +173,26 @@
       "title": "Le saviez-vous"
     },
     "gameOver": {
-      "title": "Partie terminée",
+      "title": "Partie Terminée",
       "correctAnswers": "Réponses correctes",
-      "backToMenu": "Retour au menu"
+      "backToMenu": "Retour au Menu",
+      "newHighscore": "Nouveau Record !",
+      "share": {
+        "title": "Partage ton résultat",
+        "message": {
+          "intro": "Wow ! J'ai obtenu {points} points dans Melody Mind dans la catégorie {category} ({difficulty}) !",
+          "stats": "Score : {correct} sur {total} bonnes réponses !",
+          "challenge": "Défie-moi sur {url}"
+        },
+        "buttons": {
+          "share": "Partager",
+          "copy": "Copier le texte",
+          "twitter": "Partager sur Twitter",
+          "telegram": "Partager sur Telegram",
+          "reddit": "Partager sur Reddit",
+          "whatsapp": "Partager sur WhatsApp"
+        }
+      }
     },
     "results": {
       "title": "Résultats du jeu",

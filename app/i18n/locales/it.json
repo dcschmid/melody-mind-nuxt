@@ -150,15 +150,32 @@
       "title": "Curiosità"
     },
     "gameOver": {
-      "title": "Partita finita",
+      "title": "Gioco Terminato",
       "correctAnswers": "Risposte corrette",
-      "backToMenu": "Torna al menu"
+      "backToMenu": "Torna al Menu",
+      "newHighscore": "Nuovo Record!",
+      "share": {
+        "title": "Condividi il tuo risultato",
+        "message": {
+          "intro": "Wow! Ho ottenuto {points} punti in Melody Mind nella categoria {category} ({difficulty})!",
+          "stats": "Punteggio: {correct} su {total} risposte corrette!",
+          "challenge": "Sfidami su {url}"
+        },
+        "buttons": {
+          "share": "Condividi",
+          "copy": "Copia testo",
+          "twitter": "Condividi su Twitter",
+          "telegram": "Condividi su Telegram",
+          "reddit": "Condividi su Reddit",
+          "whatsapp": "Condividi su WhatsApp"
+        }
+      }
     },
     "results": {
       "title": "Risultati del Gioco",
       "totalScore": "Punteggio Totale",
       "correctAnswers": "Risposte Corrette",
-      "accuracy": "Precisione",
+      "accuracy": "Precisione media",
       "timeTaken": "Tempo Impiegato",
       "newHighscore": "Nuovo Record!",
       "share": {
