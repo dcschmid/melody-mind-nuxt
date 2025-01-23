@@ -60,96 +60,139 @@ const formattedPoints = computed(() => {
 <style scoped lang="scss">
 .game-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: calc(var(--padding-small) * 1.5) var(--padding-medium);
+    flex-direction: column;
+    gap: var(--padding-medium);
+    padding: var(--padding-medium);
     transition: var(--menu-transition);
     background-color: var(--surface-color);
     border-radius: var(--border-radius);
+    border: 2px solid var(--surface-color-light);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+
+    @media (min-width: 640px) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--padding-medium) var(--padding-large);
+        text-align: left;
+    }
 
     .header-left {
         h1 {
             margin: 0;
-            font-size: clamp(1.5rem, 3vw, 1.75rem);
+            font-size: clamp(1.5rem, 3vw, 2rem);
             color: var(--text-color);
             letter-spacing: var(--spacing-text);
             font-weight: 600;
+            line-height: 1.4;
         }
 
         .round-counter {
-            margin: 0.5rem 0 0;
-            color: var(--text-secondary);
-            font-size: clamp(0.875rem, 2vw, 1rem);
+            margin: var(--padding-small) 0 0;
+            color: var(--text-color);
+            font-size: clamp(1rem, 2vw, 1.25rem);
             font-weight: 500;
+            line-height: 1.4;
         }
     }
 
     .points-display {
         position: relative;
-        text-align: right;
+        text-align: center;
+
+        @media (min-width: 640px) {
+            text-align: right;
+        }
 
         .points-container {
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
+            align-items: center;
+            gap: var(--padding-small);
+
+            @media (min-width: 640px) {
+                align-items: flex-end;
+            }
         }
 
         .points {
-            font-size: clamp(1.75rem, 4vw, 2rem);
-            font-weight: bold;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 600;
             color: var(--primary-color);
             letter-spacing: var(--spacing-text);
-            transition: transform var(--transition-speed) var(--transition-bounce);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            line-height: 1.2;
 
             &.points-update {
-                transform: scale(1.2);
+                transform: scale(1.1);
+                color: var(--success-color);
             }
         }
 
         .points-label {
-            margin-top: 0.5rem;
-            font-size: clamp(0.875rem, 2vw, 1rem);
-            color: var(--text-secondary);
+            color: var(--text-color);
+            font-size: clamp(1rem, 2vw, 1.25rem);
             font-weight: 500;
+            line-height: 1.4;
         }
     }
 }
 
 .bonus-indicator {
     position: absolute;
-    top: -48px;
-    right: 0;
+    top: auto;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
     background: var(--surface-color);
-    padding: var(--padding-small) var(--padding-medium);
+    padding: var(--padding-medium);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     color: var(--text-color);
-    font-size: clamp(0.875rem, 2vw, 1rem);
+    font-size: clamp(1rem, 2vw, 1.25rem);
     white-space: nowrap;
-    border: 1px solid var(--success-color);
+    border: 2px solid var(--success-color);
+    min-width: 120px;
+    text-align: center;
+    z-index: 10;
+
+    @media (min-width: 640px) {
+        bottom: auto;
+        top: -60px;
+        left: auto;
+        right: 0;
+        transform: none;
+    }
 
     .bonus-total {
-        font-weight: bold;
+        font-weight: 600;
         color: var(--success-color);
-        font-size: 1.1em;
+        font-size: 1.5rem;
+        line-height: 1.4;
     }
 
     .bonus-breakdown {
-        font-size: 0.9em;
-        color: var(--text-secondary);
-        margin-top: 0.25rem;
+        font-size: 1.1rem;
+        color: var(--text-color);
+        margin-top: var(--padding-small);
+        line-height: 1.4;
     }
 }
 
 // Bonus Animation
 .bonus-enter-active,
 .bonus-leave-active {
-    transition: var(--menu-transition);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .bonus-enter-from,
 .bonus-leave-to {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(20px);
+
+    @media (min-width: 640px) {
+        transform: translateY(-20px);
+    }
 }
 </style>

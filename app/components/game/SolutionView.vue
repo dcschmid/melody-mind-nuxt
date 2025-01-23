@@ -145,19 +145,32 @@ const togglePlay = () => {
 .solution-container {
     display: flex;
     flex-direction: column;
-    gap: var(--padding-large);
+    gap: var(--padding-small);
     width: 100%;
     max-width: min(100%, 800px);
     margin: 0 auto;
-    padding: var(--padding-medium);
+    padding: var(--padding-small);
+
+    @media (min-width: 640px) {
+        padding: var(--padding-medium);
+        gap: var(--padding-large);
+    }
 
     .result-banner {
         background-color: var(--surface-color);
         border-radius: var(--border-radius);
-        padding: var(--padding-large);
+        padding: var(--padding-small);
         box-shadow: var(--box-shadow);
         border: 2px solid var(--surface-color-light);
         transition: transform 0.3s ease;
+
+        @media (min-width: 375px) {
+            padding: var(--padding-medium);
+        }
+
+        @media (min-width: 640px) {
+            padding: var(--padding-large);
+        }
 
         &.correct {
             animation: pulse 0.5s ease-out;
@@ -167,13 +180,29 @@ const togglePlay = () => {
         .result-header {
             display: flex;
             align-items: center;
-            gap: var(--padding-medium);
-            margin-bottom: var(--padding-medium);
+            justify-content: center;
+            gap: var(--padding-small);
+            margin-bottom: var(--padding-small);
+            flex-wrap: wrap;
+
+            @media (min-width: 375px) {
+                gap: var(--padding-medium);
+                margin-bottom: var(--padding-medium);
+            }
+
+            @media (min-width: 640px) {
+                justify-content: flex-start;
+                flex-wrap: nowrap;
+            }
 
             .result-icon {
                 color: var(--success-color);
-                font-size: 2rem;
+                font-size: 1.5rem;
                 transition: color 0.3s ease;
+
+                @media (min-width: 375px) {
+                    font-size: 2rem;
+                }
 
                 &.wrong {
                     color: var(--error-color);
@@ -182,78 +211,117 @@ const togglePlay = () => {
 
             h2 {
                 margin: 0;
-                font-size: clamp(1.75rem, 3vw, 2.25rem);
+                font-size: clamp(1.25rem, 3vw, 2.25rem);
                 font-weight: 600;
                 line-height: 1.4;
                 color: var(--text-color);
+                text-align: center;
+
+                @media (min-width: 640px) {
+                    text-align: left;
+                }
             }
         }
 
         .points,
         .points-breakdown {
-            font-size: clamp(1.25rem, 2vw, 1.5rem);
-            margin-bottom: var(--padding-medium);
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            margin-bottom: var(--padding-small);
             line-height: 1.6;
             color: var(--text-color);
-        }
+            text-align: center;
 
-        .points-breakdown {
-            margin: var(--padding-medium) 0;
+            @media (min-width: 375px) {
+                margin-bottom: var(--padding-medium);
+            }
 
-            .points-inline {
-                display: inline-flex;
-                align-items: flex-start;
-                font-size: 1.75rem;
-                font-weight: 600;
-                color: var(--text-color);
+            @media (min-width: 640px) {
+                text-align: left;
             }
         }
 
         .correct-answer {
-            margin-top: var(--padding-medium);
-            padding: var(--padding-medium);
+            margin-top: var(--padding-small);
+            padding: var(--padding-small);
             background-color: var(--surface-color-light);
             border-radius: var(--border-radius);
             border: 1px solid var(--surface-border);
+            text-align: center;
+
+            @media (min-width: 375px) {
+                margin-top: var(--padding-medium);
+                padding: var(--padding-medium);
+            }
+
+            @media (min-width: 640px) {
+                text-align: left;
+            }
 
             .label {
                 display: block;
-                font-size: 1.25rem;
+                font-size: 1.1rem;
                 font-weight: 600;
                 color: var(--text-color);
                 margin-bottom: var(--padding-small);
+
+                @media (min-width: 375px) {
+                    font-size: 1.25rem;
+                }
             }
 
             .text {
-                font-size: 1.5rem;
+                font-size: 1.1rem;
                 line-height: 1.6;
                 color: var(--text-color);
                 font-weight: 500;
+
+                @media (min-width: 375px) {
+                    font-size: 1.25rem;
+                }
+
+                @media (min-width: 640px) {
+                    font-size: 1.5rem;
+                }
             }
         }
     }
 
     .content-wrapper {
         .album-box {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--padding-large);
+            display: flex;
+            flex-direction: column;
+            gap: var(--padding-small);
             background-color: var(--surface-color);
-            padding: var(--padding-large);
+            padding: var(--padding-small);
             border-radius: var(--border-radius);
             border: 2px solid var(--surface-color-light);
             box-shadow: var(--box-shadow);
 
+            @media (min-width: 375px) {
+                gap: var(--padding-medium);
+                padding: var(--padding-medium);
+            }
+
             @media (min-width: 768px) {
+                display: grid;
                 grid-template-columns: minmax(200px, 300px) 1fr;
+                gap: var(--padding-large);
+                padding: var(--padding-large);
             }
 
             .cover-wrapper {
                 width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
                 aspect-ratio: 1;
                 border-radius: var(--border-radius);
                 overflow: hidden;
                 box-shadow: var(--box-shadow);
+
+                @media (min-width: 768px) {
+                    margin: 0;
+                    max-width: 300px;
+                }
 
                 img {
                     width: 100%;
@@ -265,17 +333,36 @@ const togglePlay = () => {
             .player-info-wrapper {
                 display: flex;
                 flex-direction: column;
-                gap: var(--padding-large);
+                gap: var(--padding-small);
+                text-align: center;
+
+                @media (min-width: 375px) {
+                    gap: var(--padding-medium);
+                }
+
+                @media (min-width: 768px) {
+                    text-align: left;
+                    gap: var(--padding-large);
+                }
 
                 .audio-player {
                     display: flex;
                     align-items: center;
-                    gap: var(--padding-medium);
+                    gap: var(--padding-small);
+                    justify-content: center;
+
+                    @media (min-width: 375px) {
+                        gap: var(--padding-medium);
+                    }
+
+                    @media (min-width: 768px) {
+                        justify-content: flex-start;
+                    }
 
                     .play-button {
                         @include button-primary;
-                        min-width: 64px;
-                        min-height: 64px;
+                        min-width: 48px;
+                        min-height: 48px;
                         border-radius: 50%;
                         padding: 0;
                         display: flex;
@@ -283,6 +370,11 @@ const togglePlay = () => {
                         justify-content: center;
                         border: 2px solid transparent;
                         transition: all 0.3s ease;
+
+                        @media (min-width: 375px) {
+                            min-width: 64px;
+                            min-height: 64px;
+                        }
 
                         &:hover:not(:disabled) {
                             transform: scale(1.05);
@@ -303,16 +395,21 @@ const togglePlay = () => {
 
                     .progress-bar {
                         flex: 1;
-                        height: 8px;
+                        height: 6px;
                         background-color: var(--surface-color-light);
-                        border-radius: 4px;
+                        border-radius: 3px;
                         overflow: hidden;
                         position: relative;
+
+                        @media (min-width: 375px) {
+                            height: 8px;
+                            border-radius: 4px;
+                        }
 
                         .progress {
                             height: 100%;
                             background-color: var(--primary-color);
-                            border-radius: 4px;
+                            border-radius: inherit;
                             transition: width 0.1s linear;
 
                             &.buffering {
@@ -324,7 +421,7 @@ const togglePlay = () => {
 
                 .info {
                     .artist {
-                        font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+                        font-size: clamp(1.1rem, 2.5vw, 1.75rem);
                         font-weight: 600;
                         color: var(--text-color);
                         margin: 0 0 var(--padding-small);
@@ -332,46 +429,78 @@ const togglePlay = () => {
                     }
 
                     .album {
-                        font-size: clamp(1.25rem, 2vw, 1.5rem);
+                        font-size: clamp(1rem, 2vw, 1.5rem);
                         color: var(--text-color);
                         margin: 0 0 var(--padding-small);
                         line-height: 1.4;
                     }
 
                     .year {
-                        font-size: 1.25rem;
+                        font-size: 1rem;
                         color: var(--text-secondary);
-                        margin: 0 0 var(--padding-medium);
+                        margin: 0 0 var(--padding-small);
+
+                        @media (min-width: 375px) {
+                            font-size: 1.1rem;
+                            margin: 0 0 var(--padding-medium);
+                        }
                     }
 
                     .music-links {
-                        margin-top: var(--padding-medium);
+                        margin-top: var(--padding-small);
+
+                        @media (min-width: 375px) {
+                            margin-top: var(--padding-medium);
+                        }
 
                         .music-links-title {
-                            font-size: 1.25rem;
+                            font-size: 1.1rem;
                             font-weight: 500;
                             color: var(--text-color);
                             margin: 0 0 var(--padding-small);
                             display: flex;
                             align-items: center;
                             gap: var(--padding-small);
+                            justify-content: center;
+
+                            @media (min-width: 375px) {
+                                font-size: 1.25rem;
+                            }
+
+                            @media (min-width: 768px) {
+                                justify-content: flex-start;
+                            }
                         }
 
                         .music-links-container {
                             display: flex;
-                            gap: var(--padding-medium);
+                            gap: var(--padding-small);
                             margin-top: var(--padding-small);
+                            justify-content: center;
+
+                            @media (min-width: 375px) {
+                                gap: var(--padding-medium);
+                            }
+
+                            @media (min-width: 768px) {
+                                justify-content: flex-start;
+                            }
 
                             .music-link {
                                 @include button-secondary;
-                                min-width: 48px;
-                                min-height: 48px;
+                                min-width: 40px;
+                                min-height: 40px;
                                 border-radius: var(--border-radius);
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
                                 border: 2px solid transparent;
                                 transition: all 0.3s ease;
+
+                                @media (min-width: 375px) {
+                                    min-width: 48px;
+                                    min-height: 48px;
+                                }
 
                                 &:hover {
                                     transform: translateY(-2px);
@@ -394,22 +523,44 @@ const togglePlay = () => {
     .trivia-section {
         background-color: var(--surface-color);
         border-radius: var(--border-radius);
-        padding: var(--padding-large);
+        padding: var(--padding-small);
         border: 2px solid var(--surface-color-light);
         box-shadow: var(--box-shadow);
+        text-align: center;
+
+        @media (min-width: 375px) {
+            padding: var(--padding-medium);
+        }
+
+        @media (min-width: 640px) {
+            padding: var(--padding-large);
+            text-align: left;
+        }
 
         h3 {
-            font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+            font-size: clamp(1.1rem, 2.5vw, 1.75rem);
             font-weight: 600;
             color: var(--text-color);
-            margin: 0 0 var(--padding-medium);
+            margin: 0 0 var(--padding-small);
             line-height: 1.4;
+
+            @media (min-width: 375px) {
+                margin: 0 0 var(--padding-medium);
+            }
         }
 
         .trivia-content {
-            font-size: 1.25rem;
+            font-size: 1rem;
             line-height: 1.6;
             color: var(--text-color);
+
+            @media (min-width: 375px) {
+                font-size: 1.1rem;
+            }
+
+            @media (min-width: 640px) {
+                font-size: 1.25rem;
+            }
         }
     }
 }
@@ -417,17 +568,29 @@ const togglePlay = () => {
 .next-button {
     @include button-primary;
     width: 100%;
-    min-height: 100px;
+    min-height: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--padding-medium);
-    margin-top: var(--padding-medium);
-    padding: var(--padding-medium) var(--padding-large);
-    font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+    gap: var(--padding-small);
+    margin-top: var(--padding-small);
+    padding: var(--padding-small);
+    font-size: clamp(1.1rem, 2.5vw, 1.75rem);
     font-weight: 500;
     border: 2px solid transparent;
     transition: all 0.3s ease;
+
+    @media (min-width: 375px) {
+        min-height: 80px;
+        gap: var(--padding-medium);
+        margin-top: var(--padding-medium);
+        padding: var(--padding-medium);
+    }
+
+    @media (min-width: 640px) {
+        min-height: 100px;
+        padding: var(--padding-medium) var(--padding-large);
+    }
 
     &:hover {
         transform: translateY(-2px);
