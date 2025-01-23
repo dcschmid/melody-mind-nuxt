@@ -625,9 +625,20 @@
         }
     },
     "username": {
-        "title": "¿Cómo te llamas?",
+        "title": "¿Cuál es tu nombre?",
+        "label": "Nombre de usuario",
         "placeholder": "Ingresa tu nombre",
-        "submit": "Guardar"
+        "submit": "Guardar",
+        "statusLabel": "Entrada de nombre de usuario",
+        "current": "Nombre de usuario actual",
+        "success": "El nombre de usuario {username} ha sido guardado",
+        "errors": {
+            "required": "Por favor ingresa un nombre de usuario",
+            "tooShort": "El nombre de usuario debe tener al menos 2 caracteres",
+            "tooLong": "El nombre de usuario no debe exceder los 20 caracteres",
+            "invalidChars": "El nombre de usuario solo puede contener letras, números, guiones bajos y guiones",
+            "saveFailed": "No se pudo guardar el nombre de usuario"
+        }
     },
     "difficulty": {
         "easy": "Fácil",

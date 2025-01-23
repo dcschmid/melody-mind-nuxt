@@ -621,8 +621,19 @@
   },
   "username": {
     "title": "Come ti chiami?",
+    "label": "Nome utente",
     "placeholder": "Inserisci il tuo nome",
-    "submit": "Salva"
+    "submit": "Salva",
+    "statusLabel": "Inserimento nome utente",
+    "current": "Nome utente attuale",
+    "success": "Il nome utente {username} è stato salvato",
+    "errors": {
+      "required": "Inserisci un nome utente",
+      "tooShort": "Il nome utente deve contenere almeno 2 caratteri",
+      "tooLong": "Il nome utente non deve superare i 20 caratteri",
+      "invalidChars": "Il nome utente può contenere solo lettere, numeri, trattini bassi e trattini",
+      "saveFailed": "Impossibile salvare il nome utente"
+    }
   },
   "difficulty": {
     "easy": "Facile",

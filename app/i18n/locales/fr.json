@@ -631,137 +631,19 @@
     }
   },
   "username": {
-    "title": "Comment t'appelles-tu ?",
-    "placeholder": "Entre ton nom",
-    "submit": "Enregistrer"
-  },
-  "highscore": {
-    "title": "Meilleurs Scores",
-    "total": "Score Total",
-    "avatar": "Avatar",
-    "name": "Nom",
-    "points": "Points"
-  },
-  "common": {
-    "loading": "Chargement..."
-  },
-  "legal": {
-    "privacy": {
-      "title": "Politique de Confidentialité",
-      "overview": {
-        "title": "Aperçu",
-        "general": {
-          "title": "Informations Générales",
-          "text": "Nous prenons très au sérieux la protection de vos données personnelles. Cette politique de confidentialité vous informe sur la manière dont nous traitons vos données."
-        }
-      },
-      "dataCollection": {
-        "title": "Collecte de Données",
-        "cookies": {
-          "title": "Cookies",
-          "text": "Nous utilisons des cookies pour vous offrir la meilleure expérience utilisateur possible. Ceux-ci ne stockent aucune information personnelle identifiable."
-        },
-        "serverLogs": {
-          "title": "Journaux Serveur",
-          "text": "Pour des raisons techniques, nous stockons automatiquement les fichiers journaux du serveur que votre navigateur transmet."
-        },
-        "analytics": {
-          "title": "Données Analytiques",
-          "text": "Nous utilisons des données analytiques anonymisées pour améliorer notre expérience de jeu. Ces données incluent des statistiques de jeu, des modèles d'utilisation et des données de performance, mais aucune information personnelle identifiable."
-        }
-      },
-      "rights": {
-        "title": "Vos Droits",
-        "intro": "Vous disposez des droits suivants concernant vos données personnelles :",
-        "list": {
-          "information": "Droit à l'information sur vos données stockées",
-          "correction": "Droit à la correction des données incorrectes",
-          "restriction": "Droit à la limitation du traitement",
-          "objection": "Droit d'opposition au traitement",
-          "portability": "Droit à la portabilité des données"
-        }
-      },
-      "contact": {
-        "title": "Contact",
-        "text": "Si vous avez des questions concernant la confidentialité, vous pouvez nous contacter à tout moment.",
-        "emailLabel": "E-mail",
-        "emailAddress": "daniel.schmid1980(at)icloud.com"
-      },
-      "gameData": {
-        "title": "Données de Jeu",
-        "progress": {
-          "title": "Progression du Jeu",
-          "intro": "Les données de jeu suivantes sont stockées :",
-          "list": {
-            "scores": "Scores",
-            "awards": "Récompenses",
-            "rankings": "Positions dans le classement"
-          },
-          "purpose": "Ces données sont utilisées exclusivement pour améliorer votre expérience de jeu et afficher vos réalisations."
-        },
-        "localStorage": {
-          "title": "Stockage Local",
-          "intro": "Les informations suivantes sont stockées localement dans votre navigateur :",
-          "list": {
-            "categories": "Catégories jouées",
-            "settings": "Paramètres du jeu",
-            "language": "Paramètre de langue"
-          },
-          "storage": "Ces données restent stockées localement sur votre appareil et ne sont pas transmises à nos serveurs. Vous pouvez les supprimer à tout moment via les paramètres de votre navigateur."
-        },
-        "session": {
-          "title": "Données de Session",
-          "intro": "Pendant une session de jeu active, les données suivantes sont temporairement stockées :",
-          "list": {
-            "auth": "État d'authentification pour la session de jeu",
-            "progress": "Progression actuelle du jeu et score",
-            "settings": "Paramètres temporaires du jeu"
-          }
-        }
-      },
-      "deletion": {
-        "title": "Suppression des Données",
-        "intro": "Vous avez le droit de faire supprimer les données suivantes :",
-        "list": {
-          "highscores": "Vos meilleurs scores personnels et statistiques de jeu",
-          "results": "Résultats de jeu stockés et réalisations",
-          "account": "Votre compte utilisateur complet et toutes les données associées"
-        },
-        "local": "Les données stockées localement (cookies, progression du jeu) peuvent être supprimées indépendamment via les paramètres de votre navigateur."
-      }
-    },
-    "imprint": {
-      "title": "Mentions Légales",
-      "information": {
-        "title": "Informations selon § 5 TMG",
-        "operator": "Daniel Schmid",
-        "address": "Hiltenspergerstr. 78, 80796 Munich",
-        "country": "Allemagne"
-      },
-      "contact": {
-        "title": "Contact",
-        "emailLabel": "E-mail",
-        "emailAddress": "daniel.schmid1980(at)icloud.com"
-      },
-      "responsible": {
-        "title": "Responsable du contenu selon § 55 al. 2 RStV"
-      },
-      "disputeResolution": {
-        "title": "Résolution des litiges",
-        "text": "La Commission européenne fournit une plateforme de résolution des litiges en ligne (OS)",
-        "link": "https://ec.europa.eu/consumers/odr/",
-        "additional": "Nous ne sommes ni disposés ni obligés à participer à des procédures de résolution des litiges devant un conseil d'arbitrage des consommateurs."
-      },
-      "lawReference": {
-        "title": "Références légales",
-        "text": "Malgré un contrôle minutieux du contenu, nous n'assumons aucune responsabilité pour le contenu des liens externes. Les opérateurs des pages liées sont seuls responsables de leur contenu."
-      },
-      "jurisdiction": {
-        "title": "Base juridique",
-        "text": "Ce site web est soumis au droit allemand. Le lieu de juridiction est l'Allemagne.",
-        "applicableLaw": "Le droit allemand s'applique exclusivement, à l'exclusion de la Convention des Nations Unies sur les contrats de vente internationale de marchandises.",
-        "jurisdiction": "Le lieu d'exécution et de juridiction exclusive pour tous les litiges est l'Allemagne, dans la mesure où la loi le permet."
-      }
+    "title": "Quel est votre nom ?",
+    "label": "Nom d'utilisateur",
+    "placeholder": "Entrez votre nom",
+    "submit": "Enregistrer",
+    "statusLabel": "Saisie du nom d'utilisateur",
+    "current": "Nom d'utilisateur actuel",
+    "success": "Le nom d'utilisateur {username} a été enregistré",
+    "errors": {
+      "required": "Veuillez entrer un nom d'utilisateur",
+      "tooShort": "Le nom d'utilisateur doit comporter au moins 2 caractères",
+      "tooLong": "Le nom d'utilisateur ne doit pas dépasser 20 caractères",
+      "invalidChars": "Le nom d'utilisateur ne peut contenir que des lettres, des chiffres, des tirets bas et des traits d'union",
+      "saveFailed": "Échec de l'enregistrement du nom d'utilisateur"
     }
   },
   "difficulty": {

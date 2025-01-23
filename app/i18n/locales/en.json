@@ -627,8 +627,19 @@
   },
   "username": {
     "title": "What's your name?",
+    "label": "Username",
     "placeholder": "Enter your name",
-    "submit": "Save"
+    "submit": "Save",
+    "statusLabel": "Username input",
+    "current": "Current username",
+    "success": "Username {username} has been saved",
+    "errors": {
+      "required": "Please enter a username",
+      "tooShort": "Username must be at least 2 characters long",
+      "tooLong": "Username must not exceed 20 characters",
+      "invalidChars": "Username may only contain letters, numbers, underscores, and hyphens",
+      "saveFailed": "Failed to save username"
+    }
   },
   "difficulty": {
     "easy": "Easy",

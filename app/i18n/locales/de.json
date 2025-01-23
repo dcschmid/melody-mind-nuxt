@@ -628,8 +628,19 @@
   },
   "username": {
       "title": "Wie ist dein Name?",
+      "label": "Benutzername",
       "placeholder": "Gib deinen Namen ein",
-      "submit": "Speichern"
+      "submit": "Speichern",
+      "statusLabel": "Benutzername-Eingabe",
+      "current": "Aktueller Benutzername",
+      "success": "Benutzername {username} wurde gespeichert",
+      "errors": {
+          "required": "Bitte gib einen Benutzernamen ein",
+          "tooShort": "Der Benutzername muss mindestens 2 Zeichen lang sein",
+          "tooLong": "Der Benutzername darf maximal 20 Zeichen lang sein",
+          "invalidChars": "Der Benutzername darf nur Buchstaben, Zahlen, Unterstriche und Bindestriche enthalten",
+          "saveFailed": "Benutzername konnte nicht gespeichert werden"
+      }
   },
   "difficulty": {
       "easy": "Einfach",
