@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/scss/main.scss"],
-  modules: ["nuxt-icon", "@nuxtjs/i18n", '@nuxt/content', 'nuxt-fathom'],
+  modules: ["nuxt-icon", "@nuxtjs/i18n", '@nuxt/content', 'nuxt-fathom', '@nuxtjs/sitemap', '@nuxtjs/robots'],
   content: {
     documentDriven: true,
     navigation: {
@@ -50,7 +50,15 @@ export default defineNuxtConfig({
     }
   },
   fathom: {
-    siteId: "RKHOWTTO",
+    siteId: "RKHOWTTO",  
+  },
+  sitemap: {
+    enabled: true,
+    autoLastmod: true,
+    xsl: false,
+    exclude: [
+      '/game/**'
+    ]
   },
   i18n: {
     strategy: "prefix",

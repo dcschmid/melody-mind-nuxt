@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /game/**
+sitemap: https://melody-mind.de/sitemap.xml
