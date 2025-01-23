@@ -299,6 +299,9 @@ defineEmits<{
                     font-style: italic;
                     font-size: 1.1rem;
                     line-height: 1.6;
+                    white-space: normal;
+                    word-wrap: break-word;
+                    overflow-wrap: break-word;
                 }
 
                 .confidence-bar-container {
