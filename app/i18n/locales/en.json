@@ -122,6 +122,11 @@
   },
   "category": {
     "selected": "selected!",
+    "aria": {
+      "categoryRegion": "Category Information",
+      "description": "Category Description",
+      "extendedDescription": "Additional Category Information"
+    },
     "difficulty": {
       "title": "Choose Difficulty",
       "easy": "Easy",

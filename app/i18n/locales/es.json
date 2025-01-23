@@ -96,6 +96,11 @@
     },
     "category": {
         "selected": "¡seleccionado!",
+        "aria": {
+            "categoryRegion": "Información de la Categoría",
+            "description": "Descripción de la Categoría",
+            "extendedDescription": "Información Adicional de la Categoría"
+        },
         "difficulty": {
             "title": "Elige la dificultad",
             "easy": "Fácil",

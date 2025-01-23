@@ -121,7 +121,7 @@
     "comingSoonLabel": "Bientôt disponible"
   },
   "category": {
-    "selected": "sélectionné !",
+    "selected": "sélectionnée",
     "difficulty": {
       "title": "Choisissez la difficulté",
       "easy": "Facile",
@@ -148,6 +148,11 @@
     "noImage": "Aucune image disponible",
     "image": {
       "altText": "Couverture de catégorie pour {category}"
+    },
+    "aria": {
+      "categoryRegion": "Informations sur la Catégorie",
+      "description": "Description de la Catégorie",
+      "extendedDescription": "Informations Supplémentaires sur la Catégorie"
     }
   },
   "game": {

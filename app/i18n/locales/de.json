@@ -126,6 +126,11 @@
   },
   "category": {
       "selected": "ausgewählt!",
+      "aria": {
+          "categoryRegion": "Kategorie-Informationen",
+          "description": "Kategoriebeschreibung",
+          "extendedDescription": "Weitere Informationen zur Kategorie"
+      },
       "difficulty": {
           "title": "Schwierigkeitsgrad wählen",
           "easy": "Einfach",

@@ -95,7 +95,12 @@
     "comingSoonLabel": "Prossimamente"
   },
   "category": {
-    "selected": "selezionato!",
+    "selected": "selezionata",
+    "aria": {
+      "categoryRegion": "Informazioni sulla Categoria",
+      "description": "Descrizione della Categoria",
+      "extendedDescription": "Informazioni Aggiuntive sulla Categoria"
+    },
     "difficulty": {
       "title": "Scegli la difficoltà",
       "easy": "Facile",
