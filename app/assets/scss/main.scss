@@ -1,15 +1,15 @@
 @use '@/assets/scss/mixins' as *;
 
 :root {
-  --primary-color: #bb86fc;
-  --primary-color-rgb: 187, 134, 252;
-  --primary-color-dark: #a55eea;
-  --secondary-color: #4a4a8f;
-  --secondary-color-rgb: 74, 74, 143;
-  --secondary-color-dark: #37377a;
-  --highlight-color: #00e5ff;
-  --highlight-color-rgb: 0, 229, 255;
-  --highlight-color-dark: #00b8d8;
+  --primary-color: #c990ff;
+  --primary-color-rgb: 201, 144, 255;
+  --primary-color-dark: #b674ff;
+  --secondary-color: #7b7bc5;
+  --secondary-color-rgb: 123, 123, 197;
+  --secondary-color-dark: #6363b5;
+  --highlight-color: #00f7ff;
+  --highlight-color-rgb: 0, 247, 255;
+  --highlight-color-dark: #00d8ff;
   --background-color: #121212;
   --background-color-rgb: 18, 18, 18;
   --surface-color: #1e1e1e;
@@ -18,20 +18,20 @@
   --surface-color-hover: #333333;
   --text-color: #ffffff;
   --text-color-rgb: 255, 255, 255;
-  --text-secondary: #e1e1e1;
-  --text-secondary-rgb: 225, 225, 225;
-  --error-color: #ff7597;
-  --error-color-rgb: 255, 117, 151;
-  --error-color-dark: #ff3b47;
-  --success-color: #00e676;
-  --success-color-rgb: 0, 230, 118;
-  --success-color-dark: #00b359;
-  --button-hover-color: #29b6f6;
-  --button-hover-color-rgb: 41, 182, 246;
+  --text-secondary: #e9e9e9;
+  --text-secondary-rgb: 233, 233, 233;
+  --error-color: #ff8fa8;
+  --error-color-rgb: 255, 143, 168;
+  --error-color-dark: #ff4d6e;
+  --success-color: #1fff8f;
+  --success-color-rgb: 31, 255, 143;
+  --success-color-dark: #00e676;
+  --button-hover-color: #4dc4ff;
+  --button-hover-color-rgb: 77, 196, 255;
   --button-text-color: #000000;
   --button-text-color-rgb: 0, 0, 0;
-  --focus-outline-color: #00e5ff;
-  --focus-outline-color-rgb: 0, 229, 255;
+  --focus-outline-color: #00f7ff;
+  --focus-outline-color-rgb: 0, 247, 255;
   --focus-outline-width: 3px;
   --focus-outline-offset: 3px;
 
@@ -321,7 +321,7 @@ main {
   color: var(--primary-color);
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: bold;
-  text-shadow: 0 0 10px rgb(187 134 252 / 30%);
+  text-shadow: 0 0 10px rgb(201 144 255 / 30%);
 }
 
 .menu {
