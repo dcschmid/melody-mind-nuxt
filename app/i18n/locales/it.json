@@ -118,6 +118,10 @@
       "title": "Conoscenza",
       "link": "Scopri di più su {genre}",
       "description": "Vuoi saperne di più sulla storia e lo sviluppo di {genre}? Qui troverai informazioni interessanti e fatti curiosi."
+    },
+    "noImage": "Nessuna immagine disponibile",
+    "image": {
+      "altText": "Copertina della categoria per {category}"
     }
   },
   "game": {

@@ -144,6 +144,10 @@
       "title": "Knowledge",
       "link": "Learn more about {genre}",
       "description": "Would you like to learn more about the history and development of {genre}? Here you'll find fascinating background information and interesting facts."
+    },
+    "noImage": "No image available",
+    "image": {
+      "altText": "Category cover for {category}"
     }
   },
   "game": {
