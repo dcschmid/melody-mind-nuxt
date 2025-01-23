@@ -154,17 +154,24 @@ defineEmits<{
     @include container;
     gap: clamp(var(--padding-medium), 4vw, var(--padding-medium));
     margin-top: 2rem;
+    width: 100%;
+    max-width: min(100%, 800px);
+    margin-inline: auto;
 }
 
 .question {
     @include surface-card;
     text-align: center;
+    padding: var(--padding-medium);
+    border: 2px solid var(--primary-color);
+    width: 100%;
 
     h2 {
         margin: 0;
-        @include responsive-text(1.25rem, 1.5rem);
+        font-size: clamp(1.5rem, 3vw, 1.75rem);
         color: var(--text-color);
-        font-weight: 500;
+        font-weight: 600;
+        line-height: 1.4;
     }
 
     &:focus-within {
@@ -178,31 +185,37 @@ defineEmits<{
     @include custom-scrollbar;
     gap: var(--padding-medium);
     width: 100%;
-    max-width: min(100%, 800px);
     margin: 0 auto;
     position: relative;
-    max-height: 60vh;
-    overflow-y: auto;
+    padding: var(--padding-small);
 }
 
 .option-button {
     @include button-primary;
     width: 100%;
-    max-width: min(100%, 800px);
-    min-height: var(--min-touch-target);
-    font-size: clamp(1.125rem, 2.5vw, 1.2rem);
+    min-height: 100px;
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-weight: 500;
     text-align: center;
-    padding: clamp(var(--padding-small), 2vw, var(--padding-medium));
+    padding: var(--padding-medium) var(--padding-large);
     background-color: var(--primary-color);
     color: var(--button-text-color);
-    border: none;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     transition: all 0.3s ease;
+    line-height: 1.6;
+    white-space: normal;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
     &:hover:not(:disabled) {
         background-color: var(--primary-color-dark);
         transform: translateY(-2px);
         box-shadow: var(--box-shadow-hover);
+        border-color: var(--highlight-color);
     }
     
     &:active:not(:disabled) {
@@ -211,8 +224,9 @@ defineEmits<{
     
     &:focus-visible {
         outline: none;
-        box-shadow: 0 0 0 var(--focus-outline-width) var(--focus-outline-color),
+        box-shadow: 0 0 0 3px var(--focus-outline-color),
                     var(--box-shadow);
+        border-color: var(--highlight-color);
     }
 
     &:disabled {
@@ -220,16 +234,20 @@ defineEmits<{
         background-color: var(--surface-color);
         color: var(--text-secondary);
         box-shadow: none;
+        opacity: 0.7;
     }
 }
 
 .phone-expert {
     @include surface-card;
     @include responsive-container;
+    border: 2px solid var(--surface-color-light);
 
     h3 {
         @include section-title;
-        @include responsive-text(1rem, 1.2rem);
+        font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+        color: var(--text-color);
+        margin-bottom: var(--padding-medium);
     }
 
     .expert-message {
@@ -237,35 +255,34 @@ defineEmits<{
             display: flex;
             align-items: center;
             gap: var(--padding-small);
-            margin-bottom: var(--padding-small);
+            margin-bottom: var(--padding-medium);
 
             .phone-icon {
                 color: var(--primary-color);
-                font-size: clamp(1.2rem, 3vw, 1.5rem);
+                font-size: 1.75rem;
             }
 
             .expert-name {
-                @include label-text;
-                @include responsive-text(0.9rem, 1.1rem);
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: var(--text-color);
             }
         }
 
         .message-content {
             .expert-answer {
-                @include text-truncate;
                 margin: 0 0 var(--padding-medium);
                 color: var(--text-color);
                 font-style: italic;
-                font-size: clamp(0.9rem, 2vw, 1rem);
+                font-size: 1.1rem;
                 line-height: 1.6;
             }
 
             .confidence-bar-container {
                 .confidence-bar {
-                    @include progress-bar;
-                    height: 6px;
-                    background: var(--surface-color);
-                    border-radius: 3px;
+                    height: 8px;
+                    background: var(--surface-color-light);
+                    border-radius: 4px;
                     overflow: hidden;
                     margin-bottom: var(--padding-small);
                     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
@@ -273,7 +290,7 @@ defineEmits<{
                     .confidence-level {
                         height: 100%;
                         width: var(--confidence);
-                        transition: width var(--transition-speed) var(--transition-bounce);
+                        transition: width 0.3s ease;
                     }
 
                     &.high .confidence-level {
@@ -290,7 +307,8 @@ defineEmits<{
                 }
 
                 .confidence-text {
-                    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+                    font-size: 1rem;
+                    font-weight: 500;
                     color: var(--text-secondary);
                 }
             }
@@ -301,10 +319,13 @@ defineEmits<{
 .audience-opinion {
     @include surface-card;
     @include responsive-container;
+    border: 2px solid var(--surface-color-light);
 
     h3 {
         @include section-title;
-        @include responsive-text(1.1rem, 1.3rem);
+        font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+        color: var(--text-color);
+        margin-bottom: var(--padding-medium);
     }
 
     .audience-results {
@@ -348,7 +369,7 @@ defineEmits<{
             .percentage-bar {
                 height: 100%;
                 background: var(--primary-color);
-                transition: width var(--transition-speed) var(--transition-bounce);
+                transition: width 0.3s ease;
                 border-radius: var(--border-radius);
             }
         }
@@ -383,52 +404,52 @@ defineEmits<{
         flex: 1;
         min-width: 120px;
         max-width: 200px;
+        min-height: 64px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0.5rem;
-        padding: 1rem;
+        gap: 0.75rem;
+        padding: var(--padding-medium);
+        border: 2px solid transparent;
+        font-weight: 500;
+        
+        .joker-icon {
+            font-size: 1.75rem;
+            color: currentColor;
+        }
+
+        .joker-label {
+            font-size: 1rem;
+            text-align: center;
+            line-height: 1.2;
+        }
         
         &:hover:not(:disabled) {
             background-color: var(--secondary-color-dark);
             transform: translateY(-2px);
             box-shadow: var(--box-shadow-hover);
-        }
-        
-        &:active:not(:disabled) {
-            transform: translateY(0);
+            border-color: var(--highlight-color);
         }
         
         &:focus-visible {
             outline: none;
-            box-shadow: 0 0 0 var(--focus-outline-width) var(--focus-outline-color),
+            box-shadow: 0 0 0 3px var(--focus-outline-color),
                         var(--box-shadow);
+            border-color: var(--highlight-color);
         }
 
         &:disabled {
             @include disabled-state;
-            background-color: var(--surface-color);
-            color: var(--text-secondary);
-            box-shadow: none;
-        }
-        
-        .joker-icon {
-            font-size: 1.5rem;
-        }
-        
-        .joker-label {
-            font-size: 0.9rem;
-            text-align: center;
+            opacity: 0.7;
         }
     }
 
     .jokers-remaining {
-        @include secondary-text;
-        text-align: center;
-        margin: 0;
-        font-size: clamp(0.8rem, 1.8vw, 0.9rem);
         color: var(--text-secondary);
+        font-size: 1.1rem;
+        font-weight: 500;
         text-align: center;
+        margin-top: var(--padding-small);
     }
 }
 
