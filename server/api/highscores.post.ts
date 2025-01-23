@@ -48,8 +48,8 @@ export default defineEventHandler(async (event) => {
         bronze_lp: Boolean(row.bronze_lp)
       };
       
-      // Add the new points to the existing score
-      const newTotalPoints = currentScore.points + points;
+      // Only update if the new score is higher than the existing one
+      const newTotalPoints = points > currentScore.points ? points : currentScore.points;
       await db.execute({
         sql: `UPDATE highscores 
               SET points = ?, 
