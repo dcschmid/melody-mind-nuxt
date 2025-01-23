@@ -264,7 +264,7 @@
         "remaining": "{count} aides restantes",
         "ariaLabel": "Consulter l'avis d'expert - Obtenir l'avis d'un expert"
       },
-      "remaining": "{count} aides restantes"
+      "remainingCount": "{count} aides disponibles"
     },
     "selectAnswer": "Sélectionner la réponse",
     "option": "Option {number}",

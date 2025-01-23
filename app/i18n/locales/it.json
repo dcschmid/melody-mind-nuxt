@@ -235,7 +235,8 @@
         "remaining": "{count} aiuti rimanenti",
         "ariaLabel": "Consulta un Esperto"
       },
-      "remaining": "{count} aiuti rimanenti"
+      "remaining": "{count} aiuti rimanenti",
+      "remainingCount": "{count} jolly disponibili"
     },
     "selectAnswer": "Seleziona la risposta",
     "option": "Opzione {number}",
@@ -247,7 +248,7 @@
     },
     "jokers": {
       "title": "Jolly Disponibili",
-      "remainingCount": "{count} jolly rimanenti",
+      "remainingCount": "{count} jolly disponibili",
       "fiftyFifty": {
         "title": "50:50",
         "ariaLabel": "Usa jolly 50:50 - Elimina due risposte sbagliate"

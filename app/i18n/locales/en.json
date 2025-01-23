@@ -261,7 +261,7 @@
         "remaining": "{count} lifelines remaining",
         "ariaLabel": "Get Expert Advice"
       },
-      "remaining": "{count} lifelines remaining"
+      "remainingCount": "{count} Jokers available"
     },
     "selectAnswer": "Select answer",
     "option": "Option {number}",

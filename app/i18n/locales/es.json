@@ -251,7 +251,7 @@
         },
         "jokers": {
             "title": "Comodines Disponibles",
-            "remainingCount": "{count} comodines restantes",
+            "remainingCount": "{count} comodines disponibles",
             "fiftyFifty": {
                 "title": "50:50",
                 "ariaLabel": "Usar comodín 50:50 - Elimina dos respuestas incorrectas"

@@ -538,7 +538,7 @@ const togglePlay = () => {
         }
 
         h3 {
-            font-size: clamp(1.1rem, 2.5vw, 1.75rem);
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
             font-weight: 600;
             color: var(--text-color);
             margin: 0 0 var(--padding-small);

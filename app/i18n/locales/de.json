@@ -271,6 +271,7 @@
               "remaining": "{Anzahl} verbleibende Joker",
               "ariaLabel": "Expertenrat einholen"
           },
+          "remainingCount": "{count} Joker verfügbar",
           "remaining": "{Anzahl} verbleibende Joker"
       },
       "selectAnswer": "Antwort auswählen"

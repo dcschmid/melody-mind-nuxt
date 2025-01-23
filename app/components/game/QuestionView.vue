@@ -90,7 +90,6 @@
                     <div class="joker-icon" aria-hidden="true">
                         <Icon name="material-symbols:balance" />
                     </div>
-                    <span class="joker-label">{{ t('game.jokers.fiftyFifty.title') }}</span>
                 </button>
                 <button class="joker-button" 
                     @click="$emit('use-audience')"
@@ -100,7 +99,6 @@
                     <div class="joker-icon" aria-hidden="true">
                         <Icon name="material-symbols:group" />
                     </div>
-                    <span class="joker-label">{{ t('game.jokers.audience.title') }}</span>
                 </button>
                 <button class="joker-button" 
                     @click="$emit('use-phone')"
@@ -110,7 +108,6 @@
                     <div class="joker-icon" aria-hidden="true">
                         <Icon name="tabler:phone" />
                     </div>
-                    <span class="joker-label">{{ t('game.jokers.phone.title') }}</span>
                 </button>
             </div>
             <p class="jokers-remaining" role="status" aria-live="polite">
@@ -205,10 +202,9 @@ defineEmits<{
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--padding-medium);
-
-    @media (min-width: 640px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .answer-button {
@@ -216,8 +212,8 @@ defineEmits<{
     min-height: 64px;
     width: 100%;
     padding: var(--padding-medium);
-    font-size: clamp(1.1rem, 2vw, 1.25rem);
-    font-weight: 500;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 600;
     line-height: 1.5;
     text-align: center;
     border: 2px solid transparent;
