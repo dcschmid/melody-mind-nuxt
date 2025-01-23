@@ -32,7 +32,6 @@
                         decoding="async" 
                         width="300"
                         height="300"
-                        :srcset="`${artist.coverSrc} 1x, ${artist.coverSrc} 2x`"
                         sizes="(max-width: 768px) 100vw, 300px"
                         class="album-cover"
                         fetchpriority="high" />
@@ -105,8 +104,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
+import { ref, onMounted, onBeforeUnmount, watch, shallowRef } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useThrottleFn } from '@vueuse/core'
 
 const { t } = useI18n()
 
@@ -145,8 +145,14 @@ const emit = defineEmits<{
     (e: 'next'): void
 }>()
 
-const audio = ref<HTMLAudioElement | null>(null)
-const audioContext = ref<AudioContext | null>(null)
+// Optimierte Audio-Player Variablen
+const audio = shallowRef<HTMLAudioElement | null>(null)
+const progressUpdateInterval = ref<number | null>(null)
+const updateProgressThrottled = useThrottleFn(() => {
+    if (audio.value) {
+        progress.value = (audio.value.currentTime / audio.value.duration) * 100
+    }
+}, 100)
 
 const audioLoaded = ref(props.audioLoaded)
 const isPlaying = ref(props.isPlaying)
@@ -159,29 +165,17 @@ watch(() => props.isPlaying, (val) => isPlaying.value = val)
 watch(() => props.isBuffering, (val) => isBuffering.value = val)
 watch(() => props.progress, (val) => progress.value = val)
 
+// Lazy load audio
 onMounted(() => {
     if (props.artist?.preview_link) {
-        audio.value = new Audio()
-        audio.value.preload = "metadata"
-        audio.value.src = props.artist.preview_link
-        
-        audio.value.addEventListener('canplaythrough', () => {
+        audio.value = new Audio(props.artist.preview_link)
+        audio.value.addEventListener('loadeddata', () => {
             audioLoaded.value = true
-            isBuffering.value = false
-            emit('update:audioLoaded', audioLoaded.value)
-            emit('update:isBuffering', isBuffering.value)
         })
-        
-        audio.value.addEventListener('waiting', () => {
-            isBuffering.value = true
-            emit('update:isBuffering', isBuffering.value)
-        })
-        
-        audio.value.addEventListener('timeupdate', () => {
-            if (audio.value) {
-                progress.value = (audio.value.currentTime / audio.value.duration) * 100
-                emit('update:progress', progress.value)
-            }
+        audio.value.addEventListener('timeupdate', updateProgressThrottled)
+        audio.value.addEventListener('ended', () => {
+            isPlaying.value = false
+            progress.value = 0
         })
     }
 })

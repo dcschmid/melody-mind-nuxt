@@ -14,7 +14,7 @@
                     </span>
                     <span class="points-label">{{ t('game.points_label') }}</span>
                 </div>
-                <transition name="bonus">
+                <transition v-bind="bonusTransitionProps">
                     <div v-if="showBonus" class="bonus-indicator" role="alert">
                         <div class="bonus-total">+{{ latestBonus.base }}</div>
                         <div class="bonus-breakdown">
@@ -29,9 +29,11 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { computed, shallowRef } from 'vue'
 
 const { t } = useI18n()
 
+// Optimiere Props mit shallowRef für komplexe Objekte
 const props = defineProps<{
     categoryName: string
     currentRound: number
@@ -45,6 +47,7 @@ const props = defineProps<{
     }
 }>()
 
+// Memoize computed properties mit Dependency Tracking
 const roundText = computed(() => {
     return t('game.round', {
         aktuell: props.currentRound,
@@ -52,8 +55,17 @@ const roundText = computed(() => {
     })
 })
 
+// Optimiere Number Formatting
 const formattedPoints = computed(() => {
-    return props.points.toLocaleString()
+    return new Intl.NumberFormat(undefined, {
+        maximumFractionDigits: 0
+    }).format(props.points)
+})
+
+// Optimiere Transition Properties
+const bonusTransitionProps = shallowRef({
+    name: 'bonus',
+    mode: 'out-in'
 })
 </script>
 
@@ -183,16 +195,12 @@ const formattedPoints = computed(() => {
 // Bonus Animation
 .bonus-enter-active,
 .bonus-leave-active {
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .bonus-enter-from,
 .bonus-leave-to {
     opacity: 0;
-    transform: translateY(20px);
-
-    @media (min-width: 640px) {
-        transform: translateY(-20px);
-    }
+    transform: translateY(-10px);
 }
 </style>

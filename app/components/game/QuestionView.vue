@@ -7,7 +7,7 @@
 
         <!-- Antwortmöglichkeiten -->
         <div class="answer-options" role="group" :aria-label="t('game.aria.answerOptions')">
-            <TransitionGroup name="fade-shrink" tag="div" class="answers-grid">
+            <TransitionGroup v-bind="transitionGroupProps">
                 <button v-for="(option, index) in currentOptions" :key="option" 
                     class="answer-button"
                     v-show="!hiddenOptions.includes(option)" 
@@ -119,10 +119,11 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { computed } from 'vue'
+import { computed, shallowRef } from 'vue'
 
 const { t } = useI18n()
 
+// Optimiere Props mit shallowRef für komplexe Objekte
 const props = defineProps<{
     question: {
         question: string
@@ -142,9 +143,18 @@ const props = defineProps<{
     audienceOpinion: Record<string, number> | null
 }>()
 
+// Memoize computed properties
 const phoneExpertConfidence = computed(() =>
     props.phoneExpertOpinion?.confidence ?? 0
 )
+
+// Optimiere Transitions
+const transitionGroupProps = shallowRef({
+    name: 'fade-shrink',
+    tag: 'div',
+    class: 'answers-grid',
+    moveClass: 'move-transition'
+})
 
 defineEmits<{
     'select-answer': [answer: string]
@@ -487,16 +497,20 @@ defineEmits<{
     border: 0;
 }
 
+.move-transition {
+    transition: transform 0.3s ease-out;
+}
+
 .fade-shrink-move,
 .fade-shrink-enter-active,
 .fade-shrink-leave-active {
-    transition: all 0.4s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .fade-shrink-enter-from,
 .fade-shrink-leave-to {
     opacity: 0;
-    transform: scale(0.6);
+    transform: scale(0.9);
 }
 
 .fade-shrink-leave-active {
