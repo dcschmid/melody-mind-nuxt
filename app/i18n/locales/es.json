@@ -159,15 +159,15 @@
                     "share": "Compartir "
                 },
                 "message": {
-                    "intro": "🎵 ¡Increíble! ¡He conseguido {points} puntos en Melody Mind! 🎮",
-                    "genre": "Género: {genre} | Dificultad: {difficulty} 🎯",
-                    "perfect": "🏆 ¡ESPECTACULAR! ¡Ronda perfecta en {difficulty}! ¡Eres un verdadero experto musical! ⭐",
-                    "gold": "🥇 ¡Actuación sobresaliente en {difficulty}! ¡LP de Oro conseguido - sigue así! 🌟",
-                    "silver": "🥈 ¡Excelente trabajo en {difficulty}! ¡LP de Plata conseguido - estás en racha! ✨",
-                    "bronze": "🥉 ¡Gran esfuerzo en {difficulty}! ¡LP de Bronce conseguido - la plata está al alcance! 💫",
-                    "encouragement": "🎵 ¡Buen comienzo! ¡Sigue practicando y lo harás aún mejor! 🎮",
-                    "stats": "Puntuación: ¡{correct} de {total} correctas! 📊",
-                    "challenge": "💫 ¡Desafíame en {url} 🎮",
+                    "intro": "¡Increíble! ¡He conseguido {points} puntos en Melody Mind! ",
+                    "genre": "Género: {genre} | Dificultad: {difficulty} ",
+                    "perfect": "¡ESPECTACULAR! ¡Ronda perfecta en {difficulty}! ¡Eres un verdadero experto musical! ",
+                    "gold": "¡Actuación sobresaliente en {difficulty}! ¡LP de Oro conseguido - sigue así! ",
+                    "silver": "¡Excelente trabajo en {difficulty}! ¡LP de Plata conseguido - estás en racha! ",
+                    "bronze": "¡Gran esfuerzo en {difficulty}! ¡LP de Bronce conseguido - la plata está al alcance! ",
+                    "encouragement": "¡Buen comienzo! ¡Sigue practicando y lo harás aún mejor! ",
+                    "stats": "Puntuación: ¡{correct} de {total} correctas! ",
+                    "challenge": "¡Desafíame en {url} ",
                     "difficulty": {
                         "easy": "Fácil",
                         "medium": "Medio",
@@ -232,7 +232,37 @@
             },
             "remaining": "{count} ayudas restantes"
         },
-        "selectAnswer": "Seleccionar respuesta"
+        "selectAnswer": "Seleccionar respuesta",
+        "option": "Opción {number}",
+        "selectAnswer": "Seleccionar respuesta: {answer}",
+        "confidence": "Confianza",
+        "expert": {
+            "title": "Opinión del Experto",
+            "confidence": "Confianza del experto: {value}%"
+        },
+        "jokers": {
+            "title": "Comodines Disponibles",
+            "remainingCount": "{count} comodines restantes",
+            "fiftyFifty": {
+                "title": "50:50",
+                "ariaLabel": "Usar comodín 50:50 - Elimina dos respuestas incorrectas"
+            },
+            "audience": {
+                "title": "Público",
+                "ariaLabel": "Usar comodín del público - Muestra los resultados de la votación",
+                "result": "Resultado del público para {option}: {percentage}%"
+            },
+            "phone": {
+                "title": "Teléfono",
+                "ariaLabel": "Usar comodín del teléfono - Llama a un experto"
+            }
+        },
+        "aria": {
+            "quizQuestion": "Pregunta del Cuestionario",
+            "answerOptions": "Opciones de Respuesta",
+            "expertAdvice": "Consejo del Experto",
+            "audienceOpinion": "Opinión del Público"
+        }
     },
     "gameRules": {
         "title": "Reglas del Juego – MelodyMind",

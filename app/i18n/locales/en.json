@@ -185,15 +185,15 @@
           "share": "Share"
         },
         "message": {
-          "intro": "🎵 Wow! I scored {points} points in Melody Mind! 🎮",
-          "genre": "Genre: {genre} | Difficulty: {difficulty} 🎯",
-          "perfect": "🏆 INCREDIBLE! Perfect round on {difficulty}! You're a true music expert! ⭐",
-          "gold": "🥇 Outstanding performance on {difficulty}! Gold LP earned - keep rocking! 🌟",
-          "silver": "🥈 Awesome job on {difficulty}! Silver LP earned - you're on fire! ✨",
-          "bronze": "🥉 Great effort on {difficulty}! Bronze LP earned - silver is within reach! 💫",
-          "encouragement": "🎵 Nice start! Keep practicing and you'll rock even harder! 🎮",
-          "stats": "Score: {correct} out of {total} right! 📊",
-          "challenge": "💫 Challenge me at {url} 🎮",
+          "intro": "Wow! I scored {points} points in Melody Mind! ",
+          "genre": "Genre: {genre} | Difficulty: {difficulty} ",
+          "perfect": " INCREDIBLE! Perfect round on {difficulty}! You're a true music expert! ",
+          "gold": " Outstanding performance on {difficulty}! Gold LP earned - keep rocking! ",
+          "silver": " Awesome job on {difficulty}! Silver LP earned - you're on fire! ",
+          "bronze": " Great effort on {difficulty}! Bronze LP earned - silver is within reach! ",
+          "encouragement": " Nice start! Keep practicing and you'll rock even harder! ",
+          "stats": "Score: {correct} out of {total} right! ",
+          "challenge": " Challenge me at {url} ",
           "difficulty": {
             "easy": "Easy",
             "medium": "Medium",
@@ -254,7 +254,14 @@
       },
       "remaining": "{count} lifelines remaining"
     },
-    "selectAnswer": "Select answer"
+    "selectAnswer": "Select answer",
+    "option": "Option {number}",
+    "aria": {
+      "quizQuestion": "Quiz Question",
+      "answerOptions": "Answer Options",
+      "expertAdvice": "Expert Advice",
+      "audienceOpinion": "Audience Opinion"
+    }
   },
   "gameRules": {
     "title": "Game Rules - MelodyMind",

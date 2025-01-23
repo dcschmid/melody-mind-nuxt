@@ -228,7 +228,37 @@
       },
       "remaining": "{count} aiuti rimanenti"
     },
-    "selectAnswer": "Seleziona la risposta"
+    "selectAnswer": "Seleziona la risposta",
+    "option": "Opzione {number}",
+    "selectAnswer": "Seleziona risposta: {answer}",
+    "confidence": "Sicurezza",
+    "expert": {
+      "title": "Parere dell'Esperto",
+      "confidence": "Sicurezza dell'esperto: {value}%"
+    },
+    "jokers": {
+      "title": "Jolly Disponibili",
+      "remainingCount": "{count} jolly rimanenti",
+      "fiftyFifty": {
+        "title": "50:50",
+        "ariaLabel": "Usa jolly 50:50 - Elimina due risposte sbagliate"
+      },
+      "audience": {
+        "title": "Pubblico",
+        "ariaLabel": "Usa jolly del pubblico - Mostra i risultati del sondaggio",
+        "result": "Risultato del pubblico per {option}: {percentage}%"
+      },
+      "phone": {
+        "title": "Telefono",
+        "ariaLabel": "Usa jolly del telefono - Chiama un esperto"
+      }
+    },
+    "aria": {
+      "quizQuestion": "Domanda del Quiz",
+      "answerOptions": "Opzioni di Risposta",
+      "expertAdvice": "Consiglio dell'Esperto",
+      "audienceOpinion": "Opinione del Pubblico"
+    }
   },
   "gameRules": {
     "title": "Regole del Gioco – MelodyMind",

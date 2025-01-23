@@ -161,6 +161,36 @@
       "next": "Weiter",
       "nextQuestion": "Nächste Frage",
       "finish": "Spiel beenden",
+      "option": "Option {number}",
+      "selectAnswer": "Wähle Antwort: {answer}",
+      "confidence": "Sicherheit",
+      "expert": {
+          "title": "Experten-Meinung",
+          "confidence": "Experten-Sicherheit: {value}%"
+      },
+      "jokers": {
+          "title": "Verfügbare Joker",
+          "remainingCount": "{count} Joker verfügbar",
+          "fiftyFifty": {
+              "title": "50:50",
+              "ariaLabel": "50:50 Joker verwenden - Entfernt zwei falsche Antworten"
+          },
+          "audience": {
+              "title": "Publikum",
+              "ariaLabel": "Publikumsjoker verwenden - Zeigt die Abstimmung des Publikums",
+              "result": "Publikumsergebnis für {option}: {percentage}%"
+          },
+          "phone": {
+              "title": "Telefon",
+              "ariaLabel": "Telefonjoker verwenden - Ruft einen Experten an"
+          }
+      },
+      "aria": {
+          "quizQuestion": "Quiz Frage",
+          "answerOptions": "Antwortmöglichkeiten",
+          "expertAdvice": "Expertenrat",
+          "audienceOpinion": "Publikumsmeinung"
+      },
       "links": {
           "listen_on": "Anhören"
       },
@@ -189,15 +219,15 @@
                   "share": "Teilen"
               },
               "message": {
-                  "intro": "🎵 Wow! Ich habe {Punkte} Punkte bei Melody Mind erreicht! 🎮",
-                  "genre": "Genre: {Genre} | Schwierigkeit: {Schwierigkeit} 🎯",
-                  "perfect": "🏆 UNGLAUBLICH! Perfekte Runde auf {Schwierigkeit}! Du bist ein echter Musikexperte! ⭐",
-                  "gold": "🥇 Fantastische Leistung auf {Schwierigkeit}! Gold-LP verdient! Weiter so! 🌟",
-                  "silver": "🥈 Super stark auf {Schwierigkeit}! Silber-LP gewonnen - du bist auf dem richtigen Weg! ✨",
-                  "bronze": "🥉 Tolle Leistung auf {Schwierigkeit}! Bronze-LP erreicht - beim nächsten Mal holst du dir Silber! 💫",
-                  "encouragement": "🎵 Guter Start! Mit etwas Übung wirst du noch besser - bleib dran! 🎮",
-                  "stats": "Score: {richtig} von {insgesamt} richtig beantwortet! 📊",
-                  "challenge": "💫 Fordere mich heraus auf {url} 🎮",
+                  "intro": "Wow! Ich habe {Punkte} Punkte bei Melody Mind erreicht! ",
+                  "genre": "Genre: {Genre} | Schwierigkeit: {Schwierigkeit} ",
+                  "perfect": " UNGLAUBLICH! Perfekte Runde auf {Schwierigkeit}! Du bist ein echter Musikexperte! ",
+                  "gold": " Fantastische Leistung auf {Schwierigkeit}! Gold-LP verdient! Weiter so! ",
+                  "silver": " Super stark auf {Schwierigkeit}! Silber-LP gewonnen - du bist auf dem richtigen Weg! ",
+                  "bronze": " Tolle Leistung auf {Schwierigkeit}! Bronze-LP erreicht - beim nächsten Mal holst du dir Silber! ",
+                  "encouragement": " Guter Start! Mit etwas Übung wirst du noch besser - bleib dran! ",
+                  "stats": "Score: {richtig} von {insgesamt} richtig beantwortet! ",
+                  "challenge": " Fordere mich heraus auf {url} ",
                   "difficulty": {
                       "easy": "Einfach",
                       "medium": "Mittel",
@@ -207,30 +237,6 @@
           },
           "playAgain": "Nochmal spielen",
           "backToHome": "Zurück zur Startseite"
-      },
-      "expert": {
-          "title": "Expertenmeinung",
-          "confidence": "Sicherheit"
-      },
-      "audienceOpinion": "Meinung des Publikums",
-      "correctAnswer": "Richtige Antwort",
-      "didYouKnow": "Wusstest du das?",
-      "audio": {
-          "play": "Musik spielen",
-          "pause": "Musik pausieren",
-          "progress": "Fortschritt der Wiedergabe"
-      },
-      "album": {
-          "artist": "Künstler",
-          "year": "Jahr"
-      },
-      "streaming": {
-          "links": {
-              "listen_on": "Anhören",
-              "spotify": "Auf Spotify hören",
-              "apple": "Auf Apple Music anhören",
-              "deezer": "Auf Deezer hören"
-          }
       },
       "round": "Runde {aktuell} von {max}",
       "points_label": "Punkte",

@@ -241,23 +241,36 @@
         "title": "50:50",
         "description": "Élimine deux mauvaises réponses",
         "remaining": "{count} aides restantes",
-        "ariaLabel": "Aide 50:50"
+        "ariaLabel": "Aide 50:50 - Élimine deux mauvaises réponses"
       },
       "audience": {
         "title": "Avis du Public",
         "description": "Montre la distribution des votes du public",
         "remaining": "{count} aides restantes",
-        "ariaLabel": "Consulter l'avis du public"
+        "ariaLabel": "Consulter l'avis du public - Affiche les résultats du vote"
       },
       "phone": {
         "title": "Avis d'Expert",
         "description": "Obtenir l'avis d'un expert",
         "remaining": "{count} aides restantes",
-        "ariaLabel": "Consulter l'avis d'expert"
+        "ariaLabel": "Consulter l'avis d'expert - Obtenir l'avis d'un expert"
       },
       "remaining": "{count} aides restantes"
     },
-    "selectAnswer": "Sélectionner la réponse"
+    "selectAnswer": "Sélectionner la réponse",
+    "option": "Option {number}",
+    "selectAnswerAria": "Sélectionner la réponse : {answer}",
+    "confidenceAria": "Confiance",
+    "expertAria": {
+      "title": "Avis de l'Expert",
+      "confidence": "Confiance de l'expert : {value}%"
+    },
+    "aria": {
+      "quizQuestion": "Question du Quiz",
+      "answerOptions": "Options de Réponse",
+      "expertAdvice": "Conseil de l'Expert",
+      "audienceOpinion": "Opinion du Public"
+    }
   },
   "gameRules": {
     "title": "Règles du Jeu – MelodyMind",
