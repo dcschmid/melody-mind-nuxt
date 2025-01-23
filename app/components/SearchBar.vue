@@ -137,8 +137,11 @@ const handleKeyDown = (event: KeyboardEvent) => {
             break
         case 'Enter':
             if (activeIndex.value >= 0) {
-                event.preventDefault()
-                selectSuggestion(props.suggestions[activeIndex.value])
+                const suggestion = props.suggestions[activeIndex.value]
+                if (suggestion) {
+                    event.preventDefault()
+                    selectSuggestion(suggestion)
+                }
             }
             break
         case 'Escape':

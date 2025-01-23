@@ -11,7 +11,7 @@
             :aria-controls="dropdownId"
             aria-haspopup="listbox"
         >
-            <span class="flag" aria-hidden="true">{{ getFlagEmoji(locale.substring(0, 2)) }}</span>
+            <span class="flag" aria-hidden="true">{{ (locale && locale.length >= 2) ? getFlagEmoji(locale.substring(0, 2)) : '' }}</span>
             <span class="language-name">{{ t(`languages.${locale}`) }}</span>
             <Icon
                 name="material-symbols:keyboard-arrow-down-rounded"
@@ -39,7 +39,7 @@
                 role="option"
                 :aria-selected="loc.code === locale"
             >
-                <span class="flag" aria-hidden="true">{{ getFlagEmoji(loc.code.substring(0, 2)) }}</span>
+                <span class="flag" aria-hidden="true">{{ (loc?.code && loc.code.length >= 2) ? getFlagEmoji(loc.code.substring(0, 2)) : '' }}</span>
                 <span class="language-name">{{ t(`languages.${loc.code}`) }}</span>
                 <span class="sr-only">{{ t('common.selectLanguageLabel', { language: t(`languages.${loc.code}`) }) }}</span>
             </button>
@@ -134,8 +134,8 @@ const handleKeyDown = (e: KeyboardEvent) => {
 }
 
 onMounted(() => {
-    document.addEventListener('click', closeDropdown)
-    document.addEventListener('keydown', handleKeyDown)
+    document.addEventListener('click', (e) => closeDropdown(e))
+    document.addEventListener('keydown', (e) => handleKeyDown(e))
 })
 
 onUnmounted(() => {
