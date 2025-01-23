@@ -189,17 +189,19 @@
                   "share": "Teilen"
               },
               "message": {
-                  "intro": "Ich habe {Punkte} Punkte in Melody Mind erreicht!",
-                  "genre": "{Genre} auf Schwierigkeitsgrad {Schwierigkeit} gespielt",
-                  "perfect": "Perfekte Runde auf {Schwierigkeit}! Absolut fantastisch!",
-                  "silver": "Tolle Leistung auf {Schwierigkeit}! Silber-LP verdient!",
-                  "bronze": "Gut gemacht auf {Schwierigkeit}! Bronze-LP verdient!",
-                  "stats": "{richtig} von {insgesamt} Fragen richtig beantwortet!",
-                  "challenge": "Kannst du mich schlagen? Spiele jetzt auf {url}",
+                  "intro": "🎵 Wow! Ich habe {Punkte} Punkte bei Melody Mind erreicht! 🎮",
+                  "genre": "Genre: {Genre} | Schwierigkeit: {Schwierigkeit} 🎯",
+                  "perfect": "🏆 UNGLAUBLICH! Perfekte Runde auf {Schwierigkeit}! Du bist ein echter Musikexperte! ⭐",
+                  "gold": "🥇 Fantastische Leistung auf {Schwierigkeit}! Gold-LP verdient! Weiter so! 🌟",
+                  "silver": "🥈 Super stark auf {Schwierigkeit}! Silber-LP gewonnen - du bist auf dem richtigen Weg! ✨",
+                  "bronze": "🥉 Tolle Leistung auf {Schwierigkeit}! Bronze-LP erreicht - beim nächsten Mal holst du dir Silber! 💫",
+                  "encouragement": "🎵 Guter Start! Mit etwas Übung wirst du noch besser - bleib dran! 🎮",
+                  "stats": "Score: {richtig} von {insgesamt} richtig beantwortet! 📊",
+                  "challenge": "💫 Fordere mich heraus auf {url} 🎮",
                   "difficulty": {
-                      "easy": "einfach",
-                      "medium": "mittel",
-                      "hard": "schwer"
+                      "easy": "Einfach",
+                      "medium": "Mittel",
+                      "hard": "Schwer"
                   }
               }
           },

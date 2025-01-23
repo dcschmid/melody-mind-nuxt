@@ -162,17 +162,19 @@
           "share": "Condividi "
         },
         "message": {
-          "intro": "Ho ottenuto {points} punti in Melody Mind!",
-          "genre": "Giocando a {genre} in difficoltà {difficulty}",
-          "perfect": "Round perfetto in difficoltà {difficulty}! Assolutamente incredibile!",
-          "silver": "Ottima performance in difficoltà {difficulty}! LP d'Argento ottenuto!",
-          "bronze": "Ben fatto in difficoltà {difficulty}! LP di Bronzo ottenuto!",
-          "stats": "{correct} risposte corrette su {total} domande!",
-          "challenge": "Pensi di potermi battere? Gioca ora su {url}",
+          "intro": " Fantastico! Ho ottenuto {points} punti in Melody Mind! ",
+          "genre": "Genere: {genre} | Difficoltà: {difficulty} ",
+          "perfect": " STRAORDINARIO! Round perfetto in {difficulty}! Sei un vero esperto musicale! ",
+          "gold": " Performance eccezionale in {difficulty}! LP d'Oro conquistato - continua così! ",
+          "silver": " Ottimo lavoro in {difficulty}! LP d'Argento conquistato - sei in forma smagliante! ",
+          "bronze": " Grande impegno in {difficulty}! LP di Bronzo conquistato - l'argento è a portata di mano! ",
+          "encouragement": " Buon inizio! Continua ad allenarti e diventerai ancora più forte! ",
+          "stats": "Punteggio: {correct} su {total} risposte corrette! ",
+          "challenge": " Sfidami su {url} ",
           "difficulty": {
-            "easy": "facile",
-            "medium": "media",
-            "hard": "difficile"
+            "easy": "Facile",
+            "medium": "Medio",
+            "hard": "Difficile"
           }
         }
       },

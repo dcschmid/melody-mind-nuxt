@@ -185,17 +185,19 @@
           "share": "Share"
         },
         "message": {
-          "intro": "I scored {points} points in Melody Mind!",
-          "genre": "Playing {genre} on {difficulty} difficulty",
-          "perfect": "Perfect round on {difficulty} difficulty! Absolutely amazing!",
-          "silver": "Great performance on {difficulty} difficulty! Silver LP earned!",
-          "bronze": "Good job on {difficulty} difficulty! Bronze LP earned!",
-          "stats": "Got {correct} out of {total} questions right!",
-          "challenge": "Think you can beat me? Play now at {url}",
+          "intro": "🎵 Wow! I scored {points} points in Melody Mind! 🎮",
+          "genre": "Genre: {genre} | Difficulty: {difficulty} 🎯",
+          "perfect": "🏆 INCREDIBLE! Perfect round on {difficulty}! You're a true music expert! ⭐",
+          "gold": "🥇 Outstanding performance on {difficulty}! Gold LP earned - keep rocking! 🌟",
+          "silver": "🥈 Awesome job on {difficulty}! Silver LP earned - you're on fire! ✨",
+          "bronze": "🥉 Great effort on {difficulty}! Bronze LP earned - silver is within reach! 💫",
+          "encouragement": "🎵 Nice start! Keep practicing and you'll rock even harder! 🎮",
+          "stats": "Score: {correct} out of {total} right! 📊",
+          "challenge": "💫 Challenge me at {url} 🎮",
           "difficulty": {
-            "easy": "easy",
-            "medium": "medium",
-            "hard": "hard"
+            "easy": "Easy",
+            "medium": "Medium",
+            "hard": "Hard"
           }
         }
       },

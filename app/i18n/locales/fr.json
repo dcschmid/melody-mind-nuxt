@@ -185,17 +185,19 @@
           "share": "Partager "
         },
         "message": {
-          "intro": "J'ai obtenu {points} points dans Melody Mind !",
-          "genre": "En jouant {genre} en difficulté {difficulty}",
-          "perfect": "Partie parfaite en difficulté {difficulty} ! Absolument incroyable !",
-          "silver": "Belle performance en difficulté {difficulty} ! LP d'Argent obtenu !",
-          "bronze": "Bien joué en difficulté {difficulty} ! LP de Bronze obtenu !",
-          "stats": "{correct} bonnes réponses sur {total} questions !",
-          "challenge": "Tu penses pouvoir faire mieux ? Joue maintenant sur {url}",
+          "intro": "🎵 Incroyable ! J'ai obtenu {points} points dans Melody Mind ! 🎮",
+          "genre": "Genre : {genre} | Difficulté : {difficulty} 🎯",
+          "perfect": "🏆 EXTRAORDINAIRE ! Round parfait en {difficulty} ! Tu es un véritable expert musical ! ⭐",
+          "gold": "🥇 Performance exceptionnelle en {difficulty} ! LP d'Or obtenu - continue comme ça ! 🌟",
+          "silver": "🥈 Superbe performance en {difficulty} ! LP d'Argent obtenu - tu es en feu ! ✨",
+          "bronze": "🥉 Bel effort en {difficulty} ! LP de Bronze obtenu - l'argent est à portée de main ! 💫",
+          "encouragement": "🎵 Bon début ! Continue à t'entraîner et tu deviendras encore meilleur ! 🎮",
+          "stats": "Score : {correct} sur {total} bonnes réponses ! 📊",
+          "challenge": "💫 Défie-moi sur {url} 🎮",
           "difficulty": {
-            "easy": "facile",
-            "medium": "moyenne",
-            "hard": "difficile"
+            "easy": "Facile",
+            "medium": "Moyen",
+            "hard": "Difficile"
           }
         }
       },
