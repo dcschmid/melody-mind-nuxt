@@ -64,13 +64,19 @@ export const useShare = ({ currentCategoryData, category, difficulty }: ShareCon
      */
     const getMessageParts = computed(() => ({
         intro: (points: number) => t('game.gameOver.share.message.intro', { points }),
-        genre: t('game.gameOver.share.message.genre', { genre: genreName.value }),
+        genre: t('game.gameOver.share.message.genre', { genre: genreName.value, difficulty: difficultyText.value }),
         perfect: t('game.gameOver.share.message.perfect', { difficulty: difficultyText.value }),
         silver: t('game.gameOver.share.message.silver', { difficulty: difficultyText.value }),
         bronze: t('game.gameOver.share.message.bronze', { difficulty: difficultyText.value }),
         stats: (correct: number, total: number) =>
             t('game.gameOver.share.message.stats', { correct, total }),
-        challenge: t('game.gameOver.share.message.challenge', { url: originUrl.value })
+        challenge: t('game.gameOver.share.message.challenge', { url: originUrl.value }),
+        emoji: (ratio: number) => {
+            if (ratio === THRESHOLDS.PERFECT) return '🏆'
+            if (ratio >= THRESHOLDS.SILVER) return '🥈'
+            if (ratio >= THRESHOLDS.BRONZE) return '🥉'
+            return '🎵'
+        }
     }))
 
     /**
@@ -98,12 +104,14 @@ export const useShare = ({ currentCategoryData, category, difficulty }: ShareCon
      */
     const getShareMessage = ({ totalPoints, correctAnswers, maxQuestions }: ShareData): string => {
         const parts = getMessageParts.value
+        const ratio = correctAnswers / maxQuestions
+        const emoji = parts.emoji(ratio)
+        
         const messages = [
-            parts.intro(totalPoints),
+            `${emoji} ${parts.intro(totalPoints)}`,
             parts.genre
         ]
 
-        const ratio = correctAnswers / maxQuestions
         if (ratio === THRESHOLDS.PERFECT) {
             messages.push(parts.perfect)
         } else if (ratio >= THRESHOLDS.SILVER) {
@@ -114,7 +122,7 @@ export const useShare = ({ currentCategoryData, category, difficulty }: ShareCon
 
         messages.push(
             parts.stats(correctAnswers, maxQuestions),
-            parts.challenge
+            `${parts.challenge} ${emoji}`
         )
 
         return messages.join('\n\n')

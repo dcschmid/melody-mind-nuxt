@@ -185,13 +185,13 @@
           "share": "Share"
         },
         "message": {
-          "intro": " I scored {points} points in Melody Mind!",
-          "genre": "Genre: {genre}",
-          "perfect": "Perfect round! You've earned a Gold LP in {difficulty} difficulty!",
-          "silver": "You've earned a Silver LP in {difficulty} difficulty!",
-          "bronze": "You've earned a Bronze LP in {difficulty} difficulty!",
+          "intro": "I scored {points} points in Melody Mind!",
+          "genre": "Playing {genre} on {difficulty} difficulty",
+          "perfect": "Perfect round on {difficulty} difficulty! Absolutely amazing!",
+          "silver": "Great performance on {difficulty} difficulty! Silver LP earned!",
+          "bronze": "Good job on {difficulty} difficulty! Bronze LP earned!",
           "stats": "Got {correct} out of {total} questions right!",
-          "challenge": "Challenge me: {url}",
+          "challenge": "Think you can beat me? Play now at {url}",
           "difficulty": {
             "easy": "easy",
             "medium": "medium",

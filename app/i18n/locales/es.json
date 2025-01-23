@@ -160,12 +160,12 @@
                 },
                 "message": {
                     "intro": "¡He conseguido {points} puntos en Melody Mind!",
-                    "genre": "Género: {genre}",
-                    "perfect": "¡Ronda perfecta con un Disco de Oro en dificultad {difficulty}!",
-                    "silver": "¡Disco de Plata conseguido en dificultad {difficulty}!",
-                    "bronze": "¡Disco de Bronce conseguido en dificultad {difficulty}!",
-                    "stats": "¡{correct} respuestas correctas de {total} preguntas!",
-                    "challenge": "¡Desafíame: {url}",
+                    "genre": "Jugando {genre} en dificultad {difficulty}",
+                    "perfect": "¡Ronda perfecta en dificultad {difficulty}! ¡Increíble!",
+                    "silver": "¡Gran actuación en dificultad {difficulty}! ¡LP de Plata conseguido!",
+                    "bronze": "¡Buen trabajo en dificultad {difficulty}! ¡LP de Bronce conseguido!",
+                    "stats": "¡{correct} de {total} preguntas correctas!",
+                    "challenge": "¿Crees que puedes superarme? Juega ahora en {url}",
                     "difficulty": {
                         "easy": "fácil",
                         "medium": "media",

@@ -162,13 +162,13 @@
           "share": "Condividi "
         },
         "message": {
-          "intro": " Ho ottenuto {points} punti in Melody Mind!",
-          "genre": "Genere: {genre}",
-          "perfect": "Giro perfetto con un LP d'Oro in difficoltà {difficulty}!",
-          "silver": "LP d'Argento ottenuto in difficoltà {difficulty}!",
-          "bronze": "LP di Bronzo ottenuto in difficoltà {difficulty}!",
-          "stats": " {correct} risposte corrette su {total} domande!",
-          "challenge": "Sfidami: {url}",
+          "intro": "Ho ottenuto {points} punti in Melody Mind!",
+          "genre": "Giocando a {genre} in difficoltà {difficulty}",
+          "perfect": "Round perfetto in difficoltà {difficulty}! Assolutamente incredibile!",
+          "silver": "Ottima performance in difficoltà {difficulty}! LP d'Argento ottenuto!",
+          "bronze": "Ben fatto in difficoltà {difficulty}! LP di Bronzo ottenuto!",
+          "stats": "{correct} risposte corrette su {total} domande!",
+          "challenge": "Pensi di potermi battere? Gioca ora su {url}",
           "difficulty": {
             "easy": "facile",
             "medium": "media",

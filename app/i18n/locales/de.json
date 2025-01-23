@@ -189,13 +189,13 @@
                   "share": "Teilen"
               },
               "message": {
-                  "intro": " Ich habe {Punkte} in Melody Mind erzielt!",
-                  "genre": "Genre: {Genre}",
-                  "perfect": "Perfekte Runde mit einer Gold-LP im Schwierigkeitsgrad {Schwierigkeit}!",
-                  "silver": "Silber-LP im Schwierigkeitsgrad {Schwierigkeit} erreicht!",
-                  "bronze": "Bronze-LP im Schwierigkeitsgrad {Schwierigkeit} erreicht!",
-                  "stats": "Du hast {richtig} von {insgesamt} Fragen richtig!",
-                  "challenge": "Fordere mich heraus!: {url}",
+                  "intro": "Ich habe {Punkte} Punkte in Melody Mind erreicht!",
+                  "genre": "{Genre} auf Schwierigkeitsgrad {Schwierigkeit} gespielt",
+                  "perfect": "Perfekte Runde auf {Schwierigkeit}! Absolut fantastisch!",
+                  "silver": "Tolle Leistung auf {Schwierigkeit}! Silber-LP verdient!",
+                  "bronze": "Gut gemacht auf {Schwierigkeit}! Bronze-LP verdient!",
+                  "stats": "{richtig} von {insgesamt} Fragen richtig beantwortet!",
+                  "challenge": "Kannst du mich schlagen? Spiele jetzt auf {url}",
                   "difficulty": {
                       "easy": "einfach",
                       "medium": "mittel",

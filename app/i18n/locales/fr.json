@@ -185,13 +185,13 @@
           "share": "Partager "
         },
         "message": {
-          "intro": " J'ai obtenu {points} points dans Melody Mind !",
-          "genre": "Genre : {genre}",
-          "perfect": "Tour parfait avec un LP d'Or en difficulté {difficulty} !",
-          "silver": "LP d'Argent gagné en difficulté {difficulty} !",
-          "bronze": "LP de Bronze gagné en difficulté {difficulty} !",
-          "stats": "  bonnes réponses sur {total} questions !",
-          "challenge": " Défiez-moi : {url}",
+          "intro": "J'ai obtenu {points} points dans Melody Mind !",
+          "genre": "En jouant {genre} en difficulté {difficulty}",
+          "perfect": "Partie parfaite en difficulté {difficulty} ! Absolument incroyable !",
+          "silver": "Belle performance en difficulté {difficulty} ! LP d'Argent obtenu !",
+          "bronze": "Bien joué en difficulté {difficulty} ! LP de Bronze obtenu !",
+          "stats": "{correct} bonnes réponses sur {total} questions !",
+          "challenge": "Tu penses pouvoir faire mieux ? Joue maintenant sur {url}",
           "difficulty": {
             "easy": "facile",
             "medium": "moyenne",
