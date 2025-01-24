@@ -428,20 +428,24 @@ defineEmits<{
         @include flex-row(clamp(var(--padding-small), 2vw, var(--padding-medium)));
         justify-content: center;
         width: 100%;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: var(--padding-small);
     }
 
     .joker-button {
         @include icon-button;
         @include button-secondary;
-        flex: 1;
-        min-width: 120px;
-        max-width: 200px;
+        flex: 0 0 auto;
+        min-width: 80px;
+        max-width: 150px;
         min-height: 64px;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 0.75rem;
-        padding: var(--padding-medium);
+        padding: var(--padding-small);
         border: 2px solid transparent;
         font-weight: 500;
         
