@@ -15,24 +15,20 @@ interface Artist {
 }
 
 // Fisher-Yates (Knuth) shuffle algorithm for better randomization
-const shuffleArray = (array: string[]): string[] => {
-  const result = [...array];
-  for (let i = result.length - 1; i > 0; i--) {
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    if (i < result.length && j < result.length) {  // Type guard to ensure indices are valid
-      const temp = result[i];
-      if (temp !== undefined && result[j] !== undefined) {
-        result[i] = result[j];
-        result[j] = temp;
-      }
-    }
+    const temp = shuffled[i]!;
+    shuffled[i] = shuffled[j]!;
+    shuffled[j] = temp;
   }
-  return result;
-};
+  return shuffled;
+}
 
 // Memoized function to shuffle options for better performance
 const memoizedShuffleOptions = memoize((options: string[]): string[] => {
-  return shuffleArray(options);
+  return shuffleArray<string>(options);
 });
 
 export const useQuestions = (category: string, difficulty: string) => {
@@ -97,8 +93,9 @@ export const useQuestions = (category: string, difficulty: string) => {
       }
 
       // Set cache
-      questionsCache.set(cacheKey, allQuestions);
-      questions.value = allQuestions;
+      const shuffledQuestions = shuffleArray([...allQuestions]);
+      questionsCache.set(cacheKey, shuffledQuestions);
+      questions.value = shuffledQuestions;
       selectRandomQuestion();
     } catch (error) {
       console.error("Error loading questions:", error);
@@ -166,7 +163,9 @@ function memoize<T extends (...args: any[]) => any>(fn: T) {
   return (...args: Parameters<T>): ReturnType<T> => {
     const key = JSON.stringify(args);
     const cachedResult = cache.get(key);
-    if (cachedResult !== undefined) return cachedResult;
+    if (cachedResult !== undefined) {
+      return cachedResult as ReturnType<T>;
+    }
 
     const result = fn(...args);
     cache.set(key, result);
