@@ -51,6 +51,9 @@ export default defineNuxtConfig({
   },
   fathom: {
     siteId: "RKHOWTTO",  
+    config: {
+      honorDNT: true
+    },
   },
   sitemap: {
     enabled: true,
