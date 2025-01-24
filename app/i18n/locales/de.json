@@ -109,6 +109,7 @@
       "description": "Entdecke unsere Musik-Quiz-Kategorien und teste dein Wissen in verschiedenen Genres wie Rock, Pop, Hip-Hop und Klassik."
     },
     "title": "Wähle eine Kategorie zum Spielen",
+    "categoriesTitle": "Kategorien",
     "description": "Entdecke die faszinierende Welt der Musik durch verschiedene Jahrzehnte und Genres",
     "searchPlaceholder": "Kategorie suchen...",
     "playCategory": "Spielen {Kategorie}",

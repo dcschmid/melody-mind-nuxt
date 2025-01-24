@@ -208,7 +208,7 @@ const clearSearch = () => {
 
 .search-input {
     width: 100%;
-    padding: 0.875rem 2.5rem;
+    padding: 0.875rem 2.5rem 0.875rem 3rem;
     font-size: clamp(1rem, 1vw + 0.75rem, 1.125rem);
     line-height: 1.5;
     color: var(--text-color);
@@ -347,7 +347,7 @@ const clearSearch = () => {
 @media (max-width: 768px) {
     .search-input {
         font-size: 1rem;
-        padding: 0.75rem 2.25rem;
+        padding: 0.75rem 2.25rem 0.75rem 2.75rem;
     }
 
     .suggestions-list {

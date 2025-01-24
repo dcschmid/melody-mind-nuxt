@@ -126,6 +126,7 @@
   },
   "gameHome": {
     "title": "Scegli una categoria per giocare",
+    "categoriesTitle": "Categorie",
     "description": "Scopri il mondo affascinante della musica attraverso diversi decenni e generi",
     "searchPlaceholder": "Cerca categoria...",
     "playCategory": "Gioca {category}",

@@ -120,6 +120,7 @@
       "description": "Discover exciting music quiz categories from rock to classical. Choose your favorite genre and put your music knowledge to the test."
     },
     "title": "Select Your Musical Journey",
+    "categoriesTitle": "Categories",
     "description": "Discover the fascinating world of music through different decades and genres",
     "searchPlaceholder": "Search category...",
     "playCategory": "Play {category}",
