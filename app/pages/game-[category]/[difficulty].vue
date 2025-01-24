@@ -7,7 +7,7 @@
                     <Transition name="slide" mode="out-in">
                         <!-- Question View -->
                         <div v-if="!showSolution" :key="'question'">
-                            <GameHeader :category-name="currentCategoryData?.name || category"
+                            <GameHeader :category-name="currentCategoryData.value?.name || category"
                                 :current-round="usedQuestions.length" :max-rounds="maxQuestions" :points="points"
                                 :is-animating="isAnimating" :show-bonus="showBonus" :latest-bonus="latestBonus" />
 
@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { watch, nextTick, computed } from 'vue'
+import { watch, nextTick, computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useSeoMeta, useRequestURL, useRoute, useJsonld } from '#imports'
 import GameOverScreen from '~/components/game/GameOverScreen.vue';
@@ -64,6 +64,11 @@ const url = useRequestURL()
 // Extract category and difficulty from URL parameters
 const category = route.params.category as string
 const difficulty = route.params.difficulty as string
+
+// --- Load Category Data ---
+// Import category data based on current locale
+const categories = await import(`~/json/${locale.value}_categories.json`)
+const currentCategoryData = ref(categories.default.find((cat: any) => cat.slug === category))
 
 // SEO Meta Tags
 useSeoMeta({
@@ -116,11 +121,6 @@ useJsonld({
         audienceType: 'Music Enthusiasts'
     },
 })
-
-// --- Load Category Data ---
-// Import category data based on current locale
-const categories = await import(`~/json/${locale.value}_categories.json`)
-const currentCategoryData = categories.default.find((cat: any) => cat.slug === category)
 
 // --- Initialize Game Composables ---
 // Core game mechanics
