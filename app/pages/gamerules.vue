@@ -2,17 +2,17 @@
     <NuxtLayout name="default" :show-header="true" :show-menu="true" :show-coins="false">
         <main class="rules-page">
             <article class="rulesContainer">
-                <h1 class="mainTitle">{{ $t('gameRules.title') }}</h1>
+                <h1 class="page-title">{{ $t('gameRules.title') }}</h1>
 
                 <section aria-labelledby="overview">
-                    <h2 id="overview" class="sectionTitle">{{ $t('gameRules.overview.title') }}</h2>
-                    <p class="text">{{ $t('gameRules.overview.text') }}</p>
+                    <h2 id="overview" class="section-title">{{ $t('gameRules.overview.title') }}</h2>
+                    <p class="section-text">{{ $t('gameRules.overview.text') }}</p>
                 </section>
 
                 <section aria-labelledby="difficulty-levels">
-                    <h2 id="difficulty-levels" class="sectionTitle">{{ $t('gameRules.difficultyLevels.title') }}</h2>
+                    <h2 id="difficulty-levels" class="section-title">{{ $t('gameRules.difficultyLevels.title') }}</h2>
 
-                    <p class="text">{{ $t('gameRules.difficultyLevels.intro') }}</p>
+                    <p class="section-text">{{ $t('gameRules.difficultyLevels.intro') }}</p>
 
                     <ul class="list">
                         <li>
@@ -29,7 +29,7 @@
                         </li>
                     </ul>
 
-                    <p class="text">{{ $t('gameRules.difficultyLevels.titles.intro') }}</p>
+                    <p class="section-text">{{ $t('gameRules.difficultyLevels.titles.intro') }}</p>
 
                     <ul class="list">
                         <li>
@@ -48,7 +48,7 @@
                 </section>
 
                 <section aria-labelledby="points-system">
-                    <h2 class="sectionTitle" id="points-system">{{ $t('gameRules.pointsSystem.title') }}</h2>
+                    <h2 class="section-title" id="points-system">{{ $t('gameRules.pointsSystem.title') }}</h2>
 
                     <ul class="list">
                         <li>{{ $t('gameRules.pointsSystem.rules.0') }}</li>
@@ -57,9 +57,9 @@
                 </section>
 
                 <section aria-labelledby="golden-lps">
-                    <h2 class="sectionTitle" id="golden-lps">{{ $t('gameRules.goldenRecords.title') }}</h2>
+                    <h2 class="section-title" id="golden-lps">{{ $t('gameRules.goldenRecords.title') }}</h2>
 
-                    <p class="text">{{ $t('gameRules.goldenRecords.intro') }}</p>
+                    <p class="section-text">{{ $t('gameRules.goldenRecords.intro') }}</p>
 
                     <ul class="list">
                         <li><strong>{{ $t('gameRules.goldenRecords.rewards.easy') }}</strong></li>
@@ -69,9 +69,9 @@
                 </section>
 
                 <section aria-labelledby="rankings">
-                    <h2 class="sectionTitle" id="rankings">{{ $t('gameRules.rankings.title') }}</h2>
+                    <h2 class="section-title" id="rankings">{{ $t('gameRules.rankings.title') }}</h2>
 
-                    <p class="text">{{ $t('gameRules.rankings.text') }}</p>
+                    <p class="section-text">{{ $t('gameRules.rankings.text') }}</p>
 
                     <ul class="list">
                         <li>{{ $t('gameRules.rankings.lists.0') }}</li>
@@ -80,7 +80,7 @@
                 </section>
 
                 <section aria-labelledby="tips-tricks">
-                    <h2 class="sectionTitle" id="tips-tricks">{{ $t('gameRules.tipsAndTricks.title') }}</h2>
+                    <h2 class="section-title" id="tips-tricks">{{ $t('gameRules.tipsAndTricks.title') }}</h2>
 
                     <ul class="list">
                         <li>{{ $t('gameRules.tipsAndTricks.tips.0') }}</li>
@@ -125,12 +125,27 @@ useSeoMeta({
     padding: clamp(var(--padding-medium), 4vw, var(--padding-large));
 }
 
-.mainTitle {
-    font-size: var(--header-font-size);
+.page-title {
+    font-size: var(--font-size-responsive-2xl);
     font-weight: 700;
-    color: var(--primary-color);
     text-align: center;
     margin-bottom: var(--padding-large);
+}
+
+.rules-text {
+    font-size: var(--font-size-responsive-md);
+    line-height: 1.6;
+}
+
+.section-title {
+    font-size: var(--font-size-responsive-xl);
+    font-weight: 600;
+    margin-bottom: var(--padding-medium);
+}
+
+.section-text {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
 }
 
 .list {
@@ -143,8 +158,8 @@ useSeoMeta({
     }
 
     li {
-        font-size: var(--body-font-size);
-        line-height: var(--line-height-body);
+        font-size: var(--font-size-responsive-md);
+        line-height: 1.6;
         color: var(--text-secondary);
         margin-bottom: var(--padding-small);
 
@@ -159,33 +174,15 @@ useSeoMeta({
     }
 }
 
-%shared-text-styles {
-    font-size: var(--body-font-size);
-    line-height: var(--line-height-body);
-    color: var(--text-secondary);
-}
-
-.text {
-    @extend %shared-text-styles;
-    margin-bottom: var(--padding-medium);
-}
-
-.sectionTitle {
-    font-size: calc(var(--header-font-size) * 0.8);
-    font-weight: 700;
-    color: var(--text-color);
-    margin-bottom: var(--padding-medium);
-}
-
 @media (max-width: 768px) {
 
     .rulesContainer {
         padding: var(--padding-medium);
     }
 
-    .mainTitle,
-    .sectionTitle {
-        font-size: calc(var(--header-font-size) * 0.8);
+    .page-title,
+    .section-title {
+        font-size: calc(var(--font-size-responsive-2xl) * 0.8);
     }
 
     .list {
@@ -211,13 +208,13 @@ useSeoMeta({
         padding: 2cm;
     }
 
-    .mainTitle,
-    .sectionTitle,
+    .page-title,
+    .section-title,
     .list li strong {
         color: #000;
     }
 
-    .text,
+    .section-text,
     .list li {
         color: #333;
     }

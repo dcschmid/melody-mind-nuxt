@@ -128,17 +128,14 @@ const achievementIcons = {
 }
 
 .section-title {
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
     text-align: center;
-    line-height: 1.3;
-    letter-spacing: -0.01em;
+    margin-bottom: var(--padding-large);
+    font-size: var(--font-size-responsive-xl);
+    font-weight: 700;
 }
 
 .section-text {
-    font-size: clamp(1.125rem, 2vw, 1.25rem);
+    font-size: var(--font-size-responsive-sm);
     line-height: 1.6;
     color: var(--text-color);
     margin-bottom: clamp(2rem, 5vw, 3rem);
@@ -218,21 +215,28 @@ const achievementIcons = {
     &.legend { color: var(--gold-color); }
 }
 
-.difficulty-title,
-.achievement-title {
-    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+.difficulty-title {
+    font-size: var(--font-size-responsive-lg);
     font-weight: 600;
-    color: var(--text-color);
-    margin: 0;
-    line-height: 1.3;
+    margin-bottom: var(--padding-small);
 }
 
-.difficulty-description,
-.achievement-description {
-    font-size: clamp(1rem, 1.5vw, 1.125rem);
-    line-height: 1.6;
+.difficulty-description {
+    font-size: var(--font-size-responsive-sm);
     color: var(--text-secondary);
-    margin: 0;
+    margin-bottom: var(--padding-medium);
+}
+
+.achievement-title {
+    font-size: var(--font-size-responsive-lg);
+    font-weight: 600;
+    margin-bottom: var(--padding-small);
+}
+
+.achievement-description {
+    font-size: var(--font-size-responsive-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--padding-medium);
 }
 
 @media (prefers-reduced-motion: reduce) {

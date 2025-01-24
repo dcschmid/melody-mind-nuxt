@@ -90,7 +90,7 @@ const imageAltText = computed(() => t('category.image.altText', {
   background: var(--surface-color);
   border-radius: var(--border-radius);
   color: var(--text-color);
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-size: var(--font-size-responsive-md);
   font-weight: 500;
   padding: var(--padding-medium);
   text-align: center;

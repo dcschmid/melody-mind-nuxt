@@ -121,9 +121,8 @@ useSeoMeta({
 }
 
 .main-title {
-    font-size: var(--header-font-size);
+    font-size: var(--font-size-responsive-2xl);
     font-weight: 700;
-    color: var(--primary-color);
     text-align: center;
     margin-bottom: var(--padding-large);
 }
@@ -137,26 +136,21 @@ useSeoMeta({
 }
 
 .section-title {
-    font-size: calc(var(--header-font-size) * 0.8);
-    font-weight: 700;
-    color: var(--text-color);
+    font-size: var(--font-size-responsive-xl);
+    font-weight: 600;
     margin-bottom: var(--padding-medium);
 }
 
 .subsection-title {
-    font-size: calc(var(--header-font-size) * 0.6);
+    font-size: var(--font-size-base);
     font-weight: 600;
-    color: var(--text-color);
     margin: var(--padding-medium) 0 var(--padding-small);
 }
 
 .content-block {
-    color: var(--text-secondary);
-    line-height: var(--line-height-body);
-
-    p {
-        margin-bottom: var(--padding-small);
-    }
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    margin-bottom: var(--padding-medium);
 }
 
 .privacy-list {
@@ -172,15 +166,15 @@ useSeoMeta({
 @media (max-width: 768px) {
 
     .main-title {
-        font-size: calc(var(--header-font-size) * 0.8);
+        font-size: calc(var(--font-size-responsive-2xl) * 0.8);
     }
 
     .section-title {
-        font-size: calc(var(--header-font-size) * 0.7);
+        font-size: calc(var(--font-size-responsive-xl) * 0.7);
     }
 
     .subsection-title {
-        font-size: calc(var(--header-font-size) * 0.5);
+        font-size: calc(var(--font-size-base) * 0.9);
     }
 }
 </style>

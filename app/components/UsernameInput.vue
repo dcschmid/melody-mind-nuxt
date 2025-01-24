@@ -4,7 +4,7 @@
         v-if="!hasUsername"
         :class="{ 'reduce-motion': prefersReducedMotion }"
     >
-        <h2 id="username-title">{{ $t('username.title') }}</h2>
+        <h2 id="username-title" class="section-title">{{ $t('username.title') }}</h2>
         <form 
             @submit.prevent="saveUsername" 
             class="username-form"
@@ -14,7 +14,7 @@
             <div class="form-group">
                 <label 
                     for="username-input"
-                    class="username-label"
+                    class="input-label"
                 >
                     {{ $t('username.label') }}
                 </label>
@@ -37,7 +37,7 @@
                     <div 
                         v-if="validationMessage"
                         id="validation-message"
-                        class="validation-message"
+                        class="error-message"
                         role="alert"
                     >
                         {{ validationMessage }}
@@ -46,7 +46,7 @@
             </div>
             <button 
                 type="submit" 
-                class="save-button"
+                class="action-button"
                 :disabled="!isValid || isSubmitting"
                 :aria-busy="isSubmitting"
             >
@@ -185,14 +185,19 @@ defineExpose({
     padding: 2rem;
     border-radius: 1rem;
     color: var(--text-color);
+    font-size: var(--font-size-responsive-md);
+}
 
-    h2 {
-        margin-bottom: 1.5rem;
-        font-size: max(1.5rem, 24px);
-        font-weight: 700;
-        line-height: 1.3;
-        letter-spacing: 0.01em;
-    }
+.section-title {
+    font-size: var(--font-size-responsive-xl);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--padding-large);
+}
+
+.input-label {
+    font-size: var(--font-size-base);
+    font-weight: 500;
 }
 
 .username-form {
@@ -204,14 +209,6 @@ defineExpose({
     text-align: left;
 }
 
-.username-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: max(1.125rem, 18px);
-    font-weight: 500;
-    color: var(--text-color);
-}
-
 .input-wrapper {
     position: relative;
 }
@@ -221,7 +218,7 @@ input {
     @include input-placeholder;
     width: 100%;
     padding: 0.75rem 1rem;
-    font-size: max(1.125rem, 18px);
+    font-size: var(--font-size-base);
     line-height: 1.5;
     border: 2px solid var(--border-color);
     border-radius: 0.5rem;
@@ -257,17 +254,17 @@ input {
     }
 }
 
-.validation-message {
+.error-message {
     position: absolute;
     top: 100%;
     left: 0;
     margin-top: 0.25rem;
-    font-size: max(0.875rem, 14px);
+    font-size: var(--font-size-base);
     color: var(--error-color);
     font-weight: 500;
 }
 
-.save-button {
+.action-button {
     @include button-primary;
     display: inline-flex;
     align-items: center;
@@ -275,7 +272,7 @@ input {
     gap: 0.5rem;
     width: 100%;
     padding: 0.75rem 1.5rem;
-    font-size: max(1.125rem, 18px);
+    font-size: var(--font-size-base);
     font-weight: 600;
     line-height: 1.5;
     border-radius: 0.5rem;
@@ -326,7 +323,7 @@ input {
         }
     }
 
-    .save-button {
+    .action-button {
         border: 2px solid ButtonText;
         
         &:disabled {
@@ -362,7 +359,7 @@ input {
         background: none;
     }
 
-    .save-button {
+    .action-button {
         display: none;
     }
 }
@@ -378,7 +375,7 @@ input {
         }
     }
 
-    .username-label {
+    .input-label {
         font-size: max(1rem, 16px);
     }
 
@@ -387,7 +384,7 @@ input {
         padding: 0.625rem 0.875rem;
     }
 
-    .save-button {
+    .action-button {
         font-size: max(1rem, 16px);
         padding: 0.625rem 1.25rem;
     }
@@ -403,11 +400,11 @@ input {
         border-width: 2px;
     }
 
-    .username-label {
+    .input-label {
         font-weight: 600;
     }
 
-    .validation-message {
+    .error-message {
         font-weight: 600;
     }
 }

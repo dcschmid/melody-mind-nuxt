@@ -5,9 +5,9 @@
                 <div class="language-picker-container">
                     <LanguagePicker />
                 </div>
-                <h1 class="title">{{ $t('welcome.title') }}</h1>
-                <p class="intro-text">{{ $t('intro') }}</p>
-                <NuxtLinkLocale to="/gamehome" class="primary-button">
+                <h1 class="title page-title">{{ $t('welcome.title') }}</h1>
+                <p class="intro-text page-text">{{ $t('intro') }}</p>
+                <NuxtLinkLocale to="/gamehome" class="primary-button action-button">
                     {{ $t('welcome.start') }}
                 </NuxtLinkLocale>
             </div>
@@ -75,16 +75,15 @@ useJsonld({
     margin-bottom: 2rem;
 }
 
-.title {
-    font-size: var(--header-font-size);
-    font-weight: bold;
-    margin-bottom: var(--padding-large);
-    line-height: 1.2;
+.page-title {
+    font-size: var(--font-size-responsive-2xl);
+    font-weight: 700;
+    text-align: center;
     color: var(--primary-color);
 }
 
-.intro-text {
-    font-size: var(--body-font-size);
+.page-text {
+    font-size: var(--font-size-responsive-md);
     line-height: var(--line-height-body);
     color: var(--text-secondary);
     margin-bottom: var(--padding-large);
@@ -93,11 +92,11 @@ useJsonld({
     margin-right: auto;
 }
 
-.primary-button {
+.action-button {
+    font-size: var(--font-size-base);
     @include button-primary;
     display: inline-block;
     padding: var(--padding-small) var(--padding-medium);
-    font-size: var(--button-font-size);
     font-weight: 600;
     color: var(--button-text-color);
     background: var(--primary-color);

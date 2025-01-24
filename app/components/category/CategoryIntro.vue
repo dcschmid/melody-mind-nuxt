@@ -5,13 +5,13 @@
         :aria-labelledby="headlineId"
         role="region"
     >
-        <h1 :id="headlineId" class="headline">
+        <h1 :id="headlineId" class="headline category-title">
             <span class="category-name">{{ category.headline }}</span>
             <span class="selected-text">{{ t('category.selected') }}</span>
         </h1>
         
         <p 
-            class="description" 
+            class="description category-description" 
             :id="descriptionId"
             aria-live="polite"
         >
@@ -58,14 +58,14 @@ const descriptionId = computed(() =>
     padding: 0 var(--padding-medium);
 }
 
-.headline {
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
+.category-title {
+    font-size: var(--font-size-responsive-2xl);
     font-weight: 700;
+    text-align: center;
     color: var(--primary-color);
     margin-bottom: var(--padding-medium);
     line-height: 1.3;
     letter-spacing: -0.01em;
-    text-align: center;
 
     .category-name {
         display: inline-block;
@@ -90,8 +90,8 @@ const descriptionId = computed(() =>
     }
 }
 
-.description {
-    font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+.category-description {
+    font-size: var(--font-size-responsive-md);
     line-height: 1.6;
     color: var(--text-color);
     margin-bottom: var(--padding-medium);
@@ -103,7 +103,7 @@ const descriptionId = computed(() =>
 }
 
 .extended-description {
-    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-size: var(--font-size-responsive-sm);
     line-height: 1.6;
     color: var(--text-secondary);
     margin-top: var(--padding-medium);
@@ -122,8 +122,8 @@ const descriptionId = computed(() =>
         padding: 0 var(--padding-small);
     }
 
-    .headline {
-        font-size: clamp(1.5rem, 3.5vw, 1.75rem);
+    .category-title {
+        font-size: var(--font-size-responsive-xl);
         padding: 0 var(--padding-small);
         
         .category-name,
@@ -138,13 +138,13 @@ const descriptionId = computed(() =>
         }
     }
 
-    .description {
-        font-size: clamp(1rem, 2vw, 1.125rem);
+    .category-description {
+        font-size: var(--font-size-responsive-sm);
     }
 }
 
 @media (prefers-contrast: more) {
-    .headline {
+    .category-title {
         color: var(--high-contrast-primary);
         
         .selected-text {
@@ -152,7 +152,7 @@ const descriptionId = computed(() =>
         }
     }
 
-    .description {
+    .category-description {
         color: var(--high-contrast-text);
     }
 

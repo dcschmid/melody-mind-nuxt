@@ -2,18 +2,18 @@
     <div class="game-end-screen" role="main" aria-label="Game Over Screen">
         <div class="end-content">
             <div class="end-header">
-                <h1 id="game-over-title">{{ t('game.gameOver.title') }}</h1>
+                <h1 id="game-over-title" class="game-over-title">{{ t('game.gameOver.title') }}</h1>
                 <div class="final-score-container" role="region" aria-labelledby="game-over-title">
                     <div class="score-circle" role="text" aria-label="Total Score">
                         <div class="score-inner">
-                            <span class="points" aria-label="Points">{{ totalPoints }}</span>
-                            <span class="points-label">{{ t('game.points_label') }}</span>
+                            <span class="points score-value" aria-label="Points">{{ totalPoints }}</span>
+                            <span class="points-label score-label">{{ t('game.points_label') }}</span>
                         </div>
                     </div>
                     <div class="stats">
                         <div class="stat-item" role="text">
-                            <span class="stat-label">{{ t('game.gameOver.correctAnswers') }}</span>
-                            <span class="stat-value" aria-label="Correct Answers">{{ correctAnswers }} / {{ maxQuestions }}</span>
+                            <span class="stat-label score-label">{{ t('game.gameOver.correctAnswers') }}</span>
+                            <span class="stat-value score-value" aria-label="Correct Answers">{{ correctAnswers }} / {{ maxQuestions }}</span>
                         </div>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                 <div v-if="earnedRecord" class="record-icon" role="img" :aria-label="recordIcon">
                     <Icon :name="recordIcon" size="64" aria-hidden="true" />
                 </div>
-                <p v-if="resultMessage" class="reward-text" role="text">
+                <p v-if="resultMessage" class="reward-text message" role="text">
                     {{ resultMessage }}
                 </p>
             </div>
@@ -32,7 +32,7 @@
                 <h2 id="share-title">{{ t('game.results.share.title') }}</h2>
                 <div class="share-buttons" role="group" aria-label="Share options">
                     <button v-if="canShare" 
-                        class="share-button share-api" 
+                        class="share-button share-api action-button" 
                         @click="shareViaAPI"
                         aria-label="Share score">
                         <Icon name="material-symbols:share" size="24" aria-hidden="true" />
@@ -40,28 +40,28 @@
                     </button>
 
                     <template v-else>
-                        <button class="share-button copy" 
+                        <button class="share-button copy action-button" 
                             @click="copyShareText"
                             aria-label="Text kopieren">
                             <Icon name="material-symbols:content-copy" size="24" aria-hidden="true" />
                             <span>{{ t('game.results.share.buttons.copy') }}</span>
                         </button>
 
-                        <button class="share-button twitter" 
+                        <button class="share-button twitter action-button" 
                             @click="shareToTwitter"
                             aria-label="Share on Twitter">
                             <Icon name="mdi:twitter" size="24" aria-hidden="true" />
                             <span>{{ t('game.results.share.buttons.twitter') }}</span>
                         </button>
 
-                        <button class="share-button telegram" 
+                        <button class="share-button telegram action-button" 
                             @click="shareToTelegram"
                             aria-label="Share on Telegram">
                             <Icon name="mdi:telegram" size="24" aria-hidden="true" />
                             <span>{{ t('game.results.share.buttons.telegram') }}</span>
                         </button>
 
-                        <button class="share-button reddit" 
+                        <button class="share-button reddit action-button" 
                             @click="shareToReddit"
                             aria-label="Share on Reddit">
                             <Icon name="mdi:reddit" size="24" aria-hidden="true" />
@@ -69,7 +69,7 @@
                         </button>
 
                         <button v-if="isWhatsAppSupported" 
-                            class="share-button whatsapp" 
+                            class="share-button whatsapp action-button" 
                             @click="shareToWhatsApp"
                             aria-label="Share on WhatsApp">
                             <Icon name="mdi:whatsapp" size="24" aria-hidden="true" />
@@ -81,7 +81,7 @@
 
             <div class="end-actions" role="navigation">
                 <NuxtLink :to="localePath('/gamehome')" 
-                    class="home-button"
+                    class="home-button action-button"
                     aria-label="Back to main menu">
                     <Icon name="material-symbols:home" size="36" aria-hidden="true" />
                     <span>{{ t('game.gameOver.backToMenu') }}</span>
@@ -282,12 +282,11 @@ const shareViaAPI = async () => {
 }
 
 .end-header {
-    h1 {
-        font-size: clamp(1.75rem, 5vw, 2.5rem);
-        font-weight: bold;
-        color: var(--primary-color);
-        margin: 0;
-        line-height: 1.2;
+    h1.game-over-title {
+        font-size: var(--font-size-responsive-2xl);
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: var(--padding-large);
     }
 }
 
@@ -339,19 +338,15 @@ const shareViaAPI = async () => {
     align-items: center;
     gap: calc(var(--padding-small) / 2);
 
-    .points {
-        font-size: clamp(2rem, 6vw, 3.5rem);
-        font-weight: bold;
+    .points.score-value {
+        font-size: var(--font-size-responsive-xl);
+        font-weight: 700;
         color: var(--primary-color);
-        margin: 0;
-        line-height: 1;
     }
 
-    .points-label {
-        font-size: clamp(0.875rem, 3vw, 1rem);
-        color: var(--text-color);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
+    .points-label.score-label {
+        font-size: var(--font-size-responsive-md);
+        color: var(--text-secondary);
     }
 }
 
@@ -361,17 +356,15 @@ const shareViaAPI = async () => {
         flex-direction: column;
         gap: calc(var(--padding-small) / 2);
 
-        .stat-label {
-            font-size: clamp(0.875rem, 3vw, 1rem);
-            color: var(--text-color);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+        .stat-label.score-label {
+            font-size: var(--font-size-responsive-md);
+            color: var(--text-secondary);
         }
 
-        .stat-value {
-            font-size: clamp(1.1rem, 4vw, 1.3rem);
-            font-weight: bold;
-            color: var(--text-color);
+        .stat-value.score-value {
+            font-size: var(--font-size-responsive-xl);
+            font-weight: 700;
+            color: var(--primary-color);
         }
     }
 }
@@ -405,12 +398,10 @@ const shareViaAPI = async () => {
         line-height: 1;
     }
 
-    .reward-text {
-        font-size: clamp(0.95rem, 3.5vw, 1.1rem);
-        line-height: 1.5;
-        color: var(--text-color);
-        margin: 0;
+    .reward-text.message {
+        font-size: var(--font-size-responsive-sm);
         text-align: center;
+        margin-bottom: var(--padding-large);
     }
 }
 
@@ -450,11 +441,12 @@ const shareViaAPI = async () => {
     }
 }
 
-.share-button {
+.share-button.action-button {
     @include button-secondary;
     width: 100%;
     justify-content: center;
     gap: var(--padding-small);
+    font-size: var(--font-size-base);
 
     &.copy {
         background-color: var(--color-secondary);
@@ -484,15 +476,15 @@ const shareViaAPI = async () => {
         padding: 0;
     }
 
-    .home-button {
+    .home-button.action-button {
         @include button-primary;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: var(--padding-small);
-        width: 100%;
+        width: auto;
         min-height: 48px;
-        font-size: clamp(0.95rem, 3.5vw, 1rem);
+        font-size: var(--font-size-base);
 
         @media (min-width: 640px) {
             width: auto;

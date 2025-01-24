@@ -199,13 +199,10 @@ defineEmits<{
 }
 
 .question-text {
-    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    text-align: center;
+    margin-bottom: var(--padding-medium);
+    font-size: var(--font-size-responsive-lg);
     font-weight: 600;
-    color: var(--text-color);
-    margin: 0;
-    line-height: 1.5;
-    text-align: left;
-    letter-spacing: 0.01em;
 }
 
 .answers-grid {
@@ -222,7 +219,7 @@ defineEmits<{
     min-height: 64px;
     width: 100%;
     padding: var(--padding-medium);
-    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-size: var(--font-size-responsive-sm);
     font-weight: 600;
     line-height: 1.5;
     text-align: center;
@@ -450,16 +447,10 @@ defineEmits<{
         font-weight: 500;
         
         .joker-icon {
-            font-size: 1.75rem;
+            font-size: var(--font-size-responsive-lg);
             color: currentColor;
         }
 
-        .joker-label {
-            font-size: 1rem;
-            text-align: center;
-            line-height: 1.2;
-        }
-        
         &:hover:not(:disabled) {
             background-color: var(--secondary-color-dark);
             transform: translateY(-2px);
@@ -482,7 +473,7 @@ defineEmits<{
 
     .jokers-remaining {
         color: var(--text-secondary);
-        font-size: 1.1rem;
+        font-size: var(--font-size-base);
         font-weight: 500;
         text-align: center;
         margin-top: var(--padding-small);

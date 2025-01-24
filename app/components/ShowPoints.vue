@@ -143,9 +143,9 @@ defineExpose({
 }
 
 .points {
-    font-size: max(1.5rem, clamp(1.2rem, 3vw, 1.8rem)); // Ensuring minimum 24px for numbers
+    font-size: var(--font-size-responsive-lg);
     font-weight: 700;
-    color: var(--text-color);
+    color: var(--primary-color);
     line-height: 1.5;
     font-variant-numeric: tabular-nums;
     letter-spacing: 0.01em;
@@ -165,8 +165,8 @@ defineExpose({
 }
 
 .points-label {
-    font-size: max(1.125rem, var(--body-font-size)); // Ensuring minimum 18px for AAA
-    color: var(--text-color);
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
     font-weight: 500;
     line-height: 1.5;
     margin-top: 0.25rem;
@@ -178,7 +178,7 @@ defineExpose({
     right: 0;
     color: var(--highlight-color);
     font-weight: 700;
-    font-size: max(1.125rem, var(--body-font-size));
+    font-size: var(--font-size-responsive-md);
     text-shadow: 0 1px 2px rgb(0 0 0 / 20%);
     padding: 0.25rem 0.5rem;
     border-radius: var(--border-radius);
@@ -263,11 +263,11 @@ defineExpose({
 /* Mobile optimizations */
 @media (max-width: 768px) {
     .points {
-        font-size: max(1.25rem, clamp(1.1rem, 2.5vw, 1.5rem)); // Ensuring minimum 20px for mobile
+        font-size: var(--font-size-responsive-md);
     }
 
     .points-label {
-        font-size: max(1rem, calc(var(--body-font-size) * 0.9)); // Ensuring minimum 16px for mobile
+        font-size: var(--font-size-sm);
     }
 }
 </style>

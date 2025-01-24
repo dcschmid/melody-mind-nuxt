@@ -49,11 +49,11 @@ defineProps<Props>()
 }
 
 .section-title {
-    font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
+    font-size: var(--font-size-responsive-xl);
     font-weight: 700;
     line-height: 1.3;
     color: var(--text-color);
-    margin-bottom: clamp(1rem, 3vw, 1.5rem);
+    margin-bottom: var(--padding-large);
 
     &.centered {
         text-align: center;
@@ -61,7 +61,7 @@ defineProps<Props>()
 }
 
 .section-content {
-    font-size: clamp(1rem, 1vw + 0.75rem, 1.125rem);
+    font-size: var(--font-size-responsive-sm);
     line-height: 1.6;
     color: var(--text-color);
 
@@ -150,12 +150,12 @@ defineProps<Props>()
     }
 
     .section-title {
-        font-size: clamp(1.25rem, 4vw, 1.5rem);
-        margin-bottom: 1rem;
+        font-size: var(--font-size-responsive-md);
+        margin-bottom: var(--padding-small);
     }
 
     .section-content {
-        font-size: 1rem;
+        font-size: var(--font-size-base);
     }
 }
 

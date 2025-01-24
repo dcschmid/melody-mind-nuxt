@@ -2,8 +2,8 @@
     <NuxtLayout name="default" :show-header="true" :show-menu="true">
         <div class="gameHome" id="main-content">
             <section class="intro">
-                <h1 tabindex="-1">{{ $t('gameHome.title') }}</h1>
-                <p class="intro-text" v-if="$t('gameHome.description')">{{ $t('gameHome.description') }}</p>
+                <h1 tabindex="-1" class="page-title">{{ $t('gameHome.title') }}</h1>
+                <p class="intro-text page-subtitle" v-if="$t('gameHome.description')">{{ $t('gameHome.description') }}</p>
             </section>
 
             <section class="search-section" role="search">
@@ -67,13 +67,20 @@ onMounted(() => {
 .intro {
     text-align: center;
     margin-bottom: var(--padding-large);
+}
 
-    h1 {
-        font-size: var(--header-font-size);
-        color: var(--primary-color);
-        margin-bottom: var(--padding-medium);
-        font-weight: 700;
-    }
+.page-title {
+    font-size: var(--font-size-responsive-2xl);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--padding-large);
+}
+
+.page-subtitle {
+    font-size: var(--font-size-responsive-lg);
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: var(--padding-medium);
 }
 
 .search-section {

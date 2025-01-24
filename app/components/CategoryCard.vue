@@ -191,14 +191,13 @@ defineEmits(['select'])
 .category-title {
     @include flex-center;
     @include absolute-fill;
-    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-    font-weight: 700;
+    font-size: var(--font-size-responsive-md);
+    font-weight: 600;
+    margin-bottom: var(--padding-small);
     color: var(--text-on-primary);
     background: rgba(0, 0, 0, 0.7);
     padding: clamp(0.75rem, 2vw, 1.5rem);
     text-align: center;
-    margin: 0;
-    line-height: 1.3;
     z-index: 2;
 }
 
@@ -206,27 +205,27 @@ defineEmits(['select'])
     @include absolute-fill;
     top: auto;
     background: rgba(0, 0, 0, 0.85);
-    color: var(--text-on-primary);
+    font-size: var(--font-size-responsive-sm);
+    color: var(--text-secondary);
     padding: clamp(0.75rem, 2vw, 1.5rem);
     text-align: center;
     opacity: 0;
     transition: opacity 0.3s ease;
-    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    margin-bottom: var(--padding-medium);
     line-height: 1.6;
     z-index: 2;
-    margin: 0;
 }
 
 .coming-soon {
     cursor: not-allowed;
     
     .category-title {
-        font-size: clamp(1rem, 2vw, 1.25rem);
+        font-size: var(--font-size-responsive-md);
     }
 
     .category-description {
         opacity: 1;
-        font-size: clamp(0.875rem, 1.5vw, 1rem);
+        font-size: var(--font-size-responsive-sm);
     }
 }
 
@@ -278,12 +277,12 @@ defineEmits(['select'])
 
 @media screen and (max-width: 640px) {
     .category-title {
-        font-size: clamp(1rem, 2vw, 1.25rem);
+        font-size: var(--font-size-responsive-md);
         padding: var(--padding-small);
     }
 
     .category-description {
-        font-size: clamp(0.875rem, 1.5vw, 1rem);
+        font-size: var(--font-size-responsive-sm);
         padding: var(--padding-small);
     }
 

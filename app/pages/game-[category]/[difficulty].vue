@@ -312,7 +312,8 @@ const { currentArtist } = artist  // Current artist information
         text-align: center;
 
         h2 {
-            font-size: 1.5rem;
+            font-size: var(--font-size-responsive-2xl);
+            font-weight: 700;
             color: var(--text-color);
             margin-bottom: 1rem;
         }
@@ -329,7 +330,7 @@ const { currentArtist } = artist  // Current artist information
             border: 2px solid var(--border-color);
             border-radius: 0.75rem;
             padding: 1rem 1.5rem;
-            font-size: 1.1rem;
+            font-size: var(--font-size-responsive-md);
             color: var(--text-color);
             transition: all 0.3s ease;
             position: relative;
@@ -394,7 +395,7 @@ const { currentArtist } = artist  // Current artist information
             }
 
             .label {
-                font-size: 0.8rem;
+                font-size: var(--font-size-base);
                 color: var(--text-color-light);
                 text-align: center;
                 transition: color 0.3s ease;
@@ -433,8 +434,25 @@ const { currentArtist } = artist  // Current artist information
     .jokers-remaining {
         text-align: center;
         margin-top: 1rem;
-        font-size: 0.9rem;
+        font-size: var(--font-size-base);
         color: var(--text-color-light);
+    }
+}
+
+.next-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    min-width: 200px;
+    margin: 0 auto;
+    padding: var(--padding-medium) var(--padding-large);
+    font-size: var(--font-size-responsive-md);
+    font-weight: var(--font-weight-semibold);
+    
+    .button-text {
+        font-size: var(--font-size-responsive-md);
+        margin-right: var(--padding-small);
     }
 }
 

@@ -22,13 +22,13 @@ defineProps<Props>()
     padding-left: clamp(1.5rem, 5vw, 2rem);
     margin-bottom: var(--padding-medium);
     max-width: 70ch; /* Optimale Lesebreite */
+    font-size: var(--font-size-base);
+    line-height: 1.6;
 
     ::v-deep(li) {
         position: relative;
-        font-size: clamp(1rem, 1vw + 0.75rem, 1.125rem);
-        line-height: 1.6;
-        color: var(--text-color);
-        margin-bottom: clamp(0.75rem, 2vw, 1rem);
+        font-size: var(--font-size-base);
+        margin-bottom: var(--padding-small);
         padding-left: 0.5rem;
 
         /* Verbesserte Marker-Sichtbarkeit */

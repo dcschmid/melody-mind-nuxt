@@ -2,7 +2,7 @@
     <NuxtLayout name="default" :show-header="true" :show-menu="true" :show-coins="false">
         <main class="legal-page">
             <article class="legal-container">
-                <h1 class="main-title">{{ $t('legal.imprint.title') }}</h1>
+                <h1 class="page-title">{{ $t('legal.imprint.title') }}</h1>
 
                 <section class="legal-section">
                     <h2 class="section-title">{{ $t('legal.imprint.information.title') }}</h2>
@@ -87,10 +87,9 @@ useSeoMeta({
     margin: 0 auto;
 }
 
-.main-title {
-    font-size: var(--header-font-size);
+.page-title {
+    font-size: var(--font-size-responsive-2xl);
     font-weight: 700;
-    color: var(--primary-color);
     text-align: center;
     margin-bottom: var(--padding-large);
 }
@@ -104,15 +103,15 @@ useSeoMeta({
 }
 
 .section-title {
-    font-size: calc(var(--header-font-size) * 0.8);
-    font-weight: 700;
-    color: var(--text-color);
+    font-size: var(--font-size-responsive-xl);
+    font-weight: 600;
     margin-bottom: var(--padding-medium);
 }
 
 .content-block {
-    color: var(--text-secondary);
-    line-height: var(--line-height-body);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    margin-bottom: var(--padding-medium);
 
     p {
         margin-bottom: var(--padding-small);
@@ -131,12 +130,12 @@ useSeoMeta({
 
 @media (max-width: 768px) {
 
-    .main-title {
-        font-size: calc(var(--header-font-size) * 0.8);
+    .page-title {
+        font-size: calc(var(--font-size-responsive-2xl) * 0.8);
     }
 
     .section-title {
-        font-size: calc(var(--header-font-size) * 0.7);
+        font-size: calc(var(--font-size-responsive-xl) * 0.7);
     }
 }
 </style>

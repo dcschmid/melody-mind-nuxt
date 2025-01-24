@@ -161,7 +161,8 @@ onUnmounted(() => {
     border: 2px solid transparent;
     border-radius: var(--border-radius);
     color: var(--text-color);
-    font-size: clamp(1rem, 1vw + 0.75rem, 1.125rem);
+    font-size: var(--font-size-base);
+    font-weight: 500;
     line-height: 1.5;
     cursor: pointer;
     min-width: 140px;
@@ -215,7 +216,7 @@ onUnmounted(() => {
         border: none;
         background: transparent;
         color: var(--text-color);
-        font-size: clamp(1rem, 1vw + 0.75rem, 1.125rem);
+        font-size: var(--font-size-base);
         line-height: 1.5;
         text-align: left;
         cursor: pointer;
@@ -251,6 +252,7 @@ onUnmounted(() => {
 }
 
 .language-name {
+    font-size: var(--font-size-base);
     font-weight: 500;
 }
 

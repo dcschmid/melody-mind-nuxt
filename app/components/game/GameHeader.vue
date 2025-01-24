@@ -1,8 +1,8 @@
 <template>
     <div class="game-header" role="banner">
         <div class="header-left">
-            <h1 id="category-name">{{ categoryName }}</h1>
-            <p class="round-counter" aria-live="polite">
+            <h1 id="category-name" class="game-title">{{ categoryName }}</h1>
+            <p class="round-counter header-text" aria-live="polite">
                 {{ roundText }}
             </p>
         </div>
@@ -12,12 +12,12 @@
                     <span class="points" :class="{ 'points-update': isAnimating }">
                         {{ formattedPoints }}
                     </span>
-                    <span class="points-label">{{ t('game.points_label') }}</span>
+                    <span class="points-label header-text">{{ t('game.points_label') }}</span>
                 </div>
                 <transition v-bind="bonusTransitionProps">
                     <div v-if="showBonus" class="bonus-indicator" role="alert">
-                        <div class="bonus-total">+{{ latestBonus.base }}</div>
-                        <div class="bonus-breakdown">
+                        <div class="bonus-total game-subtitle">+{{ latestBonus.base }}</div>
+                        <div class="bonus-breakdown header-text">
                             <span class="time">+{{ latestBonus.time }} Bonus</span>
                         </div>
                     </div>
@@ -91,19 +91,19 @@ const bonusTransitionProps = shallowRef({
     }
 
     .header-left {
-        h1 {
+        h1.game-title {
             margin: 0;
-            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-size: var(--font-size-responsive-xl);
+            font-weight: 700;
             color: var(--text-color);
             letter-spacing: var(--spacing-text);
-            font-weight: 600;
             line-height: 1.4;
         }
 
-        .round-counter {
+        .round-counter.header-text {
             margin: var(--padding-small) 0 0;
             color: var(--text-color);
-            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-size: var(--font-size-base);
             font-weight: 500;
             line-height: 1.4;
         }
@@ -129,7 +129,7 @@ const bonusTransitionProps = shallowRef({
         }
 
         .points {
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-size: var(--font-size-responsive-xl);
             font-weight: 600;
             color: var(--primary-color);
             letter-spacing: var(--spacing-text);
@@ -142,9 +142,9 @@ const bonusTransitionProps = shallowRef({
             }
         }
 
-        .points-label {
+        .points-label.header-text {
             color: var(--text-color);
-            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-size: var(--font-size-base);
             font-weight: 500;
             line-height: 1.4;
         }
@@ -162,7 +162,7 @@ const bonusTransitionProps = shallowRef({
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     color: var(--text-color);
-    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-size: var(--font-size-base);
     white-space: nowrap;
     border: 2px solid var(--success-color);
     min-width: 120px;
@@ -177,16 +177,16 @@ const bonusTransitionProps = shallowRef({
         transform: none;
     }
 
-    .bonus-total {
-        font-weight: 600;
+    .bonus-total.game-subtitle {
+        font-weight: 700;
         color: var(--success-color);
-        font-size: 1.5rem;
+        font-size: var(--font-size-responsive-md);
         line-height: 1.4;
     }
 
-    .bonus-breakdown {
-        font-size: 1.1rem;
-        color: var(--text-color);
+    .bonus-breakdown.header-text {
+        font-size: var(--font-size-base);
+        color: var(--text-secondary);
         margin-top: var(--padding-small);
         line-height: 1.4;
     }

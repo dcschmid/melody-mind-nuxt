@@ -219,13 +219,11 @@ onMounted(() => {
 <style lang="scss" scoped>
 @use '@/assets/scss/mixins' as *;
 
-
 .title {
-    font-size: 2.5rem;
+    font-size: var(--font-size-responsive-2xl);
     font-weight: 700;
-    margin-bottom: var(--padding-small);
     text-align: center;
-    color: var(--primary-color);
+    margin-bottom: var(--padding-large);
 }
 
 .search-section {
@@ -260,7 +258,7 @@ onMounted(() => {
 
     .category-title {
         color: var(--primary-color);
-        font-size: 1.5rem;
+        font-size: var(--font-size-responsive-xl);
         font-weight: 600;
         margin: 0;
         display: block;
@@ -268,7 +266,7 @@ onMounted(() => {
 
     .difficulty-select {
         padding: 0.5rem 2rem 0.5rem 1rem;
-        font-size: 0.9rem;
+        font-size: var(--font-size-responsive-md);
         border-radius: var(--border-radius);
         border: 1px solid var(--border-color);
         background-color: var(--background-secondary);
@@ -367,13 +365,14 @@ onMounted(() => {
     }
 
     .medal {
-        font-size: 1.25rem;
+        font-size: var(--font-size-lg);
         margin-right: 0.5rem;
     }
 
     .points-cell {
-        font-weight: 700;
+        font-weight: 600;
         color: var(--primary-color);
+        font-size: var(--font-size-lg);
     }
 
     .lps-cell {
@@ -410,12 +409,12 @@ onMounted(() => {
             padding: var(--padding-small);
 
             .category-title {
-                font-size: 1.125rem;
+                font-size: var(--font-size-responsive-lg);
             }
 
             .difficulty-select {
                 padding: 0.375rem 1.5rem 0.375rem 0.75rem;
-                font-size: 0.875rem;
+                font-size: var(--font-size-responsive-sm);
             }
         }
 
@@ -425,7 +424,7 @@ onMounted(() => {
                 th,
                 td {
                     padding: 0.75rem;
-                    font-size: 0.875rem;
+                    font-size: var(--font-size-responsive-sm);
                 }
             }
         }

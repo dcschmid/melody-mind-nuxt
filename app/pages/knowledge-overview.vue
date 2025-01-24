@@ -2,8 +2,8 @@
     <NuxtLayout name="default" :show-header="true" :show-menu="true">
         <div class="gameHome" id="main-content">
             <section class="intro">
-                <h1 tabindex="-1">{{ $t('knowledge.title') }}</h1>
-                <p class="intro-text" v-if="$t('knowledge.description')">{{ $t('knowledge.description') }}</p>
+                <h1 tabindex="-1" class="page-title">{{ $t('knowledge.title') }}</h1>
+                <p class="intro-text overview-text" v-if="$t('knowledge.description')">{{ $t('knowledge.description') }}</p>
             </section>
 
             <section class="search-section" role="search">
@@ -112,20 +112,16 @@ const navigateToKnowledge = (item) => {
     margin: 0 auto;
 }
 
-.intro {
+.page-title {
+    font-size: var(--font-size-responsive-2xl);
+    font-weight: 700;
     text-align: center;
     margin-bottom: var(--padding-large);
-
-    h1 {
-        font-size: var(--header-font-size);
-        color: var(--primary-color);
-        margin-bottom: var(--padding-medium);
-        font-weight: 700;
-    }
 }
 
-.search-section {
-    margin-bottom: var(--padding-large);
+.overview-text {
+    font-size: var(--font-size-responsive-md);
+    line-height: 1.6;
 }
 
 .categories-grid {
@@ -170,6 +166,16 @@ const navigateToKnowledge = (item) => {
         outline: 2px solid var(--primary-color);
         outline-offset: 2px;
     }
+}
+
+.category-title {
+    font-size: var(--font-size-responsive-xl);
+    font-weight: 600;
+}
+
+.category-description {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -1,11 +1,11 @@
 <template>
     <div class="difficultySection">
-        <h2 id="difficulty-heading" class="buttonHeadline">
+        <h2 id="difficulty-heading" class="difficulty-title buttonHeadline">
             {{ $t('category.difficulty.title') }}
         </h2>
         <div class="buttonGroup" role="group" aria-label="Schwierigkeitsgrade">
             <NuxtLink v-for="difficulty in ['easy', 'medium', 'hard']" :key="difficulty"
-                :to="getDifficultyPath(difficulty)" class="button"
+                :to="getDifficultyPath(difficulty)" class="difficulty-button button"
                 :aria-label="$t(`category.difficulty.${difficulty}.label`)">
                 <Icon name="mdi:play-outline" size="36" /> {{ $t(`category.difficulty.${difficulty}`) }}
             </NuxtLink>
@@ -35,9 +35,11 @@ const getDifficultyPath = (difficulty: string) => {
     margin-bottom:  var(--padding-large)
 }
 
-.buttonHeadline {
-    @include heading-style;
+.difficulty-title {
+    font-size: var(--font-size-responsive-xl);
+    font-weight: 700;
     text-align: center;
+    margin-bottom: var(--padding-large);
 }
 
 .buttonGroup {
@@ -45,12 +47,14 @@ const getDifficultyPath = (difficulty: string) => {
     flex-wrap: wrap;
     gap: var(--padding-small);
 
-    .button {
+    .difficulty-button {
         @include button-primary;
         min-height: var(--min-touch-target);
         flex: 1;
         max-width: 200px;
         text-decoration: none;
+        font-size: var(--font-size-responsive-md);
+        font-weight: 600;
     }
 }
 </style>

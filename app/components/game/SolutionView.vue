@@ -272,11 +272,11 @@ const togglePlay = async () => {
 
             .result-icon {
                 color: var(--success-color);
-                font-size: 1.5rem;
+                font-size: var(--font-size-responsive-xl);
                 transition: color 0.3s ease;
 
                 @media (min-width: 375px) {
-                    font-size: 2rem;
+                    font-size: var(--font-size-responsive-xl);
                 }
 
                 &.wrong {
@@ -286,8 +286,8 @@ const togglePlay = async () => {
 
             h2 {
                 margin: 0;
-                font-size: clamp(1.25rem, 3vw, 2.25rem);
-                font-weight: 600;
+                font-size: var(--font-size-responsive-xl);
+                font-weight: 700;
                 line-height: 1.4;
                 color: var(--text-color);
                 text-align: center;
@@ -300,7 +300,7 @@ const togglePlay = async () => {
 
         .points,
         .points-breakdown {
-            font-size: clamp(1rem, 2vw, 1.5rem);
+            font-size: var(--font-size-responsive-md);
             margin-bottom: var(--padding-small);
             line-height: 1.6;
             color: var(--text-color);
@@ -334,28 +334,28 @@ const togglePlay = async () => {
 
             .label {
                 display: block;
-                font-size: 1.1rem;
+                font-size: var(--font-size-base);
                 font-weight: 600;
                 color: var(--text-color);
                 margin-bottom: var(--padding-small);
 
                 @media (min-width: 375px) {
-                    font-size: 1.25rem;
+                    font-size: var(--font-size-base);
                 }
             }
 
             .text {
-                font-size: 1.1rem;
+                font-size: var(--font-size-base);
                 line-height: 1.6;
                 color: var(--text-color);
                 font-weight: 500;
 
                 @media (min-width: 375px) {
-                    font-size: 1.25rem;
+                    font-size: var(--font-size-base);
                 }
 
                 @media (min-width: 640px) {
-                    font-size: 1.5rem;
+                    font-size: var(--font-size-base);
                 }
             }
         }
@@ -499,7 +499,7 @@ const togglePlay = async () => {
 
                 .info {
                     .artist {
-                        font-size: clamp(1.1rem, 2.5vw, 1.75rem);
+                        font-size: var(--font-size-responsive-md);
                         font-weight: 600;
                         color: var(--text-color);
                         margin: 0 0 var(--padding-small);
@@ -507,19 +507,19 @@ const togglePlay = async () => {
                     }
 
                     .album {
-                        font-size: clamp(1rem, 2vw, 1.5rem);
+                        font-size: var(--font-size-base);
                         color: var(--text-color);
                         margin: 0 0 var(--padding-small);
                         line-height: 1.4;
                     }
 
                     .year {
-                        font-size: 1rem;
+                        font-size: var(--font-size-base);
                         color: var(--text-secondary);
                         margin: 0 0 var(--padding-small);
 
                         @media (min-width: 375px) {
-                            font-size: 1.1rem;
+                            font-size: var(--font-size-base);
                             margin: 0 0 var(--padding-medium);
                         }
                     }
@@ -532,7 +532,7 @@ const togglePlay = async () => {
                         }
 
                         .music-links-title {
-                            font-size: 1.1rem;
+                            font-size: var(--font-size-base);
                             font-weight: 500;
                             color: var(--text-color);
                             margin: 0 0 var(--padding-small);
@@ -542,7 +542,7 @@ const togglePlay = async () => {
                             justify-content: center;
 
                             @media (min-width: 375px) {
-                                font-size: 1.25rem;
+                                font-size: var(--font-size-base);
                             }
 
                             @media (min-width: 768px) {
@@ -616,7 +616,7 @@ const togglePlay = async () => {
         }
 
         h3 {
-            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            font-size: var(--font-size-responsive-md);
             font-weight: 600;
             color: var(--text-color);
             margin: 0 0 var(--padding-small);
@@ -628,16 +628,16 @@ const togglePlay = async () => {
         }
 
         .trivia-content {
-            font-size: 1rem;
+            font-size: var(--font-size-base);
             line-height: 1.6;
             color: var(--text-color);
 
             @media (min-width: 375px) {
-                font-size: 1.1rem;
+                font-size: var(--font-size-base);
             }
 
             @media (min-width: 640px) {
-                font-size: 1.25rem;
+                font-size: var(--font-size-base);
             }
         }
     }
@@ -645,21 +645,22 @@ const togglePlay = async () => {
 
 .next-button {
     @include button-primary;
-    width: 100%;
-    min-height: 64px;
+    width: fit-content;
+    min-height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: var(--padding-small);
     margin-top: var(--padding-small);
     padding: var(--padding-small);
-    font-size: clamp(1.1rem, 2.5vw, 1.75rem);
+    font-size: var(--font-size-base);
     font-weight: 500;
     border: 2px solid transparent;
     transition: all 0.3s ease;
+    margin: 0 auto;
 
     @media (min-width: 375px) {
-        min-height: 80px;
+        min-height: 48px;
         gap: var(--padding-medium);
         margin-top: var(--padding-medium);
         padding: var(--padding-medium);

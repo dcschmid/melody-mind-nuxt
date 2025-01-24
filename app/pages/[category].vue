@@ -8,7 +8,7 @@
                     v-if="currentCategory">
                     <CategoryCover :image-url="currentCategory.imageUrl" :headline="currentCategory.headline" />
 
-                    <p class="text">{{ currentCategory.text }}</p>
+                    <p class="category-text">{{ currentCategory.text }}</p>
 
                     <div v-if="currentCategory.knowledgeUrl" class="knowledge-section">
                         <p class="knowledge-intro">{{ t('category.knowledge.description', { genre: currentCategory.headline }) }}</p>
@@ -162,9 +162,9 @@ onMounted(() => {
     transition: all var(--transition-speed);
 }
 
-.text {
-    font-size: clamp(1.125rem, 2vw, var(--body-font-size));
-    line-height: var(--line-height-body);
+.category-text {
+    font-size: var(--font-size-responsive-md);
+    line-height: 1.6;
     margin: 0 auto;
     text-align: center;
     color: var(--text-secondary);
@@ -181,8 +181,8 @@ onMounted(() => {
     display: flex;
     align-items: center;
     gap: var(--padding-small);
-    font-size: var(--heading-font-size);
-    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-responsive-xl);
+    font-weight: 600;
     margin-bottom: var(--padding-medium);
     color: var(--text-primary);
 }
@@ -198,7 +198,7 @@ onMounted(() => {
     margin-bottom: var(--padding-medium);
     max-width: 600px;
     line-height: 1.5;
-    font-size: var(--text-sm);
+    font-size: var(--font-size-base);
 }
 
 .music-links-container {
@@ -303,7 +303,7 @@ onMounted(() => {
 }
 
 @media (width <=767px) {
-    .text {
+    .category-text {
         font-size: clamp(1.125rem, 4vw, 1.25rem);
     }
 }
