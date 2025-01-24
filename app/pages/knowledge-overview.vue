@@ -19,7 +19,7 @@
                         :headline="item.title"
                         :image-url="item.image"
                         :category-url="localePath(`/knowledge/${item._file.split('/')[1]}/${item._file.split('/').pop().replace('.md', '')}`)"
-                        :description="item.description"
+                        :intro-subline="item.description"
                         :is-playable="true"
                         class="category-card"
                         role="listitem"
@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, unref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useRequestURL } from '#imports'
 import { useAsyncData, queryContent } from '#imports'
@@ -44,35 +44,19 @@ const localePath = useLocalePath()
 const url = useRequestURL()
 
 // SEO Meta Tags
-useSeoMeta({
-    title: computed(() => t('knowledge.meta.title')),
-    description: computed(() => t('knowledge.meta.description')),
-    ogTitle: computed(() => t('knowledge.meta.title')),
-    ogDescription: computed(() => t('knowledge.meta.description')),
-    ogType: 'website',
-    robots: 'index, follow'
-})
+const metaTitle = computed(() => t('knowledge.meta.title'))
+const metaDescription = computed(() => t('knowledge.meta.description'))
 
-// JSON-LD
-useJsonld({
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: computed(() => t('knowledge.meta.title')),
-    description: computed(() => t('knowledge.meta.description')),
-    url: url.href,
-    mainEntity: {
-        '@type': 'ItemList',
-        itemListElement: computed(() => knowledgeItems.value?.map((item, index) => ({
-            '@type': 'ListItem',
-            position: index + 1,
-            item: {
-                '@type': 'Article',
-                name: item.title,
-                description: item.description,
-                url: localePath(`/knowledge/${item._file.split('/')[1]}/${item._file.split('/').pop().replace('.md', '')}`)
-            }
-        })) || [])
-    }
+useSeoMeta({
+    title: metaTitle,
+    description: metaDescription,
+    ogTitle: metaTitle,
+    ogDescription: metaDescription,
+    ogType: 'website',
+    robots: 'index, follow',
+    viewport: 'width=device-width, initial-scale=1',
+    twitterCard: 'summary_large_image',
+    ogUrl: url.href
 })
 
 // Fetch knowledge articles using Nuxt Content
@@ -90,17 +74,29 @@ const filteredKnowledgeItems = computed(() => {
     )
 })
 
-useSeoMeta({
-    title: computed(() => t('knowledge.title')),
-    ogTitle: computed(() => t('knowledge.title')),
-    description: computed(() => t('knowledge.description')),
-    ogDescription: computed(() => t('knowledge.description')),
-    ogType: 'website',
-    robots: 'index, follow',
-    viewport: 'width=device-width, initial-scale=1',
-    twitterCard: 'summary_large_image',
-    ogUrl: computed(() => url.href)
-})
+// JSON-LD
+const jsonLdData = computed(() => ({
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: unref(metaTitle),
+    description: unref(metaDescription),
+    url: url.href,
+    mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: (knowledgeItems.value || []).map((item, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            item: {
+                '@type': 'Article',
+                name: item.title,
+                description: item.description,
+                url: localePath(`/knowledge/${item._file.split('/')[1]}/${item._file.split('/').pop().replace('.md', '')}`)
+            }
+        }))
+    }
+}))
+
+useJsonld(() => unref(jsonLdData))
 
 const navigateToKnowledge = (item) => {
     const lang = item._file.split('/')[1]
