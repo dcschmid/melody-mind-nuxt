@@ -14,9 +14,25 @@ interface Artist {
   };
 }
 
+// Fisher-Yates (Knuth) shuffle algorithm for better randomization
+const shuffleArray = (array: string[]): string[] => {
+  const result = [...array];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    if (i < result.length && j < result.length) {  // Type guard to ensure indices are valid
+      const temp = result[i];
+      if (temp !== undefined && result[j] !== undefined) {
+        result[i] = result[j];
+        result[j] = temp;
+      }
+    }
+  }
+  return result;
+};
+
 // Memoized function to shuffle options for better performance
 const memoizedShuffleOptions = memoize((options: string[]): string[] => {
-  return [...options].sort(() => Math.random() - 0.5);
+  return shuffleArray(options);
 });
 
 export const useQuestions = (category: string, difficulty: string) => {
@@ -44,7 +60,8 @@ export const useQuestions = (category: string, difficulty: string) => {
 
   // Cache system to store loaded questions and prevent unnecessary API calls
   const questionsCache = new Map<string, Question[]>();
-  const cacheKey = `${category}-${difficulty}-${locale.value}`;
+  const localeValue = (locale.value ?? 'en') as string;
+  const cacheKey = `${category}-${difficulty}-${localeValue}`;
 
   // Improved typing and null check
   const shuffleOptions = (question: Question): string[] => {
@@ -67,7 +84,7 @@ export const useQuestions = (category: string, difficulty: string) => {
 
       const response = await import(
         /* webpackChunkName: "questions-[request]" */
-        `~/json/genres/${locale.value}/${category}.json`
+        `~/json/genres/${localeValue}/${category}.json`
       );
 
       const allQuestions = response.default.reduce((acc: Question[], artist: Artist) => {
@@ -95,7 +112,7 @@ export const useQuestions = (category: string, difficulty: string) => {
    * Updates currentQuestion and shuffles its options
    */
   const selectRandomQuestion = async () => {
-    if (questions.value.length === 0) return;
+    if (!questions.value || questions.value.length === 0) return;
 
     const availableIndices = Array.from({ length: questions.value.length }, (_, i) => i).filter(
       (i) => !usedQuestions.value.includes(i)
@@ -107,13 +124,20 @@ export const useQuestions = (category: string, difficulty: string) => {
     }
 
     const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+    if (typeof randomIndex !== 'number') return;
+    
+    const question = questions.value[randomIndex];
+
+    if (!question) return;
 
     usedQuestions.value.push(randomIndex);
     currentQuestion.value = {
-      ...questions.value[randomIndex],
-      correctAnswer: questions.value[randomIndex].correctAnswer
+      ...question,
+      correctAnswer: question.correctAnswer
     };
-    currentOptions.value = shuffleOptions(currentQuestion.value);
+    if (currentQuestion.value) {
+      currentOptions.value = shuffleOptions(currentQuestion.value);
+    }
   };
 
   // Cleanup cache when component is unmounted
@@ -138,10 +162,11 @@ export const useQuestions = (category: string, difficulty: string) => {
  * @returns Memoized version of the function
  */
 function memoize<T extends (...args: any[]) => any>(fn: T) {
-  const cache = new Map();
+  const cache = new Map<string, ReturnType<T>>();
   return (...args: Parameters<T>): ReturnType<T> => {
     const key = JSON.stringify(args);
-    if (cache.has(key)) return cache.get(key);
+    const cachedResult = cache.get(key);
+    if (cachedResult !== undefined) return cachedResult;
 
     const result = fn(...args);
     cache.set(key, result);
