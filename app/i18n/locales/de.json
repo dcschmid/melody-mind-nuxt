@@ -6,114 +6,102 @@
       "fr": "Französisch",
       "it": "Italienisch"
   },
+  "common": {
+    "openLanguageMenu": "Sprachmenü öffnen",
+    "closeLanguageMenu": "Sprachmenü schließen",
+    "selectLanguage": "Sprache auswählen",
+    "selectLanguageLabel": "Wählen Sie Ihre bevorzugte Sprache",
+    "languageChanged": "Sprache wurde zu {language} geändert",
+    "loading": "Laden..."
+  },
   "meta": {
-      "homeTitle": "Melody Mind - Das ultimative Musik-Quizspiel",
-      "homeDescription": "Teste dein Musikwissen in unserem interaktiven Quizspiel. Beantworte Fragen zu Songs, Künstlern und Musikgeschichte aus verschiedenen Genres wie Rock, Pop, Hip-Hop und Klassik.",
-      "homeKeywords": "Musik-Quiz, Musikwissen, Online-Quiz, Musikgeschichte, Künstler-Quiz, Album-Quiz, Musikgenres, Interaktives Spiel"
+    "title": "Melody Mind - Das ultimative Musik-Quizspiel",
+    "description": "Teste dein Musikwissen in unserem interaktiven Quizspiel. Beantworte Fragen zu Songs, Künstlern und Musikgeschichte aus verschiedenen Genres wie Rock, Pop, Hip-Hop und Klassik.",
+    "keywords": "Musik-Quiz, Musikwissen, Online-Quiz, Musikgeschichte, Künstler-Quiz, Album-Quiz, Musikgenres, Interaktives Spiel"
   },
   "seo": {
-      "category": {
-          "defaultTitle": "Musik-Quiz Kategorien - Melody Mind",
-          "defaultDescription": "Entdecke verschiedene Musikquiz-Kategorien bei Melody Mind. Teste dein Wissen über verschiedene Genres und Epochen der Musikgeschichte."
-      },
-      "gameRules": {
-          "title": "Spielregeln - Melody Mind",
-          "description": "Erfahre mehr über die Spielregeln von Melody Mind. In unserem Musikquiz erfährst du alles über die Spielmodi, das Punktesystem und die Bonusfunktionen."
-      },
-      "highscores": {
-          "title": "Bestenliste - Melody Mind",
-          "description": "Sieh dir die Highscores der besten Spieler/innen in allen Kategorien an. Vergleiche deine Leistung mit anderen Musikbegeisterten."
-      },
-      "game": {
-          "title": "{Kategorie} Quiz - {Schwierigkeitsgrad} Modus",
-          "description": "Spiele das {Kategorie} Musikquiz im {Schwierigkeitsgrad} Modus! Teste dein Musikwissen und kämpfe um hohe Punktzahlen."
-      },
-      "privacy": {
-          "title": "Datenschutzrichtlinie - Melody Mind",
-          "description": "Erfahre mehr über unsere Datenschutzrichtlinien. Finde heraus, wie wir deine Daten bei Melody Mind schützen und nutzen."
-      },
-      "imprint": {
-          "title": "Impressum - Melody Mind",
-          "description": "Rechtliche Informationen und Kontaktinformationen für Melody Mind."
-      },
-      "legal": {
-          "title": "Rechtliche Hinweise - Melody Mind",
-          "description": "Erfahre mehr über unsere rechtlichen Hinweise und die Nutzungsbedingungen von Melody Mind."
-      }
+    "category": {
+      "title": "Musik-Quiz Kategorien - Melody Mind",
+      "description": "Entdecke verschiedene Musikquiz-Kategorien bei Melody Mind. Teste dein Wissen über verschiedene Genres und Epochen der Musikgeschichte."
+    },
+    "gameRules": {
+      "title": "Spielregeln - Melody Mind",
+      "description": "Erfahre mehr über die Spielregeln von Melody Mind. In unserem Musikquiz erfährst du alles über die Spielmodi, das Punktesystem und die Bonusfunktionen."
+    },
+    "highscores": {
+      "title": "Bestenliste - Melody Mind",
+      "description": "Sieh dir die Highscores der besten Spieler/innen in allen Kategorien an. Vergleiche deine Leistung mit anderen Musikbegeisterten."
+    },
+    "privacy": {
+      "title": "Datenschutzrichtlinie - Melody Mind",
+      "description": "Erfahre mehr über unsere Datenschutzrichtlinien. Finde heraus, wie wir deine Daten bei Melody Mind schützen und nutzen."
+    },
+    "imprint": {
+      "title": "Impressum - Melody Mind",
+      "description": "Rechtliche Informationen und Kontaktinformationen für Melody Mind."
+    }
   },
   "welcome": {
-      "title": "Willkommen bei Melody Mind",
-      "start": "Spiel starten",
-      "about": {
-          "title": "Über Melody Mind",
-          "description": "Teste dein Musikwissen in verschiedenen Kategorien"
-      },
-      "seo": {
-          "description": "Teste dein Musikwissen in verschiedenen Kategorien. Ein spannendes Quizspiel für Musikliebhaber aller Genres."
-      }
+    "title": "Willkommen bei Melody Mind",
+    "start": "Spiel starten",
+    "about": {
+      "title": "Über Melody Mind",
+      "description": "Teste dein Musikwissen in verschiedenen Kategorien. Ein spannendes Quizspiel für Musikliebhaber aller Genres."
+    }
   },
   "intro": "Tauche ein in die faszinierende Welt der Musik! Bei Melody Mind kannst du dein Musikwissen in spannenden Quizrunden auf die Probe stellen. Beantworte Fragen zu Songs aus verschiedenen Jahrzehnten, Künstlern, Alben und der Musikgeschichte. Sammle Punkte, verdiene goldene Schallplatten und fordere andere Musikbegeisterte heraus. Von Rock über Pop bis hin zu Hip-Hop und Klassik - teste dein Wissen in deinen Lieblingsgenres. Beginne jetzt dein musikalisches Quiz-Abenteuer!",
+  "auth": {
+    "email": {
+      "label": "E-Mail",
+      "placeholder": "Deine E-Mail Adresse"
+    },
+    "username": {
+      "label": "Benutzername",
+      "placeholder": "Dein Benutzername",
+      "lengthHint": "Mindestens 3 Zeichen"
+    },
+    "password": {
+      "label": "Passwort",
+      "placeholder": "Dein Passwort"
+    },
+    "name": {
+      "label": "Name",
+      "placeholder": "Dein vollständiger Name"
+    }
+  },
   "login": {
-      "title": "Anmeldung",
-      "methodLabel": "Anmeldemethode",
-      "emailOption": "E-Mail",
-      "usernameOption": "Benutzername",
-      "emailLabel": "E-Mail",
-      "emailPlaceholder": "Deine E-Mail Adresse",
-      "usernameLabel": "Benutzername",
-      "usernamePlaceholder": "Dein Nutzername",
-      "passwordLabel": "Passwort",
-      "passwordPlaceholder": "Dein Passwort",
-      "submitButton": "Anmelden",
-      "noAccount": "Du hast noch kein Konto?",
-      "forgotPassword": "Passwort vergessen?",
-      "orContinueWith": "Oder weiter mit",
-      "continueWithDiscord": "Weiter mit Discord",
-      "continueWithGithub": "Weiter mit GitHub",
-      "error": {
-          "invalidEmail": "Ungültige E-Mail Adresse",
-          "invalidPassword": "Ungültiges Passwort",
-          "required": "Dieses Feld ist erforderlich",
-          "loginFailed": "Anmeldung fehlgeschlagen",
-          "discordLoginFailed": "Anmeldung bei Discord fehlgeschlagen",
-          "githubLoginFailed": "Anmeldung bei GitHub fehlgeschlagen"
-      }
+    "title": "Anmeldung",
+    "methodLabel": "Anmeldemethode",
+    "submitButton": "Anmelden",
+    "noAccount": "Du hast noch kein Konto?",
+    "forgotPassword": "Passwort vergessen?",
+    "orContinueWith": "Oder weiter mit",
+    "continueWithDiscord": "Weiter mit Discord",
+    "continueWithGithub": "Weiter mit GitHub",
+    "error": {
+      "invalidEmail": "Ungültige E-Mail Adresse",
+      "invalidPassword": "Ungültiges Passwort",
+      "required": "Dieses Feld ist erforderlich",
+      "loginFailed": "Anmeldung fehlgeschlagen",
+      "discordLoginFailed": "Anmeldung bei Discord fehlgeschlagen",
+      "githubLoginFailed": "Anmeldung bei GitHub fehlgeschlagen"
+    }
   },
   "register": {
-      "title": "Registrierung",
-      "nameLabel": "Name",
-      "namePlaceholder": "Dein vollständiger Name",
-      "usernameLabel": "Benutzername",
-      "usernamePlaceholder": "Wähle einen Benutzernamen",
-      "usernameLengthHint": "Mindestens 3 Zeichen",
-      "emailLabel": "E-Mail",
-      "emailPlaceholder": "Deine E-Mail Adresse",
-      "passwordLabel": "Passwort",
-      "passwordPlaceholder": "Wähle ein sicheres Passwort",
-      "submitButton": "Registrieren",
-      "hasAccount": "Du hast bereits ein Konto?",
-      "successMessage": "Anmeldung erfolgreich! Bitte prüfe deine E-Mails.",
-      "error": {
-          "invalidEmail": "Ungültige E-Mail Adresse",
-          "invalidPassword": "Das Passwort muss mindestens 6 Zeichen lang sein",
-          "nameRequired": "Name ist erforderlich",
-          "nameTooShort": "Der Name muss mindestens 2 Zeichen lang sein",
-          "usernameRequired": "Benutzername ist erforderlich",
-          "usernameTooShort": "Der Benutzername muss mindestens 3 Zeichen lang sein",
-          "passwordTooShort": "Das Passwort muss mindestens 8 Zeichen lang sein",
-          "registrationFailed": "Registrierung fehlgeschlagen"
-      }
-  },
-  "forgotPassword": {
-      "title": "Passwort zurücksetzen",
-      "emailLabel": "E-Mail",
-      "emailPlaceholder": "Deine E-Mail Adresse",
-      "submitButton": "Zurücksetzen",
-      "backToLogin": "Zurück zur Anmeldung",
-      "successMessage": "Die Anweisungen zum Zurücksetzen des Passworts wurden an deine E-Mail geschickt.",
-      "error": {
-          "passwordResetFailed": "Passwort zurücksetzen fehlgeschlagen"
-      }
+    "title": "Registrierung",
+    "submitButton": "Registrieren",
+    "hasAccount": "Du hast bereits ein Konto?",
+    "successMessage": "Anmeldung erfolgreich! Bitte prüfe deine E-Mails.",
+    "error": {
+      "invalidEmail": "Ungültige E-Mail Adresse",
+      "invalidPassword": "Das Passwort muss mindestens 6 Zeichen lang sein",
+      "nameRequired": "Name ist erforderlich",
+      "nameTooShort": "Der Name muss mindestens 2 Zeichen lang sein",
+      "usernameRequired": "Benutzername ist erforderlich",
+      "usernameTooShort": "Der Benutzername muss mindestens 3 Zeichen lang sein",
+      "passwordTooShort": "Das Passwort muss mindestens 8 Zeichen lang sein",
+      "registrationFailed": "Registrierung fehlgeschlagen"
+    }
   },
   "gameHome": {
     "meta": {
@@ -129,39 +117,39 @@
     "comingSoonLabel": "Demnächst"
   },
   "category": {
-      "selected": "ausgewählt!",
-      "aria": {
-          "categoryRegion": "Kategorie-Informationen",
-          "description": "Kategoriebeschreibung",
-          "extendedDescription": "Weitere Informationen zur Kategorie"
-      },
-      "difficulty": {
-          "title": "Schwierigkeitsgrad wählen",
-          "easy": "Einfach",
-          "medium": "Mittel",
-          "hard": "Schwer",
-          "description": {
-              "easy": "Perfekt für Anfänger",
-              "medium": "Für erfahrene Musikliebhaber",
-              "hard": "Für echte Musikexperten"
-          }
-      },
-      "playlist": {
-          "title": "Wiedergabelisten",
-          "description": "Tauche ein in die Welt von {genre}! Wir haben die besten Songs für dich kuratiert. Hör dir die Playlist auf deiner bevorzugten Streaming-Plattform an und mach dich bereit für das Spiel.",
-          "spotify": "Auf Spotify hören",
-          "deezer": "Auf Deezer hören",
-          "appleMusic": "Auf Apple Music anhören"
-      },
-      "knowledge": {
-          "title": "Wissen",
-          "link": "Erfahre mehr über {genre}",
-          "description": "Möchtest du mehr über die Geschichte und Entwicklung von {genre} erfahren? Hier findest du spannende Hintergrundinformationen und interessante Fakten."
-      },
-      "noImage": "Kein Bild verfügbar",
-      "image": {
-          "altText": "Kategorie-Cover für {category}"
+    "selected": "ausgewählt!",
+    "aria": {
+      "categoryRegion": "Kategorie-Informationen",
+      "description": "Kategoriebeschreibung",
+      "extendedDescription": "Weitere Informationen zur Kategorie"
+    },
+    "difficulty": {
+      "title": "Schwierigkeitsgrad wählen",
+      "easy": "Einfach",
+      "medium": "Mittel",
+      "hard": "Schwer",
+      "description": {
+        "easy": "Perfekt für Anfänger",
+        "medium": "Für erfahrene Musikliebhaber",
+        "hard": "Für echte Musikexperten"
       }
+    },
+    "playlist": {
+      "title": "Wiedergabelisten",
+      "description": "Tauche ein in die Welt von {genre}! Wir haben die besten Songs für dich kuratiert. Hör dir die Playlist auf deiner bevorzugten Streaming-Plattform an und mach dich bereit für das Spiel.",
+      "spotify": "Auf Spotify hören",
+      "deezer": "Auf Deezer hören",
+      "appleMusic": "Auf Apple Music anhören"
+    },
+    "knowledge": {
+      "title": "Wissen",
+      "link": "Erfahre mehr über {genre}",
+      "description": "Möchtest du mehr über die Geschichte und Entwicklung von {genre} erfahren? Hier findest du spannende Hintergrundinformationen und interessante Fakten."
+    },
+    "noImage": "Kein Bild verfügbar",
+    "image": {
+      "altText": "Kategorie-Cover für {category}"
+    }
   },
   "game": {
     "meta": {
@@ -182,95 +170,95 @@
     "selectAnswer": "Wähle Antwort: {answer}",
     "confidence": "Sicherheit",
     "expert": {
-        "title": "Experten-Meinung",
-        "confidence": "Experten-Sicherheit: {value}%"
+      "title": "Experten-Meinung",
+      "confidence": "Experten-Sicherheit: {value}%"
     },
     "jokers": {
-        "title": "Verfügbare Joker",
-        "remainingCount": "{count} Joker verfügbar",
-        "fiftyFifty": {
-            "title": "50:50",
-            "ariaLabel": "50:50 Joker verwenden - Entfernt zwei falsche Antworten"
-        },
-        "audience": {
-            "title": "Publikum",
-            "ariaLabel": "Publikumsjoker verwenden - Zeigt die Abstimmung des Publikums",
-            "result": "Publikumsergebnis für {option}: {percentage}%"
-        },
-        "phone": {
-            "title": "Telefon",
-            "ariaLabel": "Telefonjoker verwenden - Ruft einen Experten an"
-        }
+      "title": "Verfügbare Joker",
+      "remainingCount": "{count} Joker verfügbar",
+      "fiftyFifty": {
+        "title": "50:50",
+        "ariaLabel": "50:50 Joker verwenden - Entfernt zwei falsche Antworten"
+      },
+      "audience": {
+        "title": "Publikum",
+        "ariaLabel": "Publikum befragen - Zeigt die Abstimmung des Publikums",
+        "result": "Publikumsergebnis für {option}: {percentage}%"
+      },
+      "phone": {
+        "title": "Telefon",
+        "ariaLabel": "Telefonjoker verwenden - Ruft einen Experten an"
+      }
     },
     "aria": {
-        "quizQuestion": "Quiz Frage",
-        "answerOptions": "Antwortmöglichkeiten",
-        "expertAdvice": "Expertenrat",
-        "audienceOpinion": "Publikumsmeinung"
+      "quizQuestion": "Quiz Frage",
+      "answerOptions": "Antwortmöglichkeiten",
+      "expertAdvice": "Expertenrat",
+      "audienceOpinion": "Publikumsmeinung"
     },
     "links": {
-        "listen_on": "Anhören"
+      "listen_on": "Anhören"
     },
     "trivia": {
-        "title": "Wissenswertes"
+      "title": "Wissenswertes"
     },
     "gameOver": {
-        "title": "Spiel vorbei",
-        "correctAnswers": "Richtige Antworten",
-        "backToMenu": "Zurück zum Menü"
+      "title": "Spiel vorbei",
+      "correctAnswers": "Richtige Antworten",
+      "backToMenu": "Zurück zum Menü"
     },
     "results": {
-        "title": "Spielergebnisse",
-        "totalScore": "Gesamtpunktzahl",
-        "correctAnswers": "Richtige Antworten",
-        "accuracy": "Trefferquote",
-        "timeTaken": "Benötigte Zeit",
-        "newHighscore": "Neuer Highscore!",
-        "share": {
-            "title": "Teile dein Ergebnis",
-            "message": {
-                "intro": "Wow! Ich habe {points} Punkte bei Melody Mind in der Kategorie {category} ({difficulty}) erreicht!",
-                "stats": "Score: {correct} von {total} richtig beantwortet!",
-                "challenge": "Fordere mich heraus auf {url}"
-            },
-            "buttons": {
-                "share": "Teilen",
-                "copy": "Text kopieren",
-                "twitter": "Auf Twitter teilen",
-                "telegram": "Auf Telegram teilen",
-                "reddit": "Auf Reddit teilen",
-                "whatsapp": "Auf WhatsApp teilen"
-            }
+      "title": "Spielergebnisse",
+      "totalScore": "Gesamtpunktzahl",
+      "correctAnswers": "Richtige Antworten",
+      "accuracy": "Trefferquote",
+      "timeTaken": "Benötigte Zeit",
+      "newHighscore": "Neuer Highscore!",
+      "share": {
+        "title": "Teile dein Ergebnis",
+        "message": {
+          "intro": "Wow! Ich habe {points} Punkte bei Melody Mind in der Kategorie {category} ({difficulty}) erreicht!",
+          "stats": "Score: {correct} von {total} richtig beantwortet!",
+          "challenge": "Fordere mich heraus auf {url}"
         },
-        "playAgain": "Nochmal spielen",
-        "backToHome": "Zurück zur Startseite"
+        "buttons": {
+          "share": "Teilen",
+          "copy": "Text kopieren",
+          "twitter": "Auf Twitter teilen",
+          "telegram": "Auf Telegram teilen",
+          "reddit": "Auf Reddit teilen",
+          "whatsapp": "Auf WhatsApp teilen"
+        }
+      },
+      "playAgain": "Nochmal spielen",
+      "backToHome": "Zurück zur Startseite"
     },
     "round": "Runde {aktuell} von {max}",
     "points_label": "Punkte",
     "points": "Punkte: {Basis} + {Zeit} Zeitbonus",
     "confidence": "Sicherheit",
     "jokers": {
-        "title": "Joker",
-        "fiftyFifty": {
-            "title": "50:50",
-            "description": "Entfernt zwei falsche Antworten",
-            "remaining": "{Anzahl} verbleibende Joker",
-            "ariaLabel": "Fifty-Fifty-Joker"
-        },
-        "audience": {
-            "title": "Publikum Hilfe",
-            "description": "Zeigt die Verteilung der Publikumsstimmen",
-            "remaining": "{Anzahl} verbleibende Joker",
-            "ariaLabel": "Publikum befragen"
-        },
-        "phone": {
-            "title": "Expertenrat",
-            "description": "Hol dir die Meinung eines Experten ein",
-            "remaining": "{Anzahl} verbleibende Joker",
-            "ariaLabel": "Expertenrat einholen"
-        },
-        "remainingCount": "{count} Joker verfügbar",
-        "remaining": "{Anzahl} verbleibende Joker"
+      "title": "Joker",
+      "fiftyFifty": {
+        "title": "50:50",
+        "description": "Entfernt zwei falsche Antworten",
+        "remaining": "{Anzahl} verbleibende Joker",
+        "ariaLabel": "Fifty-Fifty-Joker"
+      },
+      "audience": {
+        "title": "Publikum Hilfe",
+        "description": "Zeigt die Verteilung der Publikumsstimmen",
+        "remaining": "{Anzahl} verbleibende Joker",
+        "ariaLabel": "Publikum befragen"
+      },
+      "phone": {
+        "title": "Expertenrat",
+        "description": "Hol dir die Meinung eines Experten ein",
+        "remaining": "{Anzahl} verbleibende Joker",
+        "ariaLabel": "Expertenrat einholen"
+      },
+      "remainingCount": "{count} Joker verfügbar",
+      "remaining": "{Anzahl} verbleibende Joker"
     },
     "selectAnswer": "Antwort auswählen"
   },
@@ -388,149 +376,149 @@
     "backToGame": "Zurück zum Spiel"
   },
   "profile": {
-      "title": "Profil",
-      "name": "Name",
-      "username": "Benutzername",
-      "email": "E-Mail",
-      "points": "Punkte",
-      "namePlaceholder": "Dein Name",
-      "usernamePlaceholder": "Dein Nutzername",
-      "emailPlaceholder": "Deine E-Mail Adresse",
-      "lps": {
-          "title": "Plattensammlung",
-          "none": "Du hast noch keine Schallplatten gesammelt",
-          "types": {
-              "gold": "Gold",
-              "silver": "Silber",
-              "bronze": "Bronze"
-          }
-      },
-      "stats": {
-          "title": "Statistik",
-          "gamesPlayed": "Gespielte Spiele",
-          "totalScore": "Gesamtpunktzahl",
-          "averageScore": "Durchschnittliche Punktzahl",
-          "highestScore": "Höchste Punktzahl",
-          "accuracy": "Trefferquote"
-      },
-      "achievements": {
-          "title": "Errungenschaften",
-          "locked": "Noch nicht freigeschaltet",
-          "progress": "{Aktuell} von {Gesamt}"
-      },
-      "settings": {
-          "title": "Einstellungen",
-          "language": "Sprache",
-          "sound": "Sound",
-          "music": "Musik",
-          "notifications": "Benachrichtigungen",
-          "theme": "Thema",
-          "save": "Speichern",
-          "saved": "Gespeichert!"
+    "title": "Profil",
+    "name": "Name",
+    "username": "Benutzername",
+    "email": "E-Mail",
+    "points": "Punkte",
+    "namePlaceholder": "Dein Name",
+    "usernamePlaceholder": "Dein Nutzername",
+    "emailPlaceholder": "Deine E-Mail Adresse",
+    "lps": {
+      "title": "Plattensammlung",
+      "none": "Du hast noch keine Schallplatten gesammelt",
+      "types": {
+        "gold": "Gold",
+        "silver": "Silber",
+        "bronze": "Bronze"
       }
+    },
+    "stats": {
+      "title": "Statistik",
+      "gamesPlayed": "Gespielte Spiele",
+      "totalScore": "Gesamtpunktzahl",
+      "averageScore": "Durchschnittliche Punktzahl",
+      "highestScore": "Höchste Punktzahl",
+      "accuracy": "Trefferquote"
+    },
+    "achievements": {
+      "title": "Errungenschaften",
+      "locked": "Noch nicht freigeschaltet",
+      "progress": "{Aktuell} von {Gesamt}"
+    },
+    "settings": {
+      "title": "Einstellungen",
+      "language": "Sprache",
+      "sound": "Sound",
+      "music": "Musik",
+      "notifications": "Benachrichtigungen",
+      "theme": "Thema",
+      "save": "Speichern",
+      "saved": "Gespeichert!"
+    }
   },
   "navigation": {
-      "mainNavLabel": "Hauptnavigation",
-      "mainMenu": "Hauptmenü",
-      "openMenu": "Menü öffnen",
-      "home": "Startseite",
-      "knowledge": "Wissensdatenbank",
-      "rules": "Spielregeln",
-      "leaderboard": "Bestenliste",
-      "support": "Unterstütze uns",
-      "imprint": "Impressum",
-      "privacy": "Datenschutz",
-      "legal": "Rechtliches"
+    "mainNavLabel": "Hauptnavigation",
+    "mainMenu": "Hauptmenü",
+    "openMenu": "Menü öffnen",
+    "home": "Startseite",
+    "knowledge": "Wissensdatenbank",
+    "rules": "Spielregeln",
+    "leaderboard": "Bestenliste",
+    "support": "Unterstütze uns",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz",
+    "legal": "Rechtliches"
   },
   "footer": {
-      "about": "Über uns",
-      "contact": "Kontakt",
-      "privacy": "Datenschutzrichtlinie",
-      "terms": "Nutzungsbedingungen"
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "privacy": "Datenschutzrichtlinie",
+    "terms": "Nutzungsbedingungen"
   },
   "errors": {
-      "general": "Ein Fehler ist aufgetreten",
-      "network": "Netzwerkfehler",
-      "retry": "Nochmal versuchen",
-      "pageNotFound": "Seite nicht gefunden",
-      "emailRequired": "E-Mail Adresse ist erforderlich",
-      "invalidEmail": "Ungültige E-Mail Adresse",
-      "usernameRequired": "Benutzername ist erforderlich",
-      "usernameTooShort": "Der Benutzername muss mindestens 3 Zeichen lang sein",
-      "passwordRequired": "Passwort ist erforderlich",
-      "passwordTooShort": "Das Passwort muss mindestens 6 Zeichen lang sein",
-      "nameRequired": "Name ist erforderlich",
-      "nameTooShort": "Der Name muss mindestens 2 Zeichen lang sein",
-      "loginFailed": "Anmeldung fehlgeschlagen",
-      "registrationFailed": "Registrierung fehlgeschlagen",
-      "passwordResetFailed": "Passwort zurücksetzen fehlgeschlagen"
+    "general": "Ein Fehler ist aufgetreten",
+    "network": "Netzwerkfehler",
+    "retry": "Nochmal versuchen",
+    "pageNotFound": "Seite nicht gefunden",
+    "emailRequired": "E-Mail Adresse ist erforderlich",
+    "invalidEmail": "Ungültige E-Mail Adresse",
+    "usernameRequired": "Benutzername ist erforderlich",
+    "usernameTooShort": "Der Benutzername muss mindestens 3 Zeichen lang sein",
+    "passwordRequired": "Passwort ist erforderlich",
+    "passwordTooShort": "Das Passwort muss mindestens 6 Zeichen lang sein",
+    "nameRequired": "Name ist erforderlich",
+    "nameTooShort": "Der Name muss mindestens 2 Zeichen lang sein",
+    "loginFailed": "Anmeldung fehlgeschlagen",
+    "registrationFailed": "Registrierung fehlgeschlagen",
+    "passwordResetFailed": "Passwort zurücksetzen fehlgeschlagen"
   },
   "accessibility": {
-      "skipToMain": "Zum Hauptinhalt springen",
-      "closeMenu": "Menü schließen",
-      "openMenu": "Menü öffnen",
-      "darkMode": "Zwischen Hell- und Dunkelmodus wechseln",
-      "playButton": "Spielen",
-      "pauseButton": "Pause",
-      "nextButton": "Weiter",
-      "previousButton": "Zurück",
-      "closeButton": "Schließen"
+    "skipToMain": "Zum Hauptinhalt springen",
+    "closeMenu": "Menü schließen",
+    "openMenu": "Menü öffnen",
+    "darkMode": "Zwischen Hell- und Dunkelmodus wechseln",
+    "playButton": "Spielen",
+    "pauseButton": "Pause",
+    "nextButton": "Weiter",
+    "previousButton": "Zurück",
+    "closeButton": "Schließen"
   },
   "cookies": {
-      "title": "Cookie-Einstellungen",
-      "message": "Diese Website verwendet Cookies, um dein Erlebnis zu verbessern",
-      "accept": "Alle akzeptieren",
-      "decline": "Ablehnen",
-      "customize": "Anpassen",
-      "preferences": {
-          "necessary": {
-              "title": "Erforderliche Cookies",
-              "description": "Diese Cookies sind für grundlegende Funktionen der Website erforderlich",
-              "required": "Erforderlich"
-          },
-          "analytics": {
-              "title": "Analyse-Cookies",
-              "description": "Helfen uns zu verstehen, wie Besucher mit der Website interagieren"
-          },
-          "marketing": {
-              "title": "Marketing Cookies",
-              "description": "Wird verwendet, um Besuchern relevante Werbung zu zeigen"
-          }
+    "title": "Cookie-Einstellungen",
+    "message": "Diese Website verwendet Cookies, um dein Erlebnis zu verbessern",
+    "accept": "Alle akzeptieren",
+    "decline": "Ablehnen",
+    "customize": "Anpassen",
+    "preferences": {
+      "necessary": {
+        "title": "Erforderliche Cookies",
+        "description": "Diese Cookies sind für grundlegende Funktionen der Website erforderlich",
+        "required": "Erforderlich"
       },
-      "save": "Einstellungen speichern",
-      "moreInfo": "Mehr Informationen",
-      "cookiePolicy": "Cookie-Richtlinie"
+      "analytics": {
+        "title": "Analyse-Cookies",
+        "description": "Helfen uns zu verstehen, wie Besucher mit der Website interagieren"
+      },
+      "marketing": {
+        "title": "Marketing Cookies",
+        "description": "Wird verwendet, um Besuchern relevante Werbung zu zeigen"
+      }
+    },
+    "save": "Einstellungen speichern",
+    "moreInfo": "Mehr Informationen",
+    "cookiePolicy": "Cookie-Richtlinie"
   },
   "gdpr": {
-      "title": "Datenschutz-Einstellungen",
-      "description": "Wir respektieren deine Privatsphäre",
-      "settings": {
-          "title": "Deine Privatsphäre-Einstellungen",
-          "data": {
-              "collection": "Datenerhebung",
-              "usage": "Datenverwendung",
-              "sharing": "Datenaustausch"
-          },
-          "consent": {
-              "title": "Dein Einverständnis",
-              "withdraw": "Du kannst deine Zustimmung jederzeit widerrufen",
-              "manage": "Einstellungen verwalten"
-          },
-          "deletion": {
-              "title": "Datenlöschung",
-              "request": "Datenlöschung beantragen",
-              "info": "Wir werden deine Daten innerhalb von 30 Tagen löschen",
-              "confirmation": "Bestätigung der Löschung",
-              "local": "Lokale Daten in deinem Browser können über deine Browsereinstellungen gelöscht werden."
-          }
+    "title": "Datenschutz-Einstellungen",
+    "description": "Wir respektieren deine Privatsphäre",
+    "settings": {
+      "title": "Deine Privatsphäre-Einstellungen",
+      "data": {
+        "collection": "Datenerhebung",
+        "usage": "Datenverwendung",
+        "sharing": "Datenaustausch"
+      },
+      "consent": {
+        "title": "Dein Einverständnis",
+        "withdraw": "Du kannst deine Zustimmung jederzeit widerrufen",
+        "manage": "Einstellungen verwalten"
+      },
+      "deletion": {
+        "title": "Datenlöschung",
+        "request": "Datenlöschung beantragen",
+        "info": "Wir werden deine Daten innerhalb von 30 Tagen löschen",
+        "confirmation": "Bestätigung der Löschung",
+        "local": "Lokale Daten in deinem Browser können über deine Browsereinstellungen gelöscht werden."
       }
+    }
   },
   "highscore": {
-      "title": "Highscores",
-      "total": "Gesamtpunktzahl",
-      "avatar": "Avatar",
-      "name": "Name",
-      "points": "Punkte"
+    "title": "Highscores",
+    "total": "Gesamtpunktzahl",
+    "avatar": "Avatar",
+    "name": "Name",
+    "points": "Punkte"
   },
   "legal": {
     "privacy": {
@@ -660,27 +648,24 @@
     }
   },
   "username": {
-      "title": "Wie ist dein Name?",
-      "label": "Benutzername",
-      "placeholder": "Gib deinen Namen ein",
-      "submit": "Speichern",
-      "statusLabel": "Benutzername-Eingabe",
-      "current": "Aktueller Benutzername",
-      "success": "Benutzername {username} wurde gespeichert",
-      "errors": {
-          "required": "Bitte gib einen Benutzernamen ein",
-          "tooShort": "Der Benutzername muss mindestens 2 Zeichen lang sein",
-          "tooLong": "Der Benutzername darf maximal 20 Zeichen lang sein",
-          "invalidChars": "Der Benutzername darf nur Buchstaben, Zahlen, Unterstriche und Bindestriche enthalten",
-          "saveFailed": "Benutzername konnte nicht gespeichert werden"
-      }
+    "title": "Wie ist dein Name?",
+    "label": "Benutzername",
+    "placeholder": "Gib deinen Namen ein",
+    "submit": "Speichern",
+    "statusLabel": "Benutzername-Eingabe",
+    "current": "Aktueller Benutzername",
+    "success": "Benutzername {username} wurde gespeichert",
+    "errors": {
+      "required": "Bitte gib einen Benutzernamen ein",
+      "tooShort": "Der Benutzername muss mindestens 2 Zeichen lang sein",
+      "tooLong": "Der Benutzername darf maximal 20 Zeichen lang sein",
+      "invalidChars": "Der Benutzername darf nur Buchstaben, Zahlen, Unterstriche und Bindestriche enthalten",
+      "saveFailed": "Benutzername konnte nicht gespeichert werden"
+    }
   },
   "difficulty": {
-      "easy": "Einfach",
-      "medium": "Mittel",
-      "hard": "Schwer"
-  },
-  "common": {
-      "loading": "Laden..."
+    "easy": "Einfach",
+    "medium": "Mittel",
+    "hard": "Schwer"
   }
 }

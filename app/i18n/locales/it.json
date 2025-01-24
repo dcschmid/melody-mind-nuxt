@@ -6,37 +6,72 @@
     "fr": "Francese",
     "it": "Italiano"
   },
+  "common": {
+    "openLanguageMenu": "Apri menu lingua",
+    "closeLanguageMenu": "Chiudi menu lingua",
+    "selectLanguage": "Seleziona lingua",
+    "selectLanguageLabel": "Seleziona la tua lingua preferita",
+    "languageChanged": "Lingua cambiata in {language}",
+    "loading": "Caricamento..."
+  },
   "meta": {
-    "homeTitle": "Melody Mind - L'Ultimo Quiz Musicale",
-    "homeDescription": "Metti alla prova le tue conoscenze musicali nel nostro quiz interattivo. Rispondi a domande su canzoni, artisti e storia della musica di vari generi come rock, pop, hip-hop e classica.",
-    "homeKeywords": "Quiz Musicale, Conoscenze Musicali, Quiz Online, Storia della Musica, Quiz Artisti, Quiz Album, Generi Musicali, Gioco Interattivo",
     "title": "Melody Mind - Il Quiz Musicale Definitivo",
-    "description": "Metti alla prova le tue conoscenze musicali nel nostro gioco interattivo. Rispondi a domande su canzoni, artisti e storia della musica.",
+    "description": "Metti alla prova le tue conoscenze musicali nel nostro quiz interattivo. Rispondi a domande su canzoni, artisti e storia della musica di vari generi come rock, pop, hip-hop e classica.",
     "keywords": "Quiz Musicale, Conoscenze Musicali, Quiz Online, Storia della Musica, Quiz Artisti, Quiz Album, Generi Musicali, Gioco Interattivo"
+  },
+  "seo": {
+    "category": {
+      "title": "Categorie Quiz Musicale - Melody Mind",
+      "description": "Scopri varie categorie di quiz musicali su Melody Mind. Metti alla prova le tue conoscenze in diversi generi ed epoche della storia della musica."
+    },
+    "gameRules": {
+      "title": "Regole del Gioco - Melody Mind",
+      "description": "Scopri le regole del gioco di Melody Mind. Impara tutto sulle modalità di gioco, il sistema di punteggio e le funzionalità bonus nel nostro quiz musicale."
+    },
+    "highscores": {
+      "title": "Classifica - Melody Mind",
+      "description": "Visualizza i punteggi più alti dei migliori giocatori in tutte le categorie. Confronta le tue prestazioni con altri appassionati di musica."
+    },
+    "privacy": {
+      "title": "Informativa sulla Privacy - Melody Mind",
+      "description": "Scopri le nostre politiche sulla privacy. Impara come proteggiamo e utilizziamo i tuoi dati su Melody Mind."
+    },
+    "imprint": {
+      "title": "Note Legali - Melody Mind",
+      "description": "Informazioni legali e dettagli di contatto di Melody Mind."
+    }
   },
   "welcome": {
     "title": "Benvenuto su Melody Mind",
-    "start": "Inizia il gioco",
+    "start": "Inizia il Gioco",
     "about": {
       "title": "Informazioni su Melody Mind",
-      "description": "Metti alla prova le tue conoscenze musicali in diverse categorie"
-    },
-    "seo": {
-      "description": "Metti alla prova le tue conoscenze musicali in diverse categorie. Un emozionante gioco a quiz per gli amanti della musica di tutti i generi."
+      "description": "Metti alla prova le tue conoscenze musicali in varie categorie. Un emozionante quiz per gli amanti della musica di tutti i generi."
     }
   },
-  "intro": "Immergiti nell'affascinante mondo della musica! In Melody Mind, metti alla prova le tue conoscenze musicali in emozionanti quiz. Rispondi a domande su canzoni di diversi decenni, artisti, album e storia della musica. Accumula punti, vinci dischi d'oro e sfida altri appassionati di musica. Dal rock al pop, dall'hip-hop al classico - metti alla prova le tue conoscenze nei tuoi generi preferiti. Inizia la tua avventura musicale ora!",
+  "intro": "Immergiti nel fantastico mondo della musica! Con Melody Mind, puoi mettere alla prova le tue conoscenze musicali in emozionanti round di quiz. Rispondi a domande su canzoni di diverse decadi, artisti, album e storia della musica. Accumula punti, guadagna dischi d'oro e sfida altri appassionati di musica. Dal rock al pop all'hip-hop e alla classica - metti alla prova le tue conoscenze nei tuoi generi preferiti. Inizia la tua avventura musicale ora!",
+  "auth": {
+    "email": {
+      "label": "Email",
+      "placeholder": "Il tuo indirizzo email"
+    },
+    "username": {
+      "label": "Nome utente",
+      "placeholder": "Il tuo nome utente",
+      "lengthHint": "Minimo 3 caratteri"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "La tua password"
+    },
+    "name": {
+      "label": "Nome",
+      "placeholder": "Il tuo nome completo"
+    }
+  },
   "login": {
-    "title": "Accedi",
+    "title": "Accesso",
     "methodLabel": "Metodo di accesso",
-    "emailOption": "Email",
-    "usernameOption": "Nome utente",
-    "emailLabel": "Email",
-    "emailPlaceholder": "Il tuo indirizzo email",
-    "usernameLabel": "Nome utente",
-    "usernamePlaceholder": "Il tuo nome utente",
-    "passwordLabel": "Password",
-    "passwordPlaceholder": "La tua password",
     "submitButton": "Accedi",
     "noAccount": "Non hai un account?",
     "forgotPassword": "Password dimenticata?",
@@ -54,20 +89,11 @@
   },
   "register": {
     "title": "Registrazione",
-    "nameLabel": "Nome",
-    "namePlaceholder": "Il tuo nome completo",
-    "usernameLabel": "Nome utente",
-    "usernamePlaceholder": "Scegli un nome utente",
-    "usernameLengthHint": "Minimo 3 caratteri",
-    "emailLabel": "E-mail",
-    "emailPlaceholder": "Il tuo indirizzo e-mail",
-    "passwordLabel": "Password",
-    "passwordPlaceholder": "Scegli una password sicura",
     "submitButton": "Registrati",
     "hasAccount": "Hai già un account?",
-    "successMessage": "Registrazione completata! Controlla la tua e-mail.",
+    "successMessage": "Registrazione completata! Controlla la tua email.",
     "error": {
-      "invalidEmail": "Indirizzo e-mail non valido",
+      "invalidEmail": "Indirizzo email non valido",
       "invalidPassword": "La password deve contenere almeno 6 caratteri",
       "nameRequired": "Il nome è obbligatorio",
       "nameTooShort": "Il nome deve contenere almeno 2 caratteri",
@@ -77,15 +103,25 @@
       "registrationFailed": "Registrazione fallita"
     }
   },
-  "forgotPassword": {
-    "title": "Reimposta Password",
-    "emailLabel": "E-mail",
-    "emailPlaceholder": "Il tuo indirizzo e-mail",
-    "submitButton": "Reimposta",
-    "backToLogin": "Torna al login",
-    "successMessage": "Le istruzioni per reimpostare la password sono state inviate via e-mail.",
-    "error": {
-      "passwordResetFailed": "Reimpostazione password fallita"
+  "knowledge": {
+    "title": "Base di Conoscenze Musicali",
+    "overview": "Panoramica delle Conoscenze",
+    "description": "Esplora la nostra completa base di conoscenze musicali",
+    "loading": "Caricamento contenuto...",
+    "playAndListen": "Gioca e Ascolta",
+    "playNow": "Gioca Ora",
+    "playlists": "Playlist",
+    "playlist": {
+      "spotify": "Ascolta su Spotify",
+      "deezer": "Ascolta su Deezer",
+      "apple": "Ascolta su Apple Music",
+      "description": "Immergiti nel mondo del {genre}! Abbiamo selezionato le migliori canzoni per te. Ascolta la playlist sulla tua piattaforma di streaming preferita e preparati per il gioco."
+    },
+    "error": "Errore durante il caricamento del contenuto",
+    "backToGame": "Torna al gioco",
+    "meta": {
+      "title": "Conoscenze Musicali - Melody Mind",
+      "description": "Immergiti nel fantastico mondo della musica. Scopri fatti interessanti e storie su vari generi ed epoche musicali."
     }
   },
   "gameHome": {
@@ -534,9 +570,6 @@
       "description": "Visualizza i punteggi più alti dei migliori giocatori in tutte le categorie. Confronta le tue prestazioni con altri appassionati di musica."
     }
   },
-  "common": {
-    "loading": "Caricamento..."
-  },
   "legal": {
     "privacy": {
       "title": "Informativa sulla Privacy",
@@ -660,7 +693,7 @@
       },
       "meta": {
         "title": "Note Legali - Melody Mind",
-        "description": "Informazioni legali e contatti di Melody Mind. Trova tutte le informazioni importanti sull'operatore del sito web."
+        "description": "Informazioni legali e dettagli di contatto di Melody Mind."
       }
     }
   },
@@ -685,51 +718,19 @@
     "medium": "Medio",
     "hard": "Difficile"
   },
-  "seo": {
-    "category": {
-      "defaultTitle": "Categorie Quiz Musicale - Melody Mind",
-      "defaultDescription": "Scopri varie categorie di quiz musicali su Melody Mind. Metti alla prova le tue conoscenze in diversi generi ed epoche della storia della musica."
-    },
-    "gameRules": {
-      "title": "Regole del Gioco - Melody Mind",
-      "description": "Scopri le regole del gioco di Melody Mind. Impara tutto sulle modalità di gioco, il sistema di punteggio e le funzioni bonus nel nostro quiz musicale."
-    },
-    "highscores": {
+  "highscores": {
+    "title": "Classifica dei Punteggi",
+    "searchPlaceholder": "Cerca per categoria...",
+    "rank": "Posizione",
+    "player": "Giocatore",
+    "difficulty": "Difficoltà",
+    "points": "Punti",
+    "lps": "Dischi",
+    "noScores": "La classifica è ancora vuota",
+    "noResults": "Nessun risultato trovato",
+    "meta": {
       "title": "Classifica - Melody Mind",
       "description": "Visualizza i punteggi più alti dei migliori giocatori in tutte le categorie. Confronta le tue prestazioni con altri appassionati di musica."
-    },
-    "game": {
-      "title": "Quiz {category} - Modalità {difficulty}",
-      "description": "Gioca al quiz musicale {category} in modalità {difficulty}! Metti alla prova le tue conoscenze musicali e competi per i punteggi più alti."
-    },
-    "privacy": {
-      "title": "Informativa sulla Privacy - Melody Mind",
-      "description": "Scopri le nostre politiche sulla privacy. Scopri come proteggiamo e utilizziamo i tuoi dati su Melody Mind."
-    },
-    "imprint": {
-      "title": "Note Legali - Melody Mind",
-      "description": "Informazioni legali e dettagli di contatto di Melody Mind."
-    }
-  },
-  "knowledge": {
-    "title": "Base di Conoscenza Musicale",
-    "overview": "Panoramica della Conoscenza",
-    "description": "Esplora la nostra completa base di conoscenza musicale",
-    "loading": "Caricamento contenuti...",
-    "playAndListen": "Gioca & Ascolta",
-    "playNow": "Gioca Ora",
-    "playlists": "Playlist",
-    "playlist": {
-      "spotify": "Ascolta su Spotify",
-      "deezer": "Ascolta su Deezer",
-      "apple": "Ascolta su Apple Music",
-      "description": "Immergiti nel mondo di {genre}! Abbiamo selezionato le migliori canzoni per te. Ascolta la playlist sulla tua piattaforma di streaming preferita e preparati per il gioco."
-    },
-    "error": "Errore durante il caricamento dei contenuti",
-    "backToGame": "Torna al gioco",
-    "meta": {
-      "title": "Conoscenze Musicali - Melody Mind",
-      "description": "Immergiti nel fascinante mondo della musica. Scopri fatti interessanti e storie su vari generi ed epoche musicali."
     }
   }
 }

@@ -6,6 +6,14 @@
     "fr": "Français",
     "it": "Italien"
   },
+  "common": {
+    "openLanguageMenu": "Ouvrir le menu des langues",
+    "closeLanguageMenu": "Fermer le menu des langues",
+    "selectLanguage": "Sélectionner la langue",
+    "selectLanguageLabel": "Sélectionnez votre langue préférée",
+    "languageChanged": "Langue changée en {language}",
+    "loading": "Chargement..."
+  },
   "meta": {
     "homeTitle": "Melody Mind - Le Jeu de Quiz Musical Ultime",
     "homeDescription": "Testez vos connaissances musicales dans notre jeu de quiz interactif. Répondez aux questions sur les chansons, les artistes et l'histoire de la musique de différents genres comme le rock, la pop, le hip-hop et le classique.",
@@ -16,24 +24,20 @@
   },
   "seo": {
     "category": {
-      "defaultTitle": "Catégories de Quiz Musical - Melody Mind",
-      "defaultDescription": "Découvrez différentes catégories de quiz musical sur Melody Mind. Testez vos connaissances dans différents genres et époques de l'histoire de la musique."
+      "title": "Catégories de Quiz Musical - Melody Mind",
+      "description": "Découvrez différentes catégories de quiz musical sur Melody Mind. Testez vos connaissances dans différents genres et époques de l'histoire de la musique."
     },
     "gameRules": {
       "title": "Règles du Jeu - Melody Mind",
-      "description": "Découvrez les règles du jeu de Melody Mind. Apprenez tout sur les modes de jeu, le système de points et les fonctionnalités bonus dans notre quiz musical."
+      "description": "Apprenez les règles du jeu de Melody Mind. Découvrez tout sur les modes de jeu, le système de points et les fonctionnalités bonus dans notre quiz musical."
     },
     "highscores": {
-      "title": "Classement - Melody Mind",
+      "title": "Tableau des Scores - Melody Mind",
       "description": "Consultez les meilleurs scores des joueurs dans toutes les catégories. Comparez vos performances avec d'autres passionnés de musique."
-    },
-    "game": {
-      "title": "Quiz {category} - Mode {difficulty}",
-      "description": "Jouez au quiz musical {category} en mode {difficulty} ! Testez vos connaissances musicales et battez-vous pour les meilleurs scores."
     },
     "privacy": {
       "title": "Politique de Confidentialité - Melody Mind",
-      "description": "Découvrez notre politique de confidentialité. Apprenez comment nous protégeons et utilisons vos données sur Melody Mind."
+      "description": "Découvrez nos politiques de confidentialité. Apprenez comment nous protégeons et utilisons vos données sur Melody Mind."
     },
     "imprint": {
       "title": "Mentions Légales - Melody Mind",
@@ -42,27 +46,35 @@
   },
   "welcome": {
     "title": "Bienvenue sur Melody Mind",
-    "start": "Commencer le jeu",
+    "start": "Commencer le Jeu",
     "about": {
       "title": "À propos de Melody Mind",
-      "description": "Testez vos connaissances musicales dans différentes catégories"
-    },
-    "seo": {
-      "description": "Testez vos connaissances musicales dans différentes catégories. Un jeu-questionnaire passionnant pour les amateurs de musique de tous genres."
+      "description": "Testez vos connaissances musicales dans différentes catégories. Un jeu de quiz passionnant pour les amateurs de musique de tous genres."
     }
   },
-  "intro": "Plongez dans le monde fascinant de la musique ! Dans Melody Mind, testez vos connaissances musicales dans des quiz passionnants. Répondez à des questions sur des chansons de différentes décennies, des artistes, des albums et l'histoire de la musique. Accumulez des points, gagnez des disques d'or et défiez d'autres passionnés de musique. Du rock à la pop, en passant par le hip-hop et le classique - testez vos connaissances dans vos genres préférés. Commencez votre aventure musicale maintenant !",
+  "intro": "Plongez dans le monde fascinant de la musique ! Avec Melody Mind, vous pouvez tester vos connaissances musicales dans des tours de quiz passionnants. Répondez à des questions sur les chansons de différentes décennies, les artistes, les albums et l'histoire de la musique. Accumulez des points, gagnez des disques d'or et défiez d'autres passionnés de musique. Du rock à la pop en passant par le hip-hop et le classique - testez vos connaissances dans vos genres préférés. Commencez votre aventure musicale maintenant !",
+  "auth": {
+    "email": {
+      "label": "Email",
+      "placeholder": "Votre adresse email"
+    },
+    "username": {
+      "label": "Nom d'utilisateur",
+      "placeholder": "Votre nom d'utilisateur",
+      "lengthHint": "Minimum 3 caractères"
+    },
+    "password": {
+      "label": "Mot de passe",
+      "placeholder": "Votre mot de passe"
+    },
+    "name": {
+      "label": "Nom",
+      "placeholder": "Votre nom complet"
+    }
+  },
   "login": {
     "title": "Connexion",
     "methodLabel": "Méthode de connexion",
-    "emailOption": "E-mail",
-    "usernameOption": "Nom d'utilisateur",
-    "emailLabel": "E-mail",
-    "emailPlaceholder": "Votre adresse e-mail",
-    "usernameLabel": "Nom d'utilisateur",
-    "usernamePlaceholder": "Votre nom d'utilisateur",
-    "passwordLabel": "Mot de passe",
-    "passwordPlaceholder": "Votre mot de passe",
     "submitButton": "Se connecter",
     "noAccount": "Pas encore de compte ?",
     "forgotPassword": "Mot de passe oublié ?",
@@ -70,48 +82,49 @@
     "continueWithDiscord": "Continuer avec Discord",
     "continueWithGithub": "Continuer avec GitHub",
     "error": {
-      "invalidEmail": "Adresse e-mail invalide",
+      "invalidEmail": "Adresse email invalide",
       "invalidPassword": "Mot de passe invalide",
       "required": "Ce champ est requis",
-      "loginFailed": "La connexion a échoué. Veuillez réessayer.",
+      "loginFailed": "Échec de la connexion",
       "discordLoginFailed": "Échec de la connexion avec Discord",
       "githubLoginFailed": "Échec de la connexion avec GitHub"
     }
   },
   "register": {
-    "title": "S'inscrire",
-    "nameLabel": "Nom",
-    "namePlaceholder": "Votre nom complet",
-    "usernameLabel": "Nom d'utilisateur",
-    "usernamePlaceholder": "Choisissez un nom d'utilisateur",
-    "usernameLengthHint": "Minimum 3 caractères",
-    "emailLabel": "E-mail",
-    "emailPlaceholder": "Votre adresse e-mail",
-    "passwordLabel": "Mot de passe",
-    "passwordPlaceholder": "Choisissez un mot de passe sécurisé",
+    "title": "Inscription",
     "submitButton": "S'inscrire",
-    "hasAccount": "Déjà un compte ?",
-    "successMessage": "Inscription réussie ! Veuillez vérifier vos e-mails.",
+    "hasAccount": "Vous avez déjà un compte ?",
+    "successMessage": "Inscription réussie ! Veuillez vérifier votre email.",
     "error": {
-      "invalidEmail": "Adresse e-mail invalide",
+      "invalidEmail": "Adresse email invalide",
       "invalidPassword": "Le mot de passe doit contenir au moins 6 caractères",
-      "nameRequired": "Le nom est obligatoire",
+      "nameRequired": "Le nom est requis",
       "nameTooShort": "Le nom doit contenir au moins 2 caractères",
-      "usernameRequired": "Le nom d'utilisateur est obligatoire",
+      "usernameRequired": "Le nom d'utilisateur est requis",
       "usernameTooShort": "Le nom d'utilisateur doit contenir au moins 3 caractères",
       "passwordTooShort": "Le mot de passe doit contenir au moins 8 caractères",
-      "registrationFailed": "L'inscription a échoué. Veuillez réessayer."
+      "registrationFailed": "Échec de l'inscription"
     }
   },
-  "forgotPassword": {
-    "title": "Réinitialiser le mot de passe",
-    "emailLabel": "E-mail",
-    "emailPlaceholder": "Votre adresse e-mail",
-    "submitButton": "Réinitialiser",
-    "backToLogin": "Retour à la connexion",
-    "successMessage": "Les instructions de réinitialisation ont été envoyées par e-mail.",
-    "error": {
-      "passwordResetFailed": "La réinitialisation du mot de passe a échoué. Veuillez réessayer."
+  "knowledge": {
+    "title": "Base de Connaissances Musicales",
+    "overview": "Aperçu des Connaissances",
+    "description": "Explorez notre base complète de connaissances musicales",
+    "loading": "Chargement du contenu...",
+    "playAndListen": "Jouer et Écouter",
+    "playNow": "Jouer Maintenant",
+    "playlists": "Listes de lecture",
+    "playlist": {
+      "spotify": "Écouter sur Spotify",
+      "deezer": "Écouter sur Deezer",
+      "apple": "Écouter sur Apple Music",
+      "description": "Plongez dans le monde de {genre} ! Nous avons sélectionné les meilleures chansons pour vous. Écoutez la playlist sur votre plateforme de streaming préférée et préparez-vous pour le jeu."
+    },
+    "error": "Erreur lors du chargement du contenu",
+    "backToGame": "Retour au jeu",
+    "meta": {
+      "title": "Connaissances Musicales - Melody Mind",
+      "description": "Plongez dans le monde fascinant de la musique. Découvrez des faits intéressants et des histoires sur divers genres et époques musicales."
     }
   },
   "gameHome": {
@@ -218,15 +231,15 @@
           "share": "Partager "
         },
         "message": {
-          "intro": "🎵 Incroyable ! J'ai obtenu {points} points dans Melody Mind ! 🎮",
-          "genre": "Genre : {genre} | Difficulté : {difficulty} 🎯",
-          "perfect": "🏆 EXTRAORDINAIRE ! Round parfait en {difficulty} ! Tu es un véritable expert musical ! ⭐",
-          "gold": "🥇 Performance exceptionnelle en {difficulty} ! LP d'Or obtenu - continue comme ça ! 🌟",
-          "silver": "🥈 Superbe performance en {difficulty} ! LP d'Argent obtenu - tu es en feu ! ✨",
-          "bronze": "🥉 Bel effort en {difficulty} ! LP de Bronze obtenu - l'argent est à portée de main ! 💫",
-          "encouragement": "🎵 Bon début ! Continue à t'entraîner et tu deviendras encore meilleur ! 🎮",
-          "stats": "Score : {correct} sur {total} bonnes réponses ! 📊",
-          "challenge": "💫 Défie-moi sur {url} 🎮",
+          "intro": " Incroyable ! J'ai obtenu {points} points dans Melody Mind ! ",
+          "genre": "Genre : {genre} | Difficulté : {difficulty} ",
+          "perfect": " EXTRAORDINAIRE ! Round parfait en {difficulty} ! Tu es un véritable expert musical ! ",
+          "gold": " Performance exceptionnelle en {difficulty} ! LP d'Or obtenu - continue comme ça ! ",
+          "silver": " Superbe performance en {difficulty} ! LP d'Argent obtenu - tu es en feu ! ",
+          "bronze": " Bel effort en {difficulty} ! LP de Bronze obtenu - l'argent est à portée de main ! ",
+          "encouragement": " Bon début ! Continue à t'entraîner et tu deviendras encore meilleur ! ",
+          "stats": "Score : {correct} sur {total} bonnes réponses ! ",
+          "challenge": " Défie-moi sur {url} ",
           "difficulty": {
             "easy": "Facile",
             "medium": "Moyen",
@@ -544,136 +557,6 @@
       "description": "Comparez votre score avec d'autres joueurs. Consultez les meilleurs scores dans toutes les catégories et battez-vous pour la première place !"
     }
   },
-  "common": {
-    "loading": "Chargement..."
-  },
-  "legal": {
-    "privacy": {
-      "title": "Politique de Confidentialité",
-      "overview": {
-        "title": "Aperçu",
-        "general": {
-          "title": "Informations Générales",
-          "text": "Nous prenons très au sérieux la protection de vos données personnelles. Cette politique de confidentialité vous informe sur la manière dont nous traitons vos données."
-        }
-      },
-      "dataCollection": {
-        "title": "Collecte de Données",
-        "cookies": {
-          "title": "Cookies",
-          "text": "Nous utilisons des cookies pour vous offrir la meilleure expérience utilisateur possible. Ceux-ci ne stockent aucune information personnelle identifiable."
-        },
-        "serverLogs": {
-          "title": "Journaux du Serveur",
-          "text": "Pour des raisons techniques, nous conservons automatiquement les journaux du serveur transmis par votre navigateur."
-        },
-        "analytics": {
-          "title": "Données Analytiques",
-          "text": "Nous utilisons des données analytiques anonymisées pour améliorer notre expérience de jeu. Ces données incluent des statistiques de jeu, des modèles d'utilisation et des données de performance, mais aucune information personnelle identifiable."
-        }
-      },
-      "rights": {
-        "title": "Vos Droits",
-        "intro": "Conformément au RGPD, vous disposez des droits suivants concernant vos données personnelles :",
-        "list": {
-          "information": "Droit à l'information sur vos données stockées",
-          "correction": "Droit à la correction des données incorrectes",
-          "restriction": "Droit à la limitation du traitement",
-          "objection": "Droit d'opposition au traitement",
-          "portability": "Droit à la portabilité des données"
-        }
-      },
-      "contact": {
-        "title": "Contact",
-        "text": "Si vous avez des questions concernant la confidentialité, vous pouvez nous contacter à tout moment.",
-        "emailLabel": "E-mail",
-        "emailAddress": "daniel.schmid1980(at)icloud.com"
-      },
-      "gameData": {
-        "title": "Données de Jeu",
-        "progress": {
-          "title": "Progression du Jeu",
-          "intro": "Les données de jeu suivantes sont stockées :",
-          "list": {
-            "scores": "Scores",
-            "awards": "Récompenses",
-            "rankings": "Positions dans le classement"
-          },
-          "purpose": "Ces données sont utilisées exclusivement pour améliorer votre expérience de jeu et afficher vos réalisations."
-        },
-        "localStorage": {
-          "title": "Stockage Local",
-          "intro": "Les informations suivantes sont stockées localement dans votre navigateur :",
-          "list": {
-            "categories": "Catégories jouées",
-            "settings": "Paramètres du jeu",
-            "language": "Paramètre de langue"
-          },
-          "storage": "Ces données restent stockées localement sur votre appareil et ne sont pas transmises à nos serveurs. Vous pouvez les supprimer à tout moment via les paramètres de votre navigateur."
-        },
-        "session": {
-          "title": "Données de Session",
-          "intro": "Pendant une session de jeu active, les données suivantes sont temporairement stockées :",
-          "list": {
-            "auth": "État d'authentification pour la session de jeu",
-            "progress": "Progression actuelle du jeu et score",
-            "settings": "Paramètres temporaires du jeu"
-          }
-        }
-      },
-      "deletion": {
-        "title": "Suppression des Données",
-        "intro": "Vous avez le droit de faire supprimer les données suivantes :",
-        "list": {
-          "highscores": "Vos meilleurs scores personnels et statistiques de jeu",
-          "results": "Résultats de jeu stockés et réalisations",
-          "account": "Votre compte utilisateur complet et toutes les données associées"
-        },
-        "local": "Les données stockées localement (cookies, progression du jeu) peuvent être supprimées indépendamment via les paramètres de votre navigateur."
-      },
-      "meta": {
-        "title": "Politique de Confidentialité - Melody Mind",
-        "description": "Informations sur la confidentialité chez Melody Mind. Découvrez comment nous protégeons vos données et quels sont vos droits."
-      }
-    },
-    "imprint": {
-      "title": "Mentions Légales",
-      "information": {
-        "title": "Informations selon § 5 TMG",
-        "operator": "Daniel Schmid",
-        "address": "Hiltenspergerstr. 78, 80796 Munich",
-        "country": "Allemagne"
-      },
-      "contact": {
-        "title": "Contact",
-        "emailLabel": "E-mail",
-        "emailAddress": "daniel.schmid1980(at)icloud.com"
-      },
-      "responsible": {
-        "title": "Responsable du contenu selon § 55 al. 2 RStV"
-      },
-      "disputeResolution": {
-        "title": "Résolution des litiges",
-        "text": "La Commission européenne fournit une plateforme de résolution des litiges en ligne (OS)",
-        "link": "https://ec.europa.eu/consumers/odr/",
-        "additional": "Nous ne sommes ni disposés ni obligés à participer à des procédures de résolution des litiges devant un conseil d'arbitrage des consommateurs."
-      },
-      "lawReference": {
-        "title": "Références légales",
-        "text": "Malgré un contrôle minutieux du contenu, nous n'assumons aucune responsabilité pour le contenu des liens externes. Les opérateurs des pages liées sont seuls responsables de leur contenu."
-      },
-      "jurisdiction": {
-        "title": "Base juridique",
-        "text": "Ce site web est soumis au droit allemand. Le lieu de juridiction est l'Allemagne.",
-        "applicableLaw": "Le droit allemand s'applique exclusivement, à l'exclusion de la Convention des Nations Unies sur les contrats de vente internationale de marchandises.",
-        "jurisdiction": "Le lieu d'exécution et de juridiction exclusive pour tous les litiges est l'Allemagne, dans la mesure où la loi le permet."
-      },
-      "meta": {
-        "title": "Mentions Légales - Melody Mind",
-        "description": "Informations légales et coordonnées de Melody Mind."
-      }
-    }
-  },
   "username": {
     "title": "Quel est votre nom ?",
     "label": "Nom d'utilisateur",
@@ -694,24 +577,5 @@
     "easy": "Facile",
     "medium": "Moyen",
     "hard": "Difficile"
-  },
-  "knowledge": {
-    "title": "Base de Connaissances Musicales",
-    "overview": "Aperçu des Connaissances",
-    "description": "Explorez notre base complète de connaissances musicales",
-    "meta": {
-      "title": "Connaissances Musicales - Melody Mind",
-      "description": "Plongez dans le monde fascinant de la musique. Découvrez des faits intéressants et des histoires sur divers genres et époques musicales."
-    }
-  },
-  "loading": "Chargement du contenu...",
-  "playAndListen": "Jouer & Écouter",
-  "playNow": "Jouer Maintenant",
-  "playlists": "Playlists",
-  "playlist": {
-    "spotify": "Écouter sur Spotify",
-    "deezer": "Écouter sur Deezer",
-    "apple": "Écouter sur Apple Music",
-    "description": "Plongez dans l'univers de {genre} ! Nous avons sélectionné les meilleures chansons pour vous. Écoutez la playlist sur votre plateforme de streaming préférée et préparez-vous pour le jeu."
   }
 }
