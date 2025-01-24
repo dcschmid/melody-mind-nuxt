@@ -53,6 +53,28 @@ useSeoMeta({
     robots: 'index, follow'
 })
 
+// JSON-LD
+useJsonld({
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: computed(() => t('knowledge.meta.title')),
+    description: computed(() => t('knowledge.meta.description')),
+    url: url.href,
+    mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: computed(() => knowledgeItems.value?.map((item, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            item: {
+                '@type': 'Article',
+                name: item.title,
+                description: item.description,
+                url: localePath(`/knowledge/${item._file.split('/')[1]}/${item._file.split('/').pop().replace('.md', '')}`)
+            }
+        })) || [])
+    }
+})
+
 // Fetch knowledge articles using Nuxt Content
 const { data: knowledgeItems } = await useAsyncData(
     'knowledge',

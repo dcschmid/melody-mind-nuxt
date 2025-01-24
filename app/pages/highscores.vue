@@ -67,7 +67,7 @@
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useSeoMeta, useRequestURL } from '#imports'
+import { useSeoMeta, useRequestURL, useJsonld } from '#imports'
 import SearchBar from '@/components/SearchBar.vue'
 
 const { t, locale } = useI18n()
@@ -82,6 +82,34 @@ useSeoMeta({
     ogDescription: computed(() => t('highscores.meta.description')),
     ogType: 'website',
     robots: 'index, follow'
+})
+
+// JSON-LD
+useJsonld({
+    '@context': 'https://schema.org',
+    '@type': 'Table',
+    name: computed(() => t('highscores.meta.title')),
+    description: computed(() => t('highscores.meta.description')),
+    url: url.href,
+    about: {
+        '@type': 'Game',
+        name: 'Melody Mind',
+        genre: 'Music Quiz'
+    },
+    mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: computed(() => highscores.value?.map((score, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            item: {
+                '@type': 'GamePlayMode',
+                name: score.player,
+                gamePoints: score.points,
+                difficulty: score.difficulty,
+                category: score.category
+            }
+        })) || [])
+    }
 })
 
 const highscores = ref([])

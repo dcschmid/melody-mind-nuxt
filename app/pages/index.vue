@@ -34,6 +34,23 @@ useSeoMeta({
     twitterCard: 'summary_large_image',
     ogUrl: computed(() => url.href)
 });
+
+// JSON-LD
+useJsonld({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: computed(() => t('welcome.title')).value,
+    description: computed(() => t('welcome.seo.description')).value,
+    url: url.href,
+    potentialAction: {
+        '@type': 'SearchAction',
+        'target': {
+            '@type': 'EntryPoint',
+            'urlTemplate': `${url.origin}/search?q={search_term_string}`
+        },
+        'query': 'required name=search_term_string'
+    }
+})
 </script>
 
 <style lang="scss" scoped>

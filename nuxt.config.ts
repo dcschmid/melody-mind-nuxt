@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/scss/main.scss"],
-  modules: ["nuxt-icon", "@nuxtjs/i18n", '@nuxt/content', 'nuxt-fathom', '@nuxtjs/sitemap', '@nuxtjs/robots'],
+  modules: ["nuxt-icon", "@nuxtjs/i18n", '@nuxt/content', 'nuxt-fathom', '@nuxtjs/sitemap', '@nuxtjs/robots', 'nuxt-jsonld'],
   content: {
     documentDriven: true,
     navigation: {

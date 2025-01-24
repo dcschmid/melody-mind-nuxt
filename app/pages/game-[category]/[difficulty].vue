@@ -51,7 +51,7 @@
 <script setup lang="ts">
 import { watch, nextTick, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useSeoMeta, useRequestURL, useRoute } from '#imports'
+import { useSeoMeta, useRequestURL, useRoute, useJsonld } from '#imports'
 import GameOverScreen from '~/components/game/GameOverScreen.vue';
 import SolutionView from '~/components/game/SolutionView.vue'
 
@@ -85,6 +85,36 @@ useSeoMeta({
     })),
     ogType: 'website',
     robots: 'noindex, follow' // Spiel-Seiten sollten nicht indexiert werden
+})
+
+// JSON-LD
+useJsonld({
+    '@context': 'https://schema.org',
+    '@type': 'VideoGame',
+    name: t('game.meta.title', { 
+        category: route.params.category, 
+        difficulty: route.params.difficulty 
+    }),
+    description: t('game.meta.description', { 
+        category: route.params.category, 
+        difficulty: route.params.difficulty 
+    }),
+    url: url.href,
+    genre: 'Music Quiz',
+    gamePlatform: 'Web Browser',
+    applicationCategory: 'Game',
+    gameItem: {
+        '@type': 'Thing',
+        name: route.params.category,
+        description: t('game.meta.description', { 
+            category: route.params.category, 
+            difficulty: route.params.difficulty 
+        })
+    },
+    audience: {
+        '@type': 'Audience',
+        audienceType: 'Music Enthusiasts'
+    },
 })
 
 // --- Load Category Data ---
