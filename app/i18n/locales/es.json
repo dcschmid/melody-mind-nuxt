@@ -9,7 +9,10 @@
     "meta": {
         "homeTitle": "Melody Mind - El Quiz Musical Definitivo",
         "homeDescription": "Pon a prueba tus conocimientos musicales en nuestro juego interactivo de preguntas. Responde preguntas sobre canciones, artistas e historia de la música de varios géneros como rock, pop, hip-hop y clásica.",
-        "homeKeywords": "Quiz Musical, Conocimientos Musicales, Quiz Online, Historia de la Música, Quiz de Artistas, Quiz de Álbumes, Géneros Musicales, Juego Interactivo"
+        "homeKeywords": "Quiz Musical, Conocimientos Musicales, Quiz Online, Historia de la Música, Quiz de Artistas, Quiz de Álbumes, Géneros Musicales, Juego Interactivo",
+        "title": "Melody Mind - El Juego Definitivo de Trivia Musical",
+        "description": "Pon a prueba tus conocimientos musicales en nuestro juego interactivo. Responde preguntas sobre canciones, artistas e historia de la música.",
+        "keywords": "Trivia Musical, Conocimientos Musicales, Quiz Online, Historia de la Música, Trivia de Artistas, Quiz de Álbumes, Géneros Musicales, Juego Interactivo"
     },
     "welcome": {
         "title": "Bienvenido a Melody Mind",
@@ -92,7 +95,11 @@
         "playCategory": "Jugar {category}",
         "comingSoon": "{category} - Próximamente",
         "categoryAlt": "Imagen para la categoría {category}",
-        "comingSoonLabel": "Próximamente"
+        "comingSoonLabel": "Próximamente",
+        "meta": {
+            "title": "Categorías de Quiz Musical - Melody Mind",
+            "description": "Descubre emocionantes categorías de quiz musical, desde rock hasta clásica. Elige tu género favorito y demuestra tus conocimientos."
+        }
     },
     "category": {
         "selected": "¡seleccionado!",
@@ -287,6 +294,10 @@
             "answerOptions": "Opciones de Respuesta",
             "expertAdvice": "Consejo del Experto",
             "audienceOpinion": "Opinión del Público"
+        },
+        "meta": {
+            "title": "Quiz de {category} - Modo {difficulty} | Melody Mind",
+            "description": "¡Juega ahora el quiz de {category} en modo {difficulty}! Demuestra tus conocimientos musicales y conviértete en un experto."
         }
     },
     "gameRules": {
@@ -360,6 +371,10 @@
                 "Practica regularmente para mejorar tu puntuación.",
                 "Precisión antes que velocidad – lee cada pregunta cuidadosamente."
             ]
+        },
+        "meta": {
+            "title": "Reglas del Juego y Guía - Melody Mind",
+            "description": "Aprende las reglas de Melody Mind. Descubre todo sobre los modos de juego, sistema de puntuación y funciones especiales."
         }
     },
     "profile": {
@@ -516,7 +531,11 @@
         "points": "Puntos",
         "lps": "Discos",
         "noScores": "No hay puntajes registrados todavía",
-        "noResults": "No se encontraron resultados"
+        "noResults": "No se encontraron resultados",
+        "meta": {
+            "title": "Tabla de Clasificación - Melody Mind",
+            "description": "Compara tu puntuación con otros jugadores. ¡Mira las mejores puntuaciones en todas las categorías y compite por el primer lugar!"
+        }
     },
     "common": {
         "loading": "Cargando..."
@@ -637,6 +656,10 @@
                     "applicableLaw": "Se aplica exclusivamente la ley alemana, excluyendo la Convención de las Naciones Unidas sobre los Contratos de Compraventa Internacional de Mercaderías.",
                     "jurisdiction": "El lugar de cumplimiento y jurisdicción exclusiva para todas las disputas es Alemania, en la medida en que sea legalmente permisible."
                 }
+            },
+            "meta": {
+                "title": "Política de Privacidad - Melody Mind",
+                "description": "Información sobre privacidad en Melody Mind. Conoce cómo protegemos tus datos y qué derechos tienes."
             }
         }
     },
@@ -702,6 +725,10 @@
           "description": "¡Sumérgete en el mundo de {genre}! Hemos seleccionado las mejores canciones para ti. Escucha la lista de reproducción en tu plataforma de streaming preferida y prepárate para el juego."
         },
         "error": "Error al cargar el contenido",
-        "backToGame": "Volver al juego"
+        "backToGame": "Volver al juego",
+        "meta": {
+            "title": "Conocimientos Musicales - Melody Mind",
+            "description": "Sumérgete en el fascinante mundo de la música. Descubre datos interesantes e historias sobre diversos géneros y épocas musicales."
+        }
     }
 }

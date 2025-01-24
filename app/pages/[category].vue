@@ -63,10 +63,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { useHead, useLocalePath } from '#imports'
+import { useHead, useLocalePath, useSeoMeta } from '#imports'
 
 interface Category {
     slug: string
@@ -100,6 +100,21 @@ useHead({
         }
     ]
 })
+
+watch(() => currentCategory.value, (category) => {
+  if (category) {
+    useSeoMeta({
+      title: computed(() => `${category.headline} - Melody Mind`),
+      description: computed(() => category.introSubline),
+      ogTitle: computed(() => `${category.headline} - Melody Mind`),
+      ogDescription: computed(() => category.introSubline),
+      ogType: 'website',
+      ogImage: computed(() => category.imageUrl),
+      twitterCard: 'summary_large_image',
+      twitterImage: computed(() => category.imageUrl)
+    })
+  }
+}, { immediate: true })
 
 const loadCategories = async () => {
     const cacheKey = `categories_${locale.value}`

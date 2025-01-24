@@ -99,25 +99,18 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n'
-import { useSeoMeta, useRequestURL } from '#imports'
-import { computed } from 'vue'
+import { useSeoMeta } from '#imports'
 
 const { t } = useI18n()
-const url = useRequestURL()
 
+// SEO Meta Tags
 useSeoMeta({
-    title: computed(() => t('seo.privacy.title')),
-    ogTitle: computed(() => t('seo.privacy.title')),
-    description: computed(() => t('seo.privacy.description')),
-    ogDescription: computed(() => t('seo.privacy.description')),
-    ogUrl: url.href,
+    title: computed(() => t('legal.privacy.meta.title')),
+    description: computed(() => t('legal.privacy.meta.description')),
+    ogTitle: computed(() => t('legal.privacy.meta.title')),
+    ogDescription: computed(() => t('legal.privacy.meta.description')),
     ogType: 'website',
-    robots: 'noindex, follow',
-    viewport: 'width=device-width, initial-scale=1'
-})
-
-definePageMeta({
-    layout: 'default'
+    robots: 'noindex, follow' // Legal pages should not be indexed
 })
 </script>
 

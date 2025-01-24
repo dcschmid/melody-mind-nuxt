@@ -66,25 +66,18 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n'
-import { useSeoMeta, useRequestURL } from '#imports'
-import { computed } from 'vue'
+import { useSeoMeta } from '#imports'
 
 const { t } = useI18n()
-const url = useRequestURL()
 
+// SEO Meta Tags
 useSeoMeta({
-    title: computed(() => t('seo.imprint.title')),
-    ogTitle: computed(() => t('seo.imprint.title')),
-    description: computed(() => t('seo.imprint.description')),
-    ogDescription: computed(() => t('seo.imprint.description')),
-    ogUrl: url.href,
+    title: computed(() => t('legal.imprint.meta.title')),
+    description: computed(() => t('legal.imprint.meta.description')),
+    ogTitle: computed(() => t('legal.imprint.meta.title')),
+    ogDescription: computed(() => t('legal.imprint.meta.description')),
     ogType: 'website',
-    robots: 'noindex, follow',  // Usually imprint pages should not be indexed
-    viewport: 'width=device-width, initial-scale=1'
-})
-
-definePageMeta({
-    layout: 'default'
+    robots: 'noindex, follow' // Legal pages should not be indexed
 })
 </script>
 

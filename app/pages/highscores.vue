@@ -72,20 +72,19 @@ import SearchBar from '@/components/SearchBar.vue'
 
 const { t, locale } = useI18n()
 const url = useRequestURL()
+const searchQuery = ref('')
 
+// SEO Meta Tags
 useSeoMeta({
-    title: computed(() => t('seo.highscores.title')),
-    ogTitle: computed(() => t('seo.highscores.title')),
-    description: computed(() => t('seo.highscores.description')),
-    ogDescription: computed(() => t('seo.highscores.description')),
-    ogUrl: url.href,
+    title: computed(() => t('highscores.meta.title')),
+    description: computed(() => t('highscores.meta.description')),
+    ogTitle: computed(() => t('highscores.meta.title')),
+    ogDescription: computed(() => t('highscores.meta.description')),
     ogType: 'website',
-    robots: 'index, follow',
-    viewport: 'width=device-width, initial-scale=1'
+    robots: 'index, follow'
 })
 
 const highscores = ref([])
-const searchQuery = ref('')
 const selectedDifficulties = ref({})
 const loading = ref(true)
 

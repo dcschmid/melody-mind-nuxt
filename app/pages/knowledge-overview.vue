@@ -43,6 +43,16 @@ const { locale, t } = useI18n()
 const localePath = useLocalePath()
 const url = useRequestURL()
 
+// SEO Meta Tags
+useSeoMeta({
+    title: computed(() => t('knowledge.meta.title')),
+    description: computed(() => t('knowledge.meta.description')),
+    ogTitle: computed(() => t('knowledge.meta.title')),
+    ogDescription: computed(() => t('knowledge.meta.description')),
+    ogType: 'website',
+    robots: 'index, follow'
+})
+
 // Fetch knowledge articles using Nuxt Content
 const { data: knowledgeItems } = await useAsyncData(
     'knowledge',

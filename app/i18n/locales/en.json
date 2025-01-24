@@ -9,7 +9,10 @@
   "meta": {
     "homeTitle": "Melody Mind - The Ultimate Music Quiz Game",
     "homeDescription": "Test your music knowledge in our interactive quiz game. Answer questions about songs, artists, and music history from various genres like rock, pop, hip-hop, and classical.",
-    "homeKeywords": "Music Quiz, Music Knowledge, Online Quiz, Music History, Artist Quiz, Album Quiz, Music Genres, Interactive Game"
+    "homeKeywords": "Music Quiz, Music Knowledge, Online Quiz, Music History, Artist Quiz, Album Quiz, Music Genres, Interactive Game",
+    "title": "Melody Mind - The Ultimate Music Quiz Game",
+    "description": "Test your music knowledge in our interactive quiz game. Answer questions about songs, artists, and music history from various genres.",
+    "keywords": "Music Quiz, Music Knowledge, Online Quiz, Music History, Artist Quiz, Album Quiz, Music Genres, Interactive Game"
   },
   "seo": {
     "category": {
@@ -112,6 +115,10 @@
     }
   },
   "gameHome": {
+    "meta": {
+      "title": "Music Quiz Categories - Melody Mind",
+      "description": "Discover exciting music quiz categories from rock to classical. Choose your favorite genre and put your music knowledge to the test."
+    },
     "title": "Select Your Musical Journey",
     "description": "Discover the fascinating world of music through different decades and genres",
     "searchPlaceholder": "Search category...",
@@ -156,6 +163,10 @@
     }
   },
   "game": {
+    "meta": {
+      "title": "{category} Quiz - {difficulty} Mode | Melody Mind",
+      "description": "Play the {category} music quiz in {difficulty} mode now. Test your knowledge, earn points, and become a music expert!"
+    },
     "loading": "Loading game...",
     "question": "Question {current} of {total}",
     "timeLeft": "Time remaining",
@@ -290,6 +301,10 @@
     }
   },
   "gameRules": {
+    "meta": {
+      "title": "Game Rules & Guide - Melody Mind",
+      "description": "Learn about Melody Mind's game rules. Find out everything about game modes, scoring system, and bonus features in our music quiz."
+    },
     "title": "Game Rules - MelodyMind",
     "overview": {
       "title": "Overview",
@@ -510,6 +525,10 @@
     "points": "Points"
   },
   "highscores": {
+    "meta": {
+      "title": "Leaderboard & Rankings - Melody Mind",
+      "description": "Compare your score with other players. View the top scores in all categories and compete for first place!"
+    },
     "title": "Highscores",
     "searchPlaceholder": "Search categories...",
     "rank": "Rank",
@@ -525,6 +544,10 @@
   },
   "legal": {
     "privacy": {
+      "meta": {
+        "title": "Privacy Policy - Melody Mind",
+        "description": "Information about privacy at Melody Mind. Learn how we protect your data and what rights you have."
+      },
       "title": "Privacy Policy",
       "overview": {
         "title": "Overview",
@@ -609,6 +632,10 @@
       }
     },
     "imprint": {
+      "meta": {
+        "title": "Imprint - Melody Mind",
+        "description": "Legal information and contact details for Melody Mind. Find all important information about the website operator here."
+      },
       "title": "Legal Notice",
       "information": {
         "title": "Information according to § 5 TMG",
@@ -664,6 +691,10 @@
     "hard": "Hard"
   },
   "knowledge": {
+    "meta": {
+      "title": "Music Knowledge & Background - Melody Mind",
+      "description": "Dive into the fascinating world of music. Discover exciting facts and stories about various music genres and eras."
+    },
     "loading": "Loading content...",
     "playAndListen": "Play & Listen",
     "playNow": "Play Now",

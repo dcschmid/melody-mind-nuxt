@@ -9,7 +9,10 @@
   "meta": {
     "homeTitle": "Melody Mind - Le Jeu de Quiz Musical Ultime",
     "homeDescription": "Testez vos connaissances musicales dans notre jeu de quiz interactif. Répondez aux questions sur les chansons, les artistes et l'histoire de la musique de différents genres comme le rock, la pop, le hip-hop et le classique.",
-    "homeKeywords": "Quiz Musical, Connaissances Musicales, Quiz en Ligne, Histoire de la Musique, Quiz d'Artistes, Quiz d'Albums, Genres Musicaux, Jeu Interactif"
+    "homeKeywords": "Quiz Musical, Connaissances Musicales, Quiz en Ligne, Histoire de la Musique, Quiz d'Artistes, Quiz d'Albums, Genres Musicaux, Jeu Interactif",
+    "title": "Melody Mind - Le Quiz Musical Ultime",
+    "description": "Testez vos connaissances musicales dans notre jeu interactif. Répondez aux questions sur les chansons, les artistes et l'histoire de la musique.",
+    "keywords": "Quiz Musical, Connaissances Musicales, Quiz en Ligne, Histoire de la Musique, Quiz Artistes, Quiz Albums, Genres Musicaux, Jeu Interactif"
   },
   "seo": {
     "category": {
@@ -118,7 +121,11 @@
     "playCategory": "Jouer {category}",
     "comingSoon": "{category} - Bientôt disponible",
     "categoryAlt": "Image pour la catégorie {category}",
-    "comingSoonLabel": "Bientôt disponible"
+    "comingSoonLabel": "Bientôt disponible",
+    "meta": {
+      "title": "Catégories de Quiz Musical - Melody Mind",
+      "description": "Découvrez des catégories passionnantes de quiz musical, du rock au classique. Choisissez votre genre préféré et testez vos connaissances."
+    }
   },
   "category": {
     "selected": "sélectionnée",
@@ -296,6 +303,10 @@
       "answerOptions": "Options de Réponse",
       "expertAdvice": "Conseil de l'Expert",
       "audienceOpinion": "Opinion du Public"
+    },
+    "meta": {
+      "title": "Quiz {category} - Mode {difficulty} | Melody Mind",
+      "description": "Jouez maintenant au quiz {category} en mode {difficulty} ! Testez vos connaissances musicales et devenez un expert."
     }
   },
   "gameRules": {
@@ -366,6 +377,10 @@
         "Pratiquez régulièrement pour améliorer votre score.",
         "La précision avant la vitesse – lisez attentivement chaque question."
       ]
+    },
+    "meta": {
+      "title": "Règles du Jeu et Guide - Melody Mind",
+      "description": "Apprenez les règles de Melody Mind. Découvrez tout sur les modes de jeu, le système de points et les fonctions bonus."
     }
   },
   "profile": {
@@ -523,7 +538,11 @@
     "points": "Points",
     "lps": "Disques",
     "noResults": "Aucun résultat trouvé",
-    "noScores": "Aucun score enregistré pour le moment"
+    "noScores": "Aucun score enregistré pour le moment",
+    "meta": {
+      "title": "Classement - Melody Mind",
+      "description": "Comparez votre score avec d'autres joueurs. Consultez les meilleurs scores dans toutes les catégories et battez-vous pour la première place !"
+    }
   },
   "common": {
     "loading": "Chargement..."
@@ -611,6 +630,10 @@
           "account": "Votre compte utilisateur complet et toutes les données associées"
         },
         "local": "Les données stockées localement (cookies, progression du jeu) peuvent être supprimées indépendamment via les paramètres de votre navigateur."
+      },
+      "meta": {
+        "title": "Politique de Confidentialité - Melody Mind",
+        "description": "Informations sur la confidentialité chez Melody Mind. Découvrez comment nous protégeons vos données et quels sont vos droits."
       }
     },
     "imprint": {
@@ -644,6 +667,10 @@
         "text": "Ce site web est soumis au droit allemand. Le lieu de juridiction est l'Allemagne.",
         "applicableLaw": "Le droit allemand s'applique exclusivement, à l'exclusion de la Convention des Nations Unies sur les contrats de vente internationale de marchandises.",
         "jurisdiction": "Le lieu d'exécution et de juridiction exclusive pour tous les litiges est l'Allemagne, dans la mesure où la loi le permet."
+      },
+      "meta": {
+        "title": "Mentions Légales - Melody Mind",
+        "description": "Informations légales et coordonnées de Melody Mind."
       }
     }
   },
@@ -671,7 +698,11 @@
   "knowledge": {
     "title": "Base de Connaissances Musicales",
     "overview": "Aperçu des Connaissances",
-    "description": "Explorez notre base complète de connaissances musicales"
+    "description": "Explorez notre base complète de connaissances musicales",
+    "meta": {
+      "title": "Connaissances Musicales - Melody Mind",
+      "description": "Plongez dans le monde fascinant de la musique. Découvrez des faits intéressants et des histoires sur divers genres et époques musicales."
+    }
   },
   "loading": "Chargement du contenu...",
   "playAndListen": "Jouer & Écouter",

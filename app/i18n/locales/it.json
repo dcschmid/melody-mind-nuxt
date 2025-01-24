@@ -9,7 +9,10 @@
   "meta": {
     "homeTitle": "Melody Mind - L'Ultimo Quiz Musicale",
     "homeDescription": "Metti alla prova le tue conoscenze musicali nel nostro quiz interattivo. Rispondi a domande su canzoni, artisti e storia della musica di vari generi come rock, pop, hip-hop e classica.",
-    "homeKeywords": "Quiz Musicale, Conoscenze Musicali, Quiz Online, Storia della Musica, Quiz Artisti, Quiz Album, Generi Musicali, Gioco Interattivo"
+    "homeKeywords": "Quiz Musicale, Conoscenze Musicali, Quiz Online, Storia della Musica, Quiz Artisti, Quiz Album, Generi Musicali, Gioco Interattivo",
+    "title": "Melody Mind - Il Quiz Musicale Definitivo",
+    "description": "Metti alla prova le tue conoscenze musicali nel nostro gioco interattivo. Rispondi a domande su canzoni, artisti e storia della musica.",
+    "keywords": "Quiz Musicale, Conoscenze Musicali, Quiz Online, Storia della Musica, Quiz Artisti, Quiz Album, Generi Musicali, Gioco Interattivo"
   },
   "welcome": {
     "title": "Benvenuto su Melody Mind",
@@ -92,7 +95,11 @@
     "playCategory": "Gioca {category}",
     "comingSoon": "{category} - Prossimamente",
     "categoryAlt": "Immagine per la categoria {category}",
-    "comingSoonLabel": "Prossimamente"
+    "comingSoonLabel": "Prossimamente",
+    "meta": {
+      "title": "Categorie Quiz Musicale - Melody Mind",
+      "description": "Scopri emozionanti categorie di quiz musicali, dal rock al classico. Scegli il tuo genere preferito e metti alla prova le tue conoscenze."
+    }
   },
   "category": {
     "selected": "selezionata",
@@ -285,6 +292,10 @@
       "answerOptions": "Opzioni di Risposta",
       "expertAdvice": "Consiglio dell'Esperto",
       "audienceOpinion": "Opinione del Pubblico"
+    },
+    "meta": {
+      "title": "Quiz {category} - Modalità {difficulty} | Melody Mind",
+      "description": "Gioca ora al quiz {category} in modalità {difficulty}! Metti alla prova le tue conoscenze musicali e diventa un esperto."
     }
   },
   "gameRules": {
@@ -355,6 +366,10 @@
         "Pratica regolarmente per migliorare il tuo punteggio.",
         "Precisione prima della velocità – leggi attentamente ogni domanda."
       ]
+    },
+    "meta": {
+      "title": "Regole del Gioco e Guida - Melody Mind",
+      "description": "Impara le regole di Melody Mind. Scopri tutto sulle modalità di gioco, il sistema di punteggio e le funzioni bonus."
     }
   },
   "profile": {
@@ -513,7 +528,11 @@
     "points": "Punti",
     "lps": "Dischi",
     "noScores": "La classifica è ancora vuota",
-    "noResults": "Nessun risultato trovato"
+    "noResults": "Nessun risultato trovato",
+    "meta": {
+      "title": "Classifica - Melody Mind",
+      "description": "Visualizza i punteggi più alti dei migliori giocatori in tutte le categorie. Confronta le tue prestazioni con altri appassionati di musica."
+    }
   },
   "common": {
     "loading": "Caricamento..."
@@ -601,6 +620,10 @@
         "text": "Se hai domande sulla privacy, puoi contattarci in qualsiasi momento.",
         "emailLabel": "Email",
         "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "meta": {
+        "title": "Informativa sulla Privacy - Melody Mind",
+        "description": "Informazioni sulla privacy su Melody Mind. Scopri come proteggiamo i tuoi dati e quali sono i tuoi diritti."
       }
     },
     "imprint": {
@@ -634,6 +657,10 @@
         "text": "Questo sito web è soggetto alla legge tedesca. Il foro competente è la Germania.",
         "applicableLaw": "Si applica esclusivamente il diritto tedesco, ad esclusione della Convenzione delle Nazioni Unite sui contratti di vendita internazionale di merci.",
         "jurisdiction": "Il luogo di adempimento e foro competente esclusivo per tutte le controversie è la Germania, nella misura consentita dalla legge."
+      },
+      "meta": {
+        "title": "Note Legali - Melody Mind",
+        "description": "Informazioni legali e contatti di Melody Mind. Trova tutte le informazioni importanti sull'operatore del sito web."
       }
     }
   },
@@ -699,6 +726,10 @@
       "description": "Immergiti nel mondo di {genre}! Abbiamo selezionato le migliori canzoni per te. Ascolta la playlist sulla tua piattaforma di streaming preferita e preparati per il gioco."
     },
     "error": "Errore durante il caricamento dei contenuti",
-    "backToGame": "Torna al gioco"
+    "backToGame": "Torna al gioco",
+    "meta": {
+      "title": "Conoscenze Musicali - Melody Mind",
+      "description": "Immergiti nel fascinante mondo della musica. Scopri fatti interessanti e storie su vari generi ed epoche musicali."
+    }
   }
 }
