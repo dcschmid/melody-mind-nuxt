@@ -15,6 +15,9 @@ export default defineNuxtConfig({
   },
   app: {
     pageTransition: { name: "page" },
+    head: {
+      link: []
+    }
   },
   runtimeConfig: {
     turso: {
@@ -32,7 +35,15 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/scss/main.scss"],
-  modules: ["nuxt-icon", "@nuxtjs/i18n", '@nuxt/content', 'nuxt-fathom', '@nuxtjs/sitemap', '@nuxtjs/robots', 'nuxt-jsonld'],
+  modules: ["nuxt-icon", "@nuxtjs/i18n", '@nuxt/content', 'nuxt-fathom', '@nuxtjs/sitemap', '@nuxtjs/robots', 'nuxt-jsonld', '@nuxt/fonts'],
+  fonts: {
+    families: [
+      {
+        name: 'Inter',
+        weights: [400, 500, 600, 700]
+      }
+    ]
+  },
   content: {
     documentDriven: true,
     navigation: {
