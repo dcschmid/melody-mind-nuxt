@@ -5,7 +5,14 @@
           <!-- Main Content -->
            <div class="knowledge-header">
             <h1>{{ genre.title }}</h1>
-            <img :src="genre.image" :alt="genre.title" class="genre-image" />
+            <UnLazyImage 
+              :src="genre.image" 
+              :alt="genre.title" 
+              class="genre-image"
+              :thumbhash="thumbHash"
+              auto-sizes
+              loading="lazy"
+            />
           </div>
 
           <article class="main-content prose prose-invert">
@@ -67,6 +74,7 @@
 import { ref, onMounted, watch, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { queryContent, useRequestURL, useSeoMeta, useHead } from '#imports'
+import { useThumbHash } from '~/composables/useThumbHash'
 
 const route = useRoute()
 const url = useRequestURL()
@@ -75,6 +83,11 @@ const genre = ref(null)
 const category = ref(null)
 const gameUrl = ref('')
 const error = ref(null)
+
+const { getThumbHash } = useThumbHash()
+
+// ThumbHash für das Genre-Bild abrufen
+const thumbHash = computed(() => genre.value?.image ? getThumbHash(genre.value.image) : undefined)
 
 const loadContent = async () => {
   try {
@@ -188,7 +201,7 @@ watch(() => route.params, loadContent)
   .knowledge-header {
       text-align: center;
 
-    img.genre-image {
+    .genre-image {
       width: 100%;
       max-width: clamp(280px, 35vw, 400px);
       aspect-ratio: 1;

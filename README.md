@@ -210,6 +210,105 @@ export default [
 ];
 ```
 
+## Image Optimization
+
+The project uses a combination of `@nuxt/image` and `@unlazy/nuxt` for optimal image loading and presentation. This setup provides:
+
+- Automatic image optimization
+- WebP conversion
+- Responsive image sizes
+- Beautiful blur effects during loading
+- No content shifts
+- Server-side rendering of placeholders
+
+### ThumbHash Generation
+
+We use ThumbHash to generate tiny placeholders for images that are shown while the actual image is loading. These placeholders are pre-generated during build time to ensure optimal performance.
+
+#### How it works
+
+1. The `generate:thumbhash` script scans all images in the `public` directory
+2. For each image, it generates a ThumbHash (a compact representation of the image)
+3. The ThumbHashes are stored in `app/data/thumbhashes.json`
+4. During runtime, these ThumbHashes are used by the `UnLazyImage` component to show a blurred preview while loading the actual image
+
+#### Usage
+
+To generate ThumbHashes for all images:
+
+```bash
+yarn generate:thumbhash
+```
+
+Run this command:
+- After adding new images
+- After updating existing images
+- Before building the project
+
+#### Implementation Details
+
+The system consists of three main parts:
+
+1. **Generation Script** (`scripts/generate-thumbhash.ts`):
+   - Processes all images in the `public` directory
+   - Generates optimized ThumbHashes
+   - Saves them to a JSON file
+
+2. **Composable** (`app/composables/useThumbHash.ts`):
+   - Provides easy access to ThumbHashes
+   - Handles URL normalization
+
+3. **Component Integration**:
+   ```vue
+   <UnLazyImage 
+     :src="imageUrl"
+     :alt="imageAlt"
+     :thumbhash="getThumbHash(imageUrl)"
+     auto-sizes
+     loading="lazy"
+   />
+   ```
+
+#### Configuration
+
+The ThumbHash generation can be configured in `nuxt.config.ts`:
+
+```typescript
+export default defineNuxtConfig({
+  unlazy: {
+    ssr: true,          // Enable server-side rendering of placeholders
+    placeholderSize: 32 // Size of the decoded placeholder image
+  }
+})
+```
+
+### Benefits
+
+1. **Better User Experience**:
+   - Immediate visual feedback through blur effects
+   - Smooth transitions from placeholder to actual image
+   - No layout shifts during loading
+
+2. **Performance**:
+   - Tiny placeholder sizes (typically < 100 bytes)
+   - Pre-generated at build time
+   - Optimized image loading
+
+3. **SEO**:
+   - Server-side rendered placeholders
+   - Proper image attributes
+   - Fast loading times
+
+### Technical Details
+
+The ThumbHash generation process:
+1. Resizes images to a smaller size (100x100px)
+2. Converts them to RGBA format
+3. Generates a compact hash representation
+4. Converts the hash to base64 for storage
+
+The resulting ThumbHash is typically 30-100 bytes per image, making it efficient to include in the initial page load.
+
 ## Production
 
 Build the application for production:

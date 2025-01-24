@@ -53,7 +53,11 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/scss/main.scss"],
-  modules: ["nuxt-icon", "@nuxtjs/i18n", '@nuxt/content', 'nuxt-fathom', '@nuxtjs/sitemap', '@nuxtjs/robots', 'nuxt-jsonld', '@nuxt/fonts'],
+  modules: ["nuxt-icon", "@nuxtjs/i18n", '@nuxt/content', 'nuxt-fathom', '@nuxtjs/sitemap', '@nuxtjs/robots', 'nuxt-jsonld', '@nuxt/fonts', '@nuxt/image', '@unlazy/nuxt'],
+  unlazy: {
+    ssr: true,
+    placeholderSize: 32
+  },
   fonts: {
     families: [
       {

@@ -26,12 +26,13 @@
             <!-- Album Info -->
             <article v-if="artist" class="album-box" aria-labelledby="album-title">
                 <div class="cover-wrapper">
-                    <img :src="artist.coverSrc" 
+                    <UnLazyImage :src="artist.coverSrc" 
                         :alt="`Album Cover: ${artist.artist} - ${artist.album}`" 
                         loading="lazy"
-                        decoding="async" 
                         width="300"
                         height="300"
+                        format="webp"
+                        quality="80"
                         sizes="(max-width: 768px) 100vw, 300px"
                         class="album-cover"
                         fetchpriority="high" />
@@ -104,11 +105,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, watch, shallowRef } from 'vue'
+import { ref, onMounted, onBeforeUnmount, watch, shallowRef, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useThrottleFn } from '@vueuse/core'
+import { useThumbHash } from '~/composables/useThumbHash'
 
 const { t } = useI18n()
+const { getThumbHash } = useThumbHash()
 
 interface Props {
     isCorrectAnswer: boolean
@@ -158,6 +161,9 @@ const audioLoaded = ref(props.audioLoaded)
 const isPlaying = ref(props.isPlaying)
 const isBuffering = ref(props.isBuffering)
 const progress = ref(props.progress)
+
+// ThumbHash für das Cover-Bild abrufen
+const thumbHash = computed(() => props.artist?.coverSrc ? getThumbHash(props.artist.coverSrc) : undefined)
 
 // Watch für Änderungen der Props
 watch(() => props.audioLoaded, (val) => audioLoaded.value = val)

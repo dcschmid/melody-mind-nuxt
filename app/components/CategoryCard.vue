@@ -15,20 +15,14 @@
         >
             <div class="category-content">
                 <div class="image-container">
-                    <picture>
-                        <source 
-                            :srcset="imageUrl" 
-                            :sizes="'(max-width: 768px) 480px, 800px'" 
-                            type="image/webp"
-                        />
-                        <img 
-                            :src="imageUrl" 
-                            :alt="t('gameHome.categoryAlt', { category: headline })" 
-                            loading="lazy"
-                            decoding="async" 
-                            class="category-image"
-                        />
-                    </picture>
+                    <UnLazyImage 
+                        :src="imageUrl" 
+                        :alt="t('gameHome.categoryAlt', { category: headline })" 
+                        loading="lazy"
+                        class="category-image"
+                        auto-sizes
+                        :thumbhash="thumbHash"
+                    />
                     
                     <h2 :id="`${cardId}-title`" class="category-title">
                         {{ headline }}
@@ -54,21 +48,14 @@
             tabindex="0"
         >
             <div class="image-container">
-                <picture>
-                    <source 
-                        :srcset="imageUrl" 
-                        :sizes="'(max-width: 768px) 480px, 800px'" 
-                        type="image/webp"
-                    />
-                    <img 
-                        :src="imageUrl" 
-                        :alt="t('gameHome.categoryAlt', { category: headline })" 
-                        loading="lazy"
-                        decoding="async"
-                        class="category-image"
-                    />
-                </picture>
-
+                <UnLazyImage 
+                    :src="imageUrl" 
+                    :alt="t('gameHome.categoryAlt', { category: headline })" 
+                    loading="lazy"
+                    class="category-image"
+                    auto-sizes
+                    :thumbhash="thumbHash"
+                />
                 <h2 :id="`${cardId}-title`" class="category-title">
                 </h2>
 
@@ -85,6 +72,13 @@
 </template>
 
 <script setup lang="ts">
+import { useThumbHash } from '~/composables/useThumbHash'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+const { getThumbHash } = useThumbHash()
+
 const props = defineProps({
     headline: {
         type: String,
@@ -108,7 +102,8 @@ const props = defineProps({
     }
 })
 
-const { t } = useI18n()
+// ThumbHash für das Bild abrufen
+const thumbHash = computed(() => getThumbHash(props.imageUrl))
 
 // Generiere eine eindeutige ID für ARIA-Attribute
 const cardId = computed(() => 
