@@ -179,6 +179,37 @@ The script generates an HTML report in the `reports` directory with a timestamp 
   - Content type information
   - Retry attempt details
 
+### Sitemap URLs Generator
+
+The `scripts/generate-sitemap-urls.js` script automatically generates sitemap URLs for all playable categories across all supported languages. It reads the category data from the JSON files and only includes categories marked as playable (`isPlayable: true`).
+
+Features:
+- Automatically detects playable categories
+- Generates URLs for all supported languages (de, en, es, fr, it)
+- Creates a JavaScript module with the generated URLs
+- Integrates seamlessly with the Nuxt sitemap configuration
+
+Usage:
+```bash
+# Generate sitemap URLs
+node scripts/generate-sitemap-urls.js > app/sitemap-urls.js
+```
+
+The script will create a JavaScript module containing an array of all URLs for playable categories in all supported languages. This module is then automatically used by the Nuxt sitemap configuration to generate the final sitemap.xml.
+
+Example output structure:
+```javascript
+export default [
+  "/1950er",
+  "/de/1950er",
+  "/en/1950er",
+  "/es/1950er",
+  "/fr/1950er",
+  "/it/1950er",
+  // ... more categories
+];
+```
+
 ## Production
 
 Build the application for production:

@@ -55,10 +55,10 @@ export default defineNuxtConfig({
   sitemap: {
     enabled: true,
     autoLastmod: true,
-    xsl: false,
     exclude: [
       '/game/**'
-    ]
+    ],
+    urls: (await import('./app/sitemap-urls.js')).default
   },
   i18n: {
     strategy: "prefix",
