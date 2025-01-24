@@ -32,6 +32,24 @@ export default defineNuxtConfig({
           "Cache-Control": "no-cache, no-store",
         },
       },
+      // Static assets caching
+      "/assets/**": {
+        headers: {
+          "Cache-Control": "public, max-age=31536000, immutable",
+        },
+      },
+      // API routes caching
+      "/api/**": {
+        cache: {
+          maxAge: 60
+        }
+      },
+      // Content pages caching
+      "/content/**": {
+        cache: {
+          maxAge: 120
+        }
+      },
     },
   },
   css: ["~/assets/scss/main.scss"],
