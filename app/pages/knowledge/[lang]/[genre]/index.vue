@@ -30,12 +30,6 @@
                 {{ $t('knowledge.playlist.description', { genre: genre.title }) }}
               </p>
 
-              <!-- Play Button -->
-              <NuxtLink :to="gameUrl" class="play-button">
-                <Icon name="material-symbols:play-arrow" aria-hidden="true" class="play-icon" />
-                {{ $t('knowledge.playNow') }}
-              </NuxtLink>
-
               <!-- Playlist Links -->
               <div class="music-links-container" role="list" aria-labelledby="streaming-services-title">
                 <a v-if="category?.spotifyPlaylist" :href="category.spotifyPlaylist" 
@@ -57,6 +51,12 @@
                   <Icon name="simple-icons:applemusic" size="28" aria-hidden="true" />
                 </a>
               </div>
+
+              <!-- Play Button -->
+              <NuxtLink v-if="genre.isPlayable" :to="gameUrl" class="play-button">
+                <Icon name="i-mdi:play-outline" size="48" :aria-hidden="true" />
+                {{ $t('knowledge.playNow') }}
+              </NuxtLink>
             </div>
           </div>
         </div>
@@ -211,7 +211,7 @@ watch(() => route.params, loadContent)
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: var(--font-size-responsive-3xl);
       color: var(--primary-color);
       font-weight: bold;
     }
@@ -232,26 +232,28 @@ watch(() => route.params, loadContent)
     width: 100%;
     color: var(--text-secondary);
 
-
     h2 {
-      font-size: 2rem;
+      font-size: var(--font-size-responsive-2xl);
       color: var(--primary-color);
       margin: var(--padding-large) 0 var(--padding-medium);
     }
 
     h3 {
-      font-size: 1.5rem;
+      font-size: var(--font-size-responsive-xl);
       color: var(--primary-color);
       margin: var(--padding-medium) 0 var(--padding-small);
     }
 
     li {
+      font-size: var(--font-size-responsive-md);
       margin-bottom: var(--padding-small);
     }
 
     p {
+      font-size: var(--font-size-responsive-md);
       line-height: 1.8;
       margin-bottom: var(--padding-medium);
+      hyphens: auto;
     }
   }
 
@@ -271,18 +273,19 @@ watch(() => route.params, loadContent)
     display: flex;
     align-items: center;
     gap: var(--padding-small);
-    font-size: 2rem;
+    font-size: var(--font-size-responsive-2xl);
     font-weight: bold;
     margin-bottom: var(--padding-medium);
-    color: var(--text-primary);
+    color: var(--primary-color);
   }
 
   .headphone-icon {
-    font-size: 1.8rem;
+    font-size: var(--font-size-responsive-2xl);
     color: var(--primary-color);
   }
 
   .music-links-description {
+    font-size: var(--font-size-responsive-md);
     color: var(--text-secondary);
     margin-bottom: var(--padding-large);
   }
@@ -292,13 +295,14 @@ watch(() => route.params, loadContent)
     align-items: center;
     gap: var(--padding-small);
     background-color: var(--primary-color);
-    color: white;
-    padding: 1rem 2rem;
+    color: var(--button-text-color);
+    padding: var(--padding-medium) var(--padding-large);
     border-radius: var(--border-radius);
-    font-size: 1.2rem;
+    font-size: var(--font-size-responsive-md);
     font-weight: bold;
     transition: all 0.3s ease;
     text-decoration: none;
+    margin-top: var(--padding-medium);
 
     &:hover {
       transform: translateY(-2px);
@@ -307,7 +311,7 @@ watch(() => route.params, loadContent)
     }
 
     .play-icon {
-      font-size: 1.5rem;
+      font-size: var(--font-size-responsive-md);
     }
   }
 
@@ -315,7 +319,6 @@ watch(() => route.params, loadContent)
     display: flex;
     justify-content: center;
     gap: var(--padding-large);
-    margin-top: var(--padding-medium);
   }
 
   .music-link {
