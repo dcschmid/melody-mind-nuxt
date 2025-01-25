@@ -27,14 +27,6 @@
                     <h2 :id="`${cardId}-title`" class="category-title">
                         {{ headline }}
                     </h2>
-                    
-                    <p 
-                        :id="`${cardId}-description`" 
-                        class="category-description"
-                        aria-live="polite"
-                    >
-                        {{ introSubline }}
-                    </p>
                 </div>
             </div>
         </NuxtLink>
@@ -189,31 +181,18 @@ defineEmits(['select'])
 }
 
 .category-title {
+    background: rgba(0, 0, 0, 0.7);
+
     @include flex-center;
     @include absolute-fill;
     font-size: var(--font-size-responsive-md);
     font-weight: 600;
-    margin-bottom: var(--padding-small);
     color: var(--text-on-primary);
-    background: rgba(0, 0, 0, 0.7);
-    padding: clamp(0.75rem, 2vw, 1.5rem);
     text-align: center;
     z-index: 2;
-}
-
-.category-description {
-    @include absolute-fill;
-    top: auto;
-    background: rgba(0, 0, 0, 0.85);
-    font-size: var(--font-size-responsive-sm);
-    color: var(--text-secondary);
-    padding: clamp(0.75rem, 2vw, 1.5rem);
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    margin-bottom: var(--padding-medium);
-    line-height: 1.6;
-    z-index: 2;
+    height: 100%;
+    width: 100%;
+    margin: 0;
 }
 
 .coming-soon {

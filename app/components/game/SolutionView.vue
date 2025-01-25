@@ -98,8 +98,8 @@
         </div>
 
         <button @click="$emit('next')" class="next-button" :aria-label="t('game.next')">
+            <Icon name="i-mdi:play-outline" size="48" :aria-hidden="true" />
             <span>{{ t('game.next') }}</span>
-            <Icon name="material-symbols:arrow-forward" size="48" :aria-hidden="true" />
         </button>
     </div>
 </template>
