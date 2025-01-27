@@ -2,6 +2,20 @@
 title: Musique des Années 70 - Rock Progressif, Disco et Rébellion Punk
 description: Découvrez le paysage musical révolutionnaire des années 70, des compositions ambitieuses du rock progressif à l'explosion du disco dans les clubs. Explorez comment le punk rock a défié les conventions, pendant que le rock arena conquérait les stades. Une décennie de contrastes qui a transformé les genres musicaux, les techniques d'enregistrement et la façon de vivre la musique.
 image: /category/1970er.jpg
+createdAt: 2024-01-20
+updatedAt: 2024-01-21
+keywords:
+  - Musique des années 70
+  - Rock Progressif
+  - Disco
+  - Punk Rock
+  - Hard Rock
+  - Funk
+  - Glam Rock
+  - Arena Rock
+  - Musique Psychédélique
+author: MelodyMind
+locale: fr-FR
 category:
   spotifyPlaylist: https://open.spotify.com/playlist/5NQ2NVn1zAPdKENrknRkXV
   deezerPlaylist: https://deezer.page.link/niXM9GqqstT5KFMW6

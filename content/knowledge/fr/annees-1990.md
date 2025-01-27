@@ -2,6 +2,20 @@
 title: Musique des Années 90 - Grunge, Domination du Hip-Hop et Évolution Électronique
 description: Découvrez la scène musicale révolutionnaire des années 90, de l'explosion du grunge à Seattle jusqu'à l'ascension mondiale du hip-hop. Explorez comment la Britpop a réinventé le rock britannique pendant que la culture électronique conquérait les clubs du monde entier. Une décennie de bouleversements qui a vu naître de nouveaux genres et transformé la façon de produire et consommer la musique.
 image: /category/1990er.jpg
+createdAt: 2024-01-20
+updatedAt: 2024-01-21
+keywords:
+  - Musique des années 90
+  - Grunge
+  - Hip-Hop
+  - Musique électronique
+  - Britpop
+  - Dance
+  - Techno
+  - R&B
+  - Pop
+author: MelodyMind
+locale: fr-FR
 category:
   spotifyPlaylist: 
   deezerPlaylist: 

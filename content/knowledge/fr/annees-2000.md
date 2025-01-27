@@ -2,6 +2,20 @@
 title: Musique des Années 2000 - Distribution Numérique, Essor Indie et Fusion des Genres
 description: Découvrez comment les années 2000 ont révolutionné la musique à travers l'innovation numérique, de Napster à iTunes. Une décennie où l'indie rock s'est épanoui, le hip-hop a dominé les charts, et la musique électronique est entrée dans le mainstream. Explorez la transformation radicale de notre façon de créer, partager et vivre la musique à l'ère du numérique.
 image: /category/2000er.jpg
+createdAt: 2024-01-20
+updatedAt: 2024-01-21
+keywords:
+  - Musique des années 2000
+  - MP3
+  - Indie Rock
+  - Hip-Hop
+  - R&B
+  - Pop
+  - Musique électronique
+  - iTunes
+  - Distribution numérique
+author: MelodyMind
+locale: fr-FR
 category:
   spotifyPlaylist: 
   deezerPlaylist: 
