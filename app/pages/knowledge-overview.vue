@@ -122,7 +122,7 @@ const navigateToKnowledge = (item) => {
 
 .overview-text {
     font-size: var(--font-size-responsive-md);
-    line-height: 1.6;
+    line-height: var(--line-height-relaxed);
     text-align: center;
 }
 
