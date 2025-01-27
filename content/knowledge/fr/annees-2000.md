@@ -1,6 +1,6 @@
 ---
-title: Les Années 2000 - L'Ère Numérique de la Musique Française
-description: Les années 2000 - Une décennie de transformation numérique et d'innovation musicale en France
+title: Musique des Années 2000 - Distribution Numérique, Essor Indie et Fusion des Genres
+description: Découvrez comment les années 2000 ont révolutionné la musique à travers l'innovation numérique, de Napster à iTunes. Une décennie où l'indie rock s'est épanoui, le hip-hop a dominé les charts, et la musique électronique est entrée dans le mainstream. Explorez la transformation radicale de notre façon de créer, partager et vivre la musique à l'ère du numérique.
 image: /category/2000er.jpg
 category:
   spotifyPlaylist: 

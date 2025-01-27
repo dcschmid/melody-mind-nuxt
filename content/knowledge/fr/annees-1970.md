@@ -1,6 +1,6 @@
 ---
-title: Les Années 70 Diversifiées - L'Âge d'Or du Rock
-description: Les Années 70 - Une décennie entre Rock Progressif, Disco et Punk qui a changé à jamais le paysage musical
+title: Musique des Années 70 - Rock Progressif, Disco et Rébellion Punk
+description: Découvrez le paysage musical révolutionnaire des années 70, des compositions ambitieuses du rock progressif à l'explosion du disco dans les clubs. Explorez comment le punk rock a défié les conventions, pendant que le rock arena conquérait les stades. Une décennie de contrastes qui a transformé les genres musicaux, les techniques d'enregistrement et la façon de vivre la musique.
 image: /category/1970er.jpg
 category:
   spotifyPlaylist: https://open.spotify.com/playlist/5NQ2NVn1zAPdKENrknRkXV

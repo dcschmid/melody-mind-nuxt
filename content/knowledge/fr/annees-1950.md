@@ -1,6 +1,6 @@
 ---
-title: L'Âge d'Or du Rock 'n' Roll
-description: Les Années 50 - Une Révolution Musicale entre Prospérité Économique et Changement Social
+title: Musique des Années 50 - Naissance du Rock 'n' Roll et Révolution de la Culture Jeune
+description: Découvrez la transformation révolutionnaire de la musique des années 50, de la naissance du Rock 'n' Roll aux artistes emblématiques comme Elvis Presley. Explorez comment cette décennie a bouleversé la culture populaire à travers les innovations technologiques, l'émergence de la culture adolescente, et la fusion du blues, de la country et du R&B qui créa de nouveaux sons. Des juke-boxes aux DJ radio, revivez l'histoire de cette époque qui façonna la musique moderne.
 image: /category/1950er.jpg
 category:
   spotifyPlaylist: https://open.spotify.com/playlist/3TcWOAPjycLukArGqHNWhJ

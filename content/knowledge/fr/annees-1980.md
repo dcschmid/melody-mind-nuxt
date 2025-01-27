@@ -1,6 +1,6 @@
 ---
-title: "La Musique Française des Années 1980"
-description: "Découvrez l'évolution de la musique française pendant les années 1980: des innovations technologiques aux mouvements culturels qui ont façonné cette décennie musicale unique."
+title: Musique des Années 80 - MTV, New Wave et Révolution Numérique
+description: Découvrez la transformation radicale de la musique des années 80, où MTV redéfinit l'industrie musicale, l'innovation électronique crée de nouveaux sons, et les genres se mélangent comme jamais auparavant. De la New Wave à la Pop synthétique, en passant par le Hard Rock et l'émergence du Hip-Hop, explorez comment la technologie numérique et les clips vidéo ont révolutionné la création et la consommation de musique.
 image: /category/1980er.jpg
 category:
   spotifyPlaylist: 

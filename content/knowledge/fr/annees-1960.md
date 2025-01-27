@@ -1,6 +1,6 @@
 ---
-title: Les années soixante - La révolution musicale
-description: Les années 60 - Une décennie qui a bouleversé la musique, marquée par les Beatles, Woodstock et le mouvement hippie
+title: Musique des Années 60 - Les Beatles, La Contre-Culture et le Rock Révolutionnaire
+description: Découvrez la transformation radicale de la musique dans les années 60, de l'invasion britannique menée par les Beatles jusqu'au festival historique de Woodstock. Explorez comment le rock psychédélique, la soul Motown, les chansons contestataires folk et le mouvement contre-culturel ont redéfini la musique populaire, créé de nouvelles techniques d'enregistrement et changé la société pour toujours.
 image: /category/1960er.jpg
 category:
   spotifyPlaylist: https://open.spotify.com/playlist/2cRTgKpt2PUtZquuJjmmNv

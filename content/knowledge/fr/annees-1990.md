@@ -1,6 +1,6 @@
 ---
-title: Les Années 90 Dynamiques - Une Décennie de Révolution Musicale en France
-description: Les années 1990 - Une ère de changements qui a révolutionné la musique française
+title: Musique des Années 90 - Grunge, Domination du Hip-Hop et Évolution Électronique
+description: Découvrez la scène musicale révolutionnaire des années 90, de l'explosion du grunge à Seattle jusqu'à l'ascension mondiale du hip-hop. Explorez comment la Britpop a réinventé le rock britannique pendant que la culture électronique conquérait les clubs du monde entier. Une décennie de bouleversements qui a vu naître de nouveaux genres et transformé la façon de produire et consommer la musique.
 image: /category/1990er.jpg
 category:
   spotifyPlaylist: 
