@@ -18,7 +18,7 @@
 ### Nachhaltige Einflüsse (2500-3000 Zeichen, Einfluss auf spätere Entwicklungen, Bleibende Innovationen)
 ## Fazit (2000-2500 Zeichen, Zusammenfassung der wichtigsten Punkte, Gesamtbedeutung der Ära)
 
-Ganz wichtig auf die geforderte Zeichenlänge achten. Bitte nur die internationalen Musik berücksichtige und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar ist und auch den typischen englischen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen.
+Ganz wichtig auf die geforderte Zeichenlänge achten. Bitte nur die internationalen Musik berücksichtige und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar ist und auch den typischen französischen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen.
 
 
 
