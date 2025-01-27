@@ -95,7 +95,7 @@ const props = defineProps({
 })
 
 // ThumbHash für das Bild abrufen
-const thumbHash = computed(() => getThumbHash(props.imageUrl))
+const thumbHash = computed(() => props.imageUrl ? getThumbHash(props.imageUrl) : '')
 
 // Generiere eine eindeutige ID für ARIA-Attribute
 const cardId = computed(() => 
