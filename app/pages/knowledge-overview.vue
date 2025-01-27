@@ -113,15 +113,17 @@ const navigateToKnowledge = (item) => {
 }
 
 .page-title {
-    font-size: var(--font-size-responsive-2xl);
+    font-size: var(--font-size-responsive-3xl);
     font-weight: 700;
     text-align: center;
     margin-bottom: var(--padding-large);
+    color: var(--primary-color);
 }
 
 .overview-text {
     font-size: var(--font-size-responsive-md);
     line-height: 1.6;
+    text-align: center;
 }
 
 .categories-grid {
