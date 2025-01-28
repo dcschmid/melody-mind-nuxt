@@ -59,7 +59,27 @@
     "isPlayable": false,
     "slug": "1990er",
     "text": "Die 90er Jahre waren ein Jahrzehnt, das musikalisch alles bot – von Eurodance über Grunge bis hin zu Hip-Hop und Pop-Hymnen. Diese Kategorie vereint die größten Hits, die den Soundtrack dieser Zeit prägten, und bringt die besten Songs zurück, die bis heute nostalgische Erinnerungen wecken. Mit Künstlern wie Nirvana, Britney Spears, Backstreet Boys, 2Pac, Spice Girls und Oasis steht die 90er-Musik für Vielfalt, Innovation und einen unverwechselbaren Vibe. Ob du zu den energischen Rhythmen von Techno und Eurodance tanzen oder in den alternativen Rock-Sound eintauchen möchtest – die 90er haben für jeden Geschmack etwas zu bieten. Lass dich von den eingängigen Melodien und den kultigen Hits der 90er mitreißen und erlebe das Jahrzehnt, das die Musikwelt revolutionierte!",
-    "spotifyPlaylist": "https://open.spotify.com/playlist/7y23FrZZ2ZkN7sGy66apha"
+    "spotifyPlaylist": "https://open.spotify.com/playlist/7y23FrZZ2ZkN7sGy66apha",
+    "appleMusicPlaylist": "https://music.apple.com/de/playlist/top-1990s-hits/pl.u-JPAZEGPtL2NZeJZ",
+    "knowledgeUrl": "/knowledge/de/1990er"
+  },
+  {
+    "categoryUrl": "/2000er",
+    "headline": "2000er",
+    "imageUrl": "/category/2000er.jpg", 
+    "introSubline": "Erlebe die Hits und musikalischen Innovationen der 2000er Jahre!",
+    "isPlayable": false,
+    "slug": "2000er",
+    "text": "Die 2000er Jahre waren ein wegweisendes Jahrzehnt in der Musik, geprägt vom Aufstieg der digitalen Musik, innovativen Produktionstechniken und genreübergreifenden Sounds. Diese Kategorie vereint die größten Hits, die diese Ära geprägt haben – von Pop-Superstars wie Beyoncé und Justin Timberlake bis hin zu Rockbands wie Linkin Park und Green Day. Das Jahrzehnt erlebte das Aufkommen neuer Genres wie Indie-Rock, zeitgenössischem R&B und elektronischer Tanzmusik, während Hip-Hop weiterhin die Mainstream-Kultur dominierte. Mit Künstlern, die kreative Grenzen verschoben, und einer Technologie, die unseren Musikkonsum veränderte, repräsentieren die 2000er eine entscheidende Zeit in der Musikgeschichte. Lass dich von den dynamischen Klängen und bahnbrechenden Hits mitreißen, die dieses innovative Jahrzehnt geprägt haben!"
+  },
+  {
+    "categoryUrl": "/2010er",
+    "headline": "2010er", 
+    "imageUrl": "/category/2010er.jpg",
+    "introSubline": "Erlebe die digitale Revolution und die vielfältigen Klänge der 2010er Jahre!",
+    "isPlayable": false,
+    "slug": "2010er",
+    "text": "Die 2010er Jahre waren eine revolutionäre Periode in der Musik, geprägt von Streaming-Plattformen, Social-Media-Einflüssen und Genre-Vermischungen. Diese Kategorie feiert die größten Hits und Durchbruchskünstler des Jahrzehnts, die die moderne Musikkultur geprägt haben. Von EDM und Trap-Musik bis hin zu Indie-Pop und modernem Rock zeigten die 2010er eine beispiellose musikalische Vielfalt. Künstler wie Drake, Taylor Swift, Ed Sheeran und Adele dominierten die Charts, während durch digitale Innovation und globale Einflüsse neue Genres entstanden. Der Aufstieg der Streaming-Dienste veränderte die Art und Weise, wie wir Musik entdecken und konsumieren, während Social Media neue Wege für Künstler schuf, sich mit Fans zu verbinden. Lass dich von den vielfältigen Klängen und technologischen Innovationen mitreißen, die die 2010er zu einem transformativen Jahrzehnt in der Musikgeschichte machten!"
   },
   {
     "categoryUrl": "/acoustic-metal",

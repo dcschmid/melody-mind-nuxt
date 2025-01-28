@@ -21,7 +21,6 @@
 Ganz wichtig auf die geforderte Zeichenlänge achten. Bitte nur die internationalen Musik berücksichtige und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar ist und auch den typischen italienischen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen.
 
 
-
 # Für einzelne Genres
 
 ## Einleitung (2500-3000 Zeichen, Definition des Genres,Ursprung und zeitliche Einordnung, Bedeutung im Kontext der Musikgeschichte)

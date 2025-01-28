@@ -75,22 +75,40 @@
     "knowledgeUrl": "/knowledge/es/anos-1970"
   },
   {
-    "categoryUrl": "/80er",
-    "headline": "Años 80",
-    "imageUrl": "/category/80er.jpg",
+    "categoryUrl": "/anos-1980",
+    "headline": "Años 1980",
+    "imageUrl": "/category/1980er.jpg",
     "introSubline": "¡Sumérgete en los sonidos inolvidables y los éxitos icónicos de los años 80!",
     "isPlayable": false,
-    "slug": "80er",
+    "slug": "anos-1980",
     "text": "Los años 80 fueron una década llena de innovaciones musicales y cultura pop influyente. Esta categoría reúne los mayores éxitos de los 80, caracterizados por sintetizadores, ritmos bailables y estilos únicos. Con artistas como Michael Jackson, Madonna, Prince, Duran Duran, Depeche Mode y A-ha, la música de los 80 ofrece una colorida mezcla de pop, rock, new wave y synth-pop. Los 80 fueron conocidos por sus poderosos estribillos, solos épicos de guitarra y melodías inconfundibles que siguen siendo atemporales. Ya sea que quieras bailar al ritmo de la música disco, disfrutar del glamour del pop o sentir los sonidos rebeldes del rock, los 80 ofrecen la experiencia musical perfecta. Déjate llevar por las vibraciones retro y los sonidos icónicos de los años 80 y disfruta de un viaje en el tiempo a una de las décadas más influyentes de la historia de la música."
   },
   {
-    "categoryUrl": "/90er",
+    "categoryUrl": "/anos-1990",
     "headline": "Años 90",
-    "imageUrl": "/category/90er.jpg",
+    "imageUrl": "/category/1990er.jpg",
     "introSubline": "¡Experimenta los éxitos inolvidables y la banda sonora de una década icónica - los años 90!",
     "isPlayable": false,
-    "slug": "90er",
+    "slug": "anos-1990",
     "text": "Los años 90 fueron una década que lo tenía todo musicalmente, desde eurodance hasta grunge, pasando por hip-hop e himnos pop. Esta categoría reúne los mayores éxitos que marcaron la banda sonora de esta época y trae de vuelta las mejores canciones que hasta hoy despiertan recuerdos nostálgicos. Con artistas como Nirvana, Britney Spears, Backstreet Boys, 2Pac, Spice Girls y Oasis, la música de los 90 representa diversidad, innovación y un ambiente inconfundible. Ya sea que quieras bailar al ritmo enérgico del techno y el eurodance o sumergirte en el sonido del rock alternativo, los 90 tienen algo para todos los gustos. Déjate llevar por las melodías pegadizas y los éxitos icónicos de los 90 y experimenta la década que revolucionó el mundo de la música."
+  },
+  {
+    "categoryUrl": "/anos-2000",
+    "headline": "Años 2000",
+    "imageUrl": "/category/2000er.jpg", 
+    "introSubline": "¡Experimenta los hits y las innovaciones musicales de los años 2000!",
+    "isPlayable": false,
+    "slug": "anos-2000",
+    "text": "Los años 2000 fueron una década decisiva en la música, marcada por el auge de la música digital, las técnicas de producción innovadoras y los sonidos que trascendían géneros. Esta categoría reúne los mayores hits que definieron esta era, desde superestrellas del pop como Beyoncé y Justin Timberlake hasta bandas de rock como Linkin Park y Green Day. La década vio el surgimiento de nuevos géneros como el indie rock, el R&B contemporáneo y la música electrónica de baile, mientras que el hip-hop continuaba dominando la cultura mainstream. Con artistas que empujaron los límites creativos y una tecnología que cambió nuestra forma de consumir música, los 2000 representan un tiempo decisivo en la historia de la música. ¡Déjate llevar por los sonidos dinámicos y los hits revolucionarios que definieron esta década innovadora!"
+  },
+  {
+    "categoryUrl": "/anos-2010",
+    "headline": "Años 2010", 
+    "imageUrl": "/category/2010er.jpg",
+    "introSubline": "¡Experimenta la revolución digital y los diversos sonidos de los años 2010!",
+    "isPlayable": false,
+    "slug": "anos-2010",
+    "text": "Los años 2010 fueron un período revolucionario en la música, marcado por las plataformas de streaming, las influencias de las redes sociales y la fusión de géneros. Esta categoría celebra los mayores hits y artistas revelación de la década que han dado forma a la cultura musical moderna. Desde el EDM y la música trap hasta el indie pop y el rock moderno, los 2010 mostraron una diversidad musical sin precedentes. Artistas como Drake, Taylor Swift, Ed Sheeran y Adele dominaron las listas de éxitos, mientras que la innovación digital y las influencias globales dieron origen a nuevos géneros. El auge de los servicios de streaming cambió la forma en que descubrimos y consumimos música, mientras que las redes sociales crearon nuevas formas para que los artistas se conectaran con los fans. ¡Déjate llevar por los diversos sonidos y las innovaciones tecnológicas que hicieron de los 2010 una década transformadora en la historia de la música!"
   },
   {
     "categoryUrl": "/belgisch",
