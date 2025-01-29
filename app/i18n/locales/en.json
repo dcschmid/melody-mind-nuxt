@@ -28,10 +28,6 @@
       "title": "Game Rules - Melody Mind",
       "description": "Learn about Melody Mind's game rules. Find out everything about game modes, scoring system, and bonus features in our music quiz."
     },
-    "highscores": {
-      "title": "Leaderboard - Melody Mind",
-      "description": "View the high scores of the best players in all categories. Compare your performance with other music enthusiasts."
-    },
     "privacy": {
       "title": "Privacy Policy - Melody Mind",
       "description": "Learn about our privacy policies. Find out how we protect and use your data at Melody Mind."
@@ -54,11 +50,6 @@
     "email": {
       "label": "Email",
       "placeholder": "Your email address"
-    },
-    "username": {
-      "label": "Username",
-      "placeholder": "Your username",
-      "lengthHint": "Minimum 3 characters"
     },
     "password": {
       "label": "Password",
@@ -424,7 +415,6 @@
     "home": "Home",
     "knowledge": "Knowledge Database",
     "rules": "Game Rules",
-    "leaderboard": "Leaderboard",
     "support": "Support Us",
     "login": "Login",
     "register": "Register",
@@ -448,8 +438,6 @@
     "pageNotFound": "Page not found",
     "emailRequired": "Email address is required",
     "invalidEmail": "Invalid email address",
-    "usernameRequired": "Username is required",
-    "usernameTooShort": "Username must be at least 3 characters long",
     "passwordRequired": "Password is required",
     "passwordTooShort": "Password must be at least 6 characters long",
     "nameRequired": "Name is required",
@@ -524,21 +512,6 @@
     "avatar": "Avatar",
     "name": "Name",
     "points": "Points"
-  },
-  "highscores": {
-    "meta": {
-      "title": "Leaderboard & Rankings - Melody Mind",
-      "description": "Compare your score with other players. View the top scores in all categories and compete for first place!"
-    },
-    "title": "Highscores",
-    "searchPlaceholder": "Search categories...",
-    "rank": "Rank",
-    "player": "Player",
-    "difficulty": "Difficulty",
-    "points": "Points",
-    "lps": "LPs",
-    "noResults": "No results found",
-    "noScores": "No highscores available"
   },
   "legal": {
     "privacy": {
@@ -708,13 +681,6 @@
     "overview": "Knowledge Overview",
     "title": "Music Knowledge Base",
     "description": "Explore our comprehensive music knowledge base"
-  },
-  "highscore": {
-    "title": "Highscores",
-    "total": "Total Score",
-    "avatar": "Avatar",
-    "name": "Name",
-    "points": "Points"
   },
   "highscores": {
     "title": "Highscores",

@@ -28,10 +28,6 @@
       "title": "Spielregeln - Melody Mind",
       "description": "Erfahre mehr über die Spielregeln von Melody Mind. In unserem Musikquiz erfährst du alles über die Spielmodi, das Punktesystem und die Bonusfunktionen."
     },
-    "highscores": {
-      "title": "Bestenliste - Melody Mind",
-      "description": "Sieh dir die Highscores der besten Spieler/innen in allen Kategorien an. Vergleiche deine Leistung mit anderen Musikbegeisterten."
-    },
     "privacy": {
       "title": "Datenschutzrichtlinie - Melody Mind",
       "description": "Erfahre mehr über unsere Datenschutzrichtlinien. Finde heraus, wie wir deine Daten bei Melody Mind schützen und nutzen."
@@ -54,11 +50,6 @@
     "email": {
       "label": "E-Mail",
       "placeholder": "Deine E-Mail Adresse"
-    },
-    "username": {
-      "label": "Benutzername",
-      "placeholder": "Dein Benutzername",
-      "lengthHint": "Mindestens 3 Zeichen"
     },
     "password": {
       "label": "Passwort",
@@ -340,21 +331,6 @@
       ]
     }
   },
-  "highscores": {
-    "meta": {
-      "title": "Bestenliste & Rangliste - Melody Mind",
-      "description": "Vergleiche deine Punktzahl mit anderen Spielern. Sieh dir die Top-Scores in allen Kategorien an und kämpfe um den ersten Platz!"
-    },
-    "title": "Highscores",
-    "searchPlaceholder": "Nach Kategorie suchen...",
-    "rank": "Rang",
-    "player": "Spieler",
-    "difficulty": "Schwierigkeit",
-    "points": "Punkte",
-    "lps": "LPs",
-    "noResults": "Keine Ergebnisse gefunden",
-    "noScores": "Keine Highscores vorhanden"
-  },
   "knowledge": {
     "meta": {
       "title": "Musikwissen & Hintergründe - Melody Mind",
@@ -425,7 +401,6 @@
     "home": "Startseite",
     "knowledge": "Wissensdatenbank",
     "rules": "Spielregeln",
-    "leaderboard": "Bestenliste",
     "support": "Unterstütze uns",
     "imprint": "Impressum",
     "privacy": "Datenschutz",
@@ -444,8 +419,6 @@
     "pageNotFound": "Seite nicht gefunden",
     "emailRequired": "E-Mail Adresse ist erforderlich",
     "invalidEmail": "Ungültige E-Mail Adresse",
-    "usernameRequired": "Benutzername ist erforderlich",
-    "usernameTooShort": "Der Benutzername muss mindestens 3 Zeichen lang sein",
     "passwordRequired": "Passwort ist erforderlich",
     "passwordTooShort": "Das Passwort muss mindestens 6 Zeichen lang sein",
     "nameRequired": "Name ist erforderlich",
@@ -513,13 +486,6 @@
         "local": "Lokale Daten in deinem Browser können über deine Browsereinstellungen gelöscht werden."
       }
     }
-  },
-  "highscore": {
-    "title": "Highscores",
-    "total": "Gesamtpunktzahl",
-    "avatar": "Avatar",
-    "name": "Name",
-    "points": "Punkte"
   },
   "legal": {
     "privacy": {
@@ -646,22 +612,6 @@
         "applicableLaw": "Es gilt ausschließlich deutsches Recht unter Ausschluss des UN-Übereinkommens über Verträge über den internationalen Warenkauf.",
         "jurisdiction": "Gerichtsstand für alle Streitigkeiten aus diesem Vertrag ist Deutschland, soweit gesetzlich zulässig."
       }
-    }
-  },
-  "username": {
-    "title": "Wie ist dein Name?",
-    "label": "Benutzername",
-    "placeholder": "Gib deinen Namen ein",
-    "submit": "Speichern",
-    "statusLabel": "Benutzername-Eingabe",
-    "current": "Aktueller Benutzername",
-    "success": "Benutzername {username} wurde gespeichert",
-    "errors": {
-      "required": "Bitte gib einen Benutzernamen ein",
-      "tooShort": "Der Benutzername muss mindestens 2 Zeichen lang sein",
-      "tooLong": "Der Benutzername darf maximal 20 Zeichen lang sein",
-      "invalidChars": "Der Benutzername darf nur Buchstaben, Zahlen, Unterstriche und Bindestriche enthalten",
-      "saveFailed": "Benutzername konnte nicht gespeichert werden"
     }
   },
   "difficulty": {

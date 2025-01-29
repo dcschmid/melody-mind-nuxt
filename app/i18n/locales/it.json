@@ -28,10 +28,6 @@
       "title": "Regole del Gioco - Melody Mind",
       "description": "Scopri le regole del gioco di Melody Mind. Impara tutto sulle modalità di gioco, il sistema di punteggio e le funzionalità bonus nel nostro quiz musicale."
     },
-    "highscores": {
-      "title": "Classifica - Melody Mind",
-      "description": "Visualizza i punteggi più alti dei migliori giocatori in tutte le categorie. Confronta le tue prestazioni con altri appassionati di musica."
-    },
     "privacy": {
       "title": "Informativa sulla Privacy - Melody Mind",
       "description": "Scopri le nostre politiche sulla privacy. Impara come proteggiamo e utilizziamo i tuoi dati su Melody Mind."
@@ -54,11 +50,6 @@
     "email": {
       "label": "Email",
       "placeholder": "Il tuo indirizzo email"
-    },
-    "username": {
-      "label": "Nome utente",
-      "placeholder": "Il tuo nome utente",
-      "lengthHint": "Minimo 3 caratteri"
     },
     "password": {
       "label": "Password",
@@ -458,7 +449,6 @@
     "home": "Home",
     "knowledge": "Base di Conoscenza",
     "rules": "Regole del Gioco",
-    "leaderboard": "Classifica",
     "support": "Sostienici",
     "imprint": "Note Legali",
     "privacy": "Informativa sulla Privacy",
@@ -478,8 +468,6 @@
     "backToHome": "Torna alla home",
     "emailRequired": "L'indirizzo e-mail è obbligatorio",
     "invalidEmail": "Indirizzo e-mail non valido",
-    "usernameRequired": "Il nome utente è obbligatorio",
-    "usernameTooShort": "Il nome utente deve contenere almeno 3 caratteri",
     "passwordRequired": "La password è obbligatoria",
     "passwordTooShort": "La password deve contenere almeno 6 caratteri",
     "nameRequired": "Il nome è obbligatorio",
@@ -546,29 +534,6 @@
         "confirmation": "Conferma di Cancellazione",
         "local": "I dati locali nel tuo browser possono essere eliminati tramite le impostazioni del browser."
       }
-    }
-  },
-  "highscore": {
-    "title": "Punteggi",
-    "total": "Punteggio Totale",
-    "avatar": "Avatar",
-    "name": "Nome",
-    "points": "Punti",
-    "lps": "Dischi"
-  },
-  "highscores": {
-    "title": "Classifica dei Punteggi",
-    "searchPlaceholder": "Cerca per categoria...",
-    "rank": "Posizione",
-    "player": "Giocatore",
-    "difficulty": "Difficoltà",
-    "points": "Punti",
-    "lps": "Dischi",
-    "noScores": "La classifica è ancora vuota",
-    "noResults": "Nessun risultato trovato",
-    "meta": {
-      "title": "Classifica - Melody Mind",
-      "description": "Visualizza i punteggi più alti dei migliori giocatori in tutte le categorie. Confronta le tue prestazioni con altri appassionati di musica."
     }
   },
   "legal": {

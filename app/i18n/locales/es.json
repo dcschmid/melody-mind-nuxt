@@ -28,10 +28,6 @@
             "title": "Reglas del Juego - Melody Mind",
             "description": "Aprende sobre las reglas del juego de Melody Mind. Descubre todo sobre los modos de juego, sistema de puntuación y funciones adicionales en nuestro quiz musical."
         },
-        "highscores": {
-            "title": "Tabla de Puntuaciones - Melody Mind",
-            "description": "Ver las puntuaciones más altas de los mejores jugadores en todas las categorías. Compara tu rendimiento con otros entusiastas de la música."
-        },
         "privacy": {
             "title": "Política de Privacidad - Melody Mind",
             "description": "Aprende sobre nuestras políticas de privacidad. Descubre cómo protegemos y usamos tus datos en Melody Mind."
@@ -54,11 +50,6 @@
         "email": {
             "label": "Correo electrónico",
             "placeholder": "Tu correo electrónico"
-        },
-        "username": {
-            "label": "Nombre de usuario",
-            "placeholder": "Tu nombre de usuario",
-            "lengthHint": "Mínimo 3 caracteres"
         },
         "password": {
             "label": "Contraseña",
@@ -442,7 +433,6 @@
         "home": "Inicio",
         "knowledge": "Base de Conocimientos",
         "rules": "Reglas del Juego",
-        "leaderboard": "Tabla de Posiciones",
         "support": "Apóyanos",
         "imprint": "Aviso Legal",
         "privacy": "Política de Privacidad",
@@ -462,8 +452,6 @@
         "backToHome": "Volver al inicio",
         "emailRequired": "El correo electrónico es obligatorio",
         "invalidEmail": "Correo electrónico inválido",
-        "usernameRequired": "El nombre de usuario es obligatorio",
-        "usernameTooShort": "El nombre de usuario debe tener al menos 3 caracteres",
         "passwordRequired": "La contraseña es obligatoria",
         "passwordTooShort": "La contraseña debe tener al menos 6 caracteres",
         "nameRequired": "El nombre es obligatorio",
@@ -530,27 +518,6 @@
                 "confirmation": "Confirmación de Eliminación",
                 "local": "Los datos locales en tu navegador pueden eliminarse a través de la configuración del navegador."
             }
-        }
-    },
-    "highscore": {
-        "title": "Tabla de Puntajes",
-        "total": "Puntaje Total",
-        "avatar": "Avatar",
-        "name": "Nombre",
-        "points": "Puntos"
-    },
-    "highscores": {
-        "title": "Tabla de Puntajes",
-        "searchPlaceholder": "Buscar categoría...",
-        "rank": "Rango",
-        "player": "Jugador",
-        "points": "Puntos",
-        "lps": "Discos",
-        "noScores": "No hay puntajes registrados todavía",
-        "noResults": "No se encontraron resultados",
-        "meta": {
-            "title": "Tabla de Clasificación - Melody Mind",
-            "description": "Compara tu puntuación con otros jugadores. ¡Mira las mejores puntuaciones en todas las categorías y compite por el primer lugar!"
         }
     },
     "knowledge": {

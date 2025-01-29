@@ -114,28 +114,10 @@ const isMobile = ref(false)
 const canShare = ref(false)
 const isWhatsAppSupported = ref(false)
 
-// Hole den Username aus dem LocalStorage
-const username = localStorage.getItem('username')
 const category = route.params.category as string
 const difficulty = route.params.difficulty as string
 
-// Bestimme die LPs basierend auf den Punkten und der Schwierigkeit
-const determineRecords = () => {
-    const percentage = (props.correctAnswers / props.maxQuestions) * 100
-    return {
-        goldLP: percentage >= 90,
-        silverLP: percentage >= 75 && percentage < 90,
-        bronzeLP: percentage >= 60 && percentage < 75
-    }
-}
-
-// Speichere das Ergebnis in der Datenbank
 const saveScore = async () => {
-    if (!username) return
-
-    const { goldLP, silverLP, bronzeLP } = determineRecords()
-
-    // Zuerst das Ergebnis mit der bestehenden Logik speichern
     await saveGameResults(
         category,
         props.totalPoints,
@@ -144,25 +126,6 @@ const saveScore = async () => {
         props.correctAnswers === props.maxQuestions,
         difficulty
     )
-
-    // Dann in Turso speichern
-    try {
-        await $fetch('/api/highscores', {
-            method: 'POST',
-            body: {
-                username,
-                points: props.totalPoints,
-                category,
-                difficulty,
-                language: locale.value,
-                goldLP,
-                silverLP,
-                bronzeLP
-            }
-        })
-    } catch (error) {
-        console.error('Failed to save score:', error)
-    }
 }
 
 onMounted(() => {

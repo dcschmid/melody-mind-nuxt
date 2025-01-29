@@ -31,10 +31,6 @@
       "title": "Règles du Jeu - Melody Mind",
       "description": "Apprenez les règles du jeu de Melody Mind. Découvrez tout sur les modes de jeu, le système de points et les fonctionnalités bonus dans notre quiz musical."
     },
-    "highscores": {
-      "title": "Tableau des Scores - Melody Mind",
-      "description": "Consultez les meilleurs scores des joueurs dans toutes les catégories. Comparez vos performances avec d'autres passionnés de musique."
-    },
     "privacy": {
       "title": "Politique de Confidentialité - Melody Mind",
       "description": "Découvrez nos politiques de confidentialité. Apprenez comment nous protégeons et utilisons vos données sur Melody Mind."
@@ -57,11 +53,6 @@
     "email": {
       "label": "Email",
       "placeholder": "Votre adresse email"
-    },
-    "username": {
-      "label": "Nom d'utilisateur",
-      "placeholder": "Votre nom d'utilisateur",
-      "lengthHint": "Minimum 3 caractères"
     },
     "password": {
       "label": "Mot de passe",
@@ -446,7 +437,6 @@
     "home": "Accueil",
     "knowledge": "Base de Connaissances",
     "rules": "Règles du Jeu",
-    "leaderboard": "Classement",
     "support": "Soutenez-nous",
     "imprint": "Mentions Légales",
     "privacy": "Politique de Confidentialité",
@@ -466,8 +456,6 @@
     "backToHome": "Retour à l'accueil",
     "emailRequired": "L'adresse e-mail est obligatoire",
     "invalidEmail": "Adresse e-mail invalide",
-    "usernameRequired": "Le nom d'utilisateur est obligatoire",
-    "usernameTooShort": "Le nom d'utilisateur doit contenir au moins 3 caractères",
     "passwordRequired": "Le mot de passe est obligatoire",
     "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères",
     "nameRequired": "Le nom est obligatoire",
@@ -534,28 +522,6 @@
         "confirmation": "Confirmation de Suppression",
         "local": "Les données locales dans votre navigateur peuvent être supprimées via les paramètres de votre navigateur."
       }
-    }
-  },
-  "highscore": {
-    "title": "Meilleurs Scores",
-    "total": "Score Total",
-    "avatar": "Avatar",
-    "name": "Nom",
-    "points": "Points"
-  },
-  "highscores": {
-    "title": "Meilleurs scores",
-    "searchPlaceholder": "Rechercher par catégorie...",
-    "rank": "Rang",
-    "player": "Joueur",
-    "difficulty": "Difficulté",
-    "points": "Points",
-    "lps": "Disques",
-    "noResults": "Aucun résultat trouvé",
-    "noScores": "Aucun score enregistré pour le moment",
-    "meta": {
-      "title": "Classement - Melody Mind",
-      "description": "Comparez votre score avec d'autres joueurs. Consultez les meilleurs scores dans toutes les catégories et battez-vous pour la première place !"
     }
   },
   "username": {

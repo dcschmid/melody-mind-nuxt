@@ -7,16 +7,12 @@ export const useGameScore = () => {
     difficulty: string,
   ) => {
     try {
-      const storedUsername = localStorage.getItem('username')
-      const username = storedUsername || 'anonymous'
-
       const response = await fetch('/api/highscores', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username,
           points,
           category,
           difficulty,
