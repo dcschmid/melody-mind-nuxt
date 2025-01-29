@@ -17,9 +17,10 @@ keywords:
 author: MelodyMind
 locale: fr-FR
 category:
-  spotifyPlaylist: 
-  deezerPlaylist: 
-  appleMusicPlaylist: 
+  spotifyPlaylist: https://open.spotify.com/playlist/60dk2hBGvTc2iWnvumgIq6
+  deezerPlaylist: https://deezer.page.link/QyWRereP9WF51JCz8
+  appleMusicPlaylist: https://music.apple.com/de/playlist/top-1980s-hits/pl.u-76oNl2mTvedXrZX
+isPlayable: false
 ---
 
 ## Introduction

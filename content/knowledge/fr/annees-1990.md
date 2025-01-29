@@ -3,9 +3,10 @@ title: Les Années 90 Dynamiques - Une Décennie de Révolution Musicale en Fran
 description: Les années 1990 - Une ère de changements qui a révolutionné la musique française
 image: /category/1990er.jpg
 category:
-  spotifyPlaylist: 
-  deezerPlaylist: 
-  appleMusicPlaylist: 
+  spotifyPlaylist: https://open.spotify.com/playlist/7y23FrZZ2ZkN7sGy66apha
+  deezerPlaylist: https://deezer.page.link/QNddzwz1whmNPTjg8
+  appleMusicPlaylist: https://music.apple.com/de/playlist/top-1990s-hits/pl.u-JPAZEGPtL2NZeJZ
+isPlayable: false
 ---
 
 ## Contexte Politique et Social

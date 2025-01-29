@@ -17,9 +17,10 @@ keywords:
 author: MelodyMind
 locale: fr-FR
 category:
-  spotifyPlaylist: 
-  deezerPlaylist: 
-  appleMusicPlaylist: 
+  spotifyPlaylist: https://open.spotify.com/playlist/7f2XTewIpwmblfscjhZJgv
+  deezerPlaylist: https://deezer.page.link/XwEBzPLWcNnTxx3v9
+  appleMusicPlaylist: https://music.apple.com/de/playlist/top-2010s-hits/pl.u-JPAZEDqTL2NZeJZ
+isPlayable: false
 ---
 
 ## Introduction
