@@ -17,6 +17,7 @@ category:
   spotifyPlaylist: 
   deezerPlaylist: 
   appleMusicPlaylist: 
+isPlayable: false
 ---
 
 ## Einleitung
