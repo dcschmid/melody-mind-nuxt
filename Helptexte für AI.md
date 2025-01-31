@@ -34,7 +34,7 @@ Ganz wichtig auf die geforderte Zeichenlänge achten. Bitte nur die internationa
 ## Entwicklung und Evolution (3000-3500 Zeichen, Wichtige Entwicklungsphasen, Moderne Interpretationen, Aktuelle Trends, Fusion mit anderen Genres)
 ## Vermächtnis und Einfluss (2000-2500 Zeichen, Einfluss auf andere Genres, Bedeutung in der heutigen Musiklandschaft, Kulturelles Erbe)
 
-Ganz wichtig auf die geforderte Zeichenlänge achten. Bitte nur die internationalen Musik berücksichtige und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar ist und auch den typischen deutschen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen.
+Ganz wichtig auf die geforderte Zeichenlänge achten. Bitte nur die internationalen Musik berücksichtige und wenn du schon dabei bist können wir auch schauen ob alles gut flüssig lesbar ist und auch den typischen englischen Satzbau und Wörter verwenedet werden. Ganz wichtig bitte in ganzen Sätzen schreiben und wenn es geht bisschen weniger Punkte abder diese für mehr Ausdruck ausführlicher erklernen.
 
 
 
