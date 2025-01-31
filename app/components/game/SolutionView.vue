@@ -8,12 +8,9 @@
                     class="result-icon" :class="{ 'wrong': !isCorrectAnswer }" size="28" :aria-hidden="true" />
                 <h2 id="result-status">{{ isCorrectAnswer ? t('game.correct') : t('game.wrong') }}</h2>
             </div>
-            <div v-if="isCorrectAnswer" class="points-breakdown" aria-live="polite">
-                <div class="points-inline">
-                    {{ t('game.points', { Basis: latestBonus.base, Zeit: latestBonus.time }) }}
-                </div>
+            <div class="points" aria-live="polite">
+                {{ isCorrectAnswer ? '100' : '0' }} {{ t('game.points_label') }}
             </div>
-            <div v-else class="points" aria-live="polite">0 {{ t('game.points_label') }}</div>
 
             <div class="correct-answer">
                 <span class="label" id="correct-answer-label">{{ t('game.correctAnswer') }}</span>
@@ -115,10 +112,6 @@ const { getThumbHash } = useThumbHash()
 
 interface Props {
     isCorrectAnswer: boolean
-    latestBonus: {
-        base: number
-        time: number
-    }
     question: {
         correctAnswer: string
     }

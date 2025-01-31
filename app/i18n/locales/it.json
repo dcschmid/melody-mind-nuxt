@@ -16,6 +16,10 @@
   },
   "meta": {
     "title": "Melody Mind - Il Quiz Musicale Definitivo",
+    "multiplayer": {
+      "title": "Quiz {category} - Modalità {difficulty} - Multigiocatore | Melody Mind",
+      "description": "Gioca al quiz musicale {category} in modalità {difficulty} con gli amici. Mettete alla prova le vostre conoscenze insieme e scoprite chi è il miglior esperto musicale!"
+    },
     "description": "Metti alla prova le tue conoscenze musicali nel nostro quiz interattivo. Rispondi a domande su canzoni, artisti e storia della musica di vari generi come rock, pop, hip-hop e classica.",
     "keywords": "Quiz Musicale, Conoscenze Musicali, Quiz Online, Storia della Musica, Quiz Artisti, Quiz Album, Generi Musicali, Gioco Interattivo"
   },
@@ -129,8 +133,21 @@
       "description": "Scopri emozionanti categorie di quiz musicali, dal rock al classico. Scegli il tuo genere preferito e metti alla prova le tue conoscenze."
     }
   },
+  "multiplayer": {
+    "setup": {
+      "title": "Configurazione Giocatori",
+      "players": "Giocatori",
+      "playerName": "Nome per Giocatore {number}",
+      "enterName": "Inserisci nome",
+      "startGame": "Inizia Partita"
+    }
+  },
   "category": {
     "selected": "selezionata",
+    "mode": {
+      "singleplayer": "Giocatore Singolo",
+      "multiplayer": "Multigiocatore"
+    },
     "aria": {
       "categoryRegion": "Informazioni sulla Categoria",
       "description": "Descrizione della Categoria",
@@ -188,6 +205,8 @@
       "title": "Gioco Terminato",
       "correctAnswers": "Risposte corrette",
       "backToMenu": "Torna al Menu",
+      "playAgain": "Gioca Ancora",
+      "rankings": "Classifica",
       "newHighscore": "Nuovo Record!",
       "share": {
         "title": "Condividi il tuo risultato",
