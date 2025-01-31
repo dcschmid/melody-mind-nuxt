@@ -16,5 +16,11 @@ export default [
   "/en/1970er",
   "/es/1970er",
   "/fr/1970er",
-  "/it/1970er"
+  "/it/1970er",
+  "/1980er",
+  "/de/1980er",
+  "/en/1980er",
+  "/es/1980er",
+  "/fr/1980er",
+  "/it/1980er"
 ];
