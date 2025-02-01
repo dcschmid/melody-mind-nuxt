@@ -44,15 +44,6 @@
       "description": "Informations légales et coordonnées de Melody Mind."
     }
   },
-  "multiplayer": {
-    "meta": {
-      "title": "Quiz {category} - Mode {difficulty} - Multijoueur | Melody Mind",
-      "description": "Jouez au quiz musical {category} en mode {difficulty} avec vos amis. Testez vos connaissances ensemble et découvrez qui est le meilleur expert en musique !"
-    },
-    "setup": {
-      "title": "Configuration des Joueurs"
-    }
-  },
   "welcome": {
     "title": "Bienvenue sur Melody Mind",
     "start": "Commencer le Jeu",
@@ -146,6 +137,10 @@
     }
   },
   "multiplayer": {
+    "meta": {
+      "title": "Quiz {category} - Mode {difficulty} - Multijoueur | Melody Mind",
+      "description": "Jouez au quiz musical {category} en mode {difficulty} avec vos amis. Testez vos connaissances ensemble et découvrez qui est le meilleur expert en musique !"
+    },
     "setup": {
       "title": "Configuration des Joueurs",
       "players": "Joueurs",
@@ -204,9 +199,6 @@
     "next": "Suivant",
     "nextQuestion": "Question suivante",
     "finish": "Terminer le jeu",
-    "links": {
-      "listen_on": "Écouter sur"
-    },
     "trivia": {
       "title": "Le saviez-vous"
     },

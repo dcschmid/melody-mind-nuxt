@@ -41,15 +41,6 @@
       "description": "Informazioni legali e dettagli di contatto di Melody Mind."
     }
   },
-  "multiplayer": {
-    "meta": {
-      "title": "Quiz {category} - Modalità {difficulty} - Multigiocatore | Melody Mind",
-      "description": "Gioca al quiz musicale {category} in modalità {difficulty} con gli amici. Mettete alla prova le vostre conoscenze insieme e scoprite chi è il miglior esperto di musica!"
-    },
-    "setup": {
-      "title": "Configurazione Giocatori"
-    }
-  },
   "welcome": {
     "title": "Benvenuto su Melody Mind",
     "start": "Inizia il Gioco",
@@ -143,6 +134,10 @@
     }
   },
   "multiplayer": {
+    "meta": {
+      "title": "Quiz {category} - Modalità {difficulty} - Multigiocatore | Melody Mind",
+      "description": "Gioca al quiz musicale {category} in modalità {difficulty} con gli amici. Mettete alla prova le vostre conoscenze insieme e scoprite chi è il miglior esperto di musica!"
+    },
     "setup": {
       "title": "Configurazione Giocatori",
       "players": "Giocatori",
@@ -270,10 +265,6 @@
       "playAgain": "Gioca di Nuovo",
       "backToHome": "Torna alla Home"
     },
-    "expert": {
-      "title": "Opinione dell'Esperto",
-      "confidence": "Sicurezza"
-    },
     "audienceOpinion": "Opinione del Pubblico",
     "correctAnswer": "Risposta Corretta",
     "didYouKnow": "Lo sapevi?",
@@ -318,30 +309,11 @@
       "remaining": "{count} aiuti rimanenti",
       "remainingCount": "{count} jolly disponibili"
     },
-    "selectAnswer": "Seleziona la risposta",
     "option": "Opzione {number}",
     "selectAnswer": "Seleziona risposta: {answer}",
-    "confidence": "Sicurezza",
     "expert": {
       "title": "Parere dell'Esperto",
       "confidence": "Sicurezza dell'esperto: {value}%"
-    },
-    "jokers": {
-      "title": "Jolly Disponibili",
-      "remainingCount": "{count} jolly disponibili",
-      "fiftyFifty": {
-        "title": "50:50",
-        "ariaLabel": "Usa jolly 50:50 - Elimina due risposte sbagliate"
-      },
-      "audience": {
-        "title": "Pubblico",
-        "ariaLabel": "Usa jolly del pubblico - Mostra i risultati del sondaggio",
-        "result": "Risultato del pubblico per {option}: {percentage}%"
-      },
-      "phone": {
-        "title": "Telefono",
-        "ariaLabel": "Usa jolly del telefono - Chiama un esperto"
-      }
     },
     "aria": {
       "quizQuestion": "Domanda del Quiz",

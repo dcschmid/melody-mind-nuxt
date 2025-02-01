@@ -41,16 +41,7 @@
             "description": "Información legal y detalles de contacto de Melody Mind."
         }
     },
-    "multiplayer": {
-    "meta": {
-      "title": "{category} Quiz - Modo {difficulty} - Multijugador | Melody Mind",
-      "description": "Juega el quiz de música {category} en modo {difficulty} con amigos. ¡Poned a prueba vuestros conocimientos juntos y descubrid quién es el mejor experto en música!"
-    },
-    "setup": {
-      "title": "Configuración de Jugadores"
-    }
-  },
-  "welcome": {
+    "welcome": {
         "title": "Bienvenido a Melody Mind",
         "start": "Comenzar Juego",
         "about": {
@@ -122,6 +113,10 @@
         }
     },
     "multiplayer": {
+        "meta": {
+            "title": "{category} Quiz - Modo {difficulty} - Multijugador | Melody Mind",
+            "description": "Juega el quiz de música {category} en modo {difficulty} con amigos. ¡Poned a prueba vuestros conocimientos juntos y descubrid quién es el mejor experto en música!"
+        },
         "setup": {
             "title": "Configuración de Jugadores",
             "players": "Jugadores",
@@ -180,9 +175,6 @@
         "next": "Siguiente",
         "nextQuestion": "Siguiente pregunta",
         "finish": "Terminar juego",
-        "links": {
-            "listen_on": "Escuchar en"
-        },
         "trivia": {
             "title": "Curiosidades"
         },
@@ -245,10 +237,6 @@
             "playAgain": "Jugar de Nuevo",
             "backToHome": "Volver a Categorías"
         },
-        "expert": {
-            "title": "Opinión del Experto",
-            "confidence": "Nivel de Confianza"
-        },
         "audienceOpinion": "Opinión del Público",
         "correctAnswer": "Respuesta Correcta",
         "didYouKnow": "¿Sabías que?",
@@ -299,30 +287,11 @@
             },
             "remaining": "{count} ayudas restantes"
         },
-        "selectAnswer": "Seleccionar respuesta",
         "option": "Opción {number}",
         "selectAnswer": "Seleccionar respuesta: {answer}",
-        "confidence": "Confianza",
         "expert": {
             "title": "Opinión del Experto",
             "confidence": "Confianza del experto: {value}%"
-        },
-        "jokers": {
-            "title": "Comodines Disponibles",
-            "remainingCount": "{count} comodines disponibles",
-            "fiftyFifty": {
-                "title": "50:50",
-                "ariaLabel": "Usar comodín 50:50 - Elimina dos respuestas incorrectas"
-            },
-            "audience": {
-                "title": "Público",
-                "ariaLabel": "Usar comodín del público - Muestra los resultados de la votación",
-                "result": "Resultado del público para {option}: {percentage}%"
-            },
-            "phone": {
-                "title": "Teléfono",
-                "ariaLabel": "Usar comodín del teléfono - Llama a un experto"
-            }
         },
         "aria": {
             "quizQuestion": "Pregunta del Cuestionario",

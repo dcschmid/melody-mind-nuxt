@@ -37,15 +37,6 @@
       "description": "Legal information and contact details for Melody Mind."
     }
   },
-  "multiplayer": {
-    "meta": {
-      "title": "{category} Quiz - {difficulty} Mode - Multiplayer | Melody Mind",
-      "description": "Play the {category} music quiz in {difficulty} mode with friends. Test your knowledge together and find out who's the ultimate music expert!"
-    },
-    "setup": {
-      "title": "Player Setup"
-    }
-  },
   "welcome": {
     "title": "Welcome to Melody Mind",
     "start": "Start Game",
@@ -129,6 +120,10 @@
     "comingSoonLabel": "Coming Soon"
   },
   "multiplayer": {
+    "meta": {
+      "title": "{category} Quiz - {difficulty} Mode - Multiplayer | Melody Mind",
+      "description": "Play the {category} music quiz in {difficulty} mode with friends. Test your knowledge together and find out who's the ultimate music expert!"
+    },
     "setup": {
       "title": "Player Setup",
       "players": "Players",
@@ -716,124 +711,5 @@
     "lps": "LPs",
     "noResults": "No results found",
     "noScores": "No highscores available"
-  },
-  "legal": {
-    "privacy": {
-      "title": "Privacy Policy",
-      "overview": {
-        "title": "Overview",
-        "general": {
-          "title": "General Information",
-          "text": "We take the protection of your personal data very seriously. This privacy policy informs you about how we handle your data."
-        }
-      },
-      "dataCollection": {
-        "title": "Data Collection",
-        "cookies": {
-          "title": "Cookies",
-          "text": "We use cookies to provide you with the best possible user experience. These do not store any personally identifiable information."
-        },
-        "serverLogs": {
-          "title": "Server Logs",
-          "text": "For technical purposes, we automatically store server logs transmitted by your browser."
-        },
-        "analytics": {
-          "title": "Analytics Data",
-          "text": "We use anonymous analytics data to improve your gaming experience. This includes game statistics, usage patterns, and performance metrics, without any personally identifiable information."
-        }
-      },
-      "rights": {
-        "title": "Your Rights",
-        "intro": "You have the following rights regarding your personal data:",
-        "list": {
-          "information": "Right to information about your stored data",
-          "correction": "Right to correction of incorrect data",
-          "restriction": "Right to restriction of processing",
-          "objection": "Right to object to processing",
-          "portability": "Right to data portability"
-        }
-      },
-      "contact": {
-        "title": "Contact",
-        "text": "If you have any questions about privacy, you can contact us at any time.",
-        "emailLabel": "Email",
-        "emailAddress": "daniel.schmid1980(at)icloud.com"
-      },
-      "gameData": {
-        "title": "Game Data",
-        "progress": {
-          "title": "Game Progress",
-          "intro": "The following game data is stored:",
-          "list": {
-            "scores": "Score standings",
-            "awards": "Achievements",
-            "rankings": "Ranking positions"
-          },
-          "purpose": "This data is used exclusively to improve your gaming experience and display your achievements."
-        },
-        "localStorage": {
-          "title": "Local Storage",
-          "intro": "The following data is stored locally in your browser:",
-          "list": {
-            "categories": "Played categories",
-            "settings": "Game settings",
-            "language": "Language setting"
-          },
-          "storage": "This data remains on your device and is not transmitted to our servers. You can delete it at any time through your browser settings."
-        },
-        "session": {
-          "title": "Session Data",
-          "intro": "During an active game session, the following data is temporarily stored:",
-          "list": {
-            "auth": "Authentication status for the game session",
-            "progress": "Current game progress and score",
-            "settings": "Temporary game settings"
-          }
-        }
-      },
-      "deletion": {
-        "title": "Data Deletion",
-        "intro": "You have the right to have the following data deleted:",
-        "list": {
-          "highscores": "Your personal highscores and game statistics",
-          "results": "Stored game results and achievements",
-          "account": "Your entire user account and all associated data"
-        },
-        "local": "Locally stored data (cookies, game progress) can be deleted independently through your browser settings."
-      }
-    },
-    "imprint": {
-      "title": "Legal Notice",
-      "information": {
-        "title": "Information according to § 5 TMG",
-        "operator": "Daniel Schmid",
-        "address": "Hiltenspergerstr. 78, 80796 Munich",
-        "country": "Germany"
-      },
-      "contact": {
-        "title": "Contact",
-        "emailLabel": "Email",
-        "emailAddress": "daniel.schmid1980(at)icloud.com"
-      },
-      "responsible": {
-        "title": "Responsible for content according to § 55 para. 2 RStV"
-      },
-      "disputeResolution": {
-        "title": "Dispute Resolution",
-        "text": "The European Commission provides a platform for online dispute resolution (OS)",
-        "link": "https://ec.europa.eu/consumers/odr/",
-        "additional": "We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board."
-      },
-      "lawReference": {
-        "title": "Legal References",
-        "text": "Despite careful content control, we assume no liability for the content of external links. The operators of the linked pages are solely responsible for their content."
-      },
-      "jurisdiction": {
-        "title": "Legal Basis",
-        "text": "This website is subject to German law. Place of jurisdiction is Germany.",
-        "applicableLaw": "German law applies exclusively, excluding the UN Convention on Contracts for the International Sale of Goods.",
-        "jurisdiction": "Place of fulfillment and exclusive place of jurisdiction for all disputes is Germany, as far as legally permissible."
-      }
-    }
   }
 }
