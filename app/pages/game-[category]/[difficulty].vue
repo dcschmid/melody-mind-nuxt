@@ -203,15 +203,6 @@ watch(() => artist.currentArtist.value, gameAudio.handleArtistChange)
 // Monitor game completion
 watch(() => questions.usedQuestions.value.length, async (newLength) => {
     if (newLength > questions.maxQuestions.value) {
-        // Save final game results
-        await saveGameResults(
-            category,
-            gameState.totalPoints.value,
-            gameState.correctAnswers.value,
-            questions.maxQuestions.value,
-            gameState.allQuestionsCorrect.value,
-            difficulty,
-        )
         // Set game as finished to show end screen
         gameState.finishGame()
     }
