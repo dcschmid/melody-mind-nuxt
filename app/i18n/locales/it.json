@@ -41,6 +41,15 @@
       "description": "Informazioni legali e dettagli di contatto di Melody Mind."
     }
   },
+  "multiplayer": {
+    "meta": {
+      "title": "Quiz {category} - Modalità {difficulty} - Multigiocatore | Melody Mind",
+      "description": "Gioca al quiz musicale {category} in modalità {difficulty} con gli amici. Mettete alla prova le vostre conoscenze insieme e scoprite chi è il miglior esperto di musica!"
+    },
+    "setup": {
+      "title": "Configurazione Giocatori"
+    }
+  },
   "welcome": {
     "title": "Benvenuto su Melody Mind",
     "start": "Inizia il Gioco",

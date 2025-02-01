@@ -1,6 +1,6 @@
 ---
-title: Alternative Metal - Die experimentelle Seite des Heavy Metal
-description: Entdecke die Verschmelzung von Metal mit alternativen Musikstilen - Von Nu Metal bis Progressive Metal
+title: Alternative Metal - The Experimental Side of Heavy Metal
+description: Discover the fusion of metal with alternative music styles - from nu metal to progressive metal. Learn about this groundbreaking genre that combines heavy riffs with experimental elements and diverse influences.
 image: /category/alternative-metal.jpg
 createdAt: 2024-01-20
 updatedAt: 2024-01-20
@@ -11,9 +11,9 @@ keywords:
   - Heavy Metal
   - Crossover Metal
   - Experimental Metal
-  - Rock Musik
+  - Rock Music
 author: MelodyMind
-locale: de-DE
+locale: en-US
 category:
   spotifyPlaylist: 
   deezerPlaylist: 

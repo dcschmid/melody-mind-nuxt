@@ -16,10 +16,6 @@
   },
   "meta": {
     "title": "Melody Mind - Das ultimative Musik-Quizspiel",
-    "multiplayer": {
-      "title": "{category} Quiz - {difficulty} Schwierigkeit - Mehrspieler | Melody Mind",
-      "description": "Spiele das {category} Musikquiz im {difficulty} Modus mit Freunden. Testet euer Wissen gemeinsam und findet heraus, wer der beste Musikexperte ist!"
-    },
     "description": "Teste dein Musikwissen in unserem interaktiven Quizspiel. Beantworte Fragen zu Songs, Künstlern und Musikgeschichte aus verschiedenen Genres wie Rock, Pop, Hip-Hop und Klassik.",
     "keywords": "Musik-Quiz, Musikwissen, Online-Quiz, Musikgeschichte, Künstler-Quiz, Album-Quiz, Musikgenres, Interaktives Spiel"
   },
@@ -39,6 +35,15 @@
     "imprint": {
       "title": "Impressum - Melody Mind",
       "description": "Rechtliche Informationen und Kontaktinformationen für Melody Mind."
+    }
+  },
+  "multiplayer": {
+    "meta": {
+      "title": "{category} Quiz - {difficulty} Schwierigkeit - Mehrspieler | Melody Mind",
+      "description": "Spiele das {category} Musikquiz im {difficulty} Modus mit Freunden. Testet euer Wissen gemeinsam und findet heraus, wer der beste Musikexperte ist!"
+    },
+    "setup": {
+      "title": "Spieler Setup"
     }
   },
   "welcome": {

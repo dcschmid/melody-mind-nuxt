@@ -16,10 +16,6 @@
   },
   "meta": {
     "title": "Melody Mind - The Ultimate Music Quiz Game",
-    "multiplayer": {
-      "title": "{category} Quiz - {difficulty} Mode - Multiplayer | Melody Mind",
-      "description": "Play the {category} music quiz in {difficulty} mode with friends. Test your knowledge together and find out who's the ultimate music expert!"
-    },
     "description": "Test your music knowledge in our interactive quiz game. Answer questions about songs, artists, and music history from various genres like rock, pop, hip-hop, and classical.",
     "keywords": "Music Quiz, Music Knowledge, Online Quiz, Music History, Artist Quiz, Album Quiz, Music Genres, Interactive Game"
   },
@@ -39,6 +35,15 @@
     "imprint": {
       "title": "Imprint - Melody Mind",
       "description": "Legal information and contact details for Melody Mind."
+    }
+  },
+  "multiplayer": {
+    "meta": {
+      "title": "{category} Quiz - {difficulty} Mode - Multiplayer | Melody Mind",
+      "description": "Play the {category} music quiz in {difficulty} mode with friends. Test your knowledge together and find out who's the ultimate music expert!"
+    },
+    "setup": {
+      "title": "Player Setup"
     }
   },
   "welcome": {
