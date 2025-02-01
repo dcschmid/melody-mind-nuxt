@@ -37,15 +37,6 @@
       "description": "Rechtliche Informationen und Kontaktinformationen für Melody Mind."
     }
   },
-  "multiplayer": {
-    "meta": {
-      "title": "{category} Quiz - {difficulty} Schwierigkeit - Mehrspieler | Melody Mind",
-      "description": "Spiele das {category} Musikquiz im {difficulty} Modus mit Freunden. Testet euer Wissen gemeinsam und findet heraus, wer der beste Musikexperte ist!"
-    },
-    "setup": {
-      "title": "Spieler Setup"
-    }
-  },
   "welcome": {
     "title": "Willkommen bei Melody Mind",
     "start": "Spiel starten",
@@ -118,6 +109,10 @@
     "comingSoonLabel": "Demnächst"
   },
   "multiplayer": {
+    "meta": {
+      "title": "{category} Quiz - {difficulty} Schwierigkeit - Mehrspieler | Melody Mind",
+      "description": "Spiele das {category} Musikquiz im {difficulty} Modus mit Freunden. Testet euer Wissen gemeinsam und findet heraus, wer der beste Musikexperte ist!"
+    },
     "setup": {
       "title": "Spieler-Setup",
       "players": "Spieler",
@@ -182,27 +177,9 @@
     "finish": "Spiel beenden",
     "option": "Option {number}",
     "selectAnswer": "Wähle Antwort: {answer}",
-    "confidence": "Sicherheit",
     "expert": {
       "title": "Experten-Meinung",
       "confidence": "Experten-Sicherheit: {value}%"
-    },
-    "jokers": {
-      "title": "Verfügbare Joker",
-      "remainingCount": "{count} Joker verfügbar",
-      "fiftyFifty": {
-        "title": "50:50",
-        "ariaLabel": "50:50 Joker verwenden - Entfernt zwei falsche Antworten"
-      },
-      "audience": {
-        "title": "Publikum",
-        "ariaLabel": "Publikum befragen - Zeigt die Abstimmung des Publikums",
-        "result": "Publikumsergebnis für {option}: {percentage}%"
-      },
-      "phone": {
-        "title": "Telefon",
-        "ariaLabel": "Telefonjoker verwenden - Ruft einen Experten an"
-      }
     },
     "aria": {
       "quizQuestion": "Quiz Frage",
@@ -275,8 +252,7 @@
       },
       "remainingCount": "{count} Joker verfügbar",
       "remaining": "{Anzahl} verbleibende Joker"
-    },
-    "selectAnswer": "Antwort auswählen"
+    }
   },
   "gameRules": {
     "meta": {
