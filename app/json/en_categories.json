@@ -2,7 +2,7 @@
   {
     "categoryUrl": "/1950s",
     "headline": "1950s",
-    "imageUrl": "/category/1950er.jpg",
+    "imageUrl": "/category/1950s.jpg",
     "introSubline": "Step back in time to experience the birth of Rock 'n' Roll and the golden age of classic hits!",
     "isPlayable": true,
     "slug": "1950s",
@@ -15,7 +15,7 @@
   {
     "categoryUrl": "/1960s",
     "headline": "1960s",
-    "imageUrl": "/category/1960er.jpg",
+    "imageUrl": "/category/1960s.jpg",
     "introSubline": "Dive into the decade that changed music forever!",
     "isPlayable": true,
     "slug": "1960s",
@@ -28,7 +28,7 @@
   {
     "categoryUrl": "/1970s",
     "headline": "1970s",
-    "imageUrl": "/category/1970er.jpg",
+    "imageUrl": "/category/1970s.jpg",
     "introSubline": "Experience the decade of musical innovation and legendary performances!",
     "isPlayable": true,
     "slug": "1970s",
@@ -41,7 +41,7 @@
   {
     "categoryUrl": "/1980s",
     "headline": "1980s",
-    "imageUrl": "/category/1980er.jpg",
+    "imageUrl": "/category/1980s.jpg",
     "introSubline": "Dive into the unforgettable sounds and iconic hits of the 1980s!",
     "isPlayable": true,
     "slug": "1980s",
@@ -54,7 +54,7 @@
   {
     "categoryUrl": "/1990s",
     "headline": "1990s",
-    "imageUrl": "/category/1990er.jpg",
+    "imageUrl": "/category/1990s.jpg",
     "introSubline": "Experience the unforgettable hits and soundtrack of an iconic decade – the 90s!",
     "isPlayable": false,
     "slug": "1990s",
@@ -67,7 +67,7 @@
   {
     "categoryUrl": "/2000s",
     "headline": "2000s",
-    "imageUrl": "/category/2000er.jpg", 
+    "imageUrl": "/category/2000s.jpg", 
     "introSubline": "Experience the hits and innovations of the 2000s!",
     "isPlayable": false,
     "slug": "2000s",
@@ -80,7 +80,7 @@
   {
     "categoryUrl": "/2010s",
     "headline": "2010s", 
-    "imageUrl": "/category/2010er.jpg",
+    "imageUrl": "/category/2010s.jpg",
     "introSubline": "Experience the digital revolution and diverse sounds of the 2010s!",
     "isPlayable": false,
     "slug": "2010s",
@@ -145,12 +145,12 @@
     "text": "Ambient Metal combines the heaviness and intensity of metal with the dreamy and expansive soundscapes of ambient music. This genre is characterized by dense atmosphere, floating melodies, and slow, powerful guitar riffs that have an almost meditative effect. Bands like Isis, Wolves in the Throne Room, Neurosis, and Alcest create epic and often hypnotic music that is both crushing and soothing. Ambient Metal places special emphasis on textures, long instrumental passages, and emotional depth, with the music oscillating between powerful outbursts and quiet, introspective moments. Let yourself be carried away by the flowing soundscapes and majestic riffs of Ambient Metal and immerse yourself in a sonic world that is both epic and meditative."
   },
   {
-    "categoryUrl": "/argentinisch",
+    "categoryUrl": "/argentinian",
     "headline": "Argentinian",
-    "imageUrl": "/category/argentinisch.jpg",
+    "imageUrl": "/category/argentinian.jpg",
     "introSubline": "Experience the passion and diversity of Argentinian music, from Tango to Rock!",
     "isPlayable": false,
-    "slug": "argentinisch",
+    "slug": "argentinian",
     "text": "The Argentinian music scene is characterized by the country's deep passion and cultural diversity. This category offers a wide range of musical styles that have made Argentina famous, from the elegant and emotional sounds of Tango to the rocking anthems of Argentinian Rock Nacional. With legends like Carlos Gardel, who brought Tango to the world, Astor Piazzolla, who revolutionized it, and modern icons like Soda Stereo and Gustavo Cerati, who shaped Rock Nacional, Argentinian music shows its infinite range. Tango, often accompanied by bandoneon, piano, and violin, tells stories of love, loss, and longing, while folkloric styles like Zamba and Chacarera preserve the country's rural traditions. Modern artists like Lali and Trueno are taking Argentinian music in new, exciting directions. Let yourself be carried away by the emotional depth and diverse soundscape of Argentinian music and experience the cultural soul of this fascinating country."
   },
   {
@@ -163,12 +163,12 @@
     "text": "Avant-Garde Metal stands for radical innovation and experimental diversity. This genre breaks traditional metal boundaries and combines its heaviness and intensity with unusual instrumentation, complex structures, and cross-genre influences. Avant-Garde Metal bands like Arcturus, Ulver, Celtic Frost, and Sigh are known for integrating a variety of styles – from jazz and classical to electronic music and experimental sound textures – into their music. With unpredictable song progressions, atmospheric arrangements, and a constant search for new musical expressions, Avant-Garde Metal offers an artistic soundscape that is both challenging and fascinating. Let yourself be carried away by the creative freedom and unique aesthetics of Avant-Garde Metal and experience a genre that constantly pushes the boundaries of what's possible."
   },
   {
-    "categoryUrl": "/belgisch",
+    "categoryUrl": "/belgian",
     "headline": "Belgian",
-    "imageUrl": "/category/belgisch.jpg",
+    "imageUrl": "/category/belgian.jpg",
     "introSubline": "Experience the rich diversity and dynamic sounds of Belgian music!",
     "isPlayable": false,
-    "slug": "belgisch",
+    "slug": "belgian",
     "text": "The Belgian music scene is as diverse as the country itself, characterized by its linguistic and cultural variety. This category unites the best tracks that represent Belgium's musical heritage and creative power – from emotional French chansons to energetic Flemish rock and pop hits to the international dance and electronic sounds that have made Belgium famous worldwide. With artists like Jacques Brel, Stromae, Angèle, and Hooverphonic, Belgian music shows its impressive ability to unite various genres and styles. Whether you're looking for melancholic ballads, captivating pop songs, or innovative electronic beats – Belgian music has something for every taste. Let yourself be inspired by the diverse sounds and cultural depth of Belgian music and enjoy a musical journey through the heart of Europe."
   },
   {
@@ -217,12 +217,12 @@
     "text": "Bossa Nova combines the smooth sounds of Brazilian Samba with the gentle influence of Jazz. This category offers a selection of timeless classics and modern interpretations known for their relaxed elegance and charming melancholy. With flowing guitar arrangements, soft vocals, and a distinctive rhythm, Bossa Nova embodies the relaxed atmosphere of the Brazilian coast and brings a sense of calm and sophistication to every listening session."
   },
   {
-    "categoryUrl": "/brasilianisch",
+    "categoryUrl": "/brazilian",
     "headline": "Brazilian",
-    "imageUrl": "/category/brasilianisch.jpg",
+    "imageUrl": "/category/brazilian.jpg",
     "introSubline": "Experience the vibrant diversity and rhythm of Brazilian music!",
     "isPlayable": false,
-    "slug": "brasilianisch",
+    "slug": "brazilian",
     "text": "Brazilian music is a kaleidoscope of pulsating rhythms and passionate melodies that reflect Brazil's rich cultural diversity. This category unites the best sounds from Samba and Bossa Nova to Forró, MPB (Música Popular Brasileira), and Tropicália. From the captivating beats of Samba parades to the gentle, melancholic tones of Bossa Nova – Brazilian music offers a fascinating mix of tradition and innovation that transports you directly into Brazil's vibrant atmosphere."
   },
   {
@@ -235,12 +235,12 @@
     "text": "Breakbeat is a pulsating genre known for its complex rhythms and energetic beats. This category unites a wide range of tracks that impress with their crisp breakbeats and creative sampling techniques. From classic breakbeat anthems and hip-hop-infused beats to modern drum'n'bass and big beat sounds – Breakbeat offers a dynamic and versatile soundscape that invites you to dance and groove. Experience the distinctive energy and rhythmic drive that make Breakbeat a fascinating and constantly evolving genre."
   },
   {
-    "categoryUrl": "/britisch",
+    "categoryUrl": "/british",
     "headline": "British",
-    "imageUrl": "/category/britisch.jpg",
+    "imageUrl": "/category/british.jpg",
     "introSubline": "Experience the diverse sounds and distinctive style of the British music scene!",
     "isPlayable": false,
-    "slug": "britisch",
+    "slug": "british",
     "text": "British music is known for its rich history and variety of styles, ranging from classic rock and pop hits to innovative modern sounds. This category encompasses everything from the legendary sounds of The Beatles and The Rolling Stones through the experimental sounds of the Britpop era to the current hits from artists shaping the international music scene. With a mix of iconic bands, unique solo artists, and exciting new acts, British music offers a fascinating overview of the cultural and musical landscape of the United Kingdom."
   },
   {
@@ -316,12 +316,12 @@
     "text": "Classic Rock represents the golden era of rock music, spanning from the late 1960s to the 1980s. This category unites the iconic hits and timeless anthems that shaped the genre and are still celebrated worldwide today. With legendary bands and artists like Led Zeppelin, The Rolling Stones, Queen, AC/DC, and Pink Floyd, Classic Rock offers a mix of powerful guitar riffs, captivating melodies, and unforgettable vocals. This music has influenced generations and remains an integral part of rock history. Let yourself be carried away by the epic solos, catchy choruses, and pure energy of Classic Rock and experience the music that made Rock 'n' Roll a cultural phenomenon."
   },
   {
-    "categoryUrl": "/klassik",
+    "categoryUrl": "/classical",
     "headline": "Classical",
-    "imageUrl": "/category/klassik.jpg",
+    "imageUrl": "/category/classical.jpg",
     "introSubline": "Experience the timeless elegance and emotional depth of classical music!",
     "isPlayable": false,
-    "slug": "klassik",
+    "slug": "classical",
     "text": "Classical music is a genre that perfectly reflects the art of composition and the craftsmanship of musicians. This category unites the greatest masterpieces from composers like Beethoven, Mozart, Bach, and Tchaikovsky, who have shaped music history with their symphonic works, operas, and concert pieces. The music ranges from gentle, soothing melodies to dramatic and powerful compositions that evoke profound emotions. Whether solo piano pieces, string quartets, or large orchestral works – classical music offers immense diversity and is both intellectually stimulating and emotionally moving. Let yourself be enchanted by the sublime melodies and masterful compositions of classical music and enjoy the music that has touched people's hearts for centuries."
   },
   {
@@ -334,12 +334,12 @@
     "text": "Club music brings the pulsating rhythms and captivating sounds that bring every party to life. This category unites the latest and best tracks from genres like EDM, House, Techno, and Trance, specifically made for the dance floor and nightclubs. With driving basslines, hypnotic synthesizers, and energetic drops, club music ensures you can party all night long. Dive into the vibrant atmosphere and let yourself be carried away by the electrifying beats that make every club night unforgettable."
   },
   {
-    "categoryUrl": "/kolumbianisch",
+    "categoryUrl": "/colombian",
     "headline": "Colombian",
-    "imageUrl": "/category/kolumbianisch.jpg",
+    "imageUrl": "/category/colombian.jpg",
     "introSubline": "Experience the captivating rhythms and vibrant diversity of Colombian music!",
     "isPlayable": false,
-    "slug": "kolumbianisch",
+    "slug": "colombian",
     "text": "Colombian music reflects the country's diversity and unites indigenous, African, and Spanish influences in a rich musical tradition. This category offers everything from the pulsating rhythms of Cumbia and Vallenato to modern pop and reggaeton hits. With artists like Carlos Vives, Shakira, J Balvin, and Maluma, Colombia has shaped the global music scene. Traditional Cumbia, with its characteristic percussion instruments and flute sounds, as well as the emotional, accordion-heavy Vallenato are at the heart of Colombian culture. Additionally, modern Colombian musicians mix elements from salsa, champeta, and electronic music to create unique, dynamic sounds. Let yourself be carried away by the lively rhythms and energetic sounds of Colombian music and discover the musical diversity of one of South America's most rhythmic countries."
   },
   {
@@ -370,12 +370,12 @@
     "text": "Crossover Thrash combines the rapid intensity of Thrash Metal with the raw, rebellious energy of Hardcore Punk. This explosive mixture brings together fast, aggressive riffs, punchy drums, and uncompromising vocals that embody both the metal and punk spirit. With bands like Suicidal Tendencies, D.R.I., Municipal Waste, and Cro-Mags, Crossover Thrash has created a genre known for its relentless speed and direct, aggressive attitude. The songs are often short but energetic, with fast-paced rhythms and strong political or socially critical lyrics. Let yourself be grabbed by the unbridled energy and captivating grooves of Crossover Thrash and experience the perfect blend of metal and punk in its most explosive form."
   },
   {
-    "categoryUrl": "/kubanisch",
+    "categoryUrl": "/cuban",
     "headline": "Cuban",
-    "imageUrl": "/category/kubanisch.jpg",
+    "imageUrl": "/category/cuban.jpg",
     "introSubline": "Feel the lively rhythms and passionate sounds of Cuban music!",
     "isPlayable": false,
-    "slug": "kubanisch",
+    "slug": "cuban",
     "text": "Cuban music is known worldwide for its powerful rhythms, captivating melodies, and the unique fusion of African and Spanish influences. This category unites the traditional sounds of Son, Mambo, Salsa, and Cha-Cha-Cha as well as the modern sounds of the Cuban music scene. With legends like Buena Vista Social Club, Celia Cruz, Compay Segundo, and modern artists like Orishas and Gente de Zona, Cuban music offers an energetic mix of percussion, brass, and dynamic vocals. Instruments like the congas, bongos, claves, and tres guitar create the characteristic rhythm that defines Cuba. Let yourself be carried away by the fiery rhythms and musical passion of Cuban music and enjoy a journey through the vibrant and diverse musical culture of the Caribbean island."
   },
   {
@@ -388,12 +388,12 @@
     "text": "Cyber Metal is a futuristic and often industrially influenced subgenre of metal that combines electronic elements and high-tech sound effects with the powerful riffs and heaviness of metal. This category unites driving guitars, electronic beats, and atmospheric soundscapes that conjure up a dystopian, mechanical world. With bands like Fear Factory, Sybreed, Static-X, and The Algorithm, Cyber Metal has created a sonic landscape characterized by cold, machine-like rhythms and futuristic themes. The music varies between brutal, mechanical riffs and electronic, sometimes trance-like moments, representing a fascinating connection between human and machine. Let yourself be carried away by the synthetic sounds and powerful rhythms of Cyber Metal into a dystopian future where technology and metal merge."
   },
   {
-    "categoryUrl": "/tschechisch",
+    "categoryUrl": "/czech",
     "headline": "Czech",
-    "imageUrl": "/category/tschechisch.jpg",
+    "imageUrl": "/category/czech.jpg",
     "introSubline": "Experience the rich musical tradition and modern sounds of Czech music!",
     "isPlayable": false,
-    "slug": "tschechisch",
+    "slug": "czech",
     "text": "Czech music is deeply rooted in the history and culture of Central Europe, ranging from folk melodies to modern pop and rock music. This category unites the classical works of famous composers like Antonín Dvořák and Bedřich Smetana, who gained international recognition with their symphonic and operatic works, with modern hits from the Czech pop and rock scene. Bands like Lucie and Kabát, as well as singers like Ewa Farna, shape the current musical landscape. Czech folk music, with its characteristic violin and zither sounds, tells stories of rural life and is still played at festivals and traditional celebrations today. At the same time, the Czech music scene is a breeding ground for innovative sounds where rock, pop, and even electronic music play important roles. Let yourself be carried away by the rich musical tradition and modern sounds of Czech music and dive into the fascinating culture of a country that carries music deep in its soul."
   },
   {
@@ -406,12 +406,12 @@
     "text": "Dancehall is a vibrant genre that has conquered dance floors worldwide with its rhythmic beats and energetic vibes. This category unites the best tracks from Dancehall pioneers and modern artists known for their powerful rhythms, catchy melodies, and dynamic vocals. From the classic hits of the 80s and 90s to current chart-toppers – Dancehall brings an explosive mix of reggae infusions, hypnotizing grooves, and urban flair that's guaranteed to get you dancing and celebrating. Let yourself be carried away by the captivating rhythms and unique energy of Dancehall!"
   },
   {
-    "categoryUrl": "/daenisch",
+    "categoryUrl": "/danish",
     "headline": "Danish",
-    "imageUrl": "/category/daenisch.jpg",
+    "imageUrl": "/category/danish.jpg",
     "introSubline": "Experience the harmonious sounds and cultural diversity of Danish music!",
     "isPlayable": false,
-    "slug": "daenisch",
+    "slug": "danish",
     "text": "The Danish music scene is known for its diverse styles and creative mix of traditional and modern music. This category unites the best tracks that reflect the heart and soul of Danish music – from the melancholic tones of Nordic folk to catchy pop and innovative rock and indie sounds. With artists like Kim Larsen, MØ, Lukas Graham, and The Raveonettes, Danish music shows an impressive range that has gained recognition both in Denmark and internationally. Whether it's the gentle, thoughtful melodies or the energetic, joyful rhythms – Danish music offers a variety of emotions and moods. Let yourself be enchanted by the authentic sounds and charming melodies of Danish music and discover Denmark's musical diversity."
   },
   {
@@ -496,21 +496,21 @@
     "text": "Experimental Metal is a genre characterized by its radical openness and cross-genre influences. It combines the heaviness and intensity of metal with unconventional sounds, complex structures, and innovative ideas from various musical directions. This category unites the works of bands like Neurosis, Sunn O))), Meshuggah, and Mr. Bungle, who constantly push the boundaries of metal with unusual rhythms, atmospheric soundscapes, and avant-garde approaches. Experimental Metal surprises with unpredictable turns, dark sonic experiments, and a sense for the extraordinary. Let yourself be carried away by the complex arrangements, unique sound textures, and creative soundscapes of Experimental Metal and experience a genre that knows no rules and constantly explores new paths."
   },
   {
-    "categoryUrl": "/filmmusik",
+    "categoryUrl": "/film-music",
     "headline": "Film Music",
-    "imageUrl": "/category/filmmusik.jpg",
+    "imageUrl": "/category/film-music.jpg",
     "introSubline": "Experience the emotional power and epic sounds of the best film music!",
     "isPlayable": false,
-    "slug": "filmmusik",
+    "slug": "film-music",
     "text": "Film music transforms cinema experiences through powerful and often moving soundscapes that enhance the emotions of scenes. This category offers a selection of iconic soundtracks created by great composers like Hans Zimmer, John Williams, and Ennio Morricone. From majestic orchestral music and dramatic themes to subtle, atmospheric sounds – film music ranges from classic, captivating melodies to experimental and innovative compositions that significantly influence a film's mood. Let yourself be carried away by the dramatic depth and unforgettable melodies of film music and experience how music makes the visual art of films even more vivid."
   },
   {
-    "categoryUrl": "/finnisch",
+    "categoryUrl": "/finnish",
     "headline": "Finnish",
-    "imageUrl": "/category/finnisch.jpg",
+    "imageUrl": "/category/finnish.jpg",
     "introSubline": "Discover the unique sounds and fascinating diversity of the Finnish music scene!",
     "isPlayable": false,
-    "slug": "finnisch",
+    "slug": "finnish",
     "text": "Finnish music offers an exciting mix of traditional sounds and modern influences that reflect Finland's rich culture and creative talent. This category encompasses everything from the melancholic and powerful melodies of traditional folk music to the innovative sounds of the contemporary scene, including rock, metal, pop, and electronic music. With artists like Nightwish, HIM, and Amorphis, as well as a variety of talented singer-songwriters and experimental musicians, the Finnish music scene offers a fascinating soundscape. Let yourself be enchanted by the unique and often mystical sounds of Finnish music and experience the diversity and depth of this extraordinary musical tradition."
   },
   {
@@ -577,21 +577,21 @@
     "text": "Garage music, often known as Garage Rock or UK Garage, offers an energetic mix of raw rock 'n' roll and innovative electronic sound. This category encompasses the driving rhythms and dynamic melodies of Garage Rock, which emerged in the 60s, as well as the exciting beats and samples of UK Garage, which came up in the 90s. Garage Rock is known for its unpolished energy and direct sound, while UK Garage excites with its pulsating beats, fast rhythms, and creative vocal samples. Let yourself be carried away by the raw power and pulsating groove of garage music and enjoy the distinctive sound that is both nostalgic and modern."
   },
   {
-    "categoryUrl": "/deutsch",
+    "categoryUrl": "/german",
     "headline": "German",
-    "imageUrl": "/category/deutsch.jpg",
+    "imageUrl": "/category/german.jpg",
     "introSubline": "Discover the diversity and unique sound of the German music scene!",
     "isPlayable": false,
-    "slug": "deutsch",
+    "slug": "german",
     "text": "German music offers a fascinating range of styles and genres that reflect Germany's cultural diversity and creativity. This category encompasses everything from the classic songs of traditional folk music and timeless hits of German Schlager to the innovative sounds of the German rock, pop, and electronic scene. From the big names in German music history to current chart-toppers – German music combines emotional depth with a distinctive sound. Let yourself be inspired by the diverse sounds and musical passion that Germany has to offer."
   },
   {
-    "categoryUrl": "/deutscher-rap",
+    "categoryUrl": "/german-rap",
     "headline": "German Rap",
-    "imageUrl": "/category/deutscher-rap.jpg",
+    "imageUrl": "/category/german-rap.jpg",
     "introSubline": "Experience the powerful rhymes and beats of the German rap scene!",
     "isPlayable": false,
-    "slug": "deutscher-rap",
+    "slug": "german-rap",
     "text": "German rap brings the pulsating energy and distinctive flow of German rap artists directly to you. This category unites everything from harder street rhythms to emotional, lyrical texts and offers insight into the diversity and depth of the German hip-hop scene. From trending tracks to authentic beats – German rap is the soundtrack for real stories and unvarnished reality."
   },
   {
@@ -658,12 +658,12 @@
     "text": "Grunge is a powerful genre that originated in Seattle in the 1990s and is known for its raw energy and unique sound. This category encompasses the classic grunge songs characterized by distorted guitar riffs, powerful drums, and emotional lyrics. With legendary bands like Nirvana, Pearl Jam, and Soundgarden, Grunge offers a mix of raw rock, punk influence, and melancholic melodies. The music captures the turbulent and often dark atmosphere of the era and reflects themes of rebellion and self-discovery. Let yourself be carried away by the authentic power and distinctive sound of Grunge and enjoy the deep expression of this iconic music genre."
   },
   {
-    "categoryUrl": "/gitarre",
+    "categoryUrl": "/guitar",
     "headline": "Guitar",
-    "imageUrl": "/category/gitarre.jpg",
+    "imageUrl": "/category/guitar.jpg",
     "introSubline": "Experience the versatile sounds and powerful presence of the guitar in all its facets!",
     "isPlayable": false,
-    "slug": "gitarre",
+    "slug": "guitar",
     "text": "The guitar is one of the most versatile instruments and plays a central role in almost every music genre. This category encompasses a wide range of guitar music, from the electrifying solos of rock and blues to the gentle chords of acoustic ballads. From virtuoso fingerstyle techniques and distinctive riffs to epic guitar solos and innovative effect creations – the guitar offers an impressive variety of sounds and means of expression. Let yourself be carried away by the emotional and powerful sounds of the guitar and discover how this instrument shapes and enriches the musical landscape."
   },
   {
@@ -703,12 +703,12 @@
     "text": "Hardstyle is known for its intense basslines, driving beats, and epic drops that make every party shake. This category offers you the best tracks of the genre that emerged in the early 2000s and is characterized by its mix of Hard Dance and Hardcore elements. With a distinctive rhythm, pulsating kick drums, and powerful melodies, Hardstyle creates explosive energy and an engaging atmosphere on the dance floor. Let yourself be carried away by the dynamic rhythms, euphoric breakdowns, and energetic sound of Hardstyle and experience how this music genre brings the night to life."
   },
   {
-    "categoryUrl": "/haiwaiinisch",
+    "categoryUrl": "/hawaiian",
     "headline": "Hawaiian",
-    "imageUrl": "/category/haiwaiinisch.jpg",
+    "imageUrl": "/category/hawaiian.jpg",
     "introSubline": "Experience the gentle sounds and tropical magic of Hawaiian music!",
     "isPlayable": false,
-    "slug": "haiwaiinisch",
+    "slug": "hawaiian",
     "text": "Hawaiian music is known for its soothing melodies inspired by Hawaii's nature and culture. This category encompasses the traditional sounds of the islands, including the ukulele, slack-key guitar playing, and the beautiful vocal harmonies often used in hula music. Artists like Israel Kamakawiwo'ole, Gabby Pahinui, and Keali'i Reichel have made Hawaiian music known worldwide. The music embodies the Aloha spirit and offers a mix of gentle melodies that bring relaxation and joy. Modern Hawaiian artists add elements of pop, reggae, and folk to the traditional sounds to create a unique, tropical soundscape. Let yourself be transported to the paradise world of the islands by the harmonic vocals, gentle ukulele chords, and relaxed atmosphere of Hawaiian music."
   },
   {
@@ -766,21 +766,21 @@
     "text": "House is an electrifying genre of electronic dance music that originated in Chicago in the 1980s and is characterized by its catchy rhythms and deep basslines. This category offers you a wide range of House tracks, from classic Chicago House sounds through funky Disco House to modern Deep House and Progressive House variants. With its hypnotic beats, groovy basslines, and often soulful vocals, House creates an incomparable atmosphere on the dance floor. Let yourself be carried away by the energetic rhythms and engaging groove of House and enjoy the music that creates unforgettable nights in clubs and at festivals."
   },
   {
-    "categoryUrl": "/islaendisch",
+    "categoryUrl": "/icelandic",
     "headline": "Icelandic",
-    "imageUrl": "/category/islaendisch.jpg",
+    "imageUrl": "/category/icelandic.jpg",
     "introSubline": "Dive into the magical soundscape and mystical atmosphere of Icelandic music!",
     "isPlayable": false,
-    "slug": "islaendisch",
+    "slug": "icelandic",
     "text": "Icelandic music is known for its unique blend of nature connection, mystical sounds, and innovative creativity. This category unites the best tracks that reflect Iceland's distinctive character – from the gentle, atmospheric melodies of folk to the experimental and avant-garde sounds of modern pop and indie. With artists like Björk, Sigur Rós, Of Monsters and Men, and Ásgeir, Icelandic music shows impressive depth and diversity that captures both the raw beauty of Iceland's landscape and the introspective and often poetic soul of the country. Let yourself be enchanted by the atmospheric sounds and emotional intensity of Icelandic music and experience a musical journey through a world full of magic and mysteries."
   },
   {
-    "categoryUrl": "/indisch",
+    "categoryUrl": "/indian",
     "headline": "Indian",
-    "imageUrl": "/category/indisch.jpg",
+    "imageUrl": "/category/indian.jpg",
     "introSubline": "Dive into the fascinating diversity and rhythmic richness of Indian music!",
     "isPlayable": false,
-    "slug": "indisch",
+    "slug": "indian",
     "text": "Indian music offers a fascinating world full of traditional sounds, melodic complexity, and rhythmic diversity. This category encompasses everything from the classical ragas of Indian classical music, deeply rooted in cultural and spiritual tradition, to the lively beats of Bollywood soundtracks and the modern fusion of pop, rock, and electronic elements. With a rich palette of instruments like sitar, tabla, and harmonium and a wide spectrum of music styles ranging from calm meditative sounds to energetic dance rhythms, Indian music shows impressive diversity. Let yourself be enchanted by the profound melodies, complex rhythms, and unique atmosphere of Indian music and experience a musical journey through one of the richest and most diverse cultural spheres in the world."
   },
   {
@@ -820,21 +820,21 @@
     "text": "Industrial Metal combines the raw power of metal with the mechanical precision and electronic elements of Industrial. This category unites driving guitar riffs, distorted vocals, and dark, mechanical beats into a powerful and dystopian sound. With pioneering bands like Ministry, Nine Inch Nails, Rammstein, and Fear Factory, Industrial Metal has created a unique soundscape that is equally aggressive and futuristic. The distorted, machine-like rhythms and dark, often apocalyptic mood make this genre an intense and energetic experience. Let yourself be carried away by the cold, industrial aesthetics and the brutal sounds of Industrial Metal and experience the perfect mix of man and machine."
   },
   {
-    "categoryUrl": "/iranisch",
+    "categoryUrl": "/iranian",
     "headline": "Iranian",
-    "imageUrl": "/category/iranisch.jpg",
+    "imageUrl": "/category/iranian.jpg",
     "introSubline": "Discover the rich soundscape and cultural depth of Iranian music!",
     "isPlayable": false,
-    "slug": "iranisch",
+    "slug": "iranian",
     "text": "Iranian music offers a fascinating blend of traditional and contemporary sound experience, deeply rooted in Iran's cultural history and diverse traditions. This category encompasses everything from the classical, sophisticated sounds of Persian music, as found in traditional instruments like santur, tar, and setar, to modern fusions that combine Western and Iranian styles. The music ranges from melancholic, poetic vocals that reflect the beauty of Persian poetry to vibrant pop and rock productions that represent the modern Iranian music scene. Let yourself be enchanted by the emotional melodies, rhythmic structures, and cultural diversity of Iranian music and experience a soundscape that is both traditional and innovative."
   },
   {
-    "categoryUrl": "/irisch",
+    "categoryUrl": "/irish",
     "headline": "Irish",
-    "imageUrl": "/category/irisch.jpg",
+    "imageUrl": "/category/irish.jpg",
     "introSubline": "Experience the lively rhythms and traditional beauty of Irish music!",
     "isPlayable": false,
-    "slug": "irisch",
+    "slug": "irish",
     "text": "Irish music is deeply rooted in Ireland's culture and history, known for its lively melodies, emotional ballads, and the characteristic use of traditional instruments like the fiddle, tin whistle, and bodhrán. This category unites a wide range of songs, from the cheerful jigs and reels of Irish folklore to emotional ballads and modern interpretations of Irish music. With legendary bands and artists like The Dubliners, Clannad, The Chieftains, and Enya, Irish music offers a mix of joy, melancholy, and cultural depth. Let yourself be carried away by the captivating rhythms and moving melodies of Irish music and experience the timeless beauty of music that has endured generations and continues to inspire anew."
   },
   {
@@ -892,12 +892,12 @@
     "text": "K-Pop, or Korean Pop, is a worldwide phenomenon that captivates through its catchy melodies, impressive choreographies, and visually stunning music videos. This category unites the best tracks and iconic hits that dominate the global K-Pop scene. With artists and groups like BTS, BLACKPINK, EXO, and TWICE, K-Pop offers a colorful mix of pop, hip-hop, R&B, and electronic influences that impress with their high production quality and innovative sounds. Let yourself be carried away by the dynamic rhythms, captivating choruses, and unique energy of K-Pop and discover the music that's storming charts worldwide and inspiring millions of fans."
   },
   {
-    "categoryUrl": "/lateinamerikanisch",
+    "categoryUrl": "/latin-american",
     "headline": "Latin American",
-    "imageUrl": "/category/lateinamerikanisch.jpg",
+    "imageUrl": "/category/latin-american.jpg",
     "introSubline": "Dive into the lively rhythms and cultural diversity of Latin America!",
     "isPlayable": false,
-    "slug": "lateinamerikanisch",
+    "slug": "latin-american",
     "text": "Latin American music is a pulsating kaleidoscope of different styles and traditions that reflect the rich cultural diversity of the region. This category unites the best sounds from genres like Salsa, Tango, Reggaeton, Cumbia, Bachata, and many others. With fiery rhythms, passionate melodies, and irresistible dance beats, Latin American music offers a captivating mix that conquers both hearts and dance floors alike. From the traditional sounds of the Andes to the modern hits of the Caribbean and South America – let yourself be inspired by the joy of life and musical richness of Latin America and experience an unforgettable musical journey."
   },
   {
@@ -946,12 +946,12 @@
     "text": "Metalcore combines the heaviness of metal with the intensity and attitude of hardcore punk. This genre is known for its thundering breakdowns, melodic guitar riffs, and powerful shouts often combined with clean vocals. This category unites the greatest tracks and most innovative bands that have shaped the genre since the early 2000s – including Killswitch Engage, As I Lay Dying, Parkway Drive, and August Burns Red. With its distinctive alternation between aggression and melody, Metalcore offers a dynamic and emotional listening experience. Let yourself be carried away by the energetic riffs, intense vocals, and catchy choruses and experience the perfect blend of brutal heaviness and melodic depth."
   },
   {
-    "categoryUrl": "/mexikanisch",
+    "categoryUrl": "/mexican",
     "headline": "Mexican",
-    "imageUrl": "/category/mexikanisch.jpg",
+    "imageUrl": "/category/mexican.jpg",
     "introSubline": "Experience the rich diversity and passionate sounds of Mexican music!",
     "isPlayable": false,
-    "slug": "mexikanisch",
+    "slug": "mexican",
     "text": "The Mexican music scene is characterized by an impressive variety of styles deeply rooted in the country's culture and history. This category encompasses everything from traditional genres like Mariachi, Ranchera, and Norteño to modern Mexican pop, rock, and cumbia hits. With iconic artists like Vicente Fernández, Luis Miguel, Lila Downs, and Maná, Mexican music reflects the passion, joy, and tragedy of life. Traditional instruments like guitars, trumpets, and accordions play a central role, while modern artists create innovative fusions with rock, jazz, and electronic sounds. Let yourself be carried away by the joyful rhythms, deep emotions, and catchy melodies of Mexican music and experience the distinctive musical soul of Mexico."
   },
   {
@@ -1000,12 +1000,12 @@
     "text": "Nu Metal is a cross-genre music style that combines the raw intensity of metal with elements from hip-hop, alternative rock, and industrial. This category offers the greatest hits from bands that made Nu Metal popular in the late 90s and early 2000s. With artists like Linkin Park, Korn, Limp Bizkit, and Slipknot, known for their heavy guitar riffs, aggressive vocals, and rhythm-focused beats, Nu Metal has inspired a new generation of metal fans. By incorporating rap vocals, electronic elements, and catchy hooks, Nu Metal creates a unique and powerful atmosphere. Let yourself be carried away by the energetic sounds and cross-genre creativity of Nu Metal and experience the music that redefined metal."
   },
   {
-    "categoryUrl": "/oper",
+    "categoryUrl": "/opera",
     "headline": "Opera",
-    "imageUrl": "/category/oper.jpg",
+    "imageUrl": "/category/opera.jpg",
     "introSubline": "Experience the dramatic power and emotional depth of great opera works!",
     "isPlayable": false,
-    "slug": "oper",
+    "slug": "opera",
     "text": "Opera is the queen of music genres, a powerful blend of music, theater, and poetry. This category unites the most moving arias, duets, and choruses from the world's most famous operas, by composers like Verdi, Puccini, Mozart, and Wagner. With compelling stories, impressive productions, and virtuosic vocal performances, opera works offer an emotional journey through love, suffering, triumph, and tragedy. Dive into the world of opera, where dramatic melodies and passionate performances bring the stage to life and create unforgettable musical moments. Enjoy the majestic beauty and deep emotional impact of opera music that has touched people's hearts for centuries."
   },
   {
@@ -1018,30 +1018,30 @@
     "text": "Party On! brings together the best hits that get every party going. From energetic dance tracks to captivating pop anthems to pulsating electro beats – this category delivers the perfect music for unforgettable nights and high spirits. Whether you want to dance, celebrate, or just have a good time, with Party On! every event becomes a highlight."
   },
   {
-    "categoryUrl": "/peruanisch",
+    "categoryUrl": "/peruvian",
     "headline": "Peruvian",
-    "imageUrl": "/category/peruanisch.jpg",
+    "imageUrl": "/category/peruvian.jpg",
     "introSubline": "Dive into the colorful diversity and rhythmic sounds of Peruvian music!",
     "isPlayable": false,
-    "slug": "peruanisch",
+    "slug": "peruvian",
     "text": "Peruvian music is deeply rooted in the country's history and culture, combining indigenous, African, and Spanish influences into a unique sound. This category includes traditional Andean music, such as the melancholic melodies of the pan flute (Siku) and charango, as well as Afro-Peruvian rhythms played with cajón and guitar. Artists like Susana Baca, Eva Ayllón, and Novalima have made Peruvian music known worldwide. From the lively marinera to the festive huayno music often played at folk festivals, music from Peru shows an extraordinary range. Modern Peruvian artists merge these traditions with pop, rock, and electronic music, creating an exciting fusion. Let yourself be enchanted by the rhythmic sounds and deep emotions of Peruvian music and experience the cultural diversity of one of South America's most fascinating countries."
   },
   {
-    "categoryUrl": "/klavier",
+    "categoryUrl": "/piano",
     "headline": "Piano",
-    "imageUrl": "/category/klavier.jpg",
+    "imageUrl": "/category/piano.jpg",
     "introSubline": "Experience the timeless beauty and emotional depth of piano playing!",
     "isPlayable": false,
-    "slug": "klavier",
+    "slug": "piano",
     "text": "The piano is an instrument that fascinates through its versatility and expressiveness. This category unites a variety of pieces that showcase the elegant and powerful sounds of the piano. From classical masterpieces by composers like Beethoven, Chopin, and Debussy to modern piano compositions and emotional ballads – piano music offers a rich palette of emotions and moods. Whether gentle melodies for relaxation, virtuosic solos, or touching film music, the 'Piano' category takes you into a world full of sonic magic and musical sophistication. Let yourself be inspired by the melodic lines and harmonic structures of the piano and enjoy the calming yet deeply moving effect of this wonderful instrument."
   },
   {
-    "categoryUrl": "/polnisch",
+    "categoryUrl": "/polish",
     "headline": "Polish",
-    "imageUrl": "/category/polnisch.jpg",
+    "imageUrl": "/category/polish.jpg",
     "introSubline": "Experience the emotional depth and rich diversity of Polish music!",
     "isPlayable": false,
-    "slug": "polnisch",
+    "slug": "polish",
     "text": "The Polish music scene offers an impressive mix of traditional folklore, classical music, and modern sounds from pop, rock, and electronic music. This category includes the most beautiful Polish folk songs and dances like the mazurka or polka, as well as the powerful works of the modern music scene. Artists like Chopin, Czesław Niemen, Maanam, and Dawid Podsiadło have significantly shaped the Polish musical landscape. Polish folk music with violins, accordions, and choirs reflects centuries-old tradition, while contemporary artists innovatively experiment with genres like indie, rock, and pop. Let yourself be carried away by the emotional melodies, poetic lyrics, and dynamic rhythms of Polish music and dive into the sound world of a country with a deeply rooted musical culture."
   },
   {
@@ -1135,12 +1135,12 @@
     "text": "R&B, or Rhythm and Blues, is a genre known for its emotional depth, gentle rhythms, and soulful vocals. This category unites the best tracks that make up the heart of R&B music – from the classic soul hymns of the 60s to the modern, urban sounds of today. With influences from jazz, gospel, and funk, R&B offers a rich musical palette that includes both danceable hits and emotional ballads. Artists like Marvin Gaye, Beyoncé, Usher, and Alicia Keys have shaped the genre and given it a distinctive voice. Let yourself be enchanted by the sensual grooves, melodic hooks, and soulful expressiveness of R&B and enjoy a style of music that repeatedly touches the heart and moves the soul."
   },
   {
-    "categoryUrl": "/regentag",
+    "categoryUrl": "/rainy-day",
     "headline": "Rainy Day",
-    "imageUrl": "/category/regentag.jpg",
+    "imageUrl": "/category/rainy-day.jpg",
     "introSubline": "Enjoy the gentle sounds and soothing atmosphere for rainy days!",
     "isPlayable": false,
-    "slug": "regentag",
+    "slug": "rainy-day",
     "text": "On rainy days, there's nothing better than wrapping yourself in cozy music that underscores the melancholic yet peaceful mood. This category brings together a selection of gentle melodies, quiet instrumental pieces, and emotional ballads that perfectly complement the sound of rain. From acoustic guitar sounds to gentle piano pieces to relaxing indie pop and ambient music – the Rainy Day playlist creates a comfortable atmosphere where you can relax, reflect, or simply enjoy the moment. Let yourself be carried away by the soothing music and experience how rainy days become a time of peace and reflection."
   },
   {
@@ -1198,21 +1198,21 @@
     "text": "Rockabilly, one of the first forms of Rock 'n' Roll, combines the energy of Rhythm & Blues with the catchy melodies of Country. Emerging in the 1950s, Rockabilly is known for its fast rhythms, distinctive guitar riffs, and unmistakable vocal styles. This category unites the greatest hits and timeless classics of the genre, shaped by artists like Elvis Presley, Carl Perkins, and Johnny Cash. With its authentic sound and rebellious attitude, Rockabilly embodies the pioneering spirit of an entire generation. Let yourself be carried away by the wild rhythms and untamed energy of Rockabilly and experience the music that made Rock 'n' Roll what it is today – a timeless celebration of life and freedom."
   },
   {
-    "categoryUrl": "/russisch",
+    "categoryUrl": "/russian",
     "headline": "Russian",
-    "imageUrl": "/category/russisch.jpg",
+    "imageUrl": "/category/russian.jpg",
     "introSubline": "Dive into the powerful sounds and cultural depth of Russian music!",
     "isPlayable": false,
-    "slug": "russisch",
+    "slug": "russian",
     "text": "The Russian music scene is characterized by a rich and diverse tradition, ranging from classical folk music to modern pop, rock, and electronic sounds. This category unites the most beautiful folk songs, emotional ballads, and the latest hits of Russian pop culture. With artists like Alla Pugacheva, Zemfira, DDT, and modern stars like Little Big and Manizha, Russian music shows an impressive range from profound lyrics to powerful beats. Traditional instruments like the balalaika, accordion, and choirs are used in modern arrangements to create unique sounds. Let yourself be enchanted by the emotional intensity and diverse melodies of Russian music and experience the soul of a country that is as musically diverse as its history."
   },
   {
-    "categoryUrl": "/traurig",
+    "categoryUrl": "/sad",
     "headline": "Sad",
-    "imageUrl": "/category/traurig.jpg",
+    "imageUrl": "/category/sad.jpg",
     "introSubline": "Let yourself be carried away by the emotional melodies and melancholic sounds.",
     "isPlayable": false,
-    "slug": "traurig",
+    "slug": "sad",
     "text": "The 'Sad' category offers a collection of songs that reflect the deep emotions and quiet melancholy of life. Whether you're in a contemplative mood, seeking comfort, or simply want to immerse yourself in the emotional depth of music – this playlist unites gentle ballads, heartfelt piano pieces, and moving lyrics that touch the heart. From classical compositions to modern pop and indie songs, this music expresses sadness in a way that is both comforting and connecting. Let yourself be accompanied by the gentle sounds and honest emotions of sad music and find in the music the space you need right now."
   },
   {
@@ -1234,12 +1234,12 @@
     "text": "Samba is the heart and soul of Brazilian music, a genre that embodies pure joy of life and rhythmic diversity. With its driving rhythms, powerful percussions, and swinging melodies, Samba is inseparably linked to Brazilian culture and the world-famous carnival. This category unites the greatest hits and traditional classics of Samba, from energetic street rhythms to the elegant melodies of Samba-Enredo. Artists like João Gilberto, Elis Regina, and Jorge Ben Jor have made Samba a worldwide symbol for dance, joy, and community. Let yourself be carried away by the vibrant sounds and exuberant mood of Samba and enjoy the music that makes Brazil's heart beat."
   },
   {
-    "categoryUrl": "/schlager",
-    "headline": "Schlager",
+    "categoryUrl": "/german-schlager",
+    "headline": "German Schlager",
     "imageUrl": "/category/schlager.jpg",
     "introSubline": "Experience the cheerful melodies and catchy refrains of German Schlager!",
     "isPlayable": false,
-    "slug": "schlager",
+    "slug": "german-schlager",
     "text": "Schlager is a genre characterized by its cheerful melodies, easily accessible lyrics, and catchy refrains. A staple of German-language music for decades, Schlager delights with stories about love, friendship, and life. Artists like Helene Fischer, Andrea Berg, Roland Kaiser, and Udo Jürgens have shaped the genre and offer emotional and often upbeat musical accompaniment for many occasions. Schlager combines the feeling of nostalgia with modern pop sounds and ensures good mood and sing-along moments. Let yourself be carried away by the cheerful melodies and positive messages of Schlager and experience the lightness and joy that has made this genre popular for generations."
   },
   {
@@ -1297,12 +1297,12 @@
     "text": "Soul music is the heart and soul of American music history, characterized by deep emotions, powerful vocals, and a distinctive mix of Gospel, R&B, and Jazz. This category unites the unforgettable classics and modern hits that have defined the genre. With legendary artists like Aretha Franklin, Marvin Gaye, Otis Redding, and Etta James, Soul offers an impressive palette of songs that tell stories of love, pain, joy, and social consciousness. The passionate voices and dynamic melodies of Soul draw the listener into a world full of feeling and authenticity. Let yourself be enchanted by the emotional power and musical depth of Soul and experience the music that touches the heart and moves the soul."
   },
   {
-    "categoryUrl": "/spanisch",
+    "categoryUrl": "/spanish",
     "headline": "Spanish",
-    "imageUrl": "/category/spanisch.jpg",
+    "imageUrl": "/category/spanish.jpg",
     "introSubline": "Discover the passion and diversity of Spanish music!",
     "isPlayable": false,
-    "slug": "spanisch",
+    "slug": "spanish",
     "text": "The Spanish music scene is rich in cultural diversity and musical tradition, deeply rooted in the country's history and way of life. This category encompasses everything from the passionate sounds of Flamenco and traditional Spanish folk rhythms to modern pop hits and Latin beats that conquer charts worldwide. With artists like Julio Iglesias, Rosalía, Enrique Iglesias, and Pablo Alborán, Spanish music shows its ability to express emotions through impressive melodies and powerful lyrics. Let yourself be enchanted by the rhythmic guitars, intense vocals, and musical diversity, and enjoy a journey through the passionate and vibrant world of Spanish music."
   },
   {
@@ -1333,12 +1333,12 @@
     "text": "Summer hits are the perfect accompaniment for sunny days and unforgettable summer nights. This category unites the best tracks that bring good vibes, hot beats, and relaxed atmosphere. From catchy pop songs and danceable dance hits to chilled melodies for the beach – summer hits ensure that every moment in summer becomes a highlight."
   },
   {
-    "categoryUrl": "/schwedisch",
+    "categoryUrl": "/swedish",
     "headline": "Swedish",
-    "imageUrl": "/category/schwedisch.jpg",
+    "imageUrl": "/category/swedish.jpg",
     "introSubline": "Discover the diverse sounds and unique charm of Swedish music!",
     "isPlayable": false,
-    "slug": "schwedisch",
+    "slug": "swedish",
     "text": "The Swedish music scene is known for its impressive diversity and creative influence on the international music landscape. This category unites everything from the iconic pop hits that have made Sweden famous worldwide to traditional folk sounds and innovative modern sounds. With artists like ABBA, Robyn, and Avicii, Sweden has shaped a distinctive musical style characterized by catchy melodies and high-quality productions. But the deeply rooted Swedish folk music, often characterized by melancholic melodies and instrumental harmonies, also finds its place here. Let yourself be enchanted by the diverse sounds of Swedish music and discover a rich musical tradition inspired by nature and infused with modern zeitgeist."
   },
   {
@@ -1423,21 +1423,21 @@
     "text": "Trip-Hop is a genre that combines the deep, hypnotic beats of Hip-Hop with the melancholic melodies and atmospheric textures of Downtempo. Emerging in the 1990s in Bristol, Trip-Hop offers a mix of soulful vocals, dark instrumentals, and electronic sounds that create a dense, almost cinematic mood. This category unites the best tracks from artists like Massive Attack, Portishead, and Tricky, who shaped the genre, as well as modern acts that continue to develop the Trip-Hop sound. With its smoky, relaxed grooves and introspective lyrics, Trip-Hop invites you to dive into a deeper, reflective mood. Let yourself be carried away by the floating beats and emotional depth of Trip-Hop and experience a soundscape that is both soothing and captivating."
   },
   {
-    "categoryUrl": "/tuerkisch",
+    "categoryUrl": "/turkish",
     "headline": "Turkish",
-    "imageUrl": "/category/tuerkisch.jpg",
+    "imageUrl": "/category/turkish.jpg",
     "introSubline": "Experience the rich diversity and emotional sounds of Turkish music!",
     "isPlayable": false,
-    "slug": "tuerkisch",
+    "slug": "turkish",
     "text": "The Turkish music scene is known for its rich tradition and the harmonious blend of eastern and western influences. This category unites the best tracks that reflect the heart and soul of Turkish music – from the emotional melodies of Türkü and the powerful rhythms of folk music to the modern sounds of Turkish pop and rock. With artists like Sezen Aksu, Tarkan, Zeki Müren, and many others, Turkish music shows an impressive range characterized by deep emotions and passionate expressions. Let yourself be enchanted by unique instruments like the saz and the ney, as well as the distinctive voices of Turkish music, and enjoy a musical journey through the soundscapes of Turkey."
   },
   {
-    "categoryUrl": "/ukrainisch",
+    "categoryUrl": "/ukrainian",
     "headline": "Ukrainian",
-    "imageUrl": "/category/ukrainisch.jpg",
+    "imageUrl": "/category/ukrainian.jpg",
     "introSubline": "Experience the powerful melodies and cultural depth of Ukrainian music!",
     "isPlayable": false,
-    "slug": "ukrainisch",
+    "slug": "ukrainian",
     "text": "The Ukrainian music scene is a fascinating reflection of the country's rich cultural history, deeply rooted in folk music while integrating modern influences. This category includes traditional Ukrainian music with folk songs, bandura sounds, and choral works, as well as contemporary Ukrainian pop, rock, and electronic music. Artists like DakhaBrakha, ONUKA, Go_A, and The Hardkiss combine traditional instruments and modern beats to create a unique soundscape. Ukrainian music is often characterized by melancholic yet powerful melodies inspired by nature, history, and folk culture. Let yourself be inspired by the profound lyrics, emotional harmonies, and captivating rhythms of Ukrainian music and experience the musical diversity of a country that impressively combines tradition and modernity."
   },
   {

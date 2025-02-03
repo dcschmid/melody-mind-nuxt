@@ -13,10 +13,31 @@ export default defineNuxtConfig({
       enabled: false,
     },
   },
+  css: [
+    '@/assets/css/rtl.css'
+  ],
   app: {
     pageTransition: { name: "page" },
     head: {
-      link: []
+      htmlAttrs: {
+        dir: "auto",
+        lang: "de"
+      },
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+      ],
+      link: [
+        {
+          rel: 'preconnect',
+          href: 'https://fonts.googleapis.com'
+        },
+        {
+          rel: 'preconnect',
+          href: 'https://fonts.gstatic.com',
+          crossorigin: ''
+        }
+      ]
     }
   },
   runtimeConfig: {
@@ -127,6 +148,41 @@ export default defineNuxtConfig({
         code: "fr",
         name: "Français",
         file: "fr.json",
+      },
+      {
+        code: "it",
+        name: "Italiano",
+        file: "it.json",
+      },
+      {
+        code: "pt",
+        name: "Português",
+        file: "pt.json",
+      },
+      {
+        code: "zh",
+        name: "中文",
+        file: "zh.json",
+      },
+      {
+        code: "ja",
+        name: "日本語",
+        file: "ja.json",
+      },
+      {
+        code: "ko",
+        name: "한국어",
+        file: "ko.json",
+      },
+      {
+        code: "ar",
+        name: "العربية",
+        file: "ar.json",
+      },
+      {
+        code: "ru",
+        name: "Русский",
+        file: "ru.json",
       },
       {
         code: "it",

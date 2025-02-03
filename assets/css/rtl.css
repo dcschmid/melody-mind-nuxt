@@ -1,0 +1,51 @@
+/* RTL Support and Arabic Typography */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
+
+/* RTL Language Support */
+[dir="rtl"] {
+  font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+/* Logical Properties for RTL support */
+.category-card {
+  margin-inline-start: 1rem;
+  margin-inline-end: 1rem;
+  padding-inline-start: 1rem;
+  padding-inline-end: 1rem;
+}
+
+/* RTL-specific adjustments */
+[dir="rtl"] .category-card {
+  text-align: right;
+}
+
+/* Flex direction for RTL */
+[dir="rtl"] .flex-row {
+  flex-direction: row-reverse;
+}
+
+/* Icon adjustments for RTL */
+[dir="rtl"] .icon {
+  transform: scaleX(-1);
+}
+
+/* Arabic text optimization */
+[dir="rtl"] {
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+/* Arabic headings */
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+  font-weight: 700;
+}
+
+/* Arabic text size adjustments */
+[dir="rtl"] .text-base {
+  font-size: 1.1rem; /* Slightly larger for better Arabic readability */
+}

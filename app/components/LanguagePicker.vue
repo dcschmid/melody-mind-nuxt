@@ -67,7 +67,16 @@ const getFlagEmoji = (countryCode: string): string => {
         return flagEmojiCache.get(cacheKey)
     }
 
-    const code = cacheKey === 'EN' ? 'GB' : cacheKey
+    // Mapping von Sprachcodes zu Ländercodes für Flaggen
+    const languageToCountry: { [key: string]: string } = {
+        'EN': 'GB', // Englisch -> Großbritannien
+        'ZH': 'CN', // Chinesisch -> China
+        'KO': 'KR', // Koreanisch -> Südkorea
+        'JA': 'JP', // Japanisch -> Japan
+        'AR': 'SA'  // Arabisch -> Saudi-Arabien
+    }
+
+    const code = languageToCountry[cacheKey] || cacheKey
     const codePoints = code
         .split('')
         .map(char => 127397 + char.charCodeAt())

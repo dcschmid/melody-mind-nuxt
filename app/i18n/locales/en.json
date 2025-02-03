@@ -1,39 +1,45 @@
 {
   "languages": {
-    "de": "German",
-    "en": "English",
-    "es": "Spanish",
-    "fr": "French",
-    "it": "Italian"
+      "de": "German",
+      "en": "English",
+      "es": "Spanish",
+      "fr": "French",
+      "it": "Italian",
+      "pt": "Portuguese",
+      "zh": "Chinese",
+      "ja": "Japanese",
+      "ko": "Korean",
+      "ar": "Arabic",
+      "ru": "Russian"
   },
   "common": {
-    "openLanguageMenu": "Open language menu",
-    "closeLanguageMenu": "Close language menu",
-    "selectLanguage": "Select language",
-    "selectLanguageLabel": "Select your preferred language",
-    "languageChanged": "Language changed to {language}",
+    "openLanguageMenu": "Open Language Menu",
+    "closeLanguageMenu": "Close Language Menu",
+    "selectLanguage": "Select Language",
+    "selectLanguageLabel": "Choose Your Preferred Language",
+    "languageChanged": "Language has been changed to {language}",
     "loading": "Loading..."
   },
   "meta": {
     "title": "Melody Mind - The Ultimate Music Quiz Game",
-    "description": "Test your music knowledge in our interactive quiz game. Answer questions about songs, artists, and music history from various genres like rock, pop, hip-hop, and classical.",
-    "keywords": "Music Quiz, Music Knowledge, Online Quiz, Music History, Artist Quiz, Album Quiz, Music Genres, Interactive Game"
+    "description": "Test your music knowledge in our interactive quiz game. Answer questions about songs, artists, and music history from various genres including rock, pop, hip-hop, and classical.",
+    "keywords": "music quiz, music knowledge, online quiz, music history, artist quiz, album quiz, music genres, interactive game"
   },
   "seo": {
     "category": {
       "title": "Music Quiz Categories - Melody Mind",
-      "description": "Discover various music quiz categories at Melody Mind. Test your knowledge across different genres and eras of music history."
+      "description": "Explore various music quiz categories at Melody Mind. Test your knowledge across different genres and eras of music history."
     },
     "gameRules": {
       "title": "Game Rules - Melody Mind",
-      "description": "Learn about Melody Mind's game rules. Find out everything about game modes, scoring system, and bonus features in our music quiz."
+      "description": "Learn about the game rules of Melody Mind. Discover everything about game modes, scoring system, and bonus features in our music quiz."
     },
     "privacy": {
       "title": "Privacy Policy - Melody Mind",
       "description": "Learn about our privacy policies. Find out how we protect and use your data at Melody Mind."
     },
     "imprint": {
-      "title": "Imprint - Melody Mind",
+      "title": "Legal Notice - Melody Mind",
       "description": "Legal information and contact details for Melody Mind."
     }
   },
@@ -42,30 +48,30 @@
     "start": "Start Game",
     "about": {
       "title": "About Melody Mind",
-      "description": "Test your music knowledge in various categories. An exciting quiz game for music lovers of all genres."
+      "description": "Test your music knowledge across various categories. An exciting quiz game for music lovers of all genres."
     }
   },
-  "intro": "Dive into the fascinating world of music! With Melody Mind, you can put your music knowledge to the test in exciting quiz rounds. Answer questions about songs from different decades, artists, albums, and music history. Collect points, earn gold records, and challenge other music enthusiasts. From rock to pop to hip-hop and classical - test your knowledge in your favorite genres. Start your musical quiz adventure now!",
+  "intro": "Step into the fascinating world of music! With Melody Mind, you can put your music knowledge to the test in exciting quiz rounds. Answer questions about songs from different decades, artists, albums, and music history. Collect points, earn golden records, and challenge other music enthusiasts. From rock to pop to hip-hop and classical - test your knowledge in your favorite genres. Start your musical quiz adventure now!",
   "auth": {
     "email": {
       "label": "Email",
-      "placeholder": "Your email address"
+      "placeholder": "Enter your email address"
     },
     "password": {
       "label": "Password",
-      "placeholder": "Your password"
+      "placeholder": "Enter your password"
     },
     "name": {
       "label": "Name",
-      "placeholder": "Your full name"
+      "placeholder": "Enter your full name"
     }
   },
   "login": {
-    "title": "Login",
-    "methodLabel": "Login method",
-    "submitButton": "Login",
+    "title": "Sign In",
+    "methodLabel": "Sign In Method",
+    "submitButton": "Sign In",
     "noAccount": "Don't have an account?",
-    "forgotPassword": "Forgot password?",
+    "forgotPassword": "Forgot your password?",
     "orContinueWith": "Or continue with",
     "continueWithDiscord": "Continue with Discord",
     "continueWithGithub": "Continue with GitHub",
@@ -73,14 +79,14 @@
       "invalidEmail": "Invalid email address",
       "invalidPassword": "Invalid password",
       "required": "This field is required",
-      "loginFailed": "Login failed",
-      "discordLoginFailed": "Discord login failed",
-      "githubLoginFailed": "GitHub login failed"
+      "loginFailed": "Sign in failed",
+      "discordLoginFailed": "Discord sign in failed",
+      "githubLoginFailed": "GitHub sign in failed"
     }
   },
   "register": {
-    "title": "Register",
-    "submitButton": "Register",
+    "title": "Registrierung",
+    "submitButton": "Sign Up",
     "hasAccount": "Already have an account?",
     "successMessage": "Registration successful! Please check your email.",
     "error": {
@@ -94,35 +100,24 @@
       "registrationFailed": "Registration failed"
     }
   },
-  "forgotPassword": {
-    "title": "Reset Password",
-    "emailLabel": "Email",
-    "emailPlaceholder": "Your email address",
-    "submitButton": "Reset",
-    "backToLogin": "Back to Login",
-    "successMessage": "Password reset instructions have been sent to your email.",
-    "error": {
-      "passwordResetFailed": "Password reset failed"
-    }
-  },
   "gameHome": {
     "meta": {
-      "title": "Music Quiz Categories - Melody Mind",
-      "description": "Discover exciting music quiz categories from rock to classical. Choose your favorite genre and put your music knowledge to the test."
+      "title": "Melody Mind - Music Quiz for All Genres",
+      "description": "Explore our music quiz categories and test your knowledge across various genres including rock, pop, hip-hop, and classical."
     },
-    "title": "Select Your Musical Journey",
+    "title": "Choose a Category to Play",
     "categoriesTitle": "Categories",
-    "description": "Discover the fascinating world of music through different decades and genres",
-    "searchPlaceholder": "Search category...",
-    "playCategory": "Play {category}",
-    "comingSoon": "{category} - Coming Soon",
-    "categoryAlt": "Image for category {category}",
+    "description": "Explore the fascinating world of music through different decades and genres",
+    "searchPlaceholder": "Search categories...",
+    "playCategory": "Play {Kategorie}",
+    "comingSoon": "{Kategorie} - Coming Soon",
+    "categoryAlt": "Image for category {Kategorie}",
     "comingSoonLabel": "Coming Soon"
   },
   "multiplayer": {
     "meta": {
-      "title": "{category} Quiz - {difficulty} Mode - Multiplayer | Melody Mind",
-      "description": "Play the {category} music quiz in {difficulty} mode with friends. Test your knowledge together and find out who's the ultimate music expert!"
+      "title": "{category} Quiz - {difficulty} Difficulty - Multiplayer | Melody Mind",
+      "description": "Play the {category} music quiz in {difficulty} mode with friends. Test your knowledge together and find out who's the best music expert!"
     },
     "setup": {
       "title": "Player Setup",
@@ -144,19 +139,19 @@
       "extendedDescription": "Additional Category Information"
     },
     "difficulty": {
-      "title": "Choose Difficulty",
+      "title": "Choose Difficulty Level",
       "easy": "Easy",
       "medium": "Medium",
       "hard": "Hard",
       "description": {
         "easy": "Perfect for beginners",
-        "medium": "For experienced music enthusiasts",
+        "medium": "For experienced music lovers",
         "hard": "For true music experts"
       }
     },
     "playlist": {
       "title": "Playlists",
-      "description": "Dive into our curated playlist featuring the best {genre} songs",
+      "description": "Dive into the world of {genre}! We've curated the best songs for you. Listen to the playlist on your preferred streaming platform and get ready for the game.",
       "spotify": "Listen on Spotify",
       "deezer": "Listen on Deezer",
       "appleMusic": "Listen on Apple Music"
@@ -164,7 +159,7 @@
     "knowledge": {
       "title": "Knowledge",
       "link": "Learn more about {genre}",
-      "description": "Would you like to learn more about the history and development of {genre}? Here you'll find fascinating background information and interesting facts."
+      "description": "Want to learn more about the history and evolution of {genre}? Find exciting background information and interesting facts here."
     },
     "noImage": "No image available",
     "image": {
@@ -173,48 +168,43 @@
   },
   "game": {
     "meta": {
-      "title": "{category} Quiz - {difficulty} Mode | Melody Mind",
+      "title": "{category} Quiz - {difficulty} Difficulty | Melody Mind",
       "description": "Play the {category} music quiz in {difficulty} mode now. Test your knowledge, earn points, and become a music expert!"
     },
     "loading": "Loading game...",
-    "question": "Question {current} of {total}",
-    "timeLeft": "Time remaining",
+    "question": "Question {Aktuell} of {Gesamt}",
+    "timeLeft": "Time Remaining",
     "score": "Score",
     "correct": "Correct!",
     "wrong": "Wrong!",
     "timeUp": "Time's up!",
     "next": "Next",
     "nextQuestion": "Next Question",
-    "finish": "Complete Game",
+    "finish": "Finish Game",
+    "option": "Option {number}",
+    "selectAnswer": "Select answer: {answer}",
+    "expert": {
+      "title": "Expert Opinion",
+      "confidence": "Expert Confidence: {value}%"
+    },
+    "aria": {
+      "quizQuestion": "Quiz Question",
+      "answerOptions": "Answer Options",
+      "expertAdvice": "Expert Advice",
+      "audienceOpinion": "Audience Opinion"
+    },
     "links": {
-      "listen_on": "Listen on"
+      "listen_on": "Listen"
     },
     "trivia": {
-      "title": "Did You Know?"
+      "title": "Fun Facts"
     },
     "gameOver": {
       "title": "Game Over",
       "correctAnswers": "Correct Answers",
       "backToMenu": "Back to Menu",
       "playAgain": "Play Again",
-      "rankings": "Rankings",
-      "newHighscore": "New Highscore!",
-      "share": {
-        "title": "Share your result",
-        "message": {
-          "intro": "Wow! I scored {points} points in Melody Mind in the category {category} ({difficulty})!",
-          "stats": "Score: {correct} out of {total} correct!",
-          "challenge": "Challenge me at {url}"
-        },
-        "buttons": {
-          "share": "Share",
-          "copy": "Copy text",
-          "twitter": "Share on Twitter",
-          "telegram": "Share on Telegram",
-          "reddit": "Share on Reddit",
-          "whatsapp": "Share on WhatsApp"
-        }
-      }
+      "rankings": "Rankings"
     },
     "results": {
       "title": "Game Results",
@@ -222,99 +212,58 @@
       "correctAnswers": "Correct Answers",
       "accuracy": "Accuracy",
       "timeTaken": "Time Taken",
-      "newHighscore": "New Highscore!",
+      "newHighscore": "New High Score!",
       "share": {
-        "title": "Share your result",
+        "title": "Share Your Result",
+        "message": {
+          "intro": "Wow! I scored {points} points in Melody Mind in the {category} category ({difficulty})!",
+          "stats": "Score: {correct} out of {total} correct!",
+          "challenge": "Challenge me at {url}"
+        },
         "buttons": {
+          "share": "Share",
+          "copy": "Copy Text",
           "twitter": "Share on Twitter",
           "telegram": "Share on Telegram",
           "reddit": "Share on Reddit",
-          "whatsapp": "Share on WhatsApp",
-          "share": "Share"
-        },
-        "message": {
-          "intro": "Wow! I scored {points} points in Melody Mind! ",
-          "genre": "Genre: {genre} | Difficulty: {difficulty} ",
-          "perfect": " INCREDIBLE! Perfect round on {difficulty}! You're a true music expert! ",
-          "gold": " Outstanding performance on {difficulty}! Gold LP earned - keep rocking! ",
-          "silver": " Awesome job on {difficulty}! Silver LP earned - you're on fire! ",
-          "bronze": " Great effort on {difficulty}! Bronze LP earned - silver is within reach! ",
-          "encouragement": " Nice start! Keep practicing and you'll rock even harder! ",
-          "stats": "Score: {correct} out of {total} right! ",
-          "challenge": " Challenge me at {url} ",
-          "difficulty": {
-            "easy": "Easy",
-            "medium": "Medium",
-            "hard": "Hard"
-          }
+          "whatsapp": "Share on WhatsApp"
         }
       },
       "playAgain": "Play Again",
       "backToHome": "Back to Home"
     },
-    "expert": {
-      "title": "Expert Opinion",
-      "confidence": "Confidence"
-    },
-    "audienceOpinion": "Audience Opinion",
-    "correctAnswer": "Correct Answer",
-    "didYouKnow": "Did you know?",
-    "audio": {
-      "play": "Play music",
-      "pause": "Pause music",
-      "progress": "Playback progress"
-    },
-    "album": {
-      "artist": "Artist",
-      "year": "Year"
-    },
-    "streaming": {
-      "links": {
-        "listen_on": "Listen on",
-        "spotify": "Listen on Spotify",
-        "apple": "Listen on Apple Music",
-        "deezer": "Listen on Deezer"
-      }
-    },
-    "round": "Round {current} of {max}",
+    "round": "Round {aktuell} of {max}",
     "points_label": "Points",
-    "points": "Score: {base} + Time Bonus: {time}",
-    "confidence": "Certainty",
+    "points": "Points: {Basis} + {Zeit} time bonus",
+    "confidence": "Confidence",
     "jokers": {
       "title": "Lifelines",
       "fiftyFifty": {
         "title": "50:50",
-        "description": "Removes two wrong answers",
-        "remaining": "{count} lifelines remaining",
-        "ariaLabel": "Fifty-Fifty Lifeline"
+        "description": "Removes two incorrect answers",
+        "remaining": "{Anzahl} lifelines remaining",
+        "ariaLabel": "Fifty-fifty lifeline"
       },
       "audience": {
-        "title": "Audience Poll",
-        "description": "Shows audience vote distribution",
-        "remaining": "{count} lifelines remaining",
-        "ariaLabel": "View Audience Poll"
+        "title": "Ask the Audience",
+        "description": "Shows the distribution of audience votes",
+        "remaining": "{Anzahl} lifelines remaining",
+        "ariaLabel": "Ask the audience"
       },
       "phone": {
         "title": "Expert Advice",
         "description": "Get an expert's opinion",
-        "remaining": "{count} lifelines remaining",
-        "ariaLabel": "Get Expert Advice"
+        "remaining": "{Anzahl} lifelines remaining",
+        "ariaLabel": "Get expert advice"
       },
-      "remainingCount": "{count} Jokers available"
-    },
-    "selectAnswer": "Select answer",
-    "option": "Option {number}",
-    "aria": {
-      "quizQuestion": "Quiz Question",
-      "answerOptions": "Answer Options",
-      "expertAdvice": "Expert Advice",
-      "audienceOpinion": "Audience Opinion"
+      "remainingCount": "{count} lifelines available",
+      "remaining": "{Anzahl} lifelines remaining"
     }
   },
   "gameRules": {
     "meta": {
-      "title": "Game Rules & Guide - Melody Mind",
-      "description": "Learn about Melody Mind's game rules. Find out everything about game modes, scoring system, and bonus features in our music quiz."
+      "title": "Game Rules & Instructions - Melody Mind",
+      "description": "Learn the game rules of Melody Mind. Discover everything about game modes, scoring system, and bonus features in our music quiz."
     },
     "title": "Game Rules - MelodyMind",
     "overview": {
@@ -323,7 +272,7 @@
     },
     "difficultyLevels": {
       "title": "Difficulty Levels",
-      "intro": "There are three difficulty levels you can choose from:",
+      "intro": "There are three difficulty levels to choose from:",
       "levels": {
         "easy": {
           "title": "Easy",
@@ -342,48 +291,72 @@
         "intro": "Each difficulty level has its own title that you can unlock:",
         "novice": {
           "title": "Music Novice",
-          "description": "Answered all questions correctly in easy mode."
+          "description": "Answer all questions correctly in easy mode."
         },
         "master": {
           "title": "Music Master",
-          "description": "Answered all questions correctly in medium mode."
+          "description": "Answer all questions correctly in medium mode."
         },
         "legend": {
           "title": "Music Legend",
-          "description": "Answered all questions correctly in hard mode."
+          "description": "Answer all questions correctly in hard mode."
         }
       }
     },
     "pointsSystem": {
       "title": "Points System",
-      "rules": ["50 points for each correct answer.", "No points for wrong answers."]
+      "rules": [
+        "50 points for each correct answer.",
+        "No points for incorrect answers."
+      ]
     },
     "goldenRecords": {
       "title": "Golden Records",
-      "intro": "When answering all questions in a category correctly, you'll receive a golden record:",
+      "intro": "When you answer all questions correctly in a category, you'll earn a golden record:",
       "rewards": {
-        "easy": "Easy: Music Novice.",
+        "easy": "Easy: Music Beginner.",
         "medium": "Medium: Music Master.",
         "hard": "Hard: Music Legend."
       }
     },
     "rankings": {
       "title": "Rankings",
-      "text": "The ranking system compares you with other players. Placement in the top 10 is based on your collected points across all categories.",
+      "text": "The ranking system compares you with other players. Your placement in the top 10 is based on your total points across all categories.",
       "lists": [
-        "Genre-specific ranking: Best players of a genre.",
-        "Overall ranking: Best players across all categories."
+        "Genre-specific Rankings: The best players in each genre.",
+        "Overall Rankings: Best players across all categories."
       ]
     },
     "tipsAndTricks": {
       "title": "Tips & Tricks",
       "tips": [
-        "Start in easy mode to get a feel for the game.",
-        "Choose your strengths and play the genres you're confident in.",
+        "Start with easy mode to get a feel for the game.",
+        "Play to your strengths and choose genres you're comfortable with.",
         "Practice regularly to improve your score.",
-        "Accuracy over speed – read each question carefully."
+        "Accuracy over speed - read each question carefully."
       ]
     }
+  },
+  "knowledge": {
+    "meta": {
+      "title": "Music Knowledge & Background - Melody Mind",
+      "description": "Dive into the fascinating world of music. Discover exciting facts and stories about various music genres and eras."
+    },
+    "overview": "Knowledge Overview",
+    "title": "Music Knowledge Base",
+    "description": "Explore our comprehensive music knowledge base",
+    "loading": "Loading content...",
+    "playAndListen": "Play & Listen to Music",
+    "playNow": "Play Now",
+    "playlists": "Playlists",
+    "playlist": {
+      "spotify": "Listen on Spotify",
+      "deezer": "Listen on Deezer",
+      "apple": "Listen on Apple Music",
+      "description": "Dive into the world of {genre}! We've curated the best songs for you. Listen to the playlist on your preferred streaming platform and get ready for the game."
+    },
+    "error": "Error loading content",
+    "backToGame": "Back to Game"
   },
   "profile": {
     "title": "Profile",
@@ -409,12 +382,12 @@
       "totalScore": "Total Score",
       "averageScore": "Average Score",
       "highestScore": "Highest Score",
-      "accuracy": "Accuracy Rate"
+      "accuracy": "Accuracy"
     },
     "achievements": {
       "title": "Achievements",
-      "locked": "Locked",
-      "progress": "{current} of {total}"
+      "locked": "Not yet unlocked",
+      "progress": "{Aktuell} of {Gesamt}"
     },
     "settings": {
       "title": "Settings",
@@ -432,17 +405,12 @@
     "mainMenu": "Main Menu",
     "openMenu": "Open Menu",
     "home": "Home",
-    "knowledge": "Knowledge Database",
+    "knowledge": "Knowledge Base",
     "rules": "Game Rules",
     "support": "Support Us",
-    "login": "Login",
-    "register": "Register",
-    "profile": "Profile",
-    "logout": "Logout",
-    "imprint": "Legal Notice",
-    "privacy": "Privacy Policy",
-    "legal": "Legal",
-    "backToHome": "Back to Categories"
+    "imprint": "Imprint",
+    "privacy": "Privacy",
+    "legal": "Legal"
   },
   "footer": {
     "about": "About Us",
@@ -451,7 +419,7 @@
     "terms": "Terms of Use"
   },
   "errors": {
-    "general": "An error occurred",
+    "general": "An error has occurred",
     "network": "Network error",
     "retry": "Try again",
     "pageNotFound": "Page not found",
@@ -469,7 +437,7 @@
     "skipToMain": "Skip to main content",
     "closeMenu": "Close menu",
     "openMenu": "Open menu",
-    "darkMode": "Switch between light and dark mode",
+    "darkMode": "Toggle light and dark mode",
     "playButton": "Play",
     "pauseButton": "Pause",
     "nextButton": "Next",
@@ -484,8 +452,8 @@
     "customize": "Customize",
     "preferences": {
       "necessary": {
-        "title": "Necessary Cookies",
-        "description": "These cookies are required for basic site functionality",
+        "title": "Essential Cookies",
+        "description": "These cookies are required for basic website functionality",
         "required": "Required"
       },
       "analytics": {
@@ -494,7 +462,7 @@
       },
       "marketing": {
         "title": "Marketing Cookies",
-        "description": "Used to show relevant advertising to visitors"
+        "description": "Used to show relevant advertisements to visitors"
       }
     },
     "save": "Save Settings",
@@ -525,13 +493,6 @@
       }
     }
   },
-  "highscore": {
-    "title": "Highscores",
-    "total": "Total Score",
-    "avatar": "Avatar",
-    "name": "Name",
-    "points": "Points"
-  },
   "legal": {
     "privacy": {
       "meta": {
@@ -554,20 +515,20 @@
         },
         "serverLogs": {
           "title": "Server Logs",
-          "text": "For technical purposes, we automatically store server logs transmitted by your browser."
+          "text": "For technical purposes, we automatically store server log files transmitted by your browser."
         },
         "analytics": {
           "title": "Analytics Data",
-          "text": "We use anonymous analytics data to improve your gaming experience. This includes game statistics, usage patterns, and performance metrics, without any personally identifiable information."
+          "text": "We use anonymized analytics data to improve our gaming experience. This data includes game statistics, usage patterns, and performance data, but no personally identifiable information."
         }
       },
       "rights": {
         "title": "Your Rights",
         "intro": "You have the following rights regarding your personal data:",
         "list": {
-          "information": "Right to information about your stored data",
-          "correction": "Right to correction of incorrect data",
-          "restriction": "Right to restriction of processing",
+          "information": "Right to access your stored data",
+          "correction": "Right to correct inaccurate data",
+          "restriction": "Right to restrict processing",
           "objection": "Right to object to processing",
           "portability": "Right to data portability"
         }
@@ -584,7 +545,7 @@
           "title": "Game Progress",
           "intro": "The following game data is stored:",
           "list": {
-            "scores": "Score standings",
+            "scores": "Score records",
             "awards": "Achievements",
             "rankings": "Ranking positions"
           },
@@ -592,13 +553,13 @@
         },
         "localStorage": {
           "title": "Local Storage",
-          "intro": "The following data is stored locally in your browser:",
+          "intro": "The following information is stored locally in your browser:",
           "list": {
             "categories": "Played categories",
             "settings": "Game settings",
             "language": "Language setting"
           },
-          "storage": "This data remains on your device and is not transmitted to our servers. You can delete it at any time through your browser settings."
+          "storage": "This data remains stored locally on your device and is not transferred to our servers. You can delete it at any time through your browser settings."
         },
         "session": {
           "title": "Session Data",
@@ -614,8 +575,8 @@
         "title": "Data Deletion",
         "intro": "You have the right to have the following data deleted:",
         "list": {
-          "highscores": "Your personal highscores and game statistics",
-          "results": "Stored game results and achievements",
+          "highscores": "Your personal high scores and game statistics",
+          "results": "Saved game results and achievements",
           "account": "Your entire user account and all associated data"
         },
         "local": "Locally stored data (cookies, game progress) can be deleted independently through your browser settings."
@@ -639,77 +600,29 @@
         "emailAddress": "daniel.schmid1980(at)icloud.com"
       },
       "responsible": {
-        "title": "Responsible for content according to § 55 para. 2 RStV"
+        "title": "Responsible for content according to § 55 Abs. 2 RStV"
       },
       "disputeResolution": {
         "title": "Dispute Resolution",
-        "text": "The European Commission provides a platform for online dispute resolution (OS)",
+        "text": "The European Commission provides a platform for online dispute resolution (ODR)",
         "link": "https://ec.europa.eu/consumers/odr/",
-        "additional": "We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board."
+        "additional": "We are neither willing nor obligated to participate in dispute resolution proceedings before a consumer arbitration board."
       },
       "lawReference": {
-        "title": "Legal References",
+        "title": "Legal Notice",
         "text": "Despite careful content control, we assume no liability for the content of external links. The operators of the linked pages are solely responsible for their content."
       },
       "jurisdiction": {
         "title": "Legal Basis",
-        "text": "This website is subject to German law. Place of jurisdiction is Germany.",
+        "text": "This website is subject to German law.",
         "applicableLaw": "German law applies exclusively, excluding the UN Convention on Contracts for the International Sale of Goods.",
-        "jurisdiction": "Place of fulfillment and exclusive place of jurisdiction for all disputes is Germany, as far as legally permissible."
+        "jurisdiction": "The place of jurisdiction for all disputes arising from this contract is Germany, where legally permissible."
       }
-    }
-  },
-  "username": {
-    "title": "What's your name?",
-    "label": "Username",
-    "placeholder": "Enter your name",
-    "submit": "Save",
-    "statusLabel": "Username input",
-    "current": "Current username",
-    "success": "Username {username} has been saved",
-    "errors": {
-      "required": "Please enter a username",
-      "tooShort": "Username must be at least 2 characters long",
-      "tooLong": "Username must not exceed 20 characters",
-      "invalidChars": "Username may only contain letters, numbers, underscores, and hyphens",
-      "saveFailed": "Failed to save username"
     }
   },
   "difficulty": {
     "easy": "Easy",
     "medium": "Medium",
     "hard": "Hard"
-  },
-  "knowledge": {
-    "meta": {
-      "title": "Music Knowledge & Background - Melody Mind",
-      "description": "Dive into the fascinating world of music. Discover exciting facts and stories about various music genres and eras."
-    },
-    "loading": "Loading content...",
-    "playAndListen": "Play & Listen",
-    "playNow": "Play Now",
-    "playlists": "Playlists",
-    "playlist": {
-      "spotify": "Listen on Spotify",
-      "deezer": "Listen on Deezer",
-      "apple": "Listen on Apple Music",
-      "description": "Dive into the world of {genre}! We've curated the best songs for you. Listen to the playlist on your preferred streaming platform and get ready for the game."
-    },
-    "error": "Error loading content",
-    "backToGame": "Back to Game",
-    "overview": "Knowledge Overview",
-    "title": "Music Knowledge Base",
-    "description": "Explore our comprehensive music knowledge base"
-  },
-  "highscores": {
-    "title": "Highscores",
-    "searchPlaceholder": "Search categories...",
-    "rank": "Rank",
-    "player": "Player",
-    "difficulty": "Difficulty",
-    "points": "Points",
-    "lps": "LPs",
-    "noResults": "No results found",
-    "noScores": "No highscores available"
   }
 }

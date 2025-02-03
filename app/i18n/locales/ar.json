@@ -1,0 +1,628 @@
+{
+  "languages": {
+    "de": "الألمانية",
+    "en": "الإنجليزية",
+    "es": "الإسبانية",
+    "fr": "الفرنسية",
+    "it": "الإيطالية",
+    "pt": "البرتغالية",
+    "zh": "الصينية",
+    "ja": "اليابانية",
+    "ko": "الكورية",
+    "ar": "العربية",
+    "ru": "الروسية"
+  },
+  "common": {
+    "openLanguageMenu": "فتح قائمة اللغات",
+    "closeLanguageMenu": "إغلاق قائمة اللغات",
+    "selectLanguage": "اختر اللغة",
+    "selectLanguageLabel": "اختر لغتك المفضلة",
+    "languageChanged": "تم تغيير اللغة إلى {language}",
+    "loading": "جارٍ التحميل..."
+  },
+  "meta": {
+    "title": "ميلودي مايند - لعبة الموسيقى الأمتع",
+    "description": "اختبر معرفتك الموسيقية في لعبتنا التفاعلية. أجب عن أسئلة حول الأغاني والفنانين وتاريخ الموسيقى في مختلف الأنماط مثل الروك والبوب والهيب هوب والموسيقى الكلاسيكية.",
+    "keywords": "مسابقة موسيقية، معرفة موسيقية، مسابقة عبر الإنترنت، تاريخ الموسيقى، مسابقة الفنانين، مسابقة الألبومات، أنماط موسيقية، لعبة تفاعلية"
+  },
+  "seo": {
+    "category": {
+      "title": "فئات مسابقة الموسيقى - ميلودي مايند",
+      "description": "اكتشف فئات مسابقة الموسيقى المختلفة في ميلودي مايند. اختبر معرفتك بمختلف الأنماط والعصور الموسيقية."
+    },
+    "gameRules": {
+      "title": "قواعد اللعبة - ميلودي مايند",
+      "description": "تعرف على المزيد عن قواعد لعبة ميلودي مايند. في مسابقتنا الموسيقية، ستتعرف على كل شيء عن أنماط اللعب ونظام النقاط والميزات الإضافية."
+    },
+    "privacy": {
+      "title": "سياسة الخصوصية - ميلودي مايند",
+      "description": "تعرف على المزيد عن سياسات الخصوصية لدينا. اكتشف كيف نحمي ونستخدم بياناتك في ميلودي مايند."
+    },
+    "imprint": {
+      "title": "هيئة التحرير - ميلودي مايند",
+      "description": "المعلومات القانونية ومعلومات الاتصال لميلودي مايند."
+    }
+  },
+  "welcome": {
+    "title": "مرحباً بك في ميلودي مايند",
+    "start": "ابدأ اللعب",
+    "about": {
+      "title": "حول ميلودي مايند",
+      "description": "اختبر معرفتك الموسيقية في فئات مختلفة. لعبة مسابقة مثيرة لعشاق الموسيقى من جميع الأنماط"
+    }
+  },
+  "intro": "انغمس في عالم الموسيقى المذهل! في ميلودي مايند، يمكنك اختبار معرفتك الموسيقية في جولات مسابقة مثيرة. أجب عن أسئلة حول الأغاني من عقود مختلفة، والفنانين، والألبومات، وتاريخ الموسيقى. اجمع النقاط، واكسب الأسطوانات الذهبية، وتحدى عشاق الموسيقى الآخرين. من الروك إلى البوب وحتى الهيب هوب والكلاسيك - اختبر معرفتك في أنماطك الموسيقية المفضلة. ابدأ مغامرة المسابقة الموسيقية الآن!",
+  "auth": {
+    "email": {
+      "label": "البريد الإلكتروني",
+      "placeholder": "عنوان بريدك الإلكتروني"
+    },
+    "password": {
+      "label": "كلمة المرور",
+      "placeholder": "كلمة المرور الخاصة بك"
+    },
+    "name": {
+      "label": "الاسم",
+      "placeholder": "اسمك الكامل"
+    }
+  },
+  "login": {
+    "title": "تسجيل الدخول",
+    "methodLabel": "طريقة تسجيل الدخول",
+    "submitButton": "تسجيل الدخول",
+    "noAccount": "ليس لديك حساب بعد؟",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "orContinueWith": "أو المتابعة بـ",
+    "continueWithDiscord": "المتابعة باستخدام Discord",
+    "continueWithGithub": "المتابعة باستخدام GitHub",
+    "error": {
+      "invalidEmail": "عنوان البريد الإلكتروني غير صالح",
+      "invalidPassword": "كلمة المرور غير صالحة",
+      "required": "هذا الحقل مطلوب",
+      "loginFailed": "فشل تسجيل الدخول",
+      "discordLoginFailed": "فشل تسجيل الدخول باستخدام Discord",
+      "githubLoginFailed": "فشل تسجيل الدخول باستخدام GitHub"
+    }
+  },
+  "register": {
+    "title": "التسجيل",
+    "submitButton": "تسجيل",
+    "hasAccount": "لديك حساب بالفعل؟",
+    "successMessage": "تم التسجيل بنجاح! يرجى التحقق من بريدك الإلكتروني.",
+    "error": {
+      "invalidEmail": "عنوان البريد الإلكتروني غير صالح",
+      "invalidPassword": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+      "nameRequired": "الاسم مطلوب",
+      "nameTooShort": "يجب أن يتكون الاسم من حرفين على الأقل",
+      "usernameRequired": "اسم المستخدم مطلوب",
+      "usernameTooShort": "يجب أن يتكون اسم المستخدم من 3 أحرف على الأقل",
+      "passwordTooShort": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
+      "registrationFailed": "فشل التسجيل"
+    }
+  },
+  "gameHome": {
+    "meta": {
+      "title": "ميلودي مايند - مسابقة موسيقية لجميع الأنماط",
+      "description": "اكتشف فئات مسابقتنا الموسيقية واختبر معرفتك في مختلف الأنماط مثل الروك والبوب والهيب هوب والموسيقى الكلاسيكية."
+    },
+    "title": "اختر فئة للعب",
+    "categoriesTitle": "الفئات",
+    "description": "اكتشف عالم الموسيقى المذهل عبر مختلف العقود والأنماط",
+    "searchPlaceholder": "ابحث عن فئة...",
+    "playCategory": "العب {Kategorie}",
+    "comingSoon": "{Kategorie} - قريباً",
+    "categoryAlt": "صورة لفئة {Kategorie}",
+    "comingSoonLabel": "قريباً"
+  },
+  "multiplayer": {
+    "meta": {
+      "title": "مسابقة {category} - مستوى {difficulty} - متعدد اللاعبين | ميلودي مايند",
+      "description": "العب مسابقة {category} الموسيقية في مستوى {difficulty} مع الأصدقاء. اختبروا معرفتكم معاً واكتشفوا من هو أفضل خبير موسيقي!"
+    },
+    "setup": {
+      "title": "إعداد اللاعبين",
+      "players": "اللاعبون",
+      "playerName": "اسم اللاعب {number}",
+      "enterName": "أدخل الاسم",
+      "startGame": "ابدأ اللعب"
+    }
+  },
+  "category": {
+    "selected": "تم الاختيار!",
+    "mode": {
+      "singleplayer": "لاعب واحد",
+      "multiplayer": "متعدد اللاعبين"
+    },
+    "aria": {
+      "categoryRegion": "معلومات الفئة",
+      "description": "وصف الفئة",
+      "extendedDescription": "معلومات إضافية عن الفئة"
+    },
+    "difficulty": {
+      "title": "اختر مستوى الصعوبة",
+      "easy": "سهل",
+      "medium": "متوسط",
+      "hard": "صعب",
+      "description": {
+        "easy": "مثالي للمبتدئين",
+        "medium": "لعشاق الموسيقى ذوي الخبرة",
+        "hard": "لخبراء الموسيقى الحقيقيين"
+      }
+    },
+    "playlist": {
+      "title": "قوائم التشغيل",
+      "description": "اغمر نفسك في عالم {genre}! لقد قمنا بتنسيق أفضل الأغاني لك. استمع إلى قائمة التشغيل على منصة البث المفضلة لديك واستعد للعب.",
+      "spotify": "استمع على Spotify",
+      "deezer": "استمع على Deezer",
+      "appleMusic": "استمع على Apple Music"
+    },
+    "knowledge": {
+      "title": "المعرفة",
+      "link": "اعرف المزيد عن {genre}",
+      "description": "هل تريد معرفة المزيد عن تاريخ وتطور {genre}؟ ستجد هنا معلومات أساسية مثيرة وحقائق ممتعة."
+    },
+    "noImage": "لا تتوفر صورة",
+    "image": {
+      "altText": "صورة الغلاف لفئة {category}"
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "مسابقة {category} - مستوى {difficulty} | ميلودي مايند",
+      "description": "العب الآن مسابقة {category} الموسيقية في مستوى {difficulty}. اختبر معرفتك، اكسب النقاط وكن خبير موسيقى!"
+    },
+    "loading": "جارٍ تحميل اللعبة...",
+    "question": "السؤال {Aktuell} من {Gesamt}",
+    "timeLeft": "الوقت المتبقي",
+    "score": "النتيجة",
+    "correct": "صحيح!",
+    "wrong": "خطأ!",
+    "timeUp": "انتهى الوقت!",
+    "next": "التالي",
+    "nextQuestion": "السؤال التالي",
+    "finish": "إنهاء اللعبة",
+    "option": "الخيار {number}",
+    "selectAnswer": "اختر الإجابة: {answer}",
+    "expert": {
+      "title": "رأي الخبير",
+      "confidence": "ثقة الخبير: {value}%"
+    },
+    "aria": {
+      "quizQuestion": "سؤال المسابقة",
+      "answerOptions": "خيارات الإجابة",
+      "expertAdvice": "نصيحة الخبير",
+      "audienceOpinion": "رأي الجمهور"
+    },
+    "links": {
+      "listen_on": "استمع"
+    },
+    "trivia": {
+      "title": "معلومات مفيدة"
+    },
+    "gameOver": {
+      "title": "انتهت اللعبة",
+      "correctAnswers": "الإجابات الصحيحة",
+      "backToMenu": "العودة إلى القائمة",
+      "playAgain": "العب مرة أخرى",
+      "rankings": "قائمة المتصدرين"
+    },
+    "results": {
+      "title": "نتائج اللعبة",
+      "totalScore": "مجموع النقاط",
+      "correctAnswers": "الإجابات الصحيحة",
+      "accuracy": "نسبة الدقة",
+      "timeTaken": "الوقت المستغرق",
+      "newHighscore": "رقم قياسي جديد!",
+      "share": {
+        "title": "شارك نتيجتك",
+        "message": {
+          "intro": "رائع! لقد حصلت على {points} نقطة في ميلودي مايند في فئة {category} ({difficulty})!",
+          "stats": "النتيجة: {correct} من {total} إجابة صحيحة!",
+          "challenge": "تحداني على {url}"
+        },
+        "buttons": {
+          "share": "مشاركة",
+          "copy": "نسخ النص",
+          "twitter": "مشاركة على Twitter",
+          "telegram": "مشاركة على Telegram",
+          "reddit": "مشاركة على Reddit",
+          "whatsapp": "مشاركة على WhatsApp"
+        }
+      },
+      "playAgain": "العب مرة أخرى",
+      "backToHome": "العودة إلى الصفحة الرئيسية"
+    },
+    "round": "الجولة {aktuell} من {max}",
+    "points_label": "النقاط",
+    "points": "النقاط: {Basis} + {Zeit} مكافأة الوقت",
+    "confidence": "الثقة",
+    "jokers": {
+      "title": "المساعدات",
+      "fiftyFifty": {
+        "title": "50:50",
+        "description": "يحذف إجابتين خاطئتين",
+        "remaining": "{Anzahl} مساعدة متبقية",
+        "ariaLabel": "مساعدة حذف إجابتين"
+      },
+      "audience": {
+        "title": "مساعدة الجمهور",
+        "description": "يظهر توزيع أصوات الجمهور",
+        "remaining": "{Anzahl} مساعدة متبقية",
+        "ariaLabel": "سؤال الجمهور"
+      },
+      "phone": {
+        "title": "استشارة خبير",
+        "description": "احصل على رأي خبير",
+        "remaining": "{Anzahl} مساعدة متبقية",
+        "ariaLabel": "الحصول على رأي خبير"
+      },
+      "remainingCount": "{count} مساعدة متوفرة",
+      "remaining": "{Anzahl} مساعدة متبقية"
+    }
+  },
+  "gameRules": {
+    "meta": {
+      "title": "قواعد وتعليمات اللعبة - ميلودي مايند",
+      "description": "تعرف على قواعد لعبة ميلودي مايند. اكتشف كل شيء عن أنماط اللعب، ونظام النقاط، والميزات الإضافية لمسابقتنا الموسيقية."
+    },
+    "title": "قواعد اللعبة - ميلودي مايند",
+    "overview": {
+      "title": "نظرة عامة",
+      "text": "مرحباً بك في ميلودي مايند! هدفك هو الإجابة على أسئلة حول الأغاني والفنانين والألبومات من مختلف الأنماط الموسيقية. اختر نمطاً واختبر معرفتك. كلما أجبت على المزيد من الأسئلة بشكل صحيح، كلما حصلت على المزيد من النقاط."
+    },
+    "difficultyLevels": {
+      "title": "مستويات الصعوبة",
+      "intro": "هناك ثلاثة مستويات من الصعوبة يمكنك الاختيار منها:",
+      "levels": {
+        "easy": {
+          "title": "سهل",
+          "description": "10 أسئلة في الجولة. مثالي لتحديث معرفتك والاستمتاع."
+        },
+        "medium": {
+          "title": "متوسط",
+          "description": "15 سؤالاً في الجولة. تحدٍ لعشاق الموسيقى المتقدمين."
+        },
+        "hard": {
+          "title": "صعب",
+          "description": "20 سؤالاً في الجولة. لخبراء الموسيقى الحقيقيين فقط!"
+        }
+      },
+      "titles": {
+        "intro": "لكل مستوى صعوبة لقبه الخاص الذي يمكنك فتحه:",
+        "novice": {
+          "title": "مبتدئ موسيقي",
+          "description": "أجب على جميع الأسئلة في المستوى السهل بشكل صحيح."
+        },
+        "master": {
+          "title": "مايسترو الموسيقى",
+          "description": "أجب على جميع الأسئلة في المستوى المتوسط بشكل صحيح."
+        },
+        "legend": {
+          "title": "أسطورة الموسيقى",
+          "description": "أجب على جميع الأسئلة في المستوى الصعب بشكل صحيح."
+        }
+      }
+    },
+    "pointsSystem": {
+      "title": "نظام النقاط",
+      "rules": [
+        "50 نقطة لكل إجابة صحيحة.",
+        "لا نقاط للإجابات الخاطئة."
+      ]
+    },
+    "goldenRecords": {
+      "title": "الأسطوانات الذهبية",
+      "intro": "عندما تجيب على جميع الأسئلة في فئة بشكل صحيح، تحصل على سجل ذهبي:",
+      "rewards": {
+        "easy": "سهل: مبتدئ موسيقي.",
+        "medium": "متوسط: مايسترو الموسيقى.",
+        "hard": "صعب: أسطورة الموسيقى."
+      }
+    },
+    "rankings": {
+      "title": "التصنيفات",
+      "text": "يقارن نظام التصنيف أدائك مع اللاعبين الآخرين. يعتمد الترتيب في المراكز العشرة الأولى على نقاطك المجمعة في جميع الفئات.",
+      "lists": [
+        "تصنيف حسب النمط: أفضل اللاعبين في نمط معين.",
+        "التصنيف العام: أفضل اللاعبين في جميع الفئات."
+      ]
+    },
+    "tipsAndTricks": {
+      "title": "نصائح وحيل",
+      "tips": [
+        "ابدأ بالمستوى السهل للحصول على إحساس باللعبة.",
+        "اختر نقاط قوتك والعب في الأنماط التي تشعر فيها بالراحة.",
+        "تمرن بانتظام لتحسين نتائجك.",
+        "الدقة أهم من السرعة - اقرأ كل سؤال بعناية."
+      ]
+    }
+  },
+  "knowledge": {
+    "meta": {
+      "title": "المعرفة الموسيقية والخلفيات - ميلودي مايند",
+      "description": "اغمر نفسك في عالم الموسيقى المثير. اكتشف حقائق وقصص مثيرة حول مختلف الأنماط الموسيقية والعصور."
+    },
+    "overview": "نظرة عامة على المعرفة",
+    "title": "قاعدة المعرفة الموسيقية",
+    "description": "اكتشف قاعدة معرفتنا الموسيقية الشاملة",
+    "loading": "جاري تحميل المحتوى...",
+    "playAndListen": "العب واستمع للموسيقى",
+    "playNow": "العب الآن",
+    "playlists": "قوائم التشغيل",
+    "playlist": {
+      "spotify": "استمع على Spotify",
+      "deezer": "استمع على Deezer",
+      "apple": "استمع على Apple Music",
+      "description": "اغمر نفسك في عالم {genre}! لقد قمنا بتنسيق أفضل الأغاني لك. استمع إلى قائمة التشغيل على منصة البث المفضلة لديك واستعد للعب."
+    },
+    "error": "خطأ في تحميل المحتوى",
+    "backToGame": "العودة إلى اللعبة"
+  },
+  "profile": {
+    "title": "الملف الشخصي",
+    "name": "الاسم",
+    "username": "اسم المستخدم",
+    "email": "البريد الإلكتروني",
+    "points": "النقاط",
+    "namePlaceholder": "اسمك",
+    "usernamePlaceholder": "اسم المستخدم الخاص بك",
+    "emailPlaceholder": "عنوان بريدك الإلكتروني",
+    "lps": {
+      "title": "مجموعة الأسطوانات",
+      "none": "لم تجمع أي أسطوانات بعد",
+      "types": {
+        "gold": "ذهبي",
+        "silver": "فضي",
+        "bronze": "برونزي"
+      }
+    },
+    "stats": {
+      "title": "الإحصائيات",
+      "gamesPlayed": "الألعاب التي تم لعبها",
+      "totalScore": "مجموع النقاط",
+      "averageScore": "متوسط النقاط",
+      "highestScore": "أعلى نقاط",
+      "accuracy": "نسبة الدقة"
+    },
+    "achievements": {
+      "title": "الإنجازات",
+      "locked": "غير مفتوح بعد",
+      "progress": "{Aktuell} من {Gesamt}"
+    },
+    "settings": {
+      "title": "الإعدادات",
+      "language": "اللغة",
+      "sound": "الصوت",
+      "music": "الموسيقى",
+      "notifications": "الإشعارات",
+      "theme": "المظهر",
+      "save": "حفظ",
+      "saved": "تم الحفظ!"
+    }
+  },
+  "navigation": {
+    "mainNavLabel": "التنقل الرئيسي",
+    "mainMenu": "القائمة الرئيسية",
+    "openMenu": "فتح القائمة",
+    "home": "الرئيسية",
+    "knowledge": "قاعدة المعرفة",
+    "rules": "قواعد اللعبة",
+    "support": "ادعمنا",
+    "imprint": "بيانات النشر",
+    "privacy": "الخصوصية",
+    "legal": "القانونية"
+  },
+  "footer": {
+    "about": "من نحن",
+    "contact": "اتصل بنا",
+    "privacy": "سياسة الخصوصية",
+    "terms": "شروط الاستخدام"
+  },
+  "errors": {
+    "general": "حدث خطأ",
+    "network": "خطأ في الشبكة",
+    "retry": "إعادة المحاولة",
+    "pageNotFound": "الصفحة غير موجودة",
+    "emailRequired": "البريد الإلكتروني مطلوب",
+    "invalidEmail": "البريد الإلكتروني غير صالح",
+    "passwordRequired": "كلمة المرور مطلوبة",
+    "passwordTooShort": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
+    "nameRequired": "الاسم مطلوب",
+    "nameTooShort": "يجب أن يكون الاسم حرفين على الأقل",
+    "loginFailed": "فشل تسجيل الدخول",
+    "registrationFailed": "فشل التسجيل",
+    "passwordResetFailed": "فشل إعادة تعيين كلمة المرور"
+  },
+  "accessibility": {
+    "skipToMain": "الانتقال إلى المحتوى الرئيسي",
+    "closeMenu": "إغلاق القائمة",
+    "openMenu": "فتح القائمة",
+    "darkMode": "التبديل بين الوضع الفاتح والمظلم",
+    "playButton": "تشغيل",
+    "pauseButton": "إيقاف مؤقت",
+    "nextButton": "التالي",
+    "previousButton": "السابق",
+    "closeButton": "إغلاق"
+  },
+  "cookies": {
+    "title": "إعدادات ملفات تعريف الارتباط",
+    "message": "يستخدم هذا الموقع ملفات تعريف الارتباط لتحسين تجربتك",
+    "accept": "قبول الكل",
+    "decline": "رفض",
+    "customize": "تخصيص",
+    "preferences": {
+      "necessary": {
+        "title": "ملفات تعريف الارتباط الضرورية",
+        "description": "هذه الملفات ضرورية للوظائف الأساسية للموقع",
+        "required": "مطلوب"
+      },
+      "analytics": {
+        "title": "ملفات تعريف الارتباط التحليلية",
+        "description": "تساعدنا على فهم كيفية تفاعل الزوار مع الموقع"
+      },
+      "marketing": {
+        "title": "ملفات تعريف الارتباط التسويقية",
+        "description": "تُستخدم لعرض إعلانات مناسبة للزوار"
+      }
+    },
+    "save": "حفظ الإعدادات",
+    "moreInfo": "مزيد من المعلومات",
+    "cookiePolicy": "سياسة ملفات تعريف الارتباط"
+  },
+  "gdpr": {
+    "title": "إعدادات حماية البيانات",
+    "description": "نحن نحترم خصوصيتك",
+    "settings": {
+      "title": "إعدادات خصوصيتك",
+      "data": {
+        "collection": "جمع البيانات",
+        "usage": "استخدام البيانات",
+        "sharing": "مشاركة البيانات"
+      },
+      "consent": {
+        "title": "موافقتك",
+        "withdraw": "يمكنك سحب موافقتك في أي وقت",
+        "manage": "إدارة الإعدادات"
+      },
+      "deletion": {
+        "title": "حذف البيانات",
+        "request": "طلب حذف البيانات",
+        "info": "سنقوم بحذف بياناتك خلال 30 يوماً",
+        "confirmation": "تأكيد الحذف",
+        "local": "يمكن حذف البيانات المحلية في متصفحك من خلال إعدادات المتصفح."
+      }
+    }
+  },
+  "legal": {
+    "privacy": {
+      "meta": {
+        "title": "سياسة الخصوصية - ميلودي مايند",
+        "description": "معلومات حول حماية البيانات في ميلودي مايند. تعرف على كيفية حمايتنا لبياناتك وحقوقك."
+      },
+      "title": "سياسة الخصوصية",
+      "overview": {
+        "title": "نظرة عامة",
+        "general": {
+          "title": "معلومات عامة",
+          "text": "نحن نأخذ حماية بياناتك الشخصية على محمل الجد. توضح سياسة الخصوصية هذه كيفية تعاملنا مع بياناتك."
+        }
+      },
+      "dataCollection": {
+        "title": "جمع البيانات",
+        "cookies": {
+          "title": "ملفات تعريف الارتباط",
+          "text": "نستخدم ملفات تعريف الارتباط لتقديم أفضل تجربة مستخدم ممكنة. هذه لا تخزن أي معلومات شخصية يمكن التعرف عليها."
+        },
+        "serverLogs": {
+          "title": "سجلات الخادم",
+          "text": "لأغراض تقنية، نقوم تلقائياً بتخزين ملفات سجل الخادم التي يرسلها متصفحك."
+        },
+        "analytics": {
+          "title": "بيانات التحليل",
+          "text": "نستخدم بيانات تحليل مجهولة المصدر لتحسين تجربة اللعب. تشمل هذه البيانات إحصائيات اللعب، وأنماط الاستخدام، وبيانات الأداء، لكن لا تشمل أي معلومات شخصية يمكن التعرف عليها."
+        }
+      },
+      "rights": {
+        "title": "Deine Rechte",
+        "intro": "Du hast die folgenden Rechte in Bezug auf deine persönlichen Daten:",
+        "list": {
+          "information": "Recht auf Auskunft über deine gespeicherten Daten",
+          "correction": "Recht auf Berichtigung unrichtiger Daten",
+          "restriction": "Recht auf Einschränkung der Verarbeitung",
+          "objection": "Recht auf Widerspruch gegen die Verarbeitung",
+          "portability": "Recht auf Datenübertragbarkeit"
+        }
+      },
+      "contact": {
+        "title": "Kontakt",
+        "text": "Wenn du Fragen zum Datenschutz hast, kannst du uns jederzeit kontaktieren.",
+        "emailLabel": "E-Mail",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "gameData": {
+        "title": "Spieldaten",
+        "progress": {
+          "title": "Spielfortschritt",
+          "intro": "Die folgenden Spieldaten werden gespeichert:",
+          "list": {
+            "scores": "Punktestände",
+            "awards": "Errungenschaften",
+            "rankings": "Ranglistenpositionen"
+          },
+          "purpose": "Diese Daten werden ausschließlich dazu verwendet, dein Spielerlebnis zu verbessern und deine Erfolge anzuzeigen."
+        },
+        "localStorage": {
+          "title": "Lokaler Speicher",
+          "intro": "Die folgenden Informationen werden lokal in deinem Browser gespeichert:",
+          "list": {
+            "categories": "Gespielte Kategorien",
+            "settings": "Spieleinstellungen",
+            "language": "Spracheinstellung"
+          },
+          "storage": "Diese Daten bleiben lokal auf deinem Gerät gespeichert und werden nicht an unsere Server übertragen. Du kannst sie jederzeit über deine Browsereinstellungen löschen."
+        },
+        "session": {
+          "title": "Sitzungsdaten",
+          "intro": "Während einer aktiven Spielsitzung werden die folgenden Daten vorübergehend gespeichert:",
+          "list": {
+            "auth": "Authentifizierungsstatus für die Spielsitzung",
+            "progress": "Aktueller Spielfortschritt und Spielstand",
+            "settings": "Temporäre Spieleinstellungen"
+          }
+        }
+      },
+      "deletion": {
+        "title": "Datenlöschung",
+        "intro": "Du hast das Recht, die folgenden Daten löschen zu lassen:",
+        "list": {
+          "highscores": "Deine persönlichen Highscores und Spielstatistiken",
+          "results": "Gespeicherte Spielergebnisse und Erfolge",
+          "account": "Dein gesamtes Benutzerkonto und alle damit verbundenen Daten"
+        },
+        "local": "Lokal gespeicherte Daten (Cookies, Spielfortschritt) kannst du selbständig über deine Browsereinstellungen löschen."
+      }
+    },
+    "imprint": {
+      "meta": {
+        "title": "بيانات الناشر - ميلودي مايند",
+        "description": "المعلومات القانونية وبيانات الاتصال لميلودي مايند. هنا تجد جميع المعلومات المهمة حول مشغل الموقع."
+      },
+      "title": "الإشعار القانوني",
+      "information": {
+        "title": "معلومات وفقاً للمادة 5 من قانون الإعلام الألماني",
+        "operator": "دانيال شميد",
+        "address": "هيلتنسبيرجرشتراسه 78، 80796 ميونخ",
+        "country": "ألمانيا"
+      },
+      "contact": {
+        "title": "اتصل بنا",
+        "emailLabel": "البريد الإلكتروني",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "responsible": {
+        "title": "المسؤول عن المحتوى وفقاً للمادة 55 فقرة 2 من معاهدة الإعلام الألمانية"
+      },
+      "disputeResolution": {
+        "title": "تسوية النزاعات",
+        "text": "توفر المفوضية الأوروبية منصة لتسوية النزاعات عبر الإنترنت",
+        "link": "https://ec.europa.eu/consumers/odr/",
+        "additional": "نحن غير مستعدين أو ملزمين بالمشاركة في إجراءات تسوية النزاعات أمام هيئة تحكيم المستهلك."
+      },
+      "lawReference": {
+        "title": "الملاحظات القانونية",
+        "text": "على الرغم من التحقق الدقيق من المحتوى، لا نتحمل أي مسؤولية عن محتوى الروابط الخارجية. مشغلو الصفحات المرتبطة هم المسؤولون الوحيدون عن محتواها."
+      },
+      "jurisdiction": {
+        "title": "الأساس القانوني",
+        "text": "يخضع هذا الموقع للقانون الألماني.",
+        "applicableLaw": "يسري القانون الألماني حصرياً، مع استبعاد اتفاقية الأمم المتحدة بشأن عقود البيع الدولي للبضائع.",
+        "jurisdiction": "مكان الاختصاص القضائي لجميع النزاعات الناشئة عن هذا العقد هو ألمانيا، بقدر ما يسمح به القانون."
+      }
+    }
+  },
+  "difficulty": {
+    "easy": "سهل",
+    "medium": "متوسط",
+    "hard": "صعب"
+  }
+}

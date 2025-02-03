@@ -4,7 +4,13 @@
       "en": "Englisch",
       "es": "Spanisch",
       "fr": "Französisch",
-      "it": "Italienisch"
+      "it": "Italienisch",
+      "pt": "Portugiesisch",
+      "zh": "Chinesisch",
+      "ja": "Japanisch",
+      "ko": "Koreanisch",
+      "ar": "Arabisch",
+      "ru": "Russisch"
   },
   "common": {
     "openLanguageMenu": "Sprachmenü öffnen",

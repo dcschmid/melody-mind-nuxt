@@ -68,6 +68,93 @@ The application will be available at `http://localhost:3000`
 
 ## Utility Scripts
 
+### Categories Translator
+
+The `scripts/translate_categories.py` script automates the translation of category content from English to multiple languages using OpenAI's GPT-4 model. It handles translations for all music categories while preserving the JSON structure and maintaining language-specific nuances.
+
+Supported Languages:
+- German (de)
+- English (en)
+- Spanish (es)
+- French (fr)
+- Italian (it)
+- Portuguese (pt)
+- Chinese (zh)
+- Japanese (ja)
+- Korean (ko)
+- Arabic (ar)
+- Russian (ru)
+
+Features:
+- Smart field handling:
+  - Translates content fields: `introSubline` and `text`
+  - Intelligent headline handling:
+    - Preserves genre names (e.g., 'Chamber Metal', 'Progressive Metal')
+    - Keeps decade names (e.g., '1950s', '1960s')
+    - Only translates general terms when appropriate
+  - Preserves technical fields: `categoryUrl`, `imageUrl`, `slug`, and `isPlayable`
+  - Ensures consistency of URLs and identifiers across all languages
+- Automatic progress saving:
+  - Saves after each category translation
+  - Prevents loss of work if interrupted
+  - Enables easy resume of interrupted translations
+- Smart update mode with enhanced functionality:
+  - Detects and adds missing categories in target languages
+  - Only translates modified content in existing categories
+  - Preserves unchanged translations
+  - Reports detailed progress of additions and updates
+- Maintains all metadata (URLs, images, etc.)
+- Rate limiting to prevent API overload
+- Cross-language consistency checking
+
+Requirements:
+- Python 3.x
+- OpenAI API key
+- Python virtual environment (recommended)
+
+Setup:
+```bash
+# Create and activate virtual environment
+python3 -m venv venv
+source venv/bin/activate
+
+# Install dependencies
+pip install openai
+
+# Set OpenAI API key
+export OPENAI_API_KEY='your-api-key-here'
+```
+
+Usage:
+```bash
+# Full translation (translates everything)
+python scripts/translate_categories.py
+
+# Smart update mode
+python scripts/translate_categories.py --update
+
+# Specify custom input file
+python scripts/translate_categories.py --input path/to/en_categories.json
+```
+
+Update Mode Features:
+- Scans for categories missing in target language files
+- Reports number and names of new categories to be added
+- Identifies and updates modified categories
+- Preserves unchanged translations to maintain consistency
+- Maintains technical field integrity:
+  - Never modifies URLs or identifiers
+  - Ensures cross-language navigation consistency
+  - Preserves file and routing structures
+
+Output:
+- Creates/updates language-specific JSON files (e.g., `de_categories.json`, `fr_categories.json`)
+- Provides detailed progress information:
+  - Lists new categories being added
+  - Shows which categories are being updated
+  - Indicates when existing translations are reused
+- Reports success or any errors encountered
+
 ### Cover Image Checker
 
 The `scripts/check_covers.sh` script verifies that all cover images referenced in the music database actually exist in the project. It scans all JSON files across all language versions (de, en, es, fr, it) and reports any missing cover images.

@@ -1,0 +1,628 @@
+{
+  "languages": {
+      "de": "德语",
+      "en": "英语",
+      "es": "西班牙语",
+      "fr": "法语",
+      "it": "意大利语",
+      "pt": "葡萄牙语",
+      "zh": "中文",
+      "ja": "日语",
+      "ko": "韩语",
+      "ar": "阿拉伯语",
+      "ru": "俄语"
+  },
+  "common": {
+    "openLanguageMenu": "打开语言菜单",
+    "closeLanguageMenu": "关闭语言菜单",
+    "selectLanguage": "选择语言",
+    "selectLanguageLabel": "请选择您的首选语言",
+    "languageChanged": "语言已更改为{language}",
+    "loading": "加载中..."
+  },
+  "meta": {
+    "title": "Melody Mind - 终极音乐问答游戏",
+    "description": "在我们的互动问答游戏中测试你的音乐知识。回答有关摇滚、流行、嘉年华和古典等不同风格的歌曲、艺术家和音乐历史的问题。",
+    "keywords": "音乐问答游戏，音乐知识，在线问答，音乐历史，艺术家问答，专辑问答，音乐风格，互动游戏"
+  },
+  "seo": {
+    "category": {
+      "title": "音乐问答分类 - Melody Mind",
+      "description": "探索Melody Mind的各种音乐问答分类。测试你对不同音乐风格和时代的了解。"
+    },
+    "gameRules": {
+      "title": "游戏规则 - Melody Mind",
+      "description": "了解更多关于Melody Mind的游戏规则。在我们的音乐问答游戏中，你将了解所有游戏模式、计分系统和奖励功能。"
+    },
+    "privacy": {
+      "title": "隐私政策 - Melody Mind",
+      "description": "了解更多关于我们的隐私政策。了解我们如何在Melody Mind中保护和使用你的数据。"
+    },
+    "imprint": {
+      "title": "版本说明 - Melody Mind",
+      "description": "Melody Mind的法律信息和联系方式。"
+    }
+  },
+  "welcome": {
+    "title": "欢迎来到 Melody Mind",
+    "start": "开始游戏",
+    "about": {
+      "title": "关于 Melody Mind",
+      "description": "在不同的类别中测试你的音乐知识。一个为所有风格的音乐爱好者打造的有趣问答游戏。"
+    }
+  },
+  "intro": "投入这个迷人的音乐世界！在Melody Mind，你可以在精彩的问答环节中测试你的音乐知识。回答有关不同年代歌曲、艺术家、专辑和音乐历史的问题。收集积分、获得金唱片，并与其他音乐爱好者一较高下。从摇滚、流行到嘉年华和古典——在你喜欢的风格中测试你的知识。现在就开始你的音乐问答冒险之旅吧！",
+  "auth": {
+    "email": {
+      "label": "电子邮箱",
+      "placeholder": "请输入您的电子邮箱"
+    },
+    "password": {
+      "label": "密码",
+      "placeholder": "请输入您的密码"
+    },
+    "name": {
+      "label": "姓名",
+      "placeholder": "请输入您的全名"
+    }
+  },
+  "login": {
+    "title": "登录",
+    "methodLabel": "登录方式",
+    "submitButton": "登录",
+    "noAccount": "还没有账号？",
+    "forgotPassword": "忘记密码？",
+    "orContinueWith": "或者继续使用",
+    "continueWithDiscord": "使用Discord继续",
+    "continueWithGithub": "使用GitHub继续",
+    "error": {
+      "invalidEmail": "无效的电子邮箱地址",
+      "invalidPassword": "无效的密码",
+      "required": "此字段为必填项",
+      "loginFailed": "登录失败",
+      "discordLoginFailed": "Discord登录失败",
+      "githubLoginFailed": "GitHub登录失败"
+    }
+  },
+  "register": {
+    "title": "注册",
+    "submitButton": "注册",
+    "hasAccount": "已经有账号？",
+    "successMessage": "注册成功！请检查您的电子邮箱。",
+    "error": {
+      "invalidEmail": "无效的电子邮箱地址",
+      "invalidPassword": "密码必须至少6个字符",
+      "nameRequired": "需要填写姓名",
+      "nameTooShort": "姓名必须至少2个字符",
+      "usernameRequired": "需要填写用户名",
+      "usernameTooShort": "用户名必须至少3个字符",
+      "passwordTooShort": "密码必须至少8个字符",
+      "registrationFailed": "注册失败"
+    }
+  },
+  "gameHome": {
+    "meta": {
+      "title": "Melody Mind - 全风格音乐问答",
+      "description": "探索我们的音乐问答分类，在摇滚、流行、嘉年华和古典等不同风格中测试你的知识。"
+    },
+    "title": "选择一个类别开始游戏",
+    "categoriesTitle": "类别",
+    "description": "通过不同的年代和风格探索迷人的音乐世界",
+    "searchPlaceholder": "搜索类别...",
+    "playCategory": "开始游戏 {Kategorie}",
+    "comingSoon": "{Kategorie} - 即将推出",
+    "categoryAlt": "类别 {Kategorie} 的图片",
+    "comingSoonLabel": "即将推出"
+  },
+  "multiplayer": {
+    "meta": {
+      "title": "{category} 问答 - {difficulty} 难度 - 多人游戏 | Melody Mind",
+      "description": "与朋友一起在 {difficulty} 模式下玩 {category} 音乐问答。共同测试你们的知识，看看谁是最棒的音乐专家！"
+    },
+    "setup": {
+      "title": "玩家设置",
+      "players": "玩家",
+      "playerName": "玩家 {number} 的名字",
+      "enterName": "输入名字",
+      "startGame": "开始游戏"
+    }
+  },
+  "category": {
+    "selected": "已选择！",
+    "mode": {
+      "singleplayer": "单人游戏",
+      "multiplayer": "多人游戏"
+    },
+    "aria": {
+      "categoryRegion": "类别信息",
+      "description": "类别描述",
+      "extendedDescription": "类别详细信息"
+    },
+    "difficulty": {
+      "title": "选择难度级别",
+      "easy": "简单",
+      "medium": "中等",
+      "hard": "困难",
+      "description": {
+        "easy": "非常适合初学者",
+        "medium": "适合有经验的音乐爱好者",
+        "hard": "适合真正的音乐专家"
+      }
+    },
+    "playlist": {
+      "title": "播放列表",
+      "description": "投入 {genre} 的世界！我们为你精心筛选了最棒的歌曲。在你喜欢的流媒体平台上听听这个播放列表，为游戏做好准备。",
+      "spotify": "在 Spotify 上收听",
+      "deezer": "在 Deezer 上收听",
+      "appleMusic": "在 Apple Music 上收听"
+    },
+    "knowledge": {
+      "title": "知识",
+      "link": "了解更多关于 {genre} 的信息",
+      "description": "想了解更多关于 {genre} 的历史和发展吗？在这里你可以找到有趣的背景信息和精彩的知识点。"
+    },
+    "noImage": "暂无图片",
+    "image": {
+      "altText": "类别 {category} 的封面"
+    }
+  },
+  "game": {
+    "meta": {
+      "title": "{category} 问答 - {difficulty} 难度 | Melody Mind",
+      "description": "现在就来玩 {category} 音乐问答的 {difficulty} 模式。测试你的知识，获得积分，成为音乐专家！"
+    },
+    "loading": "游戏加载中...",
+    "question": "第 {Aktuell} 题，共 {Gesamt} 题",
+    "timeLeft": "剩余时间",
+    "score": "得分",
+    "correct": "正确！",
+    "wrong": "错误！",
+    "timeUp": "时间到！",
+    "next": "下一个",
+    "nextQuestion": "下一题",
+    "finish": "结束游戏",
+    "option": "选项 {number}",
+    "selectAnswer": "选择答案：{answer}",
+    "expert": {
+      "title": "专家意见",
+      "confidence": "专家确信度：{value}%"
+    },
+    "aria": {
+      "quizQuestion": "问答题目",
+      "answerOptions": "答案选项",
+      "expertAdvice": "专家建议",
+      "audienceOpinion": "观众意见"
+    },
+    "links": {
+      "listen_on": "听听看"
+    },
+    "trivia": {
+      "title": "小知识"
+    },
+    "gameOver": {
+      "title": "游戏结束",
+      "correctAnswers": "正确答案",
+      "backToMenu": "返回菜单",
+      "playAgain": "再玩一次",
+      "rankings": "排行榜"
+    },
+    "results": {
+      "title": "游戏结果",
+      "totalScore": "总分",
+      "correctAnswers": "正确答案",
+      "accuracy": "准确率",
+      "timeTaken": "用时",
+      "newHighscore": "新的最高分！",
+      "share": {
+        "title": "分享你的成绩",
+        "message": {
+          "intro": "哎哟！我在 Melody Mind 的 {category} 类别（{difficulty}）中获得了 {points} 分！",
+          "stats": "得分：{total} 题中答对 {correct} 题！",
+          "challenge": "在 {url} 上来挑战我吧"
+        },
+        "buttons": {
+          "share": "分享",
+          "copy": "复制文本",
+          "twitter": "分享到Twitter",
+          "telegram": "分享到Telegram",
+          "reddit": "分享到Reddit",
+          "whatsapp": "分享到WhatsApp"
+        }
+      },
+      "playAgain": "再玩一次",
+      "backToHome": "返回主页"
+    },
+    "round": "第 {aktuell} 轮，共 {max} 轮",
+    "points_label": "分数",
+    "points": "得分：{Basis} + {Zeit} 时间奖励",
+    "confidence": "确信度",
+    "jokers": {
+      "title": "帮助",
+      "fiftyFifty": {
+        "title": "50:50",
+        "description": "删除两个错误选项",
+        "remaining": "还剩 {Anzahl} 个帮助",
+        "ariaLabel": "50:50帮助"
+      },
+      "audience": {
+        "title": "观众求助",
+        "description": "显示观众投票分布",
+        "remaining": "还剩 {Anzahl} 个帮助",
+        "ariaLabel": "询问观众"
+      },
+      "phone": {
+        "title": "专家建议",
+        "description": "获取专家的意见",
+        "remaining": "还剩 {Anzahl} 个帮助",
+        "ariaLabel": "获取专家建议"
+      },
+      "remainingCount": "还有 {count} 个帮助可用",
+      "remaining": "还剩 {Anzahl} 个帮助"
+    }
+  },
+  "gameRules": {
+    "meta": {
+      "title": "游戏规则与指南 - Melody Mind",
+      "description": "了解 Melody Mind 的游戏规则。了解我们音乐问答游戏的所有游戏模式、计分系统和奖励功能。"
+    },
+    "title": "游戏规则 - MelodyMind",
+    "overview": {
+      "title": "概述",
+      "text": "欢迎来到 MelodyMind！你的目标是回答来自不同音乐风格的歌曲、艺术家和专辑的问题。选择一个风格并测试你的知识。回答正确的问题越多，获得的分数就越高。"
+    },
+    "difficultyLevels": {
+      "title": "难度级别",
+      "intro": "你可以选择三个难度级别：",
+      "levels": {
+        "easy": {
+          "title": "简单",
+          "description": "每轮10题。非常适合复习知识和享受游戏。"
+        },
+        "medium": {
+          "title": "中等",
+          "description": "每轮15题。为进阶的音乐爱好者提供挑战。"
+        },
+        "hard": {
+          "title": "困难",
+          "description": "每轮20题。只适合真正的音乐专家！"
+        }
+      },
+      "titles": {
+        "intro": "每个难度级别都有自己的称号，你可以解锁：",
+        "novice": {
+          "title": "音乐新手",
+          "description": "在简单模式下正确回答所有问题。"
+        },
+        "master": {
+          "title": "音乐大师",
+          "description": "在中等模式下正确回答所有问题。"
+        },
+        "legend": {
+          "title": "音乐传奇",
+          "description": "在困难模式下正确回答所有问题。"
+        }
+      }
+    },
+    "pointsSystem": {
+      "title": "计分系统",
+      "rules": [
+        "每个正确答案可获得50分。",
+        "错误答案不得分。"
+      ]
+    },
+    "goldenRecords": {
+      "title": "金唱片",
+      "intro": "如果你在一个类别中回答所有问题都正确，你将获得一张金唱片：",
+      "rewards": {
+        "easy": "简单：音乐新手。",
+        "medium": "中等：音乐大师。",
+        "hard": "困难：音乐传奇。"
+      }
+    },
+    "rankings": {
+      "title": "排行榜",
+      "text": "排行榜系统将你与其他玩家进行比较。前10名的排名是基于你在所有类别中获得的总分。",
+      "lists": [
+        "风格特定排行榜：某一风格的最佳玩家。",
+        "总排名：所有类别中的最佳玩家。"
+      ]
+    },
+    "tipsAndTricks": {
+      "title": "技巧与窍门",
+      "tips": [
+        "从简单模式开始，以便熟悉游戏。",
+        "选择你擅长的风格，玩你感到舒服的类别。",
+        "定期练习，以提高你的成绩。",
+        "准确性高于速度 - 仔细阅读每个问题。"
+      ]
+    }
+  },
+  "knowledge": {
+    "meta": {
+      "title": "音乐知识与背景 - Melody Mind",
+      "description": "投身于迷人的音乐世界。发现各种音乐风格和时期的精彩事实和故事。"
+    },
+    "overview": "知识概览",
+    "title": "音乐知识库",
+    "description": "探索我们全面的音乐知识库",
+    "loading": "加载内容...",
+    "playAndListen": "游戏与音乐",
+    "playNow": "立即游戏",
+    "playlists": "播放列表",
+    "playlist": {
+      "spotify": "在 Spotify 上收听",
+      "deezer": "在 Deezer 上收听",
+      "apple": "在 Apple Music 上收听",
+      "description": "投入 {genre} 的世界！我们为你精心筛选了最棒的歌曲。在你喜欢的流媒体平台上听听这个播放列表，为游戏做好准备。"
+    },
+    "error": "加载内容时出错",
+    "backToGame": "返回游戏"
+  },
+  "profile": {
+    "title": "个人资料",
+    "name": "姓名",
+    "username": "用户名",
+    "email": "电子邮箱",
+    "points": "分数",
+    "namePlaceholder": "你的姓名",
+    "usernamePlaceholder": "你的用户名",
+    "emailPlaceholder": "你的电子邮箱地址",
+    "lps": {
+      "title": "唱片收藏",
+      "none": "你还没有收藏任何唱片",
+      "types": {
+        "gold": "金唱片",
+        "silver": "银唱片",
+        "bronze": "铜唱片"
+      }
+    },
+    "stats": {
+      "title": "统计数据",
+      "gamesPlayed": "已玩游戏",
+      "totalScore": "总分",
+      "averageScore": "平均分",
+      "highestScore": "最高分",
+      "accuracy": "准确率"
+    },
+    "achievements": {
+      "title": "成就",
+      "locked": "尚未解锁",
+      "progress": "已完成 {Aktuell}/{Gesamt}"
+    },
+    "settings": {
+      "title": "设置",
+      "language": "语言",
+      "sound": "音效",
+      "music": "音乐",
+      "notifications": "通知",
+      "theme": "主题",
+      "save": "保存",
+      "saved": "已保存！"
+    }
+  },
+  "navigation": {
+    "mainNavLabel": "主导航",
+    "mainMenu": "主菜单",
+    "openMenu": "打开菜单",
+    "home": "首页",
+    "knowledge": "知识库",
+    "rules": "游戏规则",
+    "support": "支持我们",
+    "imprint": "版本说明",
+    "privacy": "隐私政策",
+    "legal": "法律声明"
+  },
+  "footer": {
+    "about": "关于我们",
+    "contact": "联系我们",
+    "privacy": "隐私政策",
+    "terms": "使用条款"
+  },
+  "errors": {
+    "general": "发生错误",
+    "network": "网络错误",
+    "retry": "重试",
+    "pageNotFound": "页面未找到",
+    "emailRequired": "电子邮箱是必填项",
+    "invalidEmail": "无效的电子邮箱地址",
+    "passwordRequired": "密码是必填项",
+    "passwordTooShort": "密码必须至少6个字符",
+    "nameRequired": "姓名是必填项",
+    "nameTooShort": "姓名必须至少2个字符",
+    "loginFailed": "登录失败",
+    "registrationFailed": "注册失败",
+    "passwordResetFailed": "重置密码失败"
+  },
+  "accessibility": {
+    "skipToMain": "跳转到主内容",
+    "closeMenu": "关闭菜单",
+    "openMenu": "打开菜单",
+    "darkMode": "切换明暗模式",
+    "playButton": "播放",
+    "pauseButton": "暂停",
+    "nextButton": "下一个",
+    "previousButton": "上一个",
+    "closeButton": "关闭"
+  },
+  "cookies": {
+    "title": "Cookie设置",
+    "message": "本网站使用 Cookie 来改善你的体验",
+    "accept": "全部接受",
+    "decline": "拒绝",
+    "customize": "自定义",
+    "preferences": {
+      "necessary": {
+        "title": "必要 Cookie",
+        "description": "这些 Cookie 是网站基本功能所必需的",
+        "required": "必需"
+      },
+      "analytics": {
+        "title": "分析 Cookie",
+        "description": "帮助我们了解访客如何与网站互动"
+      },
+      "marketing": {
+        "title": "营销 Cookie",
+        "description": "用于向访客展示相关广告"
+      }
+    },
+    "save": "保存设置",
+    "moreInfo": "更多信息",
+    "cookiePolicy": "Cookie 政策"
+  },
+  "gdpr": {
+    "title": "隐私设置",
+    "description": "我们尊重你的隐私",
+    "settings": {
+      "title": "你的隐私设置",
+      "data": {
+        "collection": "数据收集",
+        "usage": "数据使用",
+        "sharing": "数据共享"
+      },
+      "consent": {
+        "title": "你的同意",
+        "withdraw": "你可以随时撤销你的同意",
+        "manage": "管理设置"
+      },
+      "deletion": {
+        "title": "数据删除",
+        "request": "申请删除数据",
+        "info": "我们将在30天内删除你的数据",
+        "confirmation": "删除确认",
+        "local": "你可以通过浏览器设置删除浏览器中的本地数据。"
+      }
+    }
+  },
+  "legal": {
+    "privacy": {
+      "meta": {
+        "title": "隐私政策 - Melody Mind",
+        "description": "Melody Mind 的隐私信息。了解我们如何保护你的数据以及你的权利。"
+      },
+      "title": "隐私政策",
+      "overview": {
+        "title": "概述",
+        "general": {
+          "title": "基本信息",
+          "text": "我们非常重视对你的个人数据的保护。本隐私政策将告知你我们如何处理你的数据。"
+        }
+      },
+      "dataCollection": {
+        "title": "数据收集",
+        "cookies": {
+          "title": "Cookie",
+          "text": "我们使用 Cookie 为你提供最佳的用户体验。这些 Cookie 不会存储任何可识别个人身份的信息。"
+        },
+        "serverLogs": {
+          "title": "服务器日志",
+          "text": "出于技术目的，我们会自动存储你的浏览器发送的服务器日志文件。"
+        },
+        "analytics": {
+          "title": "分析数据",
+          "text": "我们使用匿名化的分析数据来改善我们的游戏体验。这些数据包括游戏统计、使用模式和性能数据，但不包括任何可识别个人身份的信息。"
+        }
+      },
+      "rights": {
+        "title": "你的权利",
+        "intro": "关于你的个人数据，你有以下权利：",
+        "list": {
+          "information": "查询你的存储数据的权利",
+          "correction": "纠正不正确数据的权利",
+          "restriction": "限制数据处理的权利",
+          "objection": "反对数据处理的权利",
+          "portability": "数据可转移性的权利"
+        }
+      },
+      "contact": {
+        "title": "联系我们",
+        "text": "如果你有任何关于隐私的问题，可以随时联系我们。",
+        "emailLabel": "电子邮箱",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "gameData": {
+        "title": "游戏数据",
+        "progress": {
+          "title": "游戏进度",
+          "intro": "以下游戏数据将被保存：",
+          "list": {
+            "scores": "得分记录",
+            "awards": "成就",
+            "rankings": "排行榜位置"
+          },
+          "purpose": "这些数据仅用于改善你的游戏体验并展示你的成就。"
+        },
+        "localStorage": {
+          "title": "本地存储",
+          "intro": "以下信息将在你的浏览器中本地存储：",
+          "list": {
+            "categories": "已玩的类别",
+            "settings": "游戏设置",
+            "language": "语言设置"
+          },
+          "storage": "这些数据将保存在你的设备上，不会传输到我们的服务器。你可以随时通过浏览器设置删除它们。"
+        },
+        "session": {
+          "title": "会话数据",
+          "intro": "在游戏会话期间，以下数据将被临时存储：",
+          "list": {
+            "auth": "游戏会话的认证状态",
+            "progress": "当前游戏进度和状态",
+            "settings": "临时游戏设置"
+          }
+        }
+      },
+      "deletion": {
+        "title": "数据删除",
+        "intro": "你有权利要求删除以下数据：",
+        "list": {
+          "highscores": "你的个人最高分和游戏统计",
+          "results": "已保存的游戏结果和成就",
+          "account": "你的整个用户账户及所有相关数据"
+        },
+        "local": "本地存储的数据（Cookie、游戏进度）可以通过浏览器设置自行删除。"
+      }
+    },
+    "imprint": {
+      "meta": {
+        "title": "版本说明 - Melody Mind",
+        "description": "Melody Mind 的法律信息和联系方式。在这里你可以找到所有关于网站运营者的重要信息。"
+      },
+      "title": "法律声明",
+      "information": {
+        "title": "根据德国电信媒体法第5条的信息",
+        "operator": "Daniel Schmid",
+        "address": "Hiltenspergerstr. 78, 80796 München",
+        "country": "德国"
+      },
+      "contact": {
+        "title": "联系方式",
+        "emailLabel": "电子邮件",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "responsible": {
+        "title": "根据德国广播电视媒体法第55条第2款的内容责任人"
+      },
+      "disputeResolution": {
+        "title": "争议解决",
+        "text": "欧盟委员会提供在线争议解决（ODR）平台",
+        "link": "https://ec.europa.eu/consumers/odr/",
+        "additional": "我们不愿意也没有义务参与消费者争议解决机构的争议解决程序。"
+      },
+      "lawReference": {
+        "title": "法律声明",
+        "text": "尽管我们对内容进行了仔细审查，但我们不对外部链接的内容承担任何责任。链接网页的内容由其运营者独自负责。"
+      },
+      "jurisdiction": {
+        "title": "法律依据",
+        "text": "本网站受德国法律管辖。",
+        "applicableLaw": "仅适用德国法律，不包括联合国国际货物销售合同公约。",
+        "jurisdiction": "在法律允许的范围内，与本合同相关的所有争议的管辖法院均在德国。"
+      }
+    }
+  },
+  "difficulty": {
+    "easy": "简单",
+    "medium": "中等",
+    "hard": "困难"
+  }
+}
