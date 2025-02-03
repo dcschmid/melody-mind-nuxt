@@ -155,6 +155,7 @@ Output:
   - Indicates when existing translations are reused
 - Reports success or any errors encountered
 
+
 ### Cover Image Checker
 
 The `scripts/check_covers.sh` script verifies that all cover images referenced in the music database actually exist in the project. It scans all JSON files across all language versions (de, en, es, fr, it) and reports any missing cover images.
@@ -395,6 +396,65 @@ The ThumbHash generation process:
 4. Converts the hash to base64 for storage
 
 The resulting ThumbHash is typically 30-100 bytes per image, making it efficient to include in the initial page load.
+
+### Content Generation
+
+The `scripts/generate_content.py` script is used to generate structured content about music categories in multiple languages. It supports the following features:
+
+#### Supported Languages
+- Arabic (ar)
+- German (de)
+- English (en) - Base language
+- Spanish (es)
+- French (fr)
+- Italian (it)
+- Japanese (ja)
+- Korean (ko)
+- Portuguese (pt)
+- Russian (ru)
+- Chinese (zh)
+
+#### Content Structure
+The script generates content for different types of music categories:
+- **Decades** (1950s to 2010s)
+- **Music Genres** (e.g., Rock, Jazz, Metal subgenres)
+- **Countries and Regional Genres** (e.g., Brazilian, Irish)
+- **Emotional Genres** (e.g., Happy)
+- **Seasonal Genres** (e.g., Holiday, Summer Hits)
+- **Situational and Activity-Based Genres** (e.g., Party, Road Trip)
+
+Each category includes multiple sections with specified character limits, such as:
+- Introduction
+- Historical Background
+- Musical Characteristics
+- Key Figures and Important Works
+- Cultural Significance
+- and more...
+
+#### Language Adaptation
+The script automatically adjusts content length based on language characteristics:
+- German text is allocated 110% of the base length
+- Asian languages (Chinese, Japanese) are allocated 70% due to their more concise nature
+- Other languages have specific adjustments based on their typical text lengths
+
+#### Usage
+```bash
+python3 scripts/generate_content.py
+```
+
+The script will generate content for all categories in all supported languages, maintaining consistent structure while respecting language-specific requirements and cultural context.
+
+#### Output
+Generated content is stored as markdown files in the `content/knowledge` directory, organized by language. Each file follows the naming pattern `category-slug.md` (e.g., `rock-n-roll.md`) and includes YAML frontmatter with metadata such as:
+- title
+- description
+- image path
+- creation and update dates
+- keywords
+- author
+- locale
+- category-specific playlist links
+- playability status
 
 ## Production
 

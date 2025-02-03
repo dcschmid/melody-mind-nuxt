@@ -1,0 +1,170 @@
+# Decades
+1950s
+1960s
+1970s
+1980s
+1990s
+2000s
+2010s
+
+# Genres
+Acoustic Metal
+Afrobeat
+Alternative Metal
+Alternative Rock
+Ambient
+Ambient Metal
+Avant-Garde Metal
+Black Metal
+Blackened Death Metal
+Bluegrass
+Blues
+Bossa Nova
+Breakbeat
+Cantopop
+Celtic Metal
+Chamber Metal
+Chicago House
+Children
+Christian Metal
+Classic Heavy Metal
+Classic Rock
+Classical
+Club
+Coregrind
+Country
+Crossover Thrash
+Cyber Metal
+Dancehall
+Dark Metal
+Death Metal
+Deep House
+Desert Rock
+Detroit Techno
+Doom Metal
+Drum and Bass
+Experimental Metal
+Film Music
+Folk
+Folk Metal
+Forró
+Funeral Doom Metal
+Funk
+Garage
+German Rap
+German Schlager
+Gospel
+Gothic
+Gothic Metal
+Grindcore
+Groove
+Groove Metal
+Grunge
+Guitar
+Hair Metal
+Hard Rock
+Hardstyle
+Heavy Metal
+Heavy Psych
+Hip Hop
+Horror Metal
+House
+Indie
+Indie-Pop
+Industrial
+Industrial Metal
+J-Dance
+J-Pop
+J-Rock
+Jazz
+Jazz Metal
+K-Pop
+Latin Vibes
+Mandopop
+Math Metal
+Melodic Death Metal
+Metalcore
+Neo-Classical Metal
+New Age
+New Wave of British Heavy Metal
+Noise Metal
+Nu Metal
+Opera
+Piano
+Pop
+PopRock
+Post Hardcore
+Post Metal
+Power Metal
+Power-Pop
+Progressive Metal
+Psych-Rock
+Punk
+R&B
+Reggae
+Reggaeton
+Road Trip
+Rock
+Rock 'n' Roll
+Rockabilly
+Salsa
+Samba
+Screamo
+Sertanejo
+Ska
+Sludge Metal
+Songwriter
+Soul
+Speed Metal
+Stoner Metal
+Symphonic Black Metal
+Symphonic Metal
+Synth-Pop
+Tango
+Technical Death Metal
+Techno
+Thrash Metal
+Trance
+Trip-Hop
+Viking Metal
+
+# Countries and Regional Genres
+Argentinian
+Belgian
+Brazilian
+British
+Colombian
+Cuban
+Czech
+Danish
+Finnish
+French
+German
+Hawaiian
+Icelandic
+Indian
+Iranian
+Irish
+Latin American
+Mexican
+Peruvian
+Polish
+Russian
+Spanish
+Swedish
+Turkish
+Ukrainian
+
+# Emotional Genres
+Happy
+Sad
+
+# Seasonal Genres
+Holiday
+Summer Hits
+
+# Situational and Activity-Based Genres
+Disco Fever
+Party On!
+Rainy Day
+Road Trip
