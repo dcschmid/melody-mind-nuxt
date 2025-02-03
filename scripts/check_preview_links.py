@@ -1,4 +1,26 @@
 #!/usr/bin/env python3
+"""
+Preview Link Checker Script for MelodyMind
+
+This script validates the accessibility of music preview links across different
+streaming services (Spotify, Apple Music, Deezer) in the MelodyMind application.
+It processes JSON files containing preview URLs, checks their availability,
+and generates a comprehensive HTML report of the results.
+
+Features:
+- Multi-threaded link checking for improved performance
+- Service-specific request handling for different streaming platforms
+- Configurable retry mechanism with exponential backoff
+- Detailed HTML report generation with statistics and error details
+- Support for checking specific language directories
+
+Usage:
+    python check_preview_links.py [--languages LANG1 LANG2 ...] [--retries N] [--retry-delay SEC]
+
+Example:
+    python check_preview_links.py --languages en de --retries 5 --retry-delay 2.0
+"""
+
 import json
 import os
 import requests
@@ -12,7 +34,29 @@ import re
 import time
 
 class PreviewLinkChecker:
+    """A class to check the validity of music preview links across streaming services.
+    
+    This class handles the validation of preview URLs from various music streaming
+    services, including Spotify, Apple Music, and Deezer. It implements service-specific
+    request handling and provides detailed reporting capabilities.
+    
+    Attributes:
+        base_dir (Path): Base directory containing JSON files with preview links
+        languages (Optional[List[str]]): List of language codes to process, or None for all
+        max_retries (int): Maximum number of retry attempts for failed requests
+        retry_delay (float): Initial delay between retries in seconds
+        service_patterns (Dict[str, str]): Regex patterns to identify streaming services
+    """
+    
     def __init__(self, base_dir: Path, languages: Optional[List[str]] = None, max_retries: int = 3, retry_delay: float = 1.0):
+        """Initialize the PreviewLinkChecker.
+        
+        Args:
+            base_dir: Directory containing language-specific JSON files
+            languages: Optional list of language codes to process
+            max_retries: Number of times to retry failed requests
+            retry_delay: Initial delay between retries (uses exponential backoff)
+        """
         self.base_dir = base_dir
         self.languages = languages
         self.max_retries = max_retries
@@ -24,7 +68,16 @@ class PreviewLinkChecker:
         }
         
     def detect_service(self, url: str) -> str:
-        """Detect which streaming service the preview URL belongs to."""
+        """Detect which streaming service the preview URL belongs to.
+        
+        Analyzes the URL domain against known patterns to identify the streaming service.
+        
+        Args:
+            url: The preview URL to analyze
+            
+        Returns:
+            str: Service identifier ('spotify', 'apple_music', 'deezer', or 'unknown')
+        """
         domain = urlparse(url).netloc
         for service, pattern in self.service_patterns.items():
             if re.search(pattern, domain):
@@ -32,7 +85,21 @@ class PreviewLinkChecker:
         return 'unknown'
 
     def check_preview_link(self, url: str) -> Tuple[str, bool, str, str]:
-        """Check if a preview link is accessible with service-specific handling and retries."""
+        """Check if a preview link is accessible with service-specific handling and retries.
+        
+        Attempts to access the preview URL using service-specific request methods.
+        Implements retry logic with exponential backoff for failed requests.
+        
+        Args:
+            url: The preview URL to check
+            
+        Returns:
+            Tuple containing:
+            - str: Service identifier
+            - bool: Whether the URL is valid and accessible
+            - str: Error message if any, empty string if successful
+            - str: Content-Type of the response if available
+        """
         service = self.detect_service(url)
         
         for attempt in range(self.max_retries):
@@ -70,7 +137,25 @@ class PreviewLinkChecker:
         return service, False, "Max retries exceeded", 'unknown'
 
     def process_file(self, file_path: str) -> List[Tuple[str, str, str, str, bool, str, str, str]]:
-        """Process a single JSON file and check all preview links."""
+        """Process a single JSON file and check all preview links.
+        
+        Reads a JSON file containing music entries and validates all preview links found.
+        Each entry should contain 'preview_link', 'artist', and 'album' fields.
+        
+        Args:
+            file_path: Path to the JSON file to process
+            
+        Returns:
+            List of tuples containing for each preview link:
+            - Artist name
+            - Album name
+            - Preview URL
+            - Service identifier
+            - Validity status
+            - Error message
+            - Content type
+            - Relative file path
+        """
         results = []
         try:
             with open(file_path, 'r', encoding='utf-8') as f:
@@ -91,7 +176,18 @@ class PreviewLinkChecker:
         return results
 
     def generate_html_report(self, all_results: List[Tuple[str, str, str, str, bool, str, str, str]], output_path: str):
-        """Generate an HTML report with the results."""
+        """Generate an HTML report with the results.
+        
+        Creates a detailed HTML report containing:
+        - Overall statistics (total links, accessible/inaccessible counts)
+        - Service distribution breakdown
+        - Detailed list of invalid or inaccessible links
+        - Retry configuration information
+        
+        Args:
+            all_results: List of tuples containing check results for all links
+            output_path: Path where the HTML report should be saved
+        """
         css = """
             body {font-family: Arial, sans-serif; margin: 20px;}
             .summary {background: #f5f5f5; padding: 20px; border-radius: 5px; margin-bottom: 20px;}
@@ -184,7 +280,17 @@ class PreviewLinkChecker:
             f.write(html_content)
 
     def run(self):
-        """Run the link checker on all JSON files."""
+        """Run the link checker on all JSON files.
+        
+        Main execution method that:
+        1. Discovers JSON files in specified language directories
+        2. Processes files in parallel using a thread pool
+        3. Collects results from all processed files
+        4. Generates a comprehensive HTML report
+        
+        The method uses ThreadPoolExecutor for parallel processing to improve
+        performance when checking multiple files.
+        """
         json_files = []
         
         # Find all JSON files in specified languages
@@ -214,7 +320,18 @@ class PreviewLinkChecker:
         self.generate_html_report(all_results, str(report_path))
         print(f"\nReport generated at: {report_path}")
 
-def main():
+def main() -> None:
+    """Main entry point for the preview link checker script.
+    
+    Parses command line arguments and initializes the PreviewLinkChecker
+    with the specified configuration. Supports checking specific languages
+    and customizing retry behavior.
+    
+    Command line arguments:
+        --languages: Space-separated list of language codes to check
+        --retries: Number of retry attempts for failed requests
+        --retry-delay: Initial delay between retries in seconds
+    """
     parser = argparse.ArgumentParser(description='Check preview links in genre JSON files')
     parser.add_argument('--languages', nargs='+', help='Specific language codes to check (e.g., en de fr)')
     parser.add_argument('--retries', type=int, default=3, help='Number of retry attempts for failed requests')

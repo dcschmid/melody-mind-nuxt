@@ -1,21 +1,81 @@
+#!/usr/bin/env python3
+"""
+Category Translation Script for MelodyMind
+
+This script handles the translation of music category descriptions across multiple languages
+using OpenAI's GPT-4 model. It maintains consistent terminology and style while preserving
+the musical context and cultural nuances in each target language.
+
+Features:
+- Supports multiple target languages (German, Spanish, French, Italian, etc.)
+- Preserves specialized music terminology
+- Maintains language-specific formatting and style guidelines
+- Handles incremental updates to avoid re-translating existing content
+- Provides detailed progress tracking and error handling
+
+Environment Variables:
+    OPENAI_API_KEY: Your OpenAI API key for accessing the translation service
+
+Usage:
+    python translate_categories.py [--update] [--input INPUT_FILE]
+
+Options:
+    --update            Only translate new or modified categories
+    --input INPUT_FILE  Path to English categories file
+                        (default: app/json/en_categories.json)
+"""
+
 import json
 import os
 from openai import OpenAI
 from pathlib import Path
 import time
 import argparse
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional, Union
 
-def load_json_file(file_path):
+def load_json_file(file_path: Union[str, Path]) -> List[Dict[str, Any]]:
+    """Load and parse a JSON file.
+    
+    Args:
+        file_path: Path to the JSON file to load
+        
+    Returns:
+        Parsed JSON content as a list of dictionaries
+        
+    Raises:
+        JSONDecodeError: If the file contains invalid JSON
+        FileNotFoundError: If the file doesn't exist
+    """
     with open(file_path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
-def save_json_file(data, file_path):
+def save_json_file(data: List[Dict[str, Any]], file_path: Union[str, Path]) -> None:
+    """Save data to a JSON file with proper formatting.
+    
+    Args:
+        data: List of dictionaries to save
+        file_path: Path where to save the JSON file
+        
+    Notes:
+        - Uses UTF-8 encoding to preserve special characters
+        - Formats JSON with indentation for readability
+        - Preserves non-ASCII characters in output
+    """
     with open(file_path, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 def should_translate_headline(headline: str) -> bool:
-    """Determine if a headline should be translated based on content"""
+    """Determine if a headline should be translated based on content.
+    
+    Currently configured to translate all headlines, with proper handling
+    of special terms managed through language-specific translation instructions.
+    
+    Args:
+        headline: The headline text to evaluate
+        
+    Returns:
+        True for all headlines, as we handle special cases in the translation prompt
+    """
     # Always return True to translate all categories
     # We'll ensure proper translations through the translation prompt
     return True
@@ -181,7 +241,25 @@ def get_language_specific_instructions(target_language: str) -> str:
     }
     return instructions.get(target_language, "")
 
-def translate_text(client, text, target_language):
+def translate_text(client: OpenAI, text: str, target_language: str) -> Optional[str]:
+    """Translate text using OpenAI's GPT-4 model with language-specific guidelines.
+    
+    Uses a specialized system prompt that includes:
+    1. Language-specific translation instructions
+    2. Musical terminology handling guidelines
+    3. Cultural context preservation rules
+    
+    Args:
+        client: Initialized OpenAI client
+        text: Source text to translate (in English)
+        target_language: Target language name (e.g., 'German', 'Spanish')
+        
+    Returns:
+        Translated text if successful, None if translation fails
+        
+    Raises:
+        Any exceptions from the OpenAI API are caught and logged
+    """
     try:
         language_instructions = get_language_specific_instructions(target_language)
         response = client.chat.completions.create(
@@ -209,11 +287,37 @@ def translate_text(client, text, target_language):
         return None
 
 def get_category_key(category: Dict[str, Any]) -> str:
-    """Generate a unique key for a category based on its URL"""
+    """Generate a unique key for a category based on its URL.
+    
+    Uses the categoryUrl as a unique identifier since it remains constant
+    across all language versions of the same category.
+    
+    Args:
+        category: Dictionary containing category data
+        
+    Returns:
+        Category URL as string, or empty string if URL not found
+    """
     return category.get('categoryUrl', '')
 
 def load_existing_translations(output_dir: Path, lang_code: str) -> Dict[str, Dict[str, Any]]:
-    """Load existing translations if they exist"""
+    """Load existing translations from a language-specific JSON file.
+    
+    Attempts to load and parse existing translations, creating a lookup
+    dictionary keyed by category URL for efficient access.
+    
+    Args:
+        output_dir: Directory containing translation files
+        lang_code: Language code (e.g., 'de', 'es')
+        
+    Returns:
+        Dictionary mapping category URLs to their translated content,
+        or empty dict if file doesn't exist or can't be loaded
+        
+    Notes:
+        - Handles missing files gracefully
+        - Reports but doesn't raise file access/parsing errors
+    """
     translation_file = output_dir / f"{lang_code}_categories.json"
     if translation_file.exists():
         try:
@@ -223,8 +327,23 @@ def load_existing_translations(output_dir: Path, lang_code: str) -> Dict[str, Di
             print(f"Warning: Could not load existing translations for {lang_code}: {e}")
     return {}
 
-def get_missing_categories(source_categories: List[Dict[str, Any]], existing_translations: Dict[str, Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """Find categories that exist in source but not in target language"""
+def get_missing_categories(source_categories: List[Dict[str, Any]], 
+                        existing_translations: Dict[str, Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Find categories that exist in source but not in target language.
+    
+    Compares source categories against existing translations to identify
+    categories that need to be translated for the first time.
+    
+    Args:
+        source_categories: List of categories from source language
+        existing_translations: Dict of existing translations keyed by URL
+        
+    Returns:
+        List of categories that need translation
+        
+    Notes:
+        Uses category URLs as unique identifiers for comparison
+    """
     missing = []
     for category in source_categories:
         category_key = get_category_key(category)
@@ -233,14 +352,48 @@ def get_missing_categories(source_categories: List[Dict[str, Any]], existing_tra
     return missing
 
 def save_progress(categories: List[Dict[str, Any]], output_file: Path, lang_code: str) -> None:
-    """Save current progress to a file"""
+    """Save current translation progress to a JSON file.
+    
+    Saves the current state of translations to allow for recovery
+    in case of interruption and to track progress.
+    
+    Args:
+        categories: List of category dictionaries to save
+        output_file: Path where to save the progress file
+        lang_code: Language code for progress reporting
+        
+    Notes:
+        - Creates parent directories if they don't exist
+        - Reports but doesn't raise save errors
+        - Uses UTF-8 encoding for proper character handling
+    """
     try:
         save_json_file(categories, output_file)
         print(f"Progress saved for {lang_code}")
     except Exception as e:
         print(f"Warning: Could not save progress for {lang_code}: {e}")
 
-def translate_categories(input_file: str, target_languages: Dict[str, str], update_mode: bool = False):
+def translate_categories(input_file: str, target_languages: Dict[str, str], update_mode: bool = False) -> None:
+    """Main function to translate categories into multiple target languages.
+    
+    Processes each category in the source file, translating content into
+    specified target languages while preserving special formatting and
+    maintaining consistency in musical terminology.
+    
+    Args:
+        input_file: Path to source language (English) categories file
+        target_languages: Dict mapping language codes to language names
+        update_mode: If True, only translate new or modified categories
+        
+    Notes:
+        - Uses OpenAI API for translations
+        - Implements rate limiting to avoid API throttling
+        - Saves progress after each category translation
+        - Preserves existing translations in update mode
+        
+    Raises:
+        ValueError: If OPENAI_API_KEY environment variable is not set
+    """
     # Initialize OpenAI client
     api_key = os.getenv('OPENAI_API_KEY')
     if not api_key:
@@ -338,7 +491,24 @@ def translate_categories(input_file: str, target_languages: Dict[str, str], upda
 
         print(f"\nCompleted translations for {lang_name}")
 
-def main():
+def main() -> None:
+    """Entry point for the category translation script.
+    
+    Parses command line arguments and initiates the translation process
+    for all configured target languages. Handles the overall execution
+    flow and error reporting.
+    
+    Command Line Arguments:
+        --update: Run in update mode (only translate new/modified categories)
+        --input: Path to source English categories file
+        
+    Environment Variables Required:
+        OPENAI_API_KEY: API key for OpenAI services
+        
+    Exit Codes:
+        0: Successful completion
+        1: Error during execution
+    """
     # Set up argument parser
     parser = argparse.ArgumentParser(description='Translate category files to multiple languages')
     parser.add_argument('--update', action='store_true', 

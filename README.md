@@ -437,12 +437,48 @@ The script automatically adjusts content length based on language characteristic
 - Asian languages (Chinese, Japanese) are allocated 70% due to their more concise nature
 - Other languages have specific adjustments based on their typical text lengths
 
+#### Setup and Installation
+
+The script requires Python 3.x and the Arli AI API. Follow these steps to set up:
+
+1. Create and activate a Python virtual environment (recommended):
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+2. Install required dependencies:
+```bash
+pip install requests python-dotenv
+```
+
+3. Set up your environment variables by creating a `.env` file in the project root:
+```bash
+ARLI_API_KEY=your-arli-api-key-here
+```
+
 #### Usage
+
+1. Make sure your virtual environment is activated:
+```bash
+source venv/bin/activate
+```
+
+2. Run the script:
 ```bash
 python3 scripts/generate_content.py
 ```
 
-The script will generate content for all categories in all supported languages, maintaining consistent structure while respecting language-specific requirements and cultural context.
+The script will:
+- Create necessary directory structure in `content/knowledge`
+- Generate SEO-optimized metadata for each category:
+  - Engaging, keyword-rich titles (max 60 characters)
+  - Compelling meta descriptions (150-160 characters)
+  - Relevant keywords and phrases
+- Generate comprehensive content for all categories in all supported languages
+- Skip existing files to avoid overwriting content
+- Show a progress bar and detailed statistics
+- Maintain consistent structure while respecting language-specific requirements
 
 #### Output
 Generated content is stored as markdown files in the `content/knowledge` directory, organized by language. Each file follows the naming pattern `category-slug.md` (e.g., `rock-n-roll.md`) and includes YAML frontmatter with metadata such as:

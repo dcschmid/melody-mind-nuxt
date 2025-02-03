@@ -1,26 +1,69 @@
+#!/usr/bin/env python3
+"""
+Content Generation Script for MelodyMind
+
+This script generates comprehensive, multilingual content for music categories
+using the Arli AI API. It creates structured markdown files with SEO-optimized
+metadata and detailed content sections for each music category.
+
+Features:
+- Multilingual content generation
+- SEO metadata optimization
+- Structured content sections
+- Progress tracking and error handling
+- Language-specific content adaptation
+
+The script uses a template-based approach for consistent content structure
+while adapting to language-specific requirements and cultural contexts.
+
+Author: Daniel Schmid
+Date: February 2025
+"""
+
 import os
 import json
 import requests
 from datetime import datetime
 from pathlib import Path
+from time import sleep
+from typing import Dict, List, Tuple, Optional
 
 # Configuration
-ARLI_API_KEY = os.getenv("ARLI_API_KEY")  # Make sure to set this environment variable
-BASE_DIR = Path(__file__).parent.parent
-CONTENT_DIR = BASE_DIR / "content" / "knowledge"
-JSON_DIR = BASE_DIR / "app" / "json"
+ARLI_API_KEY = os.getenv("ARLI_API_KEY")  # API key for Arli AI
+BASE_DIR = Path(__file__).parent.parent  # Project root directory
+CONTENT_DIR = BASE_DIR / "content" / "knowledge"  # Directory for generated content
+JSON_DIR = BASE_DIR / "app" / "json"  # Directory for JSON data
 
-# List of supported languages
-def get_available_languages():
+def get_available_languages() -> List[str]:
+    """Get list of supported languages for content generation.
+    
+    Returns:
+        List[str]: ISO 639-1 language codes for supported languages
+    """
     return ["ar", "de", "en", "es", "fr", "it", "ja", "ko", "pt", "ru", "zh"]
 
-# Read categories from file
-def read_categories():
+def read_categories() -> List[str]:
+    """Read and parse music categories from the categories file.
+    
+    Reads categories from category_headlines.txt, ignoring empty lines.
+    Each category should be on a new line.
+    
+    Returns:
+        List[str]: List of music category names
+    """
     with open(BASE_DIR / "scripts" / "category_headlines.txt", "r", encoding="utf-8") as f:
         return [line.strip() for line in f if line.strip()]
 
 # Read AI help text templates
-def read_templates():
+def read_templates() -> Dict[str, str]:
+    """Read and parse AI help text templates for content generation.
+    
+    Reads templates from 'Helptexte für AI.md' and splits them into
+    separate templates for decades and genres.
+    
+    Returns:
+        Dict[str, str]: Dictionary containing templates for 'decades' and 'genres'
+    """
     with open(BASE_DIR / "Helptexte für AI.md", "r", encoding="utf-8") as f:
         content = f.read()
         # Split into decades and genres templates
@@ -30,10 +73,32 @@ def read_templates():
             "genres": "# Für einzelne Genres" + genres_template.strip()
         }
 
-def is_decade(category):
+def is_decade(category: str) -> bool:
+    """Check if a category name represents a decade.
+    
+    A decade category ends with 's' and has digits before it (e.g., '1950s').
+    
+    Args:
+        category: The category name to check
+        
+    Returns:
+        bool: True if the category represents a decade, False otherwise
+    """
     return category.endswith("s") and category[:-1].isdigit()
 
-def get_category_type(category):
+def get_category_type(category: str) -> str:
+    """Determine the category type from the sorted headlines file.
+    
+    Reads the category_headlines_sorted.txt file and determines the category type
+    based on the section headers. The file is organized with # section headers
+    followed by categories belonging to that section.
+    
+    Args:
+        category: The category name to look up
+        
+    Returns:
+        str: The category type (section title) or 'Genres' if not found
+    """
     with open(BASE_DIR / "scripts" / "category_headlines_sorted.txt", "r", encoding="utf-8") as f:
         content = f.read()
         sections = content.split("#")
@@ -44,7 +109,20 @@ def get_category_type(category):
                     return title
     return "Genres"  # default to genres if not found
 
-def get_translated_sections(language="en"):
+def get_translated_sections(language: str = "en") -> Dict[str, Dict[str, str]]:
+    """Get section headers translated into the specified language.
+    
+    Provides a mapping of standard section headers to their translations
+    in various languages. This ensures consistent content structure across
+    all languages while maintaining natural language flow.
+    
+    Args:
+        language: ISO 639-1 language code (default: "en")
+        
+    Returns:
+        Dict[str, Dict[str, str]]: Nested dictionary mapping section names
+        to their translations in different languages
+    """
     sections = {
         "en": {
             "Introduction": "Introduction",
@@ -543,14 +621,47 @@ def get_language_prompts(language):
     }
     return prompts.get(language, prompts["en"])  # Default to English if language not found
 
-def get_language_style_guide(language):
+def get_language_style_guide(language: str) -> Dict[str, str]:
+    """Get language-specific style guide for content generation.
+    
+    Extracts style and characteristics information from language prompts
+    to ensure content maintains appropriate language style and tone.
+    
+    Args:
+        language: ISO 639-1 language code
+        
+    Returns:
+        Dict[str, str]: Dictionary containing 'style' and 'characteristics'
+        for the specified language
+    """
     prompts = get_language_prompts(language)
     return {
         "style": prompts["style"],
         "characteristics": prompts["characteristics"]
     }
 
-def generate_section(category, language, section_name, char_min, char_max):
+def generate_section(category: str, language: str, section_name: str, 
+                   char_min: int, char_max: int) -> str:
+    """Generate content for a specific section of a music category.
+    
+    Uses the Arli AI API to generate language-specific content that adheres
+    to style guidelines and length requirements. Includes retry logic for
+    handling API errors and content length mismatches.
+    
+    Args:
+        category: Music category name
+        language: ISO 639-1 language code
+        section_name: Name of the section to generate
+        char_min: Minimum character count for the content
+        char_max: Maximum character count for the content
+        
+    Returns:
+        str: Generated content for the section
+        
+    Raises:
+        ValueError: If ARLI_API_KEY is not set or content generation fails
+        Exception: For API errors or other issues
+    """
     if not ARLI_API_KEY:
         raise ValueError("ARLI_API_KEY environment variable not set")
     
@@ -560,9 +671,10 @@ def generate_section(category, language, section_name, char_min, char_max):
     }
     
     style_guide = get_language_style_guide(language)
-    
     language_prompts = get_language_prompts(language)
-    prompt = language_prompts["prompt"].format(
+    
+    # Format the user prompt
+    user_prompt = language_prompts["prompt"].format(
         section_name=section_name,
         category=category,
         char_min=char_min,
@@ -573,13 +685,21 @@ def generate_section(category, language, section_name, char_min, char_max):
     for attempt in range(3):
         try:
             data = {
-                "prompt": prompt,
+                "model": "Mistral-Nemo-12B-Instruct-2407",
+                "messages": [
+                    {"role": "system", "content": f"You are an expert music historian and writer. Write in {language}. {style_guide}"},
+                    {"role": "user", "content": user_prompt}
+                ],
+                "temperature": 0.7,
+                "repetition_penalty": 1.1,
+                "top_p": 0.9,
+                "top_k": 40,
                 "max_tokens": 2500,
-                "temperature": 0.7
+                "stream": False
             }
             
             response = requests.post(
-                "https://api.arli.ai/v1/generate",  # Replace with actual Arli AI endpoint
+                "https://api.arliai.com/v1/chat/completions",
                 headers=headers,
                 json=data
             )
@@ -587,7 +707,7 @@ def generate_section(category, language, section_name, char_min, char_max):
             if response.status_code != 200:
                 raise Exception(f"API call failed: {response.text}")
             
-            content = response.json()["text"]
+            content = response.json()["choices"][0]["message"]["content"].strip()
             
             # Verify character count
             char_count = len(content)
@@ -596,18 +716,37 @@ def generate_section(category, language, section_name, char_min, char_max):
             
             # If length is wrong, adjust the prompt for next attempt
             if char_count < char_min:
-                prompt += f"\n\nThe previous response was too short ({char_count} chars). Please make it longer."
+                user_prompt += f"\n\nThe previous response was too short ({char_count} chars). Please make it longer, aiming for {char_min}-{char_max} characters."
             else:
-                prompt += f"\n\nThe previous response was too long ({char_count} chars). Please make it shorter."
+                user_prompt += f"\n\nThe previous response was too long ({char_count} chars). Please make it shorter, aiming for {char_min}-{char_max} characters."
                 
         except Exception as e:
             if attempt == 2:  # Last attempt
                 raise e
+            print(f"  Attempt {attempt + 1} failed: {str(e)}")
             continue
     
     raise ValueError(f"Failed to generate content with correct length after 3 attempts")
 
-def generate_content(category, language):
+def generate_content(category: str, language: str) -> str:
+    """Generate or update content for a music category in a specific language.
+    
+    This function manages the content generation process, including:
+    1. Loading and parsing existing content to avoid regenerating sections
+    2. Generating new sections as needed
+    3. Saving content incrementally to preserve progress
+    
+    The function is designed to be resilient, continuing even if some
+    sections fail to generate. It also preserves existing content,
+    only generating missing sections.
+    
+    Args:
+        category: Music category name
+        language: ISO 639-1 language code
+        
+    Returns:
+        str: Status message indicating completion
+    """
     section_limits = get_section_limits(category)
     
     # Check for existing content
@@ -657,33 +796,162 @@ def generate_content(category, language):
     
     return "Content generation completed"
 
-def get_output_path(category, language):
+def get_output_path(category: str, language: str) -> Path:
+    """Get the output file path for a category in a specific language.
+    
+    Creates the necessary directory structure if it doesn't exist and
+    returns the path where the markdown file should be saved.
+    
+    Args:
+        category: Music category name
+        language: ISO 639-1 language code
+        
+    Returns:
+        Path: Path object pointing to the output markdown file
+    """
     output_dir = CONTENT_DIR / language
     output_dir.mkdir(parents=True, exist_ok=True)
     return output_dir / f"{category.lower().replace(' ', '-')}.md"
 
-def create_frontmatter(category, language):
+def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[str]]:
+    """Generate SEO metadata for a music category using AI.
+    
+    Uses the Arli AI API to generate SEO-optimized title, description,
+    and keywords for a music category page. Includes fallback values
+    in case of API errors.
+    
+    Args:
+        category: Music category name
+        language: ISO 639-1 language code
+        
+    Returns:
+        Tuple[str, str, List[str]]: Title, description, and keywords
+        
+    Raises:
+        ValueError: If ARLI_API_KEY is not set
+    """
+    if not ARLI_API_KEY:
+        raise ValueError("ARLI_API_KEY environment variable not set")
+    
+    headers = {
+        "Authorization": f"Bearer {ARLI_API_KEY}",
+        "Content-Type": "application/json"
+    }
+    
+    prompt = f"""Generate SEO metadata for a music category page about {category} in {language}. The content should be in {language}.
+    
+    Please provide:
+    1. An engaging, keyword-rich title (max 60 characters)
+    2. A compelling meta description (150-160 characters) that includes the main keywords and encourages clicks
+    3. A list of 5-7 relevant keywords/phrases for the category
+    
+    Format the response exactly like this:
+    Title: [title]
+    Description: [description]
+    Keywords: [keyword1, keyword2, keyword3, ...]
+    """
+    
+    data = {
+        "model": "Mistral-Nemo-12B-Instruct-2407",
+        "messages": [
+            {"role": "system", "content": "You are an SEO expert specializing in music content."},
+            {"role": "user", "content": prompt}
+        ],
+        "temperature": 0.7,
+        "repetition_penalty": 1.1,
+        "top_p": 0.9,
+        "top_k": 40,
+        "max_tokens": 1024,
+        "stream": False
+    }
+    
+    try:
+        response = requests.post(
+            "https://api.arliai.com/v1/chat/completions",
+            headers=headers,
+            json=data
+        )
+        
+        if response.status_code != 200:
+            raise Exception(f"API call failed: {response.text}")
+        
+        content = response.json()["choices"][0]["message"]["content"].strip()
+        
+        # Parse the response
+        lines = content.split('\n')
+        title = ''
+        description = ''
+        keywords = []
+        
+        for line in lines:
+            if line.startswith('Title:'):
+                title = line.replace('Title:', '').strip()
+            elif line.startswith('Description:'):
+                description = line.replace('Description:', '').strip()
+            elif line.startswith('Keywords:'):
+                keywords_str = line.replace('Keywords:', '').strip()
+                keywords = [k.strip() for k in keywords_str.split(',')]
+        
+        return title, description, keywords
+        
+    except Exception as e:
+        print(f"  Error generating SEO metadata: {str(e)}")
+        return category, f"{category} music category description", [category, "music"]
+
+def create_frontmatter(category: str, language: str) -> str:
+    """Create YAML frontmatter for a music category markdown file.
+    
+    Generates SEO-optimized metadata and formats it as YAML frontmatter.
+    The frontmatter includes:
+    - Title and description
+    - Category image path
+    - Creation and update timestamps
+    - SEO keywords
+    - Author and locale information
+    - Music streaming service playlist placeholders
+    
+    Args:
+        category: Music category name
+        language: ISO 639-1 language code
+        
+    Returns:
+        str: Formatted YAML frontmatter string
+    """
+    # Generate SEO metadata
+    print(f"  Generating SEO metadata for {category}...")
+    title, description, keywords = generate_seo_metadata(category, language)
+    
     return f"""---
-title: {category}
-description: {category} music category description
+title: {title}
+description: {description}
 image: /category/{category.lower().replace(' ', '-')}.jpg
 createdAt: {datetime.now().strftime('%Y-%m-%d')}
 updatedAt: {datetime.now().strftime('%Y-%m-%d')}
 keywords:
-  - {category}
-  - music
+{chr(10).join([f'  - {keyword}' for keyword in keywords])}
 author: MelodyMind
 locale: {language}
 category:
   spotifyPlaylist: 
   deezerPlaylist: 
   appleMusicPlaylist: 
-isPlayable: true
+isPlayable: false
 ---
 
 """
 
-def save_content(category, language, content, mode='w'):
+def save_content(category: str, language: str, content: str, mode: str = 'w') -> None:
+    """Save or append content to a category's markdown file.
+    
+    For new files (mode='w'), automatically adds YAML frontmatter before
+    the content. For existing files (mode='a'), appends content as is.
+    
+    Args:
+        category: Music category name
+        language: ISO 639-1 language code
+        content: Content to write or append
+        mode: File mode, 'w' for write or 'a' for append (default: 'w')
+    """
     output_path = get_output_path(category, language)
     
     # For new files, add frontmatter
@@ -694,7 +962,19 @@ def save_content(category, language, content, mode='w'):
     with open(output_path, mode, encoding="utf-8") as f:
         f.write(content)
 
-def load_existing_content(category, language):
+def load_existing_content(category: str, language: str) -> Optional[str]:
+    """Load existing content for a category in a specific language.
+    
+    Checks if content already exists for the category and language
+    combination and loads it if found.
+    
+    Args:
+        category: Music category name
+        language: ISO 639-1 language code
+        
+    Returns:
+        Optional[str]: File contents if file exists, None otherwise
+    """
     output_path = get_output_path(category, language)
     if output_path.exists():
         with open(output_path, 'r', encoding='utf-8') as f:
@@ -706,16 +986,46 @@ from typing import Dict, List
 import time
 
 def print_header(text: str, width: int = 80) -> None:
+    """Print a centered header with decorative borders.
+    
+    Creates a visually distinct section header using '=' characters
+    as borders and centers the text within the specified width.
+    
+    Args:
+        text: Header text to display
+        width: Total width of the header (default: 80)
+    """
     print("\n" + "=" * width)
     print(text.center(width))
     print("=" * width)
 
 def print_section(text: str, width: int = 80) -> None:
+    """Print a section divider with text.
+    
+    Creates a visual section break using '-' characters as borders
+    and displays the text with consistent spacing.
+    
+    Args:
+        text: Section text to display
+        width: Total width of the section divider (default: 80)
+    """
     print("\n" + "-" * width)
     print(text)
     print("-" * width)
 
 def print_progress(current: int, total: int, prefix: str = "", width: int = 30) -> None:
+    """Display a progress bar showing completion status.
+    
+    Creates a visual progress indicator with percentage and fraction,
+    updating in place using carriage return. The progress bar uses
+    block characters to show completion and dashes for remaining progress.
+    
+    Args:
+        current: Current progress value
+        total: Total value for 100% completion
+        prefix: Text to display before the progress bar (default: "")
+        width: Width of the progress bar in characters (default: 30)
+    """
     percentage = int((current / total) * 100)
     filled = int(width * current / total)
     bar = "█" * filled + "-" * (width - filled)
@@ -723,7 +1033,21 @@ def print_progress(current: int, total: int, prefix: str = "", width: int = 30) 
     if current == total:
         print()
 
-def main():
+def main() -> None:
+    """Main execution function for the content generation script.
+    
+    This function orchestrates the entire content generation process:
+    1. Initializes and displays script header
+    2. Gets list of supported languages
+    3. Reads and parses categories from the sorted headlines file
+    4. Processes each category type and its subcategories
+    5. Generates content for each category in all supported languages
+    6. Tracks and displays progress throughout the process
+    
+    The function uses a structured approach to handle categories by type
+    (e.g., decades, genres) and maintains progress indicators for the user.
+    It also measures and reports total execution time.
+    """
     start_time = time.time()
     print_header("MelodyMind Content Generator")
     
