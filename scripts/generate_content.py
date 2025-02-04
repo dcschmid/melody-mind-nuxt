@@ -40,7 +40,7 @@ def get_available_languages() -> List[str]:
     Returns:
         List[str]: ISO 639-1 language codes for supported languages
     """
-    return ["ar", "de", "en", "es", "fr", "it", "ja", "ko", "pt", "ru", "zh"]
+    return ["de", "en", "es", "fr", "it", "pt"]
 
 def read_categories() -> List[str]:
     """Read and parse music categories from the categories file.
@@ -136,18 +136,6 @@ def get_translated_sections(language: str = "en") -> Dict[str, Dict[str, str]]:
             "Development and Evolution": "Development and Evolution",
             "Legacy and Influence": "Legacy and Influence"
         },
-        "ar": {
-            "Introduction": "مقدمة",
-            "Historical Background": "تاريخ النشأة",
-            "Musical Characteristics": "الخصائص الموسيقية",
-            "Subgenres and Variations": "الأنواع الفرعية والاختلافات",
-            "Key Figures and Important Works": "الشخصيات الرئيسية والأعمال الهامة",
-            "Technical Aspects": "الجوانب التقنية",
-            "Cultural Significance": "الأهمية الثقافية",
-            "Performance and Live Culture": "الأداء وثقافة العروض الحية",
-            "Development and Evolution": "التطور والتقدم",
-            "Legacy and Influence": "التراث والتأثير"
-        },
         "de": {
             "Introduction": "Einleitung",
             "Historical Background": "Entstehungsgeschichte",
@@ -160,7 +148,6 @@ def get_translated_sections(language: str = "en") -> Dict[str, Dict[str, str]]:
             "Development and Evolution": "Entwicklung und Evolution",
             "Legacy and Influence": "Vermächtnis und Einfluss"
         },
-
         "es": {
             "Introduction": "Introducción",
             "Historical Background": "Historia y Orígenes",
@@ -197,30 +184,6 @@ def get_translated_sections(language: str = "en") -> Dict[str, Dict[str, str]]:
             "Development and Evolution": "Sviluppo ed Evoluzione",
             "Legacy and Influence": "Eredità e Influenza"
         },
-        "ja": {
-            "Introduction": "はじめに",
-            "Historical Background": "歴史的背景",
-            "Musical Characteristics": "音楽的特徴",
-            "Subgenres and Variations": "サブジャンルとバリエーション",
-            "Key Figures and Important Works": "重要人物と主要作品",
-            "Technical Aspects": "技術的側面",
-            "Cultural Significance": "文化的意義",
-            "Performance and Live Culture": "パフォーマンスとライブ文化",
-            "Development and Evolution": "発展と進化",
-            "Legacy and Influence": "遺産と影響"
-        },
-        "ko": {
-            "Introduction": "소개",
-            "Historical Background": "역사적 배경",
-            "Musical Characteristics": "음악적 특징",
-            "Subgenres and Variations": "하위 장르와 변주",
-            "Key Figures and Important Works": "주요 인물과 중요 작품",
-            "Technical Aspects": "기술적 측면",
-            "Cultural Significance": "문화적 의의",
-            "Performance and Live Culture": "공연과 라이브 문화",
-            "Development and Evolution": "발전과 진화",
-            "Legacy and Influence": "유산과 영향"
-        },
         "pt": {
             "Introduction": "Introdução",
             "Historical Background": "História e Origens",
@@ -233,391 +196,700 @@ def get_translated_sections(language: str = "en") -> Dict[str, Dict[str, str]]:
             "Development and Evolution": "Desenvolvimento e Evolução",
             "Legacy and Influence": "Legado e Influência"
         },
-        "ru": {
-            "Introduction": "Введение",
-            "Historical Background": "История и происхождение",
-            "Musical Characteristics": "Музыкальные характеристики",
-            "Subgenres and Variations": "Поджанры и вариации",
-            "Key Figures and Important Works": "Ключевые фигуры и важные произведения",
-            "Technical Aspects": "Технические аспекты",
-            "Cultural Significance": "Культурное значение",
-            "Performance and Live Culture": "Культура живых выступлений",
-            "Development and Evolution": "Развитие и эволюция",
-            "Legacy and Influence": "Наследие и влияние"
-        },
-        "zh": {
-            "Introduction": "引言",
-            "Historical Background": "历史背景",
-            "Musical Characteristics": "音乐特点",
-            "Subgenres and Variations": "子类型与变体",
-            "Key Figures and Important Works": "重要人物与作品",
-            "Technical Aspects": "技术方面",
-            "Cultural Significance": "文化意义",
-            "Performance and Live Culture": "现场表演文化",
-            "Development and Evolution": "发展与演变",
-            "Legacy and Influence": "遗产与影响"
-        }
     }
     return sections.get(language, sections["en"])  # Default to English if language not found
 
 def get_section_limits(category, language="en"):
-    # Sprachspezifische Anpassungsfaktoren für die Textlänge
+    # Language-specific adjustment factors for text length
     language_factors = {
-        "ar": 0.9,  # Arabisch tendiert zu kürzeren Texten
-        "de": 1.1,  # Deutsch tendiert zu längeren Texten
-        "en": 1.0,  # Englisch als Basis
-        "es": 1.05,  # Spanisch etwas länger als Englisch
-        "fr": 1.05,  # Französisch etwas länger als Englisch
-        "it": 1.05,  # Italienisch etwas länger als Englisch
-        "ja": 0.7,  # Japanisch kann Inhalte kürzer ausdrücken
-        "ko": 0.8,  # Koreanisch tendiert zu kürzeren Texten
-        "pt": 1.05,  # Portugiesisch etwas länger als Englisch
-        "ru": 0.9,  # Russisch kann kompakter sein
-        "zh": 0.7   # Chinesisch kann Inhalte kürzer ausdrücken
+        "de": 1.1,  # German tends to be longer
+        "en": 1.0,  # English as base
+        "es": 1.05, # Spanish slightly longer than English
+        "fr": 1.05, # French slightly longer than English
+        "it": 1.05, # Italian slightly longer than English
+        "pt": 1.05, # Portuguese slightly longer than English
     }
     
-    # Standardfaktor falls Sprache nicht definiert
+    # Default factor if language not defined
     factor = language_factors.get(language, 1.0)
+    
+    # Base minimum length for all sections
+    base_min_length = int(1000 * factor)
     
     category_type = get_category_type(category)
     base_limits = {}
     
     if category.endswith('s') and category[:-1].isdigit():  # Decades
+        sections = {
+            "en": {
+                "Introduction": "Introduction",
+                "Political and Social Background": "Political and Social Background",
+                "Musical Developments": "Musical Developments",
+                "Musical Diversity and Subgenres": "Musical Diversity and Subgenres",
+                "Rhythm and Style": "Rhythm and Style",
+                "Key Artists and Albums": "Key Artists and Albums",
+                "Technical and Economic Aspects": "Technical and Economic Aspects",
+                "Technological Innovations": "Technological Innovations",
+                "Musical Innovation and New Markets": "Musical Innovation and New Markets",
+                "Cultural Dimensions": "Cultural Dimensions",
+                "Festivals and Live Culture": "Festivals and Live Culture",
+                "Lyrics and Themes": "Lyrics and Themes",
+                "Subcultures and Fashion": "Subcultures and Fashion",
+                "Legacy and Outlook": "Legacy and Outlook",
+                "Cultural Significance": "Cultural Significance",
+                "Lasting Influences": "Lasting Influences",
+                "Conclusion": "Conclusion"
+            },
+            "de": {
+                "Introduction": "Einleitung",
+                "Political and Social Background": "Politischer und sozialer Hintergrund",
+                "Musical Developments": "Musikalische Entwicklungen",
+                "Musical Diversity and Subgenres": "Musikalische Vielfalt und Subgenres",
+                "Rhythm and Style": "Rhythmus und Stil",
+                "Key Artists and Albums": "Wichtige Künstler und Alben",
+                "Technical and Economic Aspects": "Technische und wirtschaftliche Aspekte",
+                "Technological Innovations": "Technologische Innovationen",
+                "Musical Innovation and New Markets": "Musikalische Innovation und neue Märkte",
+                "Cultural Dimensions": "Kulturelle Dimensionen",
+                "Festivals and Live Culture": "Festivals und Live-Kultur",
+                "Lyrics and Themes": "Liedtexte und Themen",
+                "Subcultures and Fashion": "Subkulturen und Mode",
+                "Legacy and Outlook": "Vermächtnis und Ausblick",
+                "Cultural Significance": "Kulturelle Bedeutung",
+                "Lasting Influences": "Bleibende Einflüsse",
+                "Conclusion": "Fazit"
+            },
+            "es": {
+                "Introduction": "Introducción",
+                "Political and Social Background": "Contexto político y social",
+                "Musical Developments": "Desarrollos musicales",
+                "Musical Diversity and Subgenres": "Diversidad musical y subgéneros",
+                "Rhythm and Style": "Ritmo y estilo",
+                "Key Artists and Albums": "Artistas y álbumes principales",
+                "Technical and Economic Aspects": "Aspectos técnicos y económicos",
+                "Technological Innovations": "Innovaciones tecnológicas",
+                "Musical Innovation and New Markets": "Innovación musical y nuevos mercados",
+                "Cultural Dimensions": "Dimensiones culturales",
+                "Festivals and Live Culture": "Festivales y cultura en vivo",
+                "Lyrics and Themes": "Letras y temas",
+                "Subcultures and Fashion": "Subculturas y moda",
+                "Legacy and Outlook": "Legado y perspectivas",
+                "Cultural Significance": "Significado cultural",
+                "Lasting Influences": "Influencias duraderas",
+                "Conclusion": "Conclusión"
+            },
+            "fr": {
+                "Introduction": "Introduction",
+                "Political and Social Background": "Contexte politique et social",
+                "Musical Developments": "Développements musicaux",
+                "Musical Diversity and Subgenres": "Diversité musicale et sous-genres",
+                "Rhythm and Style": "Rythme et style",
+                "Key Artists and Albums": "Artistes et albums majeurs",
+                "Technical and Economic Aspects": "Aspects techniques et économiques",
+                "Technological Innovations": "Innovations technologiques",
+                "Musical Innovation and New Markets": "Innovation musicale et nouveaux marchés",
+                "Cultural Dimensions": "Dimensions culturelles",
+                "Festivals and Live Culture": "Festivals et culture live",
+                "Lyrics and Themes": "Paroles et thèmes",
+                "Subcultures and Fashion": "Sous-cultures et mode",
+                "Legacy and Outlook": "Héritage et perspectives",
+                "Cultural Significance": "Importance culturelle",
+                "Lasting Influences": "Influences durables",
+                "Conclusion": "Conclusion"
+            },
+            "it": {
+                "Introduction": "Introduzione",
+                "Political and Social Background": "Contesto politico e sociale",
+                "Musical Developments": "Sviluppi musicali",
+                "Musical Diversity and Subgenres": "Diversità musicale e sottogeneri",
+                "Rhythm and Style": "Ritmo e stile",
+                "Key Artists and Albums": "Artisti e album principali",
+                "Technical and Economic Aspects": "Aspetti tecnici ed economici",
+                "Technological Innovations": "Innovazioni tecnologiche",
+                "Musical Innovation and New Markets": "Innovazione musicale e nuovi mercati",
+                "Cultural Dimensions": "Dimensioni culturali",
+                "Festivals and Live Culture": "Festival e cultura dal vivo",
+                "Lyrics and Themes": "Testi e temi",
+                "Subcultures and Fashion": "Sottoculture e moda",
+                "Legacy and Outlook": "Eredità e prospettive",
+                "Cultural Significance": "Significato culturale",
+                "Lasting Influences": "Influenze durature",
+                "Conclusion": "Conclusione"
+            },
+            "pt": {
+                "Introduction": "Introdução",
+                "Political and Social Background": "Contexto político e social",
+                "Musical Developments": "Desenvolvimentos musicais",
+                "Musical Diversity and Subgenres": "Diversidade musical e subgêneros",
+                "Rhythm and Style": "Ritmo e estilo",
+                "Key Artists and Albums": "Artistas e álbuns principais",
+                "Technical and Economic Aspects": "Aspectos técnicos e econômicos",
+                "Technological Innovations": "Inovações tecnológicas",
+                "Musical Innovation and New Markets": "Inovação musical e novos mercados",
+                "Cultural Dimensions": "Dimensões culturais",
+                "Festivals and Live Culture": "Festivais e cultura ao vivo",
+                "Lyrics and Themes": "Letras e temas",
+                "Subcultures and Fashion": "Subculturas e moda",
+                "Legacy and Outlook": "Legado e perspectivas",
+                "Cultural Significance": "Significado cultural",
+                "Lasting Influences": "Influências duradouras",
+                "Conclusion": "Conclusão"
+            },
+        }
+        
+        # Get the section titles for the current language
+        section_titles = sections.get(language, sections["en"])
+        
+        # Define the base limits for each section
         base_limits = {
-            "Introduction": (2500, 3000),
-            "Political and Social Background": (4000, 4500),
-            "Musical Developments": (1000, 1500),
-            "Musical Diversity and Subgenres": (4500, 5000),
-            "Rhythm and Style": (2500, 3000),
-            "Key Artists and Albums": (4500, 5000),
-            "Technical and Economic Aspects": (800, 1000),
-            "Technological Innovations": (3000, 3500),
-            "Musical Innovation and New Markets": (3000, 3500),
-            "Cultural Dimensions": (800, 1000),
-            "Festivals and Live Culture": (2500, 3000),
-            "Lyrics and Themes": (3000, 3500),
-            "Subcultures and Fashion": (2500, 3000),
-            "Legacy and Outlook": (800, 1000),
-            "Cultural Significance": (2500, 3000),
-            "Lasting Influences": (2500, 3000),
-            "Conclusion": (2000, 2500)
+            section_titles["Introduction"]: 1500,
+            section_titles["Political and Social Background"]: 2000,
+            section_titles["Musical Developments"]: 1000,
+            section_titles["Musical Diversity and Subgenres"]: 2000,
+            section_titles["Rhythm and Style"]: 1500,
+            section_titles["Key Artists and Albums"]: 2000,
+            section_titles["Technical and Economic Aspects"]: 800,
+            section_titles["Technological Innovations"]: 1500,
+            section_titles["Musical Innovation and New Markets"]: 1500,
+            section_titles["Cultural Dimensions"]: 800,
+            section_titles["Festivals and Live Culture"]: 1500,
+            section_titles["Lyrics and Themes"]: 1500,
+            section_titles["Subcultures and Fashion"]: 1500,
+            section_titles["Legacy and Outlook"]: 800,
+            section_titles["Cultural Significance"]: 1500,
+            section_titles["Lasting Influences"]: 1500,
+            section_titles["Conclusion"]: 1000
         }
     elif "Countries" in category_type:  # Countries and Regional Genres
+        sections = {
+            "en": {
+                "Introduction": "Introduction",
+                "Historical and Cultural Context": "Historical and Cultural Context",
+                "Traditional Music": "Traditional Music",
+                "Modern Music Development": "Modern Music Development",
+                "Notable Artists and Bands": "Notable Artists and Bands",
+                "Music Industry and Infrastructure": "Music Industry and Infrastructure",
+                "Live Music and Events": "Live Music and Events",
+                "Media and Promotion": "Media and Promotion",
+                "Education and Support": "Education and Support",
+                "International Connections": "International Connections",
+                "Current Trends and Future": "Current Trends and Future"
+            },
+            "de": {
+                "Introduction": "Einleitung",
+                "Historical and Cultural Context": "Historischer und kultureller Kontext",
+                "Traditional Music": "Traditionelle Musik",
+                "Modern Music Development": "Moderne Musikentwicklung",
+                "Notable Artists and Bands": "Bedeutende Künstler und Bands",
+                "Music Industry and Infrastructure": "Musikindustrie und Infrastruktur",
+                "Live Music and Events": "Live-Musik und Veranstaltungen",
+                "Media and Promotion": "Medien und Promotion",
+                "Education and Support": "Ausbildung und Förderung",
+                "International Connections": "Internationale Verbindungen",
+                "Current Trends and Future": "Aktuelle Trends und Zukunft"
+            },
+            "es": {
+                "Introduction": "Introducción",
+                "Historical and Cultural Context": "Contexto histórico y cultural",
+                "Traditional Music": "Música tradicional",
+                "Modern Music Development": "Desarrollo de la música moderna",
+                "Notable Artists and Bands": "Artistas y bandas destacados",
+                "Music Industry and Infrastructure": "Industria musical e infraestructura",
+                "Live Music and Events": "Música en vivo y eventos",
+                "Media and Promotion": "Medios y promoción",
+                "Education and Support": "Educación y apoyo",
+                "International Connections": "Conexiones internacionales",
+                "Current Trends and Future": "Tendencias actuales y futuro"
+            },
+            "fr": {
+                "Introduction": "Introduction",
+                "Historical and Cultural Context": "Contexte historique et culturel",
+                "Traditional Music": "Musique traditionnelle",
+                "Modern Music Development": "Développement de la musique moderne",
+                "Notable Artists and Bands": "Artistes et groupes notables",
+                "Music Industry and Infrastructure": "Industrie musicale et infrastructure",
+                "Live Music and Events": "Musique live et événements",
+                "Media and Promotion": "Médias et promotion",
+                "Education and Support": "Éducation et soutien",
+                "International Connections": "Connexions internationales",
+                "Current Trends and Future": "Tendances actuelles et avenir"
+            },
+            "it": {
+                "Introduction": "Introduzione",
+                "Historical and Cultural Context": "Contesto storico e culturale",
+                "Traditional Music": "Musica tradizionale",
+                "Modern Music Development": "Sviluppo della musica moderna",
+                "Notable Artists and Bands": "Artisti e band di rilievo",
+                "Music Industry and Infrastructure": "Industria musicale e infrastrutture",
+                "Live Music and Events": "Musica dal vivo ed eventi",
+                "Media and Promotion": "Media e promozione",
+                "Education and Support": "Educazione e supporto",
+                "International Connections": "Connessioni internazionali",
+                "Current Trends and Future": "Tendenze attuali e futuro"
+            },
+            "pt": {
+                "Introduction": "Introdução",
+                "Historical and Cultural Context": "Contexto histórico e cultural",
+                "Traditional Music": "Música tradicional",
+                "Modern Music Development": "Desenvolvimento da música moderna",
+                "Notable Artists and Bands": "Artistas e bandas notáveis",
+                "Music Industry and Infrastructure": "Indústria musical e infraestrutura",
+                "Live Music and Events": "Música ao vivo e eventos",
+                "Media and Promotion": "Mídia e promoção",
+                "Education and Support": "Educação e apoio",
+                "International Connections": "Conexões internacionais",
+                "Current Trends and Future": "Tendências atuais e futuro"
+            },
+        }
+        
+        section_titles = sections.get(language, sections["en"])
         base_limits = {
-            "Introduction": (2500, 3000),
-            "Historical and Cultural Context": (4000, 4500),
-            "Traditional Music": (4500, 5000),
-            "Modern Music Development": (4500, 5000),
-            "Notable Artists and Bands": (4500, 5000),
-            "Music Industry and Infrastructure": (3000, 3500),
-            "Live Music and Events": (3000, 3500),
-            "Media and Promotion": (3000, 3500),
-            "Education and Support": (3000, 3500),
-            "International Connections": (3000, 3500),
-            "Current Trends and Future": (2500, 3000)
+            section_titles["Introduction"]: 1500,
+            section_titles["Historical and Cultural Context"]: 2000,
+            section_titles["Traditional Music"]: 2000,
+            section_titles["Modern Music Development"]: 2000,
+            section_titles["Notable Artists and Bands"]: 2000,
+            section_titles["Music Industry and Infrastructure"]: 1500,
+            section_titles["Live Music and Events"]: 1500,
+            section_titles["Media and Promotion"]: 1500,
+            section_titles["Education and Support"]: 1500,
+            section_titles["International Connections"]: 1500,
+            section_titles["Current Trends and Future"]: 1500
         }
     elif "Emotional" in category_type:  # Emotional Genres
+        sections = {
+            "en": {
+                "Introduction": "Introduction",
+                "Music Psychology": "Music Psychology",
+                "Musical Characteristics": "Musical Characteristics",
+                "Cross-Genre Examples": "Cross-Genre Examples",
+                "Cultural Perspectives": "Cultural Perspectives",
+                "Therapeutic Applications": "Therapeutic Applications",
+                "Notable Works and Artists": "Notable Works and Artists",
+                "Use in Media": "Use in Media",
+                "Modern Interpretations": "Modern Interpretations",
+                "Practical Significance": "Practical Significance"
+            },
+            "de": {
+                "Introduction": "Einleitung",
+                "Music Psychology": "Musikpsychologie",
+                "Musical Characteristics": "Musikalische Merkmale",
+                "Cross-Genre Examples": "Genreübergreifende Beispiele",
+                "Cultural Perspectives": "Kulturelle Perspektiven",
+                "Therapeutic Applications": "Therapeutische Anwendungen",
+                "Notable Works and Artists": "Bedeutende Werke und Künstler",
+                "Use in Media": "Verwendung in Medien",
+                "Modern Interpretations": "Moderne Interpretationen",
+                "Practical Significance": "Praktische Bedeutung"
+            },
+            "es": {
+                "Introduction": "Introducción",
+                "Music Psychology": "Psicología musical",
+                "Musical Characteristics": "Características musicales",
+                "Cross-Genre Examples": "Ejemplos entre géneros",
+                "Cultural Perspectives": "Perspectivas culturales",
+                "Therapeutic Applications": "Aplicaciones terapéuticas",
+                "Notable Works and Artists": "Obras y artistas destacados",
+                "Use in Media": "Uso en medios",
+                "Modern Interpretations": "Interpretaciones modernas",
+                "Practical Significance": "Significado práctico"
+            },
+            "fr": {
+                "Introduction": "Introduction",
+                "Music Psychology": "Psychologie de la musique",
+                "Musical Characteristics": "Caractéristiques musicales",
+                "Cross-Genre Examples": "Exemples inter-genres",
+                "Cultural Perspectives": "Perspectives culturelles",
+                "Therapeutic Applications": "Applications thérapeutiques",
+                "Notable Works and Artists": "Œuvres et artistes notables",
+                "Use in Media": "Utilisation dans les médias",
+                "Modern Interpretations": "Interprétations modernes",
+                "Practical Significance": "Signification pratique"
+            },
+            "it": {
+                "Introduction": "Introduzione",
+                "Music Psychology": "Psicologia della musica",
+                "Musical Characteristics": "Caratteristiche musicali",
+                "Cross-Genre Examples": "Esempi cross-genre",
+                "Cultural Perspectives": "Prospettive culturali",
+                "Therapeutic Applications": "Applicazioni terapeutiche",
+                "Notable Works and Artists": "Opere e artisti di rilievo",
+                "Use in Media": "Uso nei media",
+                "Modern Interpretations": "Interpretazioni moderne",
+                "Practical Significance": "Significato pratico"
+            },
+            "pt": {
+                "Introduction": "Introdução",
+                "Music Psychology": "Psicologia da música",
+                "Musical Characteristics": "Características musicais",
+                "Cross-Genre Examples": "Exemplos entre gêneros",
+                "Cultural Perspectives": "Perspectivas culturais",
+                "Therapeutic Applications": "Aplicações terapêuticas",
+                "Notable Works and Artists": "Obras e artistas notáveis",
+                "Use in Media": "Uso na mídia",
+                "Modern Interpretations": "Interpretações modernas",
+                "Practical Significance": "Significância prática"
+            }
+        }
+        
+        section_titles = sections.get(language, sections["en"])
         base_limits = {
-            "Introduction": (2500, 3000),
-            "Music Psychology": (4500, 5000),
-            "Musical Characteristics": (4500, 5000),
-            "Cross-Genre Examples": (4500, 5000),
-            "Cultural Perspectives": (3500, 4000),
-            "Therapeutic Applications": (3500, 4000),
-            "Notable Works and Artists": (4000, 4500),
-            "Use in Media": (3000, 4500),
-            "Modern Interpretations": (3000, 3500),
-            "Practical Significance": (2500, 3000)
+            section_titles["Introduction"]: 1500,
+            section_titles["Music Psychology"]: 2000,
+            section_titles["Musical Characteristics"]: 2000,
+            section_titles["Cross-Genre Examples"]: 2000,
+            section_titles["Cultural Perspectives"]: 1500,
+            section_titles["Therapeutic Applications"]: 1500,
+            section_titles["Notable Works and Artists"]: 2000,
+            section_titles["Use in Media"]: 1500,
+            section_titles["Modern Interpretations"]: 1500,
+            section_titles["Practical Significance"]: 1500
         }
     elif "Seasonal" in category_type:  # Seasonal Genres
+        sections = {
+            "en": {
+                "Introduction": "Introduction",
+                "Cultural Tradition": "Cultural Tradition",
+                "Musical Characteristics": "Musical Characteristics",
+                "Classical Compositions": "Classical Compositions",
+                "Popular Music": "Popular Music",
+                "Festive Events": "Festive Events",
+                "Media Presence": "Media Presence",
+                "International Perspectives": "International Perspectives"
+            },
+            "de": {
+                "Introduction": "Einleitung",
+                "Cultural Tradition": "Kulturelle Tradition",
+                "Musical Characteristics": "Musikalische Merkmale",
+                "Classical Compositions": "Klassische Kompositionen",
+                "Popular Music": "Populäre Musik",
+                "Festive Events": "Festliche Veranstaltungen",
+                "Media Presence": "Medienpräsenz",
+                "International Perspectives": "Internationale Perspektiven"
+            },
+            "es": {
+                "Introduction": "Introducción",
+                "Cultural Tradition": "Tradición cultural",
+                "Musical Characteristics": "Características musicales",
+                "Classical Compositions": "Composiciones clásicas",
+                "Popular Music": "Música popular",
+                "Festive Events": "Eventos festivos",
+                "Media Presence": "Presencia en medios",
+                "International Perspectives": "Perspectivas internacionales"
+            },
+            "fr": {
+                "Introduction": "Introduction",
+                "Cultural Tradition": "Tradition culturelle",
+                "Musical Characteristics": "Caractéristiques musicales",
+                "Classical Compositions": "Compositions classiques",
+                "Popular Music": "Musique populaire",
+                "Festive Events": "Événements festifs",
+                "Media Presence": "Présence médiatique",
+                "International Perspectives": "Perspectives internationales"
+            },
+            "it": {
+                "Introduction": "Introduzione",
+                "Cultural Tradition": "Tradizione culturale",
+                "Musical Characteristics": "Caratteristiche musicali",
+                "Classical Compositions": "Composizioni classiche",
+                "Popular Music": "Musica popolare",
+                "Festive Events": "Eventi festivi",
+                "Media Presence": "Presenza nei media",
+                "International Perspectives": "Prospettive internazionali"
+            },
+        
+            "pt": {
+                "Introduction": "Introdução",
+                "Cultural Tradition": "Tradição cultural",
+                "Musical Characteristics": "Características musicais",
+                "Classical Compositions": "Composições clássicas",
+                "Popular Music": "Música popular",
+                "Festive Events": "Eventos festivos",
+                "Media Presence": "Presença na mídia",
+                "International Perspectives": "Perspectivas internacionais"
+            }
+        }
+        
+        section_titles = sections.get(language, sections["en"])
         base_limits = {
-            "Introduction": (2500, 3000),
-            "Cultural Tradition": (4500, 5000),
-            "Musical Characteristics": (4500, 5000),
-            "Classical Compositions": (4000, 5000),
-            "Popular Music": (4500, 5000),
-            "Festive Events": (3500, 4000),
-            "Media Presence": (3500, 4000),
-            "International Perspectives": (2500, 3000)
+            section_titles["Introduction"]: 1500,
+            section_titles["Cultural Tradition"]: 2000,
+            section_titles["Musical Characteristics"]: 2000,
+            section_titles["Classical Compositions"]: 2000,
+            section_titles["Popular Music"]: 2000,
+            section_titles["Festive Events"]: 1500,
+            section_titles["Media Presence"]: 1500,
+            section_titles["International Perspectives"]: 1500
         }
     else:  # Standard Genres
+        sections = {
+            "en": {
+                "Introduction": "Introduction",
+                "Historical Background": "Historical Background",
+                "Musical Characteristics": "Musical Characteristics",
+                "Subgenres and Variations": "Subgenres and Variations",
+                "Key Figures and Important Works": "Key Figures and Important Works",
+                "Technical Aspects": "Technical Aspects",
+                "Cultural Significance": "Cultural Significance",
+                "Performance and Live Culture": "Performance and Live Culture",
+                "Development and Evolution": "Development and Evolution",
+                "Legacy and Influence": "Legacy and Influence"
+            },
+            "de": {
+                "Introduction": "Einleitung",
+                "Historical Background": "Historischer Hintergrund",
+                "Musical Characteristics": "Musikalische Merkmale",
+                "Subgenres and Variations": "Subgenres und Variationen",
+                "Key Figures and Important Works": "Schlüsselfiguren und wichtige Werke",
+                "Technical Aspects": "Technische Aspekte",
+                "Cultural Significance": "Kulturelle Bedeutung",
+                "Performance and Live Culture": "Aufführung und Live-Kultur",
+                "Development and Evolution": "Entwicklung und Evolution",
+                "Legacy and Influence": "Vermächtnis und Einfluss"
+            },
+            "es": {
+                "Introduction": "Introducción",
+                "Historical Background": "Contexto histórico",
+                "Musical Characteristics": "Características musicales",
+                "Subgenres and Variations": "Subgéneros y variaciones",
+                "Key Figures and Important Works": "Figuras clave y obras importantes",
+                "Technical Aspects": "Aspectos técnicos",
+                "Cultural Significance": "Significado cultural",
+                "Performance and Live Culture": "Interpretación y cultura en vivo",
+                "Development and Evolution": "Desarrollo y evolución",
+                "Legacy and Influence": "Legado e influencia"
+            },
+            "fr": {
+                "Introduction": "Introduction",
+                "Historical Background": "Contexte historique",
+                "Musical Characteristics": "Caractéristiques musicales",
+                "Subgenres and Variations": "Sous-genres et variations",
+                "Key Figures and Important Works": "Figures clés et œuvres importantes",
+                "Technical Aspects": "Aspects techniques",
+                "Cultural Significance": "Signification culturelle",
+                "Performance and Live Culture": "Performance et culture live",
+                "Development and Evolution": "Développement et évolution",
+                "Legacy and Influence": "Héritage et influence"
+            },
+            "it": {
+                "Introduction": "Introduzione",
+                "Historical Background": "Contesto storico",
+                "Musical Characteristics": "Caratteristiche musicali",
+                "Subgenres and Variations": "Sottogeneri e variazioni",
+                "Key Figures and Important Works": "Figure chiave e opere importanti",
+                "Technical Aspects": "Aspetti tecnici",
+                "Cultural Significance": "Significato culturale",
+                "Performance and Live Culture": "Performance e cultura dal vivo",
+                "Development and Evolution": "Sviluppo ed evoluzione",
+                "Legacy and Influence": "Eredità e influenza"
+            },
+            "pt": {
+                "Introduction": "Introdução",
+                "Historical Background": "Contexto histórico",
+                "Musical Characteristics": "Características musicais",
+                "Subgenres and Variations": "Subgêneros e variações",
+                "Key Figures and Important Works": "Figuras-chave e obras importantes",
+                "Technical Aspects": "Aspectos técnicos",
+                "Cultural Significance": "Significância cultural",
+                "Performance and Live Culture": "Performance e cultura ao vivo",
+                "Development and Evolution": "Desenvolvimento e evolução",
+                "Legacy and Influence": "Legado e influência"
+            }
+        }
+        
+        section_titles = sections.get(language, sections["en"])
         base_limits = {
-            "Introduction": (2500, 3000),
-            "Historical Background": (3500, 4000),
-            "Musical Characteristics": (5000, 5500),
-            "Subgenres and Variations": (3000, 3500),
-            "Key Figures and Important Works": (5500, 6000),
-            "Technical Aspects": (3500, 4000),
-            "Cultural Significance": (4500, 5000),
-            "Performance and Live Culture": (3500, 4000),
-            "Development and Evolution": (3000, 3500),
-            "Legacy and Influence": (2000, 2500)
+            section_titles["Introduction"]: 1500,
+            section_titles["Historical Background"]: 2000,
+            section_titles["Musical Characteristics"]: 2000,
+            section_titles["Subgenres and Variations"]: 1500,
+            section_titles["Key Figures and Important Works"]: 2000,
+            section_titles["Technical Aspects"]: 1500,
+            section_titles["Cultural Significance"]: 2000,
+            section_titles["Performance and Live Culture"]: 1500,
+            section_titles["Development and Evolution"]: 1500,
+            section_titles["Legacy and Influence"]: 1500
         }
     
     # Anwenden des Sprachfaktors auf alle Limits
     adjusted_limits = {}
-    for section, (min_chars, max_chars) in base_limits.items():
-        adjusted_limits[section] = (
-            int(min_chars * factor),
-            int(max_chars * factor)
-        )
+    for section, min_chars in base_limits.items():
+        adjusted_limits[section] = int(min_chars * factor)
     
     return adjusted_limits
 
 def get_language_prompts(language):
     prompts = {
-        "ar": {
-            "style": "العربية",
-            "characteristics": "لغة فصحى معاصرة، أسلوب أدبي راقي، تعبيرات اصطلاحية مناسبة",
-            "prompt": """
-            قم بإنشاء محتوى للقسم '{section_name}' من فئة الموسيقى '{category}'.
-            
-            متطلبات مهمة:
-            1. اكتب بالعربية الفصحى المعاصرة الراقية
-            2. استخدم تعبيرات اصطلاحية وجمل متقنة
-            3. يجب أن يكون المحتوى بين {char_min} و {char_max} حرف
-            4. ركز فقط على الموسيقى العالمية
-            5. استخدم جملاً كاملة وهيكل فقرات واضح
-            6. يجب أن يكون النص سلساً وجذاباً
-            7. تجنب القوائم - استخدم فقرات متدفقة
-            8. استخدم انتقالات مناسبة بين الأفكار
-            9. أدرج السياق الثقافي عند الحاجة
-            10. حافظ على نبرة وأسلوب متناسقين
-            
-            مهم: عدد الأحرف الدقيق أمر حاسم - يجب أن يكون بين {char_min} و {char_max} حرف.
-            """
-        },
         "de": {
-            "style": "deutschen",
-            "characteristics": "längere, verschachtelte Sätze mit Nebensätzen, präzise Fachbegriffe, formellere Ausdrucksweise",
+            "style": "Akademisches Hochdeutsch",
+            "characteristics": "präzise Fachterminologie, komplexe Satzstrukturen, formelle Ausdrucksweise, musikwissenschaftliche Genauigkeit",
             "prompt": """
             Erstelle Inhalte für den Abschnitt '{section_name}' der Musikkategorie '{category}'.
             
-            WICHTIGE ANFORDERUNGEN:
-            1. Schreibe in einem flüssigen, natürlichen deutschen Stil
-            2. Verwende verschachtelte Sätze und präzise Fachbegriffe
-            3. Der Text MUSS zwischen {char_min} und {char_max} Zeichen lang sein
-            4. Konzentriere dich NUR auf internationale Musik
-            5. Nutze vollständige Sätze und eine klare Absatzstruktur
-            6. Der Text soll natürlich fließen und fesselnd sein
-            7. Vermeide Aufzählungen - nutze stattdessen fließende Absätze
-            8. Verwende passende Überleitungen zwischen den Ideen
-            9. Beziehe kulturellen Kontext mit ein
-            10. Behalte durchgehend einen einheitlichen Ton und Stil bei
+            SPRACHLICHE ANFORDERUNGEN:
+            1. Verwende ausschließlich standardisiertes Hochdeutsch
+            2. Nutze präzise musikwissenschaftliche Fachterminologie
+            3. Achte auf korrekte Grammatik, Rechtschreibung und Zeichensetzung
+            4. Vermeide Anglizismen und umgangssprachliche Ausdrücke
+            5. Verwende eine akademisch angemessene Ausdrucksweise
             
-            Wichtig: Die genaue Zeichenzahl ist entscheidend - sie muss zwischen {char_min} und {char_max} Zeichen liegen.
+            INHALTLICHE ANFORDERUNGEN:
+            1. Der Text MUSS mindestens {char_min} Zeichen lang sein
+            2. Konzentriere dich ausschließlich auf internationale Musik
+            3. Strukturiere den Text mit klaren, logischen Absätzen
+            4. Verwende komplexe, aber verständliche Satzstrukturen
+            5. Vermeide Aufzählungen zugunsten fließender Textpassagen
+            6. Integriere kulturhistorische Kontexte wo relevant
+            7. Nutze präzise musikalische Fachbegriffe
+            8. Stelle musiktheoretische Zusammenhänge klar dar
+            9. Verwende angemessene Überleitungen zwischen Absätzen
+            10. Wahre durchgehend einen akademischen Schreibstil
+            
+            KRITISCH: Die Mindestzeichenzahl von {char_min} ist zwingend einzuhalten.
             """
         },
         "en": {
-            "style": "English",
-            "characteristics": "clear and concise sentences, active voice, engaging tone",
+            "style": "Academic British English",
+            "characteristics": "precise musicological terminology, scholarly tone, complex sentence structures, formal academic style",
             "prompt": """
             Create content for the section '{section_name}' of the music category '{category}'.
             
-            IMPORTANT REQUIREMENTS:
-            1. Write in clear, engaging English
-            2. Use active voice and concise sentences
-            3. Content MUST be between {char_min} and {char_max} characters
-            4. Focus ONLY on international music
-            5. Use complete sentences and proper paragraph structure
-            6. Make the text flow naturally and be engaging
-            7. Avoid lists - use flowing paragraphs instead
-            8. Use appropriate transitions between ideas
-            9. Include cultural context when relevant
-            10. Maintain consistent tone and style throughout
+            LINGUISTIC REQUIREMENTS:
+            1. Use formal British English exclusively
+            2. Employ precise musicological terminology
+            3. Maintain impeccable grammar and syntax
+            4. Avoid colloquialisms and informal expressions
+            5. Use academic writing conventions
             
-            Important: The exact character count is crucial - must be between {char_min} and {char_max} characters.
+            CONTENT SPECIFICATIONS:
+            1. Text length MUST be at least {char_min} characters
+            2. Focus exclusively on international music
+            3. Structure content with clear, logical paragraphs
+            4. Employ complex yet comprehensible sentence structures
+            5. Avoid bullet points in favor of flowing prose
+            6. Integrate relevant cultural-historical contexts
+            7. Utilize accurate musical terminology
+            8. Articulate music-theoretical relationships clearly
+            9. Implement appropriate inter-paragraph transitions
+            10. Maintain consistent scholarly tone throughout
+            
+            CRITICAL: Character count MUST be at least {char_min}.
             """
         },
         "es": {
-            "style": "español",
-            "characteristics": "expresivo y fluido, uso del subjuntivo, frases descriptivas",
+            "style": "español académico",
+            "characteristics": "terminología musicológica precisa, estilo académico riguroso, estructuras sintácticas complejas",
             "prompt": """
-            Crea contenido para la sección '{section_name}' de la categoría musical '{category}'.
+            Elabore un contenido académico para la sección '{section_name}' de la categoría musical '{category}'.
             
-            REQUISITOS IMPORTANTES:
-            1. Escribe en español fluido y expresivo
-            2. Utiliza el subjuntivo y frases descriptivas
-            3. El contenido DEBE tener entre {char_min} y {char_max} caracteres
-            4. Céntrate SOLO en música internacional
-            5. Usa oraciones completas y estructura de párrafos adecuada
-            6. El texto debe fluir naturalmente y ser cautivador
-            7. Evita las listas - usa párrafos fluidos
-            8. Utiliza transiciones apropiadas entre ideas
-            9. Incluye contexto cultural cuando sea relevante
-            10. Mantén un tono y estilo consistentes
+            REQUISITOS LINGÜÍSTICOS:
+            1. Emplee un español académico riguroso
+            2. Utilice terminología musicológica precisa
+            3. Mantenga un estilo formal y científico
+            4. Adopte estructuras sintácticas complejas
+            5. Evite expresiones coloquiales y modismos
             
-            Importante: El conteo exacto de caracteres es crucial - debe estar entre {char_min} y {char_max} caracteres.
+            REQUISITOS DE CONTENIDO:
+            1. Respete estrictamente el mínimo de caracteres: {char_min}
+            2. Desarrolle un análisis académico de la música internacional
+            3. Estructure el texto con párrafos lógicamente articulados
+            4. Integre aspectos teóricos y contexto histórico
+            5. Privilegie la argumentación sobre la enumeración
+            6. Incorpore referencias culturales pertinentes
+            7. Aplique la terminología musical con precisión
+            8. Mantenga un registro académico constante
+            9. Utilice citas según las normas académicas
+            10. Preserve un enfoque analítico riguroso
+            
+            ESENCIAL: El recuento de caracteres debe ser al menos {char_min}.
             """
         },
         "fr": {
-            "style": "français",
-            "characteristics": "phrases élégantes, vocabulaire précis, style soutenu",
+            "style": "français académique",
+            "characteristics": "terminologie musicologique précise, style académique rigoureux, structures syntaxiques complexes",
             "prompt": """
-            Créez du contenu pour la section '{section_name}' de la catégorie musicale '{category}'.
+            Élaborez un contenu académique pour la section '{section_name}' de la catégorie musicale '{category}'.
             
-            EXIGENCES IMPORTANTES:
-            1. Écrivez en français élégant et soutenu
-            2. Utilisez un vocabulaire précis et des phrases élégantes
-            3. Le contenu DOIT contenir entre {char_min} et {char_max} caractères
-            4. Concentrez-vous UNIQUEMENT sur la musique internationale
-            5. Utilisez des phrases complètes et une structure de paragraphes claire
-            6. Le texte doit être fluide et captivant
-            7. Évitez les listes - utilisez des paragraphes fluides
-            8. Utilisez des transitions appropriées entre les idées
-            9. Incluez le contexte culturel lorsque c'est pertinent
-            10. Maintenez un ton et un style cohérents
+            EXIGENCES LINGUISTIQUES:
+            1. Employez un français académique rigoureux
+            2. Utilisez une terminologie musicologique précise
+            3. Maintenez un style formel et scientifique
+            4. Adoptez des structures syntaxiques complexes
+            5. Évitez les expressions familières et argotiques
             
-            Important: Le nombre exact de caractères est crucial - il doit être entre {char_min} et {char_max} caractères.
-            """
-        },
-        "ja": {
-            "style": "日本語",
-            "characteristics": "丁寧な表現、適切な敬語、自然な文章の流れ",
-            "prompt": """
-            音楽カテゴリー '{category}' の '{section_name}' セクションのコンテンツを作成してください。
+            EXIGENCES DE CONTENU:
+            1. Respectez strictement le minimum de caractères : {char_min}
+            2. Développez une analyse académique de la musique internationale
+            3. Structurez le texte avec des paragraphes logiquement articulés
+            4. Intégrez les aspects théoriques et le contexte historique
+            5. Privilégiez l'argumentation à l'énumération
+            6. Incorporez des références culturelles pertinentes
+            7. Appliquez la terminologie musicale avec précision
+            8. Maintenez un registre académique constant
+            9. Utilisez des citations selon les normes académiques
+            10. Préservez une approche analytique rigoureuse
             
-            重要な要件：
-            1. 丁寧で自然な日本語で書く
-            2. 適切な敬語と専門用語を使用
-            3. コンテンツは必ず {char_min} から {char_max} 文字の間にする
-            4. 国際音楽のみに焦点を当てる
-            5. 完全な文章と明確な段落構造を使用
-            6. 文章は自然に流れ、魅力的であること
-            7. 箇条書きを避け、流れるような段落を使用
-            8. アイデア間の適切な移行を使用
-            9. 関連する場合は文化的な文脈を含める
-            10. 一貫した調子とスタイルを維持する
-            
-            重要：正確な文字数が重要です - {char_min} から {char_max} 文字の間でなければなりません。
-            """
-        },
-        "ko": {
-            "style": "한국어",
-            "characteristics": "정중한 표현, 적절한 존댓말, 자연스러운 문장 흐름",
-            "prompt": """
-            음악 카테고리 '{category}'의 '{section_name}' 섹션에 대한 콘텐츠를 작성하세요.
-            
-            중요 요구사항:
-            1. 정중하고 자연스러운 한국어로 작성
-            2. 적절한 존댓말과 전문 용어 사용
-            3. 콘텐츠는 반드시 {char_min}자에서 {char_max}자 사이여야 함
-            4. 국제 음악에만 초점을 맞출 것
-            5. 완전한 문장과 명확한 단락 구조 사용
-            6. 글이 자연스럽게 흐르고 매력적이어야 함
-            7. 나열식을 피하고 유려한 단락 사용
-            8. 아이디어 간의 적절한 전환 사용
-            9. 관련된 경우 문화적 맥락 포함
-            10. 일관된 어조와 스타일 유지
-            
-            중요: 정확한 글자 수가 중요합니다 - {char_min}자에서 {char_max}자 사이여야 합니다.
+            ESSENTIEL : Le décompte des caractères doit être au moins {char_min}.
             """
         },
         "pt": {
-            "style": "português",
-            "characteristics": "linguagem fluida, uso apropriado do subjuntivo, expressões idiomáticas",
+            "style": "português académico",
+            "characteristics": "terminologia musicológica precisa, estilo académico rigoroso, estruturas sintáticas complexas, metodologia científica",
             "prompt": """
-            Crie conteúdo para a seção '{section_name}' da categoria musical '{category}'.
+            Elabore um conteúdo académico para a seção '{section_name}' da categoria musical '{category}'.
             
-            REQUISITOS IMPORTANTES:
-            1. Escreva em português fluido e expressivo
-            2. Use o subjuntivo e expressões idiomáticas apropriadas
-            3. O conteúdo DEVE ter entre {char_min} e {char_max} caracteres
-            4. Foque APENAS em música internacional
-            5. Use frases completas e estrutura clara de parágrafos
-            6. O texto deve fluir naturalmente e ser cativante
-            7. Evite listas - use parágrafos fluidos
-            8. Use transições apropriadas entre as ideias
-            9. Inclua contexto cultural quando relevante
-            10. Mantenha um tom e estilo consistentes
+            REQUISITOS LINGUÍSTICOS:
+            1. Utilize português académico rigoroso
+            2. Empregue terminologia musicológica precisa
+            3. Mantenha um estilo formal e científico
+            4. Adote estruturas sintáticas complexas
+            5. Evite expressões coloquiais e idiomáticas
+            6. Respeite as normas de citação académica
             
-            Importante: A contagem exata de caracteres é crucial - deve estar entre {char_min} e {char_max} caracteres.
-            """
-        },
-        "ru": {
-            "style": "русский",
-            "characteristics": "богатый словарный запас, сложные предложения, литературный стиль",
-            "prompt": """
-            Создайте контент для раздела '{section_name}' музыкальной категории '{category}'.
+            REQUISITOS DE CONTEÚDO:
+            1. Respeite rigorosamente o mínimo de caracteres: {char_min}
+            2. Desenvolva uma análise académica da música internacional
+            3. Estruture o texto com parágrafos logicamente articulados
+            4. Integre aspectos teóricos e contexto histórico
+            5. Privilegie a argumentação sobre a enumeração
+            6. Incorpore referências culturais pertinentes
+            7. Aplique a terminologia musical com precisão
+            8. Mantenha um registo académico constante
+            9. Utilize citações segundo as normas académicas
+            10. Preserve uma abordagem metodológica rigorosa
             
-            ВАЖНЫЕ ТРЕБОВАНИЯ:
-            1. Пишите на грамотном русском языке
-            2. Используйте богатый словарный запас и сложные предложения
-            3. Контент ДОЛЖЕН содержать от {char_min} до {char_max} символов
-            4. Сосредоточьтесь ТОЛЬКО на международной музыке
-            5. Используйте полные предложения и четкую структуру абзацев
-            6. Текст должен быть плавным и увлекательным
-            7. Избегайте списков - используйте плавные абзацы
-            8. Используйте подходящие переходы между идеями
-            9. Включайте культурный контекст, где это уместно
-            10. Поддерживайте последовательный тон и стиль
-            
-            Важно: Точное количество символов критично - должно быть между {char_min} и {char_max} символов.
-            """
-        },
-        "ar": {
-            "style": "العربية",
-            "characteristics": "لغة فصحى معاصرة، أسلوب أدبي راقي، تعبيرات اصطلاحية مناسبة",
-            "prompt": """
-            قم بإنشاء محتوى للقسم '{section_name}' من فئة الموسيقى '{category}'.
-            
-            متطلبات مهمة:
-            1. اكتب بالعربية الفصحى المعاصرة الراقية
-            2. استخدم تعبيرات اصطلاحية وجمل متقنة
-            3. يجب أن يكون المحتوى بين {char_min} و {char_max} حرف
-            4. ركز فقط على الموسيقى العالمية
-            5. استخدم جملاً كاملة وهيكل فقرات واضح
-            6. يجب أن يكون النص سلساً وجذاباً
-            7. تجنب القوائم - استخدم فقرات متدفقة
-            8. استخدم انتقالات مناسبة بين الأفكار
-            9. أدرج السياق الثقافي عند الحاجة
-            10. حافظ على نبرة وأسلوب متناسقين
-            
-            مهم: عدد الأحرف الدقيق أمر حاسم - يجب أن يكون بين {char_min} و {char_max} حرف.
+            ESSENCIAL: A contagem de caracteres deve ser pelo menos {char_min}.
             """
         },
         "it": {
-            "style": "italiano",
-            "characteristics": "stile elegante, frasi articolate, ricchezza lessicale",
+            "style": "italiano accademico",
+            "characteristics": "terminologia musicologica precisa, stile accademico rigoroso, strutture sintattiche complesse",
             "prompt": """
-            Crea contenuti per la sezione '{section_name}' della categoria musicale '{category}'.
+            Elabora un contenuto accademico per la sezione '{section_name}' della categoria musicale '{category}'.
             
-            REQUISITI IMPORTANTI:
-            1. Scrivi in italiano elegante e fluido
-            2. Usa un linguaggio ricco e frasi ben articolate
-            3. Il contenuto DEVE essere tra {char_min} e {char_max} caratteri
-            4. Concentrati SOLO sulla musica internazionale
-            5. Usa frasi complete e una struttura chiara dei paragrafi
-            6. Il testo deve scorrere naturalmente ed essere coinvolgente
-            7. Evita gli elenchi - usa paragrafi scorrevoli
-            8. Usa transizioni appropriate tra le idee
-            9. Includi il contesto culturale quando pertinente
-            10. Mantieni un tono e uno stile coerenti
+            REQUISITI LINGUISTICI:
+            1. Utilizza un italiano accademico rigoroso
+            2. Impiega terminologia musicologica precisa
+            3. Mantieni uno stile formale e scientifico
+            4. Adotta strutture sintattiche complesse
+            5. Evita espressioni colloquiali e gergali
+            6. Rispetta le norme di citazione accademica
             
-            Importante: Il conteggio esatto dei caratteri è cruciale - deve essere tra {char_min} e {char_max} caratteri.
+            REQUISITI CONTENUTISTICI:
+            1. Rispetta rigorosamente il minimo di caratteri: {char_min}
+            2. Sviluppa un'analisi accademica della musica internazionale
+            3. Struttura il testo con paragrafi logicamente concatenati
+            4. Integra aspetti teorici e contesto storico
+            5. Privilegia l'argomentazione rispetto all'elencazione
+            6. Incorpora riferimenti culturali pertinenti
+            7. Applica la terminologia musicale con precisione
+            8. Mantieni un registro accademico costante
+            9. Utilizza citazioni secondo gli standard accademici
+            10. Preserva un approccio metodologicamente rigoroso
+            
+            ESSENZIALE: Il conteggio dei caratteri deve essere almeno {char_min}.
             """
         },
-        "zh": {
-            "style": "中文",
-            "characteristics": "优雅的书面语，恰当的成语运用，流畅的表达方式",
-            "prompt": """
-            为音乐类别 '{category}' 的 '{section_name}' 部分创建内容。
-            
-            重要要求：
-            1. 使用优雅的书面中文写作
-            2. 恰当使用成语和专业术语
-            3. 内容必须在 {char_min} 到 {char_max} 字符之间
-            4. 仅关注国际音乐
-            5. 使用完整句子和清晰的段落结构
-            6. 文本应该流畅且引人入胜
-            7. 避免列表 - 使用流畅的段落
-            8. 使用适当的过渡连接想法
-            9. 在相关时包含文化背景
-            10. 保持一致的语气和风格
-            
-            重要：字符数的准确性至关重要 - 必须在 {char_min} 到 {char_max} 字符之间。
-            """
-        }
     }
     return prompts.get(language, prompts["en"])  # Default to English if language not found
 
@@ -641,19 +913,18 @@ def get_language_style_guide(language: str) -> Dict[str, str]:
     }
 
 def generate_section(category: str, language: str, section_name: str, 
-                   char_min: int, char_max: int) -> str:
+                   char_min: int) -> str:
     """Generate content for a specific section of a music category.
     
     Uses the Arli AI API to generate language-specific content that adheres
-    to style guidelines and length requirements. Includes retry logic for
-    handling API errors and content length mismatches.
+    to style guidelines and meets minimum length requirements. For longer sections,
+    splits the generation into multiple chunks and combines them.
     
     Args:
         category: Music category name
         language: ISO 639-1 language code
         section_name: Name of the section to generate
         char_min: Minimum character count for the content
-        char_max: Maximum character count for the content
         
     Returns:
         str: Generated content for the section
@@ -665,6 +936,25 @@ def generate_section(category: str, language: str, section_name: str,
     if not ARLI_API_KEY:
         raise ValueError("ARLI_API_KEY environment variable not set")
     
+    # Generate content in one go
+    return generate_section_chunk(
+        category=category,
+        language=language,
+        section_name=section_name,
+        char_min=char_min,
+        chunk_number=1,
+        total_chunks=1
+    )
+
+
+def generate_section_chunk(category: str, language: str, section_name: str,
+                         char_min: int, chunk_number: int,
+                         total_chunks: int) -> str:
+    """Generate a chunk of content for a section.
+    
+    Helper function that handles the actual API calls and retries for
+    generating a single chunk of content.
+    """
     headers = {
         "Authorization": f"Bearer {ARLI_API_KEY}",
         "Content-Type": "application/json"
@@ -673,28 +963,92 @@ def generate_section(category: str, language: str, section_name: str,
     style_guide = get_language_style_guide(language)
     language_prompts = get_language_prompts(language)
     
-    # Format the user prompt
-    user_prompt = language_prompts["prompt"].format(
+    # Add historical accuracy guidelines
+    historical_accuracy = """
+    Important historical guidelines:
+    - Ensure strict historical accuracy for the specific time period, genre, or region being discussed
+    - Only mention artists, bands, and cultural phenomena that were active/present during the relevant time period
+    - Pay careful attention to when specific music styles, technologies, and cultural movements emerged
+    - Be precise with dates and chronological order of events - never mention artists or developments before they emerged
+    - Consider the geographical and cultural context of musical developments
+    - Verify the accuracy of technological developments and their impact on music
+    - When discussing influences, ensure they are chronologically possible and historically accurate
+    - For decade-specific content, focus only on artists and trends that were actually prominent during that specific time
+    - Acknowledge regional variations in how musical styles developed and spread
+    - Consider the social and cultural context of the time period being discussed
+    - For country-specific content, focus primarily on artists who are actually from or significantly influenced that country's music scene
+    - For genre-specific content, only mention artists who genuinely contributed to or performed in that genre
+    - Respect and maintain the cultural authenticity of regional music styles and their development
+    - When discussing musical innovations, verify their historical emergence and adoption
+    - For cross-cultural influences, ensure they were actually possible given the historical context
+    - When mentioning music technology, verify it was available during the discussed time period
+    """
+
+    # Format the base prompt
+    base_prompt = language_prompts["prompt"].format(
         section_name=section_name,
         category=category,
-        char_min=char_min,
-        char_max=char_max
+        char_min=char_min
     )
     
-    # Try up to 3 times to get content with correct length
-    for attempt in range(3):
+    # Add historical guidelines for all content
+    base_prompt = historical_accuracy + "\n\n" + base_prompt
+    
+    # Add chunk-specific instructions if this is part of a multi-chunk section
+    if total_chunks > 1:
+        if chunk_number == 1:
+            base_prompt += f"\n\nThis is part {chunk_number} of {total_chunks}. Start with a strong opening."
+        elif chunk_number == total_chunks:
+            base_prompt += f"\n\nThis is part {chunk_number} of {total_chunks}. Provide a good conclusion."
+        else:
+            base_prompt += f"\n\nThis is part {chunk_number} of {total_chunks}. Continue the narrative smoothly."
+    
+    # Try up to 5 times with different strategies
+    max_attempts = 5
+    for attempt in range(max_attempts):
         try:
+            # Adjust temperature based on attempt number
+            if attempt == 0:
+                temperature = 0.7
+            elif attempt == 1:
+                temperature = 0.8
+            elif attempt == 2:
+                temperature = 0.6
+            elif attempt == 3:
+                temperature = 0.75
+            else:
+                temperature = 0.65
+            
+            # Set a generous max_tokens limit
+            max_tokens = 2000
+            
+            # Language-specific system prompts
+            language_system_prompts = {
+                "en": "You are an expert music historian writing in English. Use clear, engaging language suitable for English readers.",
+                "de": "Sie sind ein Musikhistoriker, der auf Deutsch schreibt. Verwenden Sie eine klare, ansprechende Sprache für deutschsprachige Leser.",
+                "es": "Eres un historiador musical que escribe en español. Utiliza un lenguaje claro y atractivo para lectores hispanohablantes.",
+                "fr": "Vous êtes un historien de la musique écrivant en français. Utilisez un langage clair et engageant pour les lecteurs francophones.",
+                "it": "Sei uno storico della musica che scrive in italiano. Usa un linguaggio chiaro e coinvolgente per i lettori italiani.",
+                "pt": "Você é um historiador musical escrevendo em português. Use linguagem clara e envolvente para leitores lusófonos."
+            }
+            
+            # Get language-specific system prompt, default to English if not found
+            system_prompt = language_system_prompts.get(language, language_system_prompts["en"])
+            
+            # Add language-specific style guide
+            base_prompt += f"\n\nStyle Guide:\n{style_guide['style']}\n{style_guide['characteristics']}"
+            
             data = {
-                "model": "Mistral-Nemo-12B-Instruct-2407",
+                "model": "Llama-3.3-70B-Instruct",
                 "messages": [
-                    {"role": "system", "content": f"You are an expert music historian and writer. Write in {language}. {style_guide}"},
-                    {"role": "user", "content": user_prompt}
+                    {"role": "system", "content": f"{system_prompt}\n{style_guide}"},
+                    {"role": "user", "content": base_prompt}
                 ],
-                "temperature": 0.7,
+                "temperature": temperature,
                 "repetition_penalty": 1.1,
                 "top_p": 0.9,
                 "top_k": 40,
-                "max_tokens": 2500,
+                "max_tokens": max_tokens,
                 "stream": False
             }
             
@@ -709,24 +1063,33 @@ def generate_section(category: str, language: str, section_name: str,
             
             content = response.json()["choices"][0]["message"]["content"].strip()
             
-            # Verify character count
+            # Check if content meets minimum length requirement
             char_count = len(content)
-            if char_min <= char_count <= char_max:
+            if char_count >= char_min:
                 return content
             
-            # If length is wrong, adjust the prompt for next attempt
-            if char_count < char_min:
-                user_prompt += f"\n\nThe previous response was too short ({char_count} chars). Please make it longer, aiming for {char_min}-{char_max} characters."
-            else:
-                user_prompt += f"\n\nThe previous response was too long ({char_count} chars). Please make it shorter, aiming for {char_min}-{char_max} characters."
+            # Content is too short, provide guidance for next attempt
+            base_prompt += f"\n\nThe text needs to be longer. Current: {char_count}, Target: at least {char_min} characters."
+            base_prompt += "\nPlease expand with more details and examples about:"
+            base_prompt += "\n- Historical developments and their significance"
+            base_prompt += "\n- Key artists and their contributions"
+            base_prompt += "\n- Cultural impact and lasting influence"
+            
+            # Add a short pause between attempts to avoid rate limiting
+            time.sleep(2)
                 
         except Exception as e:
-            if attempt == 2:  # Last attempt
-                raise e
-            print(f"  Attempt {attempt + 1} failed: {str(e)}")
+            if attempt == max_attempts - 1:  # Last attempt
+                error_msg = f"Failed to generate content chunk {chunk_number}/{total_chunks}\n"
+                error_msg += f"Section: {section_name}, Language: {language}\n"
+                error_msg += f"Error: {str(e)}"
+                raise ValueError(error_msg)
+            
+            print(f"  Attempt {attempt + 1} failed for chunk {chunk_number}/{total_chunks}: {str(e)}")
+            time.sleep(3)  # Add longer pause after an error
             continue
     
-    raise ValueError(f"Failed to generate content with correct length after 3 attempts")
+    raise ValueError(f"Failed to generate content chunk {chunk_number}/{total_chunks} with correct length after {max_attempts} attempts")
 
 def generate_content(category: str, language: str) -> str:
     """Generate or update content for a music category in a specific language.
@@ -749,6 +1112,9 @@ def generate_content(category: str, language: str) -> str:
     """
     section_limits = get_section_limits(category)
     
+    # Get the translated section titles for this language
+    translations = get_translated_sections(language)
+    
     # Check for existing content
     existing_content = load_existing_content(category, language)
     if existing_content:
@@ -761,36 +1127,43 @@ def generate_content(category: str, language: str) -> str:
         for line in existing_content.split('\n'):
             if line.startswith('## '):
                 if current_section:
-                    existing_sections[current_section] = '\n'.join(current_content)
+                    # Store with the original (untranslated) section name as key
+                    original_section = next((k for k, v in translations[language].items() if v == current_section), current_section)
+                    existing_sections[original_section] = '\n'.join(current_content)
                 current_section = line[3:].strip()
                 current_content = []
             elif current_section:
                 current_content.append(line)
         
         if current_section:
-            existing_sections[current_section] = '\n'.join(current_content)
+            # Store with the original (untranslated) section name as key
+            original_section = next((k for k, v in translations[language].items() if v == current_section), current_section)
+            existing_sections[original_section] = '\n'.join(current_content)
     else:
         existing_sections = {}
         # Create new file with frontmatter
         save_content(category, language, '', 'w')
     
     # Generate or skip each section
-    for section_name, (char_min, char_max) in section_limits.items():
+    for section_name, char_min in section_limits.items():
         if section_name in existing_sections:
-            print(f"  Skipping existing section: {section_name}")
+            print(f"  Skipping existing section: {translations[language].get(section_name, section_name)}")
             continue
             
-        print(f"  Generating section: {section_name}...")
+        print(f"  Generating section: {translations[language].get(section_name, section_name)}...")
         try:
-            section_content = generate_section(category, language, section_name, char_min, char_max)
-            content = f"\n## {section_name}\n\n{section_content}\n"
+            section_content = generate_section(category, language, section_name, char_min)
+            
+            # Use translated section title in the markdown
+            translated_title = translations[language].get(section_name, section_name)
+            content = f"\n## {translated_title}\n\n{section_content}\n"
             
             # Append the new section to the file
             save_content(category, language, content, 'a')
-            print(f"  ✓ Saved section: {section_name}")
+            print(f"  ✓ Saved section: {translations.get(section_name, section_name)}")
             
         except Exception as e:
-            print(f"  ✗ Error generating section {section_name}: {str(e)}")
+            print(f"  ✗ Error generating section {translations.get(section_name, section_name)}: {str(e)}")
             # Continue with next section on error
             continue
     
@@ -816,9 +1189,9 @@ def get_output_path(category: str, language: str) -> Path:
 def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[str]]:
     """Generate SEO metadata for a music category using AI.
     
-    Uses the Arli AI API to generate SEO-optimized title, description,
-    and keywords for a music category page. Includes fallback values
-    in case of API errors.
+    Uses the Arli AI API to generate language-specific, SEO-optimized title,
+    description, and keywords for a music category page. Adapts content
+    based on language-specific SEO best practices and cultural context.
     
     Args:
         category: Music category name
@@ -833,17 +1206,84 @@ def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[
     if not ARLI_API_KEY:
         raise ValueError("ARLI_API_KEY environment variable not set")
     
+    # Language-specific SEO guidelines
+    seo_guidelines = {
+        "en": {
+            "title_length": 60,
+            "desc_length": 155,
+            "style": "Direct and action-oriented",
+            "keyword_format": "Use natural phrases, include long-tail keywords",
+            "min_keywords": 5
+        },
+        "de": {
+            "title_length": 55,  # German words tend to be longer
+            "desc_length": 150,
+            "style": "Precise and formal",
+            "keyword_format": "Include compound words (Komposita) where appropriate",
+            "min_keywords": 5
+        },
+        "es": {
+            "title_length": 65,  # Spanish needs slightly more space
+            "desc_length": 160,
+            "style": "Engaging and conversational",
+            "keyword_format": "Include both singular and plural forms",
+            "min_keywords": 5
+        },
+        "fr": {
+            "title_length": 65,
+            "desc_length": 160,
+            "style": "Elegant and refined",
+            "keyword_format": "Consider gender variations in keywords",
+            "min_keywords": 5
+        },
+        "it": {
+            "title_length": 65,
+            "desc_length": 160,
+            "style": "Expressive and dynamic",
+            "keyword_format": "Include regional variations where relevant",
+            "min_keywords": 5
+        },
+        "pt": {
+            "title_length": 65,
+            "desc_length": 160,
+            "style": "Engaging and natural",
+            "keyword_format": "Include Brazilian and European Portuguese variations",
+            "min_keywords": 5
+        }
+    }
+    
+    # Get language-specific guidelines or use English defaults
+    guidelines = seo_guidelines.get(language, seo_guidelines["en"])
+    
     headers = {
         "Authorization": f"Bearer {ARLI_API_KEY}",
         "Content-Type": "application/json"
     }
     
-    prompt = f"""Generate SEO metadata for a music category page about {category} in {language}. The content should be in {language}.
+    # Get category type for context
+    category_type = get_category_type(category)
+    
+    # Get language-specific style guide
+    style_guide = get_language_style_guide(language)
+    
+    # Get translations for the category name and type
+    translations = get_translated_sections(language)
+    translated_category = translations.get(category, category)
+    translated_type = translations.get(category_type, category_type)
+    
+    prompt = f"""Generate SEO metadata for a music category page about {translated_category} in {language}.
+    This is a {translated_type} category. The content must be in {language} and follow these guidelines:
+    
+    Language Style: {style_guide.get('style', 'Natural and engaging')}
+    Title Length: Maximum {guidelines['title_length']} characters
+    Description Length: {guidelines['desc_length']} characters
+    Writing Style: {guidelines['style']}
+    Keyword Format: {guidelines['keyword_format']}
     
     Please provide:
-    1. An engaging, keyword-rich title (max 60 characters)
-    2. A compelling meta description (150-160 characters) that includes the main keywords and encourages clicks
-    3. A list of 5-7 relevant keywords/phrases for the category
+    1. An engaging, keyword-rich title that reflects the language style
+    2. A compelling meta description that includes main keywords and encourages clicks
+    3. A list of 5-7 relevant keywords/phrases specific to {language} speakers
     
     Format the response exactly like this:
     Title: [title]
@@ -852,9 +1292,9 @@ def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[
     """
     
     data = {
-        "model": "Mistral-Nemo-12B-Instruct-2407",
+        "model": "Llama-3.3-70B-Instruct",
         "messages": [
-            {"role": "system", "content": "You are an SEO expert specializing in music content."},
+            {"role": "system", "content": f"You are an SEO expert specializing in {language} music content optimization."},
             {"role": "user", "content": prompt}
         ],
         "temperature": 0.7,
@@ -865,38 +1305,111 @@ def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[
         "stream": False
     }
     
-    try:
-        response = requests.post(
-            "https://api.arliai.com/v1/chat/completions",
-            headers=headers,
-            json=data
-        )
-        
-        if response.status_code != 200:
-            raise Exception(f"API call failed: {response.text}")
-        
-        content = response.json()["choices"][0]["message"]["content"].strip()
-        
-        # Parse the response
-        lines = content.split('\n')
-        title = ''
-        description = ''
-        keywords = []
-        
-        for line in lines:
-            if line.startswith('Title:'):
-                title = line.replace('Title:', '').strip()
-            elif line.startswith('Description:'):
-                description = line.replace('Description:', '').strip()
-            elif line.startswith('Keywords:'):
-                keywords_str = line.replace('Keywords:', '').strip()
-                keywords = [k.strip() for k in keywords_str.split(',')]
-        
-        return title, description, keywords
-        
-    except Exception as e:
-        print(f"  Error generating SEO metadata: {str(e)}")
-        return category, f"{category} music category description", [category, "music"]
+    max_attempts = 5
+    for attempt in range(max_attempts):
+        try:
+            response = requests.post(
+                "https://api.arliai.com/v1/chat/completions",
+                headers=headers,
+                json=data
+            )
+            
+            if response.status_code != 200:
+                raise Exception(f"API call failed: {response.text}")
+            
+            content = response.json()["choices"][0]["message"]["content"].strip()
+            
+            # Parse the response
+            lines = content.split('\n')
+            title = ''
+            description = ''
+            keywords = []
+            
+            for line in lines:
+                if line.startswith('Title:'):
+                    title = line.replace('Title:', '').strip()
+                elif line.startswith('Description:'):
+                    description = line.replace('Description:', '').strip()
+                elif line.startswith('Keywords:'):
+                    keywords_str = line.replace('Keywords:', '').strip()
+                    keywords = [k.strip() for k in keywords_str.split(',')]
+            
+            # Ensure we have title, description and keywords
+            if not title or not description or not keywords:
+                print(f"\nRetrying due to missing metadata")
+                continue
+            
+            # Validate and truncate if necessary
+            guidelines = seo_guidelines.get(language, seo_guidelines["en"])
+            if len(title) > guidelines['title_length']:
+                title = title[:guidelines['title_length']].rsplit(' ', 1)[0]
+            
+            if len(description) > guidelines['desc_length']:
+                description = description[:guidelines['desc_length']].rsplit(' ', 1)[0] + '...'
+            
+            # Validate and ensure minimum required keywords
+            min_keywords = guidelines.get('min_keywords', 5)
+            
+            # Language-specific basic keywords
+            music_terms = {
+                'en': 'music',
+                'de': 'Musik',
+                'es': 'música',
+                'fr': 'musique',
+                'it': 'musica',
+                'pt': 'música'
+            }
+            music_term = music_terms.get(language, 'music')
+            
+            # Initialize basic keywords
+            basic_keywords = []
+            
+            if len(keywords) < min_keywords:
+                basic_keywords = [category, music_term, f"{category} {music_term}"]
+            
+            # For languages that read right-to-left (e.g., Arabic)
+            if language == 'ar':
+                basic_keywords.append(f"{music_term} {category}")
+            
+            # Use basic keywords as is
+            valid_basic_keywords = basic_keywords
+            
+            keywords.extend(valid_basic_keywords)
+            keywords = list(dict.fromkeys(keywords))  # Remove duplicates
+            
+            # If we have valid content, return it
+            return title, description, keywords
+            
+        except Exception as e:
+            print(f"Error in attempt {attempt + 1}: {str(e)}")
+            if attempt == max_attempts - 1:
+                # Language-specific fallback values
+                fallbacks = {
+                    "de": (f"{category} Musik", f"Entdecken Sie {category} Musik", [f"{category}", "Musik", f"{category} Musik"]),
+                    "es": (f"Música {category}", f"Descubre la música {category}", [f"{category}", "música", f"música {category}"]),
+                    "fr": (f"Musique {category}", f"Découvrez la musique {category}", [f"{category}", "musique", f"musique {category}"]),
+                    "it": (f"Musica {category}", f"Scopri la musica {category}", [f"{category}", "musica", f"musica {category}"]),
+                    "en": (f"{category} Music", f"Discover {category} Music", [f"{category}", "music", f"{category} music"]),
+                    "pt": (f"Música {category}", f"Descubra a música {category}", [f"{category}", "música", f"música {category}"])
+                }
+                
+                # Get fallback values for the current language, defaulting to English
+                title, description, keywords = fallbacks.get(language, fallbacks["en"])
+                
+                # Use English fallback if language not supported
+                if language not in fallbacks:
+                    title, description, keywords = fallbacks["en"]
+                    
+                # Use the keywords as is
+                valid_keywords = keywords
+                
+                # If no keywords, use English fallback
+                if not valid_keywords:
+                    valid_keywords = fallbacks["en"][2]
+                
+                return title, description, valid_keywords
+            
+            time.sleep(1)  # Short delay before retrying
 
 def create_frontmatter(category: str, language: str) -> str:
     """Create YAML frontmatter for a music category markdown file.

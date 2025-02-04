@@ -79,11 +79,6 @@ Supported Languages:
 - French (fr)
 - Italian (it)
 - Portuguese (pt)
-- Chinese (zh)
-- Japanese (ja)
-- Korean (ko)
-- Arabic (ar)
-- Russian (ru)
 
 Features:
 - Smart field handling:
@@ -402,17 +397,12 @@ The resulting ThumbHash is typically 30-100 bytes per image, making it efficient
 The `scripts/generate_content.py` script is used to generate structured content about music categories in multiple languages. It supports the following features:
 
 #### Supported Languages
-- Arabic (ar)
 - German (de)
 - English (en) - Base language
 - Spanish (es)
 - French (fr)
 - Italian (it)
-- Japanese (ja)
-- Korean (ko)
 - Portuguese (pt)
-- Russian (ru)
-- Chinese (zh)
 
 #### Content Structure
 The script generates content for different types of music categories:
@@ -434,7 +424,7 @@ Each category includes multiple sections with specified character limits, such a
 #### Language Adaptation
 The script automatically adjusts content length based on language characteristics:
 - German text is allocated 110% of the base length
-- Asian languages (Chinese, Japanese) are allocated 70% due to their more concise nature
+
 - Other languages have specific adjustments based on their typical text lengths
 
 #### Setup and Installation
