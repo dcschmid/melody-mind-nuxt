@@ -40,7 +40,7 @@ def get_available_languages() -> List[str]:
     Returns:
         List[str]: ISO 639-1 language codes for supported languages
     """
-    return ["de", "en", "es", "fr", "it", "pt"]
+    return ["da", "de", "en", "es", "fi", "fr", "it", "nl", "pt", "sv"]
 
 def read_categories() -> List[str]:
     """Read and parse music categories from the categories file.
@@ -136,6 +136,18 @@ def get_translated_sections(language: str = "en") -> Dict[str, Dict[str, str]]:
             "Development and Evolution": "Development and Evolution",
             "Legacy and Influence": "Legacy and Influence"
         },
+        "da": {
+            "Introduction": "Introduktion",
+            "Historical Background": "Historisk Baggrund",
+            "Musical Characteristics": "Musikalske Karakteristika",
+            "Subgenres and Variations": "Undergenrer og Variationer",
+            "Key Figures and Important Works": "Nøglefigurer og Vigtige Værker",
+            "Technical Aspects": "Tekniske Aspekter",
+            "Cultural Significance": "Kulturel Betydning",
+            "Performance and Live Culture": "Performance og Live-Kultur",
+            "Development and Evolution": "Udvikling og Evolution",
+            "Legacy and Influence": "Arv og Indflydelse"
+        },
         "de": {
             "Introduction": "Einleitung",
             "Historical Background": "Entstehungsgeschichte",
@@ -159,6 +171,18 @@ def get_translated_sections(language: str = "en") -> Dict[str, Dict[str, str]]:
             "Performance and Live Culture": "Cultura de Actuación en Vivo",
             "Development and Evolution": "Desarrollo y Evolución",
             "Legacy and Influence": "Legado e Influencia"
+        },
+        "fi": {
+            "Introduction": "Johdanto",
+            "Historical Background": "Historiallinen Tausta",
+            "Musical Characteristics": "Musiikilliset Ominaisuudet",
+            "Subgenres and Variations": "Alagenret ja Variaatiot",
+            "Key Figures and Important Works": "Keskeiset Hahmot ja Tärkeät Teokset",
+            "Technical Aspects": "Tekniset Näkökohdat",
+            "Cultural Significance": "Kulttuurinen Merkitys",
+            "Performance and Live Culture": "Esitys- ja Live-Kulttuuri",
+            "Development and Evolution": "Kehitys ja Evoluutio",
+            "Legacy and Influence": "Perintö ja Vaikutus"
         },
         "fr": {
             "Introduction": "Introduction",
@@ -184,6 +208,18 @@ def get_translated_sections(language: str = "en") -> Dict[str, Dict[str, str]]:
             "Development and Evolution": "Sviluppo ed Evoluzione",
             "Legacy and Influence": "Eredità e Influenza"
         },
+        "nl": {
+            "Introduction": "Inleiding",
+            "Historical Background": "Historische Achtergrond",
+            "Musical Characteristics": "Muzikale Kenmerken",
+            "Subgenres and Variations": "Subgenres en Variaties",
+            "Key Figures and Important Works": "Belangrijke Figuren en Werken",
+            "Technical Aspects": "Technische Aspecten",
+            "Cultural Significance": "Culturele Betekenis",
+            "Performance and Live Culture": "Performance en Live Cultuur",
+            "Development and Evolution": "Ontwikkeling en Evolutie",
+            "Legacy and Influence": "Erfenis en Invloed"
+        },
         "pt": {
             "Introduction": "Introdução",
             "Historical Background": "História e Origens",
@@ -196,18 +232,34 @@ def get_translated_sections(language: str = "en") -> Dict[str, Dict[str, str]]:
             "Development and Evolution": "Desenvolvimento e Evolução",
             "Legacy and Influence": "Legado e Influência"
         },
+        "sv": {
+            "Introduction": "Introduktion",
+            "Historical Background": "Historisk Bakgrund",
+            "Musical Characteristics": "Musikaliska Egenskaper",
+            "Subgenres and Variations": "Undergenrer och Variationer",
+            "Key Figures and Important Works": "Nyckelfigurer och Viktiga Verk",
+            "Technical Aspects": "Tekniska Aspekter",
+            "Cultural Significance": "Kulturell Betydelse",
+            "Performance and Live Culture": "Framförande och Live-Kultur",
+            "Development and Evolution": "Utveckling och Evolution",
+            "Legacy and Influence": "Arv och Inflytande"
+        },
     }
     return sections.get(language, sections["en"])  # Default to English if language not found
 
 def get_section_limits(category, language="en"):
     # Language-specific adjustment factors for text length
     language_factors = {
+        "da": 1.05, # Danish slightly longer than English
         "de": 1.1,  # German tends to be longer
         "en": 1.0,  # English as base
         "es": 1.05, # Spanish slightly longer than English
+        "fi": 1.1,  # Finnish tends to be longer
         "fr": 1.05, # French slightly longer than English
         "it": 1.05, # Italian slightly longer than English
+        "nl": 1.05, # Dutch slightly longer than English
         "pt": 1.05, # Portuguese slightly longer than English
+        "sv": 1.05, # Swedish slightly longer than English
     }
     
     # Default factor if language not defined
@@ -683,6 +735,18 @@ def get_section_limits(category, language="en"):
                 "Development and Evolution": "Sviluppo ed evoluzione",
                 "Legacy and Influence": "Eredità e influenza"
             },
+            "nl": {
+                "Introduction": "Inleiding",
+                "Historical Background": "Historische Achtergrond",
+                "Musical Characteristics": "Muzikale Kenmerken",
+                "Subgenres and Variations": "Subgenres en Variaties",
+                "Key Figures and Important Works": "Belangrijke Figuren en Werken",
+                "Technical Aspects": "Technische Aspecten",
+                "Cultural Significance": "Culturele Betekenis",
+                "Performance and Live Culture": "Uitvoering en Live Cultuur",
+                "Development and Evolution": "Ontwikkeling en Evolutie",
+                "Legacy and Influence": "Erfenis en Invloed"
+            },
             "pt": {
                 "Introduction": "Introdução",
                 "Historical Background": "Contexto histórico",
@@ -720,6 +784,62 @@ def get_section_limits(category, language="en"):
 
 def get_language_prompts(language):
     prompts = {
+        "da": {
+            "style": "Akademisk dansk",
+            "characteristics": "præcis musikologisk terminologi, akademisk tone, komplekse sætningsstrukturer",
+            "prompt": """
+            Opret indhold til sektionen '{section_name}' i musikkategorien '{category}'.
+            
+            SPROGLIGE KRAV:
+            1. Brug udelukkende akademisk dansk
+            2. Anvend præcis musikologisk terminologi
+            3. Oprethold korrekt grammatik og syntaks
+            4. Undgå talesprog og uformelle udtryk
+            5. Brug akademiske skrivkonventioner
+            
+            INDHOLDSKRAV:
+            1. Teksten SKAL være mindst {char_min} tegn
+            2. Fokuser udelukkende på international musik
+            3. Strukturer indholdet med klare, logiske afsnit
+            4. Brug komplekse men forståelige sætningsstrukturer
+            5. Undgå punktopstillinger til fordel for flydende tekst
+            6. Integrer relevante kulturhistoriske kontekster
+            7. Brug præcis musikalsk terminologi
+            8. Artikuler musikkteoretiske sammenhænge klart
+            9. Implementer passende overgange mellem afsnit
+            10. Bevar en konsistent akademisk tone
+            
+            KRITISK: Antallet af tegn SKAL være mindst {char_min}.
+            """
+        },
+        "nl": {
+            "style": "Academisch Nederlands",
+            "characteristics": "nauwkeurige musicologische terminologie, wetenschappelijke toon, complexe zinsstructuren",
+            "prompt": """
+            Maak inhoud voor de sectie '{section_name}' in de muziekcategorie '{category}'.
+            
+            TAALKUNDIGE VEREISTEN:
+            1. Gebruik uitsluitend academisch Nederlands
+            2. Hanteer nauwkeurige musicologische terminologie
+            3. Handhaaf correcte grammatica en syntax
+            4. Vermijd spreektaal en informele uitdrukkingen
+            5. Gebruik academische schrijfconventies
+            
+            INHOUDELIJKE VEREISTEN:
+            1. De tekst MOET minimaal {char_min} tekens bevatten
+            2. Focus uitsluitend op internationale muziek
+            3. Structureer de inhoud met duidelijke, logische alinea's
+            4. Gebruik complexe maar begrijpelijke zinsstructuren
+            5. Vermijd opsommingen ten gunste van vloeiende tekst
+            6. Integreer relevante cultuurhistorische contexten
+            7. Gebruik nauwkeurige muzikale terminologie
+            8. Articuleer muziektheoretische verbanden helder
+            9. Implementeer passende overgangen tussen alinea's
+            10. Behoud een consistente wetenschappelijke toon
+            
+            KRITISCH: Het aantal tekens MOET minimaal {char_min} zijn.
+            """
+        },
         "de": {
             "style": "Akademisches Hochdeutsch",
             "characteristics": "präzise Fachterminologie, komplexe Satzstrukturen, formelle Ausdrucksweise, musikwissenschaftliche Genauigkeit",
@@ -804,6 +924,34 @@ def get_language_prompts(language):
             ESENCIAL: El recuento de caracteres debe ser al menos {char_min}.
             """
         },
+        "fi": {
+            "style": "Akateeminen suomi",
+            "characteristics": "tarkka musikologinen terminologia, tieteellinen sävy, monimutkaiset lauserakenteet",
+            "prompt": """
+            Luo sisältöä musiikkikategorian '{category}' osioon '{section_name}'.
+            
+            KIELELLISET VAATIMUKSET:
+            1. Käytä yksinomaan akateemista suomea
+            2. Käytä tarkkaa musikologista terminologiaa
+            3. Ylläpidä moitteetonta kielioppia ja lauserakennetta
+            4. Vältä puhekielisyyksiä ja epämuodollisia ilmaisuja
+            5. Käytä akateemisia kirjoituskonventioita
+            
+            SISÄLTÖVAATIMUKSET:
+            1. Tekstin pituuden TÄYTYY olla vähintään {char_min} merkkiä
+            2. Keskity yksinomaan kansainväliseen musiikkiin
+            3. Jäsennä sisältö selkeillä, loogisilla kappaleilla
+            4. Käytä monimutkaisia mutta ymmärrettäviä lauserakenteita
+            5. Vältä luetteloita suosien sujuvaa proosaa
+            6. Integroi relevantit kulttuurihistorialliset kontekstit
+            7. Käytä tarkkaa musiikillista terminologiaa
+            8. Artikuloi musiikkiteoreettiset suhteet selkeästi
+            9. Toteuta asianmukaiset kappaleiden väliset siirtymät
+            10. Ylläpidä johdonmukaista tieteellistä sävyä
+            
+            KRIITTINEN: Merkkimäärän TÄYTYY olla vähintään {char_min}.
+            """
+        },
         "fr": {
             "style": "français académique",
             "characteristics": "terminologie musicologique précise, style académique rigoureux, structures syntaxiques complexes",
@@ -829,36 +977,7 @@ def get_language_prompts(language):
             9. Utilisez des citations selon les normes académiques
             10. Préservez une approche analytique rigoureuse
             
-            ESSENTIEL : Le décompte des caractères doit être au moins {char_min}.
-            """
-        },
-        "pt": {
-            "style": "português académico",
-            "characteristics": "terminologia musicológica precisa, estilo académico rigoroso, estruturas sintáticas complexas, metodologia científica",
-            "prompt": """
-            Elabore um conteúdo académico para a seção '{section_name}' da categoria musical '{category}'.
-            
-            REQUISITOS LINGUÍSTICOS:
-            1. Utilize português académico rigoroso
-            2. Empregue terminologia musicológica precisa
-            3. Mantenha um estilo formal e científico
-            4. Adote estruturas sintáticas complexas
-            5. Evite expressões coloquiais e idiomáticas
-            6. Respeite as normas de citação académica
-            
-            REQUISITOS DE CONTEÚDO:
-            1. Respeite rigorosamente o mínimo de caracteres: {char_min}
-            2. Desenvolva uma análise académica da música internacional
-            3. Estruture o texto com parágrafos logicamente articulados
-            4. Integre aspectos teóricos e contexto histórico
-            5. Privilegie a argumentação sobre a enumeração
-            6. Incorpore referências culturais pertinentes
-            7. Aplique a terminologia musical com precisão
-            8. Mantenha um registo académico constante
-            9. Utilize citações segundo as normas académicas
-            10. Preserve uma abordagem metodológica rigorosa
-            
-            ESSENCIAL: A contagem de caracteres deve ser pelo menos {char_min}.
+            ESSENTIEL : Le nombre de caractères doit être au moins {char_min}.
             """
         },
         "it": {
@@ -869,28 +988,112 @@ def get_language_prompts(language):
             
             REQUISITI LINGUISTICI:
             1. Utilizza un italiano accademico rigoroso
-            2. Impiega terminologia musicologica precisa
+            2. Impiega una terminologia musicologica precisa
             3. Mantieni uno stile formale e scientifico
             4. Adotta strutture sintattiche complesse
-            5. Evita espressioni colloquiali e gergali
-            6. Rispetta le norme di citazione accademica
+            5. Evita espressioni colloquiali e idiomatiche
             
-            REQUISITI CONTENUTISTICI:
+            REQUISITI DI CONTENUTO:
             1. Rispetta rigorosamente il minimo di caratteri: {char_min}
             2. Sviluppa un'analisi accademica della musica internazionale
-            3. Struttura il testo con paragrafi logicamente concatenati
+            3. Struttura il testo con paragrafi logicamente articolati
             4. Integra aspetti teorici e contesto storico
-            5. Privilegia l'argomentazione rispetto all'elencazione
+            5. Privilegia l'argomentazione rispetto all'enumerazione
             6. Incorpora riferimenti culturali pertinenti
             7. Applica la terminologia musicale con precisione
             8. Mantieni un registro accademico costante
-            9. Utilizza citazioni secondo gli standard accademici
-            10. Preserva un approccio metodologicamente rigoroso
+            9. Utilizza citazioni secondo le norme accademiche
+            10. Preserva un approccio analitico rigoroso
             
             ESSENZIALE: Il conteggio dei caratteri deve essere almeno {char_min}.
             """
         },
+        "nl": {
+            "style": "Academisch Nederlands",
+            "characteristics": "nauwkeurige musicologische terminologie, wetenschappelijke toon, complexe zinsstructuren",
+            "prompt": """
+            Maak inhoud voor de sectie '{section_name}' van de muziekcategorie '{category}'.
+            
+            TAALKUNDIGE VEREISTEN:
+            1. Gebruik uitsluitend academisch Nederlands
+            2. Hanteer nauwkeurige musicologische terminologie
+            3. Handhaaf foutloze grammatica en syntaxis
+            4. Vermijd spreektaal en informele uitdrukkingen
+            5. Gebruik academische schrijfconventies
+            
+            INHOUDELIJKE SPECIFICATIES:
+            1. Tekstlengte MOET minimaal {char_min} tekens zijn
+            2. Focus uitsluitend op internationale muziek
+            3. Structureer inhoud met duidelijke, logische alinea's
+            4. Gebruik complexe maar begrijpelijke zinsstructuren
+            5. Vermijd opsommingen ten gunste van vloeiend proza
+            6. Integreer relevante cultuurhistorische contexten
+            7. Gebruik nauwkeurige muzikale terminologie
+            8. Articuleer muziektheoretische relaties duidelijk
+            9. Implementeer passende overgangen tussen alinea's
+            10. Handhaaf een consistente wetenschappelijke toon
+            
+            KRITISCH: Het aantal tekens MOET minimaal {char_min} zijn.
+            """
+        },
+        "pt": {
+            "style": "português académico",
+            "characteristics": "terminologia musicológica precisa, estilo académico rigoroso, estruturas sintáticas complexas, metodologia científica",
+            "prompt": """
+            Elabore um conteúdo acadêmico para a seção '{section_name}' da categoria musical '{category}'.
+            
+            REQUISITOS LINGUÍSTICOS:
+            1. Empregue um português acadêmico rigoroso
+            2. Utilize terminologia musicológica precisa
+            3. Mantenha um estilo formal e científico
+            4. Adote estruturas sintáticas complexas
+            5. Evite expressões coloquiais e modismos
+            
+            REQUISITOS DE CONTEÚDO:
+            1. Respeite estritamente o mínimo de caracteres: {char_min}
+            2. Desenvolva uma análise acadêmica da música internacional
+            3. Estruture o texto com parágrafos logicamente articulados
+            4. Integre aspectos teóricos e contexto histórico
+            5. Privilegie a argumentação sobre a enumeração
+            6. Incorpore referências culturais pertinentes
+            7. Aplique a terminologia musical com precisão
+            8. Mantenha um registro acadêmico constante
+            9. Utilize citações segundo as normas acadêmicas
+            10. Preserve uma abordagem analítica rigorosa
+            
+            ESSENCIAL: A contagem de caracteres deve ser pelo menos {char_min}.
+            """
+        },
+        "sv": {
+            "style": "Akademisk svenska",
+            "characteristics": "precis musikologisk terminologi, vetenskaplig ton, komplexa meningsstrukturer",
+            "prompt": """
+            Skapa innehåll för sektionen '{section_name}' i musikkategorin '{category}'.
+            
+            SPRÅKLIGA KRAV:
+            1. Använd uteslutande akademisk svenska
+            2. Använd precis musikologisk terminologi
+            3. Upprätthåll korrekt grammatik och syntax
+            4. Undvik talspåk och informella uttryck
+            5. Använd akademiska skrivkonventioner
+            
+            INNEHÅLLSKRAV:
+            1. Texten MÅSTE vara minst {char_min} tecken
+            2. Fokusera uteslutande på internationell musik
+            3. Strukturera innehållet med tydliga, logiska stycken
+            4. Använd komplexa men förståeliga meningsstrukturer
+            5. Undvik punktlistor till förmån för flödande text
+            6. Integrera relevanta kulturhistoriska sammanhang
+            7. Använd precis musikalisk terminologi
+            8. Artikulera musikteoretiska samband tydligt
+            9. Implementera lämpliga övergångar mellan stycken
+            10. Behåll en konsekvent vetenskaplig ton
+            
+            KRITISKT: Antalet tecken MÅSTE vara minst {char_min}.
+            """
+        }
     }
+        
     return prompts.get(language, prompts["en"])  # Default to English if language not found
 
 def get_language_style_guide(language: str) -> Dict[str, str]:
