@@ -109,7 +109,7 @@ def get_category_type(category: str) -> str:
                     return title
     return "Genres"  # default to genres if not found
 
-def get_translated_sections(language: str = "en") -> Dict[str, Dict[str, str]]:
+def get_translated_sections(language: str = "en") -> Dict[str, str]:
     """Get section headers translated into the specified language.
     
     Provides a mapping of standard section headers to their translations
@@ -120,10 +120,16 @@ def get_translated_sections(language: str = "en") -> Dict[str, Dict[str, str]]:
         language: ISO 639-1 language code (default: "en")
         
     Returns:
-        Dict[str, Dict[str, str]]: Nested dictionary mapping section names
-        to their translations in different languages
+        Dict[str, str]: Dictionary mapping English section names to their translations
+        in the specified language
+        
+    Raises:
+        ValueError: If translations for the specified language are not available
     """
-    sections = {
+    if language not in get_available_languages():
+        raise ValueError(f"Language {language} is not supported")
+        
+    translations = {
         "en": {
             "Introduction": "Introduction",
             "Historical Background": "Historical Background",
@@ -245,7 +251,10 @@ def get_translated_sections(language: str = "en") -> Dict[str, Dict[str, str]]:
             "Legacy and Influence": "Arv och Inflytande"
         },
     }
-    return sections.get(language, sections["en"])  # Default to English if language not found
+    if language not in translations:
+        raise ValueError(f"Translations not available for language: {language}")
+        
+    return translations[language]
 
 def get_section_limits(category, language="en"):
     # Language-specific adjustment factors for text length
@@ -278,18 +287,13 @@ def get_section_limits(category, language="en"):
                 "Political and Social Background": "Political and Social Background",
                 "Musical Developments": "Musical Developments",
                 "Musical Diversity and Subgenres": "Musical Diversity and Subgenres",
-                "Rhythm and Style": "Rhythm and Style",
                 "Key Artists and Albums": "Key Artists and Albums",
                 "Technical and Economic Aspects": "Technical and Economic Aspects",
-                "Technological Innovations": "Technological Innovations",
-                "Musical Innovation and New Markets": "Musical Innovation and New Markets",
-                "Cultural Dimensions": "Cultural Dimensions",
+                "Musical Innovation and Markets": "Musical Innovation and Markets",
+                "Cultural Impact": "Cultural Impact",
                 "Festivals and Live Culture": "Festivals and Live Culture",
                 "Lyrics and Themes": "Lyrics and Themes",
-                "Subcultures and Fashion": "Subcultures and Fashion",
-                "Legacy and Outlook": "Legacy and Outlook",
-                "Cultural Significance": "Cultural Significance",
-                "Lasting Influences": "Lasting Influences",
+                "Legacy and Influences": "Legacy and Influences",
                 "Conclusion": "Conclusion"
             },
             "de": {
@@ -297,18 +301,13 @@ def get_section_limits(category, language="en"):
                 "Political and Social Background": "Politischer und sozialer Hintergrund",
                 "Musical Developments": "Musikalische Entwicklungen",
                 "Musical Diversity and Subgenres": "Musikalische Vielfalt und Subgenres",
-                "Rhythm and Style": "Rhythmus und Stil",
                 "Key Artists and Albums": "Wichtige Künstler und Alben",
                 "Technical and Economic Aspects": "Technische und wirtschaftliche Aspekte",
-                "Technological Innovations": "Technologische Innovationen",
-                "Musical Innovation and New Markets": "Musikalische Innovation und neue Märkte",
-                "Cultural Dimensions": "Kulturelle Dimensionen",
+                "Musical Innovation and Markets": "Musikalische Innovation und Märkte",
+                "Cultural Impact": "Kulturelle Auswirkungen",
                 "Festivals and Live Culture": "Festivals und Live-Kultur",
                 "Lyrics and Themes": "Liedtexte und Themen",
-                "Subcultures and Fashion": "Subkulturen und Mode",
-                "Legacy and Outlook": "Vermächtnis und Ausblick",
-                "Cultural Significance": "Kulturelle Bedeutung",
-                "Lasting Influences": "Bleibende Einflüsse",
+                "Legacy and Influences": "Vermächtnis und Einflüsse",
                 "Conclusion": "Fazit"
             },
             "es": {
@@ -316,15 +315,14 @@ def get_section_limits(category, language="en"):
                 "Political and Social Background": "Contexto político y social",
                 "Musical Developments": "Desarrollos musicales",
                 "Musical Diversity and Subgenres": "Diversidad musical y subgéneros",
-                "Rhythm and Style": "Ritmo y estilo",
                 "Key Artists and Albums": "Artistas y álbumes principales",
                 "Technical and Economic Aspects": "Aspectos técnicos y económicos",
-                "Technological Innovations": "Innovaciones tecnológicas",
-                "Musical Innovation and New Markets": "Innovación musical y nuevos mercados",
-                "Cultural Dimensions": "Dimensiones culturales",
+                "Musical Innovation and Markets": "Innovación musical y mercados",
+                "Cultural Impact": "Impacto cultural",
                 "Festivals and Live Culture": "Festivales y cultura en vivo",
                 "Lyrics and Themes": "Letras y temas",
-                "Subcultures and Fashion": "Subculturas y moda",
+                "Legacy and Influences": "Legado e influencias",
+                "Conclusion": "Conclusión",
                 "Legacy and Outlook": "Legado y perspectivas",
                 "Cultural Significance": "Significado cultural",
                 "Lasting Influences": "Influencias duraderas",
@@ -335,18 +333,13 @@ def get_section_limits(category, language="en"):
                 "Political and Social Background": "Contexte politique et social",
                 "Musical Developments": "Développements musicaux",
                 "Musical Diversity and Subgenres": "Diversité musicale et sous-genres",
-                "Rhythm and Style": "Rythme et style",
                 "Key Artists and Albums": "Artistes et albums majeurs",
                 "Technical and Economic Aspects": "Aspects techniques et économiques",
-                "Technological Innovations": "Innovations technologiques",
-                "Musical Innovation and New Markets": "Innovation musicale et nouveaux marchés",
-                "Cultural Dimensions": "Dimensions culturelles",
+                "Musical Innovation and Markets": "Innovation musicale et marchés",
+                "Cultural Impact": "Impact culturel",
                 "Festivals and Live Culture": "Festivals et culture live",
                 "Lyrics and Themes": "Paroles et thèmes",
-                "Subcultures and Fashion": "Sous-cultures et mode",
-                "Legacy and Outlook": "Héritage et perspectives",
-                "Cultural Significance": "Importance culturelle",
-                "Lasting Influences": "Influences durables",
+                "Legacy and Influences": "Héritage et influences",
                 "Conclusion": "Conclusion"
             },
             "it": {
@@ -354,18 +347,13 @@ def get_section_limits(category, language="en"):
                 "Political and Social Background": "Contesto politico e sociale",
                 "Musical Developments": "Sviluppi musicali",
                 "Musical Diversity and Subgenres": "Diversità musicale e sottogeneri",
-                "Rhythm and Style": "Ritmo e stile",
                 "Key Artists and Albums": "Artisti e album principali",
                 "Technical and Economic Aspects": "Aspetti tecnici ed economici",
-                "Technological Innovations": "Innovazioni tecnologiche",
-                "Musical Innovation and New Markets": "Innovazione musicale e nuovi mercati",
-                "Cultural Dimensions": "Dimensioni culturali",
+                "Musical Innovation and Markets": "Innovazione musicale e mercati",
+                "Cultural Impact": "Impatto culturale",
                 "Festivals and Live Culture": "Festival e cultura dal vivo",
                 "Lyrics and Themes": "Testi e temi",
-                "Subcultures and Fashion": "Sottoculture e moda",
-                "Legacy and Outlook": "Eredità e prospettive",
-                "Cultural Significance": "Significato culturale",
-                "Lasting Influences": "Influenze durature",
+                "Legacy and Influences": "Eredità e influenze",
                 "Conclusion": "Conclusione"
             },
             "pt": {
@@ -373,20 +361,71 @@ def get_section_limits(category, language="en"):
                 "Political and Social Background": "Contexto político e social",
                 "Musical Developments": "Desenvolvimentos musicais",
                 "Musical Diversity and Subgenres": "Diversidade musical e subgêneros",
-                "Rhythm and Style": "Ritmo e estilo",
                 "Key Artists and Albums": "Artistas e álbuns principais",
                 "Technical and Economic Aspects": "Aspectos técnicos e econômicos",
-                "Technological Innovations": "Inovações tecnológicas",
-                "Musical Innovation and New Markets": "Inovação musical e novos mercados",
-                "Cultural Dimensions": "Dimensões culturais",
+                "Musical Innovation and Markets": "Inovação musical e mercados",
+                "Cultural Impact": "Impacto cultural",
                 "Festivals and Live Culture": "Festivais e cultura ao vivo",
                 "Lyrics and Themes": "Letras e temas",
-                "Subcultures and Fashion": "Subculturas e moda",
-                "Legacy and Outlook": "Legado e perspectivas",
-                "Cultural Significance": "Significado cultural",
-                "Lasting Influences": "Influências duradouras",
+                "Legacy and Influences": "Legado e influências",
                 "Conclusion": "Conclusão"
             },
+            "da": {
+                "Introduction": "Introduktion",
+                "Political and Social Background": "Politisk og social baggrund",
+                "Musical Developments": "Musikalsk udvikling",
+                "Musical Diversity and Subgenres": "Musikalsk mangfoldighed og undergenrer",
+                "Key Artists and Albums": "Nøglekunstnere og albums",
+                "Technical and Economic Aspects": "Tekniske og økonomiske aspekter",
+                "Musical Innovation and Markets": "Musikalsk innovation og markeder",
+                "Cultural Impact": "Kulturel påvirkning",
+                "Festivals and Live Culture": "Festivaler og livekultur",
+                "Lyrics and Themes": "Tekster og temaer",
+                "Legacy and Influences": "Arv og påvirkninger",
+                "Conclusion": "Konklusion"
+            },
+            "nl": {
+                "Introduction": "Inleiding",
+                "Political and Social Background": "Politieke en sociale achtergrond",
+                "Musical Developments": "Muzikale ontwikkelingen",
+                "Musical Diversity and Subgenres": "Muzikale diversiteit en subgenres",
+                "Key Artists and Albums": "Belangrijke artiesten en albums",
+                "Technical and Economic Aspects": "Technische en economische aspecten",
+                "Musical Innovation and Markets": "Muzikale innovatie en markten",
+                "Cultural Impact": "Culturele impact",
+                "Festivals and Live Culture": "Festivals en livecultuur",
+                "Lyrics and Themes": "Teksten en thema's",
+                "Legacy and Influences": "Erfenis en invloeden",
+                "Conclusion": "Conclusie"
+            },
+            "sv": {
+                "Introduction": "Introduktion",
+                "Political and Social Background": "Politisk och social bakgrund",
+                "Musical Developments": "Musikalisk utveckling",
+                "Musical Diversity and Subgenres": "Musikalisk mångfald och undergenrer",
+                "Key Artists and Albums": "Viktiga artister och album",
+                "Technical and Economic Aspects": "Tekniska och ekonomiska aspekter",
+                "Musical Innovation and Markets": "Musikalisk innovation och marknader",
+                "Cultural Impact": "Kulturell påverkan",
+                "Festivals and Live Culture": "Festivaler och livekultur",
+                "Lyrics and Themes": "Texter och teman",
+                "Legacy and Influences": "Arv och influenser",
+                "Conclusion": "Slutsats"
+            },
+            "fi": {
+                "Introduction": "Johdanto",
+                "Political and Social Background": "Poliittinen ja sosiaalinen tausta",
+                "Musical Developments": "Musiikillinen kehitys",
+                "Musical Diversity and Subgenres": "Musiikillinen monimuotoisuus ja alagenret",
+                "Key Artists and Albums": "Tärkeät artistit ja albumit",
+                "Technical and Economic Aspects": "Tekniset ja taloudelliset näkökohdat",
+                "Musical Innovation and Markets": "Musiikillinen innovaatio ja markkinat",
+                "Cultural Impact": "Kulttuurinen vaikutus",
+                "Festivals and Live Culture": "Festivaalit ja livekulttuuri",
+                "Lyrics and Themes": "Sanoitukset ja teemat",
+                "Legacy and Influences": "Perintö ja vaikutteet",
+                "Conclusion": "Yhteenveto"
+            }
         }
         
         # Get the section titles for the current language
@@ -396,22 +435,169 @@ def get_section_limits(category, language="en"):
         base_limits = {
             section_titles["Introduction"]: 1500,
             section_titles["Political and Social Background"]: 2000,
-            section_titles["Musical Developments"]: 1000,
+            section_titles["Musical Developments"]: 2000,
             section_titles["Musical Diversity and Subgenres"]: 2000,
-            section_titles["Rhythm and Style"]: 1500,
-            section_titles["Key Artists and Albums"]: 2000,
-            section_titles["Technical and Economic Aspects"]: 800,
-            section_titles["Technological Innovations"]: 1500,
-            section_titles["Musical Innovation and New Markets"]: 1500,
-            section_titles["Cultural Dimensions"]: 800,
+            section_titles["Key Artists and Albums"]: 2500,
+            section_titles["Technical and Economic Aspects"]: 1500,
+            section_titles["Musical Innovation and Markets"]: 2000,
+            section_titles["Cultural Impact"]: 2000,
             section_titles["Festivals and Live Culture"]: 1500,
             section_titles["Lyrics and Themes"]: 1500,
-            section_titles["Subcultures and Fashion"]: 1500,
-            section_titles["Legacy and Outlook"]: 800,
-            section_titles["Cultural Significance"]: 1500,
-            section_titles["Lasting Influences"]: 1500,
+            section_titles["Legacy and Influences"]: 2000,
             section_titles["Conclusion"]: 1000
         }
+    elif "Instruments" in category_type:  # Musical Instruments
+        sections = {
+            "en": {
+                "Introduction": "Introduction",
+                "History and Development": "History and Development",
+                "Construction and Design": "Construction and Design",
+                "Playing Technique": "Playing Technique",
+                "Notable Players": "Notable Players",
+                "Musical Genres": "Musical Genres",
+                "Cultural Significance": "Cultural Significance",
+                "Modern Applications": "Modern Applications",
+                "Learning and Education": "Learning and Education",
+                "Variations and Related Instruments": "Variations and Related Instruments",
+                "Conclusion": "Conclusion"
+            },
+            "de": {
+                "Introduction": "Einleitung",
+                "History and Development": "Geschichte und Entwicklung",
+                "Construction and Design": "Konstruktion und Design",
+                "Playing Technique": "Spieltechnik",
+                "Notable Players": "Bekannte Interpreten",
+                "Musical Genres": "Musikalische Genres",
+                "Cultural Significance": "Kulturelle Bedeutung",
+                "Modern Applications": "Moderne Anwendungen",
+                "Learning and Education": "Lernen und Unterricht",
+                "Variations and Related Instruments": "Variationen und verwandte Instrumente",
+                "Conclusion": "Fazit"
+            },
+            "es": {
+                "Introduction": "Introducción",
+                "History and Development": "Historia y desarrollo",
+                "Construction and Design": "Construcción y diseño",
+                "Playing Technique": "Técnica de ejecución",
+                "Notable Players": "Intérpretes destacados",
+                "Musical Genres": "Géneros musicales",
+                "Cultural Significance": "Importancia cultural",
+                "Modern Applications": "Aplicaciones modernas",
+                "Learning and Education": "Aprendizaje y enseñanza",
+                "Variations and Related Instruments": "Variaciones e instrumentos relacionados",
+                "Conclusion": "Conclusión"
+            },
+            "fr": {
+                "Introduction": "Introduction",
+                "History and Development": "Histoire et développement",
+                "Construction and Design": "Construction et conception",
+                "Playing Technique": "Technique de jeu",
+                "Notable Players": "Interprètes notables",
+                "Musical Genres": "Genres musicaux",
+                "Cultural Significance": "Importance culturelle",
+                "Modern Applications": "Applications modernes",
+                "Learning and Education": "Apprentissage et enseignement",
+                "Variations and Related Instruments": "Variations et instruments apparentés",
+                "Conclusion": "Conclusion"
+            },
+            "it": {
+                "Introduction": "Introduzione",
+                "History and Development": "Storia e sviluppo",
+                "Construction and Design": "Costruzione e design",
+                "Playing Technique": "Tecnica di esecuzione",
+                "Notable Players": "Interpreti di rilievo",
+                "Musical Genres": "Generi musicali",
+                "Cultural Significance": "Importanza culturale",
+                "Modern Applications": "Applicazioni moderne",
+                "Learning and Education": "Apprendimento e insegnamento",
+                "Variations and Related Instruments": "Variazioni e strumenti correlati",
+                "Conclusion": "Conclusione"
+            },
+            "pt": {
+                "Introduction": "Introdução",
+                "History and Development": "História e desenvolvimento",
+                "Construction and Design": "Construção e design",
+                "Playing Technique": "Técnica de execução",
+                "Notable Players": "Instrumentistas notáveis",
+                "Musical Genres": "Gêneros musicais",
+                "Cultural Significance": "Significado cultural",
+                "Modern Applications": "Aplicações modernas",
+                "Learning and Education": "Aprendizagem e educação",
+                "Variations and Related Instruments": "Variações e instrumentos relacionados",
+                "Conclusion": "Conclusão"
+            },
+            "da": {
+                "Introduction": "Introduktion",
+                "History and Development": "Historie og udvikling",
+                "Construction and Design": "Konstruktion og design",
+                "Playing Technique": "Spilleteknik",
+                "Notable Players": "Kendte udøvere",
+                "Musical Genres": "Musikalske genrer",
+                "Cultural Significance": "Kulturel betydning",
+                "Modern Applications": "Moderne anvendelser",
+                "Learning and Education": "Læring og undervisning",
+                "Variations and Related Instruments": "Variationer og beslægtede instrumenter",
+                "Conclusion": "Konklusion"
+            },
+            "nl": {
+                "Introduction": "Inleiding",
+                "History and Development": "Geschiedenis en ontwikkeling",
+                "Construction and Design": "Constructie en ontwerp",
+                "Playing Technique": "Speeltechniek",
+                "Notable Players": "Bekende uitvoerenden",
+                "Musical Genres": "Muziekgenres",
+                "Cultural Significance": "Culturele betekenis",
+                "Modern Applications": "Moderne toepassingen",
+                "Learning and Education": "Leren en onderwijs",
+                "Variations and Related Instruments": "Variaties en verwante instrumenten",
+                "Conclusion": "Conclusie"
+            },
+            "sv": {
+                "Introduction": "Introduktion",
+                "History and Development": "Historia och utveckling",
+                "Construction and Design": "Konstruktion och design",
+                "Playing Technique": "Spelteknik",
+                "Notable Players": "Kända utövare",
+                "Musical Genres": "Musikgenrer",
+                "Cultural Significance": "Kulturell betydelse",
+                "Modern Applications": "Moderna tillämpningar",
+                "Learning and Education": "Lärande och undervisning",
+                "Variations and Related Instruments": "Variationer och relaterade instrument",
+                "Conclusion": "Slutsats"
+            },
+            "fi": {
+                "Introduction": "Johdanto",
+                "History and Development": "Historia ja kehitys",
+                "Construction and Design": "Rakenne ja suunnittelu",
+                "Playing Technique": "Soittotekniikka",
+                "Notable Players": "Tunnetut soittajat",
+                "Musical Genres": "Musiikkigenret",
+                "Cultural Significance": "Kulttuurinen merkitys",
+                "Modern Applications": "Modernit sovellukset",
+                "Learning and Education": "Oppiminen ja opetus",
+                "Variations and Related Instruments": "Variaatiot ja lähisoittimet",
+                "Conclusion": "Yhteenveto"
+            }
+        }
+
+        # Get the section titles for the current language
+        section_titles = sections.get(language, sections["en"])
+
+        # Define character limits for each section
+        return {
+            section_titles["Introduction"]: 1500,
+            section_titles["History and Development"]: 2000,
+            section_titles["Construction and Design"]: 2000,
+            section_titles["Playing Technique"]: 2000,
+            section_titles["Notable Players"]: 2000,
+            section_titles["Musical Genres"]: 1500,
+            section_titles["Cultural Significance"]: 1500,
+            section_titles["Modern Applications"]: 1500,
+            section_titles["Learning and Education"]: 1500,
+            section_titles["Variations and Related Instruments"]: 1500,
+            section_titles["Conclusion"]: 1000
+        }
+
     elif "Countries" in category_type:  # Countries and Regional Genres
         sections = {
             "en": {
@@ -492,6 +678,58 @@ def get_section_limits(category, language="en"):
                 "International Connections": "Conexões internacionais",
                 "Current Trends and Future": "Tendências atuais e futuro"
             },
+            "da": {
+                "Introduction": "Introduktion",
+                "Historical and Cultural Context": "Historisk og kulturel kontekst",
+                "Traditional Music": "Traditionel musik",
+                "Modern Music Development": "Moderne musikudvikling",
+                "Notable Artists and Bands": "Bemærkelsesværdige kunstnere og bands",
+                "Music Industry and Infrastructure": "Musikindustri og infrastruktur",
+                "Live Music and Events": "Livekoncerter og begivenheder",
+                "Media and Promotion": "Medier og promovering",
+                "Education and Support": "Uddannelse og støtte",
+                "International Connections": "Internationale forbindelser",
+                "Current Trends and Future": "Aktuelle tendenser og fremtid"
+            },
+            "nl": {
+                "Introduction": "Inleiding",
+                "Historical and Cultural Context": "Historische en culturele context",
+                "Traditional Music": "Traditionele muziek",
+                "Modern Music Development": "Moderne muziekontwikkeling",
+                "Notable Artists and Bands": "Opmerkelijke artiesten en bands",
+                "Music Industry and Infrastructure": "Muziekindustrie en infrastructuur",
+                "Live Music and Events": "Live muziek en evenementen",
+                "Media and Promotion": "Media en promotie",
+                "Education and Support": "Opleiding en ondersteuning",
+                "International Connections": "Internationale verbindingen",
+                "Current Trends and Future": "Huidige trends en toekomst"
+            },
+            "sv": {
+                "Introduction": "Introduktion",
+                "Historical and Cultural Context": "Historisk och kulturell kontext",
+                "Traditional Music": "Traditionell musik",
+                "Modern Music Development": "Modern musikutveckling",
+                "Notable Artists and Bands": "Framstående artister och band",
+                "Music Industry and Infrastructure": "Musikindustri och infrastruktur",
+                "Live Music and Events": "Livemusik och evenemang",
+                "Media and Promotion": "Media och marknadsföring",
+                "Education and Support": "Utbildning och stöd",
+                "International Connections": "Internationella kontakter",
+                "Current Trends and Future": "Aktuella trender och framtid"
+            },
+            "fi": {
+                "Introduction": "Johdanto",
+                "Historical and Cultural Context": "Historiallinen ja kulttuurinen konteksti",
+                "Traditional Music": "Perinteinen musiikki",
+                "Modern Music Development": "Modernin musiikin kehitys",
+                "Notable Artists and Bands": "Merkittävät artistit ja yhtyet",
+                "Music Industry and Infrastructure": "Musiikkiteollisuus ja infrastruktuuri",
+                "Live Music and Events": "Live-musiikki ja tapahtumat",
+                "Media and Promotion": "Media ja markkinointi",
+                "Education and Support": "Koulutus ja tuki",
+                "International Connections": "Kansainväliset yhteydet",
+                "Current Trends and Future": "Nykyiset trendit ja tulevaisuus"
+            },
         }
         
         section_titles = sections.get(language, sections["en"])
@@ -548,7 +786,7 @@ def get_section_limits(category, language="en"):
             },
             "fr": {
                 "Introduction": "Introduction",
-                "Music Psychology": "Psychologie de la musique",
+                "Music Psychology": "Psychologie musicale",
                 "Musical Characteristics": "Caractéristiques musicales",
                 "Cross-Genre Examples": "Exemples inter-genres",
                 "Cultural Perspectives": "Perspectives culturelles",
@@ -560,19 +798,19 @@ def get_section_limits(category, language="en"):
             },
             "it": {
                 "Introduction": "Introduzione",
-                "Music Psychology": "Psicologia della musica",
+                "Music Psychology": "Psicologia musicale",
                 "Musical Characteristics": "Caratteristiche musicali",
-                "Cross-Genre Examples": "Esempi cross-genre",
+                "Cross-Genre Examples": "Esempi tra generi",
                 "Cultural Perspectives": "Prospettive culturali",
                 "Therapeutic Applications": "Applicazioni terapeutiche",
-                "Notable Works and Artists": "Opere e artisti di rilievo",
+                "Notable Works and Artists": "Opere e artisti notevoli",
                 "Use in Media": "Uso nei media",
                 "Modern Interpretations": "Interpretazioni moderne",
                 "Practical Significance": "Significato pratico"
             },
             "pt": {
                 "Introduction": "Introdução",
-                "Music Psychology": "Psicologia da música",
+                "Music Psychology": "Psicologia musical",
                 "Musical Characteristics": "Características musicais",
                 "Cross-Genre Examples": "Exemplos entre gêneros",
                 "Cultural Perspectives": "Perspectivas culturais",
@@ -580,8 +818,56 @@ def get_section_limits(category, language="en"):
                 "Notable Works and Artists": "Obras e artistas notáveis",
                 "Use in Media": "Uso na mídia",
                 "Modern Interpretations": "Interpretações modernas",
-                "Practical Significance": "Significância prática"
-            }
+                "Practical Significance": "Significado prático"
+            },
+            "da": {
+                "Introduction": "Introduktion",
+                "Music Psychology": "Musikpsykologi",
+                "Musical Characteristics": "Musikalske karakteristika",
+                "Cross-Genre Examples": "Eksempler på tværs af genrer",
+                "Cultural Perspectives": "Kulturelle perspektiver",
+                "Therapeutic Applications": "Terapeutiske anvendelser",
+                "Notable Works and Artists": "Bemærkelsesværdige værker og kunstnere",
+                "Use in Media": "Brug i medier",
+                "Modern Interpretations": "Moderne fortolkninger",
+                "Practical Significance": "Praktisk betydning"
+            },
+            "nl": {
+                "Introduction": "Inleiding",
+                "Music Psychology": "Muziekpsychologie",
+                "Musical Characteristics": "Muzikale kenmerken",
+                "Cross-Genre Examples": "Voorbeelden over genres heen",
+                "Cultural Perspectives": "Culturele perspectieven",
+                "Therapeutic Applications": "Therapeutische toepassingen",
+                "Notable Works and Artists": "Opmerkelijke werken en artiesten",
+                "Use in Media": "Gebruik in media",
+                "Modern Interpretations": "Moderne interpretaties",
+                "Practical Significance": "Praktische betekenis"
+            },
+            "sv": {
+                "Introduction": "Introduktion",
+                "Music Psychology": "Musikpsykologi",
+                "Musical Characteristics": "Musikaliska egenskaper",
+                "Cross-Genre Examples": "Exempel över genregränser",
+                "Cultural Perspectives": "Kulturella perspektiv",
+                "Therapeutic Applications": "Terapeutiska tillämpningar",
+                "Notable Works and Artists": "Framstående verk och artister",
+                "Use in Media": "Användning i media",
+                "Modern Interpretations": "Moderna tolkningar",
+                "Practical Significance": "Praktisk betydelse"
+            },
+            "fi": {
+                "Introduction": "Johdanto",
+                "Music Psychology": "Musiikkipsykologia",
+                "Musical Characteristics": "Musiikilliset ominaisuudet",
+                "Cross-Genre Examples": "Esimerkkejä eri genreistä",
+                "Cultural Perspectives": "Kulttuuriset näkökulmat",
+                "Therapeutic Applications": "Terapeuttiset sovellukset",
+                "Notable Works and Artists": "Merkittävät teokset ja artistit",
+                "Use in Media": "Käyttö mediassa",
+                "Modern Interpretations": "Modernit tulkinnat",
+                "Practical Significance": "Käytännön merkitys"
+            },
         }
         
         section_titles = sections.get(language, sections["en"])
@@ -649,7 +935,6 @@ def get_section_limits(category, language="en"):
                 "Media Presence": "Presenza nei media",
                 "International Perspectives": "Prospettive internazionali"
             },
-        
             "pt": {
                 "Introduction": "Introdução",
                 "Cultural Tradition": "Tradição cultural",
@@ -659,6 +944,46 @@ def get_section_limits(category, language="en"):
                 "Festive Events": "Eventos festivos",
                 "Media Presence": "Presença na mídia",
                 "International Perspectives": "Perspectivas internacionais"
+            },
+            "da": {
+                "Introduction": "Introduktion",
+                "Cultural Tradition": "Kulturel tradition",
+                "Musical Characteristics": "Musikalske karakteristika",
+                "Classical Compositions": "Klassiske kompositioner",
+                "Popular Music": "Populær musik",
+                "Festive Events": "Festlige begivenheder",
+                "Media Presence": "Tilstedeværelse i medierne",
+                "International Perspectives": "Internationale perspektiver"
+            },
+            "nl": {
+                "Introduction": "Inleiding",
+                "Cultural Tradition": "Culturele traditie",
+                "Musical Characteristics": "Muzikale kenmerken",
+                "Classical Compositions": "Klassieke composities",
+                "Popular Music": "Populaire muziek",
+                "Festive Events": "Feestelijke evenementen",
+                "Media Presence": "Aanwezigheid in de media",
+                "International Perspectives": "Internationale perspectieven"
+            },
+            "sv": {
+                "Introduction": "Introduktion",
+                "Cultural Tradition": "Kulturell tradition",
+                "Musical Characteristics": "Musikaliska egenskaper",
+                "Classical Compositions": "Klassiska kompositioner",
+                "Popular Music": "Populärmusik",
+                "Festive Events": "Festliga evenemang",
+                "Media Presence": "Medienärvaro",
+                "International Perspectives": "Internationella perspektiv"
+            },
+            "fi": {
+                "Introduction": "Johdanto",
+                "Cultural Tradition": "Kulttuuriperinne",
+                "Musical Characteristics": "Musiikilliset ominaisuudet",
+                "Classical Compositions": "Klassiset sävellykset",
+                "Popular Music": "Populaarimusiikki",
+                "Festive Events": "Juhlatapahtumat",
+                "Media Presence": "Medianäkyvyys",
+                "International Perspectives": "Kansainväliset näkökulmat"
             }
         }
         
@@ -735,18 +1060,6 @@ def get_section_limits(category, language="en"):
                 "Development and Evolution": "Sviluppo ed evoluzione",
                 "Legacy and Influence": "Eredità e influenza"
             },
-            "nl": {
-                "Introduction": "Inleiding",
-                "Historical Background": "Historische Achtergrond",
-                "Musical Characteristics": "Muzikale Kenmerken",
-                "Subgenres and Variations": "Subgenres en Variaties",
-                "Key Figures and Important Works": "Belangrijke Figuren en Werken",
-                "Technical Aspects": "Technische Aspecten",
-                "Cultural Significance": "Culturele Betekenis",
-                "Performance and Live Culture": "Uitvoering en Live Cultuur",
-                "Development and Evolution": "Ontwikkeling en Evolutie",
-                "Legacy and Influence": "Erfenis en Invloed"
-            },
             "pt": {
                 "Introduction": "Introdução",
                 "Historical Background": "Contexto histórico",
@@ -758,7 +1071,55 @@ def get_section_limits(category, language="en"):
                 "Performance and Live Culture": "Performance e cultura ao vivo",
                 "Development and Evolution": "Desenvolvimento e evolução",
                 "Legacy and Influence": "Legado e influência"
-            }
+            },
+            "da": {
+                "Introduction": "Introduktion",
+                "Historical Background": "Historisk baggrund",
+                "Musical Characteristics": "Musikalske karakteristika",
+                "Subgenres and Variations": "Undergenrer og variationer",
+                "Key Figures and Important Works": "Nøglepersoner og vigtige værker",
+                "Technical Aspects": "Tekniske aspekter",
+                "Cultural Significance": "Kulturel betydning",
+                "Performance and Live Culture": "Optræden og livekultur",
+                "Development and Evolution": "Udvikling og evolution",
+                "Legacy and Influence": "Arv og indflydelse"
+            },
+            "nl": {
+                "Introduction": "Inleiding",
+                "Historical Background": "Historische achtergrond",
+                "Musical Characteristics": "Muzikale kenmerken",
+                "Subgenres and Variations": "Subgenres en variaties",
+                "Key Figures and Important Works": "Belangrijke figuren en werken",
+                "Technical Aspects": "Technische aspecten",
+                "Cultural Significance": "Culturele betekenis",
+                "Performance and Live Culture": "Uitvoering en livecultuur",
+                "Development and Evolution": "Ontwikkeling en evolutie",
+                "Legacy and Influence": "Erfenis en invloed"
+            },
+            "sv": {
+                "Introduction": "Introduktion",
+                "Historical Background": "Historisk bakgrund",
+                "Musical Characteristics": "Musikaliska egenskaper",
+                "Subgenres and Variations": "Undergenrer och variationer",
+                "Key Figures and Important Works": "Nyckelfigurer och viktiga verk",
+                "Technical Aspects": "Tekniska aspekter",
+                "Cultural Significance": "Kulturell betydelse",
+                "Performance and Live Culture": "Framträdande och livekultur",
+                "Development and Evolution": "Utveckling och evolution",
+                "Legacy and Influence": "Arv och påverkan"
+            },
+            "fi": {
+                "Introduction": "Johdanto",
+                "Historical Background": "Historiallinen tausta",
+                "Musical Characteristics": "Musiikilliset ominaisuudet",
+                "Subgenres and Variations": "Alagenret ja variaatiot",
+                "Key Figures and Important Works": "Avainhahmot ja tärkeät teokset",
+                "Technical Aspects": "Tekniset näkökohdat",
+                "Cultural Significance": "Kulttuurinen merkitys",
+                "Performance and Live Culture": "Esiintyminen ja livekulttuuri",
+                "Development and Evolution": "Kehitys ja evoluutio",
+                "Legacy and Influence": "Perintö ja vaikutus"
+            }    
         }
         
         section_titles = sections.get(language, sections["en"])
@@ -1166,26 +1527,69 @@ def generate_section_chunk(category: str, language: str, section_name: str,
     style_guide = get_language_style_guide(language)
     language_prompts = get_language_prompts(language)
     
-    # Add historical accuracy guidelines
+    # Add category-specific guidelines
+    category_type = get_category_type(category)
+    
+    # Base historical accuracy guidelines
     historical_accuracy = """
     Important historical guidelines:
     - Ensure strict historical accuracy for the specific time period, genre, or region being discussed
     - Only mention artists, bands, and cultural phenomena that were active/present during the relevant time period
     - Pay careful attention to when specific music styles, technologies, and cultural movements emerged
-    - Be precise with dates and chronological order of events - never mention artists or developments before they emerged
+    - Be precise with dates and chronological order of events
     - Consider the geographical and cultural context of musical developments
     - Verify the accuracy of technological developments and their impact on music
     - When discussing influences, ensure they are chronologically possible and historically accurate
-    - For decade-specific content, focus only on artists and trends that were actually prominent during that specific time
-    - Acknowledge regional variations in how musical styles developed and spread
-    - Consider the social and cultural context of the time period being discussed
-    - For country-specific content, focus primarily on artists who are actually from or significantly influenced that country's music scene
-    - For genre-specific content, only mention artists who genuinely contributed to or performed in that genre
-    - Respect and maintain the cultural authenticity of regional music styles and their development
-    - When discussing musical innovations, verify their historical emergence and adoption
-    - For cross-cultural influences, ensure they were actually possible given the historical context
-    - When mentioning music technology, verify it was available during the discussed time period
     """
+    
+    # Add category-specific guidelines
+    if category.endswith('s') and category[:-1].isdigit():  # Decades
+        decade = category[:-1]
+        historical_accuracy += f"""
+        Decade-specific guidelines for the {decade}s:
+        - Focus EXCLUSIVELY on artists, bands, and trends that were active/prominent during the {decade}s
+        - DO NOT mention any developments or artists that emerged after the {decade}s
+        - DO NOT discuss musical styles or technologies that weren't available in the {decade}s
+        - When mentioning influences, only reference artists/styles from the {decade}s or earlier
+        - Ensure all cultural and social references are specific to the {decade}s
+        - For technological developments, only mention what was actually available in the {decade}s
+        - When discussing international influences, verify they were possible in the {decade}s
+        - Keep all fashion and cultural references authentic to the {decade}s period
+        """
+    elif "Countries" in category_type:
+        historical_accuracy += f"""
+        Country-specific guidelines for {category}:
+        - Focus primarily on artists who are actually from {category}
+        - When discussing international influences, verify the historical connections
+        - Respect the cultural authenticity of {category}'s musical traditions
+        - Consider the specific regional variations within {category}
+        - Discuss musical developments in chronological order
+        - Only mention cultural exchanges that were historically possible
+        - Verify the accuracy of local music scene developments
+        """
+    elif "Genres" in category_type:
+        historical_accuracy += f"""
+        Genre-specific guidelines for {category}:
+        - Only mention artists who genuinely contributed to or performed in {category}
+        - Trace the genre's development chronologically
+        - Verify the authenticity of genre characteristics
+        - Discuss subgenres in their historical context
+        - When mentioning technical aspects, ensure they match the genre's era
+        - Consider regional variations in how the genre developed
+        - Only include cross-genre influences that were historically possible
+        """
+    elif "Instruments" in category_type:
+        historical_accuracy += f"""
+        Instrument-specific guidelines for {category}:
+        - Follow the chronological development of the instrument
+        - Only mention technological improvements when they were actually invented
+        - Discuss playing techniques in their historical context
+        - Verify the accuracy of manufacturing methods for each period
+        - Consider regional variations in instrument construction and playing styles
+        - Only mention performers from periods when the instrument existed
+        - Ensure all technical specifications match historical records
+        """
+    
 
     # Format the base prompt
     base_prompt = language_prompts["prompt"].format(
@@ -1208,9 +1612,18 @@ def generate_section_chunk(category: str, language: str, section_name: str,
     
     # Try up to 5 times with different strategies
     max_attempts = 5
+    last_error = None
+    best_content = ""
+    best_char_count = 0
+    
     for attempt in range(max_attempts):
         try:
-            # Adjust temperature based on attempt number
+            # Exponential backoff for retries
+            if attempt > 0:
+                wait_time = min(2 ** attempt, 30)  # Cap at 30 seconds
+                time.sleep(wait_time)
+            
+            # Adjust temperature based on attempt number and previous results
             if attempt == 0:
                 temperature = 0.7
             elif attempt == 1:
@@ -1222,30 +1635,51 @@ def generate_section_chunk(category: str, language: str, section_name: str,
             else:
                 temperature = 0.65
             
-            # Set a generous max_tokens limit
-            max_tokens = 2000
+            # Adjust max_tokens based on char_min
+            max_tokens = max(2000, int(char_min / 2))  # Ensure enough tokens for content
             
-            # Language-specific system prompts
+            # Language-specific system prompts with enhanced instructions
             language_system_prompts = {
-                "en": "You are an expert music historian writing in English. Use clear, engaging language suitable for English readers.",
-                "de": "Sie sind ein Musikhistoriker, der auf Deutsch schreibt. Verwenden Sie eine klare, ansprechende Sprache für deutschsprachige Leser.",
-                "es": "Eres un historiador musical que escribe en español. Utiliza un lenguaje claro y atractivo para lectores hispanohablantes.",
-                "fr": "Vous êtes un historien de la musique écrivant en français. Utilisez un langage clair et engageant pour les lecteurs francophones.",
-                "it": "Sei uno storico della musica che scrive in italiano. Usa un linguaggio chiaro e coinvolgente per i lettori italiani.",
-                "pt": "Você é um historiador musical escrevendo em português. Use linguagem clara e envolvente para leitores lusófonos."
+                "en": "You are an expert music historian writing in English. Focus on accuracy, clarity, and engaging narrative.",
+                "de": "Sie sind ein Musikhistoriker, der auf Deutsch schreibt. Legen Sie Wert auf Präzision, Klarheit und fesselnde Erzählweise.",
+                "es": "Eres un historiador musical que escribe en español. Enfócate en la precisión, claridad y narrativa cautivadora.",
+                "fr": "Vous êtes un historien de la musique écrivant en français. Concentrez-vous sur la précision, la clarté et un récit engageant.",
+                "it": "Sei uno storico della musica che scrive in italiano. Concentrati su precisione, chiarezza e narrativa coinvolgente.",
+                "pt": "Você é um historiador musical escrevendo em português. Foque em precisão, clareza e narrativa envolvente."
             }
             
             # Get language-specific system prompt, default to English if not found
             system_prompt = language_system_prompts.get(language, language_system_prompts["en"])
             
+            # Get category type
+            category_type = get_category_type(category)
+            is_decade_category = is_decade(category)
+            
+            # Enhanced prompt with more specific guidance
+            current_prompt = base_prompt
+            
+            # Add category-specific instructions
+            if is_decade_category:
+                current_prompt += f"\n\nThis is a DECADE category ({category}). Only include events, artists, and developments from this exact time period."
+                current_prompt += f"\nDo not mention anything that happened before or after the {category}."
+            else:
+                current_prompt += f"\n\nThis is a {category_type} category ({category})."
+            
+            if attempt > 0:
+                current_prompt += "\n\nPrevious attempts were insufficient. Please ensure:"
+                current_prompt += "\n1. Comprehensive coverage of the topic"
+                current_prompt += "\n2. Detailed examples and analysis"
+                current_prompt += "\n3. Clear progression of ideas"
+                current_prompt += f"\n4. Minimum length of {char_min} characters"
+            
             # Add language-specific style guide
-            base_prompt += f"\n\nStyle Guide:\n{style_guide['style']}\n{style_guide['characteristics']}"
+            current_prompt += f"\n\nStyle Guide:\n{style_guide['style']}\n{style_guide['characteristics']}"
             
             data = {
                 "model": "Llama-3.3-70B-Instruct",
                 "messages": [
                     {"role": "system", "content": f"{system_prompt}\n{style_guide}"},
-                    {"role": "user", "content": base_prompt}
+                    {"role": "user", "content": current_prompt}
                 ],
                 "temperature": temperature,
                 "repetition_penalty": 1.1,
@@ -1255,56 +1689,54 @@ def generate_section_chunk(category: str, language: str, section_name: str,
                 "stream": False
             }
             
+            # Increased timeout for larger content generation
             response = requests.post(
                 "https://api.arliai.com/v1/chat/completions",
                 headers=headers,
-                json=data
+                json=data,
             )
             
+            # Log the response status and timing
+            logging.info(f"API response received: status={response.status_code}, time={response.elapsed.total_seconds():.2f}s")
+            
             if response.status_code != 200:
-                raise Exception(f"API call failed: {response.text}")
+                raise Exception(f"API call failed with status {response.status_code}: {response.text}")
             
             content = response.json()["choices"][0]["message"]["content"].strip()
-            
-            # Check if content meets minimum length requirement
             char_count = len(content)
+            
+            # Keep track of best attempt
+            if char_count > best_char_count:
+                best_content = content
+                best_char_count = char_count
+            
+            # Return if content meets requirements
             if char_count >= char_min:
                 return content
-            
-            # Content is too short, provide guidance for next attempt
-            base_prompt += f"\n\nThe text needs to be longer. Current: {char_count}, Target: at least {char_min} characters."
-            base_prompt += "\nPlease expand with more details and examples about:"
-            base_prompt += "\n- Historical developments and their significance"
-            base_prompt += "\n- Key artists and their contributions"
-            base_prompt += "\n- Cultural impact and lasting influence"
-            
-            # Add a short pause between attempts to avoid rate limiting
-            time.sleep(2)
                 
         except Exception as e:
-            if attempt == max_attempts - 1:  # Last attempt
-                error_msg = f"Failed to generate content chunk {chunk_number}/{total_chunks}\n"
-                error_msg += f"Section: {section_name}, Language: {language}\n"
-                error_msg += f"Error: {str(e)}"
-                raise ValueError(error_msg)
-            
-            print(f"  Attempt {attempt + 1} failed for chunk {chunk_number}/{total_chunks}: {str(e)}")
-            time.sleep(3)  # Add longer pause after an error
+            last_error = e
+            print(f"Attempt {attempt + 1} failed: {str(e)}")
             continue
+    
+    # If we've exhausted all attempts
+    if best_char_count > 0:
+        # Return best attempt if it's at least 80% of required length
+        if best_char_count >= (char_min * 0.8):
+            print(f"Warning: Returning content slightly shorter than requested ({best_char_count}/{char_min} chars)")
+            return best_content
+    
+    # If all attempts failed or content is too short
+    error_msg = f"Failed to generate content chunk {chunk_number}/{total_chunks}\n"
+    error_msg += f"Section: {section_name}, Language: {language}\n"
+    error_msg += f"Last error: {str(last_error)}\n"
+    error_msg += f"Best attempt: {best_char_count}/{char_min} characters"
+    raise Exception(error_msg)
     
     raise ValueError(f"Failed to generate content chunk {chunk_number}/{total_chunks} with correct length after {max_attempts} attempts")
 
 def generate_content(category: str, language: str) -> str:
     """Generate or update content for a music category in a specific language.
-    
-    This function manages the content generation process, including:
-    1. Loading and parsing existing content to avoid regenerating sections
-    2. Generating new sections as needed
-    3. Saving content incrementally to preserve progress
-    
-    The function is designed to be resilient, continuing even if some
-    sections fail to generate. It also preserves existing content,
-    only generating missing sections.
     
     Args:
         category: Music category name
@@ -1313,63 +1745,40 @@ def generate_content(category: str, language: str) -> str:
     Returns:
         str: Status message indicating completion
     """
+    logging.info(f"Starting content generation for category '{category}' in language '{language}'")
+    
+    # Check if language is supported
+    if language not in get_available_languages():
+        logging.error(f"Language '{language}' is not supported")
+        raise ValueError(f"Language '{language}' is not supported")
+    
+    # Get section limits and translations
+    logging.info("Getting section limits and translations")
     section_limits = get_section_limits(category)
-    
-    # Get the translated section titles for this language
     translations = get_translated_sections(language)
+    logging.info(f"Found {len(section_limits)} sections to generate")
     
-    # Check for existing content
-    existing_content = load_existing_content(category, language)
-    if existing_content:
-        print(f"  Found existing content for {category} in {language}")
-        # Parse existing sections to avoid regenerating them
-        existing_sections = {}
-        current_section = None
-        current_content = []
-        
-        for line in existing_content.split('\n'):
-            if line.startswith('## '):
-                if current_section:
-                    # Store with the original (untranslated) section name as key
-                    original_section = next((k for k, v in translations[language].items() if v == current_section), current_section)
-                    existing_sections[original_section] = '\n'.join(current_content)
-                current_section = line[3:].strip()
-                current_content = []
-            elif current_section:
-                current_content.append(line)
-        
-        if current_section:
-            # Store with the original (untranslated) section name as key
-            original_section = next((k for k, v in translations[language].items() if v == current_section), current_section)
-            existing_sections[original_section] = '\n'.join(current_content)
-    else:
-        existing_sections = {}
-        # Create new file with frontmatter
-        save_content(category, language, '', 'w')
-    
-    # Generate or skip each section
+    # Generate each section
     for section_name, char_min in section_limits.items():
-        if section_name in existing_sections:
-            print(f"  Skipping existing section: {translations[language].get(section_name, section_name)}")
-            continue
-            
-        print(f"  Generating section: {translations[language].get(section_name, section_name)}...")
         try:
+            # Get translated section name
+            translated_title = translations.get(section_name, section_name)
+            logging.info(f"Generating section: {translated_title} (min chars: {char_min})")
+            
+            # Generate content
             section_content = generate_section(category, language, section_name, char_min)
-            
-            # Use translated section title in the markdown
-            translated_title = translations[language].get(section_name, section_name)
             content = f"\n## {translated_title}\n\n{section_content}\n"
+            logging.info(f"Generated {len(section_content)} characters for section {translated_title}")
             
-            # Append the new section to the file
+            # Save content
             save_content(category, language, content, 'a')
-            print(f"  ✓ Saved section: {translations.get(section_name, section_name)}")
+            logging.info(f"Saved section: {translated_title}")
             
         except Exception as e:
-            print(f"  ✗ Error generating section {translations.get(section_name, section_name)}: {str(e)}")
-            # Continue with next section on error
+            logging.error(f"Error generating section {translated_title}: {str(e)}")
             continue
     
+    logging.info(f"Completed content generation for category '{category}' in language '{language}'")
     return "Content generation completed"
 
 def get_output_path(category: str, language: str) -> Path:
@@ -1614,6 +2023,37 @@ def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[
             
             time.sleep(1)  # Short delay before retrying
 
+def create_empty_frontmatter(category: str, language: str) -> str:
+    """Create empty YAML frontmatter for a new music category file.
+    
+    Creates basic frontmatter with empty/default values. The SEO metadata
+    will be added later.
+    
+    Args:
+        category: Music category name
+        language: ISO 639-1 language code
+        
+    Returns:
+        str: Formatted YAML frontmatter string
+    """
+    return f"""---
+title: {category}
+description: 
+image: /category/{category.lower().replace(' ', '-')}.jpg
+createdAt: {datetime.now().strftime('%Y-%m-%d')}
+updatedAt: {datetime.now().strftime('%Y-%m-%d')}
+keywords:
+author: MelodyMind
+locale: {language}
+category:
+  spotifyPlaylist: 
+  deezerPlaylist: 
+  appleMusicPlaylist: 
+isPlayable: false
+---
+
+"""
+
 def create_frontmatter(category: str, language: str) -> str:
     """Create YAML frontmatter for a music category markdown file.
     
@@ -1634,7 +2074,6 @@ def create_frontmatter(category: str, language: str) -> str:
         str: Formatted YAML frontmatter string
     """
     # Generate SEO metadata
-    print(f"  Generating SEO metadata for {category}...")
     title, description, keywords = generate_seo_metadata(category, language)
     
     return f"""---
@@ -1659,8 +2098,7 @@ isPlayable: false
 def save_content(category: str, language: str, content: str, mode: str = 'w') -> None:
     """Save or append content to a category's markdown file.
     
-    For new files (mode='w'), automatically adds YAML frontmatter before
-    the content. For existing files (mode='a'), appends content as is.
+    Simply saves or appends the content as provided, without any modifications.
     
     Args:
         category: Music category name
@@ -1669,14 +2107,12 @@ def save_content(category: str, language: str, content: str, mode: str = 'w') ->
         mode: File mode, 'w' for write or 'a' for append (default: 'w')
     """
     output_path = get_output_path(category, language)
-    
-    # For new files, add frontmatter
-    if mode == 'w':
-        content = create_frontmatter(category, language) + content
+    logging.info(f"Saving content to {output_path} (mode: {mode})")
     
     # Save or append to the file
     with open(output_path, mode, encoding="utf-8") as f:
         f.write(content)
+    logging.info(f"Successfully wrote {len(content)} characters to {output_path}")
 
 def load_existing_content(category: str, language: str) -> Optional[str]:
     """Load existing content for a category in a specific language.
@@ -1700,6 +2136,14 @@ def load_existing_content(category: str, language: str) -> Optional[str]:
 from datetime import datetime
 from typing import Dict, List
 import time
+import logging
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
 
 def print_header(text: str, width: int = 80) -> None:
     """Print a centered header with decorative borders.
@@ -1765,15 +2209,18 @@ def main() -> None:
     It also measures and reports total execution time.
     """
     start_time = time.time()
+    logging.info("Starting MelodyMind Content Generator")
     print_header("MelodyMind Content Generator")
     
     # Get available languages
     languages = get_available_languages()
+    logging.info(f"Found {len(languages)} supported languages: {', '.join(languages)}")
     print_section(f"Languages: {len(languages)}")
     for lang in languages:
         print(f"✓ {lang}")
     
     # Read categories from sorted file
+    logging.info("Reading categories from sorted file")
     with open(BASE_DIR / "scripts" / "category_headlines_sorted.txt", "r", encoding="utf-8") as f:
         content = f.readlines()
     
@@ -1785,12 +2232,14 @@ def main() -> None:
         if line.startswith('#'):
             current_type = line[1:].strip()
             categories_by_type[current_type] = []
+            logging.info(f"Found category type: {current_type}")
         elif line:
             categories_by_type[current_type].append(line)
     
     total_categories = sum(len(cats) for cats in categories_by_type.values())
     processed_categories = 0
     
+    logging.info(f"Found {total_categories} total categories")
     print_section(f"Categories: {total_categories}")
     for category_type, categories in categories_by_type.items():
         print(f"\n{category_type}: {len(categories)}")
@@ -1798,37 +2247,56 @@ def main() -> None:
             print(f"• {cat}")
     
     # Create content directory structure
+    logging.info("Creating content directory structure")
     print_section("Creating Directory Structure")
     for language in languages:
         path = CONTENT_DIR / language
         path.mkdir(parents=True, exist_ok=True)
+        logging.info(f"Created directory: {path}")
         print(f"✓ {path}")
     
     # Process categories
+    logging.info("Starting content generation")
     print_section("Generating Content")
     skipped = 0
     errors = 0
     generated = 0
     
     for category_type, categories in categories_by_type.items():
+        logging.info(f"Processing category type: {category_type}")
         print(f"\n📂 {category_type}")
         for category in categories:
             processed_categories += 1
+            logging.info(f"Processing category: {category} ({processed_categories}/{total_categories})")
             print(f"\n🎵 {category}")
             
             for language in languages:
                 output_path = get_output_path(category, language)
                 if output_path.exists():
+                    logging.info(f"Skipping {category} in {language}, file exists")
                     print(f"  ⏭️  Skipping {language}, file exists")
                     skipped += 1
                     continue
                 
+                logging.info(f"Generating content for {category} in {language}")
+                
                 try:
-                    result = generate_content(category, language)
-                    print(f"  ✓ {language}: {result}")
+                    # 1. Generate SEO metadata and create frontmatter
+                    logging.info(f"Generating frontmatter for {category} in {language}")
+                    frontmatter = create_frontmatter(category, language)
+                    save_content(category, language, frontmatter, mode='w')
+                    logging.info(f"Successfully created frontmatter for {category} in {language}")
+                    print(f"  ✓ {language}: Frontmatter created")
+
+                    # 2. Generate content
+                    logging.info(f"Generating content for {category} in {language}")
+                    generate_content(category, language)
+                    logging.info(f"Successfully generated content for {category} in {language}")
+                    print(f"  ✓ {language}: Content generated")
                     generated += 1
                 except Exception as e:
-                    print(f"  ❌ {language}: {str(e)}")
+                    logging.error(f"Failed to generate content for {category} in {language}: {str(e)}")
+                    print(f"  ❌ {language}: Content generation failed - {str(e)}")
                     errors += 1
             
             print_progress(processed_categories, total_categories, "Overall Progress")
@@ -1836,6 +2304,13 @@ def main() -> None:
     # Print summary
     end_time = time.time()
     duration = end_time - start_time
+    
+    logging.info("Content generation complete")
+    logging.info(f"Duration: {int(duration // 60)}m {int(duration % 60)}s")
+    logging.info(f"Total Categories: {total_categories}")
+    logging.info(f"Files Generated: {generated}")
+    logging.info(f"Files Skipped: {skipped}")
+    logging.info(f"Errors: {errors}")
     
     print_header("Generation Complete")
     print(f"Duration: {int(duration // 60)}m {int(duration % 60)}s")
