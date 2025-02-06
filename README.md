@@ -33,16 +33,65 @@ Challenge your musical knowledge with Melody Mind, an engaging and addictive mus
 - Node.js (v16 or higher)
 - npm or yarn package manager
 - Python 3.x (for utility scripts)
+- Java Runtime Environment (JRE) for LanguageTool
 
 ## Installation
 
-1. Clone the repository:
+### 1. Clone the repository:
 ```bash
 git clone <repository-url>
 cd melody-mind-nuxt
 ```
 
-2. Install dependencies:
+### 2. Set up Python environment:
+
+```bash
+# Create a virtual environment
+python -m venv venv
+
+# Activate the virtual environment
+# On Linux/macOS:
+source venv/bin/activate
+# On Windows:
+venv\Scripts\activate
+
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Install required spaCy language models
+python -m spacy download de_core_news_lg
+python -m spacy download en_core_web_lg
+python -m spacy download fr_core_news_lg
+python -m spacy download es_core_news_lg
+python -m spacy download it_core_news_lg
+python -m spacy download nl_core_news_lg
+python -m spacy download pl_core_news_lg
+python -m spacy download pt_core_news_lg
+python -m spacy download ru_core_news_lg
+python -m spacy download sv_core_news_lg
+python -m spacy download fi_core_news_lg
+python -m spacy download da_core_news_lg
+
+# Download NLTK data
+python -c "import nltk; nltk.download('punkt'); nltk.download('averaged_perceptron_tagger')"
+```
+
+### 3. Install LanguageTool:
+
+```bash
+# Create languagetool directory
+mkdir languagetool
+cd languagetool
+
+# Download and extract LanguageTool
+wget https://languagetool.org/download/LanguageTool-stable.zip
+unzip LanguageTool-stable.zip
+mv LanguageTool-*/* .
+rm -r LanguageTool-*
+cd ..
+```
+
+### 4. Install Node.js dependencies:
 ```bash
 # Using npm
 npm install
@@ -51,7 +100,59 @@ npm install
 yarn install
 ```
 
-3. Create a `.env` file in the root directory with the required environment variables (see `.env.master` for reference)
+### 5. Environment Setup:
+
+1. Create a `.env` file in the root directory:
+```bash
+cp .env.master .env
+```
+
+2. Update the following variables in `.env`:
+- `OPENAI_API_KEY`: Your OpenAI API key (for translation scripts)
+- Other environment-specific variables
+
+### 6. Verify Installation:
+
+```bash
+# Test Python environment
+python scripts/translate_correct_readability.py --help
+
+# Test Node.js setup
+npm run dev
+```
+
+## Environment Management
+
+### Python Virtual Environment
+
+```bash
+# Activate virtual environment
+source venv/bin/activate  # Linux/macOS
+venv\Scripts\activate     # Windows
+
+# Deactivate when done
+deactivate
+```
+
+### Updating Dependencies
+
+```bash
+# Update Python packages
+pip install -r requirements.txt --upgrade
+
+# Update Node.js packages
+npm update  # or yarn upgrade
+```
+
+### Maintenance
+
+```bash
+# Clean Python cache
+find . -type d -name "__pycache__" -exec rm -r {} +
+
+# Update spaCy models
+python -m spacy validate
+```
 
 ## Development
 
@@ -68,92 +169,201 @@ The application will be available at `http://localhost:3000`
 
 ## Utility Scripts
 
-### Categories Translator
+This section describes the utility scripts used for content management, translation, and maintenance tasks.
 
-The `scripts/translate_categories.py` script automates the translation of category content from English to multiple languages using OpenAI's GPT-4 model. It handles translations for all music categories while preserving the JSON structure and maintaining language-specific nuances.
+### Quick Reference
 
-Supported Languages:
-- German (de)
-- English (en)
-- Spanish (es)
-- French (fr)
-- Italian (it)
-- Portuguese (pt)
+| Category | Script | Purpose |
+|----------|---------|----------|
+| **Translation** | `translate_correct_readability.py` | Text translation and grammar correction |
+| | `translate_categories.py` | Category content translation with GPT-4 |
+| **Content** | `generate_content.py` | Site content generation and updates |
+| **Validation** | `check_preview_links.py` | Preview link validation |
+| | `check_covers.sh` | Cover image verification |
+| **Sync** | `sync_music_links.py` | Music link synchronization |
 
-Features:
-- Smart field handling:
-  - Translates content fields: `introSubline` and `text`
-  - Intelligent headline handling:
-    - Preserves genre names (e.g., 'Chamber Metal', 'Progressive Metal')
-    - Keeps decade names (e.g., '1950s', '1960s')
-    - Only translates general terms when appropriate
-  - Preserves technical fields: `categoryUrl`, `imageUrl`, `slug`, and `isPlayable`
-  - Ensures consistency of URLs and identifiers across all languages
-- Automatic progress saving:
-  - Saves after each category translation
-  - Prevents loss of work if interrupted
-  - Enables easy resume of interrupted translations
-- Smart update mode with enhanced functionality:
-  - Detects and adds missing categories in target languages
-  - Only translates modified content in existing categories
-  - Preserves unchanged translations
-  - Reports detailed progress of additions and updates
-- Maintains all metadata (URLs, images, etc.)
-- Rate limiting to prevent API overload
-- Cross-language consistency checking
+### Prerequisites
 
-Requirements:
-- Python 3.x
-- OpenAI API key
-- Python virtual environment (recommended)
+Make sure you have installed all dependencies:
 
-Setup:
 ```bash
-# Create and activate virtual environment
-python3 -m venv venv
-source venv/bin/activate
+# Python packages
+pip install -r requirements.txt
 
-# Install dependencies
-pip install openai
+# Language models
+python -m spacy download en_core_web_lg  # and other required models
 
-# Set OpenAI API key
-export OPENAI_API_KEY='your-api-key-here'
+# External tools
+./scripts/install_languagetool.sh  # if not already installed
 ```
 
-Usage:
+### 1. Text Translation and Correction (`translate_correct_readability.py`)
+
+**Purpose**: Provides automated translation and grammar correction for JSON and Markdown files.
+
+**Key Features**:
+- Offline translation via Argos Translate
+- Grammar checking with LanguageTool
+- Multi-language support (de, en, fr, es, pt, it, nl, sv, fi, da)
+- Smart field handling for JSON files
+
+**Usage**:
 ```bash
-# Full translation (translates everything)
+# For JSON files
+python scripts/translate_correct_readability.py path/to/folder --type json
+
+# For Markdown files
+python scripts/translate_correct_readability.py path/to/folder --type md
+```
+
+**Configuration**:
+- Protected fields: `categoryUrl`, `imageUrl`, `slug`, `knowledgeUrl`, `isPlayable`
+- File naming: Use language prefixes (e.g., `de_categories.json`)
+- Markdown structure: Place files in language folders (e.g., `/de/article.md`)
+
+### 2. Category Translation (`translate_categories.py`)
+
+**Purpose**: Translates category content using OpenAI's GPT-4 while maintaining structure and metadata.
+
+**Key Features**:
+- GPT-4 powered translations
+- Smart content handling
+- Progress auto-saving
+- Update mode for efficient changes
+
+**Usage**:
+```bash
+# Full translation
 python scripts/translate_categories.py
 
-# Smart update mode
+# Update mode
 python scripts/translate_categories.py --update
 
-# Specify custom input file
+# Custom input
 python scripts/translate_categories.py --input path/to/en_categories.json
 ```
 
-Update Mode Features:
-- Scans for categories missing in target language files
-- Reports number and names of new categories to be added
-- Identifies and updates modified categories
-- Preserves unchanged translations to maintain consistency
-- Maintains technical field integrity:
-  - Never modifies URLs or identifiers
-  - Ensures cross-language navigation consistency
-  - Preserves file and routing structures
+**Supported Languages**: de, en, es, fr, it, pt
 
-Output:
-- Creates/updates language-specific JSON files (e.g., `de_categories.json`, `fr_categories.json`)
-- Provides detailed progress information:
-  - Lists new categories being added
-  - Shows which categories are being updated
-  - Indicates when existing translations are reused
-- Reports success or any errors encountered
+### 3. Preview Link Checker (`check_preview_links.py`)
 
+**Purpose**: Validates the availability and correctness of preview links.
 
-### Cover Image Checker
+**Key Features**:
+- Concurrent link checking
+- Detailed status reporting
+- Error logging
 
-The `scripts/check_covers.sh` script verifies that all cover images referenced in the music database actually exist in the project. It scans all JSON files across all language versions (de, en, es, fr, it) and reports any missing cover images.
+**Usage**:
+```bash
+python scripts/check_preview_links.py
+```
+
+### 4. Music Link Synchronization (`sync_music_links.py`)
+
+**Purpose**: Ensures consistency of music links across different language versions.
+
+**Key Features**:
+- Cross-language link validation
+- Automatic synchronization
+- Error reporting
+
+**Usage**:
+```bash
+python scripts/sync_music_links.py
+```
+
+### 5. Content Generation (`generate_content.py`)
+
+**Purpose**: Generates and updates site content based on templates and data.
+
+**Key Features**:
+- Template-based generation
+- Multi-language support
+- Metadata handling
+
+**Usage**:
+```bash
+python scripts/generate_content.py
+```
+
+### Common Features
+
+All utility scripts share these characteristics:
+
+**Safety**:
+- Automatic backup creation
+- Non-destructive operations
+- Validation before changes
+
+**Usability**:
+- Progress indicators
+- Detailed logging
+- Help documentation
+
+**Reliability**:
+- Error handling
+- Automatic retries
+- Data validation
+
+**Maintenance**:
+- Code documentation
+- Modular design
+- Configuration files
+
+### Best Practices
+
+1. **Before Running Scripts**:
+   - Activate virtual environment
+   - Verify configuration
+   - Backup important data
+
+2. **During Execution**:
+   - Monitor logs
+   - Check progress indicators
+   - Don't interrupt long-running processes
+
+3. **After Completion**:
+   - Verify output
+   - Check logs for warnings
+   - Test affected functionality
+
+### Troubleshooting
+
+**Common Issues**:
+1. **Language Detection Fails**:
+   - Ensure sufficient text length
+   - Check character encoding
+
+2. **Translation Errors**:
+   - Verify API keys
+   - Check network connection
+   - Validate input format
+
+3. **File Permission Issues**:
+   - Check directory permissions
+   - Verify file ownership
+
+**Getting Help**:
+- Check script help: `python script_name.py --help`
+- Review logs in `logs/` directory
+- Consult documentation
+
+### Additional Scripts
+
+#### Cover Image Verification (`check_covers.sh`)
+
+**Purpose**: Verifies existence of referenced cover images in the music database.
+
+**Key Features**:
+- Scans all language versions (de, en, es, fr, it)
+- Reports missing cover images
+- Validates image references in JSON files
+
+**Usage**:
+```bash
+./scripts/check_covers.sh
+```
 
 Features:
 - Checks all language versions simultaneously
@@ -392,9 +602,16 @@ The ThumbHash generation process:
 
 The resulting ThumbHash is typically 30-100 bytes per image, making it efficient to include in the initial page load.
 
-### Content Generation
+**Usage**:
+```bash
+python scripts/generate_content.py
+```
 
-The `scripts/generate_content.py` script is used to generate structured content about music categories in multiple languages. It supports the following features:
+### Content Generation (`generate_content.py`)
+
+**Purpose**: Generates structured content about music categories in multiple languages.
+
+**Key Features**:
 
 #### Supported Languages
 - German (de)
