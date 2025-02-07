@@ -14,11 +14,29 @@ Features:
 - Detailed HTML report generation with statistics and error details
 - Support for checking specific language directories
 
+Technical Details:
+- Uses HEAD requests for Apple Music and GET requests with Range headers for other services
+- Implements exponential backoff for failed requests to avoid rate limiting
+- Handles different content types and response codes appropriately
+- Generates a responsive HTML report with detailed error information
+
 Usage:
     python check_preview_links.py [--languages LANG1 LANG2 ...] [--retries N] [--retry-delay SEC]
 
-Example:
+Examples:
+    # Check all languages
+    python check_preview_links.py
+
+    # Check specific languages with custom retry settings
     python check_preview_links.py --languages en de --retries 5 --retry-delay 2.0
+
+    # Check a single language with minimal retries
+    python check_preview_links.py --languages fr --retries 2 --retry-delay 1.0
+
+Note:
+    The script expects JSON files in a specific format with 'preview_link', 'artist',
+    and 'album' fields. The JSON files should be organized in language-specific
+    directories under the base directory.
 """
 
 import json
@@ -52,10 +70,16 @@ class PreviewLinkChecker:
         """Initialize the PreviewLinkChecker.
         
         Args:
-            base_dir: Directory containing language-specific JSON files
-            languages: Optional list of language codes to process
-            max_retries: Number of times to retry failed requests
-            retry_delay: Initial delay between retries (uses exponential backoff)
+            base_dir (Path): Directory containing language-specific JSON files. Should contain
+                          subdirectories for each language (e.g., 'en/', 'de/', etc.)
+            languages (Optional[List[str]]): List of language codes to process. If None,
+                                          all language directories will be processed.
+                                          Example: ['en', 'de', 'fr']
+            max_retries (int): Maximum number of times to retry failed requests before
+                            marking a link as invalid. Default is 3.
+            retry_delay (float): Initial delay between retries in seconds. This value
+                              will be multiplied by the retry attempt number for
+                              exponential backoff. Default is 1.0 seconds.
         """
         self.base_dir = base_dir
         self.languages = languages
@@ -71,12 +95,18 @@ class PreviewLinkChecker:
         """Detect which streaming service the preview URL belongs to.
         
         Analyzes the URL domain against known patterns to identify the streaming service.
+        The detection is based on domain patterns defined in self.service_patterns.
         
         Args:
-            url: The preview URL to analyze
+            url (str): The preview URL to analyze. Must be a valid URL string starting
+                     with 'http://' or 'https://'
             
         Returns:
-            str: Service identifier ('spotify', 'apple_music', 'deezer', or 'unknown')
+            str: Service identifier, one of:
+                - 'spotify': For Spotify preview URLs (p.scdn.co)
+                - 'apple_music': For Apple Music previews (audio-ssl.itunes.apple.com)
+                - 'deezer': For Deezer previews (cdnt-preview.dzcdn.net)
+                - 'unknown': If the URL doesn't match any known service pattern
         """
         domain = urlparse(url).netloc
         for service, pattern in self.service_patterns.items():
@@ -88,17 +118,25 @@ class PreviewLinkChecker:
         """Check if a preview link is accessible with service-specific handling and retries.
         
         Attempts to access the preview URL using service-specific request methods.
+        Uses HEAD requests for Apple Music and GET requests with Range headers for other services.
         Implements retry logic with exponential backoff for failed requests.
         
         Args:
-            url: The preview URL to check
+            url (str): The preview URL to check. Must be a valid HTTP(S) URL.
             
         Returns:
-            Tuple containing:
-            - str: Service identifier
-            - bool: Whether the URL is valid and accessible
-            - str: Error message if any, empty string if successful
-            - str: Content-Type of the response if available
+            Tuple[str, bool, str, str]: A tuple containing:
+                - service (str): Service identifier ('spotify', 'apple_music', 'deezer', 'unknown')
+                - is_valid (bool): True if URL is accessible and returns valid audio content
+                - error (str): Error message if any occurred, empty string if successful
+                - content_type (str): Content-Type header from response, 'unknown' if not available
+                
+        Request Behavior:
+            - Apple Music: Uses HEAD request
+            - Others: Uses GET request with Range header
+            - Includes User-Agent header to avoid blocks
+            - Implements exponential backoff between retries
+            - Considers 200 and 206 as successful status codes
         """
         service = self.detect_service(url)
         
@@ -140,21 +178,33 @@ class PreviewLinkChecker:
         """Process a single JSON file and check all preview links.
         
         Reads a JSON file containing music entries and validates all preview links found.
-        Each entry should contain 'preview_link', 'artist', and 'album' fields.
+        Each JSON entry should follow this structure:
+        {
+            "artist": "Artist Name",
+            "album": "Album Name",
+            "preview_link": "https://example.com/preview.mp3"
+            ...
+        }
         
         Args:
-            file_path: Path to the JSON file to process
+            file_path (str): Absolute or relative path to the JSON file to process
             
         Returns:
-            List of tuples containing for each preview link:
-            - Artist name
-            - Album name
-            - Preview URL
-            - Service identifier
-            - Validity status
-            - Error message
-            - Content type
-            - Relative file path
+            List[Tuple[str, str, str, str, bool, str, str, str]]: List of tuples containing
+            for each preview link:
+                - artist (str): Artist name from JSON, 'Unknown Artist' if missing
+                - album (str): Album name from JSON, 'Unknown Album' if missing
+                - url (str): Preview URL being checked
+                - service (str): Identified streaming service
+                - is_valid (bool): Whether the preview link is accessible
+                - error (str): Error message if any, empty string if successful
+                - content_type (str): Content type of the preview file
+                - relative_path (str): File path relative to project root
+                
+        Error Handling:
+            - Missing required fields are replaced with default values
+            - File read errors are logged but don't stop processing
+            - Invalid JSON structure is caught and reported
         """
         results = []
         try:

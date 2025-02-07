@@ -1,0 +1,31 @@
+# Core NLP packages
+spacy>=3.7.2
+nltk>=3.8.1
+textstat>=0.7.3
+langdetect>=1.0.9
+
+# Translation
+argostranslate>=1.9.1
+
+# HTTP and API
+requests>=2.31.0
+openai>=1.6.1
+
+# Development tools
+black>=23.12.1  # Code formatting
+pylint>=3.0.3   # Code quality
+pytest>=7.4.4   # Testing
+
+# Required spaCy language models - install with:
+# python -m spacy download de_core_news_lg
+# python -m spacy download en_core_web_lg
+# python -m spacy download fr_core_news_lg
+# python -m spacy download es_core_news_lg
+# python -m spacy download it_core_news_lg
+# python -m spacy download nl_core_news_lg
+# python -m spacy download pl_core_news_lg
+# python -m spacy download pt_core_news_lg
+# python -m spacy download ru_core_news_lg
+# python -m spacy download sv_core_news_lg
+# python -m spacy download fi_core_news_lg
+# python -m spacy download da_core_news_lg

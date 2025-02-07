@@ -1,20 +1,74 @@
 #!/usr/bin/env python3
 """
 Content Generation Script for MelodyMind
+=======================================
 
 This script generates comprehensive, multilingual content for music categories
 using the Arli AI API. It creates structured markdown files with SEO-optimized
 metadata and detailed content sections for each music category.
 
 Features:
-- Multilingual content generation
-- SEO metadata optimization
-- Structured content sections
-- Progress tracking and error handling
-- Language-specific content adaptation
+- Multilingual content generation (10 languages supported)
+- SEO metadata optimization with AI-powered suggestions
+- Structured content sections with consistent formatting
+- Real-time progress tracking and error handling
+- Language-specific content adaptation and cultural awareness
+- Template-based generation for consistency
+- Automatic frontmatter generation with metadata
 
-The script uses a template-based approach for consistent content structure
-while adapting to language-specific requirements and cultural contexts.
+Dependencies:
+- Python 3.8+
+- External packages:
+  - requests: For API communication
+  - pathlib: For cross-platform path handling
+  - typing: For type hints
+- Environment variables:
+  - ARLI_API_KEY: API key for Arli AI content generation
+
+File Structure:
+- Input Files:
+  - category_headlines.txt: List of music categories
+  - category_headlines_sorted.txt: Categorized music genres
+  - Helptexte für AI.md: AI prompt templates
+
+- Output Structure:
+  content/
+  └── knowledge/
+      ├── en/
+      │   ├── rock-music.md
+      │   └── ...
+      ├── de/
+      │   ├── rock-musik.md
+      │   └── ...
+      └── ...
+
+Workflow:
+1. Initialization
+   - Load configuration and templates
+   - Validate environment variables
+   - Set up logging and progress tracking
+
+2. Category Processing
+   - Read and parse category files
+   - Determine category types (decade/genre)
+   - Sort into processing queue
+
+3. Content Generation
+   - Generate SEO metadata
+   - Create frontmatter
+   - Generate section content
+   - Apply language-specific formatting
+
+4. Output Management
+   - Create directory structure
+   - Save markdown files
+   - Update existing content
+
+Error Handling:
+- Retries for API failures
+- Graceful degradation for missing templates
+- Detailed error logging
+- Progress preservation on failure
 
 Author: Daniel Schmid
 Date: February 2025
@@ -1758,11 +1812,25 @@ def generate_content(category: str, language: str) -> str:
     translations = get_translated_sections(language)
     logging.info(f"Found {len(section_limits)} sections to generate")
     
+    # Map English section names to translated ones
+    section_mapping = {
+        "Introduction": translations.get("Introduction", "Introduction"),
+        "Historical Background": translations.get("Historical Background", "Historical Background"),
+        "Musical Characteristics": translations.get("Musical Characteristics", "Musical Characteristics"),
+        "Subgenres and Variations": translations.get("Subgenres and Variations", "Subgenres and Variations"),
+        "Key Figures and Important Works": translations.get("Key Figures and Important Works", "Key Figures and Important Works"),
+        "Technical Aspects": translations.get("Technical Aspects", "Technical Aspects"),
+        "Cultural Significance": translations.get("Cultural Significance", "Cultural Significance"),
+        "Performance and Live Culture": translations.get("Performance and Live Culture", "Performance and Live Culture"),
+        "Development and Evolution": translations.get("Development and Evolution", "Development and Evolution"),
+        "Legacy and Influence": translations.get("Legacy and Influence", "Legacy and Influence")
+    }
+    
     # Generate each section
     for section_name, char_min in section_limits.items():
         try:
             # Get translated section name
-            translated_title = translations.get(section_name, section_name)
+            translated_title = section_mapping.get(section_name, section_name)
             logging.info(f"Generating section: {translated_title} (min chars: {char_min})")
             
             # Generate content

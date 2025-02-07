@@ -13,9 +13,7 @@ export default defineNuxtConfig({
       enabled: false,
     },
   },
-  css: [
-    '@/assets/css/rtl.css'
-  ],
+  css: ["~/assets/scss/main.scss"],
   app: {
     pageTransition: { name: "page" },
     head: {
@@ -73,7 +71,7 @@ export default defineNuxtConfig({
       },
     },
   },
-  css: ["~/assets/scss/main.scss"],
+
   modules: ["nuxt-icon", "@nuxtjs/i18n", '@nuxt/content', 'nuxt-fathom', '@nuxtjs/sitemap', '@nuxtjs/robots', 'nuxt-jsonld', '@nuxt/fonts', '@nuxt/image', '@unlazy/nuxt'],
   unlazy: {
     ssr: true,
@@ -140,19 +138,14 @@ export default defineNuxtConfig({
         file: "en.json",
       },
       {
-        code: "es",
-        name: "Español",
-        file: "es.json",
-      },
-      {
         code: "fr",
         name: "Français",
         file: "fr.json",
       },
       {
-        code: "it",
-        name: "Italiano",
-        file: "it.json",
+        code: "es",
+        name: "Español",
+        file: "es.json",
       },
       {
         code: "pt",
@@ -160,34 +153,29 @@ export default defineNuxtConfig({
         file: "pt.json",
       },
       {
-        code: "zh",
-        name: "中文",
-        file: "zh.json",
-      },
-      {
-        code: "ja",
-        name: "日本語",
-        file: "ja.json",
-      },
-      {
-        code: "ko",
-        name: "한국어",
-        file: "ko.json",
-      },
-      {
-        code: "ar",
-        name: "العربية",
-        file: "ar.json",
-      },
-      {
-        code: "ru",
-        name: "Русский",
-        file: "ru.json",
-      },
-      {
         code: "it",
         name: "Italiano",
         file: "it.json",
+      },
+      {
+        code: "nl",
+        name: "Nederlands",
+        file: "nl.json",
+      },
+      {
+        code: "sv",
+        name: "Svenska",
+        file: "sv.json",
+      },
+      {
+        code: "fi",
+        name: "Suomi",
+        file: "fi.json",
+      },
+      {
+        code: "da",
+        name: "Dansk",
+        file: "da.json",
       },
     ],
   },

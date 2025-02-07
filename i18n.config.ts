@@ -3,5 +3,4 @@ export default defineI18nConfig(() => ({
   locale: "de",
   fallbackLocale: "en",
   messages: {},
-  rtlLocales: ["ar"],
 }));

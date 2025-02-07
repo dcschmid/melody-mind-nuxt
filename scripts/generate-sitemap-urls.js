@@ -1,19 +1,47 @@
 /**
  * Sitemap URL Generator for MelodyMind
+ * ===================================
  *
- * This script generates a list of URLs for the sitemap of the MelodyMind application.
+ * This script generates a comprehensive list of URLs for the MelodyMind application's sitemap.
  * It processes category JSON files for multiple languages and creates URLs for all
  * playable music categories. The output is formatted as a JavaScript module that
  * exports an array of URLs.
  *
  * Features:
  * - Multi-language support (de, en, es, fr, it)
- * - Filters for playable categories only
+ * - Intelligent filtering for playable categories only
  * - Generates both root and language-specific paths
  * - Outputs formatted JavaScript module code
  *
+ * Dependencies:
+ * - Node.js built-in modules: fs, path, url
+ * - JSON category files in ../app/json/ directory
+ *   Format: {lang}_categories.json (e.g., de_categories.json)
+ *
+ * Input Files:
+ * - Language-specific category files in JSON format
+ * - Each file contains an array of category objects with properties:
+ *   - categoryUrl: string (e.g., '/rock-music')
+ *   - isPlayable: boolean
+ *   - [other metadata]
+ *
+ * Output:
+ * - JavaScript module (../app/sitemap-urls.js)
+ * - Exports an array of strings (URLs)
+ * - Format: export default ['/', '/en', '/de', ...];
+ *
+ * Workflow:
+ * 1. Loads German (de) category file as source of truth
+ * 2. Filters for playable categories
+ * 3. Generates root URLs and language variants
+ * 4. Outputs formatted JavaScript module
+ *
  * Usage:
  *   node generate-sitemap-urls.js > ../app/sitemap-urls.js
+ *
+ * Note: The German category file is used as the source of truth for
+ * determining which categories are playable. This ensures consistency
+ * across all language variants.
  */
 
 import { readFileSync } from 'fs';
