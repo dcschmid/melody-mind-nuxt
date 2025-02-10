@@ -2,15 +2,14 @@
   "languages": {
       "de": "German",
       "en": "English",
-      "es": "Spanish",
       "fr": "French",
-      "it": "Italian",
+      "es": "Spanish",
       "pt": "Portuguese",
-      "zh": "Chinese",
-      "ja": "Japanese",
-      "ko": "Korean",
-      "ar": "Arabic",
-      "ru": "Russian"
+      "it": "Italian",
+      "nl": "Dutch",
+      "sv": "Swedish",
+      "fi": "Finnish",
+      "da": "Danish"
   },
   "common": {
     "openLanguageMenu": "Open Language Menu",
@@ -85,7 +84,7 @@
     }
   },
   "register": {
-    "title": "Registrierung",
+    "title": "Registration",
     "submitButton": "Sign Up",
     "hasAccount": "Already have an account?",
     "successMessage": "Registration successful! Please check your email.",
@@ -109,9 +108,9 @@
     "categoriesTitle": "Categories",
     "description": "Explore the fascinating world of music through different decades and genres",
     "searchPlaceholder": "Search categories...",
-    "playCategory": "Play {Kategorie}",
-    "comingSoon": "{Kategorie} - Coming Soon",
-    "categoryAlt": "Image for category {Kategorie}",
+    "playCategory": "Play {category}",
+    "comingSoon": "{category} - Coming Soon",
+    "categoryAlt": "Image for category {category}",
     "comingSoonLabel": "Coming Soon"
   },
   "multiplayer": {
@@ -172,7 +171,7 @@
       "description": "Play the {category} music quiz in {difficulty} mode now. Test your knowledge, earn points, and become a music expert!"
     },
     "loading": "Loading game...",
-    "question": "Question {Aktuell} of {Gesamt}",
+    "question": "Question {current} of {total}",
     "timeLeft": "Time Remaining",
     "score": "Score",
     "correct": "Correct!",
@@ -194,7 +193,7 @@
       "audienceOpinion": "Audience Opinion"
     },
     "links": {
-      "listen_on": "Listen"
+      "listen_on": "Listen on"
     },
     "trivia": {
       "title": "Fun Facts"
@@ -232,32 +231,32 @@
       "playAgain": "Play Again",
       "backToHome": "Back to Home"
     },
-    "round": "Round {aktuell} of {max}",
+    "round": "Round {current} of {max}",
     "points_label": "Points",
-    "points": "Points: {Basis} + {Zeit} time bonus",
+    "points": "Points: {base} + {time} time bonus",
     "confidence": "Confidence",
     "jokers": {
       "title": "Lifelines",
       "fiftyFifty": {
         "title": "50:50",
         "description": "Removes two incorrect answers",
-        "remaining": "{Anzahl} lifelines remaining",
+        "remaining": "{count} lifelines remaining",
         "ariaLabel": "Fifty-fifty lifeline"
       },
       "audience": {
         "title": "Ask the Audience",
         "description": "Shows the distribution of audience votes",
-        "remaining": "{Anzahl} lifelines remaining",
+        "remaining": "{count} lifelines remaining",
         "ariaLabel": "Ask the audience"
       },
       "phone": {
         "title": "Expert Advice",
         "description": "Get an expert's opinion",
-        "remaining": "{Anzahl} lifelines remaining",
+        "remaining": "{count} lifelines remaining",
         "ariaLabel": "Get expert advice"
       },
       "remainingCount": "{count} lifelines available",
-      "remaining": "{Anzahl} lifelines remaining"
+      "remaining": "{count} lifelines remaining"
     }
   },
   "gameRules": {
@@ -387,7 +386,7 @@
     "achievements": {
       "title": "Achievements",
       "locked": "Not yet unlocked",
-      "progress": "{Aktuell} of {Gesamt}"
+      "progress": "{current} of {total}"
     },
     "settings": {
       "title": "Settings",

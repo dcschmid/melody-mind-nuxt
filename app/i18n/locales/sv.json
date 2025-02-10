@@ -1,0 +1,627 @@
+{
+    "languages": {
+        "de": "Tyska",
+        "en": "Engelska",
+        "fr": "Franska",
+        "es": "Spanska",
+        "pt": "Portugisiska",
+        "it": "Italienska",
+        "nl": "Nederländska",
+        "sv": "Svenska",
+        "fi": "Finska",
+        "da": "Danska"
+    },
+    "common": {
+        "openLanguageMenu": "Open Language Menu",
+        "closeLanguageMenu": "Nära språkmeny",
+        "selectLanguage": "Välj språk",
+        "selectLanguageLabel": "Välj ditt föredragna språk",
+        "languageChanged": "Language has been changed to {language}",
+        "loading": "Loading..."
+    },
+    "meta": {
+        "title": "Melody Mind - Den ultimata musiken Quiz Spelspelspel",
+        "description": "Testa din musikkunskap i vårt interaktiva quiz-spel. Svara på frågor om sånger, artister och musikhistoria från olika genrer inklusive rock, pop, hip-hop och klassisk.",
+        "keywords": "Musik quiz, musikkunskap, online quiz, musikhistoria, artist quiz, album quiz, musikgenrer, interaktivt spel"
+    },
+    "seo": {
+        "category": {
+            "title": "Musik Quiz Categoryr - Melody Mind",
+            "description": "Utforska olika musikquiz-kategorier på Melody Mind. Testa din kunskap över olika genrer och rader av musikhistoria."
+        },
+        "gameRules": {
+            "title": "Spelrules - Melody Mind",
+            "description": "Lär dig om spelreglerna för Melody Mind. Upptäck allt om spellägen, poängsystem och bonusfunktioner i vår musikquiz."
+        },
+        "privacy": {
+            "title": "Privacy Policy - Melody Mind",
+            "description": "Lär dig om vår integritetspolicy. Ta reda på hur vi skyddar och använder dina data på Melody Mind."
+        },
+        "imprint": {
+            "title": "Juridiskt meddelande - Melody Mind",
+            "description": "Juridisk information och kontaktuppgifter för Melody Mind."
+        }
+    },
+    "welcome": {
+        "title": "Välkommen till Melody Mind",
+        "start": "Startspel",
+        "about": {
+            "title": "Om Melody Mind",
+            "description": "Testa din musikkunskap i olika kategorier. Ett spännande quizspel för musikälskare av alla genrer."
+        }
+    },
+    "intro": "Steg in i den fascinerande musikvärlden! Med Melody Mind kan du sätta din musikkunskap till testet i spännande quizrundor. Svara på frågor om låtar från olika decennier, artister, album och musikhistoria. Samla poäng, tjäna gyllene skivor och utmana andra musikentusiaster. Från rock till pop till hiphop och klassisk - testa din kunskap i dina favoritgenrer. Börja ditt musikaliska quiz-äventyr nu!",
+    "auth": {
+        "email": {
+            "label": "Email",
+            "placeholder": "Ange din e-postadress"
+        },
+        "password": {
+            "label": "Password",
+            "placeholder": "Ange Ditt lösenord"
+        },
+        "name": {
+            "label": "Namn",
+            "placeholder": "Ange ditt fullständiga namn"
+        }
+    },
+    "login": {
+        "title": "Sign In",
+        "methodLabel": "Tecken i metod",
+        "submitButton": "Sign In",
+        "noAccount": "Har du inget konto?",
+        "forgotPassword": "Glömt ditt lösenord?",
+        "orContinueWith": "Eller fortsätta med",
+        "continueWithDiscord": "Fortsätt Med Discord",
+        "continueWithGithub": "Fortsätt med GitHub",
+        "error": {
+            "invalidEmail": "Invalid email address",
+            "invalidPassword": "Invalid password",
+            "required": "Detta fält krävs",
+            "loginFailed": "Logga in misslyckad",
+            "discordLoginFailed": "Discord sign i misslyckades",
+            "githubLoginFailed": "GitHub-tecken misslyckades"
+        }
+    },
+    "register": {
+        "title": "Registrera",
+        "submitButton": "Registrera",
+        "hasAccount": "Har du redan ett konto?",
+        "successMessage": "Registrering framgångsrik! Vänligen kontrollera din e-post.",
+        "error": {
+            "invalidEmail": "Invalid email address",
+            "invalidPassword": "Lösenord måste vara minst 6 tecken lång",
+            "nameRequired": "Namn krävs",
+            "nameTooShort": "Namnet måste vara minst 2 tecken lång",
+            "usernameRequired": "Användarnamn krävs",
+            "usernameTooShort": "Användarnamnet måste vara minst 3 tecken lång",
+            "passwordTooShort": "Lösenord måste vara minst 8 tecken Långa",
+            "registrationFailed": "Registrering misslyckades"
+        }
+    },
+    "gameHome": {
+        "meta": {
+            "title": "Melody Mind - Musik Quiz för alla Genres",
+            "description": "Utforska våra musik quiz-kategorier och testa din kunskap över olika genrer, inklusive rock, pop, hip-hop och klassisk."
+        },
+        "title": "Välj en kategori för att spela",
+        "categoriesTitle": "Categories",
+        "description": "Utforska den fascinerande musikvärlden genom olika årtionden och genrer",
+        "searchPlaceholder": "Sök kategorier...",
+        "playCategory": "Play { Kategorie}",
+        "comingSoon": "{ Kategorie} - Coming Soon",
+        "categoryAlt": "Image for category { Kategorie }",
+        "comingSoonLabel": "Coming Soon"
+    },
+    "multiplayer": {
+        "meta": {
+            "title": "{category} Quiz - {difficulty } Difficulty - Multiplayer | Melody Mind",
+            "description": "Play the {category} music quiz in {difficulty} mode with friends. Test your knowledge together and find out who's the best music expert!"
+        },
+        "setup": {
+            "title": "Spelarinställning",
+            "players": "Spelare",
+            "playerName": "Name for Player {number }",
+            "enterName": "Namnnamn",
+            "startGame": "Startspel"
+        }
+    },
+    "category": {
+        "selected": "Väljt!",
+        "mode": {
+            "singleplayer": "Ensamspelare",
+            "multiplayer": "Multiplayer"
+        },
+        "aria": {
+            "categoryRegion": "Kategoriinformation",
+            "description": "Kategoribeskrivning",
+            "extendedDescription": "Ytterligare kategoriinformation"
+        },
+        "difficulty": {
+            "title": "Välj svårighet Nivå",
+            "easy": "Easy",
+            "medium": "Medium",
+            "hard": "Hard",
+            "description": {
+                "easy": "Perfekt För nybörjare",
+                "medium": "För erfarna musikälskare",
+                "hard": "For true music experts"
+            }
+        },
+        "playlist": {
+            "title": "Spelistor",
+            "description": "Dive into the world of {genre}! We've curated the best songs for you. Listen to the playlist on your preferred streaming platform and get ready for the game.",
+            "spotify": "Listor på Spotify",
+            "deezer": "Lyssna På Deezer",
+            "appleMusic": "Lyssna på Apple Music"
+        },
+        "knowledge": {
+            "title": "Kunskap",
+            "link": "Learn more about {genre }",
+            "description": "Want to learn more about the history and evolution of {genre}? Find exciting background information and interesting facts here."
+        },
+        "noImage": "Ingen bild tillgänglig",
+        "image": {
+            "altText": "Category cover for {category }"
+        }
+    },
+    "game": {
+        "meta": {
+            "title": "{category} Quiz - {difficulty} Difficulty | Melody Mind",
+            "description": "Play the {category} music quiz in {difficulty} mode Now. Test your knowledge, earn points, and become a music expert!"
+        },
+        "loading": "Loading game...",
+        "question": "Question { Aktuell} of {Gesamt }",
+        "timeLeft": "Time Remaining",
+        "score": "Score",
+        "correct": "Rätt!",
+        "wrong": "Wrong!",
+        "timeUp": "Tiden är upp!",
+        "next": "Nästa",
+        "nextQuestion": "Nästa fråga",
+        "finish": "Finish Game",
+        "option": "Option {number }",
+        "selectAnswer": "Select answer: { Answer}",
+        "expert": {
+            "title": "Expert Opinion",
+            "confidence": "Expert Confidence: {value}%"
+        },
+        "aria": {
+            "quizQuestion": "Fråga Quiz",
+            "answerOptions": "Svarsalternativ",
+            "expertAdvice": "Expert Advice",
+            "audienceOpinion": "Audience Opinion"
+        },
+        "links": {
+            "listen_on": "Lista List"
+        },
+        "trivia": {
+            "title": "Roliga fakta"
+        },
+        "gameOver": {
+            "title": "Spel Över",
+            "correctAnswers": "Rätt svar",
+            "backToMenu": "Tillbaka till Menu",
+            "playAgain": "Play Again",
+            "rankings": "Rankings"
+        },
+        "results": {
+            "title": "Game Results",
+            "totalScore": "Total poäng",
+            "correctAnswers": "Rätt svar",
+            "accuracy": "Accuracy",
+            "timeTaken": "Time Taken",
+            "newHighscore": "Ny High Score!",
+            "share": {
+                "title": "Dela ditt resultat",
+                "message": {
+                    "intro": "Wow! I scored {points} points in Melody Mind in the {category} category ({difficulty})!",
+                    "stats": "Score: {correct} out of { Total } correct!",
+                    "challenge": "Challenge me at {url}"
+                },
+                "buttons": {
+                    "share": "Share",
+                    "copy": "Kopiera text",
+                    "twitter": "Dela på Twitter",
+                    "telegram": "Dela på Telegram",
+                    "reddit": "Dela på Reddit",
+                    "whatsapp": "Dela på vad App App App App"
+                }
+            },
+            "playAgain": "Play Again",
+            "backToHome": "Tillbaka hem"
+        },
+        "round": "Round {aktuell} of { Max}",
+        "points_label": "Poäng",
+        "points": "Points: { Basis} + {Zeit} time Bonus",
+        "confidence": "Konfidentialit",
+        "jokers": {
+            "title": "Lifelines",
+            "fiftyFifty": {
+                "title": "50:50",
+                "description": "Ta bort två felaktiga svar",
+                "remaining": "{ Anzahl} lifelines remaining",
+                "ariaLabel": "Femtio femtio leverlina"
+            },
+            "audience": {
+                "title": "Fråga Audience",
+                "description": "Visar fördelningen av publikens röster",
+                "remaining": "{ Anzahl} lifelines remaining",
+                "ariaLabel": "Fråga publiken"
+            },
+            "phone": {
+                "title": "Expert Advice",
+                "description": "Få en experts åsikt",
+                "remaining": "{ Anzahl} lifelines remaining",
+                "ariaLabel": "Få expertråd"
+            },
+            "remainingCount": "{count} lifelines available",
+            "remaining": "{ Anzahl} lifelines remaining"
+        }
+    },
+    "gameRules": {
+        "meta": {
+            "title": "Spelregler och instruktioner Melody Mind",
+            "description": "Lär dig spelreglerna för Melody Mind. Upptäck allt om spellägen, poängsystem och bonusfunktioner i vår musikquiz."
+        },
+        "title": "Spelrules - MelodyMind",
+        "overview": {
+            "title": "Overview",
+            "text": "Välkommen till MelodyMind! Ditt mål är att svara på frågor om låtar, artister och album från olika musikgenrer. Välj en genre och lägg din kunskap till testet. Ju fler frågor du svarar korrekt, desto fler poäng tjänar du."
+        },
+        "difficultyLevels": {
+            "title": "Svårighetsnivåer",
+            "intro": "Det finns tre svårighetsnivåer att välja mellan:",
+            "levels": {
+                "easy": {
+                    "title": "Easy",
+                    "description": "10 frågor per runda. Perfekt för att uppdatera din kunskap och ha kul."
+                },
+                "medium": {
+                    "title": "Medium",
+                    "description": "15 frågor per runda. En utmaning för avancerade musikälskare."
+                },
+                "hard": {
+                    "title": "Hard",
+                    "description": "20 frågor per runda. Endast för riktiga musikexperter!"
+                }
+            },
+            "titles": {
+                "intro": "Varje svårighetsnivå har sin egen titel som du kan låsa upp:",
+                "novice": {
+                    "title": "Musik Novice",
+                    "description": "Svara på alla frågor korrekt i enkelt läge."
+                },
+                "master": {
+                    "title": "Musikmästare",
+                    "description": "Svara på alla frågor korrekt i medelläge."
+                },
+                "legend": {
+                    "title": "Musik Legend",
+                    "description": "Svara på alla frågor korrekt i hårt läge."
+                }
+            }
+        },
+        "pointsSystem": {
+            "title": "Poängsystem",
+            "rules": [
+                "50 poäng för varje korrekt svar.",
+                "Inga poäng för felaktiga svar."
+            ]
+        },
+        "goldenRecords": {
+            "title": "Golden Records",
+            "intro": "När du svarar på alla frågor korrekt i en kategori tjänar du ett gyllene rekord:",
+            "rewards": {
+                "easy": "Musik nybörjare.",
+                "medium": "Medium: Musikmästare.",
+                "hard": "Svårt: Music Legend."
+            }
+        },
+        "rankings": {
+            "title": "Rankings",
+            "text": "Rankingsystemet jämför dig med andra spelare. Din placering i topp 10 är baserad på dina totala poäng i alla kategorier.",
+            "lists": [
+                "Genrespecifik Rankings: De bästa spelarna i varje genre.",
+                "Övergripande rankningar: Bästa spelare i alla kategorier."
+            ]
+        },
+        "tipsAndTricks": {
+            "title": "Tips & Tricks",
+            "tips": [
+                "Börja med enkelt läge för att få en känsla för spelet.",
+                "Spela till dina styrkor och välj genrer du är bekväm med.",
+                "Öva regelbundet för att förbättra din poäng.",
+                "Noggrannhet Över hastighet - läs varje fråga noggrant."
+            ]
+        }
+    },
+    "knowledge": {
+        "meta": {
+            "title": "Musikkunskap och bakgrund Melody Mind",
+            "description": "Dyk in i musikens fascinerande värld. Upptäck spännande fakta och berättelser om olika musikgenrer och epoker."
+        },
+        "overview": "Knowledge Overview",
+        "title": "Musinkskap Base",
+        "description": "Utforska vår omfattande musikkunskapsbas",
+        "loading": "Ladda innehåll...",
+        "playAndListen": "Spela och lyssna på musik",
+        "playNow": "Spela nu",
+        "playlists": "Spelistor",
+        "playlist": {
+            "spotify": "Lyssna på Spotify",
+            "deezer": "Lyssna På Deezer",
+            "apple": "Lyssna på Apple Music",
+            "description": "Dive into the world of {genre}! We've curated the best songs for you. Listen to the playlist on your preferred streaming platform and get ready for the game."
+        },
+        "error": "Fel lastning innehåll",
+        "backToGame": "Tillbaka till spel"
+    },
+    "profile": {
+        "title": "Profil",
+        "name": "Namn",
+        "username": "Username",
+        "email": "Email",
+        "points": "Poäng",
+        "namePlaceholder": "Ditt namn",
+        "usernamePlaceholder": "Ditt användarnamn",
+        "emailPlaceholder": "Din e-",
+        "lps": {
+            "title": "Record Collection",
+            "none": "Du har inte samlat några poster ännu",
+            "types": {
+                "gold": "Gold",
+                "silver": "Silver",
+                "bronze": "Brons"
+            }
+        },
+        "stats": {
+            "title": "Statistik",
+            "gamesPlayed": "Spel spelade",
+            "totalScore": "Total poäng",
+            "averageScore": "Genomsnittlig score",
+            "highestScore": "Högsta poäng",
+            "accuracy": "Accuracy"
+        },
+        "achievements": {
+            "title": "Prestationer",
+            "locked": "Not yet unlocked",
+            "progress": "{ Aktuell} of {Gesamt }"
+        },
+        "settings": {
+            "title": "Settings",
+            "language": "Language",
+            "sound": "Ljud",
+            "music": "Musik",
+            "notifications": "Meddelanden",
+            "theme": "Tema",
+            "save": "Save",
+            "saved": "Saved!"
+        }
+    },
+    "navigation": {
+        "mainNavLabel": "Huvudnavigering",
+        "mainMenu": "Main Menu",
+        "openMenu": "Öppen meny",
+        "home": "Hemsidan",
+        "knowledge": "Kunskap Base",
+        "rules": "Spelrules",
+        "support": "Stöd oss",
+        "imprint": "Imprint",
+        "privacy": "Privacy",
+        "legal": "Legal"
+    },
+    "footer": {
+        "about": "Om oss",
+        "contact": "Kontakta Kontakt",
+        "privacy": "Privacy Policy",
+        "terms": "Användarvillkor"
+    },
+    "errors": {
+        "general": "Ett fel har inträffat",
+        "network": "Nätverk fel",
+        "retry": "Try again",
+        "pageNotFound": "Sidan hittades inte",
+        "emailRequired": "E-postadress krävs",
+        "invalidEmail": "Invalid email address",
+        "passwordRequired": "Lösenord krävs",
+        "passwordTooShort": "Lösenord måste vara minst 6 tecken lång",
+        "nameRequired": "Namn krävs",
+        "nameTooShort": "Namnet måste vara minst 2 tecken lång",
+        "loginFailed": "Login misslyckades",
+        "registrationFailed": "Registrering misslyckades",
+        "passwordResetFailed": "Lösenordsåterställning misslyckades"
+    },
+    "accessibility": {
+        "skipToMain": "Hoppa till huvudinnehåll",
+        "closeMenu": "Stäng meny",
+        "openMenu": "Öppen meny",
+        "darkMode": "Växla ljus och mörkt läge",
+        "playButton": "Play",
+        "pauseButton": "Pause",
+        "nextButton": "<< Tidigare - << Se visionen",
+        "previousButton": "Föregående",
+        "closeButton": "Nära"
+    },
+    "cookies": {
+        "title": "Cookie Settings",
+        "message": "Denna webbplats använder cookies för att förbättra din upplevelse",
+        "accept": "Accept All",
+        "decline": "Decline",
+        "customize": "Customize",
+        "preferences": {
+            "necessary": {
+                "title": "Essential Cook",
+                "description": "Dessa cookies krävs för grundläggande webbplatsfunktionalitet",
+                "required": "Krav"
+            },
+            "analytics": {
+                "title": "Analytics Cookies",
+                "description": "Hjälp oss att förstå hur besökare interagerar med webbplatsen"
+            },
+            "marketing": {
+                "title": "Marketing Cookies",
+                "description": "Används för att visa relevanta annonser för besökare"
+            }
+        },
+        "save": "Save Settings",
+        "moreInfo": "Mer information",
+        "cookiePolicy": "Cookie Policy"
+    },
+    "gdpr": {
+        "title": "Integritetsinställningar",
+        "description": "Vi respekterar din integritet",
+        "settings": {
+            "title": "Dina integritetsinställningar",
+            "data": {
+                "collection": "Datainsamling",
+                "usage": "Data Usage",
+                "sharing": "Data Sharing"
+            },
+            "consent": {
+                "title": "Ditt samtycke",
+                "withdraw": "Du kan återkalla ditt samtycke när som helst",
+                "manage": "Manage Settings"
+            },
+            "deletion": {
+                "title": "Datum borttagning",
+                "request": "Begär Data Delete",
+                "info": "Vi raderar dina data inom 30 dagar",
+                "confirmation": "Deletion Confirmation",
+                "local": "Lokala data i din webbläsare kan raderas genom dina webbläsarinställningar."
+            }
+        }
+    },
+    "legal": {
+        "privacy": {
+            "meta": {
+                "title": "Privacy Policy - Melody Mind",
+                "description": "Information om integritet på Melody Mind. Lär dig hur vi skyddar dina data och vilka rättigheter du har."
+            },
+            "title": "Privacy Policy",
+            "overview": {
+                "title": "Overview",
+                "general": {
+                    "title": "Allmän information",
+                    "text": "Vi tar skyddet av dina personuppgifter på stort allvar. Denna sekretesspolicy informerar dig om hur vi hanterar dina uppgifter."
+                }
+            },
+            "dataCollection": {
+                "title": "Datainsamling",
+                "cookies": {
+                    "title": "Cookies",
+                    "text": "Vi använder cookies för att ge dig bästa möjliga användarupplevelse. Dessa lagrar inte någon personligt identifierbar information."
+                },
+                "serverLogs": {
+                    "title": "Server Logs",
+                    "text": "För tekniska ändamål lagrar vi automatiskt serverloggfiler som överförs av din webbläsare."
+                },
+                "analytics": {
+                    "title": "Analytics Data",
+                    "text": "Vi använder anonymiserade analysdata för att förbättra vår spelupplevelse. Dessa data inkluderar spelstatistik, användningsmönster och prestandadata, men ingen personligt identifierbar information."
+                }
+            },
+            "rights": {
+                "title": "Dina rättigheter",
+                "intro": "Du har följande rättigheter avseende dina personuppgifter:",
+                "list": {
+                    "information": "Rätt att komma åt dina lagrade data",
+                    "correction": "Rätt att korrigera felaktiga data",
+                    "restriction": "Rätt att begränsa behandlingen",
+                    "objection": "Rätt att invända mot behandling",
+                    "portability": "Rätt till dataportabilitet"
+                }
+            },
+            "contact": {
+                "title": "Kontakta Kontakt",
+                "text": "Om du har några frågor om integritet kan du kontakta oss när som helst.",
+                "emailLabel": "Email",
+                "emailAddress": "Daniel. schmid1980(at) Icloud. com"
+            },
+            "gameData": {
+                "title": "Game Data",
+                "progress": {
+                    "title": "Game Progress",
+                    "intro": "Följande speldata lagras:",
+                    "list": {
+                        "scores": "Score Records",
+                        "awards": "Prestationer",
+                        "rankings": "Ranking positioner"
+                    },
+                    "purpose": "Dessa data används uteslutande för att förbättra din spelupplevelse och visa dina prestationer."
+                },
+                "localStorage": {
+                    "title": "Lokal lagring",
+                    "intro": "Följande information lagras lokalt i din webbläsare:",
+                    "list": {
+                        "categories": "Spelade kategorier",
+                        "settings": "Game settings",
+                        "language": "Language setting"
+                    },
+                    "storage": "Dessa data lagras lokalt på din enhet och överförs inte till våra servrar. Du kan ta bort den när som helst genom dina webbläsareinställningar."
+                },
+                "session": {
+                    "title": "Datum",
+                    "intro": "Under en aktiv spelsession lagras följande data tillfälligt:",
+                    "list": {
+                        "auth": "Autentisering status för spelsessionen",
+                        "progress": "Nuvarande spel framsteg och poäng",
+                        "settings": "Tillfälliga spelinställningar"
+                    }
+                }
+            },
+            "deletion": {
+                "title": "Datum borttagning",
+                "intro": "Du har rätt att ta bort följande data:",
+                "list": {
+                    "highscores": "Din personliga höga poäng och spelstatistik",
+                    "results": "Sparade spelresultat och prestationer",
+                    "account": "Ditt hela användarkonto och alla tillhörande data"
+                },
+                "local": "Lokalt lagrade data (cookies, spelframsteg) kan raderas oberoende genom dina webbläsareinställningar."
+            }
+        },
+        "imprint": {
+            "meta": {
+                "title": "Imprint - Melody Mind",
+                "description": "Juridisk information och kontaktuppgifter för Melody Mind. Hitta all viktig information om webbplatsoperatören här."
+            },
+            "title": "Juridiskt meddelande",
+            "information": {
+                "title": "Information singel § 5 TMG",
+                "operator": "Daniel Schmid",
+                "address": "Hiltenspergerstr. 78, 80796 München",
+                "country": "Germany"
+            },
+            "contact": {
+                "title": "Kontakta Kontakt",
+                "emailLabel": "Email",
+                "emailAddress": "Daniel. schmid1980(at) Icloud. com"
+            },
+            "responsible": {
+                "title": "Ansvarig för innehåll enligt § 55 Abs. 2 RStV"
+            },
+            "disputeResolution": {
+                "title": "Tvistlösning",
+                "text": "Europeiska kommissionen tillhandahåller en plattform för tvistlösning online (ODR)",
+                "link": "Https://ec. europa. eu/consumers/odr/",
+                "additional": "Vi är varken villiga eller skyldiga att delta i tvistlösningsförfaranden innan en konsument skiljedomsnämnd."
+            },
+            "lawReference": {
+                "title": "Juridiskt meddelande",
+                "text": "Trots noggrann innehållskontroll tar vi inget ansvar för innehållet i externa länkar. Operatörerna av länkade sidor är ensam ansvariga för deras innehåll."
+            },
+            "jurisdiction": {
+                "title": "Legal Basis",
+                "text": "Denna webbplats är föremål för tysk lag.",
+                "applicableLaw": "Tysk lag tillämpas uteslutande, exklusive FN:s konvention om avtal om internationell försäljning av varor.",
+                "jurisdiction": "Behörighetsorten för alla tvister som härrör från detta avtal är Tyskland, där lagligt tillåtet."
+            }
+        }
+    },
+    "difficulty": {
+        "easy": "Easy",
+        "medium": "Medium",
+        "hard": "Hard"
+    }
+}

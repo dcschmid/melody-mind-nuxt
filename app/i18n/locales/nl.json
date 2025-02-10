@@ -1,0 +1,627 @@
+{
+    "languages": {
+        "de": "Duits",
+        "en": "Engels",
+        "fr": "Frans",
+        "es": "Spaans",
+        "pt": "Portugees",
+        "it": "Italiaans",
+        "nl": "Nederlands",
+        "sv": "Zweeds",
+        "fi": "Fins",
+        "da": "Deens"
+    },
+    "common": {
+        "openLanguageMenu": "Taalmenu openen",
+        "closeLanguageMenu": "Sluiten",
+        "selectLanguage": "Taal selecteren",
+        "selectLanguageLabel": "Kies uw voorkeurstaal",
+        "languageChanged": "De taal is gewijzigd naar {language}",
+        "loading": "Laden..."
+    },
+    "meta": {
+        "title": "Melody Mind. De ultieme muziekquiz Spel",
+        "description": "Test je muziekkennis in ons interactieve quizspel. Beantwoord vragen over songs, artiesten en muziekgeschiedenis uit verschillende genres, waaronder rock, pop, hiphop en klassiek.",
+        "keywords": "Muziekquiz, muziekkennis, online quiz, muziekgeschiedenis, artiestenquiz, albumquiz, muziekgenres, interactief spel"
+    },
+    "seo": {
+        "category": {
+            "title": "Muziek Quiz Categorieën - Melody Mind",
+            "description": "Verken verschillende muziekquiz categorieën bij Melody Mind. Test je kennis over verschillende genres en tijdperken van muziekgeschiedenis."
+        },
+        "gameRules": {
+            "title": "Spelregars - Melody Mind",
+            "description": "Leer meer over de spelregels van Melody Mind. Ontdek alles over spelmodi, scoren systeem, en bonus features in onze muziek quiz."
+        },
+        "privacy": {
+            "title": "Privacy Policy - Melody Mind",
+            "description": "Meer informatie over ons privacybeleid. Ontdek hoe we uw gegevens beschermen en gebruiken bij Melody Mind."
+        },
+        "imprint": {
+            "title": "Juridische kennisgeving - Melody Mind",
+            "description": "Wettelijke informatie en contactgegevens voor Melody Mind."
+        }
+    },
+    "welcome": {
+        "title": "Welkom bij Melody Mind.",
+        "start": "Spel start",
+        "about": {
+            "title": "Over Melody Mind",
+            "description": "Test je muziekkennis in verschillende categorieën. Een spannend quizspel voor muziekliefhebbers van alle genres."
+        }
+    },
+    "intro": "Stap in de fascinerende wereld van de muziek! Met Melody Mind kun je je muziekkennis testen in spannende quizrondes. Beantwoord vragen over nummers uit verschillende decennia, artiesten, albums en muziekgeschiedenis. Verzamel punten, verdien gouden platen en daag andere muziekliefhebbers uit. Van rock tot pop tot hiphop en klassiek - test je kennis in je favoriete genres. Start je muzikale quiz avontuur nu!",
+    "auth": {
+        "email": {
+            "label": "Email",
+            "placeholder": "Voer uw e-mailadres in"
+        },
+        "password": {
+            "label": "Password",
+            "placeholder": "Voer uw wachtwoord in"
+        },
+        "name": {
+            "label": "Naam",
+            "placeholder": "Voer uw volledige naam in"
+        }
+    },
+    "login": {
+        "title": "Sign In",
+        "methodLabel": "Aanmeldmethode",
+        "submitButton": "Sign In",
+        "noAccount": "Heb je geen rekening?",
+        "forgotPassword": "Wachtwoord vergeten?",
+        "orContinueWith": "Of ga door met",
+        "continueWithDiscord": "Doorgaan met Discord",
+        "continueWithGithub": "Ga verder met GitHub",
+        "error": {
+            "invalidEmail": "Invalid email address",
+            "invalidPassword": "Invalid password",
+            "required": "Dit veld is vereist",
+            "loginFailed": "Aanmelden mislukt",
+            "discordLoginFailed": "Discord-teken in mislukt",
+            "githubLoginFailed": "GitHub-teken is mislukt"
+        }
+    },
+    "register": {
+        "title": "Griffier",
+        "submitButton": "Registreren",
+        "hasAccount": "Heb je al een rekening?",
+        "successMessage": "Registratie geslaagd! Controleer uw e-mail.",
+        "error": {
+            "invalidEmail": "Invalid email address",
+            "invalidPassword": "Wachtwoord moet minstens 6 tekens lang zijn",
+            "nameRequired": "Naam is vereist",
+            "nameTooShort": "Naam moet minstens 2 tekens lang zijn",
+            "usernameRequired": "Gebruikersnaam is vereist",
+            "usernameTooShort": "Gebruikersnaam moet minstens 3 tekens lang zijn",
+            "passwordTooShort": "Wachtwoord moet minstens 8 tekens lang zijn",
+            "registrationFailed": "Registratie mislukt"
+        }
+    },
+    "gameHome": {
+        "meta": {
+            "title": "Melody Mind - Muziekquiz voor Alle Genres",
+            "description": "Verken onze muziekquiz categorieën en test uw kennis over verschillende genres, waaronder rock, pop, hiphop en klassiek."
+        },
+        "title": "Kies een categorie om af te spelen",
+        "categoriesTitle": "Categories",
+        "description": "Ontdek de fascinerende wereld van muziek door verschillende decennia en genres",
+        "searchPlaceholder": "Categorieën zoeken...",
+        "playCategory": "Play {Kategorie}",
+        "comingSoon": "{Kategorie} - Coming Soon",
+        "categoryAlt": "Image for category {Kategorie}",
+        "comingSoonLabel": "Coming Soon"
+    },
+    "multiplayer": {
+        "meta": {
+            "title": "{category} Quiz - {difficulty} Difficulty - Multiplayer | Melody Mind",
+            "description": "Play the { Category} Music quiz In {difficulty} mode with friends. Test your knowledge together and find out who's The best music expert!"
+        },
+        "setup": {
+            "title": "Spelerinstellingen",
+            "players": "Spelers",
+            "playerName": "Name for Player {number }",
+            "enterName": "Naam",
+            "startGame": "Spel start"
+        }
+    },
+    "category": {
+        "selected": "Geselecteerd!",
+        "mode": {
+            "singleplayer": "Enkele speler",
+            "multiplayer": "Multiplayer"
+        },
+        "aria": {
+            "categoryRegion": "Categorieinformatie",
+            "description": "Categorie Omschrijving",
+            "extendedDescription": "Aanvullende categorieinformatie"
+        },
+        "difficulty": {
+            "title": "Kies probleemniveau",
+            "easy": "Easy",
+            "medium": "Medium",
+            "hard": "Hard",
+            "description": {
+                "easy": "Perfect voor beginners",
+                "medium": "Voor ervaren muziekliefhebbers",
+                "hard": "For true music experts"
+            }
+        },
+        "playlist": {
+            "title": "Afspeellijsten",
+            "description": "Dive into the world of {genre}! We've curated the best songs for you. Listen to the playlist on your preferred streaming Platform and get ready for the game.",
+            "spotify": "Luister naar Spotify",
+            "deezer": "Listen on Deezer",
+            "appleMusic": "Luister naar Apple Music"
+        },
+        "knowledge": {
+            "title": "Kennisbank",
+            "link": "Learn more about {genre}",
+            "description": "Want to learn more about The history and evolution of {genre }? Find exciting background information and interesting facts here."
+        },
+        "noImage": "Geen afbeelding beschikbaar",
+        "image": {
+            "altText": "Category cover for { Category}"
+        }
+    },
+    "game": {
+        "meta": {
+            "title": "{category} Quiz - {difficulty} Difficulty | Melody Mind",
+            "description": "Play the { Category} Music quiz In {difficulty} mode now. Test your knowledge, earn points, and become a music expert!"
+        },
+        "loading": "Loading game...",
+        "question": "Question {Aktuell} of {Gesamt}",
+        "timeLeft": "Time Remaining",
+        "score": "Score",
+        "correct": "Correct!",
+        "wrong": "Wrong!",
+        "timeUp": "De tijd is om.",
+        "next": "Volgende",
+        "nextQuestion": "Volgende vraag",
+        "finish": "Spel beëindigen",
+        "option": "Option {number }",
+        "selectAnswer": "Select answer: {answer}",
+        "expert": {
+            "title": "Expert Opinion",
+            "confidence": "Expert Confidence: {value}%"
+        },
+        "aria": {
+            "quizQuestion": "Vraag Quiz",
+            "answerOptions": "Antwoordopties",
+            "expertAdvice": "Expert Advice",
+            "audienceOpinion": "Publieksadvies"
+        },
+        "links": {
+            "listen_on": "Lijst"
+        },
+        "trivia": {
+            "title": "Leuke feiten"
+        },
+        "gameOver": {
+            "title": "Spel Over",
+            "correctAnswers": "Correcte antwoorden",
+            "backToMenu": "Terug naar Menu",
+            "playAgain": "Play Again",
+            "rankings": "Rankings"
+        },
+        "results": {
+            "title": "Game Results",
+            "totalScore": "Totaalscore",
+            "correctAnswers": "Correcte antwoorden",
+            "accuracy": "Accuracy",
+            "timeTaken": "Time Taken",
+            "newHighscore": "New High Score!",
+            "share": {
+                "title": "Uw resultaat delen",
+                "message": {
+                    "intro": "Wow! I scored {points} points in Melody Mind In the {category} category ({difficulty})!",
+                    "stats": "Score: {correct} out of {total} correct!",
+                    "challenge": "Challenge me at {url}"
+                },
+                "buttons": {
+                    "share": "Share",
+                    "copy": "Tekst kopiëren",
+                    "twitter": "Delen op Twitter",
+                    "telegram": "Delen op Telegram",
+                    "reddit": "Delen op Reddit",
+                    "whatsapp": "Delen op Whats App"
+                }
+            },
+            "playAgain": "Play Again",
+            "backToHome": "Terug naar Begin"
+        },
+        "round": "Round {aktuell} of {max}",
+        "points_label": "Punt",
+        "points": "Points: {Basis} + {Zeit} time bonus",
+        "confidence": "Vertrouwelijkheid",
+        "jokers": {
+            "title": "Levenslijnen",
+            "fiftyFifty": {
+                "title": "50:50",
+                "description": "Verwijdert twee onjuiste antwoorden",
+                "remaining": "{Anzahl} lifelines remaining",
+                "ariaLabel": "50-50 levenslijn"
+            },
+            "audience": {
+                "title": "Vraag het publiek",
+                "description": "Toont de verspreiding van de stemmen van het publiek",
+                "remaining": "{Anzahl} lifelines remaining",
+                "ariaLabel": "Vraag het publiek"
+            },
+            "phone": {
+                "title": "Expert Advice",
+                "description": "Vraag advies van een expert",
+                "remaining": "{Anzahl} lifelines remaining",
+                "ariaLabel": "Krijg deskundig advies"
+            },
+            "remainingCount": "{count } Lifelines available",
+            "remaining": "{Anzahl} lifelines remaining"
+        }
+    },
+    "gameRules": {
+        "meta": {
+            "title": "Spelregels & instructies - Melody Mind",
+            "description": "Leer de spelregels van Melody Mind. Ontdek alles over spelmodi, scoren systeem, en bonus features in onze muziek quiz."
+        },
+        "title": "Spelregs - MelodyMind",
+        "overview": {
+            "title": "Overview",
+            "text": "Welkom bij MelodyMind! Je doel is om vragen te beantwoorden over nummers, artiesten en albums van verschillende muziekgenres. Kies een genre en test je kennis. Hoe meer vragen je correct beantwoordt, hoe meer punten Je verdient."
+        },
+        "difficultyLevels": {
+            "title": "Moeilijkheidsgraad",
+            "intro": "Er zijn drie moeilijkheidsniveaus om uit te kiezen:",
+            "levels": {
+                "easy": {
+                    "title": "Easy",
+                    "description": "10 vragen per ronde. Perfect om je kennis te verfrissen en plezier te hebben."
+                },
+                "medium": {
+                    "title": "Medium",
+                    "description": "15 vragen per ronde. Een uitdaging voor gevorderde muziekliefhebbers."
+                },
+                "hard": {
+                    "title": "Hard",
+                    "description": "20 vragen per ronde. Alleen voor echte muziekexperts!"
+                }
+            },
+            "titles": {
+                "intro": "Elk moeilijkheidsniveau heeft zijn eigen titel die je kunt ontgrendelen:",
+                "novice": {
+                    "title": "Muziek beginner",
+                    "description": "Beantwoord alle vragen correct in eenvoudige modus."
+                },
+                "master": {
+                    "title": "Muziekmeester",
+                    "description": "Beantwoord alle vragen Correct in medium mode."
+                },
+                "legend": {
+                    "title": "Muziek Legend",
+                    "description": "Beantwoord Alle vragen correct in de harde modus."
+                }
+            }
+        },
+        "pointsSystem": {
+            "title": "Puntsysteem",
+            "rules": [
+                "50 punten voor elk correct antwoord.",
+                "Geen punten voor onjuiste antwoorden."
+            ]
+        },
+        "goldenRecords": {
+            "title": "Golden Records",
+            "intro": "Als je alle vragen in een categorie correct beantwoordt, verdien je een gouden record:",
+            "rewards": {
+                "easy": "Makkelijk: Muziek Beginner.",
+                "medium": "Medium: Music Master.",
+                "hard": "Hard: Music Legend."
+            }
+        },
+        "rankings": {
+            "title": "Rankings",
+            "text": "Het rangschikkingssysteem vergelijkt je met andere spelers. Uw plaatsing in de top 10 is gebaseerd op uw totale punten in alle categorieën.",
+            "lists": [
+                "Genrespecifiek Ranglijsten: De beste spelers in elk genre.",
+                "Algemene ranglijsten: Beste spelers in alle categorieën."
+            ]
+        },
+        "tipsAndTricks": {
+            "title": "Tips",
+            "tips": [
+                "Begin met een eenvoudige modus om een gevoel voor het spel te krijgen.",
+                "Speel naar je sterke punten en kies genres waar je je prettig bij voelt.",
+                "Oefen regulerend om je score te verbeteren.",
+                "Nauwkeurigheid over snelheid - lees elke vraag zorgvuldig."
+            ]
+        }
+    },
+    "knowledge": {
+        "meta": {
+            "title": "Muziekkennis & achtergrond - Melody Mind",
+            "description": "Duik in de fascinerende wereld van de muziek. Ontdek spannende feiten en verhalen over verschillende muziekgenres en tijdperken."
+        },
+        "overview": "Knowledge Overview",
+        "title": "Muziekkennis Basis",
+        "description": "Ontdek onze uitgebreide kennisbasis voor muziek",
+        "loading": "Inhoud Wordt geladen...",
+        "playAndListen": "Muziek afspelen & luisteren",
+        "playNow": "Nu afspelen",
+        "playlists": "Afspeellijsten",
+        "playlist": {
+            "spotify": "Luister naar Spotify",
+            "deezer": "Listen on Deezer",
+            "apple": "Luister naar Apple Music",
+            "description": "Dive into the world of {genre}! We've curated the best songs for you. Listen to the playlist on your preferred streaming Platform and get ready for the game."
+        },
+        "error": "Fout Bij laden inhoud",
+        "backToGame": "Terug naar spel"
+    },
+    "profile": {
+        "title": "Profiel",
+        "name": "Naam",
+        "username": "Gebruikersnaam",
+        "email": "Email",
+        "points": "Punt",
+        "namePlaceholder": "Uw naam",
+        "usernamePlaceholder": "Uw gebruikersnaam",
+        "emailPlaceholder": "Uw e-mailadres",
+        "lps": {
+            "title": "Platenverzamelen",
+            "none": "Je hebt nog geen gegevens verzameld.",
+            "types": {
+                "gold": "Gold",
+                "silver": "Silver",
+                "bronze": "Brons"
+            }
+        },
+        "stats": {
+            "title": "Statistieken",
+            "gamesPlayed": "Spelletjes afgespeeld",
+            "totalScore": "Totaalscore",
+            "averageScore": "Gemiddelde score",
+            "highestScore": "Hoogste score",
+            "accuracy": "Accuracy"
+        },
+        "achievements": {
+            "title": "Achievements",
+            "locked": "Nog niet geopend",
+            "progress": "{Aktuell} of {Gesamt}"
+        },
+        "settings": {
+            "title": "Instellingen",
+            "language": "Language",
+            "sound": "Geluid",
+            "music": "Music",
+            "notifications": "Kennisgevingen",
+            "theme": "Thema",
+            "save": "Save",
+            "saved": "Saved!"
+        }
+    },
+    "navigation": {
+        "mainNavLabel": "Hoofdnavigatie",
+        "mainMenu": "Main Menu",
+        "openMenu": "Open Menu",
+        "home": "Home",
+        "knowledge": "Kennisbasis",
+        "rules": "Spelregs",
+        "support": "Steun ons",
+        "imprint": "Imprint",
+        "privacy": "Privacy",
+        "legal": "Legal"
+    },
+    "footer": {
+        "about": "Over ons",
+        "contact": "Contactpersoon",
+        "privacy": "Privacy Policy",
+        "terms": "Gebruiksvoorwaarden"
+    },
+    "errors": {
+        "general": "Een fout die je hebt gemaakt.",
+        "network": "Network error",
+        "retry": "Try again",
+        "pageNotFound": "Pagina niet gevonden",
+        "emailRequired": "E-mailadres is vereist",
+        "invalidEmail": "Invalid email address",
+        "passwordRequired": "Wachtwoord is vereist",
+        "passwordTooShort": "Wachtwoord moet minstens 6 tekens lang zijn",
+        "nameRequired": "Naam is vereist",
+        "nameTooShort": "Naam moet minstens 2 tekens lang zijn",
+        "loginFailed": "Login failed",
+        "registrationFailed": "Schrijffout",
+        "passwordResetFailed": "Wachtwoord Resetten mislukt"
+    },
+    "accessibility": {
+        "skipToMain": "Overslaan en naar de inhoud gaan",
+        "closeMenu": "Menu sluiten",
+        "openMenu": "Open menu",
+        "darkMode": "Licht en donker Aan/uit",
+        "playButton": "Play",
+        "pauseButton": "Pause",
+        "nextButton": "Volgende",
+        "previousButton": "Vorige",
+        "closeButton": "Sluiten"
+    },
+    "cookies": {
+        "title": "Cookie Settings",
+        "message": "Deze website maakt gebruik van cookies om uw ervaring te verbeteren",
+        "accept": "Accept All",
+        "decline": "Afwijzen",
+        "customize": "Customize",
+        "preferences": {
+            "necessary": {
+                "title": "Essentiele kok",
+                "description": "Deze cookies zijn vereist voor de basisfunctionaliteit van de website",
+                "required": "Vereist"
+            },
+            "analytics": {
+                "title": "Analytics Cookies",
+                "description": "Help ons begrijpen hoe bezoekers omgaan met de website"
+            },
+            "marketing": {
+                "title": "Marketing Cookies",
+                "description": "Gebruikt om relevante advertenties te tonen aan bezoekers"
+            }
+        },
+        "save": "Save Settings",
+        "moreInfo": "Meer informatie",
+        "cookiePolicy": "Cookie Policy"
+    },
+    "gdpr": {
+        "title": "Privacy-instellingen",
+        "description": "Wij respecteren uw privacy",
+        "settings": {
+            "title": "Uw privacyinstellingen",
+            "data": {
+                "collection": "Gegevensverzameling",
+                "usage": "Data Usage",
+                "sharing": "Data Sharing"
+            },
+            "consent": {
+                "title": "Uw toestemming",
+                "withdraw": "U kunt uw toestemming te allen tijde intrekken.",
+                "manage": "Manage Settings"
+            },
+            "deletion": {
+                "title": "Verwijderingsdatum",
+                "request": "Gegevens verwijderen",
+                "info": "Wij verwijderen uw gegevens binnen 30 dagen",
+                "confirmation": "Verwijderingsbevestiging",
+                "local": "Lokale gegevens in uw browser kunnen worden verwijderd via uw browserinstellingen."
+            }
+        }
+    },
+    "legal": {
+        "privacy": {
+            "meta": {
+                "title": "Privacy Policy - Melody Mind",
+                "description": "Informatie over privacy bij Melody Mind. Ontdek hoe we uw gegevens beschermen en welke rechten U heeft."
+            },
+            "title": "Privacy Policy",
+            "overview": {
+                "title": "Overview",
+                "general": {
+                    "title": "Algemene informatie",
+                    "text": "Wij nemen de bescherming van uw persoonsgegevens zeer serieus. Dit privacybeleid informeert u over hoe wij met uw gegevens omgaan."
+                }
+            },
+            "dataCollection": {
+                "title": "Gegevensverzameling",
+                "cookies": {
+                    "title": "Cookies",
+                    "text": "Wij gebruiken cookies om u de best mogelijke gebruikerservaring te bieden. Deze bewaren geen persoonlijk identificeerbare informatie."
+                },
+                "serverLogs": {
+                    "title": "Server Logs",
+                    "text": "Voor technische doeleinden slaan we automatisch door uw browser verzonden serverlogbestanden op."
+                },
+                "analytics": {
+                    "title": "Analysegegevens",
+                    "text": "We gebruiken geanonimiseerde analytics data om onze spelervaring te verbeteren. Deze gegevens omvatten spelstatistieken, gebruikspatronen en prestatiegegevens, maar geen persoonlijk identificeerbare informatie."
+                }
+            },
+            "rights": {
+                "title": "Rechts",
+                "intro": "U heeft de volgende rechten met betrekking tot uw persoonsgegevens:",
+                "list": {
+                    "information": "Recht op toegang tot uw opgeslagen gegevens",
+                    "correction": "Recht om onjuiste gegevens te corrigeren",
+                    "restriction": "Recht om verwerking te beperken",
+                    "objection": "Recht op bezwaar tegen verwerking",
+                    "portability": "Recht op overdraagbaarheid van gegevens"
+                }
+            },
+            "contact": {
+                "title": "Contactpersoon",
+                "text": "Als u vragen heeft over privacy, kunt u altijd contact met ons opnemen.",
+                "emailLabel": "Email",
+                "emailAddress": "Daniel. schmid1980(at) Icloud. com"
+            },
+            "gameData": {
+                "title": "Game Data",
+                "progress": {
+                    "title": "Spelvoortgang",
+                    "intro": "De volgende spelgegevens worden opgeslagen:",
+                    "list": {
+                        "scores": "Score records",
+                        "awards": "Achievements",
+                        "rankings": "Rangposities"
+                    },
+                    "purpose": "Deze gegevens worden uitsluitend gebruikt om uw spelervaring te verbeteren en uw prestaties weer te geven."
+                },
+                "localStorage": {
+                    "title": "Lokale opslag",
+                    "intro": "De volgende informatie wordt lokaal opgeslagen in uw browser:",
+                    "list": {
+                        "categories": "Afgespeelde categorieën",
+                        "settings": "Game settings",
+                        "language": "Language setting"
+                    },
+                    "storage": "Deze gegevens blijven lokaal op uw apparaat opgeslagen en worden niet naar onze servers overgebracht. U kunt het te allen tijde verwijderen via uw browserinstellingen."
+                },
+                "session": {
+                    "title": "Sessiegegevens",
+                    "intro": "Tijdens een actieve spelsessie worden de volgende gegevens tijdelijk opgeslagen:",
+                    "list": {
+                        "auth": "Authenticatiestatus voor de spelsessie",
+                        "progress": "Huidige spelvooruitgang en score",
+                        "settings": "Tijdelijke spelinstellingen"
+                    }
+                }
+            },
+            "deletion": {
+                "title": "Verwijderingsdatum",
+                "intro": "U heeft het recht om de volgende gegevens te laten verwijderen:",
+                "list": {
+                    "highscores": "Uw persoonlijke hoge scores en game statistieken",
+                    "results": "Opgeslagen resultaten en resultaten",
+                    "account": "Uw volledige gebruikersaccount en alle bijbehorende gegevens"
+                },
+                "local": "Lokaal opgeslagen gegevens (cookies, vooruitgang van het spel) kunnen onafhankelijk worden verwijderd via uw browserinstellingen."
+            }
+        },
+        "imprint": {
+            "meta": {
+                "title": "Impressum - Melody Mind",
+                "description": "Wettelijke informatie en contactgegevens voor Melody Mind. Hier vindt u alle belangrijke informatie over de website operator."
+            },
+            "title": "Codering",
+            "information": {
+                "title": "Informatie overeenkomstig § 5 TMG",
+                "operator": "Daniel Schmid",
+                "address": "Hiltenspergerstr. 78, 80796 München",
+                "country": "Germany"
+            },
+            "contact": {
+                "title": "Contactpersoon",
+                "emailLabel": "Email",
+                "emailAddress": "Daniel. schmid1980(at) Icloud. com"
+            },
+            "responsible": {
+                "title": "Verantwoordelijk voor de inhoud volgens § 55 Abs. 2 RSTV"
+            },
+            "disputeResolution": {
+                "title": "Gladmaken",
+                "text": "De Europese Commissie biedt een platform voor online geschillenbeslechting (ODR)",
+                "link": "Https://ec. europa. eu/consumers/odr/",
+                "additional": "Wij zijn niet bereid of verplicht deel te nemen aan geschillenbeslechtingsprocedures voor een consumentenarbitragecommissie."
+            },
+            "lawReference": {
+                "title": "Codering",
+                "text": "Ondanks zorgvuldige inhoudscontrole zijn we niet aansprakelijk voor de inhoud van externe links. De exploitanten van de gelinkte pagina's zijn uitsluitend verantwoordelijk voor de inhoud ervan."
+            },
+            "jurisdiction": {
+                "title": "Legal Basis",
+                "text": "Deze website is onderworpen aan het Duitse recht.",
+                "applicableLaw": "Het Duitse recht is uitsluitend van toepassing, met uitzondering van het VN-Verdrag inzake overeenkomsten voor de internationale verkoop van goederen.",
+                "jurisdiction": "De plaats van bevoegdheid voor alle geschillen die voortvloeien uit deze overeenkomst is Duitsland, indien wettelijk toegestaan."
+            }
+        }
+    },
+    "difficulty": {
+        "easy": "Easy",
+        "medium": "Medium",
+        "hard": "Hard"
+    }
+}
