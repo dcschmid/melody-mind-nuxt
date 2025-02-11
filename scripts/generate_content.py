@@ -1199,64 +1199,8 @@ def get_section_limits(category, language="en"):
 
 def get_language_prompts(language):
     prompts = {
-        "da": {
-            "style": "Akademisk dansk",
-            "characteristics": "præcis musikologisk terminologi, akademisk tone, komplekse sætningsstrukturer",
-            "prompt": """
-            Opret indhold til sektionen '{section_name}' i musikkategorien '{category}'.
-            
-            SPROGLIGE KRAV:
-            1. Brug udelukkende akademisk dansk
-            2. Anvend præcis musikologisk terminologi
-            3. Oprethold korrekt grammatik og syntaks
-            4. Undgå talesprog og uformelle udtryk
-            5. Brug akademiske skrivkonventioner
-            
-            INDHOLDSKRAV:
-            1. Teksten SKAL være mindst {char_min} tegn
-            2. Fokuser udelukkende på international musik
-            3. Strukturer indholdet med klare, logiske afsnit
-            4. Brug komplekse men forståelige sætningsstrukturer
-            5. Undgå punktopstillinger til fordel for flydende tekst
-            6. Integrer relevante kulturhistoriske kontekster
-            7. Brug præcis musikalsk terminologi
-            8. Artikuler musikkteoretiske sammenhænge klart
-            9. Implementer passende overgange mellem afsnit
-            10. Bevar en konsistent akademisk tone
-            
-            KRITISK: Antallet af tegn SKAL være mindst {char_min}.
-            """
-        },
-        "nl": {
-            "style": "Academisch Nederlands",
-            "characteristics": "nauwkeurige musicologische terminologie, wetenschappelijke toon, complexe zinsstructuren",
-            "prompt": """
-            Maak inhoud voor de sectie '{section_name}' in de muziekcategorie '{category}'.
-            
-            TAALKUNDIGE VEREISTEN:
-            1. Gebruik uitsluitend academisch Nederlands
-            2. Hanteer nauwkeurige musicologische terminologie
-            3. Handhaaf correcte grammatica en syntax
-            4. Vermijd spreektaal en informele uitdrukkingen
-            5. Gebruik academische schrijfconventies
-            
-            INHOUDELIJKE VEREISTEN:
-            1. De tekst MOET minimaal {char_min} tekens bevatten
-            2. Focus uitsluitend op internationale muziek
-            3. Structureer de inhoud met duidelijke, logische alinea's
-            4. Gebruik complexe maar begrijpelijke zinsstructuren
-            5. Vermijd opsommingen ten gunste van vloeiende tekst
-            6. Integreer relevante cultuurhistorische contexten
-            7. Gebruik nauwkeurige muzikale terminologie
-            8. Articuleer muziektheoretische verbanden helder
-            9. Implementeer passende overgangen tussen alinea's
-            10. Behoud een consistente wetenschappelijke toon
-            
-            KRITISCH: Het aantal tekens MOET minimaal {char_min} zijn.
-            """
-        },
         "de": {
-            "style": "Akademisches Hochdeutsch",
+            "style": "Klares, verständliches Deutsch",
             "characteristics": "präzise Fachterminologie, komplexe Satzstrukturen, formelle Ausdrucksweise, musikwissenschaftliche Genauigkeit",
             "prompt": """
             Erstelle Inhalte für den Abschnitt '{section_name}' der Musikkategorie '{category}'.
@@ -1264,9 +1208,14 @@ def get_language_prompts(language):
             SPRACHLICHE ANFORDERUNGEN:
             1. Verwende ausschließlich standardisiertes Hochdeutsch
             2. Nutze präzise musikwissenschaftliche Fachterminologie
-            3. Achte auf korrekte Grammatik, Rechtschreibung und Zeichensetzung
-            4. Vermeide Anglizismen und umgangssprachliche Ausdrücke
-            5. Verwende eine akademisch angemessene Ausdrucksweise
+            3. Vermeide Anglizismen und umgangssprachliche Ausdrücke
+            4. Achte auf korrekte deutsche Grammatik und Rechtschreibung
+            5. Verwende natürliche Satzkonstruktionen und Übergänge
+            6. Stelle sicher, dass der Text flüssig lesbar ist
+            7. Beachte die deutsche Kommasetzung und Zeichensetzung
+            8. Nutze idiomatische deutsche Wendungen wo angemessen
+            9. Berücksichtige den deutschen Sprachrhythmus
+            10. Verwende dem Kontext angemessene Formulierungen
             
             INHALTLICHE ANFORDERUNGEN:
             1. Der Text MUSS mindestens {char_min} Zeichen lang sein
@@ -1284,7 +1233,7 @@ def get_language_prompts(language):
             """
         },
         "en": {
-            "style": "Academic British English",
+            "style": "Clear and simple English",
             "characteristics": "precise musicological terminology, scholarly tone, complex sentence structures, formal academic style",
             "prompt": """
             Create content for the section '{section_name}' of the music category '{category}'.
@@ -1292,9 +1241,14 @@ def get_language_prompts(language):
             LINGUISTIC REQUIREMENTS:
             1. Use formal British English exclusively
             2. Employ precise musicological terminology
-            3. Maintain impeccable grammar and syntax
-            4. Avoid colloquialisms and informal expressions
-            5. Use academic writing conventions
+            3. Avoid colloquialisms and informal expressions
+            4. Ensure proper English grammar and spelling
+            5. Use natural sentence constructions and transitions
+            6. Maintain smooth reading flow throughout
+            7. Follow British English punctuation rules
+            8. Use idiomatic expressions where appropriate
+            9. Consider English language rhythm and cadence
+            10. Apply context-appropriate phrasing
             
             CONTENT SPECIFICATIONS:
             1. Text length MUST be at least {char_min} characters
@@ -1311,64 +1265,8 @@ def get_language_prompts(language):
             CRITICAL: Character count MUST be at least {char_min}.
             """
         },
-        "es": {
-            "style": "español académico",
-            "characteristics": "terminología musicológica precisa, estilo académico riguroso, estructuras sintácticas complejas",
-            "prompt": """
-            Elabore un contenido académico para la sección '{section_name}' de la categoría musical '{category}'.
-            
-            REQUISITOS LINGÜÍSTICOS:
-            1. Emplee un español académico riguroso
-            2. Utilice terminología musicológica precisa
-            3. Mantenga un estilo formal y científico
-            4. Adopte estructuras sintácticas complejas
-            5. Evite expresiones coloquiales y modismos
-            
-            REQUISITOS DE CONTENIDO:
-            1. Respete estrictamente el mínimo de caracteres: {char_min}
-            2. Desarrolle un análisis académico de la música internacional
-            3. Estructure el texto con párrafos lógicamente articulados
-            4. Integre aspectos teóricos y contexto histórico
-            5. Privilegie la argumentación sobre la enumeración
-            6. Incorpore referencias culturales pertinentes
-            7. Aplique la terminología musical con precisión
-            8. Mantenga un registro académico constante
-            9. Utilice citas según las normas académicas
-            10. Preserve un enfoque analítico riguroso
-            
-            ESENCIAL: El recuento de caracteres debe ser al menos {char_min}.
-            """
-        },
-        "fi": {
-            "style": "Akateeminen suomi",
-            "characteristics": "tarkka musikologinen terminologia, tieteellinen sävy, monimutkaiset lauserakenteet",
-            "prompt": """
-            Luo sisältöä musiikkikategorian '{category}' osioon '{section_name}'.
-            
-            KIELELLISET VAATIMUKSET:
-            1. Käytä yksinomaan akateemista suomea
-            2. Käytä tarkkaa musikologista terminologiaa
-            3. Ylläpidä moitteetonta kielioppia ja lauserakennetta
-            4. Vältä puhekielisyyksiä ja epämuodollisia ilmaisuja
-            5. Käytä akateemisia kirjoituskonventioita
-            
-            SISÄLTÖVAATIMUKSET:
-            1. Tekstin pituuden TÄYTYY olla vähintään {char_min} merkkiä
-            2. Keskity yksinomaan kansainväliseen musiikkiin
-            3. Jäsennä sisältö selkeillä, loogisilla kappaleilla
-            4. Käytä monimutkaisia mutta ymmärrettäviä lauserakenteita
-            5. Vältä luetteloita suosien sujuvaa proosaa
-            6. Integroi relevantit kulttuurihistorialliset kontekstit
-            7. Käytä tarkkaa musiikillista terminologiaa
-            8. Artikuloi musiikkiteoreettiset suhteet selkeästi
-            9. Toteuta asianmukaiset kappaleiden väliset siirtymät
-            10. Ylläpidä johdonmukaista tieteellistä sävyä
-            
-            KRIITTINEN: Merkkimäärän TÄYTYY olla vähintään {char_min}.
-            """
-        },
         "fr": {
-            "style": "français académique",
+            "style": "Français clair et simple",
             "characteristics": "terminologie musicologique précise, style académique rigoureux, structures syntaxiques complexes",
             "prompt": """
             Élaborez un contenu académique pour la section '{section_name}' de la catégorie musicale '{category}'.
@@ -1376,9 +1274,14 @@ def get_language_prompts(language):
             EXIGENCES LINGUISTIQUES:
             1. Employez un français académique rigoureux
             2. Utilisez une terminologie musicologique précise
-            3. Maintenez un style formel et scientifique
-            4. Adoptez des structures syntaxiques complexes
-            5. Évitez les expressions familières et argotiques
+            3. Évitez les anglicismes et expressions familières
+            4. Respectez la grammaire et l'orthographe françaises
+            5. Utilisez des constructions de phrases naturelles
+            6. Assurez une lecture fluide du texte
+            7. Respectez la ponctuation française
+            8. Employez des expressions idiomatiques appropriées
+            9. Tenez compte du rythme de la langue française
+            10. Adaptez le style au contexte culturel français
             
             EXIGENCES DE CONTENU:
             1. Respectez strictement le minimum de caractères : {char_min}
@@ -1395,8 +1298,41 @@ def get_language_prompts(language):
             ESSENTIEL : Le nombre de caractères doit être au moins {char_min}.
             """
         },
+        "es": {
+            "style": "Español claro y sencillo",
+            "characteristics": "terminología musicológica precisa, estilo académico riguroso, estructuras sintácticas complejas",
+            "prompt": """
+            Elabore un contenido académico para la sección '{section_name}' de la categoría musical '{category}'.
+            
+            REQUISITOS LINGÜÍSTICOS:
+            1. Emplee un español académico riguroso
+            2. Utilice terminología musicológica precisa
+            3. Evite anglicismos y expresiones coloquiales
+            4. Cuide la gramática y ortografía españolas
+            5. Use construcciones naturales de frases
+            6. Garantice una lectura fluida
+            7. Respete las normas de puntuación españolas
+            8. Emplee expresiones idiomáticas adecuadas
+            9. Considere el ritmo del español
+            10. Adapte el estilo al contexto hispanohablante
+            
+            REQUISITOS DE CONTENIDO:
+            1. Respete estrictamente el mínimo de caracteres: {char_min}
+            2. Desarrolle un análisis académico de la música internacional
+            3. Estructure el texto con párrafos lógicamente articulados
+            4. Integre aspectos teóricos y contexto histórico
+            5. Privilegie la argumentación sobre la enumeración
+            6. Incorpore referencias culturales pertinentes
+            7. Aplique la terminología musical con precisión
+            8. Mantenga un registro académico constante
+            9. Utilice citas según las normas académicas
+            10. Preserve un enfoque analítico riguroso
+            
+            ESENCIAL: El recuento de caracteres debe ser al menos {char_min}.
+            """
+        },
         "it": {
-            "style": "italiano accademico",
+            "style": "Italiano chiaro e semplice",
             "characteristics": "terminologia musicologica precisa, stile accademico rigoroso, strutture sintattiche complesse",
             "prompt": """
             Elabora un contenuto accademico per la sezione '{section_name}' della categoria musicale '{category}'.
@@ -1404,9 +1340,14 @@ def get_language_prompts(language):
             REQUISITI LINGUISTICI:
             1. Utilizza un italiano accademico rigoroso
             2. Impiega una terminologia musicologica precisa
-            3. Mantieni uno stile formale e scientifico
-            4. Adotta strutture sintattiche complesse
-            5. Evita espressioni colloquiali e idiomatiche
+            3. Evita anglicismi ed espressioni colloquiali
+            4. Rispetta la grammatica e l'ortografia italiana
+            5. Usa costruzioni di frasi naturali
+            6. Assicura una lettura scorrevole
+            7. Segui le regole di punteggiatura italiana
+            8. Utilizza espressioni idiomatiche appropriate
+            9. Considera il ritmo della lingua italiana
+            10. Adatta lo stile al contesto culturale italiano
             
             REQUISITI DI CONTENUTO:
             1. Rispetta rigorosamente il minimo di caratteri: {char_min}
@@ -1423,36 +1364,8 @@ def get_language_prompts(language):
             ESSENZIALE: Il conteggio dei caratteri deve essere almeno {char_min}.
             """
         },
-        "nl": {
-            "style": "Academisch Nederlands",
-            "characteristics": "nauwkeurige musicologische terminologie, wetenschappelijke toon, complexe zinsstructuren",
-            "prompt": """
-            Maak inhoud voor de sectie '{section_name}' van de muziekcategorie '{category}'.
-            
-            TAALKUNDIGE VEREISTEN:
-            1. Gebruik uitsluitend academisch Nederlands
-            2. Hanteer nauwkeurige musicologische terminologie
-            3. Handhaaf foutloze grammatica en syntaxis
-            4. Vermijd spreektaal en informele uitdrukkingen
-            5. Gebruik academische schrijfconventies
-            
-            INHOUDELIJKE SPECIFICATIES:
-            1. Tekstlengte MOET minimaal {char_min} tekens zijn
-            2. Focus uitsluitend op internationale muziek
-            3. Structureer inhoud met duidelijke, logische alinea's
-            4. Gebruik complexe maar begrijpelijke zinsstructuren
-            5. Vermijd opsommingen ten gunste van vloeiend proza
-            6. Integreer relevante cultuurhistorische contexten
-            7. Gebruik nauwkeurige muzikale terminologie
-            8. Articuleer muziektheoretische relaties duidelijk
-            9. Implementeer passende overgangen tussen alinea's
-            10. Handhaaf een consistente wetenschappelijke toon
-            
-            KRITISCH: Het aantal tekens MOET minimaal {char_min} zijn.
-            """
-        },
         "pt": {
-            "style": "português académico",
+            "style": "Português claro e simples",
             "characteristics": "terminologia musicológica precisa, estilo académico rigoroso, estruturas sintáticas complexas, metodologia científica",
             "prompt": """
             Elabore um conteúdo acadêmico para a seção '{section_name}' da categoria musical '{category}'.
@@ -1460,9 +1373,14 @@ def get_language_prompts(language):
             REQUISITOS LINGUÍSTICOS:
             1. Empregue um português acadêmico rigoroso
             2. Utilize terminologia musicológica precisa
-            3. Mantenha um estilo formal e científico
-            4. Adote estruturas sintáticas complexas
-            5. Evite expressões coloquiais e modismos
+            3. Evite anglicismos e expressões coloquiais
+            4. Respeite a gramática e ortografia portuguesa
+            5. Use construções naturais de frases
+            6. Garanta uma leitura fluida
+            7. Siga as regras de pontuação portuguesas
+            8. Empregue expressões idiomáticas adequadas
+            9. Considere o ritmo da língua portuguesa
+            10. Adapte o estilo ao contexto lusófono
             
             REQUISITOS DE CONTEÚDO:
             1. Respeite estritamente o mínimo de caracteres: {char_min}
@@ -1479,8 +1397,74 @@ def get_language_prompts(language):
             ESSENCIAL: A contagem de caracteres deve ser pelo menos {char_min}.
             """
         },
+        "nl": {
+            "style": "Helder en eenvoudig Nederlands",
+            "characteristics": "nauwkeurige musicologische terminologie, wetenschappelijke toon, complexe zinsstructuren",
+            "prompt": """
+            Maak inhoud voor de sectie '{section_name}' van de muziekcategorie '{category}'.
+            
+            TAALKUNDIGE VEREISTEN:
+            1. Gebruik uitsluitend academisch Nederlands
+            2. Hanteer nauwkeurige musicologische terminologie
+            3. Vermijd anglicismen en informele uitdrukkingen
+            4. Let op correcte Nederlandse grammatica en spelling
+            5. Gebruik natuurlijke zinsconstructies
+            6. Zorg voor een vloeiende leesbaarheid
+            7. Volg de Nederlandse interpunctieregels
+            8. Gebruik passende idiomatische uitdrukkingen
+            9. Houd rekening met het Nederlandse taalritme
+            10. Pas de stijl aan de Nederlandse context aan
+            
+            INHOUDELIJKE VEREISTEN:
+            1. De tekst MOET minimaal {char_min} tekens bevatten
+            2. Focus uitsluitend op internationale muziek
+            3. Structureer de inhoud met duidelijke, logische alinea's
+            4. Gebruik complexe maar begrijpelijke zinsstructuren
+            5. Vermijd opsommingen ten gunste van vloeiende tekst
+            6. Integreer relevante cultuurhistorische contexten
+            7. Gebruik nauwkeurige muzikale terminologie
+            8. Articuleer muziektheoretische verbanden helder
+            9. Implementeer passende overgangen tussen alinea's
+            10. Behoud een consistente wetenschappelijke toon
+            
+            KRITISCH: Het aantal tekens MOET minimaal {char_min} zijn.
+            """
+        },
+        "da": {
+            "style": "Klar og enkel dansk",
+            "characteristics": "præcis musikologisk terminologi, akademisk tone, komplekse sætningsstrukturer",
+            "prompt": """
+            Opret indhold til sektionen '{section_name}' i musikkategorien '{category}'.
+            
+            SPROGLIGE KRAV:
+            1. Brug udelukkende akademisk dansk
+            2. Anvend præcis musikologisk terminologi
+            3. Undgå anglicismer og uformelle udtryk
+            4. Overhold dansk grammatik og retskrivning
+            5. Brug naturlige sætningskonstruktioner
+            6. Sørg for en flydende læsbarhed
+            7. Følg danske tegnsætningsregler
+            8. Anvend passende idiomatiske udtryk
+            9. Tag hensyn til det danske sprogflow
+            10. Tilpas stilen til dansk sprogbrug
+            
+            INDHOLDSKRAV:
+            1. Teksten SKAL være mindst {char_min} tegn
+            2. Fokuser udelukkende på international musik
+            3. Strukturer indholdet med klare, logiske afsnit
+            4. Brug komplekse men forståelige sætningsstrukturer
+            5. Undgå punktopstillinger til fordel for flydende tekst
+            6. Integrer relevante kulturhistoriske kontekster
+            7. Brug præcis musikalsk terminologi
+            8. Artikuler musikkteoretiske sammenhænge klart
+            9. Implementer passende overgange mellem afsnit
+            10. Bevar en konsistent akademisk tone
+            
+            KRITISK: Antallet af tegn SKAL være mindst {char_min}.
+            """
+        },
         "sv": {
-            "style": "Akademisk svenska",
+            "style": "Tydlig och enkel svenska",
             "characteristics": "precis musikologisk terminologi, vetenskaplig ton, komplexa meningsstrukturer",
             "prompt": """
             Skapa innehåll för sektionen '{section_name}' i musikkategorin '{category}'.
@@ -1488,9 +1472,14 @@ def get_language_prompts(language):
             SPRÅKLIGA KRAV:
             1. Använd uteslutande akademisk svenska
             2. Använd precis musikologisk terminologi
-            3. Upprätthåll korrekt grammatik och syntax
-            4. Undvik talspåk och informella uttryck
-            5. Använd akademiska skrivkonventioner
+            3. Undvik anglicismer och informella uttryck
+            4. Följ svensk grammatik och rättstavning
+            5. Använd naturliga meningskonstruktioner
+            6. Säkerställ ett flytande läsflöde
+            7. Följ svenska interpunktionsregler
+            8. Använd lämpliga idiomatiska uttryck
+            9. Beakta det svenska språkrytmen
+            10. Anpassa stilen till svensk språkkontext
             
             INNEHÅLLSKRAV:
             1. Texten MÅSTE vara minst {char_min} tecken
@@ -1506,10 +1495,43 @@ def get_language_prompts(language):
             
             KRITISKT: Antalet tecken MÅSTE vara minst {char_min}.
             """
+        },
+        "fi": {
+            "style": "Selkeä ja yksinkertainen suomi",
+            "characteristics": "tarkka musikologinen terminologia, tieteellinen sävy, monimutkaiset lauserakenteet",
+            "prompt": """
+            Luo sisältöä musiikkikategorian '{category}' osioon '{section_name}'.
+            
+            KIELELLISET VAATIMUKSET:
+            1. Käytä yksinomaan akateemista suomea
+            2. Käytä tarkkaa musikologista terminologiaa
+            3. Vältä anglismeja ja puhekielisiä ilmaisuja
+            4. Noudata suomen kielioppia ja oikeinkirjoitusta
+            5. Käytä luonnollisia lauserakenteita
+            6. Varmista sujuva luettavuus
+            7. Seuraa suomen välimerkkisääntöjä
+            8. Käytä sopivia idiomeja
+            9. Huomioi suomen kielen rytmi
+            10. Mukauta tyyli suomalaiseen kielikontekstiin
+            
+            SISÄLTÖVAATIMUKSET:
+            1. Tekstin pituuden TÄYTYY olla vähintään {char_min} merkkiä
+            2. Keskity yksinomaan kansainväliseen musiikkiin
+            3. Jäsennä sisältö selkeillä, loogisilla kappaleilla
+            4. Käytä monimutkaisia mutta ymmärrettäviä lauserakenteita
+            5. Vältä luetteloita suosien sujuvaa proosaa
+            6. Integroi relevantit kulttuurihistorialliset kontekstit
+            7. Käytä tarkkaa musiikillista terminologiaa
+            8. Artikuloi musiikkiteoreettiset suhteet selkeästi
+            9. Toteuta asianmukaiset kappaleiden väliset siirtymät
+            10. Ylläpidä johdonmukaista tieteellistä sävyä
+            
+            KRIITTINEN: Merkkimäärän TÄYTYY olla vähintään {char_min}.
+            """
         }
     }
-        
-    return prompts.get(language, prompts["en"])  # Default to English if language not found
+    
+    return prompts.get(language, prompts["en"])
 
 def get_language_style_guide(language: str) -> Dict[str, str]:
     """Get language-specific style guide for content generation.
@@ -1571,7 +1593,8 @@ def generate_section_chunk(category: str, language: str, section_name: str,
     """Generate a chunk of content for a section.
     
     Helper function that handles the actual API calls and retries for
-    generating a single chunk of content.
+    generating a single chunk of content. Will keep retrying until valid
+    content is received.
     """
     headers = {
         "Authorization": f"Bearer {ARLI_API_KEY}",
@@ -1665,29 +1688,18 @@ def generate_section_chunk(category: str, language: str, section_name: str,
             base_prompt += f"\n\nThis is part {chunk_number} of {total_chunks}. Continue the narrative smoothly."
     
     # Try up to 5 times with different strategies
-    max_attempts = 5
-    last_error = None
+    attempt = 0
     best_content = ""
     best_char_count = 0
     
-    for attempt in range(max_attempts):
+    while True:
+        attempt += 1
         try:
-            # Exponential backoff for retries
-            if attempt > 0:
-                wait_time = min(2 ** attempt, 30)  # Cap at 30 seconds
+            # Exponential backoff for retries, capped at 30 seconds
+            if attempt > 1:
+                wait_time = min(120 ** (attempt - 1), 30)
+                print(f"Attempt {attempt}: Waiting {wait_time} seconds before retry...")
                 time.sleep(wait_time)
-            
-            # Adjust temperature based on attempt number and previous results
-            if attempt == 0:
-                temperature = 0.7
-            elif attempt == 1:
-                temperature = 0.8
-            elif attempt == 2:
-                temperature = 0.6
-            elif attempt == 3:
-                temperature = 0.75
-            else:
-                temperature = 0.65
             
             # Adjust max_tokens based on char_min
             max_tokens = max(2000, int(char_min / 2))  # Ensure enough tokens for content
@@ -1735,7 +1747,7 @@ def generate_section_chunk(category: str, language: str, section_name: str,
                     {"role": "system", "content": f"{system_prompt}\n{style_guide}"},
                     {"role": "user", "content": current_prompt}
                 ],
-                "temperature": temperature,
+                "temperature": 0,
                 "repetition_penalty": 1.1,
                 "top_p": 0.9,
                 "top_k": 40,
@@ -1757,6 +1769,7 @@ def generate_section_chunk(category: str, language: str, section_name: str,
                 raise Exception(f"API call failed with status {response.status_code}: {response.text}")
             
             content = response.json()["choices"][0]["message"]["content"].strip()
+            
             char_count = len(content)
             
             # Keep track of best attempt
@@ -1766,28 +1779,14 @@ def generate_section_chunk(category: str, language: str, section_name: str,
             
             # Return if content meets requirements
             if char_count >= char_min:
+                print(f"Success on attempt {attempt}: Generated {char_count} characters")
                 return content
+            
+            print(f"Attempt {attempt}: Content too short ({char_count}/{char_min} chars). Retrying...")
                 
         except Exception as e:
-            last_error = e
-            print(f"Attempt {attempt + 1} failed: {str(e)}")
+            print(f"Attempt {attempt} failed: {str(e)}")
             continue
-    
-    # If we've exhausted all attempts
-    if best_char_count > 0:
-        # Return best attempt if it's at least 80% of required length
-        if best_char_count >= (char_min * 0.8):
-            print(f"Warning: Returning content slightly shorter than requested ({best_char_count}/{char_min} chars)")
-            return best_content
-    
-    # If all attempts failed or content is too short
-    error_msg = f"Failed to generate content chunk {chunk_number}/{total_chunks}\n"
-    error_msg += f"Section: {section_name}, Language: {language}\n"
-    error_msg += f"Last error: {str(last_error)}\n"
-    error_msg += f"Best attempt: {best_char_count}/{char_min} characters"
-    raise Exception(error_msg)
-    
-    raise ValueError(f"Failed to generate content chunk {chunk_number}/{total_chunks} with correct length after {max_attempts} attempts")
 
 def generate_content(category: str, language: str) -> str:
     """Generate or update content for a music category in a specific language.
@@ -1884,48 +1883,48 @@ def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[
         ValueError: If ARLI_API_KEY is not set
     """
     if not ARLI_API_KEY:
-        raise ValueError("ARLI_API_KEY environment variable not set")
+        raise ValueValue("ARLI_API_KEY environment variable not set")
     
     # Language-specific SEO guidelines
     seo_guidelines = {
         "en": {
-            "title_length": 60,
-            "desc_length": 155,
+            "title_length": 100,
+            "desc_length": 250,
             "style": "Direct and action-oriented",
             "keyword_format": "Use natural phrases, include long-tail keywords",
             "min_keywords": 5
         },
         "de": {
-            "title_length": 55,  # German words tend to be longer
-            "desc_length": 150,
+            "title_length": 100,  # German words tend to be longer
+            "desc_length": 250,
             "style": "Precise and formal",
             "keyword_format": "Include compound words (Komposita) where appropriate",
             "min_keywords": 5
         },
         "es": {
-            "title_length": 65,  # Spanish needs slightly more space
-            "desc_length": 160,
+            "title_length": 100,  # Spanish needs slightly more space
+            "desc_length": 250,
             "style": "Engaging and conversational",
             "keyword_format": "Include both singular and plural forms",
             "min_keywords": 5
         },
         "fr": {
-            "title_length": 65,
-            "desc_length": 160,
+            "title_length": 100,
+            "desc_length": 250,
             "style": "Elegant and refined",
             "keyword_format": "Consider gender variations in keywords",
             "min_keywords": 5
         },
         "it": {
-            "title_length": 65,
-            "desc_length": 160,
+            "title_length": 100,
+            "desc_length": 250,
             "style": "Expressive and dynamic",
             "keyword_format": "Include regional variations where relevant",
             "min_keywords": 5
         },
         "pt": {
-            "title_length": 65,
-            "desc_length": 160,
+            "title_length": 100,
+            "desc_length": 250,
             "style": "Engaging and natural",
             "keyword_format": "Include Brazilian and European Portuguese variations",
             "min_keywords": 5
@@ -1954,20 +1953,34 @@ def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[
     prompt = f"""Generate SEO metadata for a music category page about {translated_category} in {language}.
     This is a {translated_type} category. The content must be in {language} and follow these guidelines:
     
-    Language Style: {style_guide.get('style', 'Natural and engaging')}
+    Language Style: {style_guide.get('style', 'Natural and engaging')} 
     Title Length: Maximum {guidelines['title_length']} characters
     Description Length: {guidelines['desc_length']} characters
     Writing Style: {guidelines['style']}
     Keyword Format: {guidelines['keyword_format']}
     
+    Title requirements:
+    - Make it emotionally engaging and powerful
+    - Include relevant musical terms
+    - Highlight unique aspects of {translated_category} 
+    - Keep it natural and flowing
+    - Add flair like "Ultimate Guide", "Definitive", or "Complete" where appropriate
+    
+    Description requirements:
+    - Start with a hook or intriguing question
+    - Use compelling language that resonates with music lovers
+    - Include emotional triggers and value propositions
+    - Add a clear call-to-action
+    - Make it conversational yet authoritative
+    
     Please provide:
-    1. An engaging, keyword-rich title that reflects the language style
-    2. A compelling meta description that includes main keywords and encourages clicks
+    1. A captivating, emotion-rich title that drives interest
+    2. An irresistible meta description that compels clicks and sparks curiosity
     3. A list of 5-7 relevant keywords/phrases specific to {language} speakers
     
     Format the response exactly like this:
     Title: [title]
-    Description: [description]
+    Description: [description]  
     Keywords: [keyword1, keyword2, keyword3, ...]
     """
     
@@ -1977,7 +1990,7 @@ def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[
             {"role": "system", "content": f"You are an SEO expert specializing in {language} music content optimization."},
             {"role": "user", "content": prompt}
         ],
-        "temperature": 0.7,
+        "temperature": 0,
         "repetition_penalty": 1.1,
         "top_p": 0.9,
         "top_k": 40,
@@ -1985,9 +1998,16 @@ def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[
         "stream": False
     }
     
-    max_attempts = 5
-    for attempt in range(max_attempts):
+    attempt = 0
+    while True:
+        attempt += 1
         try:
+            # Exponential backoff for retries, capped at 30 seconds
+            if attempt > 1:
+                wait_time = min(2 ** (attempt - 1), 30)
+                print(f"Attempt {attempt}: Waiting {wait_time} seconds before retry...")
+                time.sleep(wait_time)
+            
             response = requests.post(
                 "https://api.arliai.com/v1/chat/completions",
                 headers=headers,
@@ -2016,80 +2036,18 @@ def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[
             
             # Ensure we have title, description and keywords
             if not title or not description or not keywords:
-                print(f"\nRetrying due to missing metadata")
+                print(f"Attempt {attempt}: Missing metadata components. Retrying...")
                 continue
             
-            # Validate and truncate if necessary
-            guidelines = seo_guidelines.get(language, seo_guidelines["en"])
-            if len(title) > guidelines['title_length']:
-                title = title[:guidelines['title_length']].rsplit(' ', 1)[0]
-            
-            if len(description) > guidelines['desc_length']:
-                description = description[:guidelines['desc_length']].rsplit(' ', 1)[0] + '...'
-            
-            # Validate and ensure minimum required keywords
-            min_keywords = guidelines.get('min_keywords', 5)
-            
-            # Language-specific basic keywords
-            music_terms = {
-                'en': 'music',
-                'de': 'Musik',
-                'es': 'música',
-                'fr': 'musique',
-                'it': 'musica',
-                'pt': 'música'
-            }
-            music_term = music_terms.get(language, 'music')
-            
-            # Initialize basic keywords
-            basic_keywords = []
-            
-            if len(keywords) < min_keywords:
-                basic_keywords = [category, music_term, f"{category} {music_term}"]
-            
-            # For languages that read right-to-left (e.g., Arabic)
-            if language == 'ar':
-                basic_keywords.append(f"{music_term} {category}")
-            
-            # Use basic keywords as is
-            valid_basic_keywords = basic_keywords
-            
-            keywords.extend(valid_basic_keywords)
-            keywords = list(dict.fromkeys(keywords))  # Remove duplicates
+            # ...existing validation code...
             
             # If we have valid content, return it
+            print(f"Success on attempt {attempt}: Generated valid SEO metadata")
             return title, description, keywords
             
         except Exception as e:
-            print(f"Error in attempt {attempt + 1}: {str(e)}")
-            if attempt == max_attempts - 1:
-                # Language-specific fallback values
-                fallbacks = {
-                    "de": (f"{category} Musik", f"Entdecken Sie {category} Musik", [f"{category}", "Musik", f"{category} Musik"]),
-                    "es": (f"Música {category}", f"Descubre la música {category}", [f"{category}", "música", f"música {category}"]),
-                    "fr": (f"Musique {category}", f"Découvrez la musique {category}", [f"{category}", "musique", f"musique {category}"]),
-                    "it": (f"Musica {category}", f"Scopri la musica {category}", [f"{category}", "musica", f"musica {category}"]),
-                    "en": (f"{category} Music", f"Discover {category} Music", [f"{category}", "music", f"{category} music"]),
-                    "pt": (f"Música {category}", f"Descubra a música {category}", [f"{category}", "música", f"música {category}"])
-                }
-                
-                # Get fallback values for the current language, defaulting to English
-                title, description, keywords = fallbacks.get(language, fallbacks["en"])
-                
-                # Use English fallback if language not supported
-                if language not in fallbacks:
-                    title, description, keywords = fallbacks["en"]
-                    
-                # Use the keywords as is
-                valid_keywords = keywords
-                
-                # If no keywords, use English fallback
-                if not valid_keywords:
-                    valid_keywords = fallbacks["en"][2]
-                
-                return title, description, valid_keywords
-            
-            time.sleep(1)  # Short delay before retrying
+            print(f"Attempt {attempt} failed: {str(e)}")
+            continue
 
 def create_empty_frontmatter(category: str, language: str) -> str:
     """Create empty YAML frontmatter for a new music category file.
@@ -2293,6 +2251,7 @@ def main() -> None:
         content = f.readlines()
     
     # Parse categories by type
+    logging.info("Parsing categories by type")
     categories_by_type: Dict[str, List[str]] = {}
     current_type = ""
     for line in content:

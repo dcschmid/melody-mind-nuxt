@@ -115,8 +115,8 @@
     },
     "multiplayer": {
         "meta": {
-            "title": "{kategori} Quiz - {sværhedsgrad} Vanskelighed - Multiplayer Name 124; Melody Mind",
-            "description": "Spil {kategori} musikquiz i {sværhedsgrad} tilstand med venner. Test din viden sammen og finde ud af, hvem der er den bedste musikekspert!"
+            "title": "{category} Quiz - {difficulty} Vanskelighed - Multiplayer Melody Mind",
+            "description": "Spil {category} musikquiz i {difficulty} tilstand med venner. Test din viden sammen og finde ud af, hvem der er den bedste musikekspert!"
         },
         "setup": {
             "title": "Spiller opsætning",
@@ -167,8 +167,8 @@
     },
     "game": {
         "meta": {
-            "title": "{kategori} Quiz - {sværhedsgrad} Vanskeligheder: 124; Melody Mind",
-            "description": "Spil {kategori} musik quiz i {sværhedsgrad} tilstand nu. Test din viden, optjene point, og blive en musik ekspert!"
+            "title": "{category} Quiz - {difficulty} Vanskelighed - Melody Mind",
+            "description": "Spil {category} musik quiz i {difficulty} tilstand nu. Test din viden, optjene point, og blive en musik ekspert!"
         },
         "loading": "Indlæser spil...",
         "question": "Spørgsmål {Aktuell} af {Total}",
@@ -215,8 +215,8 @@
             "share": {
                 "title": "Del Dit resultat",
                 "message": {
-                    "intro": "Wow! Jeg scorede {points} point i Melody Mind i {kategori} kategorien ({sværhedsgrad})!",
-                    "stats": "Score: {korrekte} ud af {total} korrekte!",
+                    "intro": "Wow! Jeg scorede {points} point i Melody Mind i {category} kategorien ({difficulty})!",
+                    "stats": "Score: {correct} ud af {total} korrekte!",
                     "challenge": "Challenge me at {url}"
                 },
                 "buttons": {
@@ -255,7 +255,7 @@
                 "remaining": "♪ Livliner tilbage ♪",
                 "ariaLabel": "Få ekspertrådgivning"
             },
-            "remainingCount": "{tæller} livliner tilgængelige",
+            "remainingCount": "{count} livliner tilgængelige",
             "remaining": "♪ Livliner tilbage ♪"
         }
     },
