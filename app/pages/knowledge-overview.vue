@@ -31,11 +31,11 @@
     </NuxtLayout>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, computed, unref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useRequestURL } from '#imports'
-import { useAsyncData } from '#imports'
+import { useAsyncData, queryContent } from '#imports'
 
 const searchQuery = ref('')
 const router = useRouter()
@@ -63,10 +63,6 @@ useSeoMeta({
 const { data: knowledgeItems } = await useAsyncData(
     'knowledge',
     () => queryContent('knowledge', locale.value).find()
-)
-
-const { data: knowledgeContent } = await useAsyncData('knowledge', () => 
-  queryContent('knowledge').find()
 )
 
 const filteredKnowledgeItems = computed(() => {
