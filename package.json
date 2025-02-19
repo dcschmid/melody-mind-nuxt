@@ -16,8 +16,8 @@
     "@nuxt/fonts": "^0.10.3",
     "@nuxthub/core": "0.8.10",
     "@nuxtjs/i18n": "^8.0.0",
-    "@nuxtjs/robots": "^5.2.2",
-    "@nuxtjs/sitemap": "^7.2.4",
+    "@nuxtjs/robots": "^5.2.3",
+    "@nuxtjs/sitemap": "^7.2.6",
     "@types/node": "^20.10.4",
     "@vueuse/core": "^12.3.0",
     "@vueuse/integrations": "^12.3.0",
@@ -39,9 +39,9 @@
     "glob": "^11.0.1",
     "nuxt-fathom": "^0.0.2",
     "nuxt-icon": "^1.0.0-beta.7",
-    "sass": "^1.83.1",
+    "sass": "^1.85.0",
     "thumbhash": "^0.1.1",
-    "tsx": "^4.19.2"
+    "tsx": "^4.19.3"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

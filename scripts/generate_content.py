@@ -1883,7 +1883,7 @@ def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[
         ValueError: If ARLI_API_KEY is not set
     """
     if not ARLI_API_KEY:
-        raise ValueValue("ARLI_API_KEY environment variable not set")
+        raise ValueError("ARLI_API_KEY environment variable not set")
     
     # Language-specific SEO guidelines
     seo_guidelines = {
@@ -1965,6 +1965,8 @@ def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[
     - Highlight unique aspects of {translated_category} 
     - Keep it natural and flowing
     - Add flair like "Ultimate Guide", "Definitive", or "Complete" where appropriate
+    - IMPORTANT: Do not use colons (:) in the title as they break the YAML frontmatter
+    - Use alternative punctuation like dashes (-) or vertical bars (|) instead of colons
     
     Description requirements:
     - Start with a hook or intriguing question
@@ -1972,9 +1974,11 @@ def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[
     - Include emotional triggers and value propositions
     - Add a clear call-to-action
     - Make it conversational yet authoritative
+    - IMPORTANT: Do not use colons (:) in the title as they break the YAML frontmatter
+    - Use alternative punctuation like dashes (-) or vertical bars (|) instead of colons
     
     Please provide:
-    1. A captivating, emotion-rich title that drives interest
+    1. A captivating, emotion-rich title that drives interest (NO COLONS ALLOWED)
     2. An irresistible meta description that compels clicks and sparks curiosity
     3. A list of 5-7 relevant keywords/phrases specific to {language} speakers
     

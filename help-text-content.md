@@ -1,0 +1,9 @@
+
+- Achten Sie auf zeitgemäße Sprachbilder und konsistente Terminologie.
+- Wiederholungen vermeiden
+- Klarere Übergänge zwischen Abschnitten
+- Mehr Variation im Satzbau
+- auf die Rechtschreibung und Grammatik achten
+- Flüssiges lesen
+- Keine neuen Absätze einfügen
+- Keine Aufzählunge verwenden
