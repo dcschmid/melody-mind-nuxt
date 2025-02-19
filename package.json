@@ -16,7 +16,7 @@
     "@nuxt/fonts": "^0.10.3",
     "@nuxthub/core": "0.8.17",
     "@nuxtjs/i18n": "^8.0.0",
-    "@nuxtjs/robots": "^5.2.3",
+    "@nuxtjs/robots": "^5.2.4",
     "@nuxtjs/sitemap": "^7.2.6",
     "@types/node": "^20.10.4",
     "@vueuse/core": "^12.7.0",
