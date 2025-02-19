@@ -48,9 +48,12 @@
         "about": {
             "title": "Über Melody Mind",
             "description": "Teste dein Musikwissen in verschiedenen Kategorien. Ein spannendes Quizspiel für Musikliebhaber aller Genres."
+        },
+        "seo": {
+            "description": "Entdecke die Welt der Musik mit unserem interaktiven Musikquiz. Teste dein Wissen, sammle Punkte und werde zum Musikexperten."
         }
     },
-    "intro": "Tauche Ein in die faszinierende Welt der Musik! Bei Melody Mind kannst du dein Musikwissen in spannenden Quizrunden auf die Probe stellen. Beantworte Fragen zu Songs aus verschiedenen Jahrzehnten, Künstlern, Alben und der Musikgeschichte. Sammle Punkte, verdiene goldene Schallplatten und fordere andere Musikbegeisterte heraus. Von Rock über Pop bis hin zu Hip-Hop und Klassik - teste dein Wissen in deinen Lieblingsgenres. Beginne jetzt dein musikalisches Quiz-Abenteuer!",
+    "intro": "Tauche ein in die faszinierende Welt der Musik! Bei Melody Mind stellst du dein Musikwissen in spannenden Quizrunden auf die Probe. Von legendären Rockhymnen bis zu modernen Pophits, von bahnbrechenden Hip-Hop-Tracks bis zu zeitlosen Klassikern - entdecke die ganze Vielfalt der Musikgeschichte. Sammle Punkte, verdiene goldene Schallplatten und fordere andere Musikbegeisterte heraus. Beginne jetzt dein musikalisches Quiz-Abenteuer!",
     "auth": {
         "email": {
             "label": "E-Mail",
@@ -106,7 +109,7 @@
         },
         "title": "Wähle eine Kategorie zum Spielen",
         "categoriesTitle": "Kategorien",
-        "description": "Entdecke die faszinierende Welt der Musik durch verschiedene Jahrzehnte und Genres",
+        "description": "Von Rock-Legenden bis zu Pop-Ikonen, von Hip-Hop-Pionieren bis zu klassischen Meisterwerken - hier beginnt deine musikalische Entdeckungsreise!",
         "searchPlaceholder": "Kategorie suchen...",
         "playCategory": "Spielen {Kategorie}",
         "comingSoon": "{Kategorie} - Demnächst",
@@ -338,12 +341,12 @@
     },
     "knowledge": {
         "meta": {
-            "title": "Musikwissen & Hintergründe - Melody Mind",
-            "description": "Tauche Ein in die faszinierende Welt der Musik. Entdecke spannende Fakten und Geschichten zu verschiedenen Musikgenres und Epochen."
+            "title": "Entdecke die Welt der Musik - Melody Mind",
+            "description": "Tauche ein in die vielfältige Welt der Musik. Entdecke spannende Geschichten und faszinierende Fakten zu verschiedenen Musikgenres und Epochen."
         },
         "overview": "Wissensübersicht",
         "title": "Musik-Wissensdatenbank",
-        "description": "Entdecke unsere umfassende Musik-Wissensdatenbank",
+        "description": "Willkommen in unserer musikalischen Schatzkammer! Hier findest du spannende Artikel, faszinierende Geschichten und exklusive Einblicke in die Welt der Musik. Von bahnbrechenden Alben über legendäre Konzertmomente bis hin zu revolutionären Musikbewegungen - lass dich von der Magie der Musikgeschichte verzaubern und erweitere dein Wissen für das Quiz!",
         "loading": "Inhalt wird geladen...",
         "playAndListen": "Spielen & Musik hören",
         "playNow": "Jetzt spielen",

@@ -47,10 +47,13 @@
         "start": "Start spil",
         "about": {
             "title": "Om Melody Mind",
-            "description": "Test din musikviden på tværs af forskellige kategorier. Et spændende quiz spil for musikelskere af alle genrer."
+            "description": "Test din musikviden i forskellige kategorier. En spændende quiz for musikelskere af alle genrer."
+        },
+        "seo": {
+            "description": "Opdag musikkens verden med vores interaktive musikquiz. Test din viden, saml point og bliv musikekspert."
         }
     },
-    "intro": "Træd ind i musikens fascinerende verden! Med Melody Mind, kan du sætte din musikviden på prøve i spændende quiz runder. Svar på spørgsmål om sange fra forskellige årtier, kunstnere, albummer og musikhistorie. Saml point, tjene gyldne optegnelser, og udfordre andre musik entusiaster. Fra rock til pop til hip-hop og klassisk - teste din viden i dine foretrukne genrer. Start dit musikalske quiz eventyr nu!",
+    "intro": "Dyk ned i musikkens fascinerende verden! I Melody Mind sætter du din musikviden på prøve i spændende quiz-runder. Fra legendariske rock-hymner til moderne pop-hits, fra banebrydende hip-hop-numre til tidløse klassikere - oplev musikhistoriens mangfoldighed. Saml point, tjen guldplader og udfordr andre musikentusiaster. Start dit musikalske quiz-eventyr nu!",
     "auth": {
         "email": {
             "label": "Email",
@@ -106,7 +109,7 @@
         },
         "title": "Vælg en kategori at spille",
         "categoriesTitle": "Categories",
-        "description": "Udforsk den fascinerende verden af musik gennem forskellige årtier og genrer",
+        "description": "Fra rock-legender til pop-ikoner, fra hip-hop-pionerer til klassiske mesterværker - din musikalske opdagelsesrejse starter her!",
         "searchPlaceholder": "Søg kategorier ...",
         "playCategory": "Play {Kategorie}",
         "comingSoon": "{Kategorie} - Coming Soon",
@@ -338,12 +341,12 @@
     },
     "knowledge": {
         "meta": {
-            "title": "Musikviden og baggrund - Melody Mind",
-            "description": "Dyk ned i musikens fascinerende verden. Oplev spændende fakta og historier om forskellige musikgenrer og -æraer."
+            "title": "Opdag Musikkens Verden - Melody Mind",
+            "description": "Dyk ned i musikkens mangfoldige verden. Opdag spændende historier og fascinerende fakta om forskellige musikgenrer og epoker."
         },
         "overview": "Knowledge Overview",
-        "title": "Musikviden Base",
-        "description": "Udforsk vores omfattende musikvidenbase",
+        "title": "Opdag Musikverdenen",
+        "description": "Velkommen til vores musikalske skatkammer! Her finder du spændende artikler, fascinerende historier og eksklusive indblik i musikkens verden. Fra banebrydende albummer til legendariske koncertøjeblikke og revolutionerende musikbevægelser - lad dig fortrylle af musikhistoriens magi og udvid din viden til quizzen!",
         "loading": "Indlæser indhold...",
         "playAndListen": "Spil & Lyt til musik",
         "playNow": "Spil nu",

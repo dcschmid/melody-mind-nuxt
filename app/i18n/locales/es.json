@@ -48,9 +48,12 @@
         "about": {
             "title": "Acerca de Melody Mind",
             "description": "Pon a prueba tus conocimientos musicales en diferentes categorías. Un emocionante juego de trivia para amantes de la música de todos los géneros."
+        },
+        "seo": {
+            "description": "Descubre el mundo de la música con nuestro quiz musical interactivo. Prueba tus conocimientos, acumula puntos y conviértete en un experto en música."
         }
     },
-    "intro": "¡Sumérgete en el fascinante mundo de la música! En Melody Mind podrás poner a prueba tus conocimientos musicales en emocionantes rondas de trivia. Responde preguntas sobre canciones de diferentes décadas, artistas, álbumes e historia de la música. Acumula puntos, gana discos de oro y desafía a otros entusiastas de la música. Desde rock hasta pop, pasando por hip-hop y clásica - pon a prueba tus conocimientos en tus géneros favoritos. ¡Comienza ahora tu aventura musical!",
+    "intro": "¡Sumérgete en el fascinante mundo de la música! En Melody Mind, pondrás a prueba tus conocimientos musicales en emocionantes rondas de preguntas. Desde himnos legendarios del rock hasta éxitos modernos del pop, desde revolucionarias pistas de hip-hop hasta clásicos atemporales - descubre toda la diversidad de la historia de la música. Acumula puntos, gana discos de oro y desafía a otros entusiastas de la música. ¡Comienza tu aventura musical ahora!",
     "auth": {
         "email": {
             "label": "Correo electrónico",
@@ -106,7 +109,7 @@
         },
         "title": "Elige una categoría para jugar",
         "categoriesTitle": "Categorías",
-        "description": "Descubre el fascinante mundo de la música a través de diferentes décadas y géneros",
+        "description": "¡Desde leyendas del rock hasta iconos del pop, desde pioneros del hip-hop hasta obras maestras clásicas - tu viaje musical de descubrimiento comienza aquí!",
         "searchPlaceholder": "Buscar categoría...",
         "playCategory": "Jugar {Kategorie}",
         "comingSoon": "{Kategorie} - Próximamente",
@@ -338,12 +341,12 @@
     },
     "knowledge": {
         "meta": {
-            "title": "Conocimientos y trasfondo musical - Melody Mind",
-            "description": "Sumérgete en el fascinante mundo de la música. Descubre datos interesantes e historias sobre diferentes géneros musicales y épocas."
+            "title": "Descubre el Mundo de la Música - Melody Mind",
+            "description": "Sumérgete en el diverso mundo de la música. Descubre historias emocionantes y hechos fascinantes sobre varios géneros musicales y épocas."
         },
         "overview": "Resumen de conocimientos",
-        "title": "Base de conocimientos musicales",
-        "description": "Descubre nuestra completa base de conocimientos musicales",
+        "title": "Descubre el Mundo Musical",
+        "description": "¡Bienvenido a nuestra cámara del tesoro musical! Aquí encontrarás artículos emocionantes, historias fascinantes y visiones exclusivas del mundo de la música. Desde álbumes revolucionarios hasta momentos legendarios de conciertos y movimientos musicales revolucionarios - ¡déjate encantar por la magia de la historia de la música y amplía tus conocimientos para el quiz!",
         "loading": "Cargando contenido...",
         "playAndListen": "Jugar y escuchar música",
         "playNow": "Jugar ahora",

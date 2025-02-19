@@ -48,9 +48,12 @@
     "about": {
       "title": "About Melody Mind",
       "description": "Test your music knowledge across various categories. An exciting quiz game for music lovers of all genres."
+    },
+    "seo": {
+      "description": "Discover the world of music with our interactive music quiz. Test your knowledge, collect points and become a music expert."
     }
   },
-  "intro": "Step into the fascinating world of music! With Melody Mind, you can put your music knowledge to the test in exciting quiz rounds. Answer questions about songs from different decades, artists, albums, and music history. Collect points, earn golden records, and challenge other music enthusiasts. From rock to pop to hip-hop and classical - test your knowledge in your favorite genres. Start your musical quiz adventure now!",
+  "intro": "Dive into the fascinating world of music! At Melody Mind, you'll put your music knowledge to the test in exciting quiz rounds. From legendary rock anthems to modern pop hits, from groundbreaking hip-hop tracks to timeless classics - discover the full diversity of music history. Collect points, earn golden records, and challenge other music enthusiasts. Start your musical quiz adventure now!",
   "auth": {
     "email": {
       "label": "Email",
@@ -106,7 +109,7 @@
     },
     "title": "Choose a Category to Play",
     "categoriesTitle": "Categories",
-    "description": "Explore the fascinating world of music through different decades and genres",
+    "description": "From rock legends to pop icons, from hip-hop pioneers to classical masterpieces - your musical journey of discovery starts here!",
     "searchPlaceholder": "Search categories...",
     "playCategory": "Play {category}",
     "comingSoon": "{category} - Coming Soon",
@@ -158,7 +161,7 @@
     "knowledge": {
       "title": "Knowledge",
       "link": "Learn more about {genre}",
-      "description": "Want to learn more about the history and evolution of {genre}? Find exciting background information and interesting facts here."
+      "description": "Welcome to our musical treasure chamber! Here you'll find exciting articles, fascinating stories, and exclusive insights into the world of music. From groundbreaking albums to legendary concert moments to revolutionary music movements - let yourself be enchanted by the magic of music history and expand your knowledge for the quiz!"
     },
     "noImage": "No image available",
     "image": {
@@ -338,12 +341,12 @@
   },
   "knowledge": {
     "meta": {
-      "title": "Music Knowledge & Background - Melody Mind",
-      "description": "Dive into the fascinating world of music. Discover exciting facts and stories about various music genres and eras."
+      "title": "Discover the World of Music - Melody Mind",
+      "description": "Dive into the diverse world of music. Discover exciting stories and fascinating facts about various music genres and eras."
     },
     "overview": "Knowledge Overview",
-    "title": "Music Knowledge Base",
-    "description": "Explore our comprehensive music knowledge base",
+    "title": "Discover Music World",
+    "description": "Welcome to our musical treasure chamber! Here you'll find exciting articles, fascinating stories, and exclusive insights into the world of music. From groundbreaking albums to legendary concert moments to revolutionary music movements - let yourself be enchanted by the magic of music history and expand your knowledge for the quiz!",
     "loading": "Loading content...",
     "playAndListen": "Play & Listen to Music",
     "playNow": "Play Now",

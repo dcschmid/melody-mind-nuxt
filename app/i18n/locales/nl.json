@@ -43,14 +43,17 @@
         }
     },
     "welcome": {
-        "title": "Welkom bij Melody Mind.",
-        "start": "Spel start",
+        "title": "Welkom bij Melody Mind",
+        "start": "Start spel",
         "about": {
             "title": "Over Melody Mind",
-            "description": "Test je muziekkennis in verschillende categorieën. Een spannend quizspel voor muziekliefhebbers van alle genres."
+            "description": "Test je muziekkennis in verschillende categorieën. Een spannende quiz voor muziekliefhebbers van alle genres."
+        },
+        "seo": {
+            "description": "Ontdek de wereld van muziek met onze interactieve muziekquiz. Test je kennis, verzamel punten en word een muziekexpert."
         }
     },
-    "intro": "Stap in de fascinerende wereld van de muziek! Met Melody Mind kun je je muziekkennis testen in spannende quizrondes. Beantwoord vragen over nummers uit verschillende decennia, artiesten, albums en muziekgeschiedenis. Verzamel punten, verdien gouden platen en daag andere muziekliefhebbers uit. Van rock tot pop tot hiphop en klassiek - test je kennis in je favoriete genres. Start je muzikale quiz avontuur nu!",
+    "intro": "Duik in de fascinerende wereld van muziek! Bij Melody Mind test je je muziekkennis in spannende quizrondes. Van legendarische rockhymnes tot moderne pophits, van baanbrekende hiphoptracks tot tijdloze klassiekers - ontdek de volledige diversiteit van de muziekgeschiedenis. Verzamel punten, verdien gouden platen en daag andere muziekliefhebbers uit. Begin nu je muzikale quizavontuur!",
     "auth": {
         "email": {
             "label": "Email",
@@ -106,7 +109,7 @@
         },
         "title": "Kies een categorie om af te spelen",
         "categoriesTitle": "Categories",
-        "description": "Ontdek de fascinerende wereld van muziek door verschillende decennia en genres",
+        "description": "Van rocklegendes tot popiconen, van hiphop-pioniers tot klassieke meesterwerken - hier begint jouw muzikale ontdekkingsreis!",
         "searchPlaceholder": "Categorieën zoeken...",
         "playCategory": "Play {Kategorie}",
         "comingSoon": "{Kategorie} - Coming Soon",
@@ -338,12 +341,12 @@
     },
     "knowledge": {
         "meta": {
-            "title": "Muziekkennis & achtergrond - Melody Mind",
-            "description": "Duik in de fascinerende wereld van de muziek. Ontdek spannende feiten en verhalen over verschillende muziekgenres en tijdperken."
+            "title": "Ontdek de Wereld van Muziek - Melody Mind",
+            "description": "Duik in de diverse wereld van muziek. Ontdek spannende verhalen en fascinerende feiten over verschillende muziekgenres en tijdperken."
         },
+        "title": "Ontdek de Muziekwereld",
         "overview": "Knowledge Overview",
-        "title": "Muziekkennis Basis",
-        "description": "Ontdek onze uitgebreide kennisbasis voor muziek",
+        "description": "Welkom in onze muzikale schatkamer! Hier vind je spannende artikelen, fascinerende verhalen en exclusieve inzichten in de wereld van muziek. Van baanbrekende albums tot legendarische concertmomenten en revolutionaire muziekbewegingen - laat je betoveren door de magie van de muziekgeschiedenis en vergroot je kennis voor de quiz!",
         "loading": "Inhoud Wordt geladen...",
         "playAndListen": "Muziek afspelen & luisteren",
         "playNow": "Nu afspelen",

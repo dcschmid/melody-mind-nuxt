@@ -46,11 +46,14 @@
         "title": "Bienvenue sur Melody Mind",
         "start": "Commencer le jeu",
         "about": {
-            "title": "Les accessoires de Melody Mind",
+            "title": "À propos de Melody Mind",
             "description": "Testez vos connaissances musicales dans différentes catégories. Un quiz passionnant pour les amateurs de musique de tous genres."
+        },
+        "seo": {
+            "description": "Découvrez le monde de la musique avec notre quiz musical interactif. Testez vos connaissances, accumulez des points et devenez un expert en musique."
         }
     },
-    "intro": "Plongez Dans le monde fascinant de la musique ! Avec Melody Mind, mettez vos connaissances musicales à l'épreuve dans des sessions de quiz captivantes. Répondez à des questions sur les chansons de différentes décennies , les artistes, les albums et l'histoire de la musique. Accumulez des points, gagnez des disques d'or et défiez d'autres passionnés de musique. Du rock à la pop en passant par le hip-hop et le classique - testez vos connaissances dans vos genres préférés. Commencez dès maintenant votre aventure musicale!",
+    "intro": "Plongez dans le monde fascinant de la musique ! Avec Melody Mind, mettez vos connaissances musicales à l'épreuve dans des quiz passionnants. Des hymnes rock légendaires aux tubes pop modernes, des morceaux hip-hop révolutionnaires aux classiques intemporels - découvrez toute la diversité de l'histoire de la musique. Accumulez des points, gagnez des disques d'or et défiez d'autres passionnés de musique. Commencez votre aventure musicale maintenant !",
     "auth": {
         "email": {
             "label": "E-mail",
@@ -106,7 +109,7 @@
         },
         "title": "Choisissez une catégorie pour jouer",
         "categoriesTitle": "Catégories",
-        "description": "Découvrez le monde fascinant de la musique à travers différentes décennies et genres",
+        "description": "Des légendes du rock aux icônes de la pop, des pionniers du hip-hop aux chefs-d'œuvre classiques - votre voyage musical commence ici !",
         "searchPlaceholder": "Rechercher une catégorie...",
         "playCategory": "Jouer {Kategorie}",
         "comingSoon": "{Kategorie} - À venir",
@@ -338,12 +341,12 @@
     },
     "knowledge": {
         "meta": {
-            "title": "Connaissances & Contexte - Melody Mind",
-            "description": "Plongez Dans le monde fascinant de la musique . Découvrez des faits passionnants et des histoires sur différents genres musicaux et époques."
+            "title": "Découvrez le Monde de la Musique - Melody Mind",
+            "description": "Plongez dans le monde diversifié de la musique. Découvrez des histoires passionnantes et des faits fascinants sur différents genres musicaux et époques."
         },
         "overview": "Aperçu des connaissances",
         "title": "Base de connaissances musicales",
-        "description": "Découvrez notre base de connaissances musicales complète",
+        "description": "Bienvenue dans notre chambre aux trésors musicale ! Découvrez des articles passionnants, des histoires fascinantes et des aperçus exclusifs du monde de la musique. Des albums révolutionnaires aux moments de concert légendaires en passant par les mouvements musicaux révolutionnaires - laissez-vous enchanter par la magie de l'histoire de la musique et enrichissez vos connaissances pour le quiz !",
         "loading": "Chargement du contenu...",
         "playAndListen": "Jouer & Écouter",
         "playNow": "Jouer maintenant",

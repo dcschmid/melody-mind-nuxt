@@ -44,13 +44,16 @@
     },
     "welcome": {
         "title": "Tervetuloa Melody Mindiin",
-        "start": "Käynnistä peli",
+        "start": "Aloita peli",
         "about": {
-            "title": "Melody Mindistä",
-            "description": "Testaa musiikkia tietoa eri luokkiin. Jännittävä tietokilpailu peli musiikin ystäville kaikki tyylilajit."
+            "title": "Tietoja Melody Mindistä",
+            "description": "Testaa musiikkitietosi eri kategorioissa. Jännittävä tietovisa kaikenlaisen musiikin ystäville."
+        },
+        "seo": {
+            "description": "Tutustu musiikin maailmaan interaktiivisen musiikkivisamme avulla. Testaa tietosi, kerää pisteitä ja tule musiikin asiantuntijaksi."
         }
     },
-    "intro": "Astu musiikin kiehtovaan maailmaan! Melody Mindin avulla voit testata musiikkiosaamistasi jännittävillä kierroksella. Vastaa kysymyksiin eri vuosikymmenien kappaleista, taiteilijoista, albumista ja musiikkihistoriasta. Kerää pisteitä, ansaita kultaisia levyjä, ja haastaa muita musiikin harrastajia. Rockista pop hip-hop ja klassinen - testata tietoa suosikki genrejä. Aloita musiikillinen tietovisa seikkailu nyt!",
+    "intro": "Sukella musiikin kiehtovaan maailmaan! Melody Mindissa testaat musiikkitietojasi jännittävissä tietokilpailuissa. Legendaarisista rock-hymneistä moderneihin pop-hitteihin, uraauurtavista hip-hop-kappaleista ajattomiin klassikkoihin - tutustu musiikkihistorian koko kirjoon. Kerää pisteitä, ansaitse kultalevy ja haasta muita musiikin ystäviä. Aloita musiikillinen tietovisaseikkailusi nyt!",
     "auth": {
         "email": {
             "label": "Email",
@@ -106,7 +109,7 @@
         },
         "title": "Valitse soitettava kategoria",
         "categoriesTitle": "Categories",
-        "description": "Tutki musiikin kiehtovaa maailmaa eri vuosikymmenien ja tyylilajien kautta",
+        "description": "Rock-legendoista pop-ikoneihin, hip-hop-pioneereista klassisiin mestariteoksiin - musiikillinen löytöretkesi alkaa täältä!",
         "searchPlaceholder": "Etsi kategoriat...",
         "playCategory": "Play {Kategorie}",
         "comingSoon": "{Kategorie} - Coming Soon",
@@ -338,12 +341,12 @@
     },
     "knowledge": {
         "meta": {
-            "title": "Musiikkitieto ja tausta - Melody Mind.",
-            "description": "Sukella kiehtovaan musiikkimaailmaan. Tutustu jännittäviä faktoja ja tarinoita eri musiikkilajit ja aikakaudet."
+            "title": "Tutustu Musiikin Maailmaan - Melody Mind",
+            "description": "Sukella musiikin monipuoliseen maailmaan. Löydä jännittäviä tarinoita ja kiehtovia faktoja eri musiikkityyleistä ja aikakausista."
         },
         "overview": "Knowledge Overview",
-        "title": "Musiikkiosaaminen Perus",
-        "description": "Tutustu kattavaan musiikkitietopohjaamme",
+        "title": "Tutustu Musiikkimaailmaan",
+        "description": "Tervetuloa musiikilliseen aarrekammioomme! Täältä löydät jännittäviä artikkeleita, kiehtovia tarinoita ja ainutlaatuisia näkemyksiä musiikin maailmaan. Uraauurtavista albumeista legendaarisiin konsertteihin ja vallankumouksellisiin musiikkiliikkeisiin - anna musiikin historian magian lumota sinut ja laajenna tietämystäsi visailua varten!",
         "loading": "Ladataan sisältöä...",
         "playAndListen": "Soita & kuuntele musiikkia",
         "playNow": "Soita nyt",

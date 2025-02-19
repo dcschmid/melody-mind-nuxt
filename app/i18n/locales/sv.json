@@ -44,13 +44,16 @@
     },
     "welcome": {
         "title": "Välkommen till Melody Mind",
-        "start": "Startspel",
+        "start": "Starta spel",
         "about": {
             "title": "Om Melody Mind",
-            "description": "Testa din musikkunskap i olika kategorier. Ett spännande quizspel för musikälskare av alla genrer."
+            "description": "Testa dina musikkunskaper i olika kategorier. Ett spännande quiz för musikälskare av alla genrer."
+        },
+        "seo": {
+            "description": "Upptäck musikens värld med vårt interaktiva musikquiz. Testa dina kunskaper, samla poäng och bli en musikexpert."
         }
     },
-    "intro": "Steg in i den fascinerande musikvärlden! Med Melody Mind kan du sätta din musikkunskap till testet i spännande quizrundor. Svara på frågor om låtar från olika decennier, artister, album och musikhistoria. Samla poäng, tjäna gyllene skivor och utmana andra musikentusiaster. Från rock till pop till hiphop och klassisk - testa din kunskap i dina favoritgenrer. Börja ditt musikaliska quiz-äventyr nu!",
+    "intro": "Dyk in i musikens fascinerande värld! I Melody Mind sätter du dina musikkunskaper på prov i spännande quizrundor. Från legendariska rockhymner till moderna pophits, från banbrytande hiphop-spår till tidlösa klassiker - upptäck musikhistoriens hela mångfald. Samla poäng, tjäna guldskivor och utmana andra musikentusiaster. Börja ditt musikaliska quizäventyr nu!",
     "auth": {
         "email": {
             "label": "Email",
@@ -106,7 +109,7 @@
         },
         "title": "Välj en kategori för att spela",
         "categoriesTitle": "Categories",
-        "description": "Utforska den fascinerande musikvärlden genom olika årtionden och genrer",
+        "description": "Från rocklegender till popikoner, från hiphop-pionjärer till klassiska mästerverk - här börjar din musikaliska upptäcktsresa!",
         "searchPlaceholder": "Sök kategorier...",
         "playCategory": "Play { Kategorie}",
         "comingSoon": "{ Kategorie} - Coming Soon",
@@ -338,12 +341,12 @@
     },
     "knowledge": {
         "meta": {
-            "title": "Musikkunskap och bakgrund Melody Mind",
-            "description": "Dyk in i musikens fascinerande värld. Upptäck spännande fakta och berättelser om olika musikgenrer och epoker."
+            "title": "Upptäck Musikens Värld - Melody Mind",
+            "description": "Dyk in i musikens mångfaldiga värld. Upptäck spännande historier och fascinerande fakta om olika musikgenrer och epoker."
         },
         "overview": "Knowledge Overview",
-        "title": "Musinkskap Base",
-        "description": "Utforska vår omfattande musikkunskapsbas",
+        "title": "Upptäck Musikvärlden",
+        "description": "Välkommen till vår musikaliska skattkammare! Här hittar du spännande artiklar, fascinerande berättelser och exklusiva insikter i musikens värld. Från banbrytande album till legendariska konsertögonblick och revolutionerande musikrörelser - låt dig förtrollas av musikhistoriens magi och utöka dina kunskaper för quizen!",
         "loading": "Ladda innehåll...",
         "playAndListen": "Spela och lyssna på musik",
         "playNow": "Spela nu",
