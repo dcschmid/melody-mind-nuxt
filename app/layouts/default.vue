@@ -8,7 +8,7 @@
             <nav v-if="showMenu" :aria-label="t('navigation.mainNavLabel')">
                 <button class="menu-button" :class="{ 'is-active': isMenuOpen }"
                     :aria-label="isMenuOpen ? t('accessibility.closeMenu') : t('navigation.openMenu')"
-                    :aria-expanded="isMenuOpen" aria-controls="menu" @click="toggleMenu">
+                    :aria-expanded="isMenuOpen" aria-controls="menu" @click="toggleMenu" aria-haspopup="true">
                     <span class="menu-button-line"></span>
                 </button>
             </nav>
@@ -129,11 +129,27 @@ onUnmounted(() => {
 
 header {
     position: flex;
+    width: 100%;
     height: var(--header-height);
     display: flex;
     align-items: center;
     justify-content: space-between;
     z-index: var(--z-index-header);
+    margin: 0 auto;
+
+    nav {
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--padding-small);
+        align-items: center;
+        justify-content: space-between;
+
+        @media (width >= 768px) {
+            flex-wrap: nowrap;
+            gap: var(--padding-medium);
+        }
+    }
 }
 
 .menu-button {
@@ -149,7 +165,9 @@ header {
 
     &:focus-visible {
         border-color: var(--focus-outline-color);
-        outline: none;
+        outline: var(--focus-outline-width) solid var(--focus-outline-color);
+        outline-offset: var(--focus-outline-offset);
+        box-shadow: 0 0 0 4px rgba(0, 247, 255, 0.4);
     }
 
     .menu-button-line {
@@ -208,16 +226,25 @@ header {
 }
 
 .menu {
+    position: fixed;
     inset: 0;
-    z-index: var(--z-index-menu);
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding-top: var(--header-height);
-    overflow-y: auto;
+    display: grid;
+    place-items: center;
+    background-color: var(--overlay-background);
+    backdrop-filter: blur(var(--blur-strength));
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.3s var(--transition-bounce);
+
+    .menu-content {
+        width: min(90%, 400px);
+        display: flex;
+        flex-direction: column;
+        gap: var(--padding-medium);
+        padding: var(--padding-large);
+        transform: translateY(30px);
+        transition: transform 0.4s var(--transition-bounce);
+    }
 
     &.is-open {
         opacity: 1;
@@ -225,39 +252,44 @@ header {
 
         .menu-content {
             transform: translateY(0);
-            opacity: 1;
         }
     }
 
-    .menu-content {
+    a,
+    button {
+        @include button-base;
         position: relative;
-        width: min(90%, 400px);
-        margin-bottom: var(--padding-large);
         display: flex;
-        flex-direction: column;
-        gap: var(--padding-large);
-        padding: var(--padding-large);
-        transform: translateY(30px);
-        opacity: 0;
-        transition: all 0.4s var(--transition-bounce);
+        align-items: center;
+        gap: var(--padding-medium);
+        width: 100%;
+        padding: var(--padding-medium);
+        font-size: var(--button-font-size);
+        color: var(--text-color);
+        background: var(--surface-color);
+        border-radius: var(--border-radius);
+        transition: all 0.3s var(--transition-bounce);
 
-        // Scrollbar Styling
-        scrollbar-width: thin;
-        scrollbar-color: var(--highlight-color) transparent;
-
-        &::-webkit-scrollbar {
-            width: 6px;
+        .icon {
+            color: var(--highlight-color);
+            transition: color 0.3s ease;
         }
 
-        &::-webkit-scrollbar-track {
-            background: transparent;
-        }
+        &:hover,
+        &:focus-visible {
+            background: var(--secondary-color);
+            transform: scale(1.03);
 
-        &::-webkit-scrollbar-thumb {
-            background-color: var(--highlight-color);
-            border-radius: 3px;
+            .icon {
+                color: var(--text-color);
+            }
         }
     }
+}
+
+.hamburger {
+    @include button-icon;
+    position: relative;
 }
 
 .menu-section {
@@ -285,9 +317,11 @@ header {
     display: flex;
     align-items: center;
     gap: var(--padding-medium);
-    padding: var(--padding-medium);
-    min-height: var(--min-touch-target);
-    font-size: 1.125rem;
+    padding: 1rem var(--padding-medium);
+    min-height: 60px; // Vergrößerter Touch-Bereich
+    font-size: 1.25rem; // Größere Schrift
+    letter-spacing: 0.12px;
+    word-spacing: 0.16em;
     font-weight: 500;
     color: var(--text-color);
     transition: all 0.3s var(--transition-bounce);
@@ -316,7 +350,9 @@ header {
     }
 
     &:focus-visible {
-        outline: none;
+        outline: var(--focus-outline-width) solid var(--focus-outline-color);
+        outline-offset: var(--focus-outline-offset);
+        box-shadow: 0 0 0 4px rgba(0, 247, 255, 0.4);
     }
 }
 
@@ -370,6 +406,19 @@ header {
         .menu-item {
             padding: var(--padding-medium);
         }
+    }
+}
+
+main {
+    flex: 1;
+    margin: 0 auto;
+    font-size: var(--body-font-size);
+    line-height: 1.6;
+    color: var(--text-color);
+
+    @media (width >= 768px) {
+        max-width: var(--max-line-length);
+        width: 100%;
     }
 }
 </style>

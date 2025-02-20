@@ -62,8 +62,6 @@ onMounted(() => {
 .gameHome {
     width: 100%;
     margin: 0 auto;
-    max-width: var(--content-width);
-    padding: var(--padding-medium);
 }
 
 .intro {
@@ -81,7 +79,7 @@ onMounted(() => {
 }
 
 .page-subtitle {
-    font-size: var(--font-size-responsive-lg);
+    font-size: var(--font-size-responsive-md);
     color: var(--text-secondary);
     text-align: center;
     margin-bottom: var(--padding-medium);
