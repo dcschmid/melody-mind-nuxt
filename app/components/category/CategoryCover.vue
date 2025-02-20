@@ -61,15 +61,16 @@ const imageAltText = computed(() => t('category.image.altText', {
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--box-shadow);
-  transition: transform 0.2s ease-in-out;
+  transition: all var(--transition-speed) var(--transition-bounce);
 
   &:hover {
     transform: translateY(-2px);
+    box-shadow: var(--box-shadow-hover);
   }
 
   &:focus-within {
-    outline: 3px solid var(--focus-outline-color);
-    outline-offset: 2px;
+    outline: var(--focus-outline-width) solid var(--focus-outline-color);
+    outline-offset: var(--focus-outline-offset);
   }
 }
 
@@ -91,10 +92,10 @@ const imageAltText = computed(() => t('category.image.altText', {
   border-radius: var(--border-radius);
   color: var(--text-color);
   font-size: var(--font-size-responsive-md);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   padding: var(--padding-medium);
   text-align: center;
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
 }
 
 .visually-hidden {

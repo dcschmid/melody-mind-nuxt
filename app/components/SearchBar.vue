@@ -189,7 +189,7 @@ const clearSearch = () => {
 
 .search-wrapper {
     position: relative;
-    max-width: min(600px, 90%);
+    max-width: var(--content-width);
     margin: 0 auto;
 }
 
@@ -201,69 +201,68 @@ const clearSearch = () => {
 
 .search-icon {
     position: absolute;
-    left: 1rem;
+    left: var(--padding-medium);
     color: var(--text-secondary);
     pointer-events: none;
 }
 
 .search-input {
     width: 100%;
-    padding: 0.875rem 2.5rem 0.875rem 3rem;
+    padding: var(--padding-small) var(--padding-large) var(--padding-small) calc(var(--padding-large) + var(--padding-medium));
     font-size: var(--font-size-base);
-    line-height: 1.5;
+    line-height: var(--line-height-normal);
     color: var(--text-color);
     background: var(--surface-color);
-    border: 2px solid var(--border-color);
+    border: 2px solid var(--surface-color-light);
     border-radius: var(--border-radius);
-    transition: all 0.2s ease;
+    transition: all var(--transition-speed) var(--transition-bounce);
 
     &::placeholder {
         color: var(--text-secondary);
-        opacity: 0.8;
+        opacity: var(--opacity-disabled);
     }
 
     &:hover {
-        border-color: var(--border-hover-color);
+        border-color: var(--primary-color);
     }
 
     &:focus {
         outline: none;
-        border-color: var(--focus-ring-color);
-        box-shadow: 0 0 0 3px var(--focus-ring-color);
+        border-color: var(--focus-outline-color);
+        box-shadow: 0 0 0 var(--focus-outline-width) var(--focus-outline-color);
     }
 }
 
 .clear-button {
     position: absolute;
-    right: 0.75rem;
+    right: var(--padding-small);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem;
+    padding: var(--padding-small);
     color: var(--text-secondary);
     background: transparent;
     border: 2px solid transparent;
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all var(--transition-speed) var(--transition-bounce);
 
     &:hover {
         color: var(--text-color);
-        background: var(--surface-hover-color);
+        background: var(--surface-color-light);
     }
 
     &:focus-visible {
-        outline: none;
-        border-color: var(--focus-ring-color);
-        box-shadow: 0 0 0 2px var(--focus-ring-color);
+        outline: var(--focus-outline-width) solid var(--focus-outline-color);
+        outline-offset: var(--focus-outline-offset);
         color: var(--text-color);
-        background: var(--surface-hover-color);
+        background: var(--surface-color-light);
     }
 
     /* High Contrast Mode */
     @media (prefers-contrast: more) {
         &:focus-visible {
-            outline: 3px solid var(--focus-ring-color);
+            outline: 3px solid var(--focus-outline-color);
             outline-offset: 2px;
             box-shadow: none;
         }
@@ -280,56 +279,48 @@ const clearSearch = () => {
     top: 100%;
     left: 0;
     right: 0;
-    margin-top: 0.5rem;
-    padding: 0.5rem 0;
+    margin-top: var(--padding-small);
+    padding: var(--padding-small) 0;
     background: var(--surface-color);
-    border: 2px solid var(--border-color);
+    border: 2px solid var(--surface-color-light);
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    z-index: 100;
+    box-shadow: var(--box-shadow);
+    z-index: var(--z-index-overlay);
 }
 
 .suggestion-item {
-    padding: 0.75rem 1rem;
+    padding: var(--padding-small) var(--padding-medium);
     color: var(--text-color);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all var(--transition-speed) var(--transition-bounce);
 
     &:hover,
     &.is-active {
-        background: var(--surface-hover-color);
+        background: var(--surface-color-light);
     }
 }
 
 /* Screen reader only class */
 .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+    @include sr-only;
 }
 
 /* High Contrast Mode */
 @media (prefers-contrast: more) {
     .search-input {
-        border-width: 3px;
+        border-width: var(--focus-outline-width);
     }
 
     .suggestions-list {
-        border-width: 3px;
+        border-width: var(--focus-outline-width);
         box-shadow: none;
     }
 
     .suggestion-item {
         &:hover,
         &.is-active {
-            background: var(--surface-high-contrast);
-            outline: 2px solid var(--focus-ring-color);
+            background: var(--surface-color-hover);
+            outline: var(--focus-outline-width) solid var(--focus-outline-color);
         }
     }
 }
@@ -347,30 +338,30 @@ const clearSearch = () => {
 @media (max-width: 768px) {
     .search-input {
         font-size: var(--font-size-base);
-        padding: 0.75rem 2.25rem 0.75rem 2.75rem;
+        padding: var(--padding-small) var(--padding-medium);
     }
 
     .suggestions-list {
-        margin-top: 0.25rem;
+        margin-top: calc(var(--padding-small) / 2);
     }
 
     .suggestion-item {
-        padding: 0.625rem 0.875rem;
+        padding: var(--padding-small);
     }
 }
 
 /* Unterstützung für Hover auf Touch-Geräten */
 @media (hover: hover) {
     .search-input:hover {
-        border-color: var(--border-hover-color);
+        border-color: var(--primary-color);
     }
 
     .clear-button:hover {
-        background: var(--surface-hover-color);
+        background: var(--surface-color-hover);
     }
 
     .suggestion-item:hover {
-        background: var(--surface-hover-color);
+        background: var(--surface-color-hover);
     }
 }
 </style>

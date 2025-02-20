@@ -207,41 +207,28 @@ const togglePlay = async () => {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 @use '@/assets/scss/mixins' as *;
 
 .solution-container {
     display: flex;
     flex-direction: column;
-    gap: var(--padding-small);
+    gap: var(--padding-medium);
     width: 100%;
-    max-width: min(100%, 800px);
+    max-width: var(--content-width);
     margin: 0 auto;
-    padding: var(--padding-small);
-
-    @media (min-width: 640px) {
-        padding: var(--padding-medium);
-        gap: var(--padding-large);
-    }
+    padding: var(--padding-medium);
 
     .result-banner {
         background-color: var(--surface-color);
         border-radius: var(--border-radius);
-        padding: var(--padding-small);
+        padding: var(--padding-medium);
         box-shadow: var(--box-shadow);
         border: 2px solid var(--surface-color-light);
-        transition: transform 0.3s ease;
-
-        @media (min-width: 375px) {
-            padding: var(--padding-medium);
-        }
-
-        @media (min-width: 640px) {
-            padding: var(--padding-large);
-        }
+        transition: all var(--transition-speed) var(--transition-bounce);
 
         &.correct {
-            animation: pulse 0.5s ease-out;
+            animation: pulse var(--transition-speed) var(--transition-bounce);
             border-color: var(--success-color);
         }
 
@@ -250,27 +237,11 @@ const togglePlay = async () => {
             align-items: center;
             justify-content: center;
             gap: var(--padding-small);
-            margin-bottom: var(--padding-small);
-            flex-wrap: wrap;
-
-            @media (min-width: 375px) {
-                gap: var(--padding-medium);
-                margin-bottom: var(--padding-medium);
-            }
-
-            @media (min-width: 640px) {
-                justify-content: flex-start;
-                flex-wrap: nowrap;
-            }
+            margin-bottom: var(--padding-medium);
 
             .result-icon {
                 color: var(--success-color);
                 font-size: var(--font-size-responsive-xl);
-                transition: color 0.3s ease;
-
-                @media (min-width: 375px) {
-                    font-size: var(--font-size-responsive-xl);
-                }
 
                 &.wrong {
                     color: var(--error-color);
@@ -280,76 +251,40 @@ const togglePlay = async () => {
             h2 {
                 margin: 0;
                 font-size: var(--font-size-responsive-xl);
-                font-weight: 700;
-                line-height: 1.4;
+                font-weight: var(--font-weight-bold);
+                line-height: var(--line-height-tight);
                 color: var(--text-color);
-                text-align: center;
-
-                @media (min-width: 640px) {
-                    text-align: left;
-                }
             }
         }
 
         .points,
         .points-breakdown {
             font-size: var(--font-size-responsive-md);
-            margin-bottom: var(--padding-small);
-            line-height: 1.6;
+            margin-bottom: var(--padding-medium);
+            line-height: var(--line-height-normal);
             color: var(--text-color);
-            text-align: center;
-
-            @media (min-width: 375px) {
-                margin-bottom: var(--padding-medium);
-            }
-
-            @media (min-width: 640px) {
-                text-align: left;
-            }
         }
 
         .correct-answer {
-            margin-top: var(--padding-small);
-            padding: var(--padding-small);
+            margin-top: var(--padding-medium);
+            padding: var(--padding-medium);
             background-color: var(--surface-color-light);
             border-radius: var(--border-radius);
-            border: 1px solid var(--surface-border);
-            text-align: center;
-
-            @media (min-width: 375px) {
-                margin-top: var(--padding-medium);
-                padding: var(--padding-medium);
-            }
-
-            @media (min-width: 640px) {
-                text-align: left;
-            }
+            border: 1px solid var(--surface-color-light);
 
             .label {
                 display: block;
                 font-size: var(--font-size-base);
-                font-weight: 600;
+                font-weight: var(--font-weight-semibold);
                 color: var(--text-color);
                 margin-bottom: var(--padding-small);
-
-                @media (min-width: 375px) {
-                    font-size: var(--font-size-base);
-                }
             }
 
             .text {
                 font-size: var(--font-size-base);
-                line-height: 1.6;
+                line-height: var(--line-height-normal);
                 color: var(--text-color);
-                font-weight: 500;
-
-                @media (min-width: 375px) {
-                    font-size: var(--font-size-base);
-                }
-
-                @media (min-width: 640px) {
-                    font-size: var(--font-size-base);
-                }
+                font-weight: var(--font-weight-medium);
             }
         }
     }
@@ -358,19 +293,14 @@ const togglePlay = async () => {
         .album-box {
             display: flex;
             flex-direction: column;
-            gap: var(--padding-small);
+            gap: var(--padding-medium);
             background-color: var(--surface-color);
-            padding: var(--padding-small);
+            padding: var(--padding-medium);
             border-radius: var(--border-radius);
             border: 2px solid var(--surface-color-light);
             box-shadow: var(--box-shadow);
 
-            @media (min-width: 375px) {
-                gap: var(--padding-medium);
-                padding: var(--padding-medium);
-            }
-
-            @media (min-width: 768px) {
+            @media (width >= 768px) {
                 display: grid;
                 grid-template-columns: minmax(200px, 300px) 1fr;
                 gap: var(--padding-large);
@@ -385,15 +315,12 @@ const togglePlay = async () => {
                 background-color: var(--surface-color-light);
                 border-radius: var(--border-radius);
                 overflow: hidden;
-                will-change: transform;
 
                 .album-cover {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
-                    transform: translateZ(0);
-                    backface-visibility: hidden;
-                    transition: transform 0.3s ease;
+                    transition: transform var(--transition-speed) var(--transition-bounce);
 
                     &:hover {
                         transform: scale(1.05);
@@ -404,48 +331,22 @@ const togglePlay = async () => {
             .player-info-wrapper {
                 display: flex;
                 flex-direction: column;
-                gap: var(--padding-small);
-                text-align: center;
-
-                @media (min-width: 375px) {
-                    gap: var(--padding-medium);
-                }
-
-                @media (min-width: 768px) {
-                    text-align: left;
-                    gap: var(--padding-large);
-                }
+                gap: var(--padding-medium);
 
                 .audio-player {
                     display: flex;
                     align-items: center;
-                    gap: var(--padding-small);
-                    justify-content: center;
-
-                    @media (min-width: 375px) {
-                        gap: var(--padding-medium);
-                    }
-
-                    @media (min-width: 768px) {
-                        justify-content: flex-start;
-                    }
+                    gap: var(--padding-medium);
 
                     .play-button {
                         @include button-primary;
-                        min-width: 48px;
-                        min-height: 48px;
+                        min-width: var(--min-touch-target);
+                        min-height: var(--min-touch-target);
                         border-radius: 50%;
-                        padding: 0;
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        border: 2px solid transparent;
-                        transition: all 0.3s ease;
-
-                        @media (min-width: 375px) {
-                            min-width: 64px;
-                            min-height: 64px;
-                        }
+                        transition: all var(--transition-speed) var(--transition-bounce);
 
                         &:hover:not(:disabled) {
                             transform: scale(1.05);
@@ -453,38 +354,31 @@ const togglePlay = async () => {
                         }
 
                         &:focus-visible {
-                            outline: none;
-                            box-shadow: 0 0 0 3px var(--focus-outline-color);
-                            border-color: var(--highlight-color);
+                            outline: var(--focus-outline-width) solid var(--focus-outline-color);
+                            outline-offset: var(--focus-outline-offset);
                         }
 
                         &:disabled {
-                            opacity: 0.7;
-                            cursor: not-allowed;
+                            opacity: var(--opacity-disabled);
                         }
                     }
 
                     .progress-bar {
                         flex: 1;
-                        height: 6px;
+                        height: 8px;
                         background-color: var(--surface-color-light);
-                        border-radius: 3px;
+                        border-radius: calc(var(--border-radius) / 2);
                         overflow: hidden;
                         position: relative;
-
-                        @media (min-width: 375px) {
-                            height: 8px;
-                            border-radius: 4px;
-                        }
 
                         .progress {
                             height: 100%;
                             background-color: var(--primary-color);
                             border-radius: inherit;
-                            transition: width 0.1s linear;
+                            transition: width var(--transition-speed) linear;
 
                             &.buffering {
-                                opacity: 0.7;
+                                opacity: var(--opacity-disabled);
                             }
                         }
                     }
@@ -492,96 +386,62 @@ const togglePlay = async () => {
 
                 .info {
                     .artist {
-                        font-size: var(--font-size-responsive-md);
-                        font-weight: 600;
+                        font-size: var(--font-size-responsive-lg);
+                        font-weight: var(--font-weight-semibold);
                         color: var(--text-color);
                         margin: 0 0 var(--padding-small);
-                        line-height: 1.4;
+                        line-height: var(--line-height-tight);
                     }
 
                     .album {
                         font-size: var(--font-size-base);
                         color: var(--text-color);
                         margin: 0 0 var(--padding-small);
-                        line-height: 1.4;
+                        line-height: var(--line-height-normal);
                     }
 
                     .year {
                         font-size: var(--font-size-base);
                         color: var(--text-secondary);
-                        margin: 0 0 var(--padding-small);
-
-                        @media (min-width: 375px) {
-                            font-size: var(--font-size-base);
-                            margin: 0 0 var(--padding-medium);
-                        }
+                        margin: 0 0 var(--padding-medium);
                     }
 
                     .music-links {
-                        margin-top: var(--padding-small);
-
-                        @media (min-width: 375px) {
-                            margin-top: var(--padding-medium);
-                        }
+                        margin-top: var(--padding-medium);
 
                         .music-links-title {
                             font-size: var(--font-size-base);
-                            font-weight: 500;
+                            font-weight: var(--font-weight-medium);
                             color: var(--text-color);
                             margin: 0 0 var(--padding-small);
                             display: flex;
                             align-items: center;
                             gap: var(--padding-small);
-                            justify-content: center;
-
-                            @media (min-width: 375px) {
-                                font-size: var(--font-size-base);
-                            }
-
-                            @media (min-width: 768px) {
-                                justify-content: flex-start;
-                            }
                         }
 
                         .music-links-container {
                             display: flex;
-                            gap: var(--padding-small);
+                            gap: var(--padding-medium);
                             margin-top: var(--padding-small);
-                            justify-content: center;
-
-                            @media (min-width: 375px) {
-                                gap: var(--padding-medium);
-                            }
-
-                            @media (min-width: 768px) {
-                                justify-content: flex-start;
-                            }
 
                             .music-link {
                                 @include button-secondary;
-                                min-width: 40px;
-                                min-height: 40px;
+                                min-width: var(--min-touch-target);
+                                min-height: var(--min-touch-target);
                                 border-radius: var(--border-radius);
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
-                                border: 2px solid transparent;
-                                transition: all 0.3s ease;
-
-                                @media (min-width: 375px) {
-                                    min-width: 48px;
-                                    min-height: 48px;
-                                }
+                                transition: all var(--transition-speed) var(--transition-bounce);
 
                                 &:hover {
                                     transform: translateY(-2px);
-                                    border-color: var(--highlight-color);
+                                    box-shadow: var(--box-shadow-hover);
                                 }
 
                                 &:focus-visible {
-                                    outline: none;
-                                    box-shadow: 0 0 0 3px var(--focus-outline-color);
-                                    border-color: var(--highlight-color);
+                                    outline: var(--focus-outline-width) solid var(--focus-outline-color);
+                                    outline-offset: var(--focus-outline-offset);
                                 }
                             }
                         }
@@ -594,44 +454,22 @@ const togglePlay = async () => {
     .trivia-section {
         background-color: var(--surface-color);
         border-radius: var(--border-radius);
-        padding: var(--padding-small);
+        padding: var(--padding-medium);
         border: 2px solid var(--surface-color-light);
         box-shadow: var(--box-shadow);
-        text-align: center;
-
-        @media (min-width: 375px) {
-            padding: var(--padding-medium);
-        }
-
-        @media (min-width: 640px) {
-            padding: var(--padding-large);
-            text-align: left;
-        }
 
         h3 {
-            font-size: var(--font-size-responsive-md);
-            font-weight: 600;
+            font-size: var(--font-size-responsive-lg);
+            font-weight: var(--font-weight-semibold);
             color: var(--text-color);
-            margin: 0 0 var(--padding-small);
-            line-height: 1.4;
-
-            @media (min-width: 375px) {
-                margin: 0 0 var(--padding-medium);
-            }
+            margin: 0 0 var(--padding-medium);
+            line-height: var(--line-height-tight);
         }
 
         .trivia-content {
             font-size: var(--font-size-base);
-            line-height: 1.6;
+            line-height: var(--line-height-relaxed);
             color: var(--text-color);
-
-            @media (min-width: 375px) {
-                font-size: var(--font-size-base);
-            }
-
-            @media (min-width: 640px) {
-                font-size: var(--font-size-base);
-            }
         }
     }
 }
@@ -639,56 +477,41 @@ const togglePlay = async () => {
 .next-button {
     @include button-primary;
     width: fit-content;
-    min-height: 48px;
+    min-height: var(--min-touch-target);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: var(--padding-small);
-    margin-top: var(--padding-small);
-    padding: var(--padding-small);
+    margin: var(--padding-medium) auto;
+    padding: var(--padding-medium);
     font-size: var(--font-size-base);
-    font-weight: 500;
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
-    margin: 0 auto;
-
-    @media (min-width: 375px) {
-        min-height: 48px;
-        gap: var(--padding-medium);
-        margin-top: var(--padding-medium);
-        padding: var(--padding-medium);
-    }
-
-    @media (min-width: 640px) {
-        min-height: 100px;
-        padding: var(--padding-medium) var(--padding-large);
-    }
+    font-weight: var(--font-weight-medium);
+    transition: all var(--transition-speed) var(--transition-bounce);
 
     &:hover {
         transform: translateY(-2px);
-        border-color: var(--highlight-color);
+        box-shadow: var(--box-shadow-hover);
     }
 
     &:focus-visible {
-        outline: none;
-        box-shadow: 0 0 0 3px var(--focus-outline-color);
-        border-color: var(--highlight-color);
+        outline: var(--focus-outline-width) solid var(--focus-outline-color);
+        outline-offset: var(--focus-outline-offset);
     }
+}
 
-    span {
-        line-height: 1.4;
+@media (prefers-reduced-motion: reduce) {
+    .solution-container,
+    .album-cover,
+    .play-button,
+    .music-link,
+    .next-button {
+        transition: none;
+        animation: none;
+        transform: none;
     }
 }
 
 .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+    @include sr-only;
 }
 </style>

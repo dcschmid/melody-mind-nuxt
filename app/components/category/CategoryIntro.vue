@@ -53,19 +53,19 @@ const descriptionId = computed(() =>
 <style scoped lang="scss">
 .intro {
     text-align: center;
-    max-width: 800px;
+    max-width: var(--content-width);
     margin: 0 auto clamp(var(--padding-medium), 5vw, var(--padding-large));
     padding: 0 var(--padding-medium);
 }
 
 .category-title {
     font-size: var(--font-size-responsive-2xl);
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     text-align: center;
     color: var(--primary-color);
     margin-bottom: var(--padding-medium);
-    line-height: 1.3;
-    letter-spacing: -0.01em;
+    line-height: var(--line-height-tight);
+    letter-spacing: var(--spacing-text);
 
     .category-name {
         display: inline-block;
@@ -74,12 +74,12 @@ const descriptionId = computed(() =>
 
     .selected-text {
         color: var(--text-color);
-        font-weight: 600;
+        font-weight: var(--font-weight-semibold);
     }
 
     @media (prefers-reduced-motion: no-preference) {
         .category-name {
-            transition: color 0.2s ease-in-out;
+            transition: color var(--transition-speed) var(--transition-bounce);
         }
     }
 
@@ -92,10 +92,10 @@ const descriptionId = computed(() =>
 
 .category-description {
     font-size: var(--font-size-responsive-md);
-    line-height: 1.6;
+    line-height: var(--line-height-relaxed);
     color: var(--text-color);
     margin-bottom: var(--padding-medium);
-    max-width: 65ch;
+    max-width: var(--max-line-length);
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -104,14 +104,14 @@ const descriptionId = computed(() =>
 
 .extended-description {
     font-size: var(--font-size-responsive-sm);
-    line-height: 1.6;
+    line-height: var(--line-height-relaxed);
     color: var(--text-secondary);
     margin-top: var(--padding-medium);
     text-align: center;
     padding: 0 var(--padding-small);
     
     p {
-        max-width: 65ch;
+        max-width: var(--max-line-length);
         margin-left: auto;
         margin-right: auto;
     }
@@ -133,7 +133,7 @@ const descriptionId = computed(() =>
         }
         
         .selected-text {
-            margin-top: 0.5rem;
+            margin-top: var(--padding-small);
             font-size: 0.9em;
         }
     }
@@ -145,19 +145,16 @@ const descriptionId = computed(() =>
 
 @media (prefers-contrast: more) {
     .category-title {
-        color: var(--high-contrast-primary);
+        color: var(--primary-color-dark);
         
         .selected-text {
-            color: var(--high-contrast-text);
+            color: var(--text-color);
         }
     }
 
-    .category-description {
-        color: var(--high-contrast-text);
-    }
-
+    .category-description,
     .extended-description {
-        color: var(--high-contrast-text);
+        color: var(--text-color);
     }
 }
 </style>

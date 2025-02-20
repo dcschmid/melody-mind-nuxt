@@ -35,6 +35,11 @@
   --focus-outline-width: 3px;
   --focus-outline-offset: 3px;
 
+  --color-gold: #FFD700;
+  --color-gold-dark: #9B6B00;
+  --color-silver: #757575;
+  --color-bronze: #8B4513;
+
   --font-size-base: clamp(1.125rem, 1vw + 1rem, 1.25rem); 
   --font-size-responsive-sm: clamp(1.125rem, 1vw + 1rem, 1.25rem); 
   --font-size-responsive-md: clamp(1.25rem, 1.5vw + 1rem, 1.5rem); 
@@ -74,7 +79,7 @@
   --size-playlist-small: 7.438rem;
   --size-playlist-large: 10.313rem;
 
-  --color-overlay: rgb(0 0 0 / 60%);
+  --color-overlay: rgb(0 0 0 / 70%);
 
   --opacity-disabled: 0.4;
 
@@ -82,7 +87,7 @@
   --z-index-header: 100;
   --z-index-overlay: 9998;
 
-  --overlay-background: rgb(30 30 30 / 98%);
+  --overlay-background: rgb(30 30 30 / 70%);
   --overlay-blur: blur(12px);
 
   --menu-transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);

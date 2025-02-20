@@ -32,8 +32,8 @@ defineProps<Props>()
 
 <style lang="scss" scoped>
 .rules-section {
-    margin-bottom: clamp(2rem, 5vw, 3rem);
-    max-width: 70ch; /* Optimale Lesebreite */
+    margin-bottom: var(--padding-large);
+    max-width: var(--max-line-length);
     width: 100%;
 
     &:last-child {
@@ -43,15 +43,15 @@ defineProps<Props>()
     &.has-background {
         background-color: var(--surface-color);
         border-radius: var(--border-radius);
-        padding: clamp(1.5rem, 4vw, 2rem);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: var(--padding-medium);
+        box-shadow: var(--box-shadow);
     }
 }
 
 .section-title {
     font-size: var(--font-size-responsive-xl);
-    font-weight: 700;
-    line-height: 1.3;
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
     color: var(--text-color);
     margin-bottom: var(--padding-large);
 
@@ -62,7 +62,7 @@ defineProps<Props>()
 
 .section-content {
     font-size: var(--font-size-responsive-sm);
-    line-height: 1.6;
+    line-height: var(--line-height-relaxed);
     color: var(--text-color);
 
     &.centered {
@@ -71,21 +71,21 @@ defineProps<Props>()
 
     /* Links innerhalb des Inhalts */
     a {
-        color: var(--link-color);
+        color: var(--primary-color);
         text-decoration: underline;
-        text-underline-offset: 0.2em;
-        transition: color 0.2s ease;
+        text-underline-offset: var(--spacing-text);
+        transition: color var(--transition-speed) var(--transition-bounce);
 
         &:hover,
         &:focus {
-            color: var(--link-hover-color);
+            color: var(--primary-color-dark);
             text-decoration-thickness: 0.125em;
         }
 
         &:focus-visible {
-            outline: 3px solid var(--focus-ring-color);
-            outline-offset: 2px;
-            border-radius: 2px;
+            outline: var(--focus-outline-width) solid var(--focus-outline-color);
+            outline-offset: var(--focus-outline-offset);
+            border-radius: var(--border-radius);
         }
     }
 
@@ -93,7 +93,7 @@ defineProps<Props>()
     strong,
     em {
         color: var(--text-color);
-        font-weight: 600;
+        font-weight: var(--font-weight-semibold);
     }
 }
 
@@ -145,7 +145,7 @@ defineProps<Props>()
 @media (max-width: 768px) {
     .rules-section {
         &.has-background {
-            padding: 1.25rem;
+            padding: var(--padding-small);
         }
     }
 
@@ -171,25 +171,25 @@ defineProps<Props>()
 /* Druckoptimierung */
 @media print {
     .rules-section {
-        margin: 1rem 0;
+        margin: var(--padding-medium) 0;
         page-break-inside: avoid;
 
         &.has-background {
             background: none;
-            border: 1px solid #000;
-            padding: 1rem;
+            border: 1px solid var(--button-text-color);
+            padding: var(--padding-medium);
             box-shadow: none;
         }
     }
 
     .section-title,
     .section-content {
-        color: #000;
+        color: var(--button-text-color);
     }
 
     .section-content {
         a {
-            color: #000;
+            color: var(--button-text-color);
             text-decoration: underline;
         }
     }

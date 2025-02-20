@@ -75,7 +75,7 @@ const bonusTransitionProps = shallowRef({
     flex-direction: column;
     gap: var(--padding-medium);
     padding: var(--padding-medium);
-    transition: var(--menu-transition);
+    transition: all var(--transition-speed) var(--transition-bounce);
     background-color: var(--surface-color);
     border-radius: var(--border-radius);
     border: 2px solid var(--surface-color-light);
@@ -94,18 +94,18 @@ const bonusTransitionProps = shallowRef({
         h1.game-title {
             margin: 0;
             font-size: var(--font-size-responsive-xl);
-            font-weight: 700;
+            font-weight: var(--font-weight-bold);
             color: var(--text-color);
             letter-spacing: var(--spacing-text);
-            line-height: 1.4;
+            line-height: var(--line-height-tight);
         }
 
         .round-counter.header-text {
             margin: var(--padding-small) 0 0;
             color: var(--text-color);
             font-size: var(--font-size-base);
-            font-weight: 500;
-            line-height: 1.4;
+            font-weight: var(--font-weight-medium);
+            line-height: var(--line-height-normal);
         }
     }
 
@@ -130,11 +130,11 @@ const bonusTransitionProps = shallowRef({
 
         .points {
             font-size: var(--font-size-responsive-xl);
-            font-weight: 600;
+            font-weight: var(--font-weight-semibold);
             color: var(--primary-color);
             letter-spacing: var(--spacing-text);
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            line-height: 1.2;
+            transition: transform var(--transition-speed) var(--transition-bounce);
+            line-height: var(--line-height-tight);
 
             &.points-update {
                 transform: scale(1.1);
@@ -145,8 +145,8 @@ const bonusTransitionProps = shallowRef({
         .points-label.header-text {
             color: var(--text-color);
             font-size: var(--font-size-base);
-            font-weight: 500;
-            line-height: 1.4;
+            font-weight: var(--font-weight-medium);
+            line-height: var(--line-height-normal);
         }
     }
 }
@@ -167,7 +167,7 @@ const bonusTransitionProps = shallowRef({
     border: 2px solid var(--success-color);
     min-width: 120px;
     text-align: center;
-    z-index: 10;
+    z-index: var(--z-index-overlay);
 
     @media (min-width: 640px) {
         bottom: auto;
@@ -178,24 +178,24 @@ const bonusTransitionProps = shallowRef({
     }
 
     .bonus-total.game-subtitle {
-        font-weight: 700;
+        font-weight: var(--font-weight-bold);
         color: var(--success-color);
         font-size: var(--font-size-responsive-md);
-        line-height: 1.4;
+        line-height: var(--line-height-normal);
     }
 
     .bonus-breakdown.header-text {
         font-size: var(--font-size-base);
         color: var(--text-secondary);
         margin-top: var(--padding-small);
-        line-height: 1.4;
+        line-height: var(--line-height-normal);
     }
 }
 
 // Bonus Animation
 .bonus-enter-active,
 .bonus-leave-active {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all var(--transition-speed) var(--transition-bounce);
 }
 
 .bonus-enter-from,

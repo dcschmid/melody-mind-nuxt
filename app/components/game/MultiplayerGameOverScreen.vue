@@ -83,7 +83,7 @@ defineEmits(['playAgain']);
 @use "@/assets/scss/mixins" as *;
 
 .game-over-screen {
-    max-width: 800px;
+    max-width: var(--content-width);
     margin: 0 auto;
     padding: var(--padding-large);
     text-align: center;
@@ -119,27 +119,27 @@ defineEmits(['playAgain']);
             transition: transform var(--transition-speed) var(--transition-bounce);
 
             &.gold {
-                background: linear-gradient(45deg, #9B6B00, #FFD700); // Dunkleres Gold für besseren Kontrast
+                background: linear-gradient(45deg, var(--color-gold-dark), var(--color-gold));
                 transform: scale(1.05);
 
                 .player-name, .stat-label, .stat-value {
-                    color: #000000; // Schwarzer Text auf goldenem Hintergrund für maximalen Kontrast
+                    color: var(--button-text-color);
                 }
 
                 .trophy-icon {
-                    color: #000000; // Schwarzes Trophy-Icon für besseren Kontrast
+                    color: var(--button-text-color);
                 }
             }
 
             &.silver {
                 .trophy-icon {
-                    color: #757575; // Dunkleres Silber für besseren Kontrast
+                    color: var(--color-silver);
                 }
             }
 
             &.bronze {
                 .trophy-icon {
-                    color: #8B4513; // Dunkleres Bronze für besseren Kontrast
+                    color: var(--color-bronze);
                 }
             }
 
@@ -147,8 +147,8 @@ defineEmits(['playAgain']);
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 48px;
-                height: 48px;
+                width: var(--min-touch-target);
+                height: var(--min-touch-target);
                 background: var(--surface-color-light);
                 border-radius: 50%;
                 font-weight: var(--font-weight-bold);
@@ -173,28 +173,28 @@ defineEmits(['playAgain']);
                     .stat-item {
                         display: flex;
                         flex-direction: column;
-                        gap: 4px;
+                        gap: calc(var(--padding-small) / 2);
 
                         .stat-label {
                             font-size: var(--font-size-responsive-sm);
-                            color: #FFFFFF; // Weißer Text für maximalen Kontrast
+                            color: var(--text-color);
                             font-weight: var(--font-weight-medium);
                         }
 
                         .stat-value {
                             display: flex;
                             align-items: center;
-                            gap: 8px;
+                            gap: var(--padding-small);
                             font-size: var(--font-size-responsive-md);
                             font-weight: var(--font-weight-semibold);
-                            color: #FFFFFF; // Weißer Text für maximalen Kontrast
+                            color: var(--text-color);
 
                             .score {
-                                color: #E5B8FF; // Helleres Lila für besseren Kontrast
+                                color: var(--primary-color-light);
                             }
 
                             .correct-answers {
-                                color: #40FFB3; // Helleres Grün für besseren Kontrast
+                                color: var(--success-color);
                             }
                         }
                     }
@@ -216,15 +216,15 @@ defineEmits(['playAgain']);
 
         .play-again-button,
         .menu-button {
+            @include button-base;
             display: flex;
             align-items: center;
             gap: var(--padding-small);
             padding: var(--padding-small) var(--padding-medium);
-            border: none;
             border-radius: var(--border-radius);
             font-size: var(--font-size-responsive-md);
             font-weight: var(--font-weight-semibold);
-            cursor: pointer;
+            min-height: var(--min-touch-target);
             transition: all var(--transition-speed) var(--transition-bounce);
             text-decoration: none;
 
@@ -232,23 +232,26 @@ defineEmits(['playAgain']);
                 transform: translateY(-2px);
                 box-shadow: var(--box-shadow-hover);
             }
-        }
 
-        .play-again-button {
-            background: var(--primary-color);
-            color: var(--surface-color);
-
-            &:hover {
-                background: var(--primary-color-dark);
+            &:focus-visible {
+                outline: var(--focus-outline-width) solid var(--focus-outline-color);
+                outline-offset: var(--focus-outline-offset);
             }
         }
 
+        .play-again-button {
+            @include button-primary;
+        }
+
         .menu-button {
+            @include button-secondary;
             background: var(--surface-color-light);
             color: var(--text-color);
+            border: 2px solid var(--primary-color);
 
             &:hover {
-                background: var(--surface-color-hover);
+                background: var(--primary-color);
+                color: var(--button-text-color);
             }
         }
     }
@@ -284,6 +287,15 @@ defineEmits(['playAgain']);
     flex-direction: column;
     gap: var(--padding-small);
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .game-over-screen,
+    .player-rank,
+    .action-buttons button {
+        transition: none;
+        transform: none;
+    }
 }
 
 .play-again-button,

@@ -72,7 +72,7 @@ const getDifficultyPath = (difficulty: string) => {
 
 .difficulty-title {
     font-size: var(--font-size-responsive-xl);
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     text-align: center;
 }
 
@@ -86,22 +86,23 @@ const getDifficultyPath = (difficulty: string) => {
     display: flex;
     align-items: center;
     gap: var(--padding-small);
-    padding: 0.5rem 1rem;
+    padding: var(--padding-small) var(--padding-medium);
     border: 2px solid var(--primary-color);
     border-radius: var(--border-radius);
     background: transparent;
     color: var(--text-color);
     font-size: var(--font-size-responsive-md);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all var(--transition-speed) var(--transition-bounce);
 
     &:hover {
-        background: var(--primary-color-light);
+        background: var(--primary-color);
+        color: var(--button-text-color);
     }
 
     &.active {
         background: var(--primary-color);
-        color: var(--surface-color);
+        color: var(--button-text-color);
     }
 }
 
@@ -114,10 +115,10 @@ const getDifficultyPath = (difficulty: string) => {
         @include button-primary;
         min-height: var(--min-touch-target);
         flex: 1;
-        max-width: 200px;
+        max-width: var(--max-button-width, 200px);
         text-decoration: none;
         font-size: var(--font-size-responsive-md);
-        font-weight: 600;
+        font-weight: var(--font-weight-semibold);
     }
 }
 </style>

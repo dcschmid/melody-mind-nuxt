@@ -222,7 +222,7 @@ const shareViaAPI = async () => {
     justify-content: flex-start;
     margin: 0 auto;
     min-height: calc(100vh - var(--header-height));
-    animation: fadeIn 0.5s ease-out;
+    animation: fadeIn var(--transition-speed) var(--transition-bounce);
     padding: var(--padding-small);
 
     @media (min-width: 640px) {
@@ -233,7 +233,7 @@ const shareViaAPI = async () => {
 
 .end-content {
     width: 100%;
-    max-width: min(100%, 600px);
+    max-width: var(--content-width);
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -247,7 +247,7 @@ const shareViaAPI = async () => {
 .end-header {
     h1.game-over-title {
         font-size: var(--font-size-responsive-2xl);
-        font-weight: 700;
+        font-weight: var(--font-weight-bold);
         text-align: center;
         margin-bottom: var(--padding-large);
     }
@@ -284,7 +284,7 @@ const shareViaAPI = async () => {
         position: absolute;
         inset: 4px;
         border-radius: 50%;
-        border: 2px solid rgba(255, 255, 255, 0.1);
+        border: 2px solid var(--surface-color-light);
     }
 
     @media (hover: hover) and (prefers-reduced-motion: no-preference) {
@@ -303,7 +303,7 @@ const shareViaAPI = async () => {
 
     .points.score-value {
         font-size: var(--font-size-responsive-xl);
-        font-weight: 700;
+        font-weight: var(--font-weight-bold);
         color: var(--primary-color);
     }
 
@@ -326,7 +326,7 @@ const shareViaAPI = async () => {
 
         .stat-value.score-value {
             font-size: var(--font-size-responsive-xl);
-            font-weight: 700;
+            font-weight: var(--font-weight-bold);
             color: var(--primary-color);
         }
     }
@@ -355,10 +355,9 @@ const shareViaAPI = async () => {
     }
 
     .record-icon {
-        margin-bottom: 0;
         color: var(--success-color);
-        font-size: clamp(2rem, 6vw, 3rem);
-        line-height: 1;
+        font-size: var(--font-size-responsive-2xl);
+        line-height: var(--line-height-tight);
     }
 
     .reward-text.message {
@@ -376,10 +375,10 @@ const shareViaAPI = async () => {
     }
 
     h2 {
-        font-size: clamp(1.1rem, 4vw, 1.3rem);
+        font-size: var(--font-size-responsive-md);
         margin-bottom: var(--padding-small);
         color: var(--text-color);
-        font-weight: 600;
+        font-weight: var(--font-weight-semibold);
 
         @media (min-width: 640px) {
             margin-bottom: var(--padding-medium);
@@ -410,13 +409,14 @@ const shareViaAPI = async () => {
     justify-content: center;
     gap: var(--padding-small);
     font-size: var(--font-size-base);
+    min-height: var(--min-touch-target);
 
     &.copy {
-        background-color: var(--color-secondary);
-        color: var(--color-white);
+        background-color: var(--secondary-color);
+        color: var(--text-color);
         
         &:hover {
-            background-color: var(--color-secondary-dark);
+            background-color: var(--secondary-color-dark);
         }
     }
 
@@ -425,8 +425,8 @@ const shareViaAPI = async () => {
     }
 
     &:focus-visible {
-        outline: 3px solid var(--focus-outline-color);
-        outline-offset: 2px;
+        outline: var(--focus-outline-width) solid var(--focus-outline-color);
+        outline-offset: var(--focus-outline-offset);
     }
 }
 
@@ -446,17 +446,17 @@ const shareViaAPI = async () => {
         justify-content: center;
         gap: var(--padding-small);
         width: auto;
-        min-height: 48px;
+        min-height: var(--min-touch-target);
         font-size: var(--font-size-base);
 
         @media (min-width: 640px) {
             width: auto;
-            min-width: 200px;
+            min-width: var(--max-button-width, 200px);
         }
 
         &:focus-visible {
-            outline: 3px solid var(--focus-outline-color);
-            outline-offset: 2px;
+            outline: var(--focus-outline-width) solid var(--focus-outline-color);
+            outline-offset: var(--focus-outline-offset);
         }
     }
 }

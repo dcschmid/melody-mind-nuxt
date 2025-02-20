@@ -122,30 +122,32 @@ const achievementIcons = {
 
 <style lang="scss" scoped>
 .difficulty-section {
-    max-width: 1200px;
+    max-width: var(--content-width);
     margin: 0 auto;
-    padding: clamp(1.5rem, 4vw, 3rem);
+    padding: var(--padding-large);
 }
 
 .section-title {
     text-align: center;
     margin-bottom: var(--padding-large);
     font-size: var(--font-size-responsive-xl);
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
+    color: var(--text-color);
+    line-height: var(--line-height-tight);
 }
 
 .section-text {
-    font-size: var(--font-size-responsive-sm);
-    line-height: 1.6;
+    font-size: var(--font-size-responsive-md);
+    line-height: var(--line-height-relaxed);
     color: var(--text-color);
-    margin-bottom: clamp(2rem, 5vw, 3rem);
-    max-width: 70ch;
+    margin-bottom: var(--padding-large);
+    max-width: var(--max-line-length);
     margin-left: auto;
     margin-right: auto;
     text-align: center;
 
     &.titles-intro {
-        margin-top: clamp(2rem, 5vw, 3rem);
+        margin-top: var(--padding-large);
     }
 }
 
@@ -153,46 +155,47 @@ const achievementIcons = {
 .achievement-titles {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: clamp(1rem, 3vw, 2rem);
-    margin-bottom: clamp(2rem, 5vw, 3rem);
+    gap: var(--padding-medium);
+    margin-bottom: var(--padding-large);
 }
 
 .difficulty-item,
 .achievement-item {
     background: var(--surface-color);
     border-radius: var(--border-radius);
-    padding: clamp(1.25rem, 3vw, 2rem);
+    padding: var(--padding-medium);
     box-shadow: var(--box-shadow);
     border: 2px solid transparent;
-    transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    transition: all var(--transition-speed) var(--transition-bounce);
 
     @media (hover: hover) {
         &:hover {
             transform: translateY(-2px);
-            border-color: var(--primary-color-light);
+            box-shadow: var(--box-shadow-hover);
+            border-color: var(--primary-color);
         }
     }
 
     &:focus-within {
-        outline: 3px solid var(--focus-outline-color);
-        outline-offset: 2px;
+        outline: var(--focus-outline-width) solid var(--focus-outline-color);
+        outline-offset: var(--focus-outline-offset);
     }
 
-    &.easy { border-color: var(--success-color-light); }
-    &.medium { border-color: var(--warning-color-light); }
-    &.hard { border-color: var(--error-color-light); }
+    &.easy { border-color: var(--success-color); }
+    &.medium { border-color: var(--highlight-color); }
+    &.hard { border-color: var(--error-color); }
 
-    &.novice { border-color: var(--bronze-color-light); }
-    &.master { border-color: var(--silver-color-light); }
-    &.legend { border-color: var(--gold-color-light); }
+    &.novice { border-color: var(--color-bronze); }
+    &.master { border-color: var(--color-silver); }
+    &.legend { border-color: var(--color-gold); }
 }
 
 .difficulty-header,
 .achievement-header {
     display: flex;
     align-items: center;
-    gap: clamp(0.75rem, 2vw, 1.25rem);
-    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+    gap: var(--padding-small);
+    margin-bottom: var(--padding-medium);
 }
 
 .difficulty-icon,
@@ -200,43 +203,36 @@ const achievementIcons = {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: clamp(2.5rem, 5vw, 3.5rem);
-    height: clamp(2.5rem, 5vw, 3.5rem);
+    width: var(--min-touch-target);
+    height: var(--min-touch-target);
     border-radius: 50%;
     background: var(--surface-color-light);
-    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-size: var(--font-size-responsive-lg);
 
     &.easy { color: var(--success-color); }
-    &.medium { color: var(--warning-color); }
+    &.medium { color: var(--highlight-color); }
     &.hard { color: var(--error-color); }
 
-    &.novice { color: var(--bronze-color); }
-    &.master { color: var(--silver-color); }
-    &.legend { color: var(--gold-color); }
+    &.novice { color: var(--color-bronze); }
+    &.master { color: var(--color-silver); }
+    &.legend { color: var(--color-gold); }
 }
 
-.difficulty-title {
-    font-size: var(--font-size-responsive-lg);
-    font-weight: 600;
-    margin-bottom: var(--padding-small);
-}
-
-.difficulty-description {
-    font-size: var(--font-size-responsive-sm);
-    color: var(--text-secondary);
-    margin-bottom: var(--padding-medium);
-}
-
+.difficulty-title,
 .achievement-title {
     font-size: var(--font-size-responsive-lg);
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-color);
     margin-bottom: var(--padding-small);
+    line-height: var(--line-height-tight);
 }
 
+.difficulty-description,
 .achievement-description {
     font-size: var(--font-size-responsive-sm);
     color: var(--text-secondary);
     margin-bottom: var(--padding-medium);
+    line-height: var(--line-height-normal);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -250,51 +246,7 @@ const achievementIcons = {
     }
 }
 
-@media (prefers-contrast: more) {
-    .section-title {
-        color: var(--high-contrast-primary);
-    }
-
-    .section-text {
-        color: var(--high-contrast-text);
-    }
-
-    .difficulty-item,
-    .achievement-item {
-        background: var(--high-contrast-surface);
-        border-width: 3px;
-
-        &:focus-within {
-            outline-color: var(--high-contrast-focus);
-        }
-    }
-
-    .difficulty-title,
-    .achievement-title {
-        color: var(--high-contrast-text);
-    }
-
-    .difficulty-description,
-    .achievement-description {
-        color: var(--high-contrast-text);
-    }
-
-    .difficulty-icon,
-    .achievement-icon {
-        background: var(--high-contrast-surface);
-        border: 2px solid currentColor;
-
-        &.easy { color: var(--high-contrast-success); }
-        &.medium { color: var(--high-contrast-warning); }
-        &.hard { color: var(--high-contrast-error); }
-
-        &.novice { color: var(--high-contrast-bronze); }
-        &.master { color: var(--high-contrast-silver); }
-        &.legend { color: var(--high-contrast-gold); }
-    }
-}
-
-@media screen and (max-width: 640px) {
+@media (width <= 640px) {
     .difficulty-levels,
     .achievement-titles {
         grid-template-columns: 1fr;
@@ -312,9 +264,9 @@ const achievementIcons = {
 
     .difficulty-icon,
     .achievement-icon {
-        width: 2.5rem;
-        height: 2.5rem;
-        font-size: 1.25rem;
+        width: var(--min-touch-target);
+        height: var(--min-touch-target);
+        font-size: var(--font-size-responsive-md);
     }
 }
 </style>

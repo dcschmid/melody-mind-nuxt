@@ -131,31 +131,32 @@ defineExpose({
     border-radius: var(--border-radius);
     background-color: var(--surface-color);
     cursor: pointer;
+    transition: all var(--transition-speed) var(--transition-bounce);
 
     &:focus {
-        outline: 3px solid var(--focus-color);
-        outline-offset: 2px;
+        outline: var(--focus-outline-width) solid var(--focus-outline-color);
+        outline-offset: var(--focus-outline-offset);
     }
 
     &:hover {
-        background-color: var(--surface-hover-color);
+        background-color: var(--surface-color-hover);
     }
 }
 
 .points {
     font-size: var(--font-size-responsive-lg);
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     color: var(--primary-color);
-    line-height: 1.5;
+    line-height: var(--line-height-tight);
     font-variant-numeric: tabular-nums;
-    letter-spacing: 0.01em;
+    letter-spacing: var(--spacing-text);
 
     .reduce-motion & {
         transition: none;
     }
 
     &:not(.reduce-motion) {
-        transition: transform 0.3s ease;
+        transition: transform var(--transition-speed) var(--transition-bounce);
     }
 
     &.points-update {
@@ -167,9 +168,9 @@ defineExpose({
 .points-label {
     font-size: var(--font-size-base);
     color: var(--text-secondary);
-    font-weight: 500;
-    line-height: 1.5;
-    margin-top: 0.25rem;
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-normal);
+    margin-top: var(--padding-small);
 }
 
 .bonus-indicator {
@@ -177,17 +178,17 @@ defineExpose({
     top: -24px;
     right: 0;
     color: var(--highlight-color);
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     font-size: var(--font-size-responsive-md);
-    text-shadow: 0 1px 2px rgb(0 0 0 / 20%);
-    padding: 0.25rem 0.5rem;
+    text-shadow: var(--box-shadow);
+    padding: calc(var(--padding-small) / 2);
     border-radius: var(--border-radius);
     background-color: var(--surface-color);
 }
 
 .bonus-enter-active,
 .bonus-leave-active {
-    transition: all 0.5s ease;
+    transition: all var(--transition-speed) var(--transition-bounce);
 
     .reduce-motion & {
         transition: none;
@@ -207,28 +208,27 @@ defineExpose({
 /* High contrast mode improvements */
 @media (forced-colors: active) {
     .points-container {
-        border: 2px solid CanvasText;
-        forced-color-adjust: none;
+        border: 2px solid var(--text-color);
     }
 
     .points.points-update {
-        color: Highlight;
+        color: var(--highlight-color);
     }
 
     .bonus-indicator {
-        border: 1px solid CanvasText;
-        color: Highlight;
+        border: 1px solid var(--text-color);
+        color: var(--highlight-color);
     }
 }
 
 /* Dark mode improvements */
 @media (prefers-color-scheme: dark) {
     .points-container {
-        background-color: color-mix(in srgb, var(--surface-color) 85%, #000);
+        background-color: var(--surface-color-light);
     }
 
     .bonus-indicator {
-        background-color: color-mix(in srgb, var(--surface-color) 85%, #000);
+        background-color: var(--surface-color-light);
     }
 }
 
@@ -236,8 +236,7 @@ defineExpose({
 @media print {
     .points-container {
         background: none;
-        border: 1px solid #000;
-        print-color-adjust: exact;
+        border: 1px solid var(--button-text-color);
     }
 
     .bonus-indicator {
@@ -248,11 +247,11 @@ defineExpose({
 /* Increased contrast mode */
 @media screen and (prefers-contrast: more) {
     .points {
-        font-weight: 800;
+        font-weight: var(--font-weight-bold);
     }
 
     .points-label {
-        font-weight: 600;
+        font-weight: var(--font-weight-semibold);
     }
 
     .points-container {
@@ -267,7 +266,7 @@ defineExpose({
     }
 
     .points-label {
-        font-size: var(--font-size-sm);
+        font-size: var(--font-size-responsive-sm);
     }
 }
 </style>
