@@ -97,12 +97,12 @@ const getDifficultyPath = (difficulty: string) => {
 
     &:hover {
         background: var(--primary-color);
-        color: var(--button-text-color);
+        color: var(--text-color-dark);
     }
 
     &.active {
         background: var(--primary-color);
-        color: var(--button-text-color);
+        color: var(--text-color-dark);
     }
 }
 
@@ -119,6 +119,7 @@ const getDifficultyPath = (difficulty: string) => {
         text-decoration: none;
         font-size: var(--font-size-responsive-md);
         font-weight: var(--font-weight-semibold);
+        color: var(--text-color-dark);
     }
 }
 </style>

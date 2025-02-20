@@ -36,19 +36,19 @@
                             <a v-if="currentCategory.spotifyPlaylist" :href="currentCategory.spotifyPlaylist"
                                 target="_blank" rel="noopener noreferrer" class="music-link spotify"
                                 :aria-label="t('category.playlist.spotify')" role="listitem">
-                                <Icon name="mdi:spotify" size="28" aria-hidden="true" />
+                                <Icon name="logos:spotify-icon" size="28" aria-hidden="true" />
                                 <span class="visually-hidden">{{ t('category.playlist.spotify') }}</span>
                             </a>
                             <a v-if="currentCategory.deezerPlaylist" :href="currentCategory.deezerPlaylist" target="_blank"
                                 rel="noopener noreferrer" class="music-link deezer"
                                 :aria-label="t('category.playlist.deezer')" role="listitem">
-                                <Icon name="simple-icons:deezer" size="28" aria-hidden="true" />
+                                <Icon name="logos:deezer" size="28" aria-hidden="true" />
                                 <span class="visually-hidden">{{ t('category.playlist.deezer') }}</span>
                             </a>
                             <a v-if="currentCategory.appleMusicPlaylist" :href="currentCategory.appleMusicPlaylist"
                                 target="_blank" rel="noopener noreferrer" class="music-link apple"
                                 :aria-label="t('category.playlist.apple')" role="listitem">
-                                <Icon name="mdi:apple" size="28" aria-hidden="true" />
+                                <Icon name="bi:apple" size="28" aria-hidden="true" />
                                 <span class="visually-hidden">{{ t('category.playlist.apple') }}</span>
                             </a>
                         </div>
@@ -285,7 +285,7 @@ onMounted(() => {
     align-items: center;
     gap: var(--padding-small);
     background-color: var(--primary-color);
-    color: var(--button-text-color);
+    color: var(--text-color-dark);
     padding: var(--padding-medium);
     border-radius: var(--border-radius);
     text-decoration: none;
@@ -321,7 +321,6 @@ onMounted(() => {
 @media (width <= 767px) {
     .category-text {
         font-size: var(--font-size-responsive-sm);
-        padding: 0 var(--padding-small);
     }
 
     .music-links-title {
@@ -329,7 +328,6 @@ onMounted(() => {
     }
 
     .knowledge-link {
-        width: 100%;
         justify-content: center;
     }
 }

@@ -215,9 +215,8 @@ const togglePlay = async () => {
     flex-direction: column;
     gap: var(--padding-medium);
     width: 100%;
-    max-width: var(--content-width);
     margin: 0 auto;
-    padding: var(--padding-medium);
+    padding: var(--padding-medium) 0;
 
     .result-banner {
         background-color: var(--surface-color);

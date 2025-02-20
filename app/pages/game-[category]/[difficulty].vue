@@ -292,7 +292,6 @@ const { currentArtist } = artist  // Current artist information
 <style lang="scss" scoped>
 .game-content {
     margin: 0 auto;
-    max-width: var(--content-width);
 
     .question {
         background: var(--surface-color);

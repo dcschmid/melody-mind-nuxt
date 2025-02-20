@@ -172,9 +172,8 @@ defineEmits<{
     flex-direction: column;
     gap: var(--padding-medium);
     width: 100%;
-    max-width: var(--content-width);
     margin: 0 auto;
-    padding: var(--padding-medium);
+    padding: var(--padding-medium) 0;
 }
 
 .question-section {
@@ -202,7 +201,6 @@ defineEmits<{
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--padding-medium);
-    max-width: var(--content-width);
     margin: 0 auto;
     width: 100%;
 }
@@ -383,7 +381,7 @@ defineEmits<{
 
         .joker-icon {
             font-size: var(--font-size-responsive-xl);
-            color: var(--highlight-color);
+            color: var(--text-color);
         }
     }
 
