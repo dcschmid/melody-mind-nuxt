@@ -1,6 +1,6 @@
 <template>
     <div class="layout">
-        <a href="#main-content" class="skip-link">{{ t('accessibility.skipToMain') }}</a>
+        <SkipLink />
 
         <header v-if="showHeader" role="banner">
             <LanguagePicker v-if="showMenu" />

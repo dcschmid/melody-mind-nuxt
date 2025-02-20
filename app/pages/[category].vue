@@ -54,7 +54,6 @@
                         </div>
                     </div>
 
-                    <UsernameInput ref="usernameInput" v-if="!hasUsername" @username-set="onUsernameSet" />
                     <CategoryDifficultySelector v-if="hasUsername" :categorySlug="currentCategory.slug" />
                 </article>
             </div>
@@ -84,7 +83,6 @@ const { t, locale } = useI18n()
 const route = useRoute()
 const localePath = useLocalePath()
 const categories = ref<Category[]>([])
-const usernameInput = ref(null)
 const hasUsername = ref(false)
 
 const currentCategory = computed(() => {
