@@ -53,10 +53,7 @@ const descriptionId = computed(() =>
 <style scoped lang="scss">
 .intro {
     text-align: center;
-    max-width: var(--content-width);
-    margin: 0 auto clamp(var(--padding-medium), 5vw, var(--padding-large));
-    padding: 0 var(--padding-medium);
-}
+  }
 
 .category-title {
     font-size: var(--font-size-responsive-2xl);
@@ -99,7 +96,6 @@ const descriptionId = computed(() =>
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    padding: 0 var(--padding-small);
 }
 
 .extended-description {
@@ -108,7 +104,6 @@ const descriptionId = computed(() =>
     color: var(--text-secondary);
     margin-top: var(--padding-medium);
     text-align: center;
-    padding: 0 var(--padding-small);
     
     p {
         max-width: var(--max-line-length);
@@ -118,13 +113,8 @@ const descriptionId = computed(() =>
 }
 
 @media screen and (max-width: 640px) {
-    .intro {
-        padding: 0 var(--padding-small);
-    }
-
     .category-title {
         font-size: var(--font-size-responsive-xl);
-        padding: 0 var(--padding-small);
         
         .category-name,
         .selected-text {

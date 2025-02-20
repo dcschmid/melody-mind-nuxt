@@ -151,7 +151,6 @@ onMounted(() => {
 <style scoped lang="scss">
 .categoryPage {
     color: var(--text-color);
-    padding: var(--padding-medium);
 }
 
 .category {
@@ -159,7 +158,6 @@ onMounted(() => {
     gap: var(--padding-large);
     place-items: center;
     transition: all var(--transition-speed) var(--transition-bounce);
-    max-width: var(--content-width);
     margin: 0 auto;
 }
 

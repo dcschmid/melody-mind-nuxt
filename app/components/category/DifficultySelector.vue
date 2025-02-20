@@ -60,7 +60,6 @@ const getDifficultyPath = (difficulty: string) => {
 .difficultySection {
     @include grid-center;
     width: 100%;
-    padding: 0 var(--padding-medium);
     margin-bottom: var(--padding-large);
 }
 
@@ -80,6 +79,7 @@ const getDifficultyPath = (difficulty: string) => {
     display: flex;
     gap: var(--padding-small);
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .mode-button {

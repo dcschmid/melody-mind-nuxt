@@ -66,8 +66,6 @@ useJsonld({
 .welcome-section {
     @include center-content;
     width: 100%;
-    max-width: var(--content-width);
-    padding: var(--padding-medium);
 }
 
 .language-picker-container {
@@ -101,9 +99,9 @@ useJsonld({
     display: inline-block;
     min-height: var(--min-touch-target);
     padding: var(--padding-medium) var(--padding-large);
-    font-size: var(--font-size-responsive-md);
+    font-size: var(--font-size-responsive-sm);
     font-weight: var(--font-weight-semibold);
-    color: var(--button-text-color);
+    color: var(--text-color-dark);
     background: var(--primary-color);
     border-radius: var(--border-radius);
     text-decoration: none;
@@ -147,7 +145,6 @@ useJsonld({
 
     .page-text {
         font-size: var(--font-size-responsive-sm);
-        padding: 0 var(--padding-small);
     }
 
     .action-button {
