@@ -2,13 +2,66 @@
 @use "sass:math";
 @use "sass:map";
 
-// Flexbox mixins
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+// Core Layout Mixins
+@mixin layout-base {
+    width: 100%;
+    max-width: var(--content-width);
+    margin-inline: auto;
+    padding: var(--padding-medium);
 }
 
+@mixin flex-container($direction: row, $gap: var(--padding-medium)) {
+    display: flex;
+    flex-direction: $direction;
+    gap: $gap;
+}
+
+@mixin grid-container($min-width: 280px) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax($min-width, 1fr));
+    gap: var(--padding-large);
+}
+
+// Layout Basics
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-small);
+}
+
+@mixin grid-center {
+    display: grid;
+    gap: var(--padding-medium);
+    place-items: center;
+}
+
+@mixin container($max: var(--content-width)) {
+    width: 100%;
+    max-width: $max;
+    margin-inline: auto;
+    padding: var(--padding-medium);
+}
+
+// Position Utilities
+@mixin absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin absolute-fill {
+    position: absolute;
+    inset: 0;
+}
+
+// Flexbox mixins
 @mixin flex-between {
   display: flex;
   justify-content: space-between;
@@ -295,12 +348,6 @@
 }
 
 // Layout Mixins
-@mixin grid-center {
-  display: grid;
-  gap: var(--padding-medium);
-  place-items: center;
-}
-
 @mixin flex-stack {
   display: flex;
   flex-direction: column;
@@ -637,4 +684,126 @@
   width: 100%;
   height: 100%;
 }
-  
+
+// Interactive Elements
+@mixin interactive-base {
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    min-height: var(--min-touch-target);
+    transition: all var(--transition-speed) var(--transition-bounce);
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}
+
+@mixin focus-visible {
+    outline: var(--focus-outline-width) solid var(--focus-outline-color);
+    outline-offset: var(--focus-outline-offset);
+    border-radius: var(--border-radius);
+}
+
+// Typography System
+@mixin text-style($size: 'base', $weight: 'normal', $line-height: 'normal') {
+    font-size: var(--font-size-#{$size});
+    font-weight: var(--font-weight-#{$weight});
+    line-height: var(--line-height-#{$line-height});
+    color: var(--text-color);
+}
+
+@mixin heading($level: 1) {
+    $size-map: (
+        1: '3xl',
+        2: '2xl',
+        3: 'xl',
+        4: 'lg',
+        5: 'md',
+        6: 'base'
+    );
+    
+    font-size: var(--font-size-responsive-#{map-get($size-map, $level)});
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--text-color);
+}
+
+// Component Styles
+@mixin card {
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    padding: var(--padding-medium);
+    box-shadow: var(--box-shadow);
+    transition: all var(--transition-speed) var(--transition-bounce);
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--box-shadow-hover);
+    }
+}
+
+@mixin button($variant: 'primary') {
+    @include interactive-base;
+    padding: var(--padding-small) var(--padding-medium);
+    border-radius: var(--border-radius);
+    font-weight: var(--font-weight-semibold);
+    text-align: center;
+    border: none;
+
+    @if $variant == 'primary' {
+        background: var(--primary-color);
+        color: var(--button-text-color);
+    } @else if $variant == 'secondary' {
+        background: var(--secondary-color);
+        color: var(--text-color);
+    } @else if $variant == 'ghost' {
+        background: transparent;
+        color: var(--text-color);
+        border: var(--border-width) solid var(--surface-color-light);
+    }
+
+    &:hover:not(:disabled) {
+        transform: translateY(-2px);
+        background: var(--#{$variant}-color-dark);
+    }
+
+    &:focus-visible {
+        @include focus-visible;
+    }
+
+    &:disabled {
+        opacity: var(--opacity-disabled);
+        cursor: not-allowed;
+    }
+}
+
+// Media Queries
+@mixin responsive($breakpoint) {
+    @if $breakpoint == 'mobile' {
+        @media (width <= 767px) { @content; }
+    } @else if $breakpoint == 'tablet' {
+        @media (width >= 768px) and (width <= 1023px) { @content; }
+    } @else if $breakpoint == 'desktop' {
+        @media (width >= 1024px) { @content; }
+    }
+}
+
+// Accessibility
+@mixin sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+// Animation System
+@mixin animate($name, $duration: 'normal', $timing: 'bounce') {
+    @media (prefers-reduced-motion: no-preference) {
+        animation: $name var(--transition-speed-#{$duration}) var(--transition-#{$timing});
+    }
+}
