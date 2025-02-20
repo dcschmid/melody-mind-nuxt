@@ -118,17 +118,25 @@ useSeoMeta({
 .legal-page {
     width: 100%;
     margin: 0 auto;
+    max-width: var(--content-width);
+    padding: var(--padding-medium);
 }
 
 .main-title {
     font-size: var(--font-size-responsive-2xl);
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     text-align: center;
     margin-bottom: var(--padding-large);
+    color: var(--text-color);
+    line-height: var(--line-height-tight);
 }
 
 .legal-section {
     margin-bottom: var(--padding-large);
+    background: var(--surface-color);
+    padding: var(--padding-medium);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 
     &:last-child {
         margin-bottom: 0;
@@ -137,44 +145,86 @@ useSeoMeta({
 
 .section-title {
     font-size: var(--font-size-responsive-xl);
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     margin-bottom: var(--padding-medium);
+    color: var(--text-color);
+    line-height: var(--line-height-tight);
 }
 
 .subsection-title {
-    font-size: var(--font-size-base);
-    font-weight: 600;
+    font-size: var(--font-size-responsive-lg);
+    font-weight: var(--font-weight-semibold);
     margin: var(--padding-medium) 0 var(--padding-small);
+    color: var(--text-color);
+    line-height: var(--line-height-tight);
 }
 
 .content-block {
     font-size: var(--font-size-base);
-    line-height: 1.6;
+    line-height: var(--line-height-relaxed);
+    color: var(--text-secondary);
     margin-bottom: var(--padding-medium);
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: all var(--transition-speed) var(--transition-bounce);
+
+        &:hover {
+            color: var(--primary-color-dark);
+            text-decoration: underline;
+        }
+
+        &:focus-visible {
+            outline: var(--focus-outline-width) solid var(--focus-outline-color);
+            outline-offset: var(--focus-outline-offset);
+            border-radius: var(--border-radius);
+        }
+    }
 }
 
 .privacy-list {
     list-style-type: disc;
     padding-left: var(--padding-large);
     margin: var(--padding-small) 0;
+    color: var(--text-secondary);
 
     li {
         margin-bottom: var(--padding-small);
+        line-height: var(--line-height-normal);
     }
 }
 
-@media (max-width: 768px) {
+@media (prefers-reduced-motion: reduce) {
+    .content-block a {
+        transition: none;
+    }
+}
+
+@media (width <= 768px) {
+    .legal-page {
+        padding: var(--padding-small);
+    }
 
     .main-title {
-        font-size: calc(var(--font-size-responsive-2xl) * 0.8);
+        font-size: var(--font-size-responsive-xl);
     }
 
     .section-title {
-        font-size: calc(var(--font-size-responsive-xl) * 0.7);
+        font-size: var(--font-size-responsive-lg);
     }
 
     .subsection-title {
-        font-size: calc(var(--font-size-base) * 0.9);
+        font-size: var(--font-size-responsive-md);
+    }
+
+    .content-block,
+    .privacy-list {
+        font-size: var(--font-size-responsive-sm);
+    }
+
+    .legal-section {
+        padding: var(--padding-small);
     }
 }
 </style>

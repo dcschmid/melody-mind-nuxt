@@ -66,55 +66,94 @@ useJsonld({
 .welcome-section {
     @include center-content;
     width: 100%;
-    max-width: 800px;
+    max-width: var(--content-width);
+    padding: var(--padding-medium);
 }
 
 .language-picker-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-bottom: var(--padding-large);
 }
 
 .page-title {
     font-size: var(--font-size-responsive-2xl);
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     text-align: center;
     color: var(--primary-color);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--padding-medium);
 }
 
 .page-text {
     font-size: var(--font-size-responsive-md);
-    line-height: var(--line-height-body);
+    line-height: var(--line-height-relaxed);
     color: var(--text-secondary);
     margin-bottom: var(--padding-large);
     max-width: var(--max-line-length);
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
 .action-button {
-    font-size: var(--font-size-base);
     @include button-primary;
     display: inline-block;
-    padding: var(--padding-small) var(--padding-medium);
-    font-weight: 600;
+    min-height: var(--min-touch-target);
+    padding: var(--padding-medium) var(--padding-large);
+    font-size: var(--font-size-responsive-md);
+    font-weight: var(--font-weight-semibold);
     color: var(--button-text-color);
     background: var(--primary-color);
     border-radius: var(--border-radius);
     text-decoration: none;
-    transition: all var(--transition-speed) ease;
+    transition: all var(--transition-speed) var(--transition-bounce);
     border: none;
     cursor: pointer;
     box-shadow: var(--box-shadow);
 
     &:hover {
-        background: var(--button-hover-color);
+        background: var(--primary-color-dark);
         box-shadow: var(--box-shadow-hover);
         transform: translateY(-2px);
     }
 
+    &:focus-visible {
+        outline: var(--focus-outline-width) solid var(--focus-outline-color);
+        outline-offset: var(--focus-outline-offset);
+    }
+
     &:active {
         transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .action-button {
+        transition: none;
+        transform: none;
+
+        &:hover,
+        &:active {
+            transform: none;
+        }
+    }
+}
+
+@media (width <= 768px) {
+    .page-title {
+        font-size: var(--font-size-responsive-xl);
+    }
+
+    .page-text {
+        font-size: var(--font-size-responsive-sm);
+        padding: 0 var(--padding-small);
+    }
+
+    .action-button {
+        width: 100%;
+        text-align: center;
+        padding: var(--padding-small) var(--padding-medium);
     }
 }
 </style>

@@ -62,6 +62,8 @@ onMounted(() => {
 .gameHome {
     width: 100%;
     margin: 0 auto;
+    max-width: var(--content-width);
+    padding: var(--padding-medium);
 }
 
 .intro {
@@ -71,9 +73,11 @@ onMounted(() => {
 
 .page-title {
     font-size: var(--font-size-responsive-2xl);
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     text-align: center;
     margin-bottom: var(--padding-large);
+    color: var(--text-color);
+    line-height: var(--line-height-tight);
 }
 
 .page-subtitle {
@@ -81,6 +85,10 @@ onMounted(() => {
     color: var(--text-secondary);
     text-align: center;
     margin-bottom: var(--padding-medium);
+    line-height: var(--line-height-relaxed);
+    max-width: var(--max-line-length);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .search-section {
@@ -90,49 +98,35 @@ onMounted(() => {
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
+    gap: var(--padding-large);
 
-    @media (prefers-reduced-motion: reduce) {
-        * {
-            transition: none !important;
-        }
+    @media (width >= 640px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (width >= 1024px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (width <= 768px) {
+        gap: var(--padding-medium);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .categories-grid * {
+        transition: none !important;
+        animation: none !important;
     }
 }
 
 @media (prefers-reduced-motion: no-preference) {
     .category-card {
-        animation: fadeIn 0.5s ease-out;
-    }
-}
-
-@media (min-width: 640px) {
-    .categories-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1024px) {
-    .categories-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-
-    .categories-grid {
-        gap: var(--padding-medium);
+        animation: fadeIn var(--transition-speed) var(--transition-bounce);
     }
 }
 
 .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+    @include sr-only;
 }
 </style>

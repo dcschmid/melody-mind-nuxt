@@ -1,40 +1,39 @@
 @use '@/assets/scss/mixins' as *;
 
 :root {
+  // Brand Colors
   --primary-color: #c990ff;
   --primary-color-rgb: 201, 144, 255;
   --primary-color-dark: #b674ff;
+  --primary-color-light: #d4a6ff;
+
   --secondary-color: #7b7bc5;
   --secondary-color-rgb: 123, 123, 197;
   --secondary-color-dark: #6363b5;
+  --secondary-color-light: #9393d1;
+
+  // System Colors
   --highlight-color: #00f7ff;
   --highlight-color-rgb: 0, 247, 255;
   --highlight-color-dark: #00d8ff;
+
+  // Surface Colors
   --background-color: #121212;
-  --background-color-rgb: 18, 18, 18;
   --surface-color: #1e1e1e;
-  --surface-color-rgb: 30, 30, 30;
   --surface-color-light: #2d2d2d;
   --surface-color-hover: #333333;
+
+  // Text Colors
   --text-color: #ffffff;
-  --text-color-rgb: 255, 255, 255;
   --text-secondary: #e9e9e9;
-  --text-secondary-rgb: 233, 233, 233;
+
+  // Status Colors
   --error-color: #ff8fa8;
-  --error-color-rgb: 255, 143, 168;
   --error-color-dark: #ff4d6e;
   --success-color: #1fff8f;
-  --success-color-rgb: 31, 255, 143;
   --success-color-dark: #00e676;
-  --button-hover-color: #4dc4ff;
-  --button-hover-color-rgb: 77, 196, 255;
-  --button-text-color: #000000;
-  --button-text-color-rgb: 0, 0, 0;
-  --focus-outline-color: #00f7ff;
-  --focus-outline-color-rgb: 0, 247, 255;
-  --focus-outline-width: 3px;
-  --focus-outline-offset: 3px;
 
+  // Medal Colors
   --color-gold: #FFD700;
   --color-gold-dark: #9B6B00;
   --color-silver: #757575;

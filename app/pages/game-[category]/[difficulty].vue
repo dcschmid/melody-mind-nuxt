@@ -292,65 +292,50 @@ const { currentArtist } = artist  // Current artist information
 <style lang="scss" scoped>
 .game-content {
     margin: 0 auto;
+    max-width: var(--content-width);
 
     .question {
         background: var(--surface-color);
-        padding: 2rem;
-        border-radius: 1rem;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        margin-top: 3rem;
-        margin-bottom: 2rem;
+        padding: var(--padding-large);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        margin: var(--padding-large) 0;
         text-align: center;
 
         h2 {
             font-size: var(--font-size-responsive-2xl);
-            font-weight: 700;
+            font-weight: var(--font-weight-bold);
             color: var(--text-color);
-            margin-bottom: 1rem;
+            margin-bottom: var(--padding-medium);
+            line-height: var(--line-height-tight);
         }
     }
 
     .options {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
-        margin-bottom: 2rem;
+        gap: var(--padding-medium);
+        margin-bottom: var(--padding-large);
 
         button {
-            background: linear-gradient(145deg, var(--surface-color), var(--surface-color-dark));
-            border: 2px solid var(--border-color);
-            border-radius: 0.75rem;
-            padding: 1rem 1.5rem;
+            background: var(--surface-color);
+            border: var(--border-width) solid var(--surface-color-light);
+            border-radius: var(--border-radius);
+            padding: var(--padding-medium);
             font-size: var(--font-size-responsive-md);
             color: var(--text-color);
-            transition: all 0.3s ease;
+            transition: all var(--transition-speed) var(--transition-bounce);
             position: relative;
             overflow: hidden;
 
             &:hover:not(:disabled) {
                 transform: translateY(-2px);
                 border-color: var(--primary-color);
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-
-                &::before {
-                    opacity: 1;
-                }
-            }
-
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-                opacity: 0;
-                transition: opacity 0.3s ease;
+                box-shadow: var(--box-shadow-hover);
             }
 
             &:disabled {
-                opacity: 0.7;
+                opacity: var(--opacity-disabled);
                 cursor: not-allowed;
             }
         }
@@ -359,43 +344,42 @@ const { currentArtist } = artist  // Current artist information
     .jokers {
         display: flex;
         justify-content: center;
-        gap: 1.5rem;
-        margin-top: 2rem;
-        padding: 1rem;
+        gap: var(--padding-medium);
+        margin-top: var(--padding-large);
+        padding: var(--padding-medium);
         background: var(--surface-color-light);
-        border-radius: 1rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
 
         .joker-button {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
-            padding: 1rem;
-            width: 100px;
-            height: 100px;
-            border-radius: 1rem;
-            background: linear-gradient(145deg, var(--surface-color), var(--surface-color-dark));
-            border: 2px solid var(--border-color);
-            transition: all 0.3s ease;
+            gap: var(--padding-small);
+            padding: var(--padding-medium);
+            min-width: var(--min-touch-target);
+            min-height: var(--min-touch-target);
+            border-radius: var(--border-radius);
+            background: var(--surface-color);
+            border: var(--border-width) solid var(--surface-color-light);
+            transition: all var(--transition-speed) var(--transition-bounce);
 
             .icon {
-                font-size: 2rem;
+                font-size: var(--font-size-responsive-xl);
                 color: var(--primary-color);
-                transition: transform 0.3s ease;
+                transition: transform var(--transition-speed) var(--transition-bounce);
             }
 
             .label {
                 font-size: var(--font-size-base);
-                color: var(--text-color-light);
+                color: var(--text-secondary);
                 text-align: center;
-                transition: color 0.3s ease;
             }
 
             &:hover:not(:disabled) {
-                transform: translateY(-3px);
+                transform: translateY(-2px);
                 border-color: var(--primary-color);
-                box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+                box-shadow: var(--box-shadow-hover);
 
                 .icon {
                     transform: scale(1.1);
@@ -408,25 +392,17 @@ const { currentArtist } = artist  // Current artist information
             }
 
             &:disabled {
-                opacity: 0.6;
+                opacity: var(--opacity-disabled);
                 cursor: not-allowed;
-
-                .icon {
-                    color: var(--text-color-lighter);
-                }
-
-                .label {
-                    color: var(--text-color-lighter);
-                }
             }
         }
     }
 
     .jokers-remaining {
         text-align: center;
-        margin-top: 1rem;
+        margin-top: var(--padding-medium);
         font-size: var(--font-size-base);
-        color: var(--text-color-light);
+        color: var(--text-secondary);
     }
 }
 
@@ -435,8 +411,8 @@ const { currentArtist } = artist  // Current artist information
     justify-content: center;
     align-items: center;
     width: auto;
-    min-width: 200px;
-    margin: 0 auto;
+    min-width: var(--min-touch-target);
+    margin: var(--padding-medium) auto;
     padding: var(--padding-medium) var(--padding-large);
     font-size: var(--font-size-responsive-md);
     font-weight: var(--font-weight-semibold);
@@ -447,15 +423,26 @@ const { currentArtist } = artist  // Current artist information
     }
 }
 
-// Ensure smooth transitions
+// Transitions
 .slide-enter-active,
 .slide-leave-active {
-    transition: all 0.3s ease;
+    transition: all var(--transition-speed) var(--transition-bounce);
 }
 
 .slide-enter-from,
 .slide-leave-to {
     opacity: 0;
     transform: translateX(20px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .game-content button,
+    .joker-button,
+    .next-button,
+    .slide-enter-active,
+    .slide-leave-active {
+        transition: none;
+        transform: none;
+    }
 }
 </style>

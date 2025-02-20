@@ -308,36 +308,46 @@ watch(() => artist.currentArtist.value, (newArtist) => {
 
 <style lang="scss" scoped>
 .player-setup {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 2rem;
+    max-width: var(--content-width);
+    margin: var(--padding-large) auto;
+    padding: var(--padding-large);
     background: var(--surface-color);
-    border-radius: 8px;
-    box-shadow: var(--shadow-elevation-medium);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 
     h2 {
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: var(--padding-large);
+        font-size: var(--font-size-responsive-xl);
+        font-weight: var(--font-weight-bold);
+        color: var(--text-color);
+        line-height: var(--line-height-tight);
     }
 
     .player-count-selector {
         display: flex;
         justify-content: center;
-        gap: 1rem;
-        margin-bottom: 2rem;
+        gap: var(--padding-medium);
+        margin-bottom: var(--padding-large);
 
         button {
-            padding: 0.5rem 1rem;
-            border: 2px solid var(--primary-color);
-            border-radius: 4px;
+            padding: var(--padding-small) var(--padding-medium);
+            border: var(--border-width) solid var(--primary-color);
+            border-radius: var(--border-radius);
             background: transparent;
             color: var(--text-color);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all var(--transition-speed) var(--transition-bounce);
+            min-height: var(--min-touch-target);
 
             &.active {
                 background: var(--primary-color);
-                color: var(--surface-color);
+                color: var(--button-text-color);
+            }
+
+            &:focus-visible {
+                outline: var(--focus-outline-width) solid var(--focus-outline-color);
+                outline-offset: var(--focus-outline-offset);
             }
         }
     }
@@ -345,38 +355,59 @@ watch(() => artist.currentArtist.value, (newArtist) => {
     .player-names {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
-        margin-bottom: 2rem;
+        gap: var(--padding-medium);
+        margin-bottom: var(--padding-large);
 
         .player-input {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: var(--padding-small);
 
             input {
-                padding: 0.5rem;
-                border: 1px solid var(--border-color);
-                border-radius: 4px;
+                padding: var(--padding-small);
+                border: var(--border-width) solid var(--surface-color-light);
+                border-radius: var(--border-radius);
                 background: var(--background-color);
                 color: var(--text-color);
+                min-height: var(--min-touch-target);
+                font-size: var(--font-size-base);
+
+                &:focus {
+                    outline: var(--focus-outline-width) solid var(--focus-outline-color);
+                    outline-offset: var(--focus-outline-offset);
+                    border-color: var(--primary-color);
+                }
             }
         }
     }
 
     .start-game {
         width: 100%;
-        padding: 1rem;
+        min-height: var(--min-touch-target);
+        padding: var(--padding-medium);
         background: var(--primary-color);
-        color: var(--surface-color);
+        color: var(--button-text-color);
         border: none;
-        border-radius: 4px;
+        border-radius: var(--border-radius);
         cursor: pointer;
-        font-weight: bold;
-        transition: opacity 0.3s ease;
+        font-weight: var(--font-weight-bold);
+        font-size: var(--font-size-responsive-md);
+        transition: all var(--transition-speed) var(--transition-bounce);
 
         &:disabled {
-            opacity: 0.5;
+            opacity: var(--opacity-disabled);
             cursor: not-allowed;
+        }
+
+        &:hover:not(:disabled) {
+            background: var(--primary-color-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow-hover);
+        }
+
+        &:focus-visible {
+            outline: var(--focus-outline-width) solid var(--focus-outline-color);
+            outline-offset: var(--focus-outline-offset);
         }
     }
 }
@@ -390,7 +421,7 @@ watch(() => artist.currentArtist.value, (newArtist) => {
     justify-content: center;
     gap: var(--padding-small);
     flex-wrap: wrap;
-    padding: 0 var(--padding-small);
+    padding: var(--padding-small);
     margin-bottom: var(--padding-medium);
 
     .player-pill {
@@ -399,20 +430,23 @@ watch(() => artist.currentArtist.value, (newArtist) => {
         gap: var(--padding-medium);
         padding: var(--padding-small) var(--padding-medium);
         background: var(--surface-color);
-        border-radius: 100px;
-        transition: all 0.2s ease;
-        min-width: 200px;
+        border-radius: var(--border-radius-full);
+        transition: all var(--transition-speed) var(--transition-bounce);
+        min-width: var(--min-touch-target);
 
         &.active {
             background: var(--primary-color);
+            box-shadow: var(--box-shadow);
+
             .name, .score, .progress, .icon {
-                color: var(--surface-color);
+                color: var(--button-text-color);
             }
         }
 
         .name {
-            font-weight: 600;
+            font-weight: var(--font-weight-semibold);
             font-size: var(--font-size-responsive-md);
+            line-height: var(--line-height-normal);
         }
 
         .stats {
@@ -424,36 +458,29 @@ watch(() => artist.currentArtist.value, (newArtist) => {
             .score {
                 display: flex;
                 align-items: center;
-                gap: 4px;
+                gap: calc(var(--padding-small) / 2);
                 color: var(--primary-color);
-                font-weight: 600;
-
-                .icon {
-                    font-size: 1.1em;
-                }
+                font-weight: var(--font-weight-semibold);
             }
 
             .progress {
                 color: var(--text-secondary);
                 font-size: var(--font-size-responsive-sm);
-                opacity: 0.8;
             }
         }
     }
 }
 
-.round-info {
-    text-align: center;
-    padding: var(--padding-small) var(--padding-medium);
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
-    display: inline-block;
-    margin: 0 auto;
-    font-weight: 600;
-    color: var(--text-secondary);
+@media (prefers-reduced-motion: reduce) {
+    .player-setup button,
+    .player-pill,
+    .start-game {
+        transition: none;
+        transform: none;
+    }
 }
 
-@media (max-width: 640px) {
+@media (width <= 640px) {
     .player-pills {
         flex-direction: column;
         
@@ -465,31 +492,7 @@ watch(() => artist.currentArtist.value, (newArtist) => {
 
 .game-content {
     margin: 0 auto;
-    max-width: 800px;
+    max-width: var(--content-width);
     padding: 0 var(--padding-medium);
-}
-
-.round-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: var(--padding-medium) 0;
-    padding: var(--padding-medium);
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-elevation-small);
-
-    .current-round {
-        font-weight: 600;
-        color: var(--text-secondary);
-    }
-
-    .points {
-        display: flex;
-        align-items: center;
-        gap: var(--padding-xs);
-        font-weight: 700;
-        color: var(--primary-color);
-    }
 }
 </style>

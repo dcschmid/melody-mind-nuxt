@@ -153,28 +153,33 @@ onMounted(() => {
 <style scoped lang="scss">
 .categoryPage {
     color: var(--text-color);
+    padding: var(--padding-medium);
 }
 
 .category {
     display: grid;
-    gap: clamp(var(--padding-medium), 3vw, var(--padding-large));
+    gap: var(--padding-large);
     place-items: center;
-    transition: all var(--transition-speed);
+    transition: all var(--transition-speed) var(--transition-bounce);
+    max-width: var(--content-width);
+    margin: 0 auto;
 }
 
 .category-text {
     font-size: var(--font-size-responsive-md);
-    line-height: 1.6;
+    line-height: var(--line-height-relaxed);
     margin: 0 auto;
     text-align: center;
     color: var(--text-secondary);
+    max-width: var(--max-line-length);
 }
 
 .music-links {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: var(--padding-small) 0;
+    margin: var(--padding-medium) 0;
+    width: 100%;
 }
 
 .music-links-title {
@@ -182,13 +187,14 @@ onMounted(() => {
     align-items: center;
     gap: var(--padding-small);
     font-size: var(--font-size-responsive-xl);
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     margin-bottom: var(--padding-medium);
-    color: var(--text-primary);
+    color: var(--text-color);
+    line-height: var(--line-height-tight);
 }
 
 .headphone-icon {
-    font-size: 28px;
+    font-size: var(--font-size-responsive-xl);
     color: var(--primary-color);
 }
 
@@ -196,8 +202,8 @@ onMounted(() => {
     text-align: center;
     color: var(--text-secondary);
     margin-bottom: var(--padding-medium);
-    max-width: 600px;
-    line-height: 1.5;
+    max-width: var(--max-line-length);
+    line-height: var(--line-height-normal);
     font-size: var(--font-size-base);
 }
 
@@ -212,99 +218,123 @@ onMounted(() => {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
+    width: var(--min-touch-target);
+    height: var(--min-touch-target);
+    border-radius: var(--border-radius-full);
     background-color: var(--background-color);
-    transition: all var(--transition-speed) ease-in-out;
-    border: 2px solid transparent;
-}
+    transition: all var(--transition-speed) var(--transition-bounce);
+    border: var(--border-width) solid transparent;
 
-.music-link:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--box-shadow);
-}
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--box-shadow-hover);
+    }
 
-.music-link.spotify {
-    color: #1db954;
-    border-color: #1db954;
-}
+    &:focus-visible {
+        outline: var(--focus-outline-width) solid var(--focus-outline-color);
+        outline-offset: var(--focus-outline-offset);
+    }
 
-.music-link.spotify:hover {
-    background-color: #1db954;
-    color: white;
-}
+    &.spotify {
+        color: var(--success-color);
+        border-color: var(--success-color);
 
-.music-link.deezer {
-    color: #00b6f0;
-    border-color: #00b6f0;
-}
+        &:hover {
+            background-color: var(--success-color);
+            color: var(--button-text-color);
+        }
+    }
 
-.music-link.deezer:hover {
-    background-color: #00b6f0;
-    color: white;
-}
+    &.deezer {
+        color: var(--highlight-color);
+        border-color: var(--highlight-color);
 
-.music-link.apple {
-    color: var(--text-primary);
-    border-color: var(--text-primary);
-    background: linear-gradient(145deg, var(--background-color) 0%, var(--background-color) 100%);
-    transition: all var(--transition-speed) ease-in-out;
-}
+        &:hover {
+            background-color: var(--highlight-color);
+            color: var(--button-text-color);
+        }
+    }
 
-.music-link.apple:hover {
-    background: linear-gradient(145deg, #fc3c44 0%, #ff2d55 100%);
-    border-color: transparent;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: var(--box-shadow);
-}
-
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
+    &.apple {
+        color: var(--text-color);
+        border-color: var(--text-color);
+        background: var(--surface-color);
+        
+        &:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: var(--button-text-color);
+        }
+    }
 }
 
 .knowledge-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: var(--padding-medium);
     text-align: center;
+    margin: var(--padding-medium) 0;
+}
+
+.knowledge-intro {
+    font-size: var(--font-size-responsive-md);
+    color: var(--text-secondary);
+    max-width: var(--max-line-length);
+    line-height: var(--line-height-normal);
 }
 
 .knowledge-link {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--padding-small);
     background-color: var(--primary-color);
-    color: black;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
+    color: var(--button-text-color);
+    padding: var(--padding-medium);
+    border-radius: var(--border-radius);
     text-decoration: none;
-    width: fit-content;
-    margin: 2rem 0;
-    transition: background-color 0.3s ease;
+    min-height: var(--min-touch-target);
+    font-weight: var(--font-weight-semibold);
+    transition: all var(--transition-speed) var(--transition-bounce);
 
     &:hover {
         background-color: var(--primary-color-dark);
+        transform: translateY(-2px);
+        box-shadow: var(--box-shadow-hover);
+    }
+
+    &:focus-visible {
+        outline: var(--focus-outline-width) solid var(--focus-outline-color);
+        outline-offset: var(--focus-outline-offset);
     }
 
     .knowledge-icon {
-        font-size: 1.5rem;
+        font-size: var(--font-size-responsive-xl);
     }
 }
 
-@media (width <=767px) {
+@media (prefers-reduced-motion: reduce) {
+    .category,
+    .music-link,
+    .knowledge-link {
+        transition: none;
+        transform: none;
+    }
+}
+
+@media (width <= 767px) {
     .category-text {
-        font-size: clamp(1.125rem, 4vw, 1.25rem);
+        font-size: var(--font-size-responsive-sm);
+        padding: 0 var(--padding-small);
+    }
+
+    .music-links-title {
+        font-size: var(--font-size-responsive-lg);
+    }
+
+    .knowledge-link {
+        width: 100%;
+        justify-content: center;
     }
 }
 </style>

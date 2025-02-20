@@ -110,98 +110,104 @@ const navigateToKnowledge = (item) => {
 .gameHome {
     width: 100%;
     margin: 0 auto;
+    max-width: var(--content-width);
+    padding: var(--padding-medium);
 }
 
 .page-title {
     font-size: var(--font-size-responsive-3xl);
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     text-align: center;
     margin-bottom: var(--padding-large);
     color: var(--primary-color);
+    line-height: var(--line-height-tight);
 }
 
 .overview-text {
     font-size: var(--font-size-responsive-md);
     line-height: var(--line-height-relaxed);
     text-align: center;
+    color: var(--text-secondary);
+    max-width: var(--max-line-length);
+    margin: 0 auto var(--padding-large);
 }
 
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
+    gap: var(--padding-large);
     padding: var(--padding-medium);
 
-    @media (min-width: 640px) {
+    @media (width >= 640px) {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (min-width: 1024px) {
+    @media (width >= 1024px) {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
         gap: var(--padding-medium);
         padding: var(--padding-small);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        * {
-            transition: none !important;
-        }
     }
 }
 
 .category-card {
-    background: var(--card-background);
+    background: var(--surface-color);
     border-radius: var(--border-radius);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: var(--shadow-small);
+    transition: all var(--transition-speed) var(--transition-bounce);
+    box-shadow: var(--box-shadow);
 
     &:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-medium);
+        transform: translateY(-2px);
+        box-shadow: var(--box-shadow-hover);
     }
 
     &:focus-within {
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
+        outline: var(--focus-outline-width) solid var(--focus-outline-color);
+        outline-offset: var(--focus-outline-offset);
     }
 }
 
 .category-title {
     font-size: var(--font-size-responsive-xl);
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-color);
+    line-height: var(--line-height-tight);
 }
 
 .category-description {
     font-size: var(--font-size-base);
     color: var(--text-secondary);
+    line-height: var(--line-height-normal);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .category-card {
+        transition: none;
+        transform: none;
+
+        &:hover {
+            transform: none;
+        }
+    }
 }
 
 @media (prefers-reduced-motion: no-preference) {
     .category-card {
-        animation: fadeIn 0.5s ease-out;
+        animation: fadeIn var(--transition-speed) var(--transition-bounce);
     }
 }
 
 .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+    @include sr-only;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(var(--padding-medium));
     }
     to {
         opacity: 1;
