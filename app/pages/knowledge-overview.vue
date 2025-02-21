@@ -132,11 +132,14 @@ const navigateToKnowledge = (item) => {
     margin: 0 auto var(--padding-large);
 }
 
+.categories-section {
+    margin-top: var(--padding-large);
+}
+
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: var(--padding-large);
-    padding: var(--padding-medium);
 
     @media (width >= 640px) {
         grid-template-columns: repeat(2, 1fr);
@@ -148,7 +151,6 @@ const navigateToKnowledge = (item) => {
 
     @media (width <= 768px) {
         gap: var(--padding-medium);
-        padding: var(--padding-small);
     }
 }
 

@@ -182,7 +182,7 @@ defineEmits(['select'])
     background: var(--overlay-background);
     @include flex-center;
     @include absolute-fill;
-    font-size: var(--font-size-responsive-md);
+    font-size: var(--font-size-responsive-sm);
     font-weight: var(--font-weight-semibold);
     color: var(--text-color);
     text-align: center;
