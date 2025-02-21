@@ -185,6 +185,7 @@
         "finish": "Termina gioco",
         "option": "Opzione {number}",
         "selectAnswer": "Scegli risposta: {answer}",
+        "correctAnswer": "La risposta corretta era: {answer}",
         "expert": {
             "title": "Opinione dell'esperto",
             "confidence": "Sicurezza dell'esperto: {value}%"

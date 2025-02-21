@@ -185,6 +185,7 @@
         "finish": "Lopeta peli",
         "option": "Option {number}",
         "selectAnswer": "Select answer: {answer}",
+        "correctAnswer": "Oikea vastaus oli: {answer}",
         "expert": {
             "title": "Expert Opinion",
             "confidence": "Expert Confidence: {value}%"

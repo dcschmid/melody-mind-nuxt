@@ -260,7 +260,8 @@
             },
             "remainingCount": "{count } Lifelines available",
             "remaining": "{Anzahl} lifelines remaining"
-        }
+        },
+        "correctAnswer": "Het juiste antwoord was: {answer}"
     },
     "gameRules": {
         "meta": {

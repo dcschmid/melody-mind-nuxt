@@ -260,7 +260,8 @@
             },
             "remainingCount": "{count} Jokers disponibles",
             "remaining": "{Anzahl} Jokers restants"
-        }
+        },
+        "correctAnswer": "La bonne réponse était : {answer}"
     },
     "gameRules": {
         "meta": {

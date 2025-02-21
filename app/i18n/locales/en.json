@@ -260,7 +260,8 @@
       },
       "remainingCount": "{count} lifelines available",
       "remaining": "{count} lifelines remaining"
-    }
+    },
+    "correctAnswer": "The correct answer was: {answer}"
   },
   "gameRules": {
     "meta": {

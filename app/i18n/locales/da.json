@@ -260,7 +260,8 @@
             },
             "remainingCount": "{count} livliner tilgængelige",
             "remaining": "♪ Livliner tilbage ♪"
-        }
+        },
+        "correctAnswer": "Det korrekte svar var: {answer}"
     },
     "gameRules": {
         "meta": {

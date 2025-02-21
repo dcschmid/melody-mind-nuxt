@@ -185,6 +185,7 @@
         "finish": "Finish Game",
         "option": "Option {number }",
         "selectAnswer": "Select answer: { Answer}",
+        "correctAnswer": "Det rätta svaret var: {answer}",
         "expert": {
             "title": "Expert Opinion",
             "confidence": "Expert Confidence: {value}%"

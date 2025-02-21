@@ -185,6 +185,7 @@
         "finish": "Finalizar",
         "option": "Option {number}",
         "selectAnswer": "Wähle Antwort: {answer}",
+        "correctAnswer": "La respuesta correcta era: {answer}",
         "expert": {
             "title": "Opinión de los expertos",
             "confidence": "Experten-Sicherheit: {value}%"

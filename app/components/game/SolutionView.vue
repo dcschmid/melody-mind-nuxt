@@ -346,6 +346,7 @@ const togglePlay = async () => {
                         align-items: center;
                         justify-content: center;
                         transition: all var(--transition-speed) var(--transition-bounce);
+                        padding:0;
 
                         &:hover:not(:disabled) {
                             transform: scale(1.05);
@@ -486,6 +487,7 @@ const togglePlay = async () => {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-medium);
     transition: all var(--transition-speed) var(--transition-bounce);
+    color: var(--text-color-dark);
 
     &:hover {
         transform: translateY(-2px);

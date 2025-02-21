@@ -310,7 +310,8 @@
             },
             "remainingCount": "{count } ajudas disponíveis",
             "remaining": "{ Anzahl } ajudas restantes"
-        }
+        },
+        "correctAnswer": "A resposta correta era: {answer}"
     },
     "gameRules": {
         "meta": {
