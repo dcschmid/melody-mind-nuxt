@@ -13,6 +13,10 @@
               auto-sizes
               loading="lazy"
             />
+
+            <div class="">
+              {{genre.description}}
+            </div>
           </div>
 
           <article class="main-content prose prose-invert">
@@ -201,10 +205,11 @@ watch(() => route.params, loadContent)
     .knowledge-header {
         text-align: center;
         padding: var(--padding-medium);
+        font-size: var(--font-size-responsive-md);
 
         .genre-image {
             width: 100%;
-            max-width: var(--content-width);
+            max-width: 300px;
             aspect-ratio: 1;
             object-fit: cover;
             border-radius: var(--border-radius);
@@ -290,6 +295,8 @@ watch(() => route.params, loadContent)
             display: flex;
             justify-content: center;
             gap: var(--padding-large);
+            margin-top: var(--padding-medium);
+            perspective: 1000px;
         }
 
         .music-link {
@@ -298,16 +305,64 @@ watch(() => route.params, loadContent)
             align-items: center;
             width: var(--min-touch-target);
             height: var(--min-touch-target);
-            border-radius: var(--border-radius-full, 50%);
-            background-color: var(--surface-color);
+            border-radius: var(--border-radius);
             transition: all var(--transition-speed) var(--transition-bounce);
-            border: var(--border-width) solid transparent;
-
-            &:hover {
-                transform: translateY(-2px);
-                box-shadow: var(--box-shadow-hover);
+            position: relative;
+            backdrop-filter: var(--overlay-blur);
+            border: 1px solid rgb(255 255 255 / 10%);
+            overflow: hidden;
+            
+            &::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                opacity: 0.85;
+                transition: all var(--transition-speed) ease;
             }
-
+        
+            &.spotify::before {
+                background: linear-gradient(135deg, #1DB954 0%, #1ed760 50%, #25f971 100%);
+                box-shadow: var(--box-shadow);
+            }
+        
+            &.deezer::before {
+                background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color-light) 50%, var(--highlight-color) 100%);
+                box-shadow: var(--box-shadow);
+            }
+        
+            &.apple::before {
+                background: linear-gradient(135deg, var(--error-color) 0%, var(--error-color-dark) 50%, #ff6b7f 100%);
+                box-shadow: var(--box-shadow);
+            }
+        
+            .iconify {
+                position: relative;
+                z-index: 1;
+                color: var(--text-color-dark);
+                width: 32px;
+                height: 32px;
+                filter: drop-shadow(0 2px 4px rgb(0 0 0 / 20%));
+                transition: all var(--transition-speed) var(--transition-bounce);
+            }
+        
+            &:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--box-shadow-hover);
+                
+                &::before {
+                    opacity: 1;
+                }
+        
+                .icon {
+                    transform: scale(1.1);
+                    filter: drop-shadow(0 4px 8px rgb(0 0 0 / 30%));
+                }
+            }
+        
+            &:active {
+                transform: translateY(-2px);
+            }
+        
             &:focus-visible {
                 outline: var(--focus-outline-width) solid var(--focus-outline-color);
                 outline-offset: var(--focus-outline-offset);
@@ -317,14 +372,18 @@ watch(() => route.params, loadContent)
 
     .play-button {
         @include button-primary;
-        display: inline-flex;
+        display: flex;
         align-items: center;
         gap: var(--padding-small);
         min-height: var(--min-touch-target);
-        padding: var(--padding-medium) var(--padding-large);
-        font-size: var(--font-size-responsive-md);
+        padding: var(--padding-small);
+        font-size: var(--font-size-responsive-sm);
         font-weight: var(--font-weight-bold);
         margin-top: var(--padding-medium);
+        text-decoration: none;
+        color: var(--text-color-dark);
+        margin:  var(--padding-medium) auto;
+        width: auto;
     }
 }
 
@@ -335,6 +394,22 @@ watch(() => route.params, loadContent)
         .play-button {
             transition: none;
             transform: none;
+        }
+    }
+
+    .music-link {
+        transition: none;
+
+        &:hover {
+            transform: none;
+
+            .icon {
+                transform: none;
+            }
+
+            &::before {
+                transform: none;
+            }
         }
     }
 }
@@ -361,6 +436,11 @@ watch(() => route.params, loadContent)
         .music-link {
             width: var(--min-touch-target);
             height: var(--min-touch-target);
+
+            .icon {
+                width: 28px;
+                height: 28px;
+            }
         }
     }
 }
