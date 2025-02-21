@@ -266,7 +266,7 @@ const togglePlay = async () => {
 
         .correct-answer {
             margin-top: var(--padding-medium);
-            padding: var(--padding-medium);
+            padding: var(--padding-medium) 0;
             background-color: var(--surface-color-light);
             border-radius: var(--border-radius);
             border: 1px solid var(--surface-color-light);
@@ -294,7 +294,7 @@ const togglePlay = async () => {
             flex-direction: column;
             gap: var(--padding-medium);
             background-color: var(--surface-color);
-            padding: var(--padding-medium);
+            padding: var(--padding-medium) 0;
             border-radius: var(--border-radius);
             border: 2px solid var(--surface-color-light);
             box-shadow: var(--box-shadow);
