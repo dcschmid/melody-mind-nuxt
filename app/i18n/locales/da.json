@@ -163,6 +163,10 @@
             "link": "Lær mere om {genre}",
             "description": "Vil du vide mere om historien og udviklingen af {genre}? Find spændende baggrundsinformation og interessante fakta her."
         },
+        "combined": {
+            "title": "Viden & Musik",
+            "description": "Dyk ned i verden af {genre}! Udvid din viden om denne genre og lyt til de bedste sange på din foretrukne streaming-platform."
+        },
         "noImage": "Intet billede tilgængelig",
         "image": {
             "altText": "Kategori For {kategori}"

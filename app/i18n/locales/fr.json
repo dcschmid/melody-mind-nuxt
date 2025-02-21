@@ -166,6 +166,10 @@
         "noImage": "Aucune image disponible",
         "image": {
             "altText": "Couverture de la catégorie {category}"
+        },
+        "combined": {
+            "title": "Savoir & Musique",
+            "description": "Plongez dans l'univers de {genre} ! Enrichissez vos connaissances sur ce genre et écoutez les meilleures chansons sur votre plateforme de streaming préférée."
         }
     },
     "game": {

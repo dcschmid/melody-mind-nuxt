@@ -163,6 +163,10 @@
       "link": "Learn more about {genre}",
       "description": "Welcome to our musical treasure chamber! Here you'll find exciting articles, fascinating stories, and exclusive insights into the world of music. From groundbreaking albums to legendary concert moments to revolutionary music movements - let yourself be enchanted by the magic of music history and expand your knowledge for the quiz!"
     },
+    "combined": {
+      "title": "Knowledge & Music",
+      "description": "Dive into the world of {genre}! Expand your knowledge about this genre and listen to the best songs on your preferred streaming platform."
+    },
     "noImage": "No image available",
     "image": {
       "altText": "Category cover for {category}"

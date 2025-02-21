@@ -163,6 +163,10 @@
             "link": "Learn more about {genre}",
             "description": "Want to learn more about the history and evolution of {genre}? Find exciting background information and interesting facts here."
         },
+        "combined": {
+            "title": "Tieto & Musiikki",
+            "description": "Sukella {genre}n maailmaan! Laajenna tietämystäsi tästä genrestä ja kuuntele parhaat kappaleet suosikkisuoratoistopalvelussasi."
+        },
         "noImage": "Kuvaa ei ole saatavilla",
         "image": {
             "altText": "Category cover for {category}"

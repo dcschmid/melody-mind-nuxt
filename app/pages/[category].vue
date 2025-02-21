@@ -10,51 +10,50 @@
 
                     <p class="category-text">{{ currentCategory.text }}</p>
 
-                    <div v-if="currentCategory.knowledgeUrl" class="knowledge-section">
-                        <p class="knowledge-intro">{{ t('category.knowledge.description', { genre: currentCategory.headline }) }}</p>
-                        <NuxtLink 
-                            :to="localePath(`${currentCategory.knowledgeUrl}`)" 
-                            class="knowledge-link"
-                            :aria-label="t('category.knowledge.link', { genre: currentCategory.headline })"
-                        >
-                            <Icon name="material-symbols:menu-book" aria-hidden="true" class="knowledge-icon" />
-                            {{ t('category.knowledge.title') }}
-                        </NuxtLink>
-                    </div>
+                    <CategoryDifficultySelector v-if="hasUsername" :categorySlug="currentCategory.slug" />
 
-                    <div class="music-links"
-                        v-if="currentCategory.spotifyPlaylist || currentCategory.deezerPlaylist || currentCategory.appleMusicPlaylist"
-                        role="region" :aria-label="t('category.playlist.title')">
-                        <h4 class="music-links-title" id="streaming-services-title">
-                            <Icon name="material-symbols:headphones" aria-hidden="true" class="headphone-icon" />
-                            {{ t('category.playlist.title') }}
+                    <div class="category-links">
+                        <h4 class="section-title">
+                            <Icon name="material-symbols:library-music" aria-hidden="true" class="section-icon" />
+                            {{ t('category.combined.title') }}
                         </h4>
-                        <p class="music-links-description">
-                            {{ t('category.playlist.description', { genre: currentCategory.headline }) }}
+                        <p class="section-description">
+                            {{ t('category.combined.description', { genre: currentCategory.headline }) }}
                         </p>
-                        <div class="music-links-container" role="list" aria-labelledby="streaming-services-title">
-                            <a v-if="currentCategory.spotifyPlaylist" :href="currentCategory.spotifyPlaylist"
-                                target="_blank" rel="noopener noreferrer" class="music-link spotify"
-                                :aria-label="t('category.playlist.spotify')" role="listitem">
-                                <Icon name="logos:spotify-icon" size="28" aria-hidden="true" />
-                                <span class="visually-hidden">{{ t('category.playlist.spotify') }}</span>
-                            </a>
-                            <a v-if="currentCategory.deezerPlaylist" :href="currentCategory.deezerPlaylist" target="_blank"
-                                rel="noopener noreferrer" class="music-link deezer"
-                                :aria-label="t('category.playlist.deezer')" role="listitem">
-                                <Icon name="logos:deezer" size="28" aria-hidden="true" />
-                                <span class="visually-hidden">{{ t('category.playlist.deezer') }}</span>
-                            </a>
-                            <a v-if="currentCategory.appleMusicPlaylist" :href="currentCategory.appleMusicPlaylist"
-                                target="_blank" rel="noopener noreferrer" class="music-link apple"
-                                :aria-label="t('category.playlist.apple')" role="listitem">
-                                <Icon name="bi:apple" size="28" aria-hidden="true" />
-                                <span class="visually-hidden">{{ t('category.playlist.apple') }}</span>
-                            </a>
+
+                        <div class="links-container">
+                            <div class="music-links-container" role="list" aria-labelledby="streaming-services-title"
+                                v-if="currentCategory.spotifyPlaylist || currentCategory.deezerPlaylist || currentCategory.appleMusicPlaylist">
+                                <a v-if="currentCategory.spotifyPlaylist" :href="currentCategory.spotifyPlaylist"
+                                    target="_blank" rel="noopener noreferrer" class="music-link spotify"
+                                    :aria-label="t('category.playlist.spotify')" role="listitem">
+                                    <Icon name="mdi:spotify" class="icon" aria-hidden="true" />
+                                </a>
+                                <a v-if="currentCategory.deezerPlaylist" :href="currentCategory.deezerPlaylist" 
+                                    target="_blank" rel="noopener noreferrer" class="music-link deezer"
+                                    :aria-label="t('category.playlist.deezer')" role="listitem">
+                                    <Icon name="simple-icons:deezer" class="icon" aria-hidden="true" />
+                                </a>
+                                <a v-if="currentCategory.appleMusicPlaylist" :href="currentCategory.appleMusicPlaylist"
+                                    target="_blank" rel="noopener noreferrer" class="music-link apple"
+                                    :aria-label="t('category.playlist.apple')" role="listitem">
+                                    <Icon name="simple-icons:applemusic" class="icon" aria-hidden="true" />
+                                </a>
+                            </div>
+
+                            <div v-if="currentCategory.knowledgeUrl" class="knowledge-section">
+                                <NuxtLink 
+                                    :to="localePath(`${currentCategory.knowledgeUrl}`)" 
+                                    class="knowledge-link"
+                                    :aria-label="t('category.knowledge.link', { genre: currentCategory.headline })"
+                                >
+                                    <Icon name="material-symbols:menu-book" aria-hidden="true" class="knowledge-icon" />
+                                    {{ t('category.knowledge.title') }}
+                                </NuxtLink>
+                            </div>
                         </div>
                     </div>
 
-                    <CategoryDifficultySelector v-if="hasUsername" :categorySlug="currentCategory.slug" />
                 </article>
             </div>
         </NuxtLayout>
@@ -170,44 +169,64 @@ onMounted(() => {
     max-width: var(--max-line-length);
 }
 
+.category-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: var(--content-width);
+    margin: var(--padding-medium) auto;
+    text-align: center;
+}
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-large);
+    width: 100%;
+    margin-top: var(--padding-medium);
+}
+
+.section-title {
+    font-size: var(--font-size-responsive-xl);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: var(--padding-small);
+    justify-content: center;
+    margin-bottom: var(--padding-medium);
+}
+
+.section-description {
+    color: var(--text-secondary);
+    max-width: var(--max-line-length);
+    margin: 0 auto var(--padding-large);
+    line-height: var(--line-height-relaxed);
+}
+
+.knowledge-section,
 .music-links {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: var(--padding-medium) 0;
     width: 100%;
+    border-radius: var(--border-radius);
 }
 
-.music-links-title {
-    display: flex;
-    align-items: center;
-    gap: var(--padding-small);
-    font-size: var(--font-size-responsive-xl);
-    font-weight: var(--font-weight-semibold);
-    margin-bottom: var(--padding-medium);
-    color: var(--text-color);
-    line-height: var(--line-height-tight);
-}
-
-.headphone-icon {
-    font-size: var(--font-size-responsive-xl);
-    color: var(--primary-color);
-}
-
-.music-links-description {
-    text-align: center;
-    color: var(--text-secondary);
-    margin-bottom: var(--padding-medium);
-    max-width: var(--max-line-length);
-    line-height: var(--line-height-normal);
-    font-size: var(--font-size-base);
+.music-links {
+    margin: 0;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    padding: 0;
 }
 
 .music-links-container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: var(--padding-medium);
+    gap: var(--padding-large);
+    margin-top: var(--padding-medium);
+    perspective: 1000px;
 }
 
 .music-link {
@@ -216,51 +235,67 @@ onMounted(() => {
     align-items: center;
     width: var(--min-touch-target);
     height: var(--min-touch-target);
-    border-radius: var(--border-radius-full);
-    background-color: var(--background-color);
+    border-radius: 16px;
     transition: all var(--transition-speed) var(--transition-bounce);
-    border: var(--border-width) solid transparent;
+    position: relative;
+    backdrop-filter: var(--overlay-blur);
+    border: 1px solid rgb(255 255 255 / 10%);
+    overflow: hidden;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        opacity: 0.85;
+        transition: all var(--transition-speed) ease;
+    }
+
+    &.spotify::before {
+        background: linear-gradient(135deg, #1DB954 0%, #1ed760 50%, #25f971 100%);
+        box-shadow: var(--box-shadow);
+    }
+
+    &.deezer::before {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color-light) 50%, var(--highlight-color) 100%);
+        box-shadow: var(--box-shadow);
+    }
+
+    &.apple::before {
+        background: linear-gradient(135deg, var(--error-color) 0%, var(--error-color-dark) 50%, #ff6b7f 100%);
+        box-shadow: var(--box-shadow);
+    }
+
+    .icon {
+        position: relative;
+        z-index: 1;
+        color: var(--text-color-dark);
+        width: 32px;
+        height: 32px;
+        filter: drop-shadow(0 2px 4px rgb(0 0 0 / 20%));
+        transition: all var(--transition-speed) var (--transition-bounce);
+    }
 
     &:hover {
-        transform: translateY(-2px);
+        transform: translateY(-4px);
         box-shadow: var(--box-shadow-hover);
+        
+        &::before {
+            opacity: 1;
+        }
+
+        .icon {
+            transform: scale(1.1);
+            filter: drop-shadow(0 4px 8px rgb(0 0 0 / 30%));
+        }
+    }
+
+    &:active {
+        transform: translateY(-2px);
     }
 
     &:focus-visible {
         outline: var(--focus-outline-width) solid var(--focus-outline-color);
         outline-offset: var(--focus-outline-offset);
-    }
-
-    &.spotify {
-        color: var(--success-color);
-        border-color: var(--success-color);
-
-        &:hover {
-            background-color: var(--success-color);
-            color: var(--button-text-color);
-        }
-    }
-
-    &.deezer {
-        color: var(--highlight-color);
-        border-color: var(--highlight-color);
-
-        &:hover {
-            background-color: var(--highlight-color);
-            color: var(--button-text-color);
-        }
-    }
-
-    &.apple {
-        color: var(--text-color);
-        border-color: var(--text-color);
-        background: var(--surface-color);
-        
-        &:hover {
-            background: var(--primary-color);
-            border-color: var(--primary-color);
-            color: var(--button-text-color);
-        }
     }
 }
 

@@ -163,6 +163,10 @@
             "link": "Aprende más sobre {genre}",
             "description": "¿Quieres saber más sobre la historia y evolución de {genre}? Aquí encontrarás información interesante y datos curiosos."
         },
+        "combined": {
+            "title": "Conocimiento y Música",
+            "description": "¡Sumérgete en el mundo del {genre}! Amplía tus conocimientos sobre este género y escucha las mejores canciones en tu plataforma de streaming preferida."
+        },
         "noImage": "Imagen no disponible",
         "image": {
             "altText": "Portada para la categoría {category}"
