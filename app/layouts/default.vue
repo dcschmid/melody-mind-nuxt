@@ -16,12 +16,10 @@
 
         <div id="menu" v-if="showMenu" class="menu" :class="{ 'is-open': isMenuOpen }" @keydown.esc="closeMenu"
             tabindex="-1" role="dialog" aria-modal="true" :aria-label="t('navigation.mainMenu')" ref="menuRef">
-            <button class="close-button" :aria-label="t('accessibility.closeMenu')" @click="closeMenu"
-                ref="closeButtonRef">
-                <Icon name="material-symbols:close" size="48" />
-            </button>
-
             <div class="menu-content">
+                <button class="close-button" @click="closeMenu" :aria-label="t('accessibility.closeMenu')" ref="closeButtonRef">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="#fff" d="m3.5 2.086l4.5 4.5l4.5-4.5L13.914 3.5L9.414 8l4.5 4.5l-1.414 1.414l-4.5-4.5l-4.5 4.5L2.086 12.5l4.5-4.5l-4.5-4.5z"/></svg>
+                </button>
                 <!-- Hauptnavigation -->
                 <div class="menu-section">
                     <NuxtLink :to="localePath('gamehome')" class="menu-item">
@@ -228,22 +226,97 @@ header {
 .menu {
     position: fixed;
     inset: 0;
-    display: grid;
-    place-items: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: var(--overlay-background);
-    backdrop-filter: blur(var(--blur-strength));
+    backdrop-filter: var(--overlay-blur);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s var(--transition-bounce);
+    transition: var(--menu-transition);
+    z-index: var(--z-index-menu);
+    overflow-y: auto;
 
     .menu-content {
-        width: min(90%, 400px);
+        position: relative;
+        width: 100%;
+        margin: var(--header-height) auto;
         display: flex;
         flex-direction: column;
-        gap: var(--padding-medium);
+        gap: var(--padding-large);
         padding: var(--padding-large);
-        transform: translateY(30px);
+        background: var(--surface-color);
+        border-radius: var(--border-radius);
+        border: 1px solid rgb(255 255 255 / 10%);
+        box-shadow: var(--box-shadow);
+        transform: translateY(-30px) scale(0.95);
         transition: transform 0.4s var(--transition-bounce);
+        max-height: calc(100vh - var(--header-height) - var(--padding-large));
+        overflow-y: auto;
+
+        /* Scrollbar Styling */
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: var(--surface-color-light);
+            border-radius: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 4px;
+
+            &:hover {
+                background: var(--secondary-color-light);
+            }
+        }
+
+        /* Close Button neu positioniert */
+        .close-button {
+            position: absolute;
+            top: var(--padding-medium);
+            right: var(--padding-medium);
+            width: var(--min-touch-target);
+            height: var(--min-touch-target);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--surface-color-light);
+            color: var(--text-color);
+            border: 1px solid transparent;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--menu-transition);
+            box-shadow: var(--box-shadow);
+            z-index: calc(var(--z-index-menu) + 1);
+            text-align: center;
+
+            svg {
+                color: var(--text-color);
+                position: absolute;
+                width: 32px;
+                height: 32px;
+            }
+
+            &:hover,
+            &:focus-visible {
+                color: var(--highlight-color);
+                transform: rotate(90deg) scale(1.1);
+                background: var(--surface-color-hover);
+                border-color: var(--highlight-color);
+                box-shadow: var(--box-shadow-hover);
+            }
+
+            &:focus-visible {
+                outline: var(--focus-outline-width) solid var(--focus-outline-color);
+                outline-offset: var(--focus-outline-offset);
+            }
+        }
     }
 
     &.is-open {
@@ -251,7 +324,7 @@ header {
         visibility: visible;
 
         .menu-content {
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
     }
 
@@ -295,116 +368,76 @@ header {
 .menu-section {
     display: flex;
     flex-direction: column;
-    gap: var(--padding-medium);
+    gap: var(--padding-small);
+    background: var(--surface-color-light);
+    padding: var(--padding-medium);
+    border-radius: var(--border-radius);
 
     &:not(:last-child) {
-        padding-bottom: var(--padding-large);
         border-bottom: 1px solid rgb(255 255 255 / 10%);
     }
 }
 
 .section-title {
-    color: var(--text-color);
-    font-size: 0.875rem;
-    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    opacity: 0.7;
-    padding-left: var(--padding-medium);
+    letter-spacing: var(--spacing-text);
+    margin-bottom: var(--padding-small);
 }
 
 .menu-item {
     display: flex;
     align-items: center;
     gap: var(--padding-medium);
-    padding: 1rem var(--padding-medium);
-    min-height: 60px; // Vergrößerter Touch-Bereich
-    font-size: 1.25rem; // Größere Schrift
-    letter-spacing: 0.12px;
-    word-spacing: 0.16em;
-    font-weight: 500;
+    padding: var(--padding-small) var(--padding-medium);
+    min-height: var(--min-touch-target);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
     color: var(--text-color);
-    transition: all 0.3s var(--transition-bounce);
+    background: var(--surface-color);
+    transition: var(--menu-transition);
     text-decoration: none;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     border-radius: var(--border-radius);
 
     .icon {
-        color: var(--text-color);
-        opacity: 0.9;
-        transition: all 0.3s var(--transition-bounce);
+        color: var(--primary-color);
+        transition: var(--menu-transition);
         flex-shrink: 0;
     }
 
     &:hover,
     &:focus-visible {
         transform: translateX(8px);
-        background-color: var(--surface-color-light);
-        border-color: var(--highlight-color);
+        background: var(--surface-color-hover);
+        border-color: var(--primary-color);
+        box-shadow: var(--box-shadow);
 
         .icon {
             color: var(--highlight-color);
             transform: scale(1.1);
-            opacity: 1;
         }
     }
 
     &:focus-visible {
         outline: var(--focus-outline-width) solid var(--focus-outline-color);
         outline-offset: var(--focus-outline-offset);
-        box-shadow: 0 0 0 4px rgba(0, 247, 255, 0.4);
-    }
-}
-
-.close-button {
-    position: absolute;
-    top: var(--padding-medium);
-    right: var(--padding-medium);
-    padding: var(--padding-small);
-    width: 100px;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid transparent;
-    background: var(--surface-color);
-    color: var(--text-color);
-    cursor: pointer;
-    z-index: calc(var(--z-index-menu) + 1);
-    border-radius: var(--border-radius);
-    transition: all 0.3s var(--transition-bounce);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-
-    .icon {
-        width: 80px;
-        height: 80px;
-        color: currentColor;
-    }
-
-    &:hover,
-    &:focus-visible {
-        color: var(--highlight-color);
-        transform: rotate(90deg);
-        background: var(--surface-color-light);
-        border-color: var(--highlight-color);
-    }
-
-    &:focus-visible {
-        outline: none;
     }
 }
 
 @media (max-width: 768px) {
     .menu {
+        padding: 0;
+        
         .menu-content {
             width: 100%;
-            height: calc(100vh - var(--header-height));
+            height: 100vh;
+            margin: 0;
             max-height: none;
-            padding: var(--padding-medium);
-        }
-
-        .menu-item {
-            padding: var(--padding-medium);
+            border-radius: 0;
+            padding: calc(var(--header-height) + var(--padding-medium)) var(--padding-medium) var(--padding-medium);
         }
     }
 }
