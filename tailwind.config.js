@@ -108,6 +108,7 @@ module.exports = {
       
       borderRadius: {
         'DEFAULT': 'var(--border-radius)',
+        'accessibility': '0.25rem',  // Mindestgröße für Touch-Ziel-Ränder
       },
       
       boxShadow: {
@@ -116,6 +117,10 @@ module.exports = {
         'glow-sm': '0 0 10px rgba(var(--primary-color-rgb, 0, 0, 0), 0.5)',
         'glow-md': '0 0 15px rgba(var(--primary-color-rgb, 0, 0, 0), 0.6)',
         'inner-top': 'inset 0 1px 2px 0 rgba(255, 255, 255, 0.1)',
+        'focus': '0 0 0 4px rgba(var(--highlight-color-rgb), 0.8), 0 0 0 2px rgba(0, 0, 0, 0.6), 0 0 20px rgba(var(--highlight-color-rgb), 0.4)',
+        'focus-contrast': '0 0 0 4px white, 0 0 0 6px black',
+        'focus-subtle': '0 0 0 2px rgba(var(--highlight-color-rgb), 0.5)',
+        'focus-glow': '0 0 15px 5px rgba(var(--highlight-color-rgb), 0.7)',
       },
       
       transitionProperty: {
@@ -172,6 +177,7 @@ module.exports = {
         'menu-content': '100', // für z-[calc(var(--z-index-menu)+1)]
         'foreground': '200',
         'top': '999',
+        'above-overlay': 'calc(var(--z-index-overlay) + 10)',
       },
       
       containers: {
@@ -184,6 +190,8 @@ module.exports = {
         'gradient-slow': 'gradient-shift 15s ease infinite',
         'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'shine': 'shine 2s linear infinite',
+        'pulse-focus': 'gentle-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'gentle-pulse': 'gentle-pulse 2s infinite',
       },
       keyframes: {
         'gradient-shift': {
@@ -194,12 +202,50 @@ module.exports = {
           'from': { backgroundPosition: '200% 0' },
           'to': { backgroundPosition: '-200% 0' },
         },
+        'gentle-pulse': {
+          '0%, 100%': { 
+            boxShadow: '0 0 0 4px rgba(var(--highlight-color-rgb), 0.5)'
+          },
+          '50%': { 
+            boxShadow: '0 0 0 6px rgba(var(--highlight-color-rgb), 0.8)' 
+          },
+        },
       },
       
       // Erweiterte Backdrop Filter
       backdropBlur: {
         'xs': '2px',
-      }
+      },
+      
+      // Spezielle Scale-Werte für subtile Hover-Effekte
+      scale: {
+        '102': '1.02',
+        '105': '1.05',
+        '98': '0.98',
+      },
+      
+      // Spezielle Aspect-Ratios
+      aspectRatio: {
+        'video': '16 / 9',
+        'card': '4 / 3',
+        'square': '1 / 1',
+      },
+      
+      // Erweiterte Ring-Stile für Fokus-Indikatoren
+      ringColor: {
+        'focus': 'var(--focus-outline-color)',
+        'contrast': 'white',
+      },
+      ringWidth: {
+        '3': '3px',
+        '4': '4px',
+        '5': '5px',
+      },
+      ringOffsetWidth: {
+        '3': '3px',
+        '4': '4px',
+        '5': '5px',
+      },
     },
   },
   // Explizit den JIT-Modus aktivieren und Opacity-Plugins
