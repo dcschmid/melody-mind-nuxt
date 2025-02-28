@@ -449,7 +449,11 @@
         "pauseButton": "Pause",
         "nextButton": "Seuraava",
         "previousButton": "Edellinen",
-        "closeButton": "Sulje"
+        "closeButton": "Sulje",
+        "languageSelector": "Vaihda kieltä",
+        "currentLanguage": "Nykyinen kieli",
+        "currentlySelected": "Tällä hetkellä valittu",
+        "selectLanguage": "Valitse kieli"
     },
     "cookies": {
         "title": "Evästeasetukset",

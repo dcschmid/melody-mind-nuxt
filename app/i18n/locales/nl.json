@@ -449,7 +449,11 @@
         "pauseButton": "Pause",
         "nextButton": "Volgende",
         "previousButton": "Vorige",
-        "closeButton": "Sluiten"
+        "closeButton": "Sluiten",
+        "languageSelector": "Taal wijzigen",
+        "currentLanguage": "Huidige taal",
+        "currentlySelected": "Momenteel geselecteerd",
+        "selectLanguage": "Selecteer een taal"
     },
     "cookies": {
         "title": "Cookie Settings",

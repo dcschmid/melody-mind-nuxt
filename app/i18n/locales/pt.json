@@ -499,7 +499,11 @@
         "pauseButton": "Pausar",
         "nextButton": "Próximo",
         "previousButton": "Anterior",
-        "closeButton": "- Sim."
+        "closeButton": "- Sim.",
+        "languageSelector": "Alterar idioma",
+        "currentLanguage": "Idioma atual",
+        "currentlySelected": "Atualmente selecionado",
+        "selectLanguage": "Selecionar um idioma"
     },
     "cookies": {
         "title": "Configurações de cookies",

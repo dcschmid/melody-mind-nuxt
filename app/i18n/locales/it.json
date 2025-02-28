@@ -449,7 +449,11 @@
         "pauseButton": "Pausa",
         "nextButton": "Avanti",
         "previousButton": "Indietro",
-        "closeButton": "Chiudi"
+        "closeButton": "Chiudi",
+        "languageSelector": "Cambia lingua",
+        "currentLanguage": "Lingua attuale",
+        "currentlySelected": "Attualmente selezionato",
+        "selectLanguage": "Seleziona una lingua"
     },
     "cookies": {
         "title": "Impostazioni cookie",

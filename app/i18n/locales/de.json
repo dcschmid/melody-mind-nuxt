@@ -319,12 +319,17 @@
         },
         "goldenRecords": {
             "title": "Goldene Schallplatten",
-            "intro": "Wenn du alle Fragen in einer Kategorie richtig beantwortest, erhältst du einen goldenen Rekord:",
+            "intro": "Sammle goldene Schallplatten, indem du %1Höchstpunktzahlen%2 in den verschiedenen Schwierigkeitsstufen erreichst.",
+            "rewardsListTitle": "Belohnungen für goldene Schallplatten",
             "rewards": {
-                "easy": "Leicht: Musik-Anfänger.",
-                "medium": "Medium: Musik Meister.",
-                "hard": "Schwer: Musiklegende."
-            }
+                "easy": "Eine goldene Schallplatte für 10 richtige Antworten im leichten Modus",
+                "easyAccessibleLabel": "Eine goldene Schallplatte für 10 richtige Antworten im leichten Modus - niedrigste Belohnung",
+                "medium": "Eine goldene Schallplatte für 8 richtige Antworten im mittleren Modus",
+                "mediumAccessibleLabel": "Eine goldene Schallplatte für 8 richtige Antworten im mittleren Modus - mittlere Belohnung",
+                "hard": "Eine goldene Schallplatte für 6 richtige Antworten im schweren Modus",
+                "hardAccessibleLabel": "Eine goldene Schallplatte für 6 richtige Antworten im schweren Modus - höchste Belohnung"
+            },
+            "note": "Du kannst beliebig viele goldene Schallplatten sammeln, um deinen Highscore zu verbessern."
         },
         "rankings": {
             "title": "Ranglisten",
@@ -449,7 +454,11 @@
         "pauseButton": "Pause",
         "nextButton": "Weiter",
         "previousButton": "Zurück",
-        "closeButton": "Schließen"
+        "closeButton": "Schließen",
+        "languageSelector": "Sprache ändern",
+        "currentLanguage": "Aktuelle Sprache",
+        "currentlySelected": "Aktuell ausgewählt",
+        "selectLanguage": "Wähle eine Sprache aus"
     },
     "cookies": {
         "title": "Cookie-Einstellungen",

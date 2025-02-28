@@ -1,318 +1,295 @@
 <template>
-    <div 
-        class="language-picker"
-        role="navigation"
-        aria-label="Language selection"
+  <div class="relative isolate">
+    <!-- Hauptbutton mit optimiertem Tailwind-Klassenaufbau -->
+    <button
+      type="button"
+      :id="buttonId"
+      class="group flex items-center gap-2 w-auto py-small px-medium 
+             bg-surface/80 border border-white/10 
+             text-text font-medium rounded-lg shadow-sm
+             hover:bg-surface-hover hover:text-highlight
+             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight focus-visible:ring-offset-2
+             transition-all duration-normal"
+      :aria-expanded="isOpen"
+      aria-haspopup="listbox"
+      :aria-controls="dropdownId"
+      :aria-label="$t('accessibility.languageSelector')"
+      @click="toggleDropdown"
+      @keydown.down.prevent="openAndFocus"
+      @keydown.up.prevent="openAndFocusLast"
+      @keydown.esc="closeDropdown"
     >
-        <button 
-            class="current-language"
-            @click="isOpen = !isOpen"
-            :aria-expanded="isOpen"
-            :aria-controls="dropdownId"
-            aria-haspopup="listbox"
-        >
-            <span class="flag" aria-hidden="true">{{ (locale && locale.length >= 2) ? getFlagEmoji(locale.substring(0, 2)) : '' }}</span>
-            <span class="language-name">{{ t(`languages.${locale}`) }}</span>
-            <Icon
-                name="material-symbols:keyboard-arrow-down-rounded"
-                size="24"
-                class="dropdown-arrow"
-                :class="{ 'is-open': isOpen }"
-                aria-hidden="true"
-            />
-            <span class="sr-only">{{ isOpen ? t('common.closeLanguageMenu') : t('common.openLanguageMenu') }}</span>
-        </button>
+      <span class="sr-only">{{ $t('accessibility.currentLanguage') }}</span>
+      
+      <!-- Aktuelle Sprachflagge -->
+      <span class="flex-shrink-0 w-5 h-5 rounded overflow-hidden shadow-sm">
+        <img 
+          :src="`/images/flags/${currentLocale}.svg`" 
+          :alt="`${currentLocaleName} flag`"
+          class="w-full h-full object-cover"
+          width="20"
+          height="20"
+          aria-hidden="true"
+        />
+      </span>
+      
+      <!-- Aktuelle Sprache -->
+      <span>{{ currentLocaleName }}</span>
+      
+      <!-- Dropdown-Pfeil mit verbesserter Animation -->
+      <Icon 
+        name="material-symbols:keyboard-arrow-down-rounded" 
+        class="text-lg text-text/70 transition-transform duration-300 ease-in-out motion-reduce:transition-none" 
+        :class="isOpen ? 'rotate-180 text-highlight' : ''"
+        aria-hidden="true"
+      />
+    </button>
 
-        <div 
-            v-show="isOpen" 
-            class="language-options"
-            :id="dropdownId"
-            role="listbox"
-            :aria-label="t('common.selectLanguage')"
-            tabindex="-1"
-        >
-            <button
-                v-for="loc in availableLocales"
-                :key="loc.code"
-                class="language-option"
-                @click="handleLocaleChange(loc.code)"
-                role="option"
-                :aria-selected="loc.code === locale"
-            >
-                <span class="flag" aria-hidden="true">{{ (loc?.code && loc.code.length >= 2) ? getFlagEmoji(loc.code.substring(0, 2)) : '' }}</span>
-                <span class="language-name">{{ t(`languages.${loc.code}`) }}</span>
-                <span class="sr-only">{{ t('common.selectLanguageLabel', { language: t(`languages.${loc.code}`) }) }}</span>
-            </button>
-        </div>
+    <!-- Dropdown mit verbesserten Animationen, Schatten und Glaseffekt -->
+    <div
+      v-show="isOpen"
+      :id="dropdownId"
+      ref="dropdown"
+      class="absolute left-0 top-[calc(100%+0.5rem)] z-menu-content 
+             min-w-[200px] py-2 mt-1 overflow-hidden
+             bg-surface/95 border border-white/10 rounded-lg
+             shadow-xl backdrop-blur-sm backdrop-saturate-150
+             transform origin-top-left transition-all duration-200
+             motion-reduce:transform-none motion-reduce:transition-none"
+      role="listbox"
+      :aria-labelledby="buttonId"
+      :aria-activedescendant="activeItemId"
+      tabindex="-1"
+      @blur="handleBlur"
+      @keydown.esc="closeDropdown"
+      @keydown.up.prevent="navigateUp"
+      @keydown.down.prevent="navigateDown"
+      @keydown.home.prevent="navigateToFirst"
+      @keydown.end.prevent="navigateToLast"
+    >
+      <!-- Subtile Trennlinie im Dropdown -->
+      <div class="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-2"></div>
+      
+      <!-- Verbesserte Sprachoptionen mit konsistenten Tailwind-Klassen -->
+      <div class="max-h-[300px] overflow-y-auto overscroll-contain px-1">
+        <template v-for="locale in availableLocales" :key="locale.code">
+          <button
+            :id="`language-option-${locale.code}`"
+            class="flex items-center w-full gap-3 px-3 py-2 my-0.5
+                   text-left text-text text-base
+                   rounded-md transition-colors duration-200 
+                   hover:bg-surface-hover hover:text-highlight
+                   focus:outline-none focus-visible:bg-surface-hover focus-visible:text-highlight focus-visible:ring-2 
+                   focus-visible:ring-inset focus-visible:ring-highlight/70"
+            :class="{ 
+              'bg-primary/10 font-semibold': locale.code === currentLocale
+            }"
+            role="option"
+            :aria-selected="locale.code === currentLocale"
+            @click="switchLanguage(locale.code)"
+            @keydown.enter="switchLanguage(locale.code)"
+            @keydown.space.prevent="switchLanguage(locale.code)"
+          >
+            <!-- Sprachflagge -->
+            <div class="flex-shrink-0 w-5 h-5 rounded overflow-hidden shadow-sm">
+              <img 
+                :src="`/images/flags/${locale.code}.svg`" 
+                :alt="`${locale.name} flag`" 
+                class="w-full h-full object-cover"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              />
+            </div>
+            
+            <!-- Auswahlindikator -->
+            <div class="flex-shrink-0 w-5 flex items-center justify-center">
+              <Icon 
+                v-if="locale.code === currentLocale" 
+                name="material-symbols:check-small-rounded" 
+                class="text-highlight text-lg"
+                aria-hidden="true"
+              />
+            </div>
+            
+            <!-- Sprachname -->
+            <span>{{ locale.name }}</span>
+            
+            <!-- Screen reader text -->
+            <span v-if="locale.code === currentLocale" class="sr-only">
+              {{ $t('accessibility.currentlySelected') }}
+            </span>
+          </button>
+        </template>
+      </div>
     </div>
+
+    <!-- Optimiertes Klick-Outside-Element -->
+    <div 
+      v-if="isOpen" 
+      class="fixed inset-0 z-0 bg-transparent" 
+      @click="closeDropdown" 
+      aria-hidden="true"
+    ></div>
+  </div>
 </template>
 
-<script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { useI18n } from 'vue-i18n'
+<script setup>
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { useRouter, useRoute } from 'vue-router';
 
-const { locale, locales, setLocale, t } = useI18n()
-const isOpen = ref(false)
-const dropdownId = 'language-dropdown'
+// Generiere eindeutige IDs für ARIA-Attribute
+const uniqueId = Math.floor(Math.random() * 10000);
+const buttonId = `language-selector-${uniqueId}`;
+const dropdownId = `language-dropdown-${uniqueId}`;
 
-const availableLocales = computed(() => {
-    return locales.value.filter(i => i.code !== locale.value)
-})
+// Dropdown-Status
+const isOpen = ref(false);
+const dropdown = ref(null);
+const activeItemId = ref('');
 
-const flagEmojiCache = new Map()
+// I18n und Router Setup
+const { locale, locales, setLocale } = useI18n();
+const router = useRouter();
+const route = useRoute();
 
-const getFlagEmoji = (countryCode: string): string => {
-    const cacheKey = countryCode.toUpperCase()
-    if (flagEmojiCache.has(cacheKey)) {
-        return flagEmojiCache.get(cacheKey)
-    }
+// Aktueller Locale und verfügbare Locales
+const currentLocale = computed(() => locale.value);
+const availableLocales = computed(() => locales.value);
+const currentLocaleName = computed(() => {
+  const found = availableLocales.value.find(l => l.code === currentLocale.value);
+  return found ? found.name : '';
+});
 
-    // Mapping von Sprachcodes zu Ländercodes für Flaggen
-    const languageToCountry: { [key: string]: string } = {
-        'EN': 'GB', // Englisch -> Großbritannien
-        'DA': 'DK', // Dänisch -> Dänemark
-        'SV': 'SE', // Schwedisch -> Schweden
-        'PT': 'PT', // Portugiesisch -> Portugal
-        'NL': 'NL', // Niederländisch -> Niederlande
-        'FI': 'FI'  // Finnisch -> Finnland
-    }
-
-    const code = languageToCountry[cacheKey] || cacheKey
-    const codePoints = code
-        .split('')
-        .map(char => 127397 + char.charCodeAt())
-    const emoji = String.fromCodePoint(...codePoints)
-    flagEmojiCache.set(cacheKey, emoji)
-    return emoji
+// Dropdown öffnen/schließen
+function toggleDropdown() {
+  isOpen.value = !isOpen.value;
+  if (isOpen.value) {
+    setActiveItem(currentLocale.value);
+    // Den Fokus erst beim nächsten Tick auf das Dropdown setzen
+    setTimeout(() => {
+      dropdown.value?.focus();
+    }, 10);
+  }
 }
 
-const handleLocaleChange = async (localeCode: string) => {
-    await setLocale(localeCode)
-    isOpen.value = false
-    announceLanguageChange(localeCode)
+// Dropdown öffnen und ersten Eintrag fokussieren
+function openAndFocus() {
+  if (!isOpen.value) {
+    isOpen.value = true;
+    setTimeout(() => {
+      navigateToFirst();
+    }, 10);
+  }
 }
 
-const announceLanguageChange = (newLocale: string) => {
-    const message = t('common.languageChanged', { language: t(`languages.${newLocale}`) })
-    const announcement = document.createElement('div')
-    announcement.setAttribute('role', 'status')
-    announcement.setAttribute('aria-live', 'polite')
-    announcement.classList.add('sr-only')
-    announcement.textContent = message
-    document.body.appendChild(announcement)
-    setTimeout(() => announcement.remove(), 1000)
+// Dropdown öffnen und letzten Eintrag fokussieren
+function openAndFocusLast() {
+  if (!isOpen.value) {
+    isOpen.value = true;
+    setTimeout(() => {
+      navigateToLast();
+    }, 10);
+  }
 }
 
-const closeDropdown = (e: MouseEvent) => {
-    if (!e.target || !(e.target as HTMLElement).closest('.language-picker')) {
-        isOpen.value = false
-    }
+// Dropdown schließen
+function closeDropdown() {
+  isOpen.value = false;
 }
 
-// Tastaturnavigation
-const handleKeyDown = (e: KeyboardEvent) => {
-    if (!isOpen.value) return
+// Blur-Handling
+function handleBlur(event) {
+  // Nur schließen, wenn der Fokus nicht innerhalb des Dropdowns oder Button bleibt
+  if (!event.currentTarget.contains(event.relatedTarget)) {
+    closeDropdown();
+  }
+}
+
+// Aktiven Eintrag setzen
+function setActiveItem(localeCode) {
+  activeItemId.value = `language-option-${localeCode}`;
+  // Element fokussieren
+  document.getElementById(activeItemId.value)?.focus();
+}
+
+// Keyboard-Navigation: Nach oben
+function navigateUp() {
+  const options = [...availableLocales.value];
+  const currentIndex = options.findIndex(l => l.code === activeItemId.value.replace('language-option-', ''));
+  const prevIndex = currentIndex > 0 ? currentIndex - 1 : options.length - 1;
+  setActiveItem(options[prevIndex].code);
+}
+
+// Keyboard-Navigation: Nach unten
+function navigateDown() {
+  const options = [...availableLocales.value];
+  const currentIndex = options.findIndex(l => l.code === activeItemId.value.replace('language-option-', ''));
+  const nextIndex = currentIndex < options.length - 1 ? currentIndex + 1 : 0;
+  setActiveItem(options[nextIndex].code);
+}
+
+// Zum ersten Element navigieren
+function navigateToFirst() {
+  setActiveItem(availableLocales.value[0].code);
+}
+
+// Zum letzten Element navigieren
+function navigateToLast() {
+  setActiveItem(availableLocales.value[availableLocales.value.length - 1].code);
+}
+
+// Sprache wechseln
+async function switchLanguage(localeCode) {
+  if (localeCode === currentLocale.value) {
+    closeDropdown();
+    return;
+  }
+  
+  try {
+    // Locale ändern
+    await setLocale(localeCode);
     
-    const options = document.querySelectorAll('.language-option')
-    const currentIndex = Array.from(options).findIndex(option => option === document.activeElement)
+    // URL-Pfad entsprechend anpassen
+    const { fullPath } = route;
+    const newPath = fullPath.replace(`/${currentLocale.value}/`, `/${localeCode}/`);
     
-    switch (e.key) {
-        case 'Escape':
-            isOpen.value = false
-            break
-        case 'ArrowDown':
-            e.preventDefault()
-            if (currentIndex < options.length - 1) {
-                (options[currentIndex + 1] as HTMLElement).focus()
-            }
-            break
-        case 'ArrowUp':
-            e.preventDefault()
-            if (currentIndex > 0) {
-                (options[currentIndex - 1] as HTMLElement).focus()
-            }
-            break
-        case 'Home':
-            e.preventDefault()
-            ;(options[0] as HTMLElement).focus()
-            break
-        case 'End':
-            e.preventDefault()
-            ;(options[options.length - 1] as HTMLElement).focus()
-            break
+    // Nur navigieren, wenn sich der Pfad geändert hat
+    if (newPath !== fullPath) {
+      await router.push(newPath);
     }
+    
+    closeDropdown();
+  } catch (error) {
+    console.error('Failed to switch language:', error);
+  }
 }
 
+// Keyboard-Event-Listener für bessere Zugänglichkeit
+function handleKeydown(event) {
+  if (!isOpen.value) return;
+  
+  // Tab oder Escape schließt das Dropdown
+  if (event.key === 'Tab' || event.key === 'Escape') {
+    closeDropdown();
+  }
+}
+
+// Lifecycle hooks
 onMounted(() => {
-    document.addEventListener('click', (e) => closeDropdown(e))
-    document.addEventListener('keydown', (e) => handleKeyDown(e))
-})
+  document.addEventListener('keydown', handleKeydown);
+});
 
-onUnmounted(() => {
-    document.removeEventListener('click', closeDropdown)
-    document.removeEventListener('keydown', handleKeyDown)
-})
+onBeforeUnmount(() => {
+  document.removeEventListener('keydown', handleKeydown);
+});
 </script>
 
-<style scoped lang="scss">
-@use '@/assets/scss/mixins' as *;
-
-.language-picker {
-    position: relative;
-    z-index: var(--z-index-header);
-}
-
-.current-language {
-    display: flex;
-    align-items: center;
-    gap: var(--padding-small);
-    padding: var(--padding-small) var(--padding-medium);
-    background-color: var(--surface-color);
-    border: 2px solid transparent;
-    border-radius: var(--border-radius);
-    color: var(--text-color);
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-medium);
-    line-height: var(--line-height-normal);
-    cursor: pointer;
-    min-width: var(--min-touch-target);
-    transition: all var(--transition-speed) var(--transition-bounce);
-
-    &:hover {
-        background-color: var(--secondary-color);
-        border-color: var(--highlight-color);
-        color: var(--text-color);
-
-        .dropdown-arrow {
-            color: var(--highlight-color);
-        }
-    }
-
-    &:focus-visible {
-        outline: var(--focus-outline-width) solid var(--focus-outline-color);
-        outline-offset: var(--focus-outline-offset);
-    }
-}
-
-.dropdown-arrow {
-    margin-left: auto;
-    transition: transform var(--transition-speed) var(--transition-bounce);
-    color: var(--text-secondary);
-
-    &.is-open {
-        transform: rotate(180deg);
-        color: var(--highlight-color);
-    }
-}
-
-.language-options {
-    position: absolute;
-    top: calc(100% + var(--padding-small));
-    left: 0;
-    width: 100%;
-    background-color: var(--surface-color);
-    border-radius: var(--border-radius);
-    border: 2px solid var(--surface-color-light);
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
-
-    .language-option {
-        display: flex;
-        align-items: center;
-        gap: var(--padding-small);
-        width: 100%;
-        padding: var(--padding-small) var(--padding-medium);
-        border: none;
-        background: transparent;
-        color: var(--text-color);
-        font-size: var(--font-size-base);
-        line-height: var(--line-height-normal);
-        text-align: left;
-        cursor: pointer;
-        transition: all var(--transition-speed) var(--transition-bounce);
-
-        &:hover {
-            background-color: var(--surface-color-light);
-            color: var(--text-color);
-        }
-
-        &:focus-visible {
-            outline: none;
-            background-color: var(--surface-color-light);
-            color: var(--text-color);
-            box-shadow: inset 0 0 0 var(--focus-outline-width) var(--focus-outline-color);
-        }
-
-        &:not(:last-child) {
-            border-bottom: 1px solid var(--surface-color-light);
-        }
-
-        &[aria-selected="true"] {
-            background-color: var(--surface-color-light);
-            color: var(--primary-color);
-            font-weight: var(--font-weight-semibold);
-        }
-    }
-}
-
-.flag {
-    font-size: var(--font-size-responsive-md);
-    line-height: var(--line-height-tight);
-}
-
-.language-name {
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-medium);
-}
-
-/* Screen reader only class */
-.sr-only {
-    @include sr-only;
-}
-
-/* Reduzierte Bewegung */
-@media (prefers-reduced-motion: reduce) {
-    .current-language,
-    .language-option,
-    .dropdown-arrow {
-        transition: none;
-    }
-}
-
-/* High Contrast Mode */
-@media (prefers-contrast: more) {
-    .current-language,
-    .language-options {
-        border-width: 3px;
-    }
-
-    .language-option {
-        border-bottom-width: 2px;
-    }
-}
-
-/* Mobile Anpassungen */
-@media (max-width: 768px) {
-    .current-language {
-        min-width: var(--min-touch-target);
-        padding: var(--padding-small);
-    }
-
-    .language-name {
-        font-size: var(--font-size-responsive-sm);
-    }
-
-    .language-option {
-        padding: var(--padding-small);
-    }
-}
-
-/* Unterstützung für Hover auf Touch-Geräten */
-@media (hover: hover) {
-    .current-language:hover,
-    .language-option:hover {
-        background-color: var(--surface-color-hover);
-        color: var(--text-color);
-    }
-}
+<style>
+/* 
+* Dieses Stylesheet ist absichtlich leer, da alle Stile
+* direkt über Tailwind-Klassen implementiert werden.
+* Für globale Utilities nutzen wir die assets/css/tailwind.css.
+*/
 </style>

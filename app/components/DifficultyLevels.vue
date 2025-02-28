@@ -1,96 +1,136 @@
 <template>
-    <section 
-        id="difficulty-levels" 
-        class="difficulty-section"
-        :aria-labelledby="sectionTitleId"
-        role="region"
+  <section 
+    id="difficulty-levels" 
+    class="max-w-content mx-auto px-large py-large"
+    :aria-labelledby="sectionTitleId"
+    role="region"
+  >
+    <!-- Sektions-Überschrift -->
+    <h2 
+      :id="sectionTitleId" 
+      class="text-center mb-large text-xl font-bold text-text leading-tight"
     >
-        <h2 :id="sectionTitleId" class="section-title">
-            {{ t('gameRules.difficultyLevels.title') }}
-        </h2>
+      {{ t('gameRules.difficultyLevels.title') }}
+    </h2>
 
-        <p 
-            class="section-text" 
-            :id="introTextId"
-            aria-live="polite"
-        >
-            {{ t('gameRules.difficultyLevels.intro') }}
-        </p>
+    <!-- Einführungstext -->
+    <p 
+      class="text-md leading-relaxed text-text mb-large max-w-prose mx-auto text-center"
+      :id="introTextId"
+      aria-live="polite"
+    >
+      {{ t('gameRules.difficultyLevels.intro') }}
+    </p>
 
-        <div 
-            class="difficulty-levels" 
-            role="list" 
-            :aria-labelledby="introTextId"
-        >
-            <div 
-                v-for="level in difficultyLevels" 
-                :key="level"
-                role="listitem"
-                class="difficulty-item"
-                :class="level"
-            >
-                <div class="difficulty-header">
-                    <span 
-                        class="difficulty-icon" 
-                        :class="level"
-                        aria-hidden="true"
-                    >
-                        <Icon :name="difficultyIcons[level]" />
-                    </span>
-                    <h3 :id="`${level}-title`" class="difficulty-title">
-                        {{ t(`gameRules.difficultyLevels.levels.${level}.title`) }}
-                    </h3>
-                </div>
-                <p 
-                    class="difficulty-description"
-                    :aria-labelledby="`${level}-title`"
-                >
-                    {{ t(`gameRules.difficultyLevels.levels.${level}.description`) }}
-                </p>
-            </div>
+    <!-- Schwierigkeitsstufen Grid -->
+    <div 
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-medium mb-large" 
+      role="list" 
+      :aria-labelledby="introTextId"
+    >
+      <!-- Einzelne Schwierigkeitsstufe -->
+      <div 
+        v-for="level in difficultyLevels" 
+        :key="level"
+        role="listitem"
+        class="bg-surface rounded-[--border-radius] p-medium shadow border-2 transition-all duration-normal focus-within:outline-focus focus-within:outline-offset-focus hover:-translate-y-2 hover:shadow-hover"
+        :class="{
+          'border-success': level === 'easy',
+          'border-highlight': level === 'medium',
+          'border-error': level === 'hard'
+        }"
+      >
+        <!-- Schwierigkeitsstufen-Header -->
+        <div class="flex items-center gap-small mb-medium">
+          <span 
+            class="flex items-center justify-center w-touch h-touch rounded-full bg-surface-light text-lg"
+            :class="{
+              'text-success': level === 'easy',
+              'text-highlight': level === 'medium',
+              'text-error': level === 'hard'
+            }"
+            aria-hidden="true"
+          >
+            <Icon :name="difficultyIcons[level]" />
+          </span>
+          
+          <h3 
+            :id="`${level}-title`" 
+            class="text-lg font-semibold text-text mb-small leading-tight"
+          >
+            {{ t(`gameRules.difficultyLevels.levels.${level}.title`) }}
+          </h3>
         </div>
-
+        
+        <!-- Beschreibung -->
         <p 
-            class="section-text titles-intro" 
-            :id="titlesIntroId"
-            aria-live="polite"
+          class="text-sm text-text-secondary mb-medium leading-normal"
+          :aria-labelledby="`${level}-title`"
         >
-            {{ t('gameRules.difficultyLevels.titles.intro') }}
+          {{ t(`gameRules.difficultyLevels.levels.${level}.description`) }}
         </p>
+      </div>
+    </div>
 
-        <div 
-            class="achievement-titles" 
-            role="list" 
-            :aria-labelledby="titlesIntroId"
-        >
-            <div 
-                v-for="title in achievementTitles" 
-                :key="title"
-                role="listitem"
-                class="achievement-item"
-                :class="title"
-            >
-                <div class="achievement-header">
-                    <span 
-                        class="achievement-icon" 
-                        :class="title"
-                        aria-hidden="true"
-                    >
-                        <Icon :name="achievementIcons[title]" />
-                    </span>
-                    <h3 :id="`${title}-title`" class="achievement-title">
-                        {{ t(`gameRules.difficultyLevels.titles.${title}.title`) }}
-                    </h3>
-                </div>
-                <p 
-                    class="achievement-description"
-                    :aria-labelledby="`${title}-title`"
-                >
-                    {{ t(`gameRules.difficultyLevels.titles.${title}.description`) }}
-                </p>
-            </div>
+    <!-- Einführungstext für Titel -->
+    <p 
+      class="text-md leading-relaxed text-text my-large max-w-prose mx-auto text-center"
+      :id="titlesIntroId"
+      aria-live="polite"
+    >
+      {{ t('gameRules.difficultyLevels.titles.intro') }}
+    </p>
+
+    <!-- Erfolge/Titel Grid -->
+    <div 
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-medium mb-large" 
+      role="list" 
+      :aria-labelledby="titlesIntroId"
+    >
+      <!-- Einzelner Titel -->
+      <div 
+        v-for="title in achievementTitles" 
+        :key="title"
+        role="listitem"
+        class="bg-surface rounded-[--border-radius] p-medium shadow border-2 transition-all duration-normal focus-within:outline-focus focus-within:outline-offset-focus hover:-translate-y-2 hover:shadow-hover motion-reduce:hover:transform-none"
+        :class="{
+          'border-bronze': title === 'novice',
+          'border-silver': title === 'master',
+          'border-gold': title === 'legend'
+        }"
+      >
+        <!-- Titel-Header -->
+        <div class="flex items-center gap-small mb-medium">
+          <span 
+            class="flex items-center justify-center w-touch h-touch rounded-full bg-surface-light text-lg"
+            :class="{
+              'text-bronze': title === 'novice',
+              'text-silver': title === 'master',
+              'text-gold': title === 'legend'
+            }"
+            aria-hidden="true"
+          >
+            <Icon :name="achievementIcons[title]" />
+          </span>
+          
+          <h3 
+            :id="`${title}-title`" 
+            class="text-lg font-semibold text-text mb-small leading-tight"
+          >
+            {{ t(`gameRules.difficultyLevels.titles.${title}.title`) }}
+          </h3>
         </div>
-    </section>
+        
+        <!-- Beschreibung -->
+        <p 
+          class="text-sm text-text-secondary mb-medium leading-normal"
+          :aria-labelledby="`${title}-title`"
+        >
+          {{ t(`gameRules.difficultyLevels.titles.${title}.description`) }}
+        </p>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -119,154 +159,3 @@ const achievementIcons = {
     legend: 'material-symbols:military-tech-rounded'
 } as const
 </script>
-
-<style lang="scss" scoped>
-.difficulty-section {
-    max-width: var(--content-width);
-    margin: 0 auto;
-    padding: var(--padding-large);
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: var(--padding-large);
-    font-size: var(--font-size-responsive-xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--text-color);
-    line-height: var(--line-height-tight);
-}
-
-.section-text {
-    font-size: var(--font-size-responsive-md);
-    line-height: var(--line-height-relaxed);
-    color: var(--text-color);
-    margin-bottom: var(--padding-large);
-    max-width: var(--max-line-length);
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-
-    &.titles-intro {
-        margin-top: var(--padding-large);
-    }
-}
-
-.difficulty-levels,
-.achievement-titles {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--padding-medium);
-    margin-bottom: var(--padding-large);
-}
-
-.difficulty-item,
-.achievement-item {
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
-    padding: var(--padding-medium);
-    box-shadow: var(--box-shadow);
-    border: 2px solid transparent;
-    transition: all var(--transition-speed) var(--transition-bounce);
-
-    @media (hover: hover) {
-        &:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--box-shadow-hover);
-            border-color: var(--primary-color);
-        }
-    }
-
-    &:focus-within {
-        outline: var(--focus-outline-width) solid var(--focus-outline-color);
-        outline-offset: var(--focus-outline-offset);
-    }
-
-    &.easy { border-color: var(--success-color); }
-    &.medium { border-color: var(--highlight-color); }
-    &.hard { border-color: var(--error-color); }
-
-    &.novice { border-color: var(--color-bronze); }
-    &.master { border-color: var(--color-silver); }
-    &.legend { border-color: var(--color-gold); }
-}
-
-.difficulty-header,
-.achievement-header {
-    display: flex;
-    align-items: center;
-    gap: var(--padding-small);
-    margin-bottom: var(--padding-medium);
-}
-
-.difficulty-icon,
-.achievement-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: var(--min-touch-target);
-    height: var(--min-touch-target);
-    border-radius: 50%;
-    background: var(--surface-color-light);
-    font-size: var(--font-size-responsive-lg);
-
-    &.easy { color: var(--success-color); }
-    &.medium { color: var(--highlight-color); }
-    &.hard { color: var(--error-color); }
-
-    &.novice { color: var(--color-bronze); }
-    &.master { color: var(--color-silver); }
-    &.legend { color: var(--color-gold); }
-}
-
-.difficulty-title,
-.achievement-title {
-    font-size: var(--font-size-responsive-lg);
-    font-weight: var(--font-weight-semibold);
-    color: var(--text-color);
-    margin-bottom: var(--padding-small);
-    line-height: var(--line-height-tight);
-}
-
-.difficulty-description,
-.achievement-description {
-    font-size: var(--font-size-responsive-sm);
-    color: var(--text-secondary);
-    margin-bottom: var(--padding-medium);
-    line-height: var(--line-height-normal);
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .difficulty-item,
-    .achievement-item {
-        transition: none;
-
-        &:hover {
-            transform: none;
-        }
-    }
-}
-
-@media (width <= 640px) {
-    .difficulty-levels,
-    .achievement-titles {
-        grid-template-columns: 1fr;
-    }
-
-    .difficulty-item,
-    .achievement-item {
-        padding: var(--padding-medium);
-    }
-
-    .difficulty-header,
-    .achievement-header {
-        gap: var(--padding-small);
-    }
-
-    .difficulty-icon,
-    .achievement-icon {
-        width: var(--min-touch-target);
-        height: var(--min-touch-target);
-        font-size: var(--font-size-responsive-md);
-    }
-}
-</style>

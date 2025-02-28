@@ -449,7 +449,11 @@
         "pauseButton": "Pause",
         "nextButton": "<< Tidigare - << Se visionen",
         "previousButton": "Föregående",
-        "closeButton": "Nära"
+        "closeButton": "Nära",
+        "languageSelector": "Ändra språk",
+        "currentLanguage": "Nuvarande språk",
+        "currentlySelected": "För närvarande valt",
+        "selectLanguage": "Välj ett språk"
     },
     "cookies": {
         "title": "Cookie Settings",
