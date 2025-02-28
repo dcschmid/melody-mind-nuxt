@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "@nuxt/image": "^1.9.0",
+    "@nuxtjs/tailwindcss": "^6.13.1",
     "@types/glob": "^8.1.0",
     "@unlazy/nuxt": "^0.12.1",
     "glob": "^11.0.1",

@@ -2,13 +2,13 @@
 
 :root {
   // Brand Colors
-  --primary-color: #b674ff;
-  --primary-color-rgb: 201, 144, 255;
+  --primary-color: rgb(var(--primary-color-rgb));
+  --primary-color-rgb: 182, 116, 255;
   --primary-color-dark: #9b4dff;
   --primary-color-light: #c990ff;
 
-  --secondary-color: #6363b5;
-  --secondary-color-rgb: 123, 123, 197;
+  --secondary-color: rgb(var(--secondary-color-rgb));
+  --secondary-color-rgb: 99, 99, 181;
   --secondary-color-dark: #4a4a9f;
   --secondary-color-light: #7b7bc5;
 
@@ -19,12 +19,20 @@
 
   // Surface Colors
   --background-color: #0a0a0a;
-  --surface-color: #141414;
-  --surface-color-light: #1e1e1e;
-  --surface-color-hover: #282828;
+  --background-color-rgb: 10, 10, 10;
+  
+  --surface-color: rgb(var(--surface-color-rgb));
+  --surface-color-rgb: 20, 20, 20;
+  
+  --surface-color-light: rgb(var(--surface-color-light-rgb));
+  --surface-color-light-rgb: 30, 30, 30;
+  
+  --surface-color-hover: rgb(var(--surface-color-hover-rgb));
+  --surface-color-hover-rgb: 40, 40, 40;
 
   // Text Colors
-  --text-color: #ffffff;
+  --text-color: rgb(var(--text-color-rgb));
+  --text-color-rgb: 255, 255, 255;
   --text-secondary: #f0f0f0;
   --text-color-dark: #000000;
 

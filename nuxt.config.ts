@@ -13,7 +13,10 @@ export default defineNuxtConfig({
       enabled: false,
     },
   },
-  css: ["~/assets/scss/main.scss"],
+  css: [
+    "~/assets/scss/main.scss",
+    "~/assets/css/tailwind.css"
+  ],
   app: {
     pageTransition: { name: "page" },
     head: {
@@ -72,7 +75,20 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["nuxt-icon", "@nuxtjs/i18n", '@nuxt/content', 'nuxt-fathom', '@nuxtjs/sitemap', '@nuxtjs/robots', 'nuxt-jsonld', '@nuxt/fonts', '@nuxt/image', '@unlazy/nuxt'],
+  modules: [
+    // Füge das Tailwind CSS Modul hinzu
+    '@nuxtjs/tailwindcss',
+    "nuxt-icon", 
+    "@nuxtjs/i18n", 
+    '@nuxt/content', 
+    'nuxt-fathom', 
+    '@nuxtjs/sitemap', 
+    '@nuxtjs/robots', 
+    'nuxt-jsonld', 
+    '@nuxt/fonts', 
+    '@nuxt/image', 
+    '@unlazy/nuxt'
+  ],
   unlazy: {
     ssr: true,
     placeholderSize: 32

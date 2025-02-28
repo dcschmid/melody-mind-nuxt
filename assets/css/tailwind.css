@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Basis-Styles und Resets */
+@layer base {
+  /* Hier können globale Element-Styles definiert werden */
+  h1 {
+    @apply text-2xl font-bold text-text leading-tight;
+  }
+  h2 {
+    @apply text-xl font-bold text-text-secondary leading-tight;
+  }
+  /* Weitere Basis-Elemente... */
+}
+
+/* Komponenten - besser strukturiert nach UI-Kategorien */
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply py-small px-medium font-semibold rounded shadow transition duration-normal;
+    @apply hover:shadow-hover transform hover:scale-105;
+    @apply focus:outline-focus focus:outline-offset-focus;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary text-text hover:bg-primary-dark;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-secondary text-text hover:bg-secondary-dark;
+  }
+  
+  .btn-icon {
+    @apply p-small rounded-full flex items-center justify-center relative overflow-hidden;
+    @apply transition duration-normal transform hover:scale-105;
+    @apply focus:outline-focus focus:outline-offset-focus;
+  }
+  
+  /* Navigation */
+  .menu-item {
+    @apply flex items-center gap-3 py-2 px-4 rounded-md bg-surface text-text font-medium;
+    @apply w-full no-underline border border-transparent transition-all duration-normal;
+    @apply hover:bg-surface-hover hover:border-primary-light hover:shadow hover:translate-x-1;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-surface rounded p-medium shadow border border-white/10 transition duration-normal;
+    @apply hover:shadow-hover;
+    @apply focus-within:outline-focus focus-within:outline-offset-focus;
+  }
+  
+  .game-card {
+    @apply card hover:transform hover:-translate-y-1;
+  }
+
+  /* Display Components */
+  .score-display {
+    @apply text-primary text-3xl md:text-4xl lg:text-5xl font-bold;
+  }
+  
+  /* Text Styles */
+  .paragraph {
+    @apply text-base leading-relaxed mb-medium max-w-prose;
+  }
+}
+
+/* Utilities */
+@layer utilities {
+  /* Layout Utilities */
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+  
+  /* Focus Management */
+  .focus-visible-custom {
+    @apply focus:outline-focus focus:outline-offset-focus focus:scale-105;
+  }
+  
+  .keyboard-user-focus {
+    @apply outline-focus outline-offset-focus;
+  }
+
+  /* Accessibility Utilities */
+  /* Visually hidden text for screen readers */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  
+  /* High contrast focus outline - meets WCAG AAA */
+  .focus-outline-high-contrast {
+    @apply focus-visible:outline-[3px] focus-visible:outline-yellow-300 focus-visible:outline-offset-4 focus-visible:outline;
+  }
+  
+  /* Support for prefers-reduced-motion */
+  .motion-safe {
+    @apply motion-safe:transition-all motion-safe:duration-normal;
+  }
+  
+  .motion-reduce {
+    @apply motion-reduce:transition-none motion-reduce:transform-none;
+  }
+}
