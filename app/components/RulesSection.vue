@@ -1,197 +1,82 @@
 <template>
-    <section 
-        class="rules-section" 
-        :aria-labelledby="id"
-        :class="{ 'has-background': background }"
+  <section
+    :aria-labelledby="id"
+    :class="[
+      'mb-8 w-full max-w-prose print:my-6 print:break-inside-avoid last:mb-0',
+      background ? 'bg-surface rounded-lg p-6 shadow-md dark:shadow-none print:bg-transparent print:border print:border-black md:p-4 dark:border-white/10' : '',
+    ]"
+  >
+    <h2
+      :id="id"
+      :class="[
+        'text-2xl font-bold leading-tight text-text mb-8 md:text-xl md:mb-4 print:text-black',
+        centered ? 'text-center' : ''
+      ]"
     >
-        <h2 
-            :id="id" 
-            class="section-title"
-            :class="{ 'centered': centered }"
-        >
-            <slot name="title"></slot>
-        </h2>
-        <div 
-            class="section-content"
-            :class="{ 'centered': centered }"
-        >
-            <slot></slot>
-        </div>
-    </section>
+      <slot name="title"></slot>
+    </h2>
+    <div
+      :class="[
+        'text-base leading-relaxed text-text print:text-black',
+        centered ? 'text-center' : ''
+      ]"
+    >
+      <slot></slot>
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">
 interface Props {
-    id: string
-    background?: boolean
-    centered?: boolean
+  id: string
+  background?: boolean
+  centered?: boolean
 }
 
 defineProps<Props>()
 </script>
 
-<style lang="scss" scoped>
-.rules-section {
-    margin-bottom: var(--padding-large);
-    max-width: var(--max-line-length);
-    width: 100%;
-
-    &:last-child {
-        margin-bottom: 0;
-    }
-
-    &.has-background {
-        background-color: var(--surface-color);
-        border-radius: var(--border-radius);
-        padding: var(--padding-medium);
-        box-shadow: var(--box-shadow);
-    }
+<style lang="scss">
+/* Spezifische Stile für verschachtelte Elemente, die mit Tailwind schwieriger sind */
+.rules-section a {
+  @apply text-primary underline underline-offset-2 transition-colors hover:text-primary-dark hover:underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded;
+  @apply print:text-black print:underline;
+  @apply dark:text-primary-light dark:hover:text-primary-lighter;
 }
 
-.section-title {
-    font-size: var(--font-size-responsive-xl);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-tight);
-    color: var(--text-color);
-    margin-bottom: var(--padding-large);
-
-    &.centered {
-        text-align: center;
-    }
+.rules-section strong,
+.rules-section em {
+  @apply font-semibold text-text dark:text-white print:text-black print:font-bold dark:text-white/90;
 }
 
-.section-content {
-    font-size: var(--font-size-responsive-sm);
-    line-height: var(--line-height-relaxed);
-    color: var(--text-color);
-
-    &.centered {
-        text-align: center;
-    }
-
-    /* Links innerhalb des Inhalts */
-    a {
-        color: var(--primary-color);
-        text-decoration: underline;
-        text-underline-offset: var(--spacing-text);
-        transition: color var(--transition-speed) var(--transition-bounce);
-
-        &:hover,
-        &:focus {
-            color: var(--primary-color-dark);
-            text-decoration-thickness: 0.125em;
-        }
-
-        &:focus-visible {
-            outline: var(--focus-outline-width) solid var(--focus-outline-color);
-            outline-offset: var(--focus-outline-offset);
-            border-radius: var(--border-radius);
-        }
-    }
-
-    /* Hervorgehobener Text */
-    strong,
-    em {
-        color: var(--text-color);
-        font-weight: var(--font-weight-semibold);
-    }
-}
-
-/* High Contrast Mode */
+/* Unterstützung für High Contrast Mode */
 @media (prefers-contrast: more) {
-    .rules-section {
-        &.has-background {
-            border: 2px solid var(--border-high-contrast);
-            box-shadow: none;
-        }
-    }
-
-    .section-title {
-        color: var(--text-high-contrast);
-    }
-
-    .section-content {
-        color: var(--text-high-contrast);
-
-        a {
-            color: var(--link-high-contrast);
-            text-decoration-thickness: 0.125em;
-
-            &:hover,
-            &:focus {
-                color: var(--link-hover-high-contrast);
-                text-decoration-thickness: 0.2em;
-            }
-        }
-
-        strong,
-        em {
-            color: var(--text-high-contrast);
-            font-weight: 700;
-        }
-    }
+  .rules-section {
+    @apply border-2 border-high-contrast shadow-none;
+  }
+  
+  .rules-section h2 {
+    @apply text-high-contrast;
+  }
+  
+  .rules-section div {
+    @apply text-high-contrast;
+  }
+  
+  .rules-section a {
+    @apply text-link-high-contrast underline decoration-[0.125em] hover:text-link-hover-high-contrast hover:decoration-[0.2em];
+  }
+  
+  .rules-section strong,
+  .rules-section em {
+    @apply font-bold text-high-contrast;
+  }
 }
 
 /* Reduzierte Bewegung */
 @media (prefers-reduced-motion: reduce) {
-    .section-content {
-        a {
-            transition: none;
-        }
-    }
-}
-
-/* Mobile Anpassungen */
-@media (max-width: 768px) {
-    .rules-section {
-        &.has-background {
-            padding: var(--padding-small);
-        }
-    }
-
-    .section-title {
-        font-size: var(--font-size-responsive-md);
-        margin-bottom: var(--padding-small);
-    }
-
-    .section-content {
-        font-size: var(--font-size-base);
-    }
-}
-
-/* Unterstützung für Hover auf Touch-Geräten */
-@media (hover: hover) {
-    .section-content {
-        a:hover {
-            text-decoration-thickness: 0.125em;
-        }
-    }
-}
-
-/* Druckoptimierung */
-@media print {
-    .rules-section {
-        margin: var(--padding-medium) 0;
-        page-break-inside: avoid;
-
-        &.has-background {
-            background: none;
-            border: 1px solid var(--button-text-color);
-            padding: var(--padding-medium);
-            box-shadow: none;
-        }
-    }
-
-    .section-title,
-    .section-content {
-        color: var(--button-text-color);
-    }
-
-    .section-content {
-        a {
-            color: var(--button-text-color);
-            text-decoration: underline;
-        }
-    }
+  .rules-section a {
+    @apply transition-none;
+  }
 }
 </style>

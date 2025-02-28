@@ -30,9 +30,9 @@ module.exports = {
         'highlight': 'var(--highlight-color)',
         'highlight-dark': 'var(--highlight-color-dark)',
         
-        // Surface Colors optimiert für Opacity-Modifier
+        // Surface Colors für Opacity-Modifier angepasst
         'surface': {
-          DEFAULT: 'rgb(var(--surface-color-rgb))',
+          DEFAULT: 'rgb(var(--surface-color-rgb))', // Stellen Sie sicher, dass diese Var nur die RGB-Werte enthält (z.B. "255, 255, 255")
           light: 'rgb(var(--surface-color-light-rgb))',
           hover: 'rgb(var(--surface-color-hover-rgb))',
         },

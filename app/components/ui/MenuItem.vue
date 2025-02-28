@@ -86,9 +86,9 @@ const props = defineProps({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 .menu-item-modern {
-  @apply flex items-center gap-4 py-3 px-4 rounded-lg bg-surface/60 backdrop-blur-sm text-text;
+  @apply flex items-center gap-4 py-3 px-4 rounded-lg bg-surface bg-opacity-60 backdrop-blur-sm text-text;
   @apply font-medium w-full no-underline border border-white/5 transition-all duration-300;
   @apply relative overflow-hidden min-h-[56px];
   

@@ -1,0 +1,21 @@
+:root {
+  /* Stellen Sie sicher, dass RGB-Variablen nur die RGB-Werte ohne "rgb()" enthalten */
+  --surface-color-rgb: 245, 245, 245; /* Beispielwert: Hellgrau */
+  --surface-color-light-rgb: 250, 250, 250;
+  --surface-color-hover-rgb: 240, 240, 240;
+  
+  /* Andere Farb-RGB-Werte für Opacity-Unterstützung */
+  --primary-color-rgb: 59, 130, 246; /* Beispiel: Blau */
+  --secondary-color-rgb: 107, 114, 128; /* Beispiel: Grau */
+  --text-color-rgb: 17, 24, 39; /* Beispiel: Dunkelgrau */
+  
+  /* Rest Ihrer Variablen */
+}
+
+.dark {
+  --surface-color-rgb: 30, 30, 30;
+  --surface-color-light-rgb: 40, 40, 40;
+  --surface-color-hover-rgb: 50, 50, 50;
+  
+  /* Andere Dark-Mode Farben */
+}
