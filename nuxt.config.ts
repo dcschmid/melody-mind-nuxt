@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { resolve } from 'path'
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineNuxtConfig({
   future: {
@@ -76,8 +77,6 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    // Füge das Tailwind CSS Modul hinzu
-    '@nuxtjs/tailwindcss',
     "nuxt-icon", 
     "@nuxtjs/i18n", 
     '@nuxt/content', 
@@ -196,6 +195,9 @@ export default defineNuxtConfig({
     ],
   },
   vite: {
+    plugins: [
+      tailwindcss(),
+    ],
     css: {
       preprocessorOptions: {
         scss: {
