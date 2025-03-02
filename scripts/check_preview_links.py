@@ -39,25 +39,27 @@ Note:
     directories under the base directory.
 """
 
+import argparse
 import json
 import os
-import requests
-import argparse
-from concurrent.futures import ThreadPoolExecutor
-from pathlib import Path
-from typing import Dict, List, Tuple, Optional
-from datetime import datetime
-from urllib.parse import urlparse
 import re
 import time
+from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime
+from pathlib import Path
+from typing import List, Optional, Tuple
+from urllib.parse import urlparse
+
+import requests
+
 
 class PreviewLinkChecker:
     """A class to check the validity of music preview links across streaming services.
-    
+
     This class handles the validation of preview URLs from various music streaming
     services, including Spotify, Apple Music, and Deezer. It implements service-specific
     request handling and provides detailed reporting capabilities.
-    
+
     Attributes:
         base_dir (Path): Base directory containing JSON files with preview links
         languages (Optional[List[str]]): List of language codes to process, or None for all
@@ -65,10 +67,16 @@ class PreviewLinkChecker:
         retry_delay (float): Initial delay between retries in seconds
         service_patterns (Dict[str, str]): Regex patterns to identify streaming services
     """
-    
-    def __init__(self, base_dir: Path, languages: Optional[List[str]] = None, max_retries: int = 3, retry_delay: float = 1.0):
+
+    def __init__(
+        self,
+        base_dir: Path,
+        languages: Optional[List[str]] = None,
+        max_retries: int = 3,
+        retry_delay: float = 1.0,
+    ):
         """Initialize the PreviewLinkChecker.
-        
+
         Args:
             base_dir (Path): Directory containing language-specific JSON files. Should contain
                           subdirectories for each language (e.g., 'en/', 'de/', etc.)
@@ -86,21 +94,21 @@ class PreviewLinkChecker:
         self.max_retries = max_retries
         self.retry_delay = retry_delay
         self.service_patterns = {
-            'apple_music': r'audio-ssl\.itunes\.apple\.com',
-            'deezer': r'cdnt-preview\.dzcdn\.net',
-            'spotify': r'p\.scdn\.co'
+            "apple_music": r"audio-ssl\.itunes\.apple\.com",
+            "deezer": r"cdnt-preview\.dzcdn\.net",
+            "spotify": r"p\.scdn\.co",
         }
-        
+
     def detect_service(self, url: str) -> str:
         """Detect which streaming service the preview URL belongs to.
-        
+
         Analyzes the URL domain against known patterns to identify the streaming service.
         The detection is based on domain patterns defined in self.service_patterns.
-        
+
         Args:
             url (str): The preview URL to analyze. Must be a valid URL string starting
                      with 'http://' or 'https://'
-            
+
         Returns:
             str: Service identifier, one of:
                 - 'spotify': For Spotify preview URLs (p.scdn.co)
@@ -112,25 +120,27 @@ class PreviewLinkChecker:
         for service, pattern in self.service_patterns.items():
             if re.search(pattern, domain):
                 return service
-        return 'unknown'
+        return "unknown"
 
     def check_preview_link(self, url: str) -> Tuple[str, bool, str, str]:
-        """Check if a preview link is accessible with service-specific handling and retries.
-        
+        """Check if a preview link is accessible with service-specific handling
+        and retries.
+
         Attempts to access the preview URL using service-specific request methods.
-        Uses HEAD requests for Apple Music and GET requests with Range headers for other services.
+        Uses HEAD requests for Apple Music and GET requests with Range headers for
+        other services.
         Implements retry logic with exponential backoff for failed requests.
-        
+
         Args:
             url (str): The preview URL to check. Must be a valid HTTP(S) URL.
-            
+
         Returns:
             Tuple[str, bool, str, str]: A tuple containing:
                 - service (str): Service identifier ('spotify', 'apple_music', 'deezer', 'unknown')
                 - is_valid (bool): True if URL is accessible and returns valid audio content
                 - error (str): Error message if any occurred, empty string if successful
                 - content_type (str): Content-Type header from response, 'unknown' if not available
-                
+
         Request Behavior:
             - Apple Music: Uses HEAD request
             - Others: Uses GET request with Range header
@@ -139,44 +149,60 @@ class PreviewLinkChecker:
             - Considers 200 and 206 as successful status codes
         """
         service = self.detect_service(url)
-        
+
         for attempt in range(self.max_retries):
             try:
                 headers = {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+                    "User-Agent": (
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                        "AppleWebKit/537.36 (KHTML, like Gecko) "
+                        "Chrome/91.0.4472.124 Safari/537.36"
+                    )
                 }
-                
-                if service == 'apple_music':
+
+                if service == "apple_music":
                     response = requests.head(url, headers=headers, timeout=10)
                 else:
-                    headers['Range'] = 'bytes=0-1024'
+                    headers["Range"] = "bytes=0-1024"
                     response = requests.get(url, headers=headers, timeout=10)
 
                 is_valid = response.status_code in [200, 206]
                 if is_valid:
-                    return service, True, "", response.headers.get('Content-Type', 'unknown')
-                
+                    return (
+                        service,
+                        True,
+                        "",
+                        response.headers.get("Content-Type", "unknown"),
+                    )
+
                 error = f"Status code: {response.status_code}"
                 if attempt < self.max_retries - 1:
                     print(f"Retry {attempt + 1}/{self.max_retries} for {url} - {error}")
                     time.sleep(self.retry_delay * (attempt + 1))  # Exponential backoff
                     continue
-                    
-                return service, False, error, response.headers.get('Content-Type', 'unknown')
-                
+
+                return (
+                    service,
+                    False,
+                    error,
+                    response.headers.get("Content-Type", "unknown"),
+                )
+
             except requests.RequestException as e:
                 error = str(e)
                 if attempt < self.max_retries - 1:
                     print(f"Retry {attempt + 1}/{self.max_retries} for {url} - {error}")
                     time.sleep(self.retry_delay * (attempt + 1))
                     continue
-                return service, False, error, 'unknown'
-        
-        return service, False, "Max retries exceeded", 'unknown'
+                return service, False, error, "unknown"
 
-    def process_file(self, file_path: str) -> List[Tuple[str, str, str, str, bool, str, str, str]]:
+        return service, False, "Max retries exceeded", "unknown"
+
+    def process_file(
+        self, file_path: str
+    ) -> List[Tuple[str, str, str, str, bool, str, str, str]]:
         """Process a single JSON file and check all preview links.
-        
+
         Reads a JSON file containing music entries and validates all preview links found.
         Each JSON entry should follow this structure:
         {
@@ -185,10 +211,10 @@ class PreviewLinkChecker:
             "preview_link": "https://example.com/preview.mp3"
             ...
         }
-        
+
         Args:
             file_path (str): Absolute or relative path to the JSON file to process
-            
+
         Returns:
             List[Tuple[str, str, str, str, bool, str, str, str]]: List of tuples containing
             for each preview link:
@@ -200,7 +226,7 @@ class PreviewLinkChecker:
                 - error (str): Error message if any, empty string if successful
                 - content_type (str): Content type of the preview file
                 - relative_path (str): File path relative to project root
-                
+
         Error Handling:
             - Missing required fields are replaced with default values
             - File read errors are logged but don't stop processing
@@ -208,32 +234,51 @@ class PreviewLinkChecker:
         """
         results = []
         try:
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with open(file_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
-                
+
             for entry in data:
-                if 'preview_link' in entry and entry['preview_link']:
-                    artist = entry.get('artist', 'Unknown Artist')
-                    album = entry.get('album', 'Unknown Album')
-                    url = entry['preview_link']
-                    service, is_valid, error, content_type = self.check_preview_link(url)
+                if "preview_link" in entry and entry["preview_link"]:
+                    artist = entry.get("artist", "Unknown Artist")
+                    album = entry.get("album", "Unknown Album")
+                    url = entry["preview_link"]
+                    service, is_valid, error, content_type = self.check_preview_link(
+                        url
+                    )
                     # Add file_path to results
-                    relative_path = os.path.relpath(file_path, self.base_dir.parent.parent)
-                    results.append((artist, album, url, service, is_valid, error, content_type, relative_path))
-                    
+                    relative_path = os.path.relpath(
+                        file_path, self.base_dir.parent.parent
+                    )
+                    results.append(
+                        (
+                            artist,
+                            album,
+                            url,
+                            service,
+                            is_valid,
+                            error,
+                            content_type,
+                            relative_path,
+                        )
+                    )
+
         except Exception as e:
             print(f"Error processing file {file_path}: {e}")
         return results
 
-    def generate_html_report(self, all_results: List[Tuple[str, str, str, str, bool, str, str, str]], output_path: str):
+    def generate_html_report(
+        self,
+        all_results: List[Tuple[str, str, str, str, bool, str, str, str]],
+        output_path: str,
+    ):
         """Generate an HTML report with the results.
-        
+
         Creates a detailed HTML report containing:
         - Overall statistics (total links, accessible/inaccessible counts)
         - Service distribution breakdown
         - Detailed list of invalid or inaccessible links
         - Retry configuration information
-        
+
         Args:
             all_results: List of tuples containing check results for all links
             output_path: Path where the HTML report should be saved
@@ -281,7 +326,16 @@ class PreviewLinkChecker:
 
         # Generate error entries HTML
         error_entries = ""
-        for artist, album, url, service, is_valid, error, content_type, file_path in invalid_links:
+        for (
+            artist,
+            album,
+            url,
+            service,
+            is_valid,
+            error,
+            content_type,
+            file_path,
+        ) in invalid_links:
             error_entries += f"""
                 <div class="error-entry">
                     <span class="service-tag {service}">{service}</span>
@@ -326,35 +380,37 @@ class PreviewLinkChecker:
         """
 
         # Write HTML report
-        with open(output_path, 'w', encoding='utf-8') as f:
+        with open(output_path, "w", encoding="utf-8") as f:
             f.write(html_content)
 
     def run(self):
         """Run the link checker on all JSON files.
-        
+
         Main execution method that:
         1. Discovers JSON files in specified language directories
         2. Processes files in parallel using a thread pool
         3. Collects results from all processed files
         4. Generates a comprehensive HTML report
-        
+
         The method uses ThreadPoolExecutor for parallel processing to improve
         performance when checking multiple files.
         """
         json_files = []
-        
+
         # Find all JSON files in specified languages
         for lang_dir in self.base_dir.iterdir():
             if lang_dir.is_dir():
                 if self.languages is None or lang_dir.name in self.languages:
-                    json_files.extend(lang_dir.glob('*.json'))
+                    json_files.extend(lang_dir.glob("*.json"))
 
         # Process all files using a thread pool
         all_results = []
         with ThreadPoolExecutor(max_workers=5) as executor:
-            future_to_file = {executor.submit(self.process_file, str(file_path)): file_path 
-                            for file_path in json_files}
-            
+            future_to_file = {
+                executor.submit(self.process_file, str(file_path)): file_path
+                for file_path in json_files
+            }
+
             for future in future_to_file:
                 file_path = future_to_file[future]
                 try:
@@ -365,32 +421,58 @@ class PreviewLinkChecker:
                     print(f"Error processing {file_path}: {e}")
 
         # Generate HTML report
-        report_path = self.base_dir.parent.parent / 'reports' / f'preview_link_report_{datetime.now().strftime("%Y%m%d_%H%M%S")}.html'
+        report_path = (
+            self.base_dir.parent.parent
+            / "reports"
+            / f'preview_link_report_{datetime.now().strftime("%Y%m%d_%H%M%S")}.html'
+        )
         report_path.parent.mkdir(exist_ok=True)
         self.generate_html_report(all_results, str(report_path))
         print(f"\nReport generated at: {report_path}")
 
+
 def main() -> None:
     """Main entry point for the preview link checker script.
-    
+
     Parses command line arguments and initializes the PreviewLinkChecker
     with the specified configuration. Supports checking specific languages
     and customizing retry behavior.
-    
+
     Command line arguments:
         --languages: Space-separated list of language codes to check
         --retries: Number of retry attempts for failed requests
         --retry-delay: Initial delay between retries in seconds
     """
-    parser = argparse.ArgumentParser(description='Check preview links in genre JSON files')
-    parser.add_argument('--languages', nargs='+', help='Specific language codes to check (e.g., en de fr)')
-    parser.add_argument('--retries', type=int, default=3, help='Number of retry attempts for failed requests')
-    parser.add_argument('--retry-delay', type=float, default=1.0, help='Initial delay between retries in seconds')
+    parser = argparse.ArgumentParser(
+        description="Check preview links in genre JSON files"
+    )
+    parser.add_argument(
+        "--languages",
+        nargs="+",
+        help="Specific language codes to check (e.g., en de fr)",
+    )
+    parser.add_argument(
+        "--retries",
+        type=int,
+        default=3,
+        help="Number of retry attempts for failed requests",
+    )
+    parser.add_argument(
+        "--retry-delay",
+        type=float,
+        default=1.0,
+        help="Initial delay between retries in seconds",
+    )
     args = parser.parse_args()
 
-    base_dir = Path(__file__).parent.parent / 'app' / 'json' / 'genres'
-    checker = PreviewLinkChecker(base_dir, args.languages, args.retries, args.retry_delay)
+    base_dir = Path(__file__).parent.parent / "app" / "json" / "genres"
+    checker = PreviewLinkChecker(
+        base_dir, args.languages, args.retries, args.retry_delay
+    )
     checker.run()
 
+
+if __name__ == "__main__":
+    main()
 if __name__ == "__main__":
     main()

@@ -1,31 +1,20 @@
-# Core NLP packages
-spacy>=3.7.2
-nltk>=3.8.1
-textstat>=0.7.3
-langdetect>=1.0.9
-
-# Translation
-argostranslate>=1.9.1
-
 # HTTP and API
 requests>=2.31.0
-openai>=1.6.1
 
-# Development tools
+# Development and Linting tools
 black>=23.12.1  # Code formatting
+isort>=5.12.0   # Import sorting
+flake8>=6.1.0   # Linting
+mypy>=1.5.1     # Static type checking
 pylint>=3.0.3   # Code quality
+bandit>=1.7.5   # Security analysis
+ruff>=0.1.0     # Fast linting
+pre-commit>=3.4.0  # Git hooks
 pytest>=7.4.4   # Testing
 
-# Required spaCy language models - install with:
-# python -m spacy download de_core_news_lg
-# python -m spacy download en_core_web_lg
-# python -m spacy download fr_core_news_lg
-# python -m spacy download es_core_news_lg
-# python -m spacy download it_core_news_lg
-# python -m spacy download nl_core_news_lg
-# python -m spacy download pl_core_news_lg
-# python -m spacy download pt_core_news_lg
-# python -m spacy download ru_core_news_lg
-# python -m spacy download sv_core_news_lg
-# python -m spacy download fi_core_news_lg
-# python -m spacy download da_core_news_lg
+# Type stubs for external libraries
+types-requests>=2.31.0.1
+
+# Note: Based on analysis of the Python scripts in the project, only requests is
+# actually used in the code. The development tools are included as per the
+# PYTHON-LINTING-GUIDE.md for code quality and formatting.

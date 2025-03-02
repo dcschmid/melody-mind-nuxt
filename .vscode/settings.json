@@ -1,0 +1,56 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue"],
+  "eslint.useFlatConfig": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll": "explicit"
+    }
+  },
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.mypyEnabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.formatting.provider": "none",
+  "python.formatting.blackEnabled": true,
+  "python.linting.banditEnabled": true,
+  "python.linting.banditArgs": ["--configfile", "pyproject.toml"],
+  "mypy.dmypyExecutable": "/home/daniel/projects/melody-mind-nuxt/venv/bin/dmypy",
+  "python.defaultInterpreterPath": "/home/daniel/projects/melody-mind-nuxt/venv/bin/python",
+  "isort.args": ["--profile", "black"],
+  "python.analysis.typeCheckingMode": "basic",
+  "i18n-ally.localesPaths": [
+    "app/i18n",
+    "app/constants/messages",
+    "app/i18n/locales",
+    "venv/lib/python3.12/site-packages/spacy/lang",
+    "venv/lib64/python3.12/site-packages/spacy/lang",
+    "scripts/venv/lib/python3.12/site-packages/spacy/lang",
+    "scripts/venv/lib/python3.12/site-packages/triton/language",
+    "scripts/venv/lib64/python3.12/site-packages/spacy/lang",
+    "scripts/venv/lib64/python3.12/site-packages/triton/language"
+  ]
+}

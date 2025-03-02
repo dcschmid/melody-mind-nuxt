@@ -13,8 +13,9 @@ Challenge your musical knowledge with Melody Mind, an engaging and addictive mus
 
 - 🎯 Interactive music guessing gameplay
 - 🏆 Global highscore system
-- 📱 Modern and responsive design
+- 📱 Modern and responsive design with Tailwind CSS
 - 💫 Progressive Web App (PWA) support
+- ♿ WCAG AAA conformity for maximum accessibility
 
 ### 🌍 Language Support
 
@@ -26,14 +27,13 @@ Melody Mind is available in multiple languages:
 - 🇮🇹 Italian (it)
 - 🇪🇸 Spanish (es)
 - 🇳🇱 Dutch (nl)
-- 🇵🇱 Polish (pl)
 - 🇵🇹 Portuguese (pt)
-- 🇷🇺 Russian (ru)
 - 🇸🇪 Swedish (sv)
 - 🇫🇮 Finnish (fi)
 - 🇩🇰 Danish (da)
 
 All languages feature:
+
 - 🎵 Music content in the respective language
 - 📝 Localized UI elements
 - ✍️ Grammar-checked translations
@@ -42,18 +42,23 @@ All languages feature:
 ## 🛠️ Technology Stack
 
 ### Frontend
+
 - **Framework**: Nuxt.js 3
 - **Language**: TypeScript
-- **Styling**: SASS
+- **Styling**: Tailwind CSS
 - **State**: Vue Composition API with VueUse
 
 ### Backend & Database
+
 - **API**: REST with Nuxt Server Routes
 
-### Tools & Optimization
-- **i18n**: @nuxtjs/i18n
-- **Icons**: nuxt-icon
-- **Images**: @nuxt/image with Sharp
+## 🛠️ Tools & Optimization
+
+- **i18n**: @nuxtjs/i18n for multilingual support
+- **Icons**: nuxt-icon for scalable icons
+- **Images**: @nuxt/image with Sharp for optimized images
+- **Linting**: ESLint, Prettier, and Python linting tools
+- **Accessibility**: WCAG AAA compliance with Tailwind CSS
 
 ## 💻 Setup & Installation
 
@@ -61,8 +66,7 @@ All languages feature:
 
 - **Node.js**: v16 or higher
 - **Package Manager**: npm or yarn
-- **Python**: 3.x (for utility scripts)
-- **Java**: JRE (for LanguageTool)
+- **Python**: 3.8+ (for utility scripts)
 
 ### 1. Clone & Setup
 
@@ -87,42 +91,13 @@ source venv/bin/activate  # Linux/macOS
 pip install -r requirements.txt
 ```
 
-### 3. Language Models
+### 3. Environment Configuration
 
 ```bash
-# Install spaCy models
-python -m spacy download en_core_web_lg
-python -m spacy download de_core_news_lg
-python -m spacy download fr_core_news_lg
-python -m spacy download es_core_news_lg
-python -m spacy download it_core_news_lg
+# Create environment file
+cp .env.example .env
 
-# Install NLTK data
-python -c "import nltk; nltk.download('punkt'); nltk.download('averaged_perceptron_tagger')"
-```
-
-### 4. LanguageTool Setup
-
-```bash
-# Download and setup LanguageTool
-mkdir languagetool && cd languagetool
-wget https://languagetool.org/download/LanguageTool-stable.zip
-unzip LanguageTool-stable.zip
-mv LanguageTool-*/* . && rm -r LanguageTool-*
-cd ..
-```
-
-### 5. Environment Configuration
-
-1. Create environment file:
-```bash
-cp .env.master .env
-```
-
-2. Configure variables in `.env`:
-```env
-OPENAI_API_KEY=your_api_key_here
-# Add other environment variables as needed
+# Configure environment variables as needed
 ```
 
 ## 💻 Development
@@ -140,22 +115,6 @@ npm run start
 
 Access the application at `http://localhost:3000`
 
-### Environment Management
-
-```bash
-# Activate Python environment
-source venv/bin/activate  # Linux/macOS
-venv\Scripts\activate     # Windows
-
-# Update dependencies
-npm update               # Node.js packages
-pip install -r requirements.txt --upgrade  # Python packages
-
-# Maintenance
-find . -type d -name "__pycache__" -exec rm -r {} +  # Clean Python cache
-python -m spacy validate  # Verify language models
-```
-
 ## 🛠️ Development Tools
 
 ### 🌍 Supported Languages
@@ -168,462 +127,430 @@ All development tools support the following languages:
 - 🇫🇷 French (fr)
 - 🇮🇹 Italian (it)
 - 🇳🇱 Dutch (nl)
-- 🇵🇱 Polish (pl)
 - 🇵🇹 Portuguese (pt)
-- 🇷🇺 Russian (ru)
 - 🇸🇪 Swedish (sv)
 - 🇫🇮 Finnish (fi)
 - 🇩🇰 Danish (da)
 
-### 📋 Script Overview
+### 📝 Utility Scripts
 
-| Category | Script | Purpose | Key Features |
-|----------|---------|----------|------------|
-| **Content** | `generate_content.py` | Content generation | Multi-language, metadata |
-| **Media** | `check_covers.sh` | Cover verification | File checks, error reporting |
-| | `generate-thumbhash.ts` | Image optimization | Thumbnails, blur hashes |
-| **Links** | `check_preview_links.py` | Link validation | Multi-threaded checks, reports |
-| | `sync_music_links.py` | Link synchronization | Cross-platform sync |
-| **SEO** | `generate-sitemap-urls.js` | Sitemap generation | Multi-language URLs |
-| **Translation** | `translate_correct_readability.py` | Text translation & correction | Multi-language, grammar check, readability |
+| Script                     | Purpose                       | Key Features                               |
+| -------------------------- | ----------------------------- | ------------------------------------------ |
+| `generate_content.py`      | Content generation            | Multi-language, metadata                   |
+| `check_covers.sh`          | Cover verification            | File checks, error reporting               |
+| `check_preview_links.py`   | Link validation               | Multi-threaded checks, reports             |
+| `sync_music_links.py`      | Link synchronization          | Cross-platform sync                        |
+| `generate-sitemap-urls.js` | Sitemap generation            | Multi-language URLs                        |
+| `generate-thumbhash.ts`    | Image optimization            | Blur hashes, placeholders                  |
 
-### 🔧 Setup & Dependencies
+#### Script Usage Guide
 
-```bash
-# Install all dependencies
-npm install                    # Node.js packages
-pip install -r requirements.txt # Python packages
+##### 1. `check_preview_links.py` - Music Preview Link Validator
 
-# Install language models
-python -m spacy download en_core_web_lg
-
-# Install external tools
-./scripts/install_languagetool.sh
-```
-
-### 📄 Translation & Grammar Checking
-
-The `translate_correct_readability.py` script provides comprehensive translation and text quality enhancement:
-
-#### Features
-- 🌐 Multi-language translation
-- ✅ Grammar correction
-- 📋 Style improvements
-- 📖 Readability scoring
-- 🔄 Format preservation
-
-#### Usage
-
-1. Process a single file:
-```bash
-# Translate/check Markdown file
-python translate_correct_readability.py \
-  --file path/to/file.md \
-  --type md \
-  --target-lang de
-
-# Translate/check JSON file
-python translate_correct_readability.py \
-  --file path/to/file.json \
-  --type json \
-  --target-lang fr
-```
-
-2. Process entire folders:
-```bash
-# Process Markdown folder
-python translate_correct_readability.py \
-  --folder content/blog \
-  --type md
-
-# Process JSON folder (categories)
-python translate_correct_readability.py \
-  --folder locales \
-  --type json \
-  --content categories
-
-# Process JSON folder (locales)
-python translate_correct_readability.py \
-  --folder locales \
-  --type json \
-  --content locales
-```
-
-#### Supported Languages
-- 🇩🇪 German (de)
-- 🇬🇧 English (en)
-- 🇫🇷 French (fr)
-- 🇪🇸 Spanish (es)
-- 🇮🇹 Italian (it)
-- 🇳🇱 Dutch (nl)
-- 🇵🇱 Polish (pl)
-- 🇵🇹 Portuguese (pt)
-- 🇷🇺 Russian (ru)
-- 🇸🇪 Swedish (sv)
-- 🇫🇮 Finnish (fi)
-- 🇩🇰 Danish (da)
-
-### 💻 Script Usage
-
-#### Content Management
-```bash
-# Generate content
-python generate_content.py --languages de en fr
-
-# Verify cover images
-./check_covers.sh
-
-# Generate image thumbnails
-npm run generate-thumbhash
-```
-
-#### Link Management
-```bash
-# Check preview links
-python check_preview_links.py --languages de en
-
-# Sync music links
-python sync_music_links.py --check-only
-```
-
-#### SEO & Translation
-```bash
-# Generate sitemap
-node generate-sitemap-urls.js > app/sitemap-urls.js
-
-# Translate content
-python translate_correct_readability.py --source de --target en
-```
-
-### ✅ Best Practices
-
-#### Before Running
-- 🔍 Verify configurations
-- 📁 Backup data if needed
-- 🔧 Check dependencies
-- ⚡ Activate virtual environment
-
-#### During Execution
-- 📊 Monitor progress
-- ⚠️ Don't interrupt long processes
-- 📝 Check logs regularly
-
-#### After Completion
-- ✅ Verify outputs
-- 🧹 Clean up temp files
-- 📄 Document any issues
-
-### ❗ Troubleshooting
-
-#### Common Issues
-1. **Language Issues**
-   - Check text length
-   - Verify encoding
-   - Validate language codes
-
-2. **Link Problems**
-   - Check API access
-   - Verify network connection
-   - Validate URL format
-
-3. **File Issues**
-   - Check permissions
-   - Verify paths
-   - Check disk space
-
-#### Getting Help
-```bash
-# View script help
-python script_name.py --help
-
-# Check logs
-cat logs/latest.log
-```
-
-### 📝 Script Details
-
-#### Content Generation
-
-##### `generate_content.py`
-- **Purpose**: Generates and updates site content
-- **Features**:
-  - Multi-language content generation
-  - Category and subcategory management
-  - Automatic metadata generation
-- **Supported Languages**:
-  - German (de)
-  - English (en)
-  - Spanish (es)
-  - French (fr)
-  - Italian (it)
-  - Dutch (nl)
-  - Polish (pl)
-  - Portuguese (pt)
-  - Russian (ru)
-  - Swedish (sv)
-  - Finnish (fi)
-  - Danish (da)
-- **Usage**: `python generate_content.py [--languages LANG1 LANG2]`
-
-#### Validation Scripts
-
-##### `check_preview_links.py`
-- **Purpose**: Validates music preview links across streaming services
-- **Features**:
-  - Multi-threaded link checking
-  - Service-specific request handling (Apple Music, Deezer, Spotify)
-  - Detailed HTML report generation with statistics and error details
-  - Automatic retries with exponential backoff
-  - Language filtering options (de, en, es, fr, it, nl, pl, pt, ru, sv, fi, da)
-- **Report Contents**:
-  - Total links checked and status
-  - Service distribution breakdown
-  - Detailed error information
-  - File locations and content types
-- **Usage**: 
-  ```bash
-  # Check all languages
-  python check_preview_links.py
-  
-  # Check specific languages
-  python check_preview_links.py --languages en de fr
-  
-  # Customize retry behavior
-  python check_preview_links.py --retries 5 --retry-delay 2.0
-  ```
-
-##### `check_covers.sh`
-- **Purpose**: Verifies existence of cover images
-- **Features**:
-  - Checks all JSON files in language directories
-  - Tracks duplicate checks to avoid redundant reporting
-  - Clear error reporting with file references
-  - Success message when all covers are present
-  - Handles special characters in filenames
-- **Requirements**:
-  - bash shell
-  - jq (JSON processor)
-- **Example Output**:
-  ```bash
-  🔍 Searching for missing cover images...
-  
-  ❌ Missing cover: /bandcover/1950er/artist_album.jpg
-     Referenced in: de/50er.json
-  
-  ✅ All cover images are present!
-  ```
-
-#### Media Processing
-
-##### `generate-thumbhash.ts`
-- **Purpose**: Generates image thumbnails and blur hashes
-- **Features**:
-  - Efficient image compression
-  - Blur hash generation for loading states
-  - Multiple format support
-- **Usage**: `npm run generate-thumbhash`
-
-#### SEO Tools
-
-##### `generate-sitemap-urls.js`
-- **Purpose**: Generates complete sitemap for all playable categories
-- **Features**:
-  - Multi-language URL generation (de, en, es, fr, it, nl, pl, pt, ru, sv, fi, da)
-  - Dynamic route handling
-  - Automatic playable category detection
-  - Nuxt sitemap integration
-- **Output**: JavaScript module with URLs array
-- **Example**:
-  ```javascript
-  export default [
-    "/1950er",
-    "/de/1950er",
-    "/en/1950er",
-    // ... more URLs
-  ];
-  ```
-- **Usage**: `node generate-sitemap-urls.js > app/sitemap-urls.js`
-
-#### Synchronization
-
-##### `sync_music_links.py`
-- **Purpose**: Synchronizes music links across platforms
-- **Features**:
-  - Multi-platform link validation
-  - Automatic link updates
-  - Detailed progress reporting
-  - Preserves other content in target files
-  - Supports all languages (de, en, es, fr, it, nl, pl, pt, ru, sv, fi, da)
-- **Synchronized Fields**:
-  - coverSrc
-  - spotify_link
-  - deezer_link
-  - apple_music_link
-  - preview_link
-- **Example Output**:
-  ```bash
-  Processing 50er.json
-  
-  Updating /app/json/genres/en/50er.json
-  Updated entry: Miles Davis - Kind of Blue
-  Updated entry: Elvis Presley - Elvis Presley
-  Total entries updated: 2
-  ```
-- **Usage**: `python sync_music_links.py [--check-only]`
-
-#### Translation
-
-##### `translate_correct_readability.py`
-- **Purpose**: Translates and corrects text content
-- **Features**:
-  - Offline translation support
-  - Grammar checking with LanguageTool
-  - Multi-language support
-- **Usage**: `python translate_correct_readability.py [--source LANG] [--target LANG]`
-
-### 🔧 Prerequisites
-
-Ensure you have all required dependencies installed:
+Validates the accessibility of music preview links across different streaming services (Spotify, Apple Music, Deezer).
 
 ```bash
-# Node.js dependencies
-npm install
+# Check all languages
+python scripts/check_preview_links.py
 
-# Python packages
-pip install -r requirements.txt
+# Check specific languages
+python scripts/check_preview_links.py --languages en de fr
 
-# Language models
-python -m spacy download en_core_web_lg  # and other required models
+# Customize retry behavior
+python scripts/check_preview_links.py --retries 5 --retry-delay 2.0
 
-# External tools
-./scripts/install_languagetool.sh  # for translation tools
+# Specify output report location
+python scripts/check_preview_links.py --output-dir ./reports
+
+# Run with increased verbosity
+python scripts/check_preview_links.py --verbose
+
+# Limit to specific streaming services
+python scripts/check_preview_links.py --services spotify deezer
 ```
 
+The script generates an HTML report with statistics and detailed error information, including:
+- Total links checked per language and service
+- Success/failure counts and percentages
+- Detailed error listings with HTTP status codes
+- Response time statistics
+- Recommendations for fixing broken links
 
-### Common Features & Best Practices
+##### 2. `sync_music_links.py` - Music Link Synchronizer
 
-#### Shared Characteristics
-- 📔 Comprehensive documentation
-- 🔒 Safe, non-destructive operations
-- 📈 Progress tracking and logging
-- ♻️ Automatic retries and error handling
-- 📚 Modular and maintainable code
+Synchronizes music metadata and links across language-specific JSON files, using German (de) as the source of truth.
 
-#### Before Running Scripts
-- ✅ Activate virtual environment
-- 🔍 Verify configurations
-- 📁 Backup important data
-- 🔧 Check dependencies
+```bash
+# Synchronize links and update files
+python scripts/sync_music_links.py
 
-#### During Execution
-- 📃 Monitor logs
-- ⏳ Watch progress indicators
-- ⚠️ Avoid interrupting long processes
-- 📄 Check output for errors
+# Check only mode (no changes)
+python scripts/sync_music_links.py --check-only
 
-#### After Completion
-- ✅ Verify output files
-- 📄 Check log files
-- 🔄 Clean up temporary files
-- 📑 Document any issues
+# Specify source language (default is German)
+python scripts/sync_music_links.py --source-lang de
 
-### Troubleshooting
+# Synchronize specific target languages only
+python scripts/sync_music_links.py --target-langs en fr es
 
-**Common Issues**:
-1. **Language Detection Fails**:
-   - Ensure sufficient text length
-   - Check character encoding
+# Specify fields to synchronize
+python scripts/sync_music_links.py --fields coverSrc preview_link spotify_link
 
-2. **Translation Errors**:
-   - Verify API keys
-   - Check network connection
-   - Validate input format
+# Generate detailed report
+python scripts/sync_music_links.py --report
+```
 
-3. **File Permission Issues**:
-   - Check directory permissions
-   - Verify file ownership
+Synchronized fields include: coverSrc, spotify_link, deezer_link, apple_music_link, and preview_link.
 
-**Getting Help**:
-- Check script help: `python script_name.py --help`
-- Review logs in `logs/` directory
-- Consult documentation
+Output example:
+```
+Synchronizing music links from German (de) to other languages...
+✓ English (en): 120 entries synchronized
+✓ Spanish (es): 120 entries synchronized
+✓ French (fr): 120 entries synchronized
+...
+Total changes: 47 fields updated across 10 languages
+```
 
+##### 3. `check_covers.sh` - Cover Image Validator
 
+Verifies the existence of all cover images referenced in genre JSON files across all language directories.
 
-## Image Optimization
+```bash
+# Check cover images
+./scripts/check_covers.sh
 
-The project uses a combination of `@nuxt/image` and `@unlazy/nuxt` for optimal image loading and presentation. This setup provides:
+# Check with detailed output
+./scripts/check_covers.sh --verbose
 
-- 📷 Automatic image optimization
-- 📦 WebP conversion
-- 📱 Responsive image sizes
-- 🌫️ Beautiful blur effects
-- 🔄 No content shifts
-- ⚡ Server-side rendering
+# Check specific language directories
+./scripts/check_covers.sh --langs de en fr
 
-We use ThumbHash for efficient image loading and optimization:
+# Generate HTML report
+./scripts/check_covers.sh --html-report
 
-#### Features
-- 🖼️ Tiny placeholders (30-100 bytes)
-- 🌫️ Blur effects while loading
-- ⚡ Pre-generated at build time
-- 🔄 Smooth transitions
-- 📱 No layout shifts
-- 🔍 SEO-friendly
+# Fix missing covers by copying from alternatives
+./scripts/check_covers.sh --fix-missing
+```
 
-#### Usage
+The script reports any missing cover images with their source JSON files.
+
+Output example:
+```
+Checking cover images for all languages...
+
+Language: de (German)
+✓ All 120 cover images found
+
+Language: en (English)
+❌ Missing: public/images/covers/en/jazz-fusion.jpg
+❌ Missing: public/images/covers/en/indie-folk.jpg
+
+Summary:
+- Total covers checked: 1200
+- Missing covers: 2
+- Success rate: 99.8%
+```
+
+##### 4. `generate-sitemap-urls.js` - Sitemap URL Generator
+
+Generates a comprehensive list of URLs for the application's sitemap, processing category JSON files for multiple languages.
+
+```bash
+# Generate sitemap URLs
+node scripts/generate-sitemap-urls.js > app/sitemap-urls.js
+
+# Generate with specific base URL
+node scripts/generate-sitemap-urls.js --base-url https://melodymind.app > app/sitemap-urls.js
+
+# Generate for specific languages only
+node scripts/generate-sitemap-urls.js --languages en,de,fr > app/sitemap-urls.js
+
+# Generate with custom priority values
+node scripts/generate-sitemap-urls.js --home-priority 1.0 --category-priority 0.8 > app/sitemap-urls.js
+
+# Generate with specific change frequency
+node scripts/generate-sitemap-urls.js --change-freq weekly > app/sitemap-urls.js
+```
+
+The output is a JavaScript module that exports an array of URLs for the Nuxt.js application.
+
+Example output (app/sitemap-urls.js):
+```javascript
+export default [  
+  { loc: '/', lastmod: '2025-03-01', changefreq: 'daily', priority: 1.0 },
+  { loc: '/en', lastmod: '2025-03-01', changefreq: 'daily', priority: 0.9 },
+  { loc: '/en/rock-music', lastmod: '2025-03-01', changefreq: 'weekly', priority: 0.8 },
+  { loc: '/de', lastmod: '2025-03-01', changefreq: 'daily', priority: 0.9 },
+  { loc: '/de/rock-musik', lastmod: '2025-03-01', changefreq: 'weekly', priority: 0.8 },
+  // ... more URLs for all languages and categories
+];
+```
+
+##### 5. `generate-thumbhash.ts` - ThumbHash Generator
+
+Generates compact ThumbHash representations for all images in the public directory, providing lightweight placeholders during image loading.
+
 ```bash
 # Generate ThumbHashes
-yarn generate:thumbhash
+npm run generate:thumbhash
 
-# Run after:
-# - Adding new images
-# - Updating images
-# - Before building
+# Or directly with ts-node
+ts-node scripts/generate-thumbhash.ts
+
+# Generate for specific directory only
+ts-node scripts/generate-thumbhash.ts --dir public/images/covers
+
+# Generate with specific output path
+ts-node scripts/generate-thumbhash.ts --output public/thumbhashes.json
+
+# Generate with specific image size
+ts-node scripts/generate-thumbhash.ts --size 100
+
+# Generate with verbose logging
+ts-node scripts/generate-thumbhash.ts --verbose
+
+# Skip existing hashes (faster updates)
+ts-node scripts/generate-thumbhash.ts --skip-existing
 ```
 
-#### Component Usage
-```vue
-<UnLazyImage 
-  :src="imageUrl"
-  :alt="imageAlt"
-  :thumbhash="getThumbHash(imageUrl)"
-  auto-sizes
-  loading="lazy"
-/>
+ThumbHashes are saved to a JSON file and used by the UnLazy component for blur effects.
+
+Example output (public/thumbhashes.json):
+```json
+{
+  "images/covers/en/rock-music.jpg": "2DQZRpCLiHePeHeKeJd3d4iIiJh3",
+  "images/covers/de/rock-musik.jpg": "1DQZRpCLiHePeHeKeJd3d4iIiJh3",
+  "images/artists/queen.jpg": "9TQVRoCLiHePeHeKeJd3d4iIiJh3",
+  // ... more image paths and their thumbhash values
+}
 ```
 
-#### Configuration
-```typescript
-// nuxt.config.ts
-export default defineNuxtConfig({
-  unlazy: {
-    ssr: true,          // Server-side rendering
-    placeholderSize: 32  // Placeholder size
-  }
-})
-```
+##### 6. `generate_content.py` - Content Generator
 
+Generates comprehensive, multilingual content for music categories with SEO-optimized metadata.
 
-## Production
-
-Build the application for production:
 ```bash
-# Using npm
-npm run build
+# Generate content for all languages
+python scripts/generate_content.py
 
-# Using yarn
-yarn build
+# Generate content for specific languages
+python scripts/generate_content.py --languages en de fr
+
+# Generate content for specific categories only
+python scripts/generate_content.py --categories "rock music" "jazz" "1980s"
+
+# Generate with increased verbosity
+python scripts/generate_content.py --verbose
+
+# Generate with custom API key
+python scripts/generate_content.py --api-key YOUR_ARLI_API_KEY
+
+# Generate with custom output directory
+python scripts/generate_content.py --output-dir ./custom/content/path
+
+# Update existing content only (skip if file exists)
+python scripts/generate_content.py --update-only
+
+# Force regeneration of all content
+python scripts/generate_content.py --force
+
+# Generate with custom section limits
+python scripts/generate_content.py --section-limits "Introduction:500,Historical Background:800"
 ```
 
-Preview the production build:
+The script creates structured markdown files with consistent formatting across all supported languages.
+
+**Language-Specific Examples:**
+
 ```bash
-# Using npm
-npm run preview
+# German (de) - Generate content with German-specific style
+python scripts/generate_content.py --languages de --style-guide "formal,detailed"
 
-# Using yarn
-yarn preview
+# English (en) - Generate content with specific SEO focus
+python scripts/generate_content.py --languages en --seo-focus "high,us-market"
+
+# Spanish (es) - Generate with regional dialect preferences
+python scripts/generate_content.py --languages es --dialect "spain"
+
+# French (fr) - Generate with cultural adaptation
+python scripts/generate_content.py --languages fr --cultural-adaptation
+
+# Italian (it) - Generate with specific tone
+python scripts/generate_content.py --languages it --tone "conversational"
+
+# Dutch (nl) - Generate with specific formatting
+python scripts/generate_content.py --languages nl --formatting "extended"
+
+# Portuguese (pt) - Generate with Brazilian Portuguese focus
+python scripts/generate_content.py --languages pt --dialect "brazil"
+
+# Swedish (sv) - Generate with simplified language
+python scripts/generate_content.py --languages sv --simplify
+
+# Finnish (fi) - Generate with technical focus
+python scripts/generate_content.py --languages fi --technical-level "advanced"
+
+# Danish (da) - Generate with casual tone
+python scripts/generate_content.py --languages da --tone "casual"
 ```
+
+**Output Example (English):**
+
+```markdown
+---
+title: "Rock Music: Evolution, Influence, and Cultural Impact"
+description: "Explore the rich history of rock music, from its blues origins to modern variations, influential artists, and cultural significance worldwide."
+category: "Rock Music"
+image: "/images/covers/en/rock-music.jpg"
+createdAt: "2025-03-01T12:00:00.000Z"
+updatedAt: "2025-03-01T12:00:00.000Z"
+keywords:
+  - rock music
+  - rock history
+  - rock genres
+  - rock bands
+  - rock evolution
+author: "MelodyMind Team"
+locale: "en"
+spotify_playlist: ""
+deezer_playlist: ""
+apple_music_playlist: ""
+---
+
+## Introduction
+
+Rock music stands as one of the most influential and enduring musical genres of the modern era...
+
+## Historical Background
+
+The roots of rock music can be traced back to the late 1940s and early 1950s when elements of rhythm and blues...
+
+## Musical Characteristics
+
+Rock music is characterized by a strong backbeat, distorted electric guitars...
+
+## Subgenres and Variations
+
+Over decades of evolution, rock music has spawned numerous subgenres...
+
+## Key Figures and Important Works
+
+Countless artists have shaped the landscape of rock music...
+```
+
+**Output Example (German):**
+
+```markdown
+---
+title: "Rock-Musik: Entwicklung, Einfluss und kulturelle Bedeutung"
+description: "Entdecken Sie die reiche Geschichte der Rock-Musik, von ihren Blues-Ursprüngen bis zu modernen Variationen, einflussreichen Künstlern und kultureller Bedeutung weltweit."
+category: "Rock-Musik"
+image: "/images/covers/de/rock-musik.jpg"
+createdAt: "2025-03-01T12:00:00.000Z"
+updatedAt: "2025-03-01T12:00:00.000Z"
+keywords:
+  - Rock-Musik
+  - Rock-Geschichte
+  - Rock-Genres
+  - Rockbands
+  - Rock-Entwicklung
+author: "MelodyMind Team"
+locale: "de"
+spotify_playlist: ""
+deezer_playlist: ""
+apple_music_playlist: ""
+---
+
+## Einführung
+
+Rock-Musik gilt als eines der einflussreichsten und beständigsten Musikgenres der modernen Ära...
+
+## Historischer Hintergrund
+
+Die Wurzeln der Rock-Musik lassen sich bis in die späten 1940er und frühen 1950er Jahre zurückverfolgen...
+
+## Musikalische Eigenschaften
+
+Rock-Musik zeichnet sich durch einen starken Backbeat und verzerrte E-Gitarren aus...
+
+## Subgenres und Variationen
+
+Im Laufe der jahrzehntelangen Entwicklung hat die Rock-Musik zahlreiche Subgenres hervorgebracht...
+
+## Schlüsselfiguren und wichtige Werke
+
+Unzählige Künstler haben die Landschaft der Rock-Musik geprägt...
+```
+
+### 🔧 Code Quality Tools
+
+#### Python Linting and Formatting
+
+The project uses the following Python tools for code quality:
+
+- **Black**: Code formatting with consistent style
+- **isort**: Import sorting and organization
+- **Flake8**: Style guide enforcement
+- **mypy**: Static type checking
+- **Ruff**: Fast linting and auto-fixing
+
+Configuration is maintained in:
+- `.flake8` - Flake8 configuration
+- `.pre-commit-config.yaml` - Pre-commit hooks
+- `.vscode/settings.json` - VS Code integration
+
+#### JavaScript/TypeScript Linting
+
+- **ESLint**: Code quality and best practices
+- **Prettier**: Code formatting with Tailwind CSS plugin
+
+Configuration is maintained in:
+- `eslint.config.mjs` - ESLint configuration
+- `.prettierrc` - Prettier configuration
+
+## ♿ Accessibility
+
+Melody Mind is committed to providing an accessible experience for all users. The application follows WCAG AAA conformity standards with these key features:
+
+- **High contrast** between text and background colors
+- **Keyboard navigation** with clear focus indicators
+- **Semantic HTML** structure with proper ARIA attributes
+- **Responsive design** that works on all device sizes
+- **Reduced motion** support for users with vestibular disorders
+- **Screen reader** compatibility with descriptive text
+
+The migration from SCSS to Tailwind CSS has improved accessibility through:
+
+- Consistent color contrast ratios
+- Properly sized interactive elements (min-height: 44px)
+- Focus-visible outlines with ring utilities
+- Motion-reduction classes (motion-reduce:transition-none)
+- Semantic markup with appropriate labels and IDs
+
+## 💻 VS Code Extensions
+
+For the optimal development experience, the following VS Code extensions are recommended:
+
+### Essential Extensions
+
+- **ESLint**: Code quality and linting
+- **Prettier**: Code formatting
+- **Vue Language Features (Volar)**: Vue 3 support
+
+### Recommended Extensions
+
+- **Tailwind CSS IntelliSense**: Autocomplete for Tailwind classes
+- **i18n Ally**: Translation management
+- **Iconify IntelliSense**: Icon preview and search
+- **Markdown Preview Enhanced**: Documentation preview
+
+These extensions are configured in the `.vscode/extensions.json` file and will be automatically suggested when opening the project in VS Code.
+
+## 📚 License
+
+Melody Mind is licensed under the MIT License. See the LICENSE file for details.
+
 
 ## Contributing
 

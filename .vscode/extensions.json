@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "Vue.volar",
+    "bradlc.vscode-tailwindcss",
+    "lokalise.i18n-ally",
+    "antfu.iconify",
+    "shd101wyy.markdown-preview-enhanced",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-python.black-formatter",
+    "ms-python.flake8",
+    "ms-python.isort",
+    "matangover.mypy",
+    "charliermarsh.ruff"
+  ]
+}

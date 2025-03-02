@@ -1,0 +1,24 @@
+# Nuxt build output
+.nuxt
+.output
+dist
+
+# Node modules
+node_modules
+
+# Logs
+*.log
+
+# Cache
+.cache
+
+# Generated files
+public/thumbhash
+
+# Package manager lock files
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+
+# Other
+.DS_Store

@@ -116,7 +116,7 @@ const Colors = {
   BgBlue: '\x1b[44m',
   BgMagenta: '\x1b[45m',
   BgCyan: '\x1b[46m',
-  BgWhite: '\x1b[47m'
+  BgWhite: '\x1b[47m',
 }
 
 /**
@@ -172,9 +172,11 @@ const Logger = {
   progress: (current: number, total: number, message?: string): void => {
     const percentage = Math.round((current / total) * 100)
     const bar = '█'.repeat(Math.floor(percentage / 2)) + '░'.repeat(50 - Math.floor(percentage / 2))
-    process.stdout.write(`\r${Colors.FgCyan}[${bar}] ${percentage}% | ${current}/${total}${message ? ' | ' + message : ''}${Colors.Reset}`)
+    process.stdout.write(
+      `\r${Colors.FgCyan}[${bar}] ${percentage}% | ${current}/${total}${message ? ' | ' + message : ''}${Colors.Reset}`
+    )
     if (current === total) process.stdout.write('\n')
-  }
+  },
 }
 
 /**
@@ -190,7 +192,7 @@ function validateImageFile(imagePath: string): boolean {
 
   const extension = imagePath.toLowerCase().split('.').pop()
   const validExtensions = ['jpg', 'jpeg', 'png', 'webp', 'gif']
-  
+
   if (!extension || !validExtensions.includes(extension)) {
     Logger.error(`Invalid file format: ${basename(imagePath)}`)
     return false
@@ -306,14 +308,14 @@ async function generateThumbHash(imagePath: string): Promise<string> {
 
     // Load and resize image while maintaining aspect ratio
     const imageBuffer = await sharp(imagePath)
-      .resize(100, 100, { 
+      .resize(100, 100, {
         fit: 'inside',
-        withoutEnlargement: true
+        withoutEnlargement: true,
       })
-      .toFormat('png', { 
+      .toFormat('png', {
         quality: 100,
         compressionLevel: 9,
-        palette: true
+        palette: true,
       })
       .toBuffer()
 
@@ -327,14 +329,13 @@ async function generateThumbHash(imagePath: string): Promise<string> {
     const hash = rgbaToThumbHash(
       info.width,
       info.height,
-      Array.from(new Uint8Array(data.buffer)) as unknown as number[],
+      Array.from(new Uint8Array(data.buffer)) as unknown as number[]
     )
 
     // Convert binary hash to base64 for storage
     const result = Buffer.from(hash).toString('base64')
     Logger.success(`Generated ThumbHash for ${basename(imagePath)}`)
     return result
-
   } catch (error) {
     Logger.error(`Failed to process ${basename(imagePath)}`, error as Error)
     return ''
@@ -397,7 +398,7 @@ async function main(): Promise<void> {
     // Process each image with progress tracking
     for (const file of imageFiles) {
       const imagePath = join(publicDir, file)
-      
+
       try {
         const hash = await generateThumbHash(imagePath)
         if (hash) {
@@ -431,7 +432,6 @@ async function main(): Promise<void> {
     } catch (error) {
       Logger.error('Failed to save output file', error as Error)
     }
-
   } catch (error) {
     Logger.error('Critical error during processing', error as Error)
     process.exit(1)

@@ -1,12 +1,20 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { resolve } from 'path'
-import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
-  future: {
-    compatibilityVersion: 4,
-  },
-  compatibilityDate: "2024-11-01",
+  modules: [
+    'nuxt-icon',
+    '@nuxtjs/i18n',
+    '@nuxt/content',
+    'nuxt-fathom',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
+    'nuxt-jsonld',
+    '@nuxt/fonts',
+    '@nuxt/image',
+    '@unlazy/nuxt',
+    '@nuxt/eslint',
+  ],
   devtools: {
     enabled: true,
 
@@ -14,196 +22,183 @@ export default defineNuxtConfig({
       enabled: false,
     },
   },
-  css: [
-    "~/assets/scss/main.scss",
-    "~/assets/css/tailwind.css"
-  ],
   app: {
-    pageTransition: { name: "page" },
+    pageTransition: { name: 'page' },
     head: {
       htmlAttrs: {
-        dir: "auto",
-        lang: "de"
+        dir: 'auto',
+        lang: 'de',
       },
       meta: [
         { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       ],
       link: [
         {
           rel: 'preconnect',
-          href: 'https://fonts.googleapis.com'
+          href: 'https://fonts.googleapis.com',
         },
         {
           rel: 'preconnect',
           href: 'https://fonts.gstatic.com',
-          crossorigin: ''
-        }
-      ]
-    }
+          crossorigin: '',
+        },
+      ],
+    },
+  },
+  css: ['./app/assets/css/main.css'],
+  content: {
+    documentDriven: true,
+    navigation: {
+      fields: ['title', 'description', 'category'],
+    },
+    experimental: {
+      clientDB: true,
+    },
+    markdown: {
+      toc: {
+        depth: 3,
+        searchDepth: 3,
+      },
+      anchorLinks: false,
+    },
   },
   runtimeConfig: {
     turso: {
       databaseUrl: process.env.NUXT_TURSO_DATABASE_URL,
       authToken: process.env.NUXT_TURSO_AUTH_TOKEN,
-    }
+    },
   },
+  future: {
+    compatibilityVersion: 4,
+  },
+  compatibilityDate: '2024-11-01',
   nitro: {
     routeRules: {
-      "/health": {
+      '/health': {
         headers: {
-          "Cache-Control": "no-cache, no-store",
+          'Cache-Control': 'no-cache, no-store',
         },
       },
       // Static assets caching
-      "/assets/**": {
+      '/assets/**': {
         headers: {
-          "Cache-Control": "public, max-age=31536000, immutable",
+          'Cache-Control': 'public, max-age=31536000, immutable',
         },
       },
       // API routes caching
-      "/api/**": {
+      '/api/**': {
         cache: {
-          maxAge: 60
-        }
+          maxAge: 60,
+        },
       },
       // Content pages caching
-      "/content/**": {
+      '/content/**': {
         cache: {
-          maxAge: 120
-        }
+          maxAge: 120,
+        },
       },
     },
   },
-
-  modules: [
-    "nuxt-icon", 
-    "@nuxtjs/i18n", 
-    '@nuxt/content', 
-    'nuxt-fathom', 
-    '@nuxtjs/sitemap', 
-    '@nuxtjs/robots', 
-    'nuxt-jsonld', 
-    '@nuxt/fonts', 
-    '@nuxt/image', 
-    '@unlazy/nuxt'
-  ],
-  unlazy: {
-    ssr: true,
-    placeholderSize: 32
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  eslint: {
+    config: {
+      stylistic: true,
+    },
+    lintOnStart: true,
+  },
+  fathom: {
+    siteId: 'RKHOWTTO',
+    config: {
+      honorDNT: true,
+    },
   },
   fonts: {
     families: [
       {
         name: 'Inter',
-        weights: [400, 500, 600, 700]
-      }
-    ]
-  },
-  content: {
-    documentDriven: true,
-    navigation: {
-      fields: ['title', 'description', 'category']
-    },
-    experimental: {
-      clientDB: true
-    },
-    markdown: {
-      toc: {
-        depth: 3,
-        searchDepth: 3
+        weights: [400, 500, 600, 700],
       },
-      anchorLinks: false
-    }
-  },
-  fathom: {
-    siteId: "RKHOWTTO",  
-    config: {
-      honorDNT: true
-    },
-  },
-  sitemap: {
-    enabled: true,
-    autoLastmod: true,
-    exclude: [
-      '/game/**'
     ],
-    urls: (await import('./app/sitemap-urls.js')).default
   },
   i18n: {
-    strategy: "prefix",
-    defaultLocale: "de",
+    strategy: 'prefix',
+    defaultLocale: 'de',
     detectBrowserLanguage: {
       useCookie: true,
-      fallbackLocale: "de",
-      cookieKey: "melody-mind-locale",
-      redirectOn: "root",
+      fallbackLocale: 'de',
+      cookieKey: 'melody-mind-locale',
+      redirectOn: 'root',
     },
     lazy: true,
     langDir: '../app/i18n/locales',
     locales: [
       {
-        code: "de",
-        name: "Deutsch",
-        file: "de.json",
+        code: 'de',
+        name: 'Deutsch',
+        file: 'de.json',
       },
       {
-        code: "en",
-        name: "English",
-        file: "en.json",
+        code: 'en',
+        name: 'English',
+        file: 'en.json',
       },
       {
-        code: "fr",
-        name: "Français",
-        file: "fr.json",
+        code: 'fr',
+        name: 'Français',
+        file: 'fr.json',
       },
       {
-        code: "es",
-        name: "Español",
-        file: "es.json",
+        code: 'es',
+        name: 'Español',
+        file: 'es.json',
       },
       {
-        code: "pt",
-        name: "Português",
-        file: "pt.json",
+        code: 'pt',
+        name: 'Português',
+        file: 'pt.json',
       },
       {
-        code: "it",
-        name: "Italiano",
-        file: "it.json",
+        code: 'it',
+        name: 'Italiano',
+        file: 'it.json',
       },
       {
-        code: "nl",
-        name: "Nederlands",
-        file: "nl.json",
+        code: 'nl',
+        name: 'Nederlands',
+        file: 'nl.json',
       },
       {
-        code: "sv",
-        name: "Svenska",
-        file: "sv.json",
+        code: 'sv',
+        name: 'Svenska',
+        file: 'sv.json',
       },
       {
-        code: "fi",
-        name: "Suomi",
-        file: "fi.json",
+        code: 'fi',
+        name: 'Suomi',
+        file: 'fi.json',
       },
       {
-        code: "da",
-        name: "Dansk",
-        file: "da.json",
+        code: 'da',
+        name: 'Dansk',
+        file: 'da.json',
       },
     ],
   },
-  vite: {
-    plugins: [
-      tailwindcss(),
-    ],
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@use "@/assets/scss/_mixins.scss" as *;'
-        }
-      }
-    }
-  }
-});
+  sitemap: {
+    enabled: true,
+    autoLastmod: true,
+    exclude: ['/game/**'],
+    urls: (await import('./app/sitemap-urls.js')).default,
+  },
+
+  unlazy: {
+    ssr: true,
+    placeholderSize: 32,
+  },
+})
