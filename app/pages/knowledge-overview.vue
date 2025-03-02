@@ -1,41 +1,64 @@
 <template>
-    <NuxtLayout name="default" :show-header="true" :show-menu="true">
-        <div class="gameHome" id="main-content">
-            <section class="intro">
-                <h1 tabindex="-1" class="page-title">{{ $t('knowledge.title') }}</h1>
-                <p class="intro-text overview-text" v-if="$t('knowledge.description')">{{ $t('knowledge.description') }}</p>
-            </section>
+  <NuxtLayout name="default" :show-header="true" :show-menu="true">
+    <main
+      id="main-content"
+      class="print:print-friendly mx-auto w-full max-w-[75rem] p-4 motion-reduce:transition-none md:p-8"
+    >
+      <section class="mb-8">
+        <h1
+          tabindex="-1"
+          class="mb-8 text-center text-3xl leading-[1.4] font-bold text-[var(--color-primary)]"
+        >
+          {{ $t('knowledge.title') }}
+        </h1>
+        <p
+          v-if="$t('knowledge.description')"
+          class="text-md mx-auto mb-8 max-w-3xl text-center leading-[1.6] text-white"
+        >
+          {{ $t('knowledge.description') }}
+        </p>
+      </section>
 
-            <section class="search-section" role="search">
-                <SearchBar id="knowledge-search" v-model="searchQuery" :placeholder="$t('gameHome.searchPlaceholder')" />
-            </section>
+      <section class="mb-8" role="search">
+        <SearchBar
+          id="knowledge-search"
+          v-model="searchQuery"
+          :placeholder="$t('gameHome.searchPlaceholder')"
+          class="mx-auto w-full max-w-3xl md:max-w-md lg:max-w-lg xl:max-w-3xl"
+        />
+      </section>
 
-            <section class="categories-section" role="region" aria-labelledby="categories-heading">
-                <h2 id="categories-heading" class="visually-hidden">{{ $t('knowledge.overview') }}</h2>
-                <div class="categories-grid" role="list">
-                    <CategoryCard 
-                        v-for="item in filteredKnowledgeItems" 
-                        :key="item._path"
-                        :headline="item.title"
-                        :image-url="item.image"
-                        :category-url="localePath(`/knowledge/${item._file.split('/')[1]}/${item._file.split('/').pop().replace('.md', '')}`)"
-                        :intro-subline="item.description"
-                        :is-playable="true"
-                        class="category-card"
-                        role="listitem"
-                        @select="navigateToKnowledge(item)"
-                    />
-                </div>
-            </section>
+      <section role="region" aria-labelledby="categories-heading" class="mt-8">
+        <h2 id="categories-heading" class="sr-only">
+          {{ $t('knowledge.overview') }}
+        </h2>
+        <div role="list" class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6">
+          <CategoryCard
+            v-for="item in filteredKnowledgeItems"
+            :key="item._path"
+            :headline="item.title"
+            :image-url="item.image"
+            :category-url="
+              localePath(
+                `/knowledge/${item._file.split('/')[1]}/${item._file.split('/').pop().replace('.md', '')}`
+              )
+            "
+            :intro-subline="item.description"
+            :is-playable="true"
+            role="listitem"
+            class="animate-fadeIn"
+            @select="navigateToKnowledge(item)"
+          />
         </div>
-    </NuxtLayout>
+      </section>
+    </main>
+  </NuxtLayout>
 </template>
 
 <script setup>
-import { ref, computed, unref } from 'vue'
+import { queryContent, useAsyncData, useRequestURL } from '#imports'
+import { computed, ref, unref } from 'vue'
 import { useRouter } from 'vue-router'
-import { useRequestURL } from '#imports'
-import { useAsyncData, queryContent } from '#imports'
 
 const searchQuery = ref('')
 const router = useRouter()
@@ -48,172 +71,122 @@ const metaTitle = computed(() => t('knowledge.meta.title'))
 const metaDescription = computed(() => t('knowledge.meta.description'))
 
 useSeoMeta({
-    title: metaTitle,
-    description: metaDescription,
-    ogTitle: metaTitle,
-    ogDescription: metaDescription,
-    ogType: 'website',
-    robots: 'index, follow',
-    viewport: 'width=device-width, initial-scale=1',
-    twitterCard: 'summary_large_image',
-    ogUrl: url.href
+  title: metaTitle,
+  description: metaDescription,
+  ogTitle: metaTitle,
+  ogDescription: metaDescription,
+  ogType: 'website',
+  robots: 'index, follow',
+  viewport: 'width=device-width, initial-scale=1',
+  twitterCard: 'summary_large_image',
+  ogUrl: url.href,
 })
 
 // Fetch knowledge articles using Nuxt Content
-const { data: knowledgeItems } = await useAsyncData(
-    'knowledge',
-    () => queryContent('knowledge', locale.value).find()
+const { data: knowledgeItems } = await useAsyncData('knowledge', () =>
+  queryContent('knowledge', locale.value).find()
 )
 
 const filteredKnowledgeItems = computed(() => {
-    if (!searchQuery.value || !knowledgeItems.value) return knowledgeItems.value || []
-    const query = searchQuery.value.toLowerCase()
-    return knowledgeItems.value.filter(item => 
-        item.title?.toLowerCase().includes(query) || 
-        item.description?.toLowerCase().includes(query)
-    )
+  if (!searchQuery.value || !knowledgeItems.value) return knowledgeItems.value || []
+  const query = searchQuery.value.toLowerCase()
+  return knowledgeItems.value.filter(
+    (item) =>
+      item.title?.toLowerCase().includes(query) || item.description?.toLowerCase().includes(query)
+  )
 })
 
 // JSON-LD
 const jsonLdData = computed(() => ({
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: unref(metaTitle),
-    description: unref(metaDescription),
-    url: url.href,
-    mainEntity: {
-        '@type': 'ItemList',
-        itemListElement: (knowledgeItems.value || []).map((item, index) => ({
-            '@type': 'ListItem',
-            position: index + 1,
-            item: {
-                '@type': 'Article',
-                name: item.title,
-                description: item.description,
-                url: localePath(`/knowledge/${item._file.split('/')[1]}/${item._file.split('/').pop().replace('.md', '')}`)
-            }
-        }))
-    }
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: unref(metaTitle),
+  description: unref(metaDescription),
+  url: url.href,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: (knowledgeItems.value || []).map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Article',
+        name: item.title,
+        description: item.description,
+        url: localePath(
+          `/knowledge/${item._file.split('/')[1]}/${item._file.split('/').pop().replace('.md', '')}`
+        ),
+      },
+    })),
+  },
 }))
 
 useJsonld(() => unref(jsonLdData))
 
 const navigateToKnowledge = (item) => {
-    const lang = item._file.split('/')[1]
-    const filename = item._file.split('/').pop().replace('.md', '')
-    const path = `/knowledge/${lang}/${filename}`
-    router.push(localePath(path))
+  const lang = item._file.split('/')[1]
+  const filename = item._file.split('/').pop().replace('.md', '')
+  const path = `/knowledge/${lang}/${filename}`
+  router.push(localePath(path))
 }
 </script>
 
-<style scoped lang="scss">
-.gameHome {
-    width: 100%;
-    margin: 0 auto;
-    max-width: var(--content-width);
-    padding: var(--padding-medium);
-}
-
-.page-title {
-    font-size: var(--font-size-responsive-3xl);
-    font-weight: var(--font-weight-bold);
-    text-align: center;
-    margin-bottom: var(--padding-large);
-    color: var(--primary-color);
-    line-height: var(--line-height-tight);
-}
-
-.overview-text {
-    font-size: var(--font-size-responsive-md);
-    line-height: var(--line-height-relaxed);
-    text-align: center;
-    color: var(--text-secondary);
-    max-width: var(--max-line-length);
-    margin: 0 auto var(--padding-large);
-}
-
-.categories-section {
-    margin-top: var(--padding-large);
-}
-
-.categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: var(--padding-large);
-
-    @media (width >= 640px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (width >= 1024px) {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    @media (width <= 768px) {
-        gap: var(--padding-medium);
-    }
-}
-
-.category-card {
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    transition: all var(--transition-speed) var(--transition-bounce);
-    box-shadow: var(--box-shadow);
-
-    &:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--box-shadow-hover);
-    }
-
-    &:focus-within {
-        outline: var(--focus-outline-width) solid var(--focus-outline-color);
-        outline-offset: var(--focus-outline-offset);
-    }
-}
-
-.category-title {
-    font-size: var(--font-size-responsive-xl);
-    font-weight: var(--font-weight-semibold);
-    color: var(--text-color);
-    line-height: var(--line-height-tight);
-}
-
-.category-description {
-    font-size: var(--font-size-base);
-    color: var(--text-secondary);
-    line-height: var(--line-height-normal);
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .category-card {
-        transition: none;
-        transform: none;
-
-        &:hover {
-            transform: none;
-        }
-    }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .category-card {
-        animation: fadeIn var(--transition-speed) var(--transition-bounce);
-    }
-}
-
-.visually-hidden {
-    @include sr-only;
-}
-
+<style>
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(var(--padding-medium));
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Unterstützung für reduzierten Bewegungsmodus */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fadeIn {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* Unterstützung für hohen Kontrast */
+@media (prefers-contrast: more) {
+  h1 {
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+  }
+
+  .grid > div {
+    border: 1px solid currentColor;
+  }
+}
+
+/* Print-specific styles */
+@media print {
+  h1 {
+    font-size: 24px !important;
+    color: black !important;
+  }
+
+  p {
+    font-size: 14px !important;
+    color: black !important;
+  }
+
+  .grid {
+    display: block !important;
+  }
+
+  .grid > div {
+    margin-bottom: 1em !important;
+    page-break-inside: avoid;
+    border: 1px solid #ddd;
+  }
 }
 </style>
