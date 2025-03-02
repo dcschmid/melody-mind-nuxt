@@ -1,177 +1,194 @@
 <template>
-    <NuxtLayout name="default" :show-header="true" :show-menu="true" :show-coins="false">
-        <main class="legal-page">
-            <article class="legal-container">
-                <h1 class="page-title">{{ $t('legal.imprint.title') }}</h1>
+  <NuxtLayout name="default" :show-header="true" :show-menu="true" :show-coins="false">
+    <main class="mx-auto w-full max-w-[75rem] p-4 md:p-8 print:print-friendly motion-reduce:transition-none">
+      <article class="space-y-8">
+        <h1 class="mb-8 text-center text-2xl font-bold leading-[1.4] text-[var(--color-primary)] md:text-3xl">
+          {{ $t('legal.imprint.title') }}
+        </h1>
 
-                <section class="legal-section">
-                    <h2 class="section-title">{{ $t('legal.imprint.information.title') }}</h2>
-                    <div class="content-block">
-                        <p>{{ $t('legal.imprint.information.operator') }}</p>
-                        <p>{{ $t('legal.imprint.information.address') }}</p>
-                        <p>{{ $t('legal.imprint.information.country') }}</p>
-                    </div>
-                </section>
+        <section
+          class="mb-8 rounded-lg bg-[var(--color-surface)] p-4 shadow transition-all duration-300 last:mb-0 md:p-8 motion-reduce:transition-none"
+        >
+          <h2 class="mb-4 text-xl font-semibold leading-[1.4] text-[var(--color-primary)] md:text-2xl">
+            {{ $t('legal.imprint.information.title') }}
+          </h2>
+          <div class="text-base leading-[1.6] text-[#f0f0f0]">
+            <p class="mb-2">
+              {{ $t('legal.imprint.information.operator') }}
+            </p>
+            <p class="mb-2">
+              {{ $t('legal.imprint.information.address') }}
+            </p>
+            <p class="mb-2">
+              {{ $t('legal.imprint.information.country') }}
+            </p>
+          </div>
+        </section>
 
-                <section class="legal-section">
-                    <h2 class="section-title">{{ $t('legal.imprint.contact.title') }}</h2>
-                    <div class="content-block">
-                        <p>{{ $t('legal.imprint.contact.emailLabel') }}: {{ $t('legal.imprint.contact.emailAddress') }}
-                        </p>
-                    </div>
-                </section>
+        <section
+          class="mb-8 rounded-lg bg-[var(--color-surface)] p-4 shadow transition-all duration-300 last:mb-0 md:p-8 motion-reduce:transition-none"
+        >
+          <h2 class="mb-4 text-xl font-semibold leading-[1.4] text-[var(--color-primary)] md:text-2xl">
+            {{ $t('legal.imprint.contact.title') }}
+          </h2>
+          <div class="text-base leading-[1.6] text-[#f0f0f0]">
+            <p class="mb-2">
+              {{ $t('legal.imprint.contact.emailLabel') }}:
+              {{ $t('legal.imprint.contact.emailAddress') }}
+            </p>
+          </div>
+        </section>
 
-                <section class="legal-section">
-                    <h2 class="section-title">{{ $t('legal.imprint.responsible.title') }}</h2>
-                    <div class="content-block">
-                        <p>{{ $t('legal.imprint.information.operator') }}</p>
-                        <p>{{ $t('legal.imprint.information.address') }}</p>
-                        <p>{{ $t('legal.imprint.information.country') }}</p>
-                    </div>
-                </section>
+        <section
+          class="mb-8 rounded-lg bg-[var(--color-surface)] p-4 shadow transition-all duration-300 last:mb-0 md:p-8 motion-reduce:transition-none"
+        >
+          <h2 class="mb-4 text-xl font-semibold leading-[1.4] text-[var(--color-primary)] md:text-2xl">
+            {{ $t('legal.imprint.responsible.title') }}
+          </h2>
+          <div class="text-base leading-[1.6] text-[#f0f0f0]">
+            <p class="mb-2">
+              {{ $t('legal.imprint.information.operator') }}
+            </p>
+            <p class="mb-2">
+              {{ $t('legal.imprint.information.address') }}
+            </p>
+            <p class="mb-2">
+              {{ $t('legal.imprint.information.country') }}
+            </p>
+          </div>
+        </section>
 
-                <section class="legal-section">
-                    <h2 class="section-title">{{ $t('legal.imprint.disputeResolution.title') }}</h2>
-                    <div class="content-block">
-                        <p>
-                            {{ $t('legal.imprint.disputeResolution.text') }}:
-                            <a :href="$t('legal.imprint.disputeResolution.link')" target="_blank"
-                                rel="noopener noreferrer">
-                                {{ $t('legal.imprint.disputeResolution.link') }}
-                            </a>
-                        </p>
-                        <p>{{ $t('legal.imprint.disputeResolution.additional') }}</p>
-                    </div>
-                </section>
+        <section
+          class="mb-8 rounded-lg bg-[var(--color-surface)] p-4 shadow transition-all duration-300 last:mb-0 md:p-8 motion-reduce:transition-none"
+        >
+          <h2 class="mb-4 text-xl font-semibold leading-[1.4] text-[var(--color-primary)] md:text-2xl">
+            {{ $t('legal.imprint.disputeResolution.title') }}
+          </h2>
+          <div class="text-base leading-[1.6] text-[#f0f0f0]">
+            <p class="mb-2">
+              {{ $t('legal.imprint.disputeResolution.text') }}:
+              <a
+                :href="$t('legal.imprint.disputeResolution.link')"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rounded text-[var(--color-primary)] underline-offset-2 transition-colors duration-300 hover:text-[var(--primary-color-dark)] hover:underline focus-visible:outline focus-visible:outline-offset-2 focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] motion-reduce:transition-none"
+                aria-label="Link zur Streitschlichtungsplattform der Europäischen Kommission (öffnet in neuem Tab)"
+              >
+                {{ $t('legal.imprint.disputeResolution.link') }}
+              </a>
+            </p>
+            <p class="mb-2">
+              {{ $t('legal.imprint.disputeResolution.additional') }}
+            </p>
+          </div>
+        </section>
 
-                <section class="legal-section">
-                    <h2 class="section-title">{{ $t('legal.imprint.jurisdiction.title') }}</h2>
-                    <div class="content-block">
-                        <p>{{ $t('legal.imprint.jurisdiction.text') }}</p>
-                        <p>{{ $t('legal.imprint.jurisdiction.applicableLaw') }}</p>
-                        <p>{{ $t('legal.imprint.jurisdiction.jurisdiction') }}</p>
-                    </div>
-                </section>
+        <section
+          class="mb-8 rounded-lg bg-[var(--color-surface)] p-4 shadow transition-all duration-300 last:mb-0 md:p-8 motion-reduce:transition-none"
+        >
+          <h2 class="mb-4 text-xl font-semibold leading-[1.4] text-[var(--color-primary)] md:text-2xl">
+            {{ $t('legal.imprint.jurisdiction.title') }}
+          </h2>
+          <div class="text-base leading-[1.6] text-[#f0f0f0]">
+            <p class="mb-2">
+              {{ $t('legal.imprint.jurisdiction.text') }}
+            </p>
+            <p class="mb-2">
+              {{ $t('legal.imprint.jurisdiction.applicableLaw') }}
+            </p>
+            <p class="mb-2">
+              {{ $t('legal.imprint.jurisdiction.jurisdiction') }}
+            </p>
+          </div>
+        </section>
 
-                <section class="legal-section">
-                    <h2 class="section-title">{{ $t('legal.imprint.lawReference.title') }}</h2>
-                    <div class="content-block">
-                        <p>{{ $t('legal.imprint.lawReference.text') }}</p>
-                    </div>
-                </section>
-            </article>
-        </main>
-    </NuxtLayout>
+        <section
+          class="mb-8 rounded-lg bg-[var(--color-surface)] p-4 shadow transition-all duration-300 last:mb-0 md:p-8 motion-reduce:transition-none"
+        >
+          <h2 class="mb-4 text-xl font-semibold leading-[1.4] text-[var(--color-primary)] md:text-2xl">
+            {{ $t('legal.imprint.lawReference.title') }}
+          </h2>
+          <div class="text-base leading-[1.6] text-[#f0f0f0]">
+            <p class="mb-2">
+              {{ $t('legal.imprint.lawReference.text') }}
+            </p>
+          </div>
+        </section>
+      </article>
+    </main>
+  </NuxtLayout>
 </template>
 
-<script setup>
-import { useI18n } from 'vue-i18n'
+<script setup lang="ts">
 import { useSeoMeta } from '#imports'
+import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
 // SEO Meta Tags
 useSeoMeta({
-    title: computed(() => t('legal.imprint.meta.title')),
-    description: computed(() => t('legal.imprint.meta.description')),
-    ogTitle: computed(() => t('legal.imprint.meta.title')),
-    ogDescription: computed(() => t('legal.imprint.meta.description')),
-    ogType: 'website',
-    robots: 'noindex, follow' // Legal pages should not be indexed
+  title: computed(() => t('legal.imprint.meta.title')),
+  description: computed(() => t('legal.imprint.meta.description')),
+  ogTitle: computed(() => t('legal.imprint.meta.title')),
+  ogDescription: computed(() => t('legal.imprint.meta.description')),
+  ogType: 'website',
+  robots: 'noindex, follow', // Legal pages should not be indexed
 })
 </script>
 
-<style lang="scss" scoped>
-.legal-page {
-    width: 100%;
-    margin: 0 auto;
-    max-width: var(--content-width);
-    padding: var(--padding-medium);
+<!-- Tailwind CSS classes are used directly in the template -->
+<style>
+/* Print-specific styles that can't be easily handled with Tailwind classes */
+@media print {
+  h1 {
+    font-size: 24px !important;
+    color: black !important;
+  }
+  h2 {
+    font-size: 20px !important;
+    color: black !important;
+  }
+  p {
+    font-size: 14px !important;
+    color: black !important;
+  }
+  main,
+  article,
+  section {
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    background: none !important;
+  }
+  section {
+    page-break-inside: avoid;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1em !important;
+  }
+  a {
+    text-decoration: underline !important;
+    color: #000 !important;
+  }
 }
 
-.page-title {
-    font-size: var(--font-size-responsive-2xl);
-    font-weight: var(--font-weight-bold);
-    text-align: center;
-    margin-bottom: var(--padding-large);
-    color: var(--text-color);
-    line-height: var(--line-height-tight);
+/* Unterstützung für hohen Kontrast */
+@media (prefers-contrast: more) {
+  h1,
+  h2 {
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+  }
+
+  a {
+    text-decoration: underline !important;
+    font-weight: 700 !important;
+  }
 }
 
-.legal-section {
-    margin-bottom: var(--padding-large);
-    background: var(--surface-color);
-    padding: var(--padding-medium);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-
-    &:last-child {
-        margin-bottom: 0;
-    }
-}
-
-.section-title {
-    font-size: var(--font-size-responsive-xl);
-    font-weight: var(--font-weight-semibold);
-    margin-bottom: var(--padding-medium);
-    color: var(--text-color);
-    line-height: var(--line-height-tight);
-}
-
-.content-block {
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-relaxed);
-    margin-bottom: var(--padding-medium);
-    color: var(--text-secondary);
-
-    p {
-        margin-bottom: var(--padding-small);
-    }
-
-    a {
-        color: var(--primary-color);
-        text-decoration: none;
-        transition: all var(--transition-speed) var(--transition-bounce);
-
-        &:hover {
-            color: var(--primary-color-dark);
-            text-decoration: underline;
-        }
-
-        &:focus-visible {
-            outline: var(--focus-outline-width) solid var(--focus-outline-color);
-            outline-offset: var(--focus-outline-offset);
-            border-radius: var(--border-radius);
-        }
-    }
-}
-
+/* Unterstützung für reduzierten Bewegungsmodus */
 @media (prefers-reduced-motion: reduce) {
-    .content-block a {
-        transition: none;
-    }
-}
-
-@media (width <= 768px) {
-    .legal-page {
-        padding: var(--padding-small);
-    }
-
-    .page-title {
-        font-size: var(--font-size-responsive-xl);
-        margin-bottom: var(--padding-medium);
-    }
-
-    .section-title {
-        font-size: var(--font-size-responsive-lg);
-    }
-
-    .content-block {
-        font-size: var(--font-size-responsive-sm);
-    }
-
-    .legal-section {
-        padding: var(--padding-small);
-    }
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 </style>
