@@ -1,5 +1,7 @@
 <template>
-  <div class="flex min-h-screen flex-col bg-[var(--color-background)] motion-reduce:transition-none">
+  <div
+    class="flex min-h-screen flex-col bg-[var(--color-background)] motion-reduce:transition-none"
+  >
     <SkipLink />
 
     <!-- Header mit ausgelagerten Komponenten -->
@@ -76,7 +78,7 @@
     <main
       id="main-content"
       role="main"
-      class="mx-auto w-full max-w-5xl flex-1 p-4 leading-[1.6] text-white md:p-8 print:print-friendly motion-reduce:transition-none"
+      class="print:print-friendly mx-auto w-full max-w-5xl flex-1 p-4 leading-[1.6] text-white motion-reduce:transition-none md:p-8"
     >
       <slot />
     </main>
@@ -84,9 +86,9 @@
 </template>
 
 <script setup lang="ts">
+import { useLocalePath } from '#i18n'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useLocalePath } from '#i18n'
 // Korrekte Importpfade für Komponenten aus dem components-Verzeichnis
 import AppHeader from '~/components/layout/AppHeader.vue'
 import AppMenu from '~/components/layout/AppMenu.vue'
@@ -121,8 +123,9 @@ function closeMenu() {
     outline: 2px solid currentColor;
     outline-offset: 4px;
   }
-  
-  a, button {
+
+  a,
+  button {
     text-decoration: underline !important;
     font-weight: 700 !important;
   }
@@ -142,7 +145,7 @@ function closeMenu() {
     padding: 0 !important;
     margin: 0 !important;
   }
-  
+
   a {
     text-decoration: underline !important;
     color: #000 !important;

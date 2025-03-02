@@ -1,14 +1,16 @@
 <template>
   <div>
     <NuxtLayout name="default" :show-header="true" :show-menu="true" :show-coins="false">
-      <div class="min-h-screen bg-[var(--color-surface)] p-4 text-white md:p-8 motion-reduce:transition-none">
+      <div
+        class="min-h-screen bg-[var(--color-surface)] p-4 text-white motion-reduce:transition-none md:p-8"
+      >
         <CategoryIntro :category="currentCategory || null" />
 
         <article
           v-if="currentCategory"
           :data-category="currentCategory?.slug"
           aria-labelledby="difficulty-heading"
-          class="mx-auto flex max-w-4xl flex-col items-center gap-8 transition-all duration-300 ease-in-out md:gap-12 motion-reduce:transition-none"
+          class="mx-auto flex max-w-4xl flex-col items-center gap-8 transition-all duration-300 ease-in-out motion-reduce:transition-none md:gap-12"
         >
           <CategoryCover
             :image-url="currentCategory.imageUrl"
@@ -56,7 +58,7 @@
                   rel="noopener noreferrer"
                   :aria-label="t('category.playlist.spotify')"
                   role="listitem"
-                  class="flex h-16 w-16 items-center justify-center rounded-full bg-[#1DB954] text-white shadow transition-all duration-300 hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-[#1DB954]/50 motion-reduce:transition-none min-h-[44px]"
+                  class="flex h-16 min-h-[44px] w-16 items-center justify-center rounded-full bg-[#1DB954] text-white shadow transition-all duration-300 hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-[#1DB954]/50 motion-reduce:transition-none"
                 >
                   <Icon name="mdi:spotify" class="h-8 w-8" aria-hidden="true" />
                 </a>
@@ -68,7 +70,7 @@
                   rel="noopener noreferrer"
                   :aria-label="t('category.playlist.deezer')"
                   role="listitem"
-                  class="flex h-16 w-16 items-center justify-center rounded-full bg-[#00C7F2] text-white shadow transition-all duration-300 hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-[#00C7F2]/50 motion-reduce:transition-none min-h-[44px]"
+                  class="flex h-16 min-h-[44px] w-16 items-center justify-center rounded-full bg-[#00C7F2] text-white shadow transition-all duration-300 hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-[#00C7F2]/50 motion-reduce:transition-none"
                 >
                   <Icon name="simple-icons:deezer" class="h-8 w-8" aria-hidden="true" />
                 </a>
@@ -80,7 +82,7 @@
                   rel="noopener noreferrer"
                   :aria-label="t('category.playlist.apple')"
                   role="listitem"
-                  class="flex h-16 w-16 items-center justify-center rounded-full bg-[#FA243C] text-white shadow transition-all duration-300 hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-[#FA243C]/50 motion-reduce:transition-none min-h-[44px]"
+                  class="flex h-16 min-h-[44px] w-16 items-center justify-center rounded-full bg-[#FA243C] text-white shadow transition-all duration-300 hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-[#FA243C]/50 motion-reduce:transition-none"
                 >
                   <Icon name="simple-icons:applemusic" class="h-8 w-8" aria-hidden="true" />
                 </a>
@@ -205,13 +207,14 @@ onMounted(() => {
 <style>
 /* High contrast mode support */
 @media (prefers-contrast: more) {
-  a, button {
+  a,
+  button {
     outline: 2px solid currentColor !important;
     outline-offset: 2px !important;
     text-decoration: underline !important;
     font-weight: 700 !important;
   }
-  
+
   h2 {
     text-decoration: underline;
     text-underline-offset: 4px;
@@ -223,12 +226,12 @@ onMounted(() => {
   article {
     gap: 1rem !important;
   }
-  
+
   p {
     color: #000 !important;
     font-size: 12pt !important;
   }
-  
+
   h2 {
     color: #000 !important;
     font-size: 14pt !important;
