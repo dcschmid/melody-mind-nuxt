@@ -40,7 +40,7 @@
             :image-url="item.image"
             :category-url="
               localePath(
-                `/knowledge/${item._file.split('/')[1]}/${item._file.split('/').pop().replace('.md', '')}`
+                `/knowledge/${item._file.split('/')[1]}/${item._file.split('/').pop().replace('.md', '')}`,
               )
             "
             :intro-subline="item.description"
@@ -113,7 +113,7 @@ const jsonLdData = computed(() => ({
         name: item.title,
         description: item.description,
         url: localePath(
-          `/knowledge/${item._file.split('/')[1]}/${item._file.split('/').pop().replace('.md', '')}`
+          `/knowledge/${item._file.split('/')[1]}/${item._file.split('/').pop().replace('.md', '')}`,
         ),
       },
     })),
