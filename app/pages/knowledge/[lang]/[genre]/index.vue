@@ -1,16 +1,18 @@
 <template>
   <NuxtLayout name="default" :show-header="true" :show-menu="true" :show-coins="false">
     <div v-if="genre" class="min-h-screen text-white">
-      <div class="mx-auto flex max-w-4xl flex-col items-center gap-8 p-4 md:p-8 motion-reduce:transition-none">
+      <div
+        class="mx-auto flex max-w-4xl flex-col items-center gap-8 p-4 motion-reduce:transition-none md:p-8"
+      >
         <!-- Main Content -->
         <div class="p-4 text-center text-base md:p-6 print:p-0">
-          <h1 class="mb-6 text-3xl font-bold leading-tight text-[var(--color-primary)]">
+          <h1 class="mb-6 text-3xl leading-tight font-bold text-[var(--color-primary)]">
             {{ genre.title }}
           </h1>
           <UnLazyImage
             :src="genre.image"
             :alt="genre.title"
-            class="mx-auto aspect-square w-full max-w-[300px] rounded object-cover shadow transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg motion-reduce:transform-none motion-reduce:transition-none print:shadow-none print:max-w-[200px]"
+            class="mx-auto aspect-square w-full max-w-[300px] rounded object-cover shadow transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg motion-reduce:transform-none motion-reduce:transition-none print:max-w-[200px] print:shadow-none"
             :thumbhash="thumbHash"
             auto-sizes
             loading="lazy"
@@ -21,7 +23,7 @@
           </div>
         </div>
 
-        <article class="prose prose-invert w-full text-gray-300 print:prose-black print:text-black">
+        <article class="prose prose-invert print:prose-black w-full text-gray-300 print:text-black">
           <ContentRenderer :value="genre" />
         </article>
 
@@ -37,7 +39,7 @@
           <div>
             <h4
               id="streaming-services-title"
-              class="mb-6 flex items-center gap-2 text-2xl font-bold leading-tight text-[var(--color-primary)]"
+              class="mb-6 flex items-center gap-2 text-2xl leading-tight font-bold text-[var(--color-primary)]"
             >
               <Icon name="material-symbols:headphones" aria-hidden="true" />
               {{ $t('knowledge.playAndListen') }}
@@ -48,7 +50,7 @@
 
             <!-- Playlist Links -->
             <div
-              class="mt-6 flex justify-center gap-8 perspective-1000"
+              class="perspective-1000 mt-6 flex justify-center gap-8"
               role="list"
               aria-labelledby="streaming-services-title"
             >
@@ -57,7 +59,7 @@
                 :href="category.spotifyPlaylist"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="relative flex h-16 w-16 min-h-[44px] items-center justify-center overflow-hidden rounded border border-white/10 backdrop-blur-sm transition-all duration-300 ease-in-out hover:translate-y-[-4px] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transform-none motion-reduce:transition-none"
+                class="relative flex h-16 min-h-[44px] w-16 items-center justify-center overflow-hidden rounded border border-white/10 backdrop-blur-sm transition-all duration-300 ease-in-out hover:translate-y-[-4px] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transform-none motion-reduce:transition-none"
                 :aria-label="$t('knowledge.playlist.spotify')"
                 role="listitem"
               >
@@ -76,7 +78,7 @@
                 :href="category.deezerPlaylist"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="relative flex h-16 w-16 min-h-[44px] items-center justify-center overflow-hidden rounded border border-white/10 backdrop-blur-sm transition-all duration-300 ease-in-out hover:translate-y-[-4px] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transform-none motion-reduce:transition-none"
+                class="relative flex h-16 min-h-[44px] w-16 items-center justify-center overflow-hidden rounded border border-white/10 backdrop-blur-sm transition-all duration-300 ease-in-out hover:translate-y-[-4px] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transform-none motion-reduce:transition-none"
                 :aria-label="$t('knowledge.playlist.deezer')"
                 role="listitem"
               >
@@ -95,7 +97,7 @@
                 :href="category.appleMusicPlaylist"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="relative flex h-16 w-16 min-h-[44px] items-center justify-center overflow-hidden rounded border border-white/10 backdrop-blur-sm transition-all duration-300 ease-in-out hover:translate-y-[-4px] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transform-none motion-reduce:transition-none"
+                class="relative flex h-16 min-h-[44px] w-16 items-center justify-center overflow-hidden rounded border border-white/10 backdrop-blur-sm transition-all duration-300 ease-in-out hover:translate-y-[-4px] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transform-none motion-reduce:transition-none"
                 :aria-label="$t('knowledge.playlist.apple')"
                 role="listitem"
               >
@@ -125,18 +127,22 @@
       </div>
     </div>
     <div v-else-if="error" class="container p-8 text-center text-white">
-      <p class="text-lg">{{ error }}</p>
+      <p class="text-lg">
+        {{ error }}
+      </p>
     </div>
     <div v-else class="container p-8 text-center text-white">
-      <p class="text-lg">{{ $t('knowledge.loading') }}</p>
+      <p class="text-lg">
+        {{ $t('knowledge.loading') }}
+      </p>
     </div>
   </NuxtLayout>
 </template>
 
 <script setup>
-import { ref, onMounted, watch, computed } from 'vue'
+import { queryContent, useHead, useRequestURL, useSeoMeta } from '#imports'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { queryContent, useRequestURL, useSeoMeta, useHead } from '#imports'
 import { useThumbHash } from '~/composables/useThumbHash'
 
 const route = useRoute()
@@ -259,12 +265,16 @@ watch(() => route.params, loadContent)
 <style>
 /* High contrast mode support */
 @media (prefers-contrast: more) {
-  article h1, article h2, article h3, article h4 {
+  article h1,
+  article h2,
+  article h3,
+  article h4 {
     text-decoration: underline !important;
     text-underline-offset: 4px !important;
   }
-  
-  a, button {
+
+  a,
+  button {
     outline: 2px solid currentColor !important;
     outline-offset: 2px !important;
     text-decoration: underline !important;
@@ -277,19 +287,22 @@ watch(() => route.params, loadContent)
   article {
     color: #000 !important;
   }
-  
-  h1, h2, h3, h4 {
+
+  h1,
+  h2,
+  h3,
+  h4 {
     color: #000 !important;
     font-size: 14pt !important;
     font-weight: bold !important;
     margin-bottom: 0.5rem !important;
   }
-  
+
   p {
     color: #000 !important;
     font-size: 12pt !important;
   }
-  
+
   img {
     max-width: 200px !important;
     margin: 1rem auto !important;
