@@ -1,30 +1,95 @@
 <template>
-    <NuxtLayout name="default" :show-header="true" :show-menu="true">
-        <div class="gameHome" id="main-content">
-            <section class="intro">
-                <h1 tabindex="-1" class="page-title">{{ $t('gameHome.title') }}</h1>
-                <p class="intro-text page-subtitle" v-if="$t('gameHome.description')">{{ $t('gameHome.description') }}</p>
-            </section>
+  <NuxtLayout name="default" :show-header="true" :show-menu="true">
+    <main
+      id="main-content"
+      class="mx-auto w-full max-w-[75rem] px-4 py-8 sm:px-6 md:px-8 md:py-12 print:print-friendly motion-reduce:transition-none"
+    >
+      <!-- Intro Section -->
+      <section class="mb-10 md:mb-12">
+        <h1
+          tabindex="-1"
+          class="mb-6 text-center text-2xl font-bold text-white leading-[1.4] sm:text-3xl md:mb-8 md:text-4xl"
+        >
+          {{ $t('gameHome.title') }}
+        </h1>
+        <p
+          v-if="$t('gameHome.description')"
+          class="mx-auto mb-6 max-w-3xl text-center text-base leading-[1.6] text-[#f0f0f0] md:text-lg"
+        >
+          {{ $t('gameHome.description') }}
+        </p>
+      </section>
 
-            <section class="search-section" role="search">
-                <SearchBar id="category-search" v-model="searchQuery" :placeholder="$t('gameHome.searchPlaceholder')" />
-            </section>
+      <!-- Search Section -->
+      <section
+        role="search"
+        class="mx-auto mb-10 max-w-2xl md:mb-12"
+        :aria-label="$t('gameHome.searchCategories')"
+      >
+        <SearchBar
+          id="category-search"
+          v-model="searchQuery"
+          :placeholder="$t('gameHome.searchPlaceholder')"
+        />
+      </section>
 
-            <section class="categories-section" role="region" aria-labelledby="categories-heading">
-                <h2 id="categories-heading" class="visually-hidden">{{ $t('gameHome.categoriesTitle') }}</h2>
-                <div class="categories-grid" role="list">
-                    <CategoryCard v-for="category in filteredCategories" :key="category.slug"
-                        :headline="category.headline" :image-url="category.imageUrl"
-                        :category-url="localePath(category.categoryUrl)" :is-playable="category.isPlayable"
-                        :intro-subline="category.introSubline" role="listitem" @select="navigateToCategory(category)" />
-                </div>
-            </section>
+      <!-- Categories Section -->
+      <section role="region" aria-labelledby="categories-heading" class="mb-8">
+        <h2 id="categories-heading" class="sr-only">
+          {{ $t('gameHome.categoriesTitle') }}
+        </h2>
+
+        <!-- Empty State Message -->
+        <div
+          v-if="filteredCategories.length === 0"
+          class="rounded-lg bg-[#141414] py-16 text-center shadow-sm dark:bg-[#1a1a1a]"
+        >
+          <Icon
+            name="material-symbols:search-off-rounded"
+            size="48"
+            class="mb-4 text-[rgb(130,87,229)]"
+            aria-hidden="true"
+          />
+          <p class="mb-2 text-lg font-medium text-white">
+            {{ $t('gameHome.noResults') }}
+          </p>
+          <p class="text-base text-[#f0f0f0]">
+            {{ $t('gameHome.tryAnotherSearch') }}
+          </p>
+          <button
+            class="mt-6 min-h-[44px] rounded-full bg-[rgb(130,87,229)] px-6 py-2 text-white transition-colors duration-300 hover:bg-[#6d46c4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(130,87,229)] focus-visible:ring-offset-2 motion-reduce:transition-none"
+            :aria-label="$t('gameHome.clearSearch')"
+            @click="searchQuery = ''"
+          >
+            {{ $t('common.clearSearch') }}
+          </button>
         </div>
-    </NuxtLayout>
+
+        <!-- Categories Grid -->
+        <div
+          v-else
+          role="list"
+          class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3"
+        >
+          <CategoryCard
+            v-for="category in filteredCategories"
+            :key="category.slug"
+            :headline="category.headline"
+            :image-url="category.imageUrl"
+            :category-url="localePath(category.categoryUrl)"
+            :is-playable="category.isPlayable"
+            :intro-subline="category.introSubline"
+            role="listitem"
+            @select="navigateToCategory(category)"
+          />
+        </div>
+      </section>
+    </main>
+  </NuxtLayout>
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useRequestURL } from '#imports'
 
@@ -35,96 +100,40 @@ const { locale, t } = useI18n()
 const localePath = useLocalePath()
 const url = useRequestURL()
 
+// SEO Metadaten
 useSeoMeta({
-    title: computed(() => t('gameHome.title')),
-    ogTitle: computed(() => t('gameHome.title')),
-    description: computed(() => t('gameHome.description')),
-    ogDescription: computed(() => t('gameHome.description')),
-    ogType: 'website',
-    robots: 'index, follow',
-    viewport: 'width=device-width, initial-scale=1',
-    twitterCard: 'summary_large_image',
-    ogUrl: computed(() => url.href)
+  title: computed(() => t('gameHome.title')),
+  ogTitle: computed(() => t('gameHome.title')),
+  description: computed(() => t('gameHome.description')),
+  ogDescription: computed(() => t('gameHome.description')),
+  ogType: 'website',
+  robots: 'index, follow',
+  viewport: 'width=device-width, initial-scale=1',
+  twitterCard: 'summary_large_image',
+  ogUrl: computed(() => url.href),
 })
 
+// Navigation zu einer Kategorie
 const navigateToCategory = (category) => {
-    if (category.isPlayable) {
-        router.push(localePath(category.categoryUrl))
-    }
+  if (category.isPlayable) {
+    router.push(localePath(category.categoryUrl))
+  }
 }
 
+// Kategorien beim Laden der Seite abrufen
 onMounted(() => {
-    loadCategories(locale.value)
+  loadCategories(locale.value)
+  // Fokus auf die Überschrift setzen für bessere Accessibility
+  document.querySelector('h1')?.focus()
 })
 </script>
 
-<style scoped lang="scss">
-.gameHome {
-    width: 100%;
-    margin: 0 auto;
-}
-
-.intro {
-    text-align: center;
-    margin-bottom: var(--padding-large);
-}
-
-.page-title {
-    font-size: var(--font-size-responsive-2xl);
-    font-weight: var(--font-weight-bold);
-    text-align: center;
-    margin-bottom: var(--padding-large);
-    color: var(--text-color);
-    line-height: var(--line-height-tight);
-}
-
-.page-subtitle {
-    font-size: var(--font-size-responsive-md);
-    color: var(--text-secondary);
-    text-align: center;
-    margin-bottom: var(--padding-medium);
-    line-height: var(--line-height-relaxed);
-    max-width: var(--max-line-length);
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.search-section {
-    margin-bottom: var(--padding-large);
-}
-
-.categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: var(--padding-large);
-
-    @media (width >= 640px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (width >= 1024px) {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    @media (width <= 768px) {
-        gap: var(--padding-medium);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .categories-grid * {
-        transition: none !important;
-        animation: none !important;
-    }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .category-card {
-        animation: fadeIn var(--transition-speed) var(--transition-bounce);
-    }
-}
-
-.visually-hidden {
-    @include sr-only;
+<style scoped>
+/* Zusätzliche Styles für Kontrast-Modus, die nicht mit Tailwind abgedeckt werden können */
+@media (prefers-contrast: more) {
+  h1,
+  h2 {
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+  }
 }
 </style>
