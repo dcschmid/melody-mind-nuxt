@@ -52,5 +52,6 @@
     "scripts/venv/lib/python3.12/site-packages/triton/language",
     "scripts/venv/lib64/python3.12/site-packages/spacy/lang",
     "scripts/venv/lib64/python3.12/site-packages/triton/language"
-  ]
+  ],
+  "i18n-ally.keystyle": "nested"
 }
