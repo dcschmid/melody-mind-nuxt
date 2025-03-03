@@ -1,42 +1,50 @@
 <template>
   <RulesSection id="golden-lps">
     <template #title>
-      <span class="text-xl font-bold text-text leading-tight text-center block mb-large">
+      <span
+        class="mb-8 block text-center text-xl leading-tight font-bold text-[rgb(var(--text-color-rgb))] print:text-black"
+      >
         {{ $t('gameRules.goldenRecords.title') }}
       </span>
     </template>
-    
+
     <!-- Einführungstext mit hervorgehobenen Elementen -->
-    <p 
-      class="text-md leading-relaxed text-text mb-medium max-w-prose mx-auto" 
-      v-html="$t('gameRules.goldenRecords.intro', ['<span class=\'text-primary font-semibold transition-colors duration-normal\'>', '</span>'])"
+    <p
+      class="mx-auto mb-6 max-w-prose text-base leading-relaxed text-[rgb(var(--text-color-rgb))] print:text-black"
       aria-live="polite"
-    ></p>
+    >
+      <i18n-t keypath="gameRules.goldenRecords.intro" tag="span">
+        <template #0>
+          <span class="font-semibold text-[rgb(var(--primary-color-rgb))] motion-safe:transition-colors motion-safe:duration-300 print:text-black print:underline print:font-bold">
+          </span>
+        </template>
+      </i18n-t>
+    </p>
 
     <!-- Auflistung der Belohnungen mit verbesserten Zugänglichkeitsattributen -->
-    <RulesList
-      :title="$t('gameRules.goldenRecords.rewardsListTitle')"
-      class="mb-large"
-    >
-      <li 
-        v-for="(difficulty, index) in ['easy', 'medium', 'hard']" 
+    <RulesList :title="$t('gameRules.goldenRecords.rewardsListTitle')" class="mb-8 print:mb-6">
+      <li
+        v-for="(difficulty, index) in ['easy', 'medium', 'hard']"
         :key="difficulty"
-        class="mb-small last:mb-0 group"
+        class="group mb-3 last:mb-0 print:mb-2"
       >
-        <span 
-          class="text-base text-text-secondary leading-normal transition-colors duration-normal group-hover:text-text group-focus-within:text-text motion-reduce:transition-none"
+        <span
+          class="text-base leading-normal text-[rgb(var(--text-secondary-color-rgb))] group-focus-within:text-[rgb(var(--text-color-rgb))] group-hover:text-[rgb(var(--text-color-rgb))] motion-safe:transition-colors motion-safe:duration-300 print:text-black"
           :aria-label="$t(`gameRules.goldenRecords.rewards.${difficulty}AccessibleLabel`)"
         >
           {{ $t(`gameRules.goldenRecords.rewards.${difficulty}`) }}
         </span>
-        
+
         <!-- Badge für den Schwierigkeitsgrad -->
-        <span 
-          class="ml-2 inline-flex items-center px-2 py-1 rounded-full text-xs font-medium"
+        <span
+          class="ml-2 inline-flex items-center rounded-full px-2 py-1 text-xs font-medium print:border print:border-black"
           :class="{
-            'bg-success/20 text-success': difficulty === 'easy',
-            'bg-highlight/20 text-highlight': difficulty === 'medium',
-            'bg-error/20 text-error': difficulty === 'hard'
+            'bg-[rgba(var(--success-color-rgb),0.2)] text-[rgb(var(--success-color-rgb))] print:bg-white print:text-black':
+              difficulty === 'easy',
+            'bg-[rgba(var(--highlight-color-rgb),0.2)] text-[rgb(var(--highlight-color-rgb))] print:bg-white print:text-black':
+              difficulty === 'medium',
+            'bg-[rgba(var(--error-color-rgb),0.2)] text-[rgb(var(--error-color-rgb))] print:bg-white print:text-black':
+              difficulty === 'hard',
           }"
           aria-hidden="true"
         >
@@ -44,15 +52,19 @@
         </span>
       </li>
     </RulesList>
-    
+
     <!-- Zusätzlicher Abschlusshinweis mit besserer Erkennbarkeit -->
-    <div 
-      class="p-medium rounded-lg bg-surface/60 backdrop-blur-xs border border-primary/20 max-w-prose mx-auto text-center"
+    <div
+      class="mx-auto max-w-prose rounded-lg border border-[rgba(var(--primary-color-rgb),0.2)] bg-[rgba(var(--surface-color-rgb),0.6)] p-4 text-center backdrop-blur-xs print:border-2 print:border-black print:bg-white"
       role="note"
       aria-label="Wichtiger Hinweis"
     >
-      <p class="text-base text-text leading-relaxed mb-0">
-        <Icon name="material-symbols:info-outline" class="inline-block mr-1 text-primary" aria-hidden="true" />
+      <p class="mb-0 text-base leading-relaxed text-[rgb(var(--text-color-rgb))] print:text-black">
+        <Icon
+          name="material-symbols:info-outline"
+          class="mr-1 inline-block text-[rgb(var(--primary-color-rgb))] print:text-black"
+          aria-hidden="true"
+        />
         {{ $t('gameRules.goldenRecords.note') }}
       </p>
     </div>
@@ -66,17 +78,30 @@
 <style lang="scss" scoped>
 /* Unterstützung für hohen Kontrast-Modus */
 @media (prefers-contrast: more) {
-  .text-primary {
-    @apply text-white bg-primary px-1 py-0.5 rounded-sm;
+  span[class*='text-[rgb(var(--primary-color-rgb))]'] {
+    background-color: black !important;
+    color: white !important;
+    border-radius: 0.125rem !important;
+    padding: 0.125rem 0.25rem !important;
   }
-  
-  [role="note"] {
-    @apply border-2 border-white bg-surface;
+
+  [role='note'] {
+    background-color: black !important;
+    border: 3px solid white !important;
   }
-  
+
   .group:hover span,
   .group:focus-within span {
-    @apply text-white;
+    color: white !important;
+  }
+
+  [class*='rounded-full'] {
+    border: 2px solid white !important;
+  }
+
+  [class*='bg-[rgba(var'] {
+    background-color: black !important;
+    color: white !important;
   }
 }
 </style>
