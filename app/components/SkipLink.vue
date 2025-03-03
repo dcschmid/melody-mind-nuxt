@@ -23,10 +23,10 @@ import { ref } from 'vue'
 
 /**
  * SkipLink Komponente
- * 
+ *
  * Eine barrierefreie "Skip to Content"-Komponente, die es Tastaturnutzern ermöglicht,
  * direkt zum Hauptinhalt zu navigieren, ohne durch die Navigation gehen zu müssen.
- * 
+ *
  * Unterstützt:
  * - Tastaturnavigation
  * - Screenreader

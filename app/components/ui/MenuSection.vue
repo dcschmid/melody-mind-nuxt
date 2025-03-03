@@ -17,7 +17,7 @@
 
     <h2 v-if="title" :id="headingId" class="relative mb-4 flex items-center gap-2">
       <!-- Accent line -->
-      <span 
+      <span
         aria-hidden="true"
         class="mr-1 inline-block h-6 w-1.5 rounded-full bg-gradient-to-b from-[rgb(var(--primary-color-rgb))] to-[rgb(var(--primary-light-color-rgb))] shadow-[0_0_10px_rgba(var(--primary-color-rgb),0.5)] print:bg-black print:shadow-none"
       ></span>
