@@ -1,48 +1,49 @@
 <template>
-  <div 
-    id="menu" 
-    class="fixed inset-0 w-full h-full backdrop-blur-overlay z-menu overflow-y-auto transition-all duration-normal ease-in-out bg-gradient-to-b from-black/80 to-black/90"
-    :class="[
-      isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none',
-      reducedMotion ? 'motion-reduce' : ''
-    ]" 
-    @keydown.esc="$emit('close')"
-    tabindex="-1" 
-    role="dialog" 
-    aria-modal="true" 
-    :aria-label="menuLabel" 
+  <div
+    id="menu"
     ref="menuRef"
+    class="fixed inset-0 z-[9999] h-full w-full overflow-y-auto bg-black/90 backdrop-blur-md motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-in-out motion-reduce:transition-none print:hidden"
+    :class="[isOpen ? 'visible opacity-100' : 'pointer-events-none invisible opacity-0']"
+    tabindex="-1"
+    role="dialog"
+    aria-modal="true"
+    :aria-label="menuLabel"
+    @keydown.esc="$emit('close')"
   >
     <!-- Animierter Hintergrund -->
-    <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-secondary/10 animate-gradient-slow"></div>
-    
+    <div
+      class="motion-safe:animate-gradient-slow absolute inset-0 bg-gradient-to-tr from-[rgb(var(--primary-color-rgb))]/10 to-[rgb(var(--secondary-color-rgb))]/10 motion-reduce:bg-none"
+    />
+
     <!-- Menü Container mit Glaseffekt -->
-    <div 
-      class="relative w-full max-w-3xl mx-auto my-[calc(var(--header-height)+1rem)] p-large shadow-2xl overflow-y-auto transform transition-all duration-normal"
+    <div
+      class="relative mx-auto my-[calc(4rem+1rem)] w-full max-w-3xl overflow-y-auto rounded-xl border border-[rgb(var(--border-color-rgb))] bg-[rgb(var(--surface-color-rgb))]/80 p-6 shadow-xl backdrop-blur-md motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none md:p-8 [&>a]:flex [&>a]:min-h-[44px] [&>a]:min-w-[44px] [&>a]:items-center [&>a]:justify-center [&>a:focus-visible]:outline-[3px] [&>a:focus-visible]:outline-offset-2 [&>a:focus-visible]:outline-[rgb(var(--focus-color-rgb))] [&>button]:flex [&>button]:min-h-[44px] [&>button]:min-w-[44px] [&>button]:items-center [&>button]:justify-center [&>button:focus-visible]:outline-[3px] [&>button:focus-visible]:outline-offset-2 [&>button:focus-visible]:outline-[rgb(var(--focus-color-rgb))]"
       :class="[
         isOpen ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-[-20px] scale-95 opacity-0',
-        'backdrop-blur-md bg-black/40 border border-white/10 rounded-xl'
       ]"
     >
       <!-- Shine effect -->
-      <div class="absolute inset-0 overflow-hidden rounded-xl pointer-events-none">
-        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-        <div class="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
+      <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-xl">
+        <div
+          class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgb(var(--highlight-color-rgb))]/20 to-transparent"
+        />
+        <div
+          class="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-[rgb(var(--highlight-color-rgb))]/20 to-transparent"
+        />
       </div>
-    
+
       <!-- Verbesserter Close Button -->
-      <button 
-        class="absolute top-4 right-4 flex items-center justify-center w-12 h-12 bg-black/30 hover:bg-surface-hover text-white hover:text-highlight rounded-full shadow-lg border border-white/10 transition-all duration-normal"
-        @click="$emit('close')" 
-        :aria-label="closeLabel" 
+      <Button
         ref="closeButtonRef"
+        :aria-label="closeLabel"
+        variant="icon"
+        class-name="absolute top-4 right-4 min-w-[48px] min-h-[48px] rounded-full bg-[rgb(var(--surface-light-color-rgb))] border border-[rgb(var(--border-color-rgb))] hover:bg-[rgb(var(--surface-hover-color-rgb))] focus:ring-[3px] focus:ring-[rgb(var(--focus-color-rgb))] focus:ring-offset-2 motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none"
+        @click="$emit('close')"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
-          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-        </svg>
+        <Icon name="material-symbols:close" class="text-2xl" :aria-hidden="true" />
         <span class="sr-only">{{ closeLabel }}</span>
-      </button>
-      
+      </Button>
+
       <!-- Menü Inhalt mit verbesserten Abständen -->
       <div class="mt-8 space-y-8">
         <slot />
@@ -52,77 +53,110 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, onUnmounted } from 'vue';
-import { useFocusTrap } from '@vueuse/integrations/useFocusTrap';
-import { usePreferredReducedMotion } from '@vueuse/core';
-import Button from '../ui/Button.vue';
+import { usePreferredReducedMotion, useThrottleFn } from '@vueuse/core'
+import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
+import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 
 const props = defineProps({
   isOpen: {
     type: Boolean,
-    default: false
+    default: false,
   },
   menuLabel: {
     type: String,
-    default: 'Menü'
+    default: 'Menü',
   },
   closeLabel: {
     type: String,
-    default: 'Menü schließen'
-  }
-});
+    default: 'Menü schließen',
+  },
+})
 
-const emits = defineEmits(['close']);
-const menuRef = ref<HTMLElement | null>(null);
-const closeButtonRef = ref<HTMLElement | null>(null);
-const reducedMotion = usePreferredReducedMotion();
+const emits = defineEmits(['close'])
+const menuRef = ref<HTMLElement | null>(null)
+const closeButtonRef = ref<HTMLElement | null>(null)
+const reducedMotion = usePreferredReducedMotion()
 
+// Verbesserte Fokus-Falle mit Zugänglichkeitsoptionen
 const { activate, deactivate } = useFocusTrap(menuRef, {
   immediate: false,
   escapeDeactivates: true,
   allowOutsideClick: true,
   fallbackFocus: () => closeButtonRef.value as HTMLElement,
-});
+  initialFocus: () => closeButtonRef.value as HTMLElement,
+  returnFocusOnDeactivate: true,
+})
 
-watch(() => props.isOpen, (isOpen) => {
-  if (isOpen) {
-    // Prevent scrolling of the background when menu is open
-    document.body.classList.add('overflow-hidden');
-    activate();
-    setTimeout(() => {
-      closeButtonRef.value?.focus();
-    }, 50);
-  } else {
-    document.body.classList.remove('overflow-hidden');
-    deactivate();
+// Optimierte Beobachtung des Menü-Status
+watch(
+  () => props.isOpen,
+  (isOpen) => {
+    if (isOpen) {
+      // Hintergrund-Scrolling verhindern, wenn Menü geöffnet ist
+      document.body.classList.add('overflow-hidden')
+
+      // Fokus-Falle aktivieren
+      nextTick(() => {
+        activate()
+
+        // Verbesserte Zugänglichkeit: Optimale Verzögerung für Screen Reader
+        // Gibt Screen Readern Zeit, den Dialog zu erkennen
+        setTimeout(() => {
+          closeButtonRef.value?.focus()
+        }, 150)
+      })
+    } else {
+      // Hintergrund-Scrolling wieder ermöglichen
+      document.body.classList.remove('overflow-hidden')
+
+      // Fokus-Falle deaktivieren
+      deactivate()
+    }
   }
-});
+)
+
+// Throttled Event-Handler für bessere Performance
+const handleKeyDown = useThrottleFn((event: KeyboardEvent) => {
+  if (!props.isOpen) return
+
+  // Escape-Taste zum Schließen
+  if (event.key === 'Escape') {
+    emits('close')
+  }
+}, 150)
 
 onMounted(() => {
+  // Menü-Status bei Komponenten-Mount initialisieren
   if (props.isOpen) {
-    document.body.classList.add('overflow-hidden');
-    activate();
+    document.body.classList.add('overflow-hidden')
+    nextTick(() => {
+      activate()
+      closeButtonRef.value?.focus()
+    })
   }
-});
+
+  // Event-Listener für verbesserte Tastatur-Navigation
+  window.addEventListener('keydown', handleKeyDown)
+
+  // ARIA-Attribute dynamisch setzen für bessere Zugänglichkeit
+  if (menuRef.value) {
+    menuRef.value.setAttribute('aria-hidden', props.isOpen ? 'false' : 'true')
+  }
+})
 
 onUnmounted(() => {
-  document.body.classList.remove('overflow-hidden');
-  deactivate();
-});
+  // Aufräumen beim Unmount der Komponente
+  document.body.classList.remove('overflow-hidden')
+  deactivate()
+  window.removeEventListener('keydown', handleKeyDown)
+})
 </script>
 
 <style scoped>
-.motion-reduce {
-  transition: none !important;
-}
-.motion-reduce * {
-  transition: none !important;
-  animation: none !important;
-  transform: none !important;
-}
-
+/* Animationen - optimiert für Performance */
 @keyframes gradient-shift {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -134,4 +168,46 @@ onUnmounted(() => {
   animation: gradient-shift 15s ease infinite;
   background-size: 200% 200%;
 }
+
+/* Verbesserter Kontrast für WCAG AAA */
+@media (prefers-contrast: more) {
+  #menu {
+    background-color: black !important;
+    backdrop-filter: none !important;
+  }
+
+  button {
+    border: 3px solid white !important;
+    background-color: black !important;
+    color: white !important;
+    outline: 2px solid white !important;
+    outline-offset: 2px !important;
+  }
+
+  button:focus-visible {
+    outline-width: 4px !important;
+    outline-style: solid !important;
+    outline-color: white !important;
+  }
+
+  .backdrop-blur-md {
+    background-color: rgba(0, 0, 0, 0.95) !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Verbesserte Sichtbarkeit für interaktive Elemente */
+  a,
+  button {
+    text-decoration: underline !important;
+  }
+}
+
+/* Print-Optimierung */
+@media print {
+  #menu {
+    display: none !important;
+  }
+}
+
+/* Unterstützung für prefers-reduced-motion - bereits durch Tailwind-Klassen abgedeckt */
 </style>
