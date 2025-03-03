@@ -1,109 +1,104 @@
 <template>
-    <div 
-        class="search-wrapper"
-        role="search"
-    >
-        <label 
-            :for="id" 
-            class="sr-only"
-        >{{ label || placeholder }}</label>
-        
-        <div class="search-input-container">
-            <Icon 
-                name="ic:baseline-search" 
-                size="24" 
-                class="search-icon" 
-                aria-hidden="true"
-                focusable="false"
-            />
-            
-            <input 
-                :id="id"
-                ref="searchInput"
-                :value="modelValue"
-                type="search"
-                class="search-input"
-                :placeholder="placeholder"
-                :aria-label="label || placeholder"
-                :aria-describedby="describedBy"
-                :aria-expanded="showSuggestions"
-                :aria-activedescendant="activeDescendant"
-                :aria-controls="listboxId"
-                role="combobox"
-                autocomplete="off"
-                @input="handleInput"
-                @keydown="handleKeyDown"
-                @focus="handleFocus"
-                @blur="handleBlur"
-            />
+  <div class="relative mx-auto max-w-[var(--content-width)]" role="search">
+    <label :for="id" class="sr-only">{{ label || placeholder }}</label>
 
-            <button 
-                v-if="modelValue"
-                type="button"
-                class="clear-button"
-                :aria-label="$t('common.clearSearch')"
-                @click="clearSearch"
-            >
-                <Icon 
-                    name="ic:baseline-close" 
-                    size="20"
-                    aria-hidden="true"
-                    focusable="false"
-                />
-            </button>
-        </div>
+    <div class="relative flex items-center">
+      <Icon
+        name="ic:baseline-search"
+        size="24"
+        class="pointer-events-none absolute left-3 text-[rgb(var(--text-secondary-color-rgb))]"
+        aria-hidden="true"
+        focusable="false"
+      />
 
-        <!-- Suchvorschläge -->
-        <div 
-            v-if="showSuggestions && suggestions.length > 0"
-            :id="listboxId"
-            class="suggestions-list"
-            role="listbox"
-            :aria-label="$t('common.searchSuggestions')"
-        >
-            <div
-                v-for="(suggestion, index) in suggestions"
-                :key="suggestion.id"
-                :id="'suggestion-' + index"
-                class="suggestion-item"
-                role="option"
-                :aria-selected="index === activeIndex"
-                :class="{ 'is-active': index === activeIndex }"
-                @click="selectSuggestion(suggestion)"
-                @mouseenter="activeIndex = index"
-            >
-                {{ suggestion.text }}
-            </div>
-        </div>
+      <input
+        :id="id"
+        ref="searchInput"
+        :value="modelValue"
+        type="search"
+        class="w-full rounded-lg border-2 border-[rgb(var(--surface-light-color-rgb))] bg-[rgb(var(--surface-color-rgb))] px-4 py-2 pl-10 text-base leading-normal text-[rgb(var(--text-color-rgb))] placeholder:text-[rgb(var(--text-secondary-color-rgb))] placeholder:opacity-70 hover:border-[rgb(var(--primary-color-rgb))] focus:border-[rgb(var(--focus-color-rgb))] focus:ring-2 focus:ring-[rgb(var(--focus-color-rgb))] focus:outline-none motion-safe:transition-all motion-safe:duration-300 print:border-black print:bg-white print:text-black print:placeholder:text-gray-500"
+        :placeholder="placeholder"
+        :aria-label="label || placeholder"
+        :aria-describedby="describedBy"
+        :aria-expanded="showSuggestions"
+        :aria-activedescendant="activeDescendant"
+        :aria-controls="listboxId"
+        role="combobox"
+        autocomplete="off"
+        @input="handleInput"
+        @keydown="handleKeyDown"
+        @focus="handleFocus"
+        @blur="handleBlur"
+      />
+
+      <button
+        v-if="modelValue"
+        type="button"
+        class="absolute right-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-transparent text-[rgb(var(--text-secondary-color-rgb))] hover:bg-[rgb(var(--surface-light-color-rgb))] hover:text-[rgb(var(--text-color-rgb))] focus-visible:bg-[rgb(var(--surface-light-color-rgb))] focus-visible:text-[rgb(var(--text-color-rgb))] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-all motion-safe:duration-300 print:text-black"
+        :aria-label="$t('common.clearSearch')"
+        @click="clearSearch"
+      >
+        <Icon name="ic:baseline-close" size="20" aria-hidden="true" focusable="false" />
+      </button>
     </div>
+
+    <!-- Suggestions List -->
+    <div
+      v-if="showSuggestions && suggestions && suggestions.length > 0"
+      :id="listboxId"
+      class="absolute top-full right-0 left-0 z-50 mt-1 rounded-lg border-2 border-[rgb(var(--surface-light-color-rgb))] bg-[rgb(var(--surface-color-rgb))] py-1 shadow-md print:hidden"
+      role="listbox"
+      :aria-label="$t('common.searchSuggestions')"
+    >
+      <div
+        v-for="(suggestion, index) in suggestions"
+        :id="`${id}-suggestion-${suggestion.id || index}`"
+        :key="suggestion.id || index"
+        class="cursor-pointer px-3 py-2 text-[rgb(var(--text-color-rgb))] hover:bg-[rgb(var(--surface-light-color-rgb))] motion-safe:transition-all motion-safe:duration-200"
+        :class="{ 'bg-[rgb(var(--surface-light-color-rgb))]': index === activeIndex }"
+        role="option"
+        :aria-selected="index === activeIndex"
+        @mousedown.prevent="selectSuggestion(suggestion)"
+        @mouseover="activeIndex = index"
+      >
+        {{ suggestion.text }}
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
 interface Props {
-    id: string
-    modelValue: string
-    placeholder: string
-    label?: string
-    describedBy?: string
-    suggestions?: Array<{ id: string; text: string }>
+  /** ID für das Sucheingabefeld, wird für die Zugänglichkeit benötigt */
+  id: string
+  /** Der aktuelle Wert des Suchfelds (v-model) */
+  modelValue: string
+  /** Platzhaltertext, der angezeigt wird, wenn das Suchfeld leer ist */
+  placeholder: string
+  /** Optionales Label für das Suchfeld (für Screenreader) */
+  label?: string
+  /** Optionale ID eines Elements, das das Suchfeld beschreibt (für aria-describedby) */
+  describedBy?: string
+  /** Array von Vorschlägen, die angezeigt werden sollen */
+  suggestions?: Array<{ id: string; text: string }>
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    id: 'search-input',
-    suggestions: () => [],
-    describedBy: undefined,
-    label: undefined
+  id: 'search-input',
+  suggestions: () => [],
+  describedBy: undefined,
+  label: undefined,
 })
 
 const emit = defineEmits<{
-    (e: 'update:modelValue', value: string): void
-    (e: 'input', event: Event): void
-    (e: 'select', suggestion: { id: string; text: string }): void
+  (e: 'update:modelValue', value: string): void
+  (e: 'input', event: Event): void
+  (e: 'select', suggestion: { id: string; text: string }): void
 }>()
 
 const searchInput = ref<HTMLInputElement | null>(null)
@@ -111,257 +106,164 @@ const showSuggestions = ref(false)
 const activeIndex = ref(-1)
 const listboxId = `${props.id}-listbox`
 
-const activeDescendant = computed(() => 
-    activeIndex.value >= 0 ? `suggestion-${activeIndex.value}` : undefined
-)
+const activeDescendant = computed(() => {
+  if (activeIndex.value >= 0 && props.suggestions.length > activeIndex.value) {
+    const suggestion = props.suggestions[activeIndex.value]
+    return `${props.id}-suggestion-${suggestion && suggestion.id ? suggestion.id : activeIndex.value}`
+  }
+  return undefined
+})
 
 const handleInput = (event: Event) => {
-    const target = event.target as HTMLInputElement
-    emit('update:modelValue', target.value)
-    emit('input', event)
-    showSuggestions.value = true
-    activeIndex.value = -1
+  const target = event.target as HTMLInputElement
+  emit('update:modelValue', target.value)
+  emit('input', event)
+  showSuggestions.value = true
+  activeIndex.value = -1
 }
 
 const handleKeyDown = (event: KeyboardEvent) => {
-    if (!showSuggestions.value || !props.suggestions.length) return
+  if (!showSuggestions.value || !props.suggestions.length) return
 
-    switch (event.key) {
-        case 'ArrowDown':
-            event.preventDefault()
-            activeIndex.value = Math.min(activeIndex.value + 1, props.suggestions.length - 1)
-            break
-        case 'ArrowUp':
-            event.preventDefault()
-            activeIndex.value = Math.max(activeIndex.value - 1, -1)
-            break
-        case 'Enter':
-            if (activeIndex.value >= 0) {
-                const suggestion = props.suggestions[activeIndex.value]
-                if (suggestion) {
-                    event.preventDefault()
-                    selectSuggestion(suggestion)
-                }
-            }
-            break
-        case 'Escape':
-            showSuggestions.value = false
-            activeIndex.value = -1
-            break
-        case 'Tab':
-            showSuggestions.value = false
-            break
-    }
+  switch (event.key) {
+    case 'ArrowDown':
+      event.preventDefault()
+      activeIndex.value = Math.min(activeIndex.value + 1, props.suggestions.length - 1)
+      break
+    case 'ArrowUp':
+      event.preventDefault()
+      activeIndex.value = Math.max(activeIndex.value - 1, -1)
+      break
+    case 'Enter':
+      if (activeIndex.value >= 0 && activeIndex.value < props.suggestions.length) {
+        const suggestion = props.suggestions[activeIndex.value]
+        if (
+          suggestion &&
+          typeof suggestion === 'object' &&
+          'id' in suggestion &&
+          'text' in suggestion
+        ) {
+          event.preventDefault()
+          selectSuggestion(suggestion)
+        }
+      }
+      break
+    case 'Escape':
+      showSuggestions.value = false
+      activeIndex.value = -1
+      break
+    case 'Tab':
+      showSuggestions.value = false
+      break
+  }
 }
 
 const handleFocus = () => {
-    if (props.modelValue && props.suggestions.length) {
-        showSuggestions.value = true
-    }
+  if (props.modelValue && props.suggestions.length) {
+    showSuggestions.value = true
+  }
 }
 
 const handleBlur = () => {
-    // Verzögerung um Click-Events zu ermöglichen
-    setTimeout(() => {
-        showSuggestions.value = false
-        activeIndex.value = -1
-    }, 200)
+  // Verzögerung um Click-Events zu ermöglichen
+  setTimeout(() => {
+    showSuggestions.value = false
+    activeIndex.value = -1
+  }, 200)
 }
 
 const selectSuggestion = (suggestion: { id: string; text: string }) => {
-    emit('update:modelValue', suggestion.text)
-    emit('select', suggestion)
-    showSuggestions.value = false
-    activeIndex.value = -1
-    searchInput.value?.focus()
+  emit('update:modelValue', suggestion.text)
+  emit('select', suggestion)
+  showSuggestions.value = false
+  activeIndex.value = -1
+  searchInput.value?.focus()
 }
 
 const clearSearch = () => {
-    emit('update:modelValue', '')
-    searchInput.value?.focus()
-    showSuggestions.value = false
-    activeIndex.value = -1
+  emit('update:modelValue', '')
+  searchInput.value?.focus()
+  showSuggestions.value = false
+  activeIndex.value = -1
 }
 </script>
 
-<style lang="scss" scoped>
-@use '@/assets/scss/mixins' as *;
-
-.search-wrapper {
-    position: relative;
-    max-width: var(--content-width);
-    margin: 0 auto;
-}
-
-.search-input-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.search-icon {
-    position: absolute;
-    left: var(--padding-medium);
-    color: var(--text-secondary);
-    pointer-events: none;
-}
-
-.search-input {
-    width: 100%;
-    padding: var(--padding-small) var(--padding-large) var(--padding-small) calc(var(--padding-large) + var(--padding-medium));
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-normal);
-    color: var(--text-color);
-    background: var(--surface-color);
-    border: 2px solid var(--surface-color-light);
-    border-radius: var(--border-radius);
-    transition: all var(--transition-speed) var(--transition-bounce);
-
-    &::placeholder {
-        color: var(--text-secondary);
-        opacity: var(--opacity-disabled);
-    }
-
-    &:hover {
-        border-color: var(--primary-color);
-    }
-
-    &:focus {
-        outline: none;
-        border-color: var(--focus-outline-color);
-        box-shadow: 0 0 0 var(--focus-outline-width) var(--focus-outline-color);
-    }
-}
-
-.clear-button {
-    position: absolute;
-    right: var(--padding-small);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--padding-small);
-    color: var(--text-secondary);
-    background: transparent;
-    border: 2px solid transparent;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all var(--transition-speed) var(--transition-bounce);
-
-    &:hover {
-        color: var(--text-color);
-        background: var(--surface-color-light);
-    }
-
-    &:focus-visible {
-        outline: var(--focus-outline-width) solid var(--focus-outline-color);
-        outline-offset: var(--focus-outline-offset);
-        color: var(--text-color);
-        background: var(--surface-color-light);
-    }
-
-    /* High Contrast Mode */
-    @media (prefers-contrast: more) {
-        &:focus-visible {
-            outline: 3px solid var(--focus-outline-color);
-            outline-offset: 2px;
-            box-shadow: none;
-        }
-    }
-
-    /* Reduzierte Bewegung */
-    @media (prefers-reduced-motion: reduce) {
-        transition: none;
-    }
-}
-
-.suggestions-list {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    margin-top: var(--padding-small);
-    padding: var(--padding-small) 0;
-    background: var(--surface-color);
-    border: 2px solid var(--surface-color-light);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    z-index: var(--z-index-overlay);
-}
-
-.suggestion-item {
-    padding: var(--padding-small) var(--padding-medium);
-    color: var(--text-color);
-    cursor: pointer;
-    transition: all var(--transition-speed) var(--transition-bounce);
-
-    &:hover,
-    &.is-active {
-        background: var(--surface-color-light);
-    }
-}
-
-/* Screen reader only class */
-.sr-only {
-    @include sr-only;
-}
-
+<style scoped>
 /* High Contrast Mode */
 @media (prefers-contrast: more) {
-    .search-input {
-        border-width: var(--focus-outline-width);
-    }
+  input[type='search'] {
+    border: 3px solid black !important;
+    background-color: white !important;
+    color: black !important;
+    outline: 2px solid black !important;
+    outline-offset: 2px !important;
+  }
 
-    .suggestions-list {
-        border-width: var(--focus-outline-width);
-        box-shadow: none;
-    }
+  input[type='search']:focus {
+    outline: 3px solid black !important;
+    outline-offset: 3px !important;
+    border-color: black !important;
+  }
 
-    .suggestion-item {
-        &:hover,
-        &.is-active {
-            background: var(--surface-color-hover);
-            outline: var(--focus-outline-width) solid var(--focus-outline-color);
-        }
-    }
+  button:focus-visible {
+    outline: 3px solid black !important;
+    outline-offset: 3px !important;
+    background-color: white !important;
+    color: black !important;
+  }
+
+  div[role='listbox'] {
+    border: 3px solid black !important;
+    background-color: white !important;
+    box-shadow: none !important;
+  }
+
+  div[role='option'] {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3) !important;
+    color: black !important;
+  }
+
+  div[role='option']:hover,
+  div[role='option'][aria-selected='true'] {
+    background-color: black !important;
+    color: white !important;
+    outline: 2px solid white !important;
+  }
 }
 
-/* Reduzierte Bewegung */
-@media (prefers-reduced-motion: reduce) {
-    .search-input,
-    .clear-button,
-    .suggestion-item {
-        transition: none;
-    }
+/* Print mode */
+@media print {
+  div[role='search'] {
+    max-width: 100% !important;
+    margin: 1rem 0 !important;
+  }
+
+  input[type='search'] {
+    border: 1px solid black !important;
+    background-color: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+
+  button {
+    display: none !important;
+  }
 }
 
 /* Mobile Anpassungen */
 @media (max-width: 768px) {
-    .search-input {
-        font-size: var(--font-size-base);
-        padding: var(--padding-small) var(--padding-medium);
-    }
+  input[type='search'] {
+    font-size: 0.875rem !important;
+    padding: 0.5rem 0.75rem !important;
+    padding-left: 2.5rem !important;
+  }
 
-    .suggestions-list {
-        margin-top: calc(var(--padding-small) / 2);
-    }
+  div[role='listbox'] {
+    margin-top: 0.25rem !important;
+  }
 
-    .suggestion-item {
-        padding: var(--padding-small);
-    }
-}
-
-/* Unterstützung für Hover auf Touch-Geräten */
-@media (hover: hover) {
-    .search-input:hover {
-        border-color: var(--primary-color);
-    }
-
-    .clear-button:hover {
-        background: var(--surface-color-hover);
-    }
-
-    .suggestion-item:hover {
-        background: var(--surface-color-hover);
-    }
+  div[role='option'] {
+    padding: 0.5rem 0.75rem !important;
+  }
 }
 </style>

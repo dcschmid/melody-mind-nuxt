@@ -32,6 +32,10 @@ export default withNuxt(
 
       // Large JSON files
       'app/json/genres/**/*.json',
+
+      // Markdown files
+      '**/*.md',
+      'content/**/*.md',
     ],
   },
   // Custom ESLint configuration
@@ -45,20 +49,30 @@ export default withNuxt(
       'no-debugger': 'warn',
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       '@typescript-eslint/no-empty-object-type': 'off',
+      '@typescript-eslint/no-explicit-any': 'warn',
       '@stylistic/brace-style': 'off',
       '@stylistic/operator-linebreak': 'off',
       '@stylistic/comma-dangle': 'off',
       '@stylistic/arrow-parens': 'off',
+      '@stylistic/member-delimiter-style': 'off',
+      '@stylistic/quote-props': 'off',
+      'vue/first-attribute-linebreak': 'off',
+      'vue/html-indent': 'off',
+      'vue/max-attributes-per-line': 'off',
+      'vue/html-closing-bracket-newline': 'off',
+      'vue/html-self-closing': 'off',
+      'vue/attributes-order': 'off',
+      'import/order': 'off',
     },
   },
   // Integration with Prettier
   {
-    files: ['**/*.vue', '**/*.js', '**/*.ts', '**/*.json', '**/*.md'],
+    files: ['**/*.vue', '**/*.js', '**/*.ts', '**/*.json'],
     plugins: {
       prettier: prettierPlugin,
     },
     rules: {
-      'prettier/prettier': 'warn',
+      'prettier/prettier': 'off',
     },
   },
 )

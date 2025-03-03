@@ -134,14 +134,14 @@ All development tools support the following languages:
 
 ### 📝 Utility Scripts
 
-| Script                     | Purpose                       | Key Features                               |
-| -------------------------- | ----------------------------- | ------------------------------------------ |
-| `generate_content.py`      | Content generation            | Multi-language, metadata                   |
-| `check_covers.sh`          | Cover verification            | File checks, error reporting               |
-| `check_preview_links.py`   | Link validation               | Multi-threaded checks, reports             |
-| `sync_music_links.py`      | Link synchronization          | Cross-platform sync                        |
-| `generate-sitemap-urls.js` | Sitemap generation            | Multi-language URLs                        |
-| `generate-thumbhash.ts`    | Image optimization            | Blur hashes, placeholders                  |
+| Script                     | Purpose              | Key Features                   |
+| -------------------------- | -------------------- | ------------------------------ |
+| `generate_content.py`      | Content generation   | Multi-language, metadata       |
+| `check_covers.sh`          | Cover verification   | File checks, error reporting   |
+| `check_preview_links.py`   | Link validation      | Multi-threaded checks, reports |
+| `sync_music_links.py`      | Link synchronization | Cross-platform sync            |
+| `generate-sitemap-urls.js` | Sitemap generation   | Multi-language URLs            |
+| `generate-thumbhash.ts`    | Image optimization   | Blur hashes, placeholders      |
 
 #### Script Usage Guide
 
@@ -170,6 +170,7 @@ python scripts/check_preview_links.py --services spotify deezer
 ```
 
 The script generates an HTML report with statistics and detailed error information, including:
+
 - Total links checked per language and service
 - Success/failure counts and percentages
 - Detailed error listings with HTTP status codes
@@ -203,6 +204,7 @@ python scripts/sync_music_links.py --report
 Synchronized fields include: coverSrc, spotify_link, deezer_link, apple_music_link, and preview_link.
 
 Output example:
+
 ```
 Synchronizing music links from German (de) to other languages...
 ✓ English (en): 120 entries synchronized
@@ -236,6 +238,7 @@ Verifies the existence of all cover images referenced in genre JSON files across
 The script reports any missing cover images with their source JSON files.
 
 Output example:
+
 ```
 Checking cover images for all languages...
 
@@ -276,15 +279,16 @@ node scripts/generate-sitemap-urls.js --change-freq weekly > app/sitemap-urls.js
 The output is a JavaScript module that exports an array of URLs for the Nuxt.js application.
 
 Example output (app/sitemap-urls.js):
+
 ```javascript
-export default [  
+export default [
   { loc: '/', lastmod: '2025-03-01', changefreq: 'daily', priority: 1.0 },
   { loc: '/en', lastmod: '2025-03-01', changefreq: 'daily', priority: 0.9 },
   { loc: '/en/rock-music', lastmod: '2025-03-01', changefreq: 'weekly', priority: 0.8 },
   { loc: '/de', lastmod: '2025-03-01', changefreq: 'daily', priority: 0.9 },
   { loc: '/de/rock-musik', lastmod: '2025-03-01', changefreq: 'weekly', priority: 0.8 },
   // ... more URLs for all languages and categories
-];
+]
 ```
 
 ##### 5. `generate-thumbhash.ts` - ThumbHash Generator
@@ -317,11 +321,12 @@ ts-node scripts/generate-thumbhash.ts --skip-existing
 ThumbHashes are saved to a JSON file and used by the UnLazy component for blur effects.
 
 Example output (public/thumbhashes.json):
+
 ```json
 {
   "images/covers/en/rock-music.jpg": "2DQZRpCLiHePeHeKeJd3d4iIiJh3",
   "images/covers/de/rock-musik.jpg": "1DQZRpCLiHePeHeKeJd3d4iIiJh3",
-  "images/artists/queen.jpg": "9TQVRoCLiHePeHeKeJd3d4iIiJh3",
+  "images/artists/queen.jpg": "9TQVRoCLiHePeHeKeJd3d4iIiJh3"
   // ... more image paths and their thumbhash values
 }
 ```
@@ -399,23 +404,23 @@ python scripts/generate_content.py --languages da --tone "casual"
 
 ```markdown
 ---
-title: "Rock Music: Evolution, Influence, and Cultural Impact"
-description: "Explore the rich history of rock music, from its blues origins to modern variations, influential artists, and cultural significance worldwide."
-category: "Rock Music"
-image: "/images/covers/en/rock-music.jpg"
-createdAt: "2025-03-01T12:00:00.000Z"
-updatedAt: "2025-03-01T12:00:00.000Z"
+title: 'Rock Music: Evolution, Influence, and Cultural Impact'
+description: 'Explore the rich history of rock music, from its blues origins to modern variations, influential artists, and cultural significance worldwide.'
+category: 'Rock Music'
+image: '/images/covers/en/rock-music.jpg'
+createdAt: '2025-03-01T12:00:00.000Z'
+updatedAt: '2025-03-01T12:00:00.000Z'
 keywords:
   - rock music
   - rock history
   - rock genres
   - rock bands
   - rock evolution
-author: "MelodyMind Team"
-locale: "en"
-spotify_playlist: ""
-deezer_playlist: ""
-apple_music_playlist: ""
+author: 'MelodyMind Team'
+locale: 'en'
+spotify_playlist: ''
+deezer_playlist: ''
+apple_music_playlist: ''
 ---
 
 ## Introduction
@@ -443,23 +448,23 @@ Countless artists have shaped the landscape of rock music...
 
 ```markdown
 ---
-title: "Rock-Musik: Entwicklung, Einfluss und kulturelle Bedeutung"
-description: "Entdecken Sie die reiche Geschichte der Rock-Musik, von ihren Blues-Ursprüngen bis zu modernen Variationen, einflussreichen Künstlern und kultureller Bedeutung weltweit."
-category: "Rock-Musik"
-image: "/images/covers/de/rock-musik.jpg"
-createdAt: "2025-03-01T12:00:00.000Z"
-updatedAt: "2025-03-01T12:00:00.000Z"
+title: 'Rock-Musik: Entwicklung, Einfluss und kulturelle Bedeutung'
+description: 'Entdecken Sie die reiche Geschichte der Rock-Musik, von ihren Blues-Ursprüngen bis zu modernen Variationen, einflussreichen Künstlern und kultureller Bedeutung weltweit.'
+category: 'Rock-Musik'
+image: '/images/covers/de/rock-musik.jpg'
+createdAt: '2025-03-01T12:00:00.000Z'
+updatedAt: '2025-03-01T12:00:00.000Z'
 keywords:
   - Rock-Musik
   - Rock-Geschichte
   - Rock-Genres
   - Rockbands
   - Rock-Entwicklung
-author: "MelodyMind Team"
-locale: "de"
-spotify_playlist: ""
-deezer_playlist: ""
-apple_music_playlist: ""
+author: 'MelodyMind Team'
+locale: 'de'
+spotify_playlist: ''
+deezer_playlist: ''
+apple_music_playlist: ''
 ---
 
 ## Einführung
@@ -496,6 +501,7 @@ The project uses the following Python tools for code quality:
 - **Ruff**: Fast linting and auto-fixing
 
 Configuration is maintained in:
+
 - `.flake8` - Flake8 configuration
 - `.pre-commit-config.yaml` - Pre-commit hooks
 - `.vscode/settings.json` - VS Code integration
@@ -506,6 +512,7 @@ Configuration is maintained in:
 - **Prettier**: Code formatting with Tailwind CSS plugin
 
 Configuration is maintained in:
+
 - `eslint.config.mjs` - ESLint configuration
 - `.prettierrc` - Prettier configuration
 
@@ -550,7 +557,6 @@ These extensions are configured in the `.vscode/extensions.json` file and will b
 ## 📚 License
 
 Melody Mind is licensed under the MIT License. See the LICENSE file for details.
-
 
 ## Contributing
 

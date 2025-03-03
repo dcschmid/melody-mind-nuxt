@@ -1,4 +1,3 @@
-
 - Achten Sie auf zeitgemäße Sprachbilder und konsistente Terminologie.
 - Wiederholungen vermeiden
 - Klarere Übergänge zwischen Abschnitten

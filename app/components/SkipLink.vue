@@ -1,13 +1,19 @@
 <template>
-  <a href="#main-content" 
-     class="skip-link" 
-     @focus="onFocus" 
-     @blur="onBlur"
-     @click.prevent="handleSkip"
-     @keydown.enter="handleSkip"
-     role="link"
-     :aria-hidden="!isVisible">
-    {{ t('accessibility.skipToMain') }}
+  <a
+    href="#main-content"
+    class="fixed left-[-9999px] top-4 z-[9999] flex min-h-[48px] min-w-[220px] items-center justify-center rounded-lg border-2 border-[rgb(var(--highlight-color-rgb))] bg-[rgb(var(--surface-color-rgb))] p-3 text-center text-base font-bold leading-normal text-[rgb(var(--text-color-rgb))] no-underline shadow-lg hover:cursor-pointer hover:bg-[rgb(var(--highlight-color-rgb))] hover:text-[rgb(var(--surface-color-rgb))] hover:underline focus:left-1/2 focus:-translate-x-1/2 focus:bg-[rgb(var(--highlight-color-rgb))] focus:text-[rgb(var(--surface-color-rgb))] focus:outline-none focus:ring-4 focus:ring-[rgb(var(--highlight-color-rgb))] focus:ring-offset-2 focus:underline active:translate-y-0.5 active:shadow-md motion-safe:transition-all motion-safe:duration-300 print:hidden"
+    role="link"
+    :aria-hidden="!isVisible"
+    :aria-label="t('accessibility.skipToMain')"
+    data-testid="skip-link"
+    @focus="onFocus"
+    @blur="onBlur"
+    @click.prevent="handleSkip"
+    @keydown.enter="handleSkip"
+    @keydown.space="handleSkip"
+  >
+    <span class="sr-only">{{ t('accessibility.skipToMain') }}</span>
+    <span aria-hidden="true">{{ t('accessibility.skipToMain') }}</span>
   </a>
 </template>
 
@@ -15,96 +21,129 @@
 import { useI18n } from 'vue-i18n'
 import { ref } from 'vue'
 
+/**
+ * SkipLink Komponente
+ * 
+ * Eine barrierefreie "Skip to Content"-Komponente, die es Tastaturnutzern ermöglicht,
+ * direkt zum Hauptinhalt zu navigieren, ohne durch die Navigation gehen zu müssen.
+ * 
+ * Unterstützt:
+ * - Tastaturnavigation
+ * - Screenreader
+ * - Reduzierte Bewegung
+ * - Hoher Kontrast
+ * - Fokusindikatoren
+ */
+
 const { t } = useI18n()
 const isVisible = ref(false)
 
-const onFocus = () => isVisible.value = true
-const onBlur = () => isVisible.value = false
+/**
+ * Wird aufgerufen, wenn der Link den Fokus erhält
+ */
+const onFocus = () => (isVisible.value = true)
 
+/**
+ * Wird aufgerufen, wenn der Link den Fokus verliert
+ */
+const onBlur = () => (isVisible.value = false)
+
+/**
+ * Behandelt die Skip-Link-Funktionalität
+ * Verschiebt den Fokus zum Hauptinhaltsbereich und stellt sicher, dass er zugänglich ist
+ */
 const handleSkip = (event: Event) => {
   event.preventDefault()
   const mainContent = document.getElementById('main-content')
-  
+
   if (mainContent) {
-    // Stelle sicher, dass das Element fokussierbar ist
+    // Stellt sicher, dass das Element fokussierbar ist
     if (!mainContent.hasAttribute('tabindex')) {
       mainContent.setAttribute('tabindex', '-1')
     }
-    
-    // Scrolle zum Element
-    mainContent.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    
-    // Setze den Fokus
+
+    // Fügt vorübergehend einen sichtbaren Fokusindikator hinzu
+    mainContent.style.outline = `2px solid rgb(var(--highlight-color-rgb))`
+    mainContent.style.outlineOffset = '4px'
+
+    // Scrollt zum Element unter Berücksichtigung der Präferenzen für reduzierte Bewegung
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    mainContent.scrollIntoView({
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      block: 'start',
+    })
+
+    // Setzt den Fokus
     mainContent.focus({ preventScroll: true })
-    
-    // Optional: Entferne tabindex nach dem Fokussieren
+
+    // Entfernt tabindex und Fokusstile nach dem Fokussieren
     setTimeout(() => {
       mainContent.removeAttribute('tabindex')
+      // Entfernt Fokusstile nach einer Verzögerung
+      setTimeout(() => {
+        mainContent.style.outline = ''
+        mainContent.style.outlineOffset = ''
+      }, 1500)
     }, 100)
   }
 }
 </script>
 
-<style scoped lang="scss">
-.skip-link {
-  position: fixed;
-  top: var(--padding-large);
-  left: -9999px;
-  z-index: var(--z-index-skip-link, 9999);
-  min-width: 200px;
-  min-height: 44px;
-  padding: var(--padding-large) var(--padding-xlarge);
-  background-color: var(--surface-color);
-  color: var(--text-color);
-  text-decoration: none;
-  font-size: var(--font-size-responsive-md);
-  font-weight: var(--font-weight-bold);
-  line-height: 1.5;
-  border: 3px solid var(--highlight-color);
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s var(--transition-bounce);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  // Verbesserter Fokus-Zustand
-  &:focus {
-    left: 50%;
-    transform: translateX(-50%);
-    outline: 3px solid var(--focus-outline-color, var(--highlight-color));
-    outline-offset: 4px;
-    background-color: var(--highlight-color);
-    color: var(--surface-color);
-    text-decoration: underline;
+<style scoped>
+/* High Contrast Mode Support */
+@media (forced-colors: active) {
+  a[data-testid='skip-link'] {
+    border: 3px solid ButtonText !important;
+    background-color: Canvas !important;
+    color: ButtonText !important;
   }
 
-  // Hover-Zustand
-  &:hover {
-    background-color: var(--highlight-color);
-    color: var(--surface-color);
-    text-decoration: underline;
-    cursor: pointer;
+  a[data-testid='skip-link']:focus {
+    outline: 3px solid ButtonText !important;
+    outline-offset: 4px !important;
+    background-color: Highlight !important;
+    color: HighlightText !important;
+  }
+}
+
+/* Increased contrast mode */
+@media (prefers-contrast: more) {
+  a[data-testid='skip-link'] {
+    background-color: white !important;
+    color: black !important;
+    border: 3px solid black !important;
+    font-weight: 900 !important;
   }
 
-  // Active-Zustand
-  &:active {
-    transform: translateX(-50%) translateY(2px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  a[data-testid='skip-link']:focus,
+  a[data-testid='skip-link']:hover {
+    background-color: black !important;
+    color: white !important;
+    outline: 3px solid white !important;
+    outline-offset: 4px !important;
+    text-decoration: underline !important;
   }
+}
 
-  // High Contrast Mode Unterstützung
-  @media (forced-colors: active) {
-    border: 3px solid CanvasText;
-    &:focus {
-      outline: 3px solid ButtonText;
-    }
+/* Print mode - hide skip link */
+@media print {
+  a[data-testid='skip-link'] {
+    display: none !important;
   }
+}
 
-  // Reduced Motion
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  a[data-testid='skip-link'] {
+    transition: none !important;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  a[data-testid='skip-link'] {
+    min-width: 180px !important;
+    font-size: 0.875rem !important;
   }
 }
 </style>

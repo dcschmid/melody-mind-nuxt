@@ -48,5 +48,5 @@ repos:
     rev: 1.7.7
     hooks:
       - id: bandit
-        args: ["-c", "pyproject.toml"]
+        args: ['-c', 'pyproject.toml']
         exclude: ^(node_modules/|dist/|\.nuxt/|tests/)

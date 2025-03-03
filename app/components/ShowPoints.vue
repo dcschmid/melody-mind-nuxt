@@ -1,47 +1,70 @@
 <template>
-    <div 
-        class="points-display" 
-        role="status"
-        :aria-label="$t('points.statusLabel')"
-        :class="{ 'reduce-motion': prefersReducedMotion }"
+  <div
+    class="relative flex gap-2"
+    role="status"
+    :aria-label="$t('points.statusLabel')"
+    :data-reduced-motion="prefersReducedMotion"
+  >
+    <!-- Points container with improved accessibility -->
+    <div
+      class="flex cursor-pointer flex-col items-center rounded-md bg-[rgb(var(--surface-color-rgb))]/95 p-2 shadow-sm backdrop-blur-sm transition-all hover:bg-[rgb(var(--surface-hover-color-rgb))] hover:shadow-md focus:ring-2 focus:ring-[rgb(var(--highlight-color-rgb))] focus:ring-offset-2 focus:outline-none motion-safe:duration-300 dark:bg-[rgb(var(--surface-light-color-rgb))]/90 dark:hover:bg-[rgb(var(--surface-hover-color-rgb))]/80 print:border print:border-black print:bg-transparent"
+      tabindex="0"
+      aria-describedby="points-description"
+      @keydown.enter="announcePoints"
+      @click="announcePoints"
     >
-        <div 
-            class="points-container"
-            :tabindex="0"
-            @keydown.enter="announcePoints"
-            @click="announcePoints"
-        >
-            <span 
-                class="points" 
-                :class="{ 'points-update': isAnimating && !prefersReducedMotion }"
-                aria-atomic="true"
-            >
-                <span class="sr-only">{{ $t('points.current') }}:</span>
-                {{ formattedPoints }}
-            </span>
-            <span class="points-label">{{ $t('points.label') }}</span>
-        </div>
-        <transition 
-            :name="prefersReducedMotion ? '' : 'bonus'"
-            @before-enter="onTransitionStart"
-            @after-leave="onTransitionEnd"
-        >
-            <div 
-                v-if="showBonus" 
-                class="bonus-indicator"
-                role="alert"
-                aria-live="assertive"
-            >
-                <span class="sr-only">{{ $t('points.bonus') }}</span>
-                +{{ latestBonus }}
-            </div>
-        </transition>
+      <!-- Current points value with animation -->
+      <span
+        class="text-lg leading-tight font-bold tracking-wide text-[rgb(var(--primary-color-rgb))] tabular-nums transition-transform motion-safe:duration-300 dark:text-[rgb(var(--primary-light-color-rgb))]"
+        :class="{
+          'scale-110 text-[rgb(var(--highlight-color-rgb))] dark:text-[rgb(var(--highlight-color-rgb))]':
+            isAnimating && !prefersReducedMotion,
+        }"
+        aria-atomic="true"
+      >
+        <span class="sr-only">{{ $t('points.current') }}:</span>
+        {{ formattedPoints }}
+      </span>
+
+      <!-- Points label -->
+      <span
+        id="points-description"
+        class="mt-1 text-base leading-normal font-medium text-[rgb(var(--text-secondary-color-rgb))] dark:text-white/70"
+      >
+        {{ $t('points.label') }}
+      </span>
     </div>
+
+    <!-- Bonus points indicator with animation -->
+    <transition
+      :name="prefersReducedMotion ? '' : 'bonus'"
+      @before-enter="onTransitionStart"
+      @after-leave="onTransitionEnd"
+    >
+      <div
+        v-if="showBonus"
+        class="text-md absolute -top-6 right-0 rounded-md border border-[rgb(var(--highlight-color-rgb))]/20 bg-[rgb(var(--surface-color-rgb))]/95 px-2 py-1 font-bold text-[rgb(var(--highlight-color-rgb))] shadow-md backdrop-blur-sm dark:border-[rgb(var(--highlight-color-rgb))]/30 dark:bg-[rgb(var(--surface-light-color-rgb))]/90"
+        role="alert"
+        aria-live="assertive"
+      >
+        <span class="sr-only">{{ $t('points.bonus') }}</span>
+        +{{ latestBonus }}
+      </div>
+    </transition>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+
+/**
+ * ShowPoints Komponente
+ *
+ * Zeigt die aktuellen Punkte des Spielers an und animiert Bonuspunkte.
+ * Enthält Verbesserungen für Barrierefreiheit, einschließlich Unterstützung für
+ * reduzierte Bewegung, Screenreader-Ankündigungen und Hochkontrastmodus.
+ */
 
 const { t } = useI18n()
 const points = ref(0)
@@ -51,222 +74,163 @@ const latestBonus = ref(0)
 const prefersReducedMotion = ref(false)
 const isTransitioning = ref(false)
 
+/**
+ * Formatiert die Punkte mit Tausendertrennzeichen für bessere Lesbarkeit
+ */
 const formattedPoints = computed(() => {
-    return points.value.toLocaleString()
+  return points.value.toLocaleString()
 })
 
 onMounted(() => {
-    // Check for reduced motion preference
-    prefersReducedMotion.value = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  // Prüfen auf Präferenz für reduzierte Bewegung
+  prefersReducedMotion.value = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-    // Listen for changes in motion preferences
-    window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
-        prefersReducedMotion.value = e.matches
-    })
+  // Auf Änderungen der Bewegungspräferenzen hören
+  window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
+    prefersReducedMotion.value = e.matches
+  })
 })
 
+/**
+ * Kündigt den aktuellen Punktestand für Screenreader an
+ */
 const announcePoints = () => {
-    if (isTransitioning.value) return // Prevent announcement during transitions
-    
-    const message = t('points.announcement', { 
-        points: formattedPoints.value,
-        bonus: showBonus.value ? latestBonus.value : 0
-    })
-    const announcement = new CustomEvent('announce', { 
-        detail: { message, priority: 'polite' }
-    })
-    document.dispatchEvent(announcement)
+  if (isTransitioning.value) return // Verhindert Ankündigung während Übergängen
+
+  const message = t('points.announcement', {
+    points: formattedPoints.value,
+    bonus: showBonus.value ? latestBonus.value : 0,
+  })
+  const announcement = new CustomEvent('announce', {
+    detail: { message, priority: 'polite' },
+  })
+  document.dispatchEvent(announcement)
 }
 
+/**
+ * Wird aufgerufen, wenn die Bonus-Animation beginnt
+ */
 const onTransitionStart = () => {
-    isTransitioning.value = true
+  isTransitioning.value = true
 }
 
+/**
+ * Wird aufgerufen, wenn die Bonus-Animation endet
+ */
 const onTransitionEnd = () => {
-    isTransitioning.value = false
+  isTransitioning.value = false
 }
 
+/**
+ * Aktualisiert die Punkte und zeigt eine Bonus-Animation an
+ * @param newPoints Die hinzuzufügenden Bonuspunkte
+ */
 const updatePoints = (newPoints: number) => {
-    latestBonus.value = newPoints
-    showBonus.value = true
-    isAnimating.value = true
+  latestBonus.value = newPoints
+  showBonus.value = true
+  isAnimating.value = true
 
-    points.value += newPoints
+  points.value += newPoints
 
-    // Announce points update
-    const message = t('points.bonusAnnouncement', { 
-        bonus: newPoints,
-        total: points.value
-    })
-    const announcement = new CustomEvent('announce', { 
-        detail: { message, priority: 'assertive' }
-    })
-    document.dispatchEvent(announcement)
+  // Ankündigung der Punkteaktualisierung für Screenreader
+  const message = t('points.bonusAnnouncement', {
+    bonus: newPoints,
+    total: points.value,
+  })
+  const announcement = new CustomEvent('announce', {
+    detail: { message, priority: 'assertive' },
+  })
+  document.dispatchEvent(announcement)
 
-    const animationDuration = prefersReducedMotion.value ? 0 : 2000
-    setTimeout(() => {
-        showBonus.value = false
-        isAnimating.value = false
-    }, animationDuration)
+  const animationDuration = prefersReducedMotion.value ? 0 : 2000
+  setTimeout(() => {
+    showBonus.value = false
+    isAnimating.value = false
+  }, animationDuration)
 }
 
 defineExpose({
-    updatePoints
+  updatePoints,
 })
 </script>
 
-<style lang="scss" scoped>
-.points-display {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: var(--padding-small);
-}
-
-.points-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: var(--padding-small);
-    border-radius: var(--border-radius);
-    background-color: var(--surface-color);
-    cursor: pointer;
-    transition: all var(--transition-speed) var(--transition-bounce);
-
-    &:focus {
-        outline: var(--focus-outline-width) solid var(--focus-outline-color);
-        outline-offset: var(--focus-outline-offset);
-    }
-
-    &:hover {
-        background-color: var(--surface-color-hover);
-    }
-}
-
-.points {
-    font-size: var(--font-size-responsive-lg);
-    font-weight: var(--font-weight-bold);
-    color: var(--primary-color);
-    line-height: var(--line-height-tight);
-    font-variant-numeric: tabular-nums;
-    letter-spacing: var(--spacing-text);
-
-    .reduce-motion & {
-        transition: none;
-    }
-
-    &:not(.reduce-motion) {
-        transition: transform var(--transition-speed) var(--transition-bounce);
-    }
-
-    &.points-update {
-        transform: scale(1.1);
-        color: var(--highlight-color);
-    }
-}
-
-.points-label {
-    font-size: var(--font-size-base);
-    color: var(--text-secondary);
-    font-weight: var(--font-weight-medium);
-    line-height: var(--line-height-normal);
-    margin-top: var(--padding-small);
-}
-
-.bonus-indicator {
-    position: absolute;
-    top: -24px;
-    right: 0;
-    color: var(--highlight-color);
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-responsive-md);
-    text-shadow: var(--box-shadow);
-    padding: calc(var(--padding-small) / 2);
-    border-radius: var(--border-radius);
-    background-color: var(--surface-color);
-}
-
+<style scoped>
+/* Animation classes for bonus indicator */
 .bonus-enter-active,
 .bonus-leave-active {
-    transition: all var(--transition-speed) var(--transition-bounce);
-
-    .reduce-motion & {
-        transition: none;
-    }
+  @apply transition-all ease-in-out duration-300 motion-safe:duration-300;
 }
 
 .bonus-enter-from {
-    opacity: 0;
-    transform: translateY(20px);
+  @apply translate-y-5 opacity-0;
 }
 
 .bonus-leave-to {
-    opacity: 0;
-    transform: translateY(-20px);
+  @apply -translate-y-5 opacity-0;
 }
 
 /* High contrast mode improvements */
 @media (forced-colors: active) {
-    .points-container {
-        border: 2px solid var(--text-color);
-    }
+  div[tabindex='0'] {
+    @apply border-2 border-[CanvasText];
+  }
 
-    .points.points-update {
-        color: var(--highlight-color);
-    }
-
-    .bonus-indicator {
-        border: 1px solid var(--text-color);
-        color: var(--highlight-color);
-    }
-}
-
-/* Dark mode improvements */
-@media (prefers-color-scheme: dark) {
-    .points-container {
-        background-color: var(--surface-color-light);
-    }
-
-    .bonus-indicator {
-        background-color: var(--surface-color-light);
-    }
-}
-
-/* Print mode */
-@media print {
-    .points-container {
-        background: none;
-        border: 1px solid var(--button-text-color);
-    }
-
-    .bonus-indicator {
-        display: none;
-    }
+  div[role='alert'] {
+    @apply border-2 border-[CanvasText];
+  }
 }
 
 /* Increased contrast mode */
-@media screen and (prefers-contrast: more) {
-    .points {
-        font-weight: var(--font-weight-bold);
-    }
+@media (prefers-contrast: more) {
+  div[tabindex='0'] {
+    @apply border-2 border-black bg-white shadow-none;
+  }
 
-    .points-label {
-        font-weight: var(--font-weight-semibold);
-    }
+  span[aria-atomic='true'] {
+    @apply font-extrabold text-black;
+  }
 
-    .points-container {
-        border: 2px solid currentColor;
-    }
+  span[id='points-description'] {
+    @apply font-semibold text-black;
+  }
+
+  div[role='alert'] {
+    @apply border-2 border-black bg-white font-extrabold text-black;
+  }
 }
 
 /* Mobile optimizations */
 @media (max-width: 768px) {
-    .points {
-        font-size: var(--font-size-responsive-md);
-    }
+  span[aria-atomic='true'] {
+    @apply text-base;
+  }
 
-    .points-label {
-        font-size: var(--font-size-responsive-sm);
-    }
+  span[id='points-description'] {
+    @apply text-sm;
+  }
+}
+
+/* Print optimizations */
+@media print {
+  div[tabindex='0'] {
+    @apply border border-black/80 bg-transparent shadow-none;
+  }
+
+  span[aria-atomic='true'] {
+    @apply text-black;
+  }
+
+  span[id='points-description'] {
+    @apply text-black;
+  }
+
+  div[role='alert'] {
+    @apply hidden;
+  }
+}
+
+  div[role='alert'] {
+    @apply hidden;
+  }
 }
 </style>
