@@ -2,113 +2,138 @@
   <component
     :is="to ? NuxtLink : tag"
     :to="to"
-    :href="href"
+    :href="to ? undefined : href"
     :target="external ? '_blank' : undefined"
     :rel="external ? 'noopener noreferrer' : undefined"
     :aria-label="ariaLabel"
     :role="role || (list ? 'listitem' : undefined)"
-    class="menu-item-modern group"
+    class="group bg-opacity-60 relative flex min-h-[56px] w-full items-center gap-4 overflow-hidden rounded-lg border border-white/5 bg-[rgb(var(--surface-color-rgb))] px-4 py-3 font-medium text-[rgb(var(--text-color-rgb))] no-underline shadow-sm backdrop-blur-sm hover:border-[rgb(var(--primary-light-color-rgb))] hover:bg-[rgb(var(--surface-hover-color-rgb))] hover:pr-3 hover:pl-5 hover:shadow-md focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none print:border-gray-300 print:bg-white print:text-black print:shadow-none"
   >
+    <!-- Shine Effect mit Pseudo-Element -->
+    <span
+      class="absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-white/0 via-white/5 to-white/0 group-hover:translate-x-[100%] motion-safe:transition-transform motion-safe:duration-1000 motion-reduce:transition-none"
+      aria-hidden="true"
+    ></span>
+
     <!-- Icon Container mit Hintergrundeffekt -->
     <div v-if="icon" class="relative flex-shrink-0">
       <!-- Subtiler Hintergrund-Kreis -->
-      <div class="absolute inset-0 rounded-full bg-primary/10 transform scale-0 group-hover:scale-110 transition-all duration-300 -z-10"></div>
-      
-      <Icon 
-        :name="icon" 
-        size="28" 
-        class="text-primary group-hover:text-highlight transition-all duration-300 relative z-10"
+      <div
+        class="absolute inset-0 -z-10 scale-0 transform rounded-full bg-[rgb(var(--primary-color-rgb))]/10 group-hover:scale-110 motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none"
+        aria-hidden="true"
+      ></div>
+
+      <Icon
+        :name="icon"
+        size="28"
+        class="relative z-10 text-[rgb(var(--primary-color-rgb))] group-hover:text-[rgb(var(--highlight-color-rgb))] motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none"
         aria-hidden="true"
       />
     </div>
-    
+
     <!-- Text mit eigener Transition -->
-    <div class="flex-grow transition-all duration-300">
+    <div
+      class="flex-grow motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none"
+    >
       <slot />
     </div>
-    
+
     <!-- Pfeil-Icon rechts, wird bei Hover sichtbar -->
-    <svg 
-      xmlns="http://www.w3.org/2000/svg" 
-      viewBox="0 0 20 20" 
-      fill="currentColor" 
-      class="w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-highlight"
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      class="h-5 w-5 -translate-x-2 text-[rgb(var(--highlight-color-rgb))] opacity-0 group-hover:translate-x-0 group-hover:opacity-100 motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none"
       aria-hidden="true"
     >
-      <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
+      <path
+        fill-rule="evenodd"
+        d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z"
+        clip-rule="evenodd"
+      />
     </svg>
-    
+
     <!-- Für externe Links: Screen Reader Text -->
     <span v-if="external" class="sr-only">{{ externalLinkText }}</span>
   </component>
 </template>
 
 <script setup lang="ts">
-import { NuxtLink } from '#components';
-  
+import { NuxtLink } from '#components'
+
 const props = defineProps({
   icon: {
     type: String,
-    default: ''
+    default: '',
   },
   to: {
     type: [String, Object],
-    default: null
+    default: null,
   },
   href: {
     type: String,
-    default: null
+    default: null,
   },
   external: {
     type: Boolean,
-    default: false
+    default: false,
   },
   tag: {
     type: String,
-    default: 'a'
+    default: 'a',
   },
   list: {
     type: Boolean,
-    default: true
+    default: true,
   },
   role: {
     type: String,
-    default: ''
+    default: '',
   },
   ariaLabel: {
     type: String,
-    default: ''
+    default: '',
   },
   externalLinkText: {
     type: String,
-    default: '(öffnet in neuem Tab)'
-  }
-});
+    default: '(öffnet in neuem Tab)',
+  },
+})
 </script>
 
-<style lang="postcss" scoped>
-.menu-item-modern {
-  @apply flex items-center gap-4 py-3 px-4 rounded-lg bg-surface bg-opacity-60 backdrop-blur-sm text-text;
-  @apply font-medium w-full no-underline border border-white/5 transition-all duration-300;
-  @apply relative overflow-hidden min-h-[56px];
-  
-  /* Hover/Focus Styles */
-  @apply hover:bg-surface-hover hover:border-primary-light hover:pl-5 hover:pr-3;
-  @apply focus-visible:outline focus-visible:outline-focus focus-visible:outline-offset-focus;
-  
-  /* Shine Effect */
-  &::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0;
-    @apply translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000;
+<style scoped>
+/* Verbesserte Zugänglichkeit für hohen Kontrast */
+@media (prefers-contrast: more) {
+  :deep(a),
+  :deep(button) {
+    background-color: black !important;
+    color: white !important;
+    border: 3px solid white !important;
+    outline: 3px solid white !important;
+    outline-offset: 3px !important;
+    text-decoration: underline !important;
   }
-  
-  /* Ensure visual focus indication meets AAA standards */
-  &:focus:not(:focus-visible) {
-    outline: none;
+
+  :deep(a:hover),
+  :deep(button:hover) {
+    background-color: #333 !important;
   }
-  
-  /* Shadow Effect */
-  @apply shadow-sm hover:shadow-md;
+
+  :deep(a:focus-visible),
+  :deep(button:focus-visible) {
+    outline-width: 4px !important;
+  }
+}
+
+/* Print-Optimierung */
+@media print {
+  :deep(a),
+  :deep(button) {
+    color: black !important;
+    background: white !important;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+    text-decoration: underline !important;
+  }
 }
 </style>
