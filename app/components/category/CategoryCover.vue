@@ -1,22 +1,31 @@
 <template>
-  <div class="cover-wrapper" :aria-labelledby="headlineId">
-    <h2 :id="headlineId" class="visually-hidden">{{ headline }}</h2>
-    <div class="cover" role="img" :aria-label="imageAltText">
-      <UnLazyImage 
-        v-if="imageUrl" 
-        class="coverImage" 
-        :src="imageUrl" 
+  <div
+    class="relative mx-auto w-full max-w-[clamp(17.5rem,35vw,25rem)]"
+    :aria-labelledby="headlineId"
+  >
+    <h2 :id="headlineId" class="sr-only">
+      {{ headline }}
+    </h2>
+    <div
+      class="relative aspect-square w-full overflow-hidden rounded-xl shadow-md transition-all duration-300 focus-within:outline-3 focus-within:outline-offset-4 focus-within:outline-[rgb(130,87,229)] motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-lg motion-reduce:transition-none print:border print:border-gray-300 print:shadow-none"
+      role="img"
+      :aria-label="imageAltText"
+    >
+      <UnLazyImage
+        v-if="imageUrl"
+        class="h-full w-full rounded-xl bg-[rgb(20,20,20)] object-cover"
+        :src="imageUrl"
         :alt="imageAltText"
-        width="280" 
-        height="280" 
+        width="280"
+        height="280"
         loading="lazy"
         :thumbhash="thumbHash"
         auto-sizes
       />
-      <div 
-        v-else 
-        class="fallbackImage" 
-        role="img" 
+      <div
+        v-else
+        class="flex h-full w-full items-center justify-center rounded-xl bg-[rgb(20,20,20)] p-4 text-center text-[clamp(1.5rem,1.7vw+1rem,1.75rem)] leading-[1.6] font-medium text-white"
+        role="img"
         :aria-label="t('category.noImage')"
       >
         {{ t('category.noImage') }}
@@ -26,87 +35,35 @@
 </template>
 
 <script setup lang="ts">
-import { useThumbHash } from '~/composables/useThumbHash'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useThumbHash } from '~/composables/useThumbHash'
 
-const { getThumbHash } = useThumbHash()
 const { t } = useI18n()
+const { getThumbHash } = useThumbHash()
 
 const props = defineProps<{
   imageUrl: string
   headline: string
 }>()
 
-// ThumbHash für das Bild abrufen
-const thumbHash = computed(() => props.imageUrl ? getThumbHash(props.imageUrl) : undefined)
+const thumbHash = computed(() => (props.imageUrl ? getThumbHash(props.imageUrl) : undefined))
 
 const headlineId = computed(() => `category-${props.headline.toLowerCase().replace(/\s+/g, '-')}`)
-const imageAltText = computed(() => t('category.image.altText', { 
-  category: props.headline 
-}))
+
+const imageAltText = computed(() =>
+  t('category.image.altText', {
+    category: props.headline,
+  })
+)
 </script>
 
-<style scoped lang="scss">
-.cover-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: clamp(280px, 35vw, 400px);
-  margin: 0 auto;
-}
-
-.cover {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1;
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: var(--box-shadow);
-  transition: all var(--transition-speed) var(--transition-bounce);
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--box-shadow-hover);
+<style>
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  [role='img'] {
+    outline: 2px solid currentColor !important;
+    outline-offset: 2px !important;
   }
-
-  &:focus-within {
-    outline: var(--focus-outline-width) solid var(--focus-outline-color);
-    outline-offset: var(--focus-outline-offset);
-  }
-}
-
-.coverImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: var(--border-radius);
-  background-color: var(--surface-color);
-}
-
-.fallbackImage {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--surface-color);
-  border-radius: var(--border-radius);
-  color: var(--text-color);
-  font-size: var(--font-size-responsive-md);
-  font-weight: var(--font-weight-medium);
-  padding: var(--padding-medium);
-  text-align: center;
-  line-height: var(--line-height-normal);
-}
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }
 </style>

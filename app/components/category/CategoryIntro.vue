@@ -1,150 +1,103 @@
 <template>
-    <section 
-        v-if="category" 
-        class="intro" 
-        :aria-labelledby="headlineId"
-        role="region"
+  <section
+    v-if="category"
+    class="mx-auto max-w-4xl px-4 text-center print:px-0"
+    :aria-labelledby="headlineId"
+    role="region"
+  >
+    <h1
+      :id="headlineId"
+      class="group mb-6 text-center text-[clamp(2.25rem,3.2vw+1rem,2.75rem)] leading-[1.4] font-bold tracking-[0.025em] text-[rgb(130,87,229)] focus-visible:ring-2 focus-visible:ring-[rgb(130,87,229)] focus-visible:ring-offset-2 focus-visible:outline-none"
     >
-        <h1 :id="headlineId" class="headline category-title">
-            <span class="category-name">{{ category.headline }}</span>
-            <span class="selected-text">{{ t('category.selected') }}</span>
-        </h1>
-        
-        <p 
-            class="description category-description" 
-            :id="descriptionId"
-            aria-live="polite"
-        >
-            {{ category.introSubline }}
-        </p>
+      <span
+        class="mr-1 inline-block group-hover:text-[#6d46c4] motion-safe:transition-colors motion-safe:duration-300 motion-reduce:transition-none sm:mr-2 md:mr-3"
+      >
+        {{ category.headline }}
+      </span>
+      <span
+        class="font-semibold text-white max-sm:mt-2 max-sm:block max-sm:text-[0.9em] sm:ml-0 sm:inline-block"
+      >
+        {{ t('category.selected') }}
+      </span>
+    </h1>
 
-        <div 
-            v-if="category.description" 
-            class="extended-description"
-            :aria-labelledby="descriptionId"
-        >
-            <p>{{ category.description }}</p>
-        </div>
-    </section>
+    <p
+      :id="descriptionId"
+      class="mx-auto mb-6 max-w-[65ch] text-center text-[clamp(1.5rem,1.7vw+1rem,1.75rem)] leading-[1.8] text-white max-sm:text-[clamp(1.25rem,1.2vw+1rem,1.5rem)]"
+      aria-live="polite"
+    >
+      {{ category.introSubline }}
+    </p>
+
+    <div
+      v-if="category.description"
+      class="mt-6 text-center text-[clamp(1.25rem,1.2vw+1rem,1.5rem)] leading-[1.8] text-[#f0f0f0] contrast-more:text-white"
+      :aria-labelledby="descriptionId"
+    >
+      <p class="mx-auto max-w-[65ch]">
+        {{ category.description }}
+      </p>
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
 interface Category {
-    headline: string
-    introSubline: string
-    description?: string
+  headline: string
+  introSubline: string
+  description?: string
 }
 
 const props = defineProps<{
-    category: Category | null
+  category: Category | null
 }>()
 
 const { t } = useI18n()
 
-const headlineId = computed(() => 
-    props.category ? `category-${props.category.headline.toLowerCase().replace(/\s+/g, '-')}-title` : ''
+const headlineId = computed(() =>
+  props.category
+    ? `category-${props.category.headline.toLowerCase().replace(/\s+/g, '-')}-title`
+    : ''
 )
 
-const descriptionId = computed(() => 
-    props.category ? `category-${props.category.headline.toLowerCase().replace(/\s+/g, '-')}-desc` : ''
+const descriptionId = computed(() =>
+  props.category
+    ? `category-${props.category.headline.toLowerCase().replace(/\s+/g, '-')}-desc`
+    : ''
 )
 </script>
 
-<style scoped lang="scss">
-.intro {
-    text-align: center;
+<style>
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  h1 {
+    text-decoration: underline !important;
+    text-underline-offset: 4px !important;
   }
 
-.category-title {
-    font-size: var(--font-size-responsive-2xl);
-    font-weight: var(--font-weight-bold);
-    text-align: center;
-    color: var(--primary-color);
-    margin-bottom: var(--padding-medium);
-    line-height: var(--line-height-tight);
-    letter-spacing: var(--spacing-text);
-
-    .category-name {
-        display: inline-block;
-        margin-right: 0.25em;
-    }
-
-    .selected-text {
-        color: var(--text-color);
-        font-weight: var(--font-weight-semibold);
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-        .category-name {
-            transition: color var(--transition-speed) var(--transition-bounce);
-        }
-    }
-
-    @media (hover: hover) {
-        &:hover .category-name {
-            color: var(--primary-color-dark);
-        }
-    }
+  p {
+    color: white !important;
+  }
 }
 
-.category-description {
-    font-size: var(--font-size-responsive-md);
-    line-height: var(--line-height-relaxed);
-    color: var(--text-color);
-    margin-bottom: var(--padding-medium);
-    max-width: var(--max-line-length);
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
+/* Print styles */
+@media print {
+  h1,
+  p {
+    color: black !important;
+  }
 
-.extended-description {
-    font-size: var(--font-size-responsive-sm);
-    line-height: var(--line-height-relaxed);
-    color: var(--text-secondary);
-    margin-top: var(--padding-medium);
-    text-align: center;
-    
-    p {
-        max-width: var(--max-line-length);
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
+  h1 {
+    font-size: 18pt !important;
+    margin-bottom: 12pt !important;
+  }
 
-@media screen and (max-width: 640px) {
-    .category-title {
-        font-size: var(--font-size-responsive-xl);
-        
-        .category-name,
-        .selected-text {
-            display: block;
-            margin: 0;
-        }
-        
-        .selected-text {
-            margin-top: var(--padding-small);
-            font-size: 0.9em;
-        }
-    }
-
-    .category-description {
-        font-size: var(--font-size-responsive-sm);
-    }
-}
-
-@media (prefers-contrast: more) {
-    .category-title {
-        color: var(--primary-color-dark);
-        
-        .selected-text {
-            color: var(--text-color);
-        }
-    }
-
-    .category-description,
-    .extended-description {
-        color: var(--text-color);
-    }
+  p {
+    font-size: 12pt !important;
+    line-height: 1.5 !important;
+  }
 }
 </style>
