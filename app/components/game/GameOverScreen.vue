@@ -1,98 +1,178 @@
 <template>
-    <div class="game-end-screen" role="main" aria-label="Game Over Screen">
-        <div class="end-content">
-            <div class="end-header">
-                <h1 id="game-over-title" class="game-over-title">{{ t('game.gameOver.title') }}</h1>
-                <div class="final-score-container" role="region" aria-labelledby="game-over-title">
-                    <div class="score-circle" role="text" aria-label="Total Score">
-                        <div class="score-inner">
-                            <span class="points score-value" aria-label="Points">{{ totalPoints }}</span>
-                            <span class="points-label score-label">{{ t('game.points_label') }}</span>
-                        </div>
-                    </div>
-                    <div class="stats">
-                        <div class="stat-item" role="text">
-                            <span class="stat-label score-label">{{ t('game.gameOver.correctAnswers') }}</span>
-                            <span class="stat-value score-value" aria-label="Correct Answers">{{ correctAnswers }} / {{ maxQuestions }}</span>
-                        </div>
-                    </div>
-                </div>
+  <div
+    class="motion-safe:animate-fade-in print:print-friendly mx-auto flex min-h-[calc(100vh-var(--header-height))] w-full flex-col items-center justify-start p-4 sm:justify-center sm:p-6"
+    role="main"
+    aria-label="Game Over Screen"
+  >
+    <div class="flex w-full max-w-[var(--max-content-width)] flex-col gap-6 text-center sm:gap-8">
+      <div class="flex flex-col items-center">
+        <h1 id="game-over-title" class="mb-8 text-center text-3xl font-bold sm:text-4xl">
+          {{ t('game.gameOver.title') }}
+        </h1>
+        <div
+          class="mt-3 flex flex-col items-center gap-3 sm:mt-6 sm:gap-6"
+          role="region"
+          aria-labelledby="game-over-title"
+        >
+          <div
+            class="relative flex h-[clamp(120px,30vw,200px)] w-[clamp(120px,30vw,200px)] items-center justify-center rounded-full border-2 border-[rgb(var(--primary-color-rgb))] bg-[rgb(var(--surface-color-rgb))] shadow-md hover:scale-105 hover:shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-[rgb(var(--highlight-color-rgb))] focus-visible:ring-offset-2 motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-[var(--transition-bounce)] motion-reduce:transform-none motion-reduce:transition-none"
+            role="text"
+            aria-label="Total Score"
+          >
+            <div
+              class="absolute inset-[4px] rounded-full border-2 border-[rgb(var(--surface-color-light-rgb))]"
+            />
+            <div class="flex flex-col items-center gap-1">
+              <span
+                class="text-2xl font-bold text-[rgb(var(--primary-color-rgb))] sm:text-3xl"
+                aria-label="Points"
+                >{{ totalPoints }}</span
+              >
+              <span class="text-sm text-[rgb(var(--secondary-color-rgb))] sm:text-base">{{
+                t('game.points_label')
+              }}</span>
             </div>
-
-            <div v-if="earnedRecord || resultMessage" class="reward-section" :class="recordClass" role="region" aria-label="Achievement">
-                <div v-if="earnedRecord" class="record-icon" role="img" :aria-label="recordIcon">
-                    <Icon :name="recordIcon" size="64" aria-hidden="true" />
-                </div>
-                <p v-if="resultMessage" class="reward-text message" role="text">
-                    {{ resultMessage }}
-                </p>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="flex flex-col gap-1" role="text">
+              <span class="text-sm text-[rgb(var(--secondary-color-rgb))] sm:text-base">{{
+                t('game.gameOver.correctAnswers')
+              }}</span>
+              <span
+                class="text-xl font-bold text-[rgb(var(--primary-color-rgb))] sm:text-2xl"
+                aria-label="Correct Answers"
+                >{{ correctAnswers }} / {{ maxQuestions }}</span
+              >
             </div>
-
-            <div class="share-section" role="region" aria-labelledby="share-title">
-                <h2 id="share-title">{{ t('game.results.share.title') }}</h2>
-                <div class="share-buttons" role="group" aria-label="Share options">
-                    <button v-if="canShare" 
-                        class="share-button share-api action-button" 
-                        @click="shareViaAPI"
-                        aria-label="Share score">
-                        <Icon name="material-symbols:share" size="24" aria-hidden="true" />
-                        <span>{{ t('game.results.share.buttons.share') }}</span>
-                    </button>
-
-                    <template v-else>
-                        <button class="share-button copy action-button" 
-                            @click="copyShareText"
-                            aria-label="Text kopieren">
-                            <Icon name="material-symbols:content-copy" size="24" aria-hidden="true" />
-                            <span>{{ t('game.results.share.buttons.copy') }}</span>
-                        </button>
-
-                        <button class="share-button twitter action-button" 
-                            @click="shareToTwitter"
-                            aria-label="Share on Twitter">
-                            <Icon name="mdi:twitter" size="24" aria-hidden="true" />
-                            <span>{{ t('game.results.share.buttons.twitter') }}</span>
-                        </button>
-
-                        <button class="share-button telegram action-button" 
-                            @click="shareToTelegram"
-                            aria-label="Share on Telegram">
-                            <Icon name="mdi:telegram" size="24" aria-hidden="true" />
-                            <span>{{ t('game.results.share.buttons.telegram') }}</span>
-                        </button>
-
-                        <button class="share-button reddit action-button" 
-                            @click="shareToReddit"
-                            aria-label="Share on Reddit">
-                            <Icon name="mdi:reddit" size="24" aria-hidden="true" />
-                            <span>{{ t('game.results.share.buttons.reddit') }}</span>
-                        </button>
-
-                        <button v-if="isWhatsAppSupported" 
-                            class="share-button whatsapp action-button" 
-                            @click="shareToWhatsApp"
-                            aria-label="Share on WhatsApp">
-                            <Icon name="mdi:whatsapp" size="24" aria-hidden="true" />
-                            <span>{{ t('game.results.share.buttons.whatsapp') }}</span>
-                        </button>
-                    </template>
-                </div>
-            </div>
-
-            <div class="end-actions" role="navigation">
-                <NuxtLink :to="localePath('/gamehome')" 
-                    class="home-button action-button"
-                    aria-label="Back to main menu">
-                    <Icon name="material-symbols:home" size="36" aria-hidden="true" />
-                    <span>{{ t('game.gameOver.backToMenu') }}</span>
-                </NuxtLink>
-            </div>
+          </div>
         </div>
+      </div>
+
+      <div
+        v-if="earnedRecord || resultMessage"
+        class="my-4 flex w-full flex-col items-center gap-3 rounded-lg border-2 bg-[rgb(var(--surface-color-rgb))] p-6 sm:my-6 sm:gap-6"
+        :class="[
+          recordClass === 'new-record'
+            ? 'border-[var(--success-color)] bg-[color-mix(in_srgb,rgb(var(--surface-color-rgb))_95%,var(--success-color))]'
+            : 'border-[rgb(var(--primary-color-rgb))]',
+        ]"
+        role="region"
+        aria-label="Achievement"
+      >
+        <div
+          v-if="earnedRecord"
+          class="text-3xl leading-tight text-[var(--success-color)]"
+          role="img"
+          :aria-label="recordIcon"
+        >
+          <Icon :name="recordIcon" size="64" aria-hidden="true" />
+        </div>
+        <p v-if="resultMessage" class="mb-6 text-center text-sm sm:text-base" role="text">
+          {{ resultMessage }}
+        </p>
+      </div>
+
+      <div class="mt-4 sm:mt-6" role="region" aria-labelledby="share-title">
+        <h2
+          id="share-title"
+          class="mb-3 text-base font-semibold text-[rgb(var(--text-color-rgb))] sm:mb-6 sm:text-lg"
+        >
+          {{ t('game.results.share.title') }}
+        </h2>
+        <div
+          class="mt-3 flex flex-col gap-3 px-3 sm:mt-6 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6 sm:px-0"
+          role="group"
+          aria-label="Share options"
+        >
+          <Button
+            v-if="canShare"
+            variant="primary"
+            full-width
+            class-name="sm:w-auto sm:min-w-44 h-12 gap-2 min-h-[44px]"
+            aria-label="Share score"
+            @click="shareViaAPI"
+          >
+            <Icon name="material-symbols:share" size="24" aria-hidden="true" />
+            <span>{{ t('game.results.share.buttons.share') }}</span>
+          </Button>
+
+          <template v-else>
+            <Button
+              variant="secondary"
+              full-width
+              class-name="sm:w-auto sm:min-w-44 h-12 gap-2 min-h-[44px]"
+              aria-label="Text kopieren"
+              @click="copyShareText"
+            >
+              <Icon name="material-symbols:content-copy" size="24" aria-hidden="true" />
+              <span>{{ t('game.results.share.buttons.copy') }}</span>
+            </Button>
+
+            <Button
+              variant="secondary"
+              full-width
+              class-name="sm:w-auto sm:min-w-44 h-12 gap-2 min-h-[44px]"
+              aria-label="Share on Twitter"
+              @click="shareToTwitter"
+            >
+              <Icon name="mdi:twitter" size="24" aria-hidden="true" />
+              <span>{{ t('game.results.share.buttons.twitter') }}</span>
+            </Button>
+
+            <Button
+              variant="secondary"
+              full-width
+              class-name="sm:w-auto sm:min-w-44 h-12 gap-2 min-h-[44px]"
+              aria-label="Share on Telegram"
+              @click="shareToTelegram"
+            >
+              <Icon name="mdi:telegram" size="24" aria-hidden="true" />
+              <span>{{ t('game.results.share.buttons.telegram') }}</span>
+            </Button>
+
+            <Button
+              variant="secondary"
+              full-width
+              class-name="sm:w-auto sm:min-w-44 h-12 gap-2 min-h-[44px]"
+              aria-label="Share on Reddit"
+              @click="shareToReddit"
+            >
+              <Icon name="mdi:reddit" size="24" aria-hidden="true" />
+              <span>{{ t('game.results.share.buttons.reddit') }}</span>
+            </Button>
+
+            <Button
+              v-if="isWhatsAppSupported"
+              variant="secondary"
+              full-width
+              class-name="sm:w-auto sm:min-w-44 h-12 gap-2 min-h-[44px]"
+              aria-label="Share on WhatsApp"
+              @click="shareToWhatsApp"
+            >
+              <Icon name="mdi:whatsapp" size="24" aria-hidden="true" />
+              <span>{{ t('game.results.share.buttons.whatsapp') }}</span>
+            </Button>
+          </template>
+        </div>
+      </div>
+
+      <div class="mt-6 px-3 sm:mt-8 sm:px-0" role="navigation">
+        <NuxtLink
+          :to="localePath('/gamehome')"
+          class="inline-flex h-12 min-h-[44px] items-center justify-center gap-2 rounded-lg bg-[rgb(var(--primary-color-rgb))] px-6 py-2 font-medium text-white transition-colors duration-300 hover:bg-[var(--primary-color-dark)] focus:outline-none focus-visible:ring-4 focus-visible:ring-[rgb(var(--highlight-color-rgb))] focus-visible:ring-offset-2 motion-reduce:transition-none"
+          aria-label="Back to main menu"
+        >
+          <Icon name="material-symbols:home" size="36" aria-hidden="true" />
+          <span>{{ t('game.gameOver.backToMenu') }}</span>
+        </NuxtLink>
+      </div>
     </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
+import Button from '~/components/ui/Button.vue'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -101,13 +181,13 @@ const { locale } = useI18n()
 const { saveGameResults } = useGameResults()
 
 const props = defineProps<{
-    totalPoints: number
-    correctAnswers: number
-    maxQuestions: number
-    earnedRecord: boolean
-    recordIcon: string
-    recordClass: string
-    resultMessage: string
+  totalPoints: number
+  correctAnswers: number
+  maxQuestions: number
+  earnedRecord: boolean
+  recordIcon: string
+  recordClass: string
+  resultMessage: string
 }>()
 
 const isMobile = ref(false)
@@ -118,365 +198,107 @@ const category = route.params.category as string
 const difficulty = route.params.difficulty as string
 
 const saveScore = async () => {
-    await saveGameResults(
-        category,
-        props.totalPoints,
-        props.correctAnswers,
-        props.maxQuestions,
-        props.correctAnswers === props.maxQuestions,
-        difficulty
-    )
+  await saveGameResults(
+    category,
+    props.totalPoints,
+    props.correctAnswers,
+    props.maxQuestions,
+    props.correctAnswers === props.maxQuestions,
+    difficulty
+  )
 }
 
 onMounted(() => {
-    // Mobile und Share API Checks
-    isMobile.value = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-    canShare.value = !!navigator?.share
-    if (isMobile.value) {
-        isWhatsAppSupported.value = true
-    }
+  // Mobile und Share API Checks
+  isMobile.value = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+  canShare.value = !!navigator?.share
+  if (isMobile.value) {
+    isWhatsAppSupported.value = true
+  }
 
-    // Score speichern
-    saveScore()
+  // Score speichern
+  saveScore()
 })
 
 const getShareText = () => {
-    let text = t('game.results.share.message.intro', {
-        points: props.totalPoints,
-        category: route.params.category,
-        difficulty: route.params.difficulty
+  let text = t('game.results.share.message.intro', {
+    points: props.totalPoints,
+    category: route.params.category,
+    difficulty: route.params.difficulty,
+  })
+
+  text +=
+    ' ' +
+    t('game.results.share.message.stats', {
+      correct: props.correctAnswers,
+      total: props.maxQuestions,
     })
 
-    text += ' ' + t('game.results.share.message.stats', {
-        correct: props.correctAnswers,
-        total: props.maxQuestions
+  // Füge die Challenge-URL hinzu
+  const shareUrl = getShareUrl()
+  text +=
+    ' ' +
+    t('game.results.share.message.challenge', {
+      url: shareUrl,
     })
 
-    // Füge die Challenge-URL hinzu
-    const shareUrl = getShareUrl()
-    text += ' ' + t('game.results.share.message.challenge', {
-        url: shareUrl
-    })
-
-    return text
+  return text
 }
 
 const getShareUrl = () => {
-    return window.location.href
+  return window.location.href
 }
 
 const copyShareText = async () => {
-    const text = getShareText()
-    try {
-        await navigator.clipboard.writeText(text)
-        // Optional: Show success message
-    } catch (err) {
-        console.error('Failed to copy text:', err)
-    }
+  const text = getShareText()
+  try {
+    await navigator.clipboard.writeText(text)
+    // Optional: Show success message
+  } catch (err) {
+    console.error('Failed to copy text:', err)
+  }
 }
 
 const shareToTwitter = () => {
-    const text = getShareText()
-    const url = getShareUrl()
-    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`)
+  const text = getShareText()
+  const url = getShareUrl()
+  window.open(
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`
+  )
 }
 
 const shareToTelegram = () => {
-    const text = getShareText()
-    const url = getShareUrl()
-    window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`)
+  const text = getShareText()
+  const url = getShareUrl()
+  window.open(
+    `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`
+  )
 }
 
 const shareToReddit = () => {
-    const text = getShareText()
-    const url = getShareUrl()
-    window.open(`https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(text)}`)
+  const text = getShareText()
+  const url = getShareUrl()
+  window.open(
+    `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(text)}`
+  )
 }
 
 const shareToWhatsApp = () => {
-    const text = getShareText()
-    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`)
+  const text = getShareText()
+  window.open(`https://wa.me/?text=${encodeURIComponent(text)}`)
 }
 
 const shareViaAPI = async () => {
-    try {
-        await navigator.share({
-            title: t('game.gameOver.title'),
-            text: getShareText(),
-            url: getShareUrl()
-        })
-    } catch (err) {
-        console.error('Error sharing:', err)
-    }
+  try {
+    await navigator.share({
+      title: t('game.gameOver.title'),
+      text: getShareText(),
+      url: getShareUrl(),
+    })
+  } catch (err) {
+    console.error('Error sharing:', err)
+  }
 }
 </script>
 
-<style scoped lang="scss">
-@use "sass:color";
-@use "@/assets/scss/mixins" as *;
-
-.game-end-screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    margin: 0 auto;
-    min-height: calc(100vh - var(--header-height));
-    animation: fadeIn var(--transition-speed) var(--transition-bounce);
-    padding: var(--padding-small);
-
-    @media (min-width: 640px) {
-        justify-content: center;
-        padding: var(--padding-medium);
-    }
-}
-
-.end-content {
-    width: 100%;
-    max-width: var(--content-width);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: var(--padding-medium);
-
-    @media (min-width: 640px) {
-        gap: var(--padding-large);
-    }
-}
-
-.end-header {
-    h1.game-over-title {
-        font-size: var(--font-size-responsive-2xl);
-        font-weight: var(--font-weight-bold);
-        text-align: center;
-        margin-bottom: var(--padding-large);
-    }
-}
-
-.final-score-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--padding-small);
-    margin-top: var(--padding-small);
-
-    @media (min-width: 640px) {
-        gap: var(--padding-medium);
-        margin-top: var(--padding-medium);
-    }
-}
-
-.score-circle {
-    width: clamp(120px, 30vw, 200px);
-    height: clamp(120px, 30vw, 200px);
-    border-radius: 50%;
-    background: var(--surface-color);
-    border: 2px solid var(--primary-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--box-shadow);
-    transition: all var(--transition-speed) var(--transition-bounce);
-    position: relative;
-
-    &::after {
-        content: '';
-        position: absolute;
-        inset: 4px;
-        border-radius: 50%;
-        border: 2px solid var(--surface-color-light);
-    }
-
-    @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-        &:hover {
-            transform: scale(1.05);
-            box-shadow: var(--box-shadow-hover);
-        }
-    }
-}
-
-.score-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: calc(var(--padding-small) / 2);
-
-    .points.score-value {
-        font-size: var(--font-size-responsive-xl);
-        font-weight: var(--font-weight-bold);
-        color: var(--primary-color);
-    }
-
-    .points-label.score-label {
-        font-size: var(--font-size-responsive-md);
-        color: var(--text-secondary);
-    }
-}
-
-.stats {
-    .stat-item {
-        display: flex;
-        flex-direction: column;
-        gap: calc(var(--padding-small) / 2);
-
-        .stat-label.score-label {
-            font-size: var(--font-size-responsive-md);
-            color: var(--text-secondary);
-        }
-
-        .stat-value.score-value {
-            font-size: var(--font-size-responsive-xl);
-            font-weight: var(--font-weight-bold);
-            color: var(--primary-color);
-        }
-    }
-}
-
-.reward-section {
-    margin: var(--padding-small) auto;
-    padding: var(--padding-medium);
-    border-radius: var(--border-radius);
-    background: var(--surface-color);
-    border: 2px solid var(--primary-color);
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--padding-small);
-
-    @media (min-width: 640px) {
-        margin: var(--padding-medium) auto;
-        gap: var(--padding-medium);
-    }
-
-    &.new-record {
-        border-color: var(--success-color);
-        background: color-mix(in srgb, var(--surface-color) 95%, var(--success-color));
-    }
-
-    .record-icon {
-        color: var(--success-color);
-        font-size: var(--font-size-responsive-2xl);
-        line-height: var(--line-height-tight);
-    }
-
-    .reward-text.message {
-        font-size: var(--font-size-responsive-sm);
-        text-align: center;
-        margin-bottom: var(--padding-large);
-    }
-}
-
-.share-section {
-    margin-top: var(--padding-small);
-
-    @media (min-width: 640px) {
-        margin-top: var(--padding-medium);
-    }
-
-    h2 {
-        font-size: var(--font-size-responsive-md);
-        margin-bottom: var(--padding-small);
-        color: var(--text-color);
-        font-weight: var(--font-weight-semibold);
-
-        @media (min-width: 640px) {
-            margin-bottom: var(--padding-medium);
-        }
-    }
-}
-
-.share-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: var(--padding-small);
-    margin-top: var(--padding-small);
-    padding: 0 var(--padding-small);
-
-    @media (min-width: 640px) {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: var(--padding-medium);
-        justify-content: center;
-        margin-top: var(--padding-medium);
-        padding: 0;
-    }
-}
-
-.share-button.action-button {
-    @include button-secondary;
-    width: 100%;
-    justify-content: center;
-    gap: var(--padding-small);
-    font-size: var(--font-size-base);
-    min-height: var(--min-touch-target);
-
-    &.copy {
-        background-color: var(--secondary-color);
-        color: var(--text-color);
-        
-        &:hover {
-            background-color: var(--secondary-color-dark);
-        }
-    }
-
-    &.share-api {
-        @include button-primary;
-    }
-
-    &:focus-visible {
-        outline: var(--focus-outline-width) solid var(--focus-outline-color);
-        outline-offset: var(--focus-outline-offset);
-    }
-}
-
-.end-actions {
-    margin-top: var(--padding-medium);
-    padding: 0 var(--padding-small);
-
-    @media (min-width: 640px) {
-        margin-top: var(--padding-large);
-        padding: 0;
-    }
-
-    .home-button.action-button {
-        @include button-primary;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: var(--padding-small);
-        width: auto;
-        min-height: var(--min-touch-target);
-        font-size: var(--font-size-base);
-
-        @media (min-width: 640px) {
-            width: auto;
-            min-width: var(--max-button-width, 200px);
-        }
-
-        &:focus-visible {
-            outline: var(--focus-outline-width) solid var(--focus-outline-color);
-            outline-offset: var(--focus-outline-offset);
-        }
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .game-end-screen,
-    .score-inner,
-    .stat-item,
-    .reward-section,
-    .share-section,
-    .end-actions {
-        animation: none;
-    }
-
-    .record-icon {
-        animation: none;
-    }
-
-    .score-circle:hover {
-        transform: none;
-    }
-}
-</style>
+<!-- Styles are now fully implemented with Tailwind utility classes -->
