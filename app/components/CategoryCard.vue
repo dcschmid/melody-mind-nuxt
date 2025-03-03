@@ -1,186 +1,218 @@
 <template>
-  <article 
-    class="relative w-full transition-transform duration-normal rounded-[--border-radius] overflow-hidden group/card"
-    :class="{ 'opacity-disabled cursor-not-allowed': !isPlayable, 'cursor-pointer': isPlayable }"
+  <article
+    :class="[
+      'group/card relative w-full overflow-hidden',
+      'motion-safe:transition-transform motion-safe:duration-300 motion-reduce:transition-none rounded-xl',
+      !isPlayable ? 'cursor-not-allowed opacity-60' : 'cursor-pointer',
+      'print:shadow-none print:border print:border-gray-300',
+    ]"
     :aria-disabled="!isPlayable"
   >
     <!-- Spielbare Kategorie mit Link -->
-    <NuxtLink 
-      v-if="isPlayable" 
-      :to="categoryUrl" 
-      class="block h-full text-inherit no-underline outline-none focus-visible:outline-none group/link"
+    <NuxtLink
+      v-if="isPlayable"
+      :to="categoryUrl"
+      :class="[
+        'block h-full w-full text-inherit no-underline',
+        'focus-visible:ring-[3px] focus-visible:ring-[rgb(var(--focus-color-rgb))] focus-visible:ring-offset-2 focus-visible:outline-none',
+        'group/link',
+      ]"
       :aria-label="t('gameHome.playCategory', { category: headline })"
       :aria-describedby="`${cardId}-description`"
-      @keydown.enter="$emit('select')" 
+      @keydown.enter="$emit('select')"
       @keydown.space.prevent="$emit('select')"
     >
       <!-- Das eigentliche Kartencontainer -->
-      <div class="relative w-full h-full aspect-video rounded-[--border-radius] overflow-hidden bg-surface shadow transition-all duration-normal">
+      <div
+        class="relative aspect-video h-full w-full overflow-hidden rounded-xl bg-[rgb(var(--surface-color-rgb))] shadow-md motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none print:bg-white print:shadow-none"
+      >
         <!-- Karten-Inhalt mit Bild und Titel -->
-        <div class="w-full h-full">
-          <UnLazyImage 
-            :src="imageUrl" 
-            :alt="t('gameHome.categoryAlt', { category: headline })" 
+        <div class="h-full w-full">
+          <UnLazyImage
+            :src="imageUrl"
+            :alt="t('gameHome.categoryAlt', { category: headline })"
             loading="lazy"
-            class="w-full h-full object-cover rounded-[--border-radius]"
+            class="h-full w-full rounded-xl object-cover print:grayscale"
             auto-sizes
-            :thumbhash="thumbHash"
+            :thumbhash="thumbHashUrl"
           />
-          
-          <h2 
-            :id="`${cardId}-title`" 
-            class="absolute inset-0 flex items-center justify-center m-0 text-md font-semibold text-text text-center leading-tight z-overlay w-full h-full bg-black/70 backdrop-blur-xs
-                   group-focus-visible/link:bg-black/80 group-focus-visible/link:text-highlight"
+
+          <!-- Kategorie-Titel mit verbessertem Kontrast -->
+          <div
+            class="absolute inset-0 z-10 flex items-center justify-center bg-black/80 backdrop-blur-sm print:bg-black print:bg-opacity-90"
           >
-            {{ headline }}
-          </h2>
+            <h2
+              :id="`${cardId}-title`"
+              class="m-0 p-4 text-center text-base font-semibold leading-tight text-white md:text-lg group-focus-visible/link:text-[rgb(var(--highlight-color-rgb))] print:text-white"
+            >
+              {{ headline }}
+            </h2>
+          </div>
         </div>
-        
+
         <!-- Hover-Effekt-Überlagerung -->
-        <div 
-          class="absolute inset-0 bg-gradient-to-t from-primary/30 to-secondary/20 opacity-0 group-hover/link:opacity-100 transition-all duration-normal"
+        <div
           aria-hidden="true"
+          class="absolute inset-0 bg-gradient-to-t from-[rgb(var(--primary-color-rgb))]/40 to-[rgb(var(--secondary-color-rgb))]/30 opacity-0 group-hover/link:opacity-100 motion-safe:transition-all motion-safe:duration-300 motion-reduce:hidden print:hidden"
         ></div>
       </div>
-      
-      <!-- Überlagerungen für Fokus-Zustand mit Tailwind -->
-      <div class="absolute inset-0 z-10 pointer-events-none">
-        <!-- Äußerer Fokus-Ring -->
-        <div 
-          class="absolute -inset-[2px] rounded-[calc(var(--border-radius)+2px)] border-4 border-transparent transition-all duration-normal
-                 group-focus-visible/link:border-highlight motion-reduce:group-focus-visible/link:border-highlight"
-        ></div>
-        
-        <!-- Innerer Schatten für Tiefeneffekt -->
-        <div 
-          class="absolute inset-0 rounded-[--border-radius] opacity-0 transition-all duration-normal
-                 group-focus-visible/link:opacity-100 shadow-[0_0_20px_rgba(0,247,255,0.7)]"
-        ></div>
-        
-        <!-- Eck-Akzente für zusätzliches visuelles Feedback -->
-        <div class="absolute top-0 left-0 w-4 h-4 opacity-0 group-focus-visible/link:opacity-100 transition-all duration-normal">
-          <div class="absolute top-0 left-0 w-4 h-4 border-t-4 border-l-4 border-highlight rounded-tl-lg"></div>
-        </div>
-        <div class="absolute top-0 right-0 w-4 h-4 opacity-0 group-focus-visible/link:opacity-100 transition-all duration-normal">
-          <div class="absolute top-0 right-0 w-4 h-4 border-t-4 border-r-4 border-highlight rounded-tr-lg"></div>
-        </div>
-        <div class="absolute bottom-0 left-0 w-4 h-4 opacity-0 group-focus-visible/link:opacity-100 transition-all duration-normal">
-          <div class="absolute bottom-0 left-0 w-4 h-4 border-b-4 border-l-4 border-highlight rounded-bl-lg"></div>
-        </div>
-        <div class="absolute bottom-0 right-0 w-4 h-4 opacity-0 group-focus-visible/link:opacity-100 transition-all duration-normal">
-          <div class="absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 border-highlight rounded-br-lg"></div>
-        </div>
-      </div>
+
+      <!-- Beschreibung für Screen Reader -->
+      <span :id="`${cardId}-description`" class="sr-only">
+        {{ description }}
+      </span>
     </NuxtLink>
 
-    <!-- Coming-Soon-Version mit ähnlichem Tailwind-Ansatz -->
-    <div 
-      v-else 
-      class="relative w-full h-full aspect-video rounded-[--border-radius] overflow-hidden bg-surface shadow focus-visible:outline-highlight focus-visible:outline-4 focus-visible:outline-offset-4"
-      :aria-label="t('gameHome.comingSoon', { category: headline })"
-      :aria-describedby="`${cardId}-description`"
-      role="article" 
+    <!-- Nicht spielbare Kategorie (ohne Link) -->
+    <div
+      v-else
+      :class="[
+        'relative aspect-video h-full w-full overflow-hidden',
+        'rounded-xl bg-[rgb(var(--surface-color-rgb))] shadow-md',
+        'focus-visible:ring-[3px] focus-visible:ring-[rgb(var(--focus-color-rgb))] focus-visible:ring-offset-2 focus-visible:outline-none',
+        'print:bg-white print:shadow-none print:border print:border-gray-300',
+      ]"
+      :aria-labelledby="`${cardId}-title-disabled`"
+      :aria-describedby="`${cardId}-description-disabled`"
       tabindex="0"
     >
-      <div class="w-full h-full">
-        <UnLazyImage 
-          :src="imageUrl" 
-          :alt="t('gameHome.categoryAlt', { category: headline })" 
+      <!-- Karten-Inhalt mit Bild und Titel -->
+      <div class="h-full w-full">
+        <UnLazyImage
+          :src="imageUrl"
+          :alt="t('gameHome.categoryAlt', { category: headline })"
           loading="lazy"
-          class="w-full h-full object-cover rounded-[--border-radius]"
+          class="h-full w-full rounded-xl object-cover grayscale print:contrast-125"
           auto-sizes
-          :thumbhash="thumbHash"
+          :thumbhash="thumbHashUrl"
         />
-        
-        <h2 
-          :id="`${cardId}-title`" 
-          class="absolute inset-0 flex items-center justify-center m-0 text-md md:text-xl font-semibold text-text text-center leading-tight z-overlay w-full h-full bg-black/70 backdrop-blur-xs"
-        >
-          {{ headline }}
-        </h2>
 
-        <!-- Coming Soon Badge -->
-        <div 
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white font-bold text-md px-medium py-small rounded-[--border-radius] shadow z-overlay"
-          role="status"
-          aria-live="polite"
+        <!-- Kategorie-Titel mit verbessertem Kontrast -->
+        <div
+          class="absolute inset-0 z-10 flex items-center justify-center bg-black/80 backdrop-blur-sm print:bg-black print:bg-opacity-90"
         >
-          {{ t('gameHome.comingSoonLabel') }}
+          <h2
+            :id="`${cardId}-title-disabled`"
+            class="m-0 p-4 text-center text-base font-semibold leading-tight text-white/80 md:text-lg print:text-white"
+          ></h2>
+        </div>
+
+        <!-- Sperrhinweis -->
+        <div class="absolute inset-0 z-20 flex items-center justify-center">
+          <div
+            class="flex items-center gap-2 rounded-full border border-[rgb(var(--border-color-rgb))] bg-black/90 px-4 py-2 backdrop-blur-md print:border-black print:bg-white"
+          >
+            <Icon
+              name="material-symbols:lock"
+              class="text-[rgb(var(--primary-color-rgb))] print:text-black"
+              size="20"
+              aria-hidden="true"
+            />
+            <span class="text-sm font-medium text-white print:text-black">{{ t('gameHome.locked') }}</span>
+          </div>
         </div>
       </div>
+
+      <!-- Beschreibung für Screen Reader -->
+      <span :id="`${cardId}-description-disabled`" class="sr-only">
+        {{ t('gameHome.categoryLocked') }}
+      </span>
     </div>
   </article>
 </template>
 
 <script setup lang="ts">
-import { useThumbHash } from '~/composables/useThumbHash'
-import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useThumbHash } from '~/composables/useThumbHash'
 
 const { t } = useI18n()
-const { getThumbHash } = useThumbHash()
+
+// Eindeutige ID für ARIA-Attribute
+const cardId = `category-card-${Math.random().toString(36).substring(2, 9)}`
 
 const props = defineProps({
   headline: {
     type: String,
-    required: true
+    required: true,
+  },
+  description: {
+    type: String,
+    default: '',
   },
   imageUrl: {
     type: String,
-    required: true
+    required: true,
+  },
+  thumbHash: {
+    type: String,
+    default: '',
   },
   categoryUrl: {
     type: String,
-    required: true
-  },
-  introSubline: {
-    type: String,
-    required: true
+    required: true,
   },
   isPlayable: {
     type: Boolean,
-    default: true
-  }
+    default: true,
+  },
 })
 
-// ThumbHash für das Bild abrufen
-const thumbHash = computed(() => props.imageUrl ? getThumbHash(props.imageUrl) : '')
-
-// Generiere eine eindeutige ID für ARIA-Attribute
-const cardId = computed(() => 
-  `category-${props.headline.toLowerCase().replace(/\s+/g, '-')}`
-)
-
 defineEmits(['select'])
+
+// ThumbHash für Bildvorschau
+const { getThumbHash } = useThumbHash()
+const thumbHashUrl = computed(() => {
+  if (!props.thumbHash) return ''
+  return getThumbHash(props.imageUrl)
+})
 </script>
 
-<style lang="scss" scoped>
-/* Minimales CSS für das, was nicht in Tailwind abbildbar ist */
-.opacity-disabled {
-  opacity: var(--opacity-disabled);
-}
-
-/* Hoher Kontrast-Modus über CSS für WCAG AAA */
+<style scoped>
+/* Verbesserte Zugänglichkeit für hohen Kontrast */
 @media (prefers-contrast: more) {
-  .group-focus-visible\/link\:border-highlight {
-    border-color: white !important;
-    outline: 2px solid black;
+  article {
+    border: 3px solid white !important;
+    outline: 1px solid black !important;
   }
-  
-  div[role="status"] {
-    @apply bg-primary-dark text-white border-2 border-white;
+
+  h2 {
+    background-color: black !important;
+    color: white !important;
+    border: 2px solid white !important;
+    font-weight: bold !important;
+    font-size: 1.2rem !important;
+  }
+
+  img {
+    filter: contrast(1.5) !important;
+    border: 1px solid white !important;
+  }
+
+  [aria-disabled='true'] img {
+    filter: grayscale(1) contrast(1.2) !important;
+  }
+
+  div[class*='badge'] {
+    border: 2px solid white !important;
+    background: black !important;
+    color: white !important;
+    font-weight: bold !important;
   }
 }
 
-/* Diese Klasse fügt zusätzlich eine Animation hinzu für Bewegungstolerantere Nutzer */
-@media (prefers-reduced-motion: no-preference) {
-  .group-focus-visible\/link\:border-highlight {
-    animation: focus-pulse 2s infinite alternate;
+/* Print-Optimierung */
+@media print {
+  article {
+    break-inside: avoid !important;
+    margin-bottom: 1rem !important;
+    border: 1px solid #000 !important;
   }
-  
-  @keyframes focus-pulse {
-    from { box-shadow: 0 0 0 0 rgba(var(--highlight-color-rgb), 0.4); }
-    to { box-shadow: 0 0 0 8px rgba(var(--highlight-color-rgb), 0.7); }
+
+  h2 {
+    color: black !important;
+    font-weight: bold !important;
+    font-size: 1.1rem !important;
   }
 }
 </style>
