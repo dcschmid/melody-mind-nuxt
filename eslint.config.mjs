@@ -30,6 +30,8 @@ export default withNuxt(
       // Other
       '.DS_Store',
 
+      // JSON files
+      '**/*.json',
       // Large JSON files
       'app/json/genres/**/*.json',
 
@@ -56,6 +58,7 @@ export default withNuxt(
       '@stylistic/arrow-parens': 'off',
       '@stylistic/member-delimiter-style': 'off',
       '@stylistic/quote-props': 'off',
+      '@stylistic/quotes': 'off',
       'vue/first-attribute-linebreak': 'off',
       'vue/html-indent': 'off',
       'vue/max-attributes-per-line': 'off',
@@ -67,7 +70,7 @@ export default withNuxt(
   },
   // Integration with Prettier
   {
-    files: ['**/*.vue', '**/*.js', '**/*.ts', '**/*.json'],
+    files: ['**/*.vue', '**/*.js', '**/*.ts'],
     plugins: {
       prettier: prettierPlugin,
     },

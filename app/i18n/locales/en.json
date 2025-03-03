@@ -1,15 +1,15 @@
 {
   "languages": {
-      "de": "German",
-      "en": "English",
-      "fr": "French",
-      "es": "Spanish",
-      "pt": "Portuguese",
-      "it": "Italian",
-      "nl": "Dutch",
-      "sv": "Swedish",
-      "fi": "Finnish",
-      "da": "Danish"
+    "de": "German",
+    "en": "English",
+    "fr": "French",
+    "es": "Spanish",
+    "pt": "Portuguese",
+    "it": "Italian",
+    "nl": "Dutch",
+    "sv": "Swedish",
+    "fi": "Finnish",
+    "da": "Danish"
   },
   "common": {
     "openLanguageMenu": "Open Language Menu",
@@ -17,7 +17,8 @@
     "selectLanguage": "Select Language",
     "selectLanguageLabel": "Choose Your Preferred Language",
     "languageChanged": "Language has been changed to {language}",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "clearSearch": "Clear Search"
   },
   "meta": {
     "title": "Melody Mind - The Ultimate Music Quiz Game",
@@ -110,11 +111,16 @@
     "title": "Choose a Category to Play",
     "categoriesTitle": "Categories",
     "description": "From rock legends to pop icons, from hip-hop pioneers to classical masterpieces - your musical journey of discovery starts here!",
+    "searchCategories": "Search categories",
     "searchPlaceholder": "Search categories...",
     "playCategory": "Play {category}",
     "comingSoon": "{category} - Coming Soon",
     "categoryAlt": "Image for category {category}",
-    "comingSoonLabel": "Coming Soon"
+    "comingSoonLabel": "Coming Soon",
+    "locked": "Locked",
+    "categoryLocked": "This category is currently locked and unavailable.",
+    "noResults": "No results found",
+    "tryAnotherSearch": "Try another search"
   },
   "multiplayer": {
     "meta": {
@@ -312,14 +318,11 @@
     },
     "pointsSystem": {
       "title": "Points System",
-      "rules": [
-        "50 points for each correct answer.",
-        "No points for incorrect answers."
-      ]
+      "rules": ["50 points for each correct answer.", "No points for incorrect answers."]
     },
     "goldenRecords": {
       "title": "Golden Records",
-      "intro": "When you answer all questions correctly in a category, you'll earn a golden record:",
+      "intro": "When you answer all questions correctly in a category, you'll earn a {0}golden record{1}:",
       "rewards": {
         "easy": "Easy: Music Beginner.",
         "medium": "Medium: Music Master.",

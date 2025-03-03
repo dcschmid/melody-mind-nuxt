@@ -1,639 +1,644 @@
 {
-    "languages": {
-        "de": "Saksa",
-        "en": "Englanti",
-        "fr": "ranska",
-        "es": "Espanja",
-        "pt": "Portugali",
-        "it": "Italia",
-        "nl": "Hollanti",
-        "sv": "Ruotsi",
-        "fi": "Suomi",
-        "da": "Tanska"
-    },
-    "common": {
-        "openLanguageMenu": "Avaa kielivalikko",
-        "closeLanguageMenu": "Sulje kielivalikko",
-        "selectLanguage": "Valitse kieli",
-        "selectLanguageLabel": "Valitse haluamasi kieli",
-        "languageChanged": "Language has been changed to {language}",
-        "loading": "Loading..."
-    },
-    "meta": {
-        "title": "Melody Mind - Lopullinen musiikkitietokilpailu Peli",
-        "description": "Testaa musiikkia tietoa meidän interaktiivinen tietokilpailu peli. Vastaa kysymyksiin lauluista, taiteilijoista ja musiikkihistoriasta eri genreiltä, kuten rokista, popista, hip-hopista ja klassisesta.",
-        "keywords": "musiikki tietovisa, musiikki tieto, online-visa, musiikkihistoria, taiteilija tietovisa, albumi tietovisa, musiikkilajit, interaktiivinen peli"
-    },
-    "seo": {
-        "category": {
-            "title": "Music Quiz Kategoriat - Melody Mind",
-            "description": "Tutustu erilaisiin musiikkitietokilpailuihin Melody Mindissä. Testaa tietoa eri musiikkilajien ja aikakausia musiikkihistorian."
-        },
-        "gameRules": {
-            "title": "Pelin säännöt - Melody Mind",
-            "description": "Lue Melody Mindin pelisäännöistä. Tutustu kaikkeen pelitiloista, pisteytysjärjestelmästä ja bonusominaisuuksista musiikkivisassamme."
-        },
-        "privacy": {
-            "title": "Privacy Policy - Melody Mind",
-            "description": "Opi tietosuojakäytännöistämme. Selvitä, miten suojaamme ja käytämme tietoja Melody Mind."
-        },
-        "imprint": {
-            "title": "Oikeudellinen huomautus - Melody Mind",
-            "description": "Melody Mindin oikeudelliset tiedot ja yhteystiedot."
-        }
-    },
-    "welcome": {
-        "title": "Tervetuloa Melody Mindiin",
-        "start": "Aloita peli",
-        "about": {
-            "title": "Tietoja Melody Mindistä",
-            "description": "Testaa musiikkitietosi eri kategorioissa. Jännittävä tietovisa kaikenlaisen musiikin ystäville."
-        },
-        "seo": {
-            "description": "Tutustu musiikin maailmaan interaktiivisen musiikkivisamme avulla. Testaa tietosi, kerää pisteitä ja tule musiikin asiantuntijaksi."
-        }
-    },
-    "intro": "Sukella musiikin kiehtovaan maailmaan! Melody Mindissa testaat musiikkitietojasi jännittävissä tietokilpailuissa. Legendaarisista rock-hymneistä moderneihin pop-hitteihin, uraauurtavista hip-hop-kappaleista ajattomiin klassikkoihin - tutustu musiikkihistorian koko kirjoon. Kerää pisteitä, ansaitse kultalevy ja haasta muita musiikin ystäviä. Aloita musiikillinen tietovisaseikkailusi nyt!",
-    "auth": {
-        "email": {
-            "label": "Email",
-            "placeholder": "Anna sähköpostiosoite"
-        },
-        "password": {
-            "label": "Password",
-            "placeholder": "Anna salasana"
-        },
-        "name": {
-            "label": "Nimi",
-            "placeholder": "Anna koko nimesi"
-        }
-    },
-    "login": {
-        "title": "Sign In",
-        "methodLabel": "Kirjaudu sisään",
-        "submitButton": "Sign In",
-        "noAccount": "Eikö sinulla ole tiliä?",
-        "forgotPassword": "Unohditko salasanasi?",
-        "orContinueWith": "Tai jatka",
-        "continueWithDiscord": "Jatka Discordilla",
-        "continueWithGithub": "Jatka GitHubilla",
-        "error": {
-            "invalidEmail": "Invalid email address",
-            "invalidPassword": "Invalid password",
-            "required": "Tämä kenttä vaaditaan",
-            "loginFailed": "Kirjaudu sisään epäonnistui",
-            "discordLoginFailed": "Epäonnistui",
-            "githubLoginFailed": "GitHub-tunnus epäonnistui"
-        }
-    },
-    "register": {
-        "title": "Rekisteröinti",
-        "submitButton": "Rekisteröidy",
-        "hasAccount": "Onko sinulla jo tili?",
-        "successMessage": "Ilmoittautuminen onnistui! Tarkista sähköpostisi.",
-        "error": {
-            "invalidEmail": "Invalid email address",
-            "invalidPassword": "Salasanan on oltava vähintään 6 merkkiä pitkä",
-            "nameRequired": "Nimi vaaditaan",
-            "nameTooShort": "Nimen on oltava vähintään 2 merkkiä pitkä",
-            "usernameRequired": "Käyttäjätunnus vaaditaan",
-            "usernameTooShort": "Käyttäjätunnuksen on oltava vähintään 3 merkkiä pitkä",
-            "passwordTooShort": "Salasanan on oltava vähintään 8 merkkiä pitkä",
-            "registrationFailed": "Rekisteröinti epäonnistui"
-        }
-    },
-    "gameHome": {
-        "meta": {
-            "title": "Melody Mind - Musiikkitietokilpailu kaikille tyypeille",
-            "description": "Tutustu musiikkitietokilpailuihin ja testaa osaamistasi eri lajityypeissä, kuten rockissa, popissa, hip-hopissa ja klassisessa."
-        },
-        "title": "Valitse soitettava kategoria",
-        "categoriesTitle": "Categories",
-        "description": "Rock-legendoista pop-ikoneihin, hip-hop-pioneereista klassisiin mestariteoksiin - musiikillinen löytöretkesi alkaa täältä!",
-        "searchPlaceholder": "Etsi kategoriat...",
-        "playCategory": "Play {Kategorie}",
-        "comingSoon": "{Kategorie} - Coming Soon",
-        "categoryAlt": "Image for category {Kategorie}",
-        "comingSoonLabel": "Coming Soon"
-    },
-    "multiplayer": {
-        "meta": {
-            "title": "{category} Quiz - {difficulty} Difficulty - Multiplayer | Melody Mind",
-            "description": "Play the {category} music quiz in {difficulty} mode with friends. Test your knowledge together and find out who's the best music expert!"
-        },
-        "setup": {
-            "title": "Player Setup",
-            "players": "Pelaajat",
-            "playerName": "Name for Player {number}",
-            "enterName": "Nimi",
-            "startGame": "Käynnistä peli"
-        }
-    },
+  "languages": {
+    "de": "Saksa",
+    "en": "Englanti",
+    "fr": "ranska",
+    "es": "Espanja",
+    "pt": "Portugali",
+    "it": "Italia",
+    "nl": "Hollanti",
+    "sv": "Ruotsi",
+    "fi": "Suomi",
+    "da": "Tanska"
+  },
+  "common": {
+    "openLanguageMenu": "Avaa kielivalikko",
+    "closeLanguageMenu": "Sulje kielivalikko",
+    "selectLanguage": "Valitse kieli",
+    "selectLanguageLabel": "Valitse haluamasi kieli",
+    "languageChanged": "Language has been changed to {language}",
+    "loading": "Loading...",
+    "clearSearch": "Tyhjennä haku"
+  },
+  "meta": {
+    "title": "Melody Mind - Lopullinen musiikkitietokilpailu Peli",
+    "description": "Testaa musiikkia tietoa meidän interaktiivinen tietokilpailu peli. Vastaa kysymyksiin lauluista, taiteilijoista ja musiikkihistoriasta eri genreiltä, kuten rokista, popista, hip-hopista ja klassisesta.",
+    "keywords": "musiikki tietovisa, musiikki tieto, online-visa, musiikkihistoria, taiteilija tietovisa, albumi tietovisa, musiikkilajit, interaktiivinen peli"
+  },
+  "seo": {
     "category": {
-        "selected": "Valittu!",
-        "mode": {
-            "singleplayer": "Yksi pelaaja",
-            "multiplayer": "Multiplayer"
-        },
-        "aria": {
-            "categoryRegion": "Luokkatiedot",
-            "description": "Luokka Kuvaus",
-            "extendedDescription": "Luokan lisätiedot"
-        },
-        "difficulty": {
-            "title": "Valitse vaikeudet Taso",
-            "easy": "Easy",
-            "medium": "Medium",
-            "hard": "Hard",
-            "description": {
-                "easy": "Täydellinen aloittelijoille",
-                "medium": "Kokeneille musiikin ystäville",
-                "hard": "For true music experts"
-            }
-        },
-        "playlist": {
-            "title": "Soittolistat",
-            "description": "Dive into the world of {genre}! We've curated the best songs for you. Listen to the playlist on your preferred streaming platform and get ready for the game.",
-            "spotify": "Listen on Spotify",
-            "deezer": "Kuuntele Deezeriä.",
-            "appleMusic": "Kuuntele Apple Music"
-        },
-        "knowledge": {
-            "title": "Tieto",
-            "link": "Learn more about {genre}",
-            "description": "Want to learn more about the history and evolution of {genre}? Find exciting background information and interesting facts here."
-        },
-        "combined": {
-            "title": "Tieto & Musiikki",
-            "description": "Sukella {genre}n maailmaan! Laajenna tietämystäsi tästä genrestä ja kuuntele parhaat kappaleet suosikkisuoratoistopalvelussasi."
-        },
-        "noImage": "Kuvaa ei ole saatavilla",
-        "image": {
-            "altText": "Category cover for {category}"
-        }
-    },
-    "game": {
-        "meta": {
-            "title": "{category} Quiz - {difficulty} Difficulty | Melody Mind",
-            "description": "Play the {category} music quiz in {difficulty} mode now. Test your knowledge, earn points, and become a music expert!"
-        },
-        "loading": "Ladataan peliä...",
-        "question": "Question {Aktuell} of {Gesamt}",
-        "timeLeft": "Aikaa jäljellä",
-        "score": "Pistemäärä",
-        "correct": "Oikein!",
-        "wrong": "Väärin!",
-        "timeUp": "Aika loppui!",
-        "next": "Seuraava",
-        "nextQuestion": "Seuraava kysymys",
-        "finish": "Lopeta peli",
-        "option": "Option {number}",
-        "selectAnswer": "Select answer: {answer}",
-        "correctAnswer": "Oikea vastaus oli: {answer}",
-        "expert": {
-            "title": "Expert Opinion",
-            "confidence": "Expert Confidence: {value}%"
-        },
-        "aria": {
-            "quizQuestion": "Kysymys",
-            "answerOptions": "Vastausvalinnat",
-            "expertAdvice": "Expert Advice",
-            "audienceOpinion": "Yleisön lausunto"
-        },
-        "links": {
-            "listen_on": "Luettelo"
-        },
-        "trivia": {
-            "title": "Hauskoja faktoja"
-        },
-        "gameOver": {
-            "title": "Peli ohi",
-            "correctAnswers": "Oikeat vastaukset",
-            "backToMenu": "Takaisin valikkoon",
-            "playAgain": "Play Again",
-            "rankings": "Rankings"
-        },
-        "results": {
-            "title": "Game Results",
-            "totalScore": "Kokonaispistemäärä",
-            "correctAnswers": "Oikeat vastaukset",
-            "accuracy": "Accuracy",
-            "timeTaken": "Time Taken",
-            "newHighscore": "Uusi huipputulos!",
-            "share": {
-                "title": "Jaa tulos",
-                "message": {
-                    "intro": "Wow! I scored {points} points in Melody Mind in the {category} category ({difficulty})!",
-                    "stats": "Score: {correct} out of {total} correct!",
-                    "challenge": "Challenge me at {url}"
-                },
-                "buttons": {
-                    "share": "Share",
-                    "copy": "Kopioi teksti",
-                    "twitter": "Jaa Twitterissä",
-                    "telegram": "Osuus sähkeestä",
-                    "reddit": "Jaa Redditissä",
-                    "whatsapp": "Jaa mitä Sovellus"
-                }
-            },
-            "playAgain": "Play Again",
-            "backToHome": "Takaisin kotiin"
-        },
-        "round": "Round {aktuell} of {max}",
-        "points_label": "Points",
-        "points": "Points: {Basis} + {Zeit} time bonus",
-        "confidence": "Luottamuksellisuus",
-        "jokers": {
-            "title": "Elinkaaret",
-            "fiftyFifty": {
-                "title": "50:50",
-                "description": "Poistaa kaksi väärää vastausta",
-                "remaining": "{Anzahl} lifelines remaining",
-                "ariaLabel": "50-50 pelastusköysi"
-            },
-            "audience": {
-                "title": "Kysy yleisöltä",
-                "description": "Näyttää yleisön äänien jakautumisen",
-                "remaining": "{Anzahl} lifelines remaining",
-                "ariaLabel": "Kysy yleisöltä"
-            },
-            "phone": {
-                "title": "Expert Advice",
-                "description": "Hanki asiantuntijan lausunto",
-                "remaining": "{Anzahl} lifelines remaining",
-                "ariaLabel": "Hanki asiantuntija-apua"
-            },
-            "remainingCount": "{count} lifelines available",
-            "remaining": "{Anzahl} lifelines remaining"
-        }
+      "title": "Music Quiz Kategoriat - Melody Mind",
+      "description": "Tutustu erilaisiin musiikkitietokilpailuihin Melody Mindissä. Testaa tietoa eri musiikkilajien ja aikakausia musiikkihistorian."
     },
     "gameRules": {
-        "meta": {
-            "title": "Pelin säännöt ja ohjeet - Melody Mind.",
-            "description": "Opi pelisäännöt Melody Mind. Tutustu kaikkeen pelitiloista, pisteytysjärjestelmästä ja bonusominaisuuksista musiikkivisassamme."
-        },
-        "title": "Pelin säännöt - MelodyMind",
-        "overview": {
-            "title": "Overview",
-            "text": "Tervetuloa MelodyMindiin! Sinun tehtäväsi on vastata kysymyksiin lauluista, taiteilijoista ja eri musiikkilajien albumeista. Valitse tyylilaji ja laita tietosi testiin. Mitä enemmän kysymyksiä vastaat oikein, sitä enemmän pisteitä ansaitset."
-        },
-        "difficultyLevels": {
-            "title": "Vaikeustaso",
-            "intro": "On kolme vaikeustasoa valita:",
-            "levels": {
-                "easy": {
-                    "title": "Easy",
-                    "description": "10 kysymystä per kierros. Täydellinen virkistää tietoa ja pitää hauskaa."
-                },
-                "medium": {
-                    "title": "Medium",
-                    "description": "15 kysymystä per kierros. Haaste edistyneille musiikin ystäville."
-                },
-                "hard": {
-                    "title": "Hard",
-                    "description": "20 kysymystä per kierros. Vain oikeille musiikin asiantuntijoille!"
-                }
-            },
-            "titles": {
-                "intro": "Jokaisella vaikeustasolla on oma otsikko, jonka voit avata:",
-                "novice": {
-                    "title": "Musiikki Novice",
-                    "description": "Vastaa kaikkiin kysymyksiin helposti."
-                },
-                "master": {
-                    "title": "Musiikkimestari",
-                    "description": "Vastaa kaikkiin kysymyksiin oikein keskitilassa."
-                },
-                "legend": {
-                    "title": "Musiikkilegenda",
-                    "description": "Vastaa kaikkiin kysymyksiin oikein kovassa tilassa."
-                }
-            }
-        },
-        "pointsSystem": {
-            "title": "Pistejärjestelmä",
-            "rules": [
-                "50 pistettä jokaisesta oikeasta vastauksesta.",
-                "Ei pisteitä väärille vastauksille."
-            ]
-        },
-        "goldenRecords": {
-            "title": "Golden Records",
-            "intro": "Kun vastaat kaikkiin kysymyksiin oikein kategoriassa, ansaitset kultaisen levyn:",
-            "rewards": {
-                "easy": "Helppoa: Musiikki Aloittelija.",
-                "medium": "Medium: Musiikkimestari.",
-                "hard": "Kova: Musiikkilegenda."
-            }
-        },
-        "rankings": {
-            "title": "Rankings",
-            "text": "Ranking järjestelmä vertaa sinua muihin pelaajiin. Sinun sijoitus top 10 perustuu yhteensä pistettä kaikissa kategorioissa.",
-            "lists": [
-                "Lajikohtainen Arvot: Parhaat pelaajat kussakin genre.",
-                "Yhteensä: Parhaat pelaajat kaikissa kategorioissa."
-            ]
-        },
-        "tipsAndTricks": {
-            "title": "Vinkkejä ja vihjeitä",
-            "tips": [
-                "Aloita helppo tila saada tuntuma peliin.",
-                "Pelaa vahvuuksiasi ja valitse genrejä olet mukava.",
-                "Harjoittele säännöllisesti parantaa pisteet.",
-                "Tarkkuus yli nopeuden - lue jokainen kysymys huolellisesti."
-            ]
-        }
+      "title": "Pelin säännöt - Melody Mind",
+      "description": "Lue Melody Mindin pelisäännöistä. Tutustu kaikkeen pelitiloista, pisteytysjärjestelmästä ja bonusominaisuuksista musiikkivisassamme."
     },
-    "knowledge": {
-        "meta": {
-            "title": "Tutustu Musiikin Maailmaan - Melody Mind",
-            "description": "Sukella musiikin monipuoliseen maailmaan. Löydä jännittäviä tarinoita ja kiehtovia faktoja eri musiikkityyleistä ja aikakausista."
-        },
-        "overview": "Knowledge Overview",
-        "title": "Tutustu Musiikkimaailmaan",
-        "description": "Tervetuloa musiikilliseen aarrekammioomme! Täältä löydät jännittäviä artikkeleita, kiehtovia tarinoita ja ainutlaatuisia näkemyksiä musiikin maailmaan. Uraauurtavista albumeista legendaarisiin konsertteihin ja vallankumouksellisiin musiikkiliikkeisiin - anna musiikin historian magian lumota sinut ja laajenna tietämystäsi visailua varten!",
-        "loading": "Ladataan sisältöä...",
-        "playAndListen": "Soita & kuuntele musiikkia",
-        "playNow": "Soita nyt",
-        "playlists": "Soittolistat",
-        "playlist": {
-            "spotify": "Listen on Spotify",
-            "deezer": "Kuuntele Deezeriä.",
-            "apple": "Kuuntele Apple Music",
-            "description": "Dive into the world of {genre}! We've curated the best songs for you. Listen to the playlist on your preferred streaming platform and get ready for the game."
-        },
-        "error": "Virhe ladattaessa sisältöä",
-        "backToGame": "Takaisin peliin"
+    "privacy": {
+      "title": "Privacy Policy - Melody Mind",
+      "description": "Opi tietosuojakäytännöistämme. Selvitä, miten suojaamme ja käytämme tietoja Melody Mind."
     },
-    "profile": {
-        "title": "Profiili",
-        "name": "Nimi",
-        "username": "Käyttäjätunnus",
-        "email": "Email",
-        "points": "Points",
-        "namePlaceholder": "Nimi",
-        "usernamePlaceholder": "Käyttäjätunnuksesi",
-        "emailPlaceholder": "sähköpostiosoite",
-        "lps": {
-            "title": "Levykokoelma",
-            "none": "Et ole vielä kerännyt tietoja.",
-            "types": {
-                "gold": "Gold",
-                "silver": "Silver",
-                "bronze": "Pronssi"
-            }
-        },
-        "stats": {
-            "title": "Tilastot",
-            "gamesPlayed": "Pelit pelataan",
-            "totalScore": "Kokonaispistemäärä",
-            "averageScore": "Keskimääräinen pistemäärä",
-            "highestScore": "Korkein pistemäärä",
-            "accuracy": "Accuracy"
-        },
-        "achievements": {
-            "title": "Saavutukset",
-            "locked": "Ei vielä auki",
-            "progress": "{Aktuell} of {Gesamt}"
-        },
-        "settings": {
-            "title": "Asetukset",
-            "language": "Language",
-            "sound": "Ääni",
-            "music": "Musiikki",
-            "notifications": "Ilmoitukset",
-            "theme": "Teema",
-            "save": "Save",
-            "saved": "Saved!"
-        }
+    "imprint": {
+      "title": "Oikeudellinen huomautus - Melody Mind",
+      "description": "Melody Mindin oikeudelliset tiedot ja yhteystiedot."
+    }
+  },
+  "welcome": {
+    "title": "Tervetuloa Melody Mindiin",
+    "start": "Aloita peli",
+    "about": {
+      "title": "Tietoja Melody Mindistä",
+      "description": "Testaa musiikkitietosi eri kategorioissa. Jännittävä tietovisa kaikenlaisen musiikin ystäville."
     },
-    "navigation": {
-        "mainNavLabel": "Päänavigointi",
-        "mainMenu": "Päävalikko",
-        "openMenu": "Avaa valikko",
-        "home": "Alkuun",
-        "knowledge": "Tietopohja",
-        "rules": "Pelisäännöt",
-        "support": "Tue meitä",
-        "imprint": "Imprint",
-        "privacy": "Privacy",
-        "legal": "Legal"
+    "seo": {
+      "description": "Tutustu musiikin maailmaan interaktiivisen musiikkivisamme avulla. Testaa tietosi, kerää pisteitä ja tule musiikin asiantuntijaksi."
+    }
+  },
+  "intro": "Sukella musiikin kiehtovaan maailmaan! Melody Mindissa testaat musiikkitietojasi jännittävissä tietokilpailuissa. Legendaarisista rock-hymneistä moderneihin pop-hitteihin, uraauurtavista hip-hop-kappaleista ajattomiin klassikkoihin - tutustu musiikkihistorian koko kirjoon. Kerää pisteitä, ansaitse kultalevy ja haasta muita musiikin ystäviä. Aloita musiikillinen tietovisaseikkailusi nyt!",
+  "auth": {
+    "email": {
+      "label": "Email",
+      "placeholder": "Anna sähköpostiosoite"
     },
-    "footer": {
-        "about": "Tietoja meistä",
-        "contact": "Yhteystiedot",
-        "privacy": "Privacy Policy",
-        "terms": "Käyttöehdot"
+    "password": {
+      "label": "Password",
+      "placeholder": "Anna salasana"
     },
-    "errors": {
-        "general": "Teit virheen.",
-        "network": "Verkkovirhe",
-        "retry": "Try again",
-        "pageNotFound": "Sivua ei löytynyt",
-        "emailRequired": "Sähköpostiosoite vaaditaan",
-        "invalidEmail": "Invalid email address",
-        "passwordRequired": "Salasana vaaditaan",
-        "passwordTooShort": "Salasanan on oltava vähintään 6 merkkiä pitkä",
-        "nameRequired": "Nimi vaaditaan",
-        "nameTooShort": "Nimen on oltava vähintään 2 merkkiä pitkä",
-        "loginFailed": "Login failed",
-        "registrationFailed": "Rekisteröinti epäonnistui",
-        "passwordResetFailed": "Salasanan palautus epäonnistui"
+    "name": {
+      "label": "Nimi",
+      "placeholder": "Anna koko nimesi"
+    }
+  },
+  "login": {
+    "title": "Sign In",
+    "methodLabel": "Kirjaudu sisään",
+    "submitButton": "Sign In",
+    "noAccount": "Eikö sinulla ole tiliä?",
+    "forgotPassword": "Unohditko salasanasi?",
+    "orContinueWith": "Tai jatka",
+    "continueWithDiscord": "Jatka Discordilla",
+    "continueWithGithub": "Jatka GitHubilla",
+    "error": {
+      "invalidEmail": "Invalid email address",
+      "invalidPassword": "Invalid password",
+      "required": "Tämä kenttä vaaditaan",
+      "loginFailed": "Kirjaudu sisään epäonnistui",
+      "discordLoginFailed": "Epäonnistui",
+      "githubLoginFailed": "GitHub-tunnus epäonnistui"
+    }
+  },
+  "register": {
+    "title": "Rekisteröinti",
+    "submitButton": "Rekisteröidy",
+    "hasAccount": "Onko sinulla jo tili?",
+    "successMessage": "Ilmoittautuminen onnistui! Tarkista sähköpostisi.",
+    "error": {
+      "invalidEmail": "Invalid email address",
+      "invalidPassword": "Salasanan on oltava vähintään 6 merkkiä pitkä",
+      "nameRequired": "Nimi vaaditaan",
+      "nameTooShort": "Nimen on oltava vähintään 2 merkkiä pitkä",
+      "usernameRequired": "Käyttäjätunnus vaaditaan",
+      "usernameTooShort": "Käyttäjätunnuksen on oltava vähintään 3 merkkiä pitkä",
+      "passwordTooShort": "Salasanan on oltava vähintään 8 merkkiä pitkä",
+      "registrationFailed": "Rekisteröinti epäonnistui"
+    }
+  },
+  "gameHome": {
+    "meta": {
+      "title": "Melody Mind - Musiikkivisa kaikille genreille",
+      "description": "Tutustu musiikkivisakategorioihimme ja testaa tietämystäsi eri genreissä kuten rock, pop, hip-hop ja klassinen."
     },
-    "accessibility": {
-        "skipToMain": "Siirry pääsisältöön",
-        "closeMenu": "Sulje valikko",
-        "openMenu": "Avaa valikko",
-        "darkMode": "Vaihda valo- ja tumma tila",
-        "playButton": "Play",
-        "pauseButton": "Pause",
-        "nextButton": "Seuraava",
-        "previousButton": "Edellinen",
-        "closeButton": "Sulje",
-        "languageSelector": "Vaihda kieltä",
-        "currentLanguage": "Nykyinen kieli",
-        "currentlySelected": "Tällä hetkellä valittu",
-        "selectLanguage": "Valitse kieli"
+    "title": "Valitse kategoria pelataksesi",
+    "categoriesTitle": "Kategoriat",
+    "description": "Rocklegendoista pop-ikoneihin, hip-hop-pioneereista klassisiin mestariteoksiin - musiikillinen löytöretkesi alkaa täältä!",
+    "searchPlaceholder": "Etsi kategoriaa...",
+    "playCategory": "Pelaa {category}",
+    "comingSoon": "{category} - Tulossa pian",
+    "categoryAlt": "Kuva kategorialle {category}",
+    "comingSoonLabel": "Tulossa pian",
+    "locked": "Lukittu",
+    "categoryLocked": "Tämä kategoria on tällä hetkellä lukittu eikä ole käytettävissä.",
+    "noResults": "Ei tuloksia",
+    "tryAnotherSearch": "Kokeile toista hakua"
+  },
+  "multiplayer": {
+    "meta": {
+      "title": "{category} Quiz - {difficulty} Difficulty - Multiplayer | Melody Mind",
+      "description": "Play the {category} music quiz in {difficulty} mode with friends. Test your knowledge together and find out who's the best music expert!"
     },
-    "cookies": {
-        "title": "Evästeasetukset",
-        "message": "Tämä sivusto käyttää evästeitä parantaa kokemusta",
-        "accept": "Hyväksy kaikki",
-        "decline": "Poista",
-        "customize": "Mukauta",
-        "preferences": {
-            "necessary": {
-                "title": "Essential Cookies",
-                "description": "Nämä evästeet vaaditaan perussivuston toiminnallisuutta",
-                "required": "Vaaditaan"
-            },
-            "analytics": {
-                "title": "Analytiikka Evästeet",
-                "description": "Auta meitä ymmärtämään, miten kävijät vuorovaikutuksessa verkkosivuilla"
-            },
-            "marketing": {
-                "title": "Marketing Cookies",
-                "description": "Käytetään osoittamaan relevantteja mainoksia vierailijoille"
-            }
-        },
-        "save": "Save Settings",
-        "moreInfo": "Lisätietoja",
-        "cookiePolicy": "Cookie Policy"
+    "setup": {
+      "title": "Player Setup",
+      "players": "Pelaajat",
+      "playerName": "Name for Player {number}",
+      "enterName": "Nimi",
+      "startGame": "Käynnistä peli"
+    }
+  },
+  "category": {
+    "selected": "Valittu!",
+    "mode": {
+      "singleplayer": "Yksi pelaaja",
+      "multiplayer": "Multiplayer"
     },
-    "gdpr": {
-        "title": "Yksityisyyden asetukset",
-        "description": "Kunnioitamme yksityisyyttäsi.",
-        "settings": {
-            "title": "Yksityisyyden asetukset",
-            "data": {
-                "collection": "Tietojen kerääminen",
-                "usage": "Data Usage",
-                "sharing": "Data Sharing"
-            },
-            "consent": {
-                "title": "Suostumuksesi",
-                "withdraw": "Voit peruuttaa suostumuksesi milloin tahansa",
-                "manage": "Manage Settings"
-            },
-            "deletion": {
-                "title": "Päivämäärän poisto",
-                "request": "Pyydä tietoja Poista",
-                "info": "Poistamme tietosi 30 päivän kuluessa",
-                "confirmation": "Poistamisen vahvistus",
-                "local": "Selaimessasi olevat paikalliset tiedot voidaan poistaa selainasetusten avulla."
-            }
-        }
-    },
-    "legal": {
-        "privacy": {
-            "meta": {
-                "title": "Privacy Policy - Melody Mind",
-                "description": "Tietoa yksityisyydestä Melody Mindissä. Opi, miten suojaamme tietojasi ja mitä oikeuksia sinulla on."
-            },
-            "title": "Privacy Policy",
-            "overview": {
-                "title": "Overview",
-                "general": {
-                    "title": "Yleiset tiedot",
-                    "text": "Otamme henkilötietojesi suojan hyvin vakavasti. Tämä tietosuojakäytäntö kertoo, miten käsittelemme tietojasi."
-                }
-            },
-            "dataCollection": {
-                "title": "Tietojen kerääminen",
-                "cookies": {
-                    "title": "Cookies",
-                    "text": "Käytämme evästeitä tarjotaksemme sinulle parhaan mahdollisen käyttäjäkokemuksen. Niissä ei ole henkilökohtaisia tunnistettavia tietoja."
-                },
-                "serverLogs": {
-                    "title": "Server Logs",
-                    "text": "Teknisiin tarkoituksiin tallennamme automaattisesti selaimesi lähettämät palvelinlokitiedostot."
-                },
-                "analytics": {
-                    "title": "Analytiikkatiedot",
-                    "text": "Käytämme anonymisoituja analytiikkatietoja parantaaksemme pelikokemustamme. Näihin tietoihin kuuluvat pelitilastot, käyttömallit ja suoritustiedot, mutta ei henkilökohtaisia tunnistettavia tietoja."
-                }
-            },
-            "rights": {
-                "title": "Oikeutesi",
-                "intro": "Sinulla on seuraavat henkilötiedot:",
-                "list": {
-                    "information": "Oikeus tutustua tallennettuihin tietoihin",
-                    "correction": "Oikeus oikaista virheellisiä tietoja",
-                    "restriction": "Oikeus rajoittaa käsittelyä",
-                    "objection": "Oikeus vastustaa käsittelyä",
-                    "portability": "Oikeus tietojen siirtämiseen"
-                }
-            },
-            "contact": {
-                "title": "Yhteystiedot",
-                "text": "Jos sinulla on kysyttävää yksityisyydestä, voit ottaa meihin yhteyttä milloin tahansa.",
-                "emailLabel": "Email",
-                "emailAddress": "daniel.schmid1980(at)icloud.com"
-            },
-            "gameData": {
-                "title": "Game Data",
-                "progress": {
-                    "title": "Peli edistyy",
-                    "intro": "Seuraavat pelitiedot tallennetaan:",
-                    "list": {
-                        "scores": "Pistetiedot",
-                        "awards": "Saavutukset",
-                        "rankings": "Sijoituspaikat"
-                    },
-                    "purpose": "Tätä tietoa käytetään yksinomaan parantamaan pelikokemusta ja näyttämään saavutuksia."
-                },
-                "localStorage": {
-                    "title": "Paikallinen varastointi",
-                    "intro": "Seuraavat tiedot tallennetaan paikallisesti selaimeesi:",
-                    "list": {
-                        "categories": "Soitetut luokat",
-                        "settings": "Game settings",
-                        "language": "Language setting"
-                    },
-                    "storage": "Nämä tiedot tallennetaan paikallisesti laitteellesi, eikä niitä siirretä palvelimillemme. Voit poistaa sen milloin tahansa selaimen asetusten kautta."
-                },
-                "session": {
-                    "title": "Session Data",
-                    "intro": "Aktiivisen pelin aikana tallennetaan väliaikaisesti seuraavat tiedot:",
-                    "list": {
-                        "auth": "Pelin tunnistautumistila",
-                        "progress": "Nykyinen peli edistyy ja pisteet",
-                        "settings": "Tilapäiset peliasetukset"
-                    }
-                }
-            },
-            "deletion": {
-                "title": "Päivämäärän poisto",
-                "intro": "Sinulla on oikeus poistaa seuraavat tiedot:",
-                "list": {
-                    "highscores": "Omat korkeat tulokset ja peli tilastot",
-                    "results": "Tallennetut pelitulokset ja saavutukset",
-                    "account": "Koko käyttäjätilisi ja kaikki siihen liittyvät tiedot"
-                },
-                "local": "Paikallisesti tallennetut tiedot (evästeet, pelin eteneminen) voidaan poistaa selaimesi asetusten avulla."
-            }
-        },
-        "imprint": {
-            "meta": {
-                "title": "Imprint - Melody Mind",
-                "description": "Melody Mindin oikeudelliset tiedot ja yhteystiedot. Löydät täältä kaikki tärkeät tiedot sivuston ylläpitäjästä."
-            },
-            "title": "Oikeudellinen huomautus",
-            "information": {
-                "title": "TMG:n 5 §:n mukaiset tiedot",
-                "operator": "Daniel Schmid",
-                "address": "Hiltenspergerstr. 78, 80796 München",
-                "country": "Germany"
-            },
-            "contact": {
-                "title": "Yhteystiedot",
-                "emailLabel": "Email",
-                "emailAddress": "daniel.schmid1980(at)icloud.com"
-            },
-            "responsible": {
-                "title": "Vastuussa sisällöstä § 55 Abs. 2 RStV"
-            },
-            "disputeResolution": {
-                "title": "Riitojen ratkaiseminen",
-                "text": "Euroopan komissio tarjoaa foorumin verkkovälitteiselle riidanratkaisulle",
-                "link": "https://ec.europa.eu/consumers/odr/",
-                "additional": "Emme ole halukkaita emmekä velvollisia osallistumaan riitojen ratkaisumenettelyyn kuluttaja-asioiden sovittelulautakunnassa."
-            },
-            "lawReference": {
-                "title": "Oikeudellinen huomautus",
-                "text": "Huolellisesta sisällönhallinnasta huolimatta emme ole vastuussa ulkoisten linkkien sisällöstä. Linkkisivujen ylläpitäjät ovat yksin vastuussa niiden sisällöstä."
-            },
-            "jurisdiction": {
-                "title": "Legal Basis",
-                "text": "Tämä verkkosivusto on Saksan lainsäädännön alainen.",
-                "applicableLaw": "Saksan lainsäädäntöä sovelletaan yksinomaan, lukuun ottamatta YK:n yleissopimusta tavaroiden kansainvälisestä kaupasta.",
-                "jurisdiction": "Kaikkien tästä sopimuksesta johtuvien riitojen käsittelypaikka on Saksa, jossa se on oikeudellisesti sallittua."
-            }
-        }
+    "aria": {
+      "categoryRegion": "Luokkatiedot",
+      "description": "Luokka Kuvaus",
+      "extendedDescription": "Luokan lisätiedot"
     },
     "difficulty": {
-        "easy": "Easy",
-        "medium": "Medium",
-        "hard": "Hard"
+      "title": "Valitse vaikeudet Taso",
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard",
+      "description": {
+        "easy": "Täydellinen aloittelijoille",
+        "medium": "Kokeneille musiikin ystäville",
+        "hard": "For true music experts"
+      }
+    },
+    "playlist": {
+      "title": "Soittolistat",
+      "description": "Dive into the world of {genre}! We've curated the best songs for you. Listen to the playlist on your preferred streaming platform and get ready for the game.",
+      "spotify": "Listen on Spotify",
+      "deezer": "Kuuntele Deezeriä.",
+      "appleMusic": "Kuuntele Apple Music"
+    },
+    "knowledge": {
+      "title": "Tieto",
+      "link": "Learn more about {genre}",
+      "description": "Want to learn more about the history and evolution of {genre}? Find exciting background information and interesting facts here."
+    },
+    "combined": {
+      "title": "Tieto & Musiikki",
+      "description": "Sukella {genre}n maailmaan! Laajenna tietämystäsi tästä genrestä ja kuuntele parhaat kappaleet suosikkisuoratoistopalvelussasi."
+    },
+    "noImage": "Kuvaa ei ole saatavilla",
+    "image": {
+      "altText": "Category cover for {category}"
     }
+  },
+  "game": {
+    "meta": {
+      "title": "{category} Quiz - {difficulty} Difficulty | Melody Mind",
+      "description": "Play the {category} music quiz in {difficulty} mode now. Test your knowledge, earn points, and become a music expert!"
+    },
+    "loading": "Ladataan peliä...",
+    "question": "Question {Aktuell} of {Gesamt}",
+    "timeLeft": "Aikaa jäljellä",
+    "score": "Pistemäärä",
+    "correct": "Oikein!",
+    "wrong": "Väärin!",
+    "timeUp": "Aika loppui!",
+    "next": "Seuraava",
+    "nextQuestion": "Seuraava kysymys",
+    "finish": "Lopeta peli",
+    "option": "Option {number}",
+    "selectAnswer": "Select answer: {answer}",
+    "correctAnswer": "Oikea vastaus oli: {answer}",
+    "expert": {
+      "title": "Expert Opinion",
+      "confidence": "Expert Confidence: {value}%"
+    },
+    "aria": {
+      "quizQuestion": "Kysymys",
+      "answerOptions": "Vastausvalinnat",
+      "expertAdvice": "Expert Advice",
+      "audienceOpinion": "Yleisön lausunto"
+    },
+    "links": {
+      "listen_on": "Luettelo"
+    },
+    "trivia": {
+      "title": "Hauskoja faktoja"
+    },
+    "gameOver": {
+      "title": "Peli ohi",
+      "correctAnswers": "Oikeat vastaukset",
+      "backToMenu": "Takaisin valikkoon",
+      "playAgain": "Play Again",
+      "rankings": "Rankings"
+    },
+    "results": {
+      "title": "Game Results",
+      "totalScore": "Kokonaispistemäärä",
+      "correctAnswers": "Oikeat vastaukset",
+      "accuracy": "Accuracy",
+      "timeTaken": "Time Taken",
+      "newHighscore": "Uusi huipputulos!",
+      "share": {
+        "title": "Jaa tulos",
+        "message": {
+          "intro": "Wow! I scored {points} points in Melody Mind in the {category} category ({difficulty})!",
+          "stats": "Score: {correct} out of {total} correct!",
+          "challenge": "Challenge me at {url}"
+        },
+        "buttons": {
+          "share": "Share",
+          "copy": "Kopioi teksti",
+          "twitter": "Jaa Twitterissä",
+          "telegram": "Osuus sähkeestä",
+          "reddit": "Jaa Redditissä",
+          "whatsapp": "Jaa mitä Sovellus"
+        }
+      },
+      "playAgain": "Play Again",
+      "backToHome": "Takaisin kotiin"
+    },
+    "round": "Round {aktuell} of {max}",
+    "points_label": "Points",
+    "points": "Points: {Basis} + {Zeit} time bonus",
+    "confidence": "Luottamuksellisuus",
+    "jokers": {
+      "title": "Elinkaaret",
+      "fiftyFifty": {
+        "title": "50:50",
+        "description": "Poistaa kaksi väärää vastausta",
+        "remaining": "{Anzahl} lifelines remaining",
+        "ariaLabel": "50-50 pelastusköysi"
+      },
+      "audience": {
+        "title": "Kysy yleisöltä",
+        "description": "Näyttää yleisön äänien jakautumisen",
+        "remaining": "{Anzahl} lifelines remaining",
+        "ariaLabel": "Kysy yleisöltä"
+      },
+      "phone": {
+        "title": "Expert Advice",
+        "description": "Hanki asiantuntijan lausunto",
+        "remaining": "{Anzahl} lifelines remaining",
+        "ariaLabel": "Hanki asiantuntija-apua"
+      },
+      "remainingCount": "{count} lifelines available",
+      "remaining": "{Anzahl} lifelines remaining"
+    }
+  },
+  "gameRules": {
+    "meta": {
+      "title": "Pelin säännöt ja ohjeet - Melody Mind.",
+      "description": "Opi pelisäännöt Melody Mind. Tutustu kaikkeen pelitiloista, pisteytysjärjestelmästä ja bonusominaisuuksista musiikkivisassamme."
+    },
+    "title": "Pelin säännöt - MelodyMind",
+    "overview": {
+      "title": "Overview",
+      "text": "Tervetuloa MelodyMindiin! Sinun tehtäväsi on vastata kysymyksiin lauluista, taiteilijoista ja eri musiikkilajien albumeista. Valitse tyylilaji ja laita tietosi testiin. Mitä enemmän kysymyksiä vastaat oikein, sitä enemmän pisteitä ansaitset."
+    },
+    "difficultyLevels": {
+      "title": "Vaikeustaso",
+      "intro": "On kolme vaikeustasoa valita:",
+      "levels": {
+        "easy": {
+          "title": "Easy",
+          "description": "10 kysymystä per kierros. Täydellinen virkistää tietoa ja pitää hauskaa."
+        },
+        "medium": {
+          "title": "Medium",
+          "description": "15 kysymystä per kierros. Haaste edistyneille musiikin ystäville."
+        },
+        "hard": {
+          "title": "Hard",
+          "description": "20 kysymystä per kierros. Vain oikeille musiikin asiantuntijoille!"
+        }
+      },
+      "titles": {
+        "intro": "Jokaisella vaikeustasolla on oma otsikko, jonka voit avata:",
+        "novice": {
+          "title": "Musiikki Novice",
+          "description": "Vastaa kaikkiin kysymyksiin helposti."
+        },
+        "master": {
+          "title": "Musiikkimestari",
+          "description": "Vastaa kaikkiin kysymyksiin oikein keskitilassa."
+        },
+        "legend": {
+          "title": "Musiikkilegenda",
+          "description": "Vastaa kaikkiin kysymyksiin oikein kovassa tilassa."
+        }
+      }
+    },
+    "pointsSystem": {
+      "title": "Pistejärjestelmä",
+      "rules": [
+        "50 pistettä jokaisesta oikeasta vastauksesta.",
+        "Ei pisteitä väärille vastauksille."
+      ]
+    },
+    "goldenRecords": {
+      "title": "Golden Records",
+      "intro": "Kun vastaat kaikkiin kysymyksiin oikein kategoriassa, ansaitset {0}kultaisen levyn{1}:",
+      "rewards": {
+        "easy": "Helppoa: Musiikki Aloittelija.",
+        "medium": "Medium: Musiikkimestari.",
+        "hard": "Kova: Musiikkilegenda."
+      }
+    },
+    "rankings": {
+      "title": "Rankings",
+      "text": "Ranking järjestelmä vertaa sinua muihin pelaajiin. Sinun sijoitus top 10 perustuu yhteensä pistettä kaikissa kategorioissa.",
+      "lists": [
+        "Lajikohtainen Arvot: Parhaat pelaajat kussakin genre.",
+        "Yhteensä: Parhaat pelaajat kaikissa kategorioissa."
+      ]
+    },
+    "tipsAndTricks": {
+      "title": "Vinkkejä ja vihjeitä",
+      "tips": [
+        "Aloita helppo tila saada tuntuma peliin.",
+        "Pelaa vahvuuksiasi ja valitse genrejä olet mukava.",
+        "Harjoittele säännöllisesti parantaa pisteet.",
+        "Tarkkuus yli nopeuden - lue jokainen kysymys huolellisesti."
+      ]
+    }
+  },
+  "knowledge": {
+    "meta": {
+      "title": "Tutustu Musiikin Maailmaan - Melody Mind",
+      "description": "Sukella musiikin monipuoliseen maailmaan. Löydä jännittäviä tarinoita ja kiehtovia faktoja eri musiikkityyleistä ja aikakausista."
+    },
+    "overview": "Knowledge Overview",
+    "title": "Tutustu Musiikkimaailmaan",
+    "description": "Tervetuloa musiikilliseen aarrekammioomme! Täältä löydät jännittäviä artikkeleita, kiehtovia tarinoita ja ainutlaatuisia näkemyksiä musiikin maailmaan. Uraauurtavista albumeista legendaarisiin konsertteihin ja vallankumouksellisiin musiikkiliikkeisiin - anna musiikin historian magian lumota sinut ja laajenna tietämystäsi visailua varten!",
+    "loading": "Ladataan sisältöä...",
+    "playAndListen": "Soita & kuuntele musiikkia",
+    "playNow": "Soita nyt",
+    "playlists": "Soittolistat",
+    "playlist": {
+      "spotify": "Listen on Spotify",
+      "deezer": "Kuuntele Deezeriä.",
+      "apple": "Kuuntele Apple Music",
+      "description": "Dive into the world of {genre}! We've curated the best songs for you. Listen to the playlist on your preferred streaming platform and get ready for the game."
+    },
+    "error": "Virhe ladattaessa sisältöä",
+    "backToGame": "Takaisin peliin"
+  },
+  "profile": {
+    "title": "Profiili",
+    "name": "Nimi",
+    "username": "Käyttäjätunnus",
+    "email": "Email",
+    "points": "Points",
+    "namePlaceholder": "Nimi",
+    "usernamePlaceholder": "Käyttäjätunnuksesi",
+    "emailPlaceholder": "sähköpostiosoite",
+    "lps": {
+      "title": "Levykokoelma",
+      "none": "Et ole vielä kerännyt tietoja.",
+      "types": {
+        "gold": "Gold",
+        "silver": "Silver",
+        "bronze": "Pronssi"
+      }
+    },
+    "stats": {
+      "title": "Tilastot",
+      "gamesPlayed": "Pelit pelataan",
+      "totalScore": "Kokonaispistemäärä",
+      "averageScore": "Keskimääräinen pistemäärä",
+      "highestScore": "Korkein pistemäärä",
+      "accuracy": "Accuracy"
+    },
+    "achievements": {
+      "title": "Saavutukset",
+      "locked": "Ei vielä auki",
+      "progress": "{Aktuell} of {Gesamt}"
+    },
+    "settings": {
+      "title": "Asetukset",
+      "language": "Language",
+      "sound": "Ääni",
+      "music": "Musiikki",
+      "notifications": "Ilmoitukset",
+      "theme": "Teema",
+      "save": "Save",
+      "saved": "Saved!"
+    }
+  },
+  "navigation": {
+    "mainNavLabel": "Päänavigointi",
+    "mainMenu": "Päävalikko",
+    "openMenu": "Avaa valikko",
+    "home": "Alkuun",
+    "knowledge": "Tietopohja",
+    "rules": "Pelisäännöt",
+    "support": "Tue meitä",
+    "imprint": "Imprint",
+    "privacy": "Privacy",
+    "legal": "Legal"
+  },
+  "footer": {
+    "about": "Tietoja meistä",
+    "contact": "Yhteystiedot",
+    "privacy": "Privacy Policy",
+    "terms": "Käyttöehdot"
+  },
+  "errors": {
+    "general": "Teit virheen.",
+    "network": "Verkkovirhe",
+    "retry": "Try again",
+    "pageNotFound": "Sivua ei löytynyt",
+    "emailRequired": "Sähköpostiosoite vaaditaan",
+    "invalidEmail": "Invalid email address",
+    "passwordRequired": "Salasana vaaditaan",
+    "passwordTooShort": "Salasanan on oltava vähintään 6 merkkiä pitkä",
+    "nameRequired": "Nimi vaaditaan",
+    "nameTooShort": "Nimen on oltava vähintään 2 merkkiä pitkä",
+    "loginFailed": "Login failed",
+    "registrationFailed": "Rekisteröinti epäonnistui",
+    "passwordResetFailed": "Salasanan palautus epäonnistui"
+  },
+  "accessibility": {
+    "skipToMain": "Siirry pääsisältöön",
+    "closeMenu": "Sulje valikko",
+    "openMenu": "Avaa valikko",
+    "darkMode": "Vaihda valo- ja tumma tila",
+    "playButton": "Play",
+    "pauseButton": "Pause",
+    "nextButton": "Seuraava",
+    "previousButton": "Edellinen",
+    "closeButton": "Sulje",
+    "languageSelector": "Vaihda kieltä",
+    "currentLanguage": "Nykyinen kieli",
+    "currentlySelected": "Tällä hetkellä valittu",
+    "selectLanguage": "Valitse kieli"
+  },
+  "cookies": {
+    "title": "Evästeasetukset",
+    "message": "Tämä sivusto käyttää evästeitä parantaa kokemusta",
+    "accept": "Hyväksy kaikki",
+    "decline": "Poista",
+    "customize": "Mukauta",
+    "preferences": {
+      "necessary": {
+        "title": "Essential Cookies",
+        "description": "Nämä evästeet vaaditaan perussivuston toiminnallisuutta",
+        "required": "Vaaditaan"
+      },
+      "analytics": {
+        "title": "Analytiikka Evästeet",
+        "description": "Auta meitä ymmärtämään, miten kävijät vuorovaikutuksessa verkkosivuilla"
+      },
+      "marketing": {
+        "title": "Marketing Cookies",
+        "description": "Käytetään osoittamaan relevantteja mainoksia vierailijoille"
+      }
+    },
+    "save": "Save Settings",
+    "moreInfo": "Lisätietoja",
+    "cookiePolicy": "Cookie Policy"
+  },
+  "gdpr": {
+    "title": "Yksityisyyden asetukset",
+    "description": "Kunnioitamme yksityisyyttäsi.",
+    "settings": {
+      "title": "Yksityisyyden asetukset",
+      "data": {
+        "collection": "Tietojen kerääminen",
+        "usage": "Data Usage",
+        "sharing": "Data Sharing"
+      },
+      "consent": {
+        "title": "Suostumuksesi",
+        "withdraw": "Voit peruuttaa suostumuksesi milloin tahansa",
+        "manage": "Manage Settings"
+      },
+      "deletion": {
+        "title": "Päivämäärän poisto",
+        "request": "Pyydä tietoja Poista",
+        "info": "Poistamme tietosi 30 päivän kuluessa",
+        "confirmation": "Poistamisen vahvistus",
+        "local": "Selaimessasi olevat paikalliset tiedot voidaan poistaa selainasetusten avulla."
+      }
+    }
+  },
+  "legal": {
+    "privacy": {
+      "meta": {
+        "title": "Privacy Policy - Melody Mind",
+        "description": "Tietoa yksityisyydestä Melody Mindissä. Opi, miten suojaamme tietojasi ja mitä oikeuksia sinulla on."
+      },
+      "title": "Privacy Policy",
+      "overview": {
+        "title": "Overview",
+        "general": {
+          "title": "Yleiset tiedot",
+          "text": "Otamme henkilötietojesi suojan hyvin vakavasti. Tämä tietosuojakäytäntö kertoo, miten käsittelemme tietojasi."
+        }
+      },
+      "dataCollection": {
+        "title": "Tietojen kerääminen",
+        "cookies": {
+          "title": "Cookies",
+          "text": "Käytämme evästeitä tarjotaksemme sinulle parhaan mahdollisen käyttäjäkokemuksen. Niissä ei ole henkilökohtaisia tunnistettavia tietoja."
+        },
+        "serverLogs": {
+          "title": "Server Logs",
+          "text": "Teknisiin tarkoituksiin tallennamme automaattisesti selaimesi lähettämät palvelinlokitiedostot."
+        },
+        "analytics": {
+          "title": "Analytiikkatiedot",
+          "text": "Käytämme anonymisoituja analytiikkatietoja parantaaksemme pelikokemustamme. Näihin tietoihin kuuluvat pelitilastot, käyttömallit ja suoritustiedot, mutta ei henkilökohtaisia tunnistettavia tietoja."
+        }
+      },
+      "rights": {
+        "title": "Oikeutesi",
+        "intro": "Sinulla on seuraavat henkilötiedot:",
+        "list": {
+          "information": "Oikeus tutustua tallennettuihin tietoihin",
+          "correction": "Oikeus oikaista virheellisiä tietoja",
+          "restriction": "Oikeus rajoittaa käsittelyä",
+          "objection": "Oikeus vastustaa käsittelyä",
+          "portability": "Oikeus tietojen siirtämiseen"
+        }
+      },
+      "contact": {
+        "title": "Yhteystiedot",
+        "text": "Jos sinulla on kysyttävää yksityisyydestä, voit ottaa meihin yhteyttä milloin tahansa.",
+        "emailLabel": "Email",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "gameData": {
+        "title": "Game Data",
+        "progress": {
+          "title": "Peli edistyy",
+          "intro": "Seuraavat pelitiedot tallennetaan:",
+          "list": {
+            "scores": "Pistetiedot",
+            "awards": "Saavutukset",
+            "rankings": "Sijoituspaikat"
+          },
+          "purpose": "Tätä tietoa käytetään yksinomaan parantamaan pelikokemusta ja näyttämään saavutuksia."
+        },
+        "localStorage": {
+          "title": "Paikallinen varastointi",
+          "intro": "Seuraavat tiedot tallennetaan paikallisesti selaimeesi:",
+          "list": {
+            "categories": "Soitetut luokat",
+            "settings": "Game settings",
+            "language": "Language setting"
+          },
+          "storage": "Nämä tiedot tallennetaan paikallisesti laitteellesi, eikä niitä siirretä palvelimillemme. Voit poistaa sen milloin tahansa selaimen asetusten kautta."
+        },
+        "session": {
+          "title": "Session Data",
+          "intro": "Aktiivisen pelin aikana tallennetaan väliaikaisesti seuraavat tiedot:",
+          "list": {
+            "auth": "Pelin tunnistautumistila",
+            "progress": "Nykyinen peli edistyy ja pisteet",
+            "settings": "Tilapäiset peliasetukset"
+          }
+        }
+      },
+      "deletion": {
+        "title": "Päivämäärän poisto",
+        "intro": "Sinulla on oikeus poistaa seuraavat tiedot:",
+        "list": {
+          "highscores": "Omat korkeat tulokset ja peli tilastot",
+          "results": "Tallennetut pelitulokset ja saavutukset",
+          "account": "Koko käyttäjätilisi ja kaikki siihen liittyvät tiedot"
+        },
+        "local": "Paikallisesti tallennetut tiedot (evästeet, pelin eteneminen) voidaan poistaa selaimesi asetusten avulla."
+      }
+    },
+    "imprint": {
+      "meta": {
+        "title": "Imprint - Melody Mind",
+        "description": "Melody Mindin oikeudelliset tiedot ja yhteystiedot. Löydät täältä kaikki tärkeät tiedot sivuston ylläpitäjästä."
+      },
+      "title": "Oikeudellinen huomautus",
+      "information": {
+        "title": "TMG:n 5 §:n mukaiset tiedot",
+        "operator": "Daniel Schmid",
+        "address": "Hiltenspergerstr. 78, 80796 München",
+        "country": "Germany"
+      },
+      "contact": {
+        "title": "Yhteystiedot",
+        "emailLabel": "Email",
+        "emailAddress": "daniel.schmid1980(at)icloud.com"
+      },
+      "responsible": {
+        "title": "Vastuussa sisällöstä § 55 Abs. 2 RStV"
+      },
+      "disputeResolution": {
+        "title": "Riitojen ratkaiseminen",
+        "text": "Euroopan komissio tarjoaa foorumin verkkovälitteiselle riidanratkaisulle",
+        "link": "https://ec.europa.eu/consumers/odr/",
+        "additional": "Emme ole halukkaita emmekä velvollisia osallistumaan riitojen ratkaisumenettelyyn kuluttaja-asioiden sovittelulautakunnassa."
+      },
+      "lawReference": {
+        "title": "Oikeudellinen huomautus",
+        "text": "Huolellisesta sisällönhallinnasta huolimatta emme ole vastuussa ulkoisten linkkien sisällöstä. Linkkisivujen ylläpitäjät ovat yksin vastuussa niiden sisällöstä."
+      },
+      "jurisdiction": {
+        "title": "Legal Basis",
+        "text": "Tämä verkkosivusto on Saksan lainsäädännön alainen.",
+        "applicableLaw": "Saksan lainsäädäntöä sovelletaan yksinomaan, lukuun ottamatta YK:n yleissopimusta tavaroiden kansainvälisestä kaupasta.",
+        "jurisdiction": "Kaikkien tästä sopimuksesta johtuvien riitojen käsittelypaikka on Saksa, jossa se on oikeudellisesti sallittua."
+      }
+    }
+  },
+  "difficulty": {
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard"
+  }
 }

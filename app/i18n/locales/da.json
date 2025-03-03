@@ -1,635 +1,637 @@
 {
-    "languages": {
-        "de": "Tysk",
-        "en": "Engelsk",
-        "fr": "Fransk",
-        "es": "Spansk",
-        "pt": "Portugisisk",
-        "it": "Italian",
-        "nl": "Hollandsk",
-        "sv": "Svensk",
-        "fi": "Finsk",
-        "da": "Danish"
-    },
-    "common": {
-        "openLanguageMenu": "Åbn sprogmenu",
-        "closeLanguageMenu": "Luk sprogmenu",
-        "selectLanguage": "Vælg sprog",
-        "selectLanguageLabel": "Vælg dit foretrukne sprog",
-        "languageChanged": "Sproget er blevet ændret til {sprog}",
-        "loading": "Indlæser..."
-    },
-    "meta": {
-        "title": "Melody Mind - Den ultimatative musik quiz spil",
-        "description": "Test din musikviden i vores interaktive quiz spil. Svar spørgsmål om sange, kunstnere, og musik historie fra forskellige genrer, herunder rock, pop, hip-hop, og klassisk.",
-        "keywords": "Musik quiz, musik viden, online quiz, musik historie, kunstner quiz, album quiz, musik genrer, interaktivt spil"
-    },
-    "seo": {
-        "category": {
-            "title": "Musik quiz kategorier - Melody Mind",
-            "description": "Udforsk forskellige musikquiz kategorier på Melody Mind. Test din viden på tværs af forskellige genrer og tidsaldre af musik historie."
-        },
-        "gameRules": {
-            "title": "Spilleregler - Melody Mind",
-            "description": "Lær om spillereglerne for Melody Mind. Oplev alt om spil modes, scoring system, og bonus funktioner i vores musik quiz."
-        },
-        "privacy": {
-            "title": "Privacy Policy - Melody Mind",
-            "description": "Lær om vores privatlivspolitik. Find ud af, hvordan vi beskytter og bruger dine data på Melody Mind."
-        },
-        "imprint": {
-            "title": "Juridisk meddelelse - Melody Mind",
-            "description": "Juridiske oplysninger og kontaktoplysninger for Melody Mind."
-        }
-    },
-    "welcome": {
-        "title": "Velkommen til Melody Mind",
-        "start": "Start spil",
-        "about": {
-            "title": "Om Melody Mind",
-            "description": "Test din musikviden i forskellige kategorier. En spændende quiz for musikelskere af alle genrer."
-        },
-        "seo": {
-            "description": "Opdag musikkens verden med vores interaktive musikquiz. Test din viden, saml point og bliv musikekspert."
-        }
-    },
-    "intro": "Dyk ned i musikkens fascinerende verden! I Melody Mind sætter du din musikviden på prøve i spændende quiz-runder. Fra legendariske rock-hymner til moderne pop-hits, fra banebrydende hip-hop-numre til tidløse klassikere - oplev musikhistoriens mangfoldighed. Saml point, tjen guldplader og udfordr andre musikentusiaster. Start dit musikalske quiz-eventyr nu!",
-    "auth": {
-        "email": {
-            "label": "Email",
-            "placeholder": "Indtast din e- mail- adresse"
-        },
-        "password": {
-            "label": "Password",
-            "placeholder": "Indtast din adgangskode"
-        },
-        "name": {
-            "label": "Navn",
-            "placeholder": "Indtast dit fulde navn"
-        }
-    },
-    "login": {
-        "title": "Sign In",
-        "methodLabel": "Log ind metode",
-        "submitButton": "Sign In",
-        "noAccount": "Har du ingen konto?",
-        "forgotPassword": "Har du glemt dit kodeord?",
-        "orContinueWith": "Eller fortsætte Med",
-        "continueWithDiscord": "Fortsæt med discord",
-        "continueWithGithub": "Fortsæt med GitHub",
-        "error": {
-            "invalidEmail": "Invalid email Address",
-            "invalidPassword": "Invalid password",
-            "required": "Dette felt er påkrævet",
-            "loginFailed": "Log ind Mislykkedes",
-            "discordLoginFailed": "Diskord tegn i mislykkedes",
-            "githubLoginFailed": "GitHub tegn i mislykkedes"
-        }
-    },
-    "register": {
-        "title": "registrering",
-        "submitButton": "Sign Up",
-        "hasAccount": "Har du allerede en konto?",
-        "successMessage": "Tilmelding lykkedes! Tjek venligst din e-mail.",
-        "error": {
-            "invalidEmail": "Invalid email Address",
-            "invalidPassword": "Adgangskoden skal være mindst 6 tegn",
-            "nameRequired": "Navn er påkrævet",
-            "nameTooShort": "Navnet skal være mindst 2 tegn",
-            "usernameRequired": "Brugernavn er påkrævet",
-            "usernameTooShort": "Brugernavn skal være mindst 3 tegn",
-            "passwordTooShort": "Adgangskoden skal være mindst 8 tegn",
-            "registrationFailed": "Registrering mislykkedes"
-        }
-    },
-    "gameHome": {
-        "meta": {
-            "title": "Melody Mind - Musik quiz for alle genrer",
-            "description": "Udforsk vores musik quiz kategorier og teste din viden på tværs af forskellige genrer, herunder rock, pop, hip-hop, og klassisk."
-        },
-        "title": "Vælg en kategori at spille",
-        "categoriesTitle": "Categories",
-        "description": "Fra rock-legender til pop-ikoner, fra hip-hop-pionerer til klassiske mesterværker - din musikalske opdagelsesrejse starter her!",
-        "searchPlaceholder": "Søg kategorier ...",
-        "playCategory": "Play {Kategorie}",
-        "comingSoon": "{Kategorie} - Coming Soon",
-        "categoryAlt": "Billede for kategori {Kategorie}",
-        "comingSoonLabel": "Coming Soon"
-    },
-    "multiplayer": {
-        "meta": {
-            "title": "{category} Quiz - {difficulty} Vanskelighed - Multiplayer Melody Mind",
-            "description": "Spil {category} musikquiz i {difficulty} tilstand med venner. Test din viden sammen og finde ud af, hvem der er den bedste musikekspert!"
-        },
-        "setup": {
-            "title": "Spiller opsætning",
-            "players": "Spillere",
-            "playerName": "Navn på spiller {nummer}",
-            "enterName": "Navn",
-            "startGame": "Start spil"
-        }
-    },
+  "languages": {
+    "de": "Tysk",
+    "en": "Engelsk",
+    "fr": "Fransk",
+    "es": "Spansk",
+    "pt": "Portugisisk",
+    "it": "Italian",
+    "nl": "Hollandsk",
+    "sv": "Svensk",
+    "fi": "Finsk",
+    "da": "Danish"
+  },
+  "common": {
+    "openLanguageMenu": "Åbn sprogmenu",
+    "closeLanguageMenu": "Luk sprogmenu",
+    "selectLanguage": "Vælg sprog",
+    "selectLanguageLabel": "Vælg dit foretrukne sprog",
+    "languageChanged": "Sproget er blevet ændret til {sprog}",
+    "loading": "Indlæser...",
+    "clearSearch": "Ryd søgning"
+  },
+  "meta": {
+    "title": "Melody Mind - Den ultimatative musik quiz spil",
+    "description": "Test din musikviden i vores interaktive quiz spil. Svar spørgsmål om sange, kunstnere, og musik historie fra forskellige genrer, herunder rock, pop, hip-hop, og klassisk.",
+    "keywords": "Musik quiz, musik viden, online quiz, musik historie, kunstner quiz, album quiz, musik genrer, interaktivt spil"
+  },
+  "seo": {
     "category": {
-        "selected": "Udvalgt!",
-        "mode": {
-            "singleplayer": "Enkelt spiller",
-            "multiplayer": "Multiplayer"
-        },
-        "aria": {
-            "categoryRegion": "Kategori Information",
-            "description": "Varebeskrivelse",
-            "extendedDescription": "Yderligere oplysninger om kategori"
-        },
-        "difficulty": {
-            "title": "Vælg sværhedsgrad Niveau",
-            "easy": "Easy",
-            "medium": "Medium",
-            "hard": "Hard",
-            "description": {
-                "easy": "Perfekt Til begyndere",
-                "medium": "For erfarne musikelskere",
-                "hard": "For true music experts"
-            }
-        },
-        "playlist": {
-            "title": "Spillelister",
-            "description": "Dyk ind i verden af {genre}! Vi har kurateret de bedste sange til dig. Lyt til spillelisten på din foretrukne streaming platform og få klar til spillet.",
-            "spotify": "Lyt til Spotify",
-            "deezer": "Lyt til Deezer",
-            "appleMusic": "Lyt til Apple Music"
-        },
-        "knowledge": {
-            "title": "Viden",
-            "link": "Lær mere om {genre}",
-            "description": "Vil du vide mere om historien og udviklingen af {genre}? Find spændende baggrundsinformation og interessante fakta her."
-        },
-        "combined": {
-            "title": "Viden & Musik",
-            "description": "Dyk ned i verden af {genre}! Udvid din viden om denne genre og lyt til de bedste sange på din foretrukne streaming-platform."
-        },
-        "noImage": "Intet billede tilgængelig",
-        "image": {
-            "altText": "Kategori For {kategori}"
-        }
-    },
-    "game": {
-        "meta": {
-            "title": "{category} Quiz - {difficulty} Vanskelighed - Melody Mind",
-            "description": "Spil {category} musik quiz i {difficulty} tilstand nu. Test din viden, optjene point, og blive en musik ekspert!"
-        },
-        "loading": "Indlæser spil...",
-        "question": "Spørgsmål {Aktuell} af {Total}",
-        "timeLeft": "Time Remaining",
-        "score": "Karakter",
-        "correct": "Korrekt!",
-        "wrong": "Wrong!",
-        "timeUp": "Tiden er gået!",
-        "next": "Næste",
-        "nextQuestion": "Næste spørgsmål",
-        "finish": "Afslut spil",
-        "option": "Tilvalg {nummer}",
-        "selectAnswer": "Svar:",
-        "expert": {
-            "title": "Expert Opinion",
-            "confidence": "Expert Confidence: {value}%"
-        },
-        "aria": {
-            "quizQuestion": "Spørgsmål quiz",
-            "answerOptions": "Responses to",
-            "expertAdvice": "Expert Advice",
-            "audienceOpinion": "Høringsudtalelse"
-        },
-        "links": {
-            "listen_on": "Liste"
-        },
-        "trivia": {
-            "title": "Sjov Kendsgerning"
-        },
-        "gameOver": {
-            "title": "Spil forbi",
-            "correctAnswers": "Korrekt svar",
-            "backToMenu": "Tilbage til menuen",
-            "playAgain": "Play Again",
-            "rankings": "Rankings"
-        },
-        "results": {
-            "title": "Game Results",
-            "totalScore": "Samlet",
-            "correctAnswers": "Korrekt svar",
-            "accuracy": "Accuracy",
-            "timeTaken": "Time Taken",
-            "newHighscore": "New High Score!",
-            "share": {
-                "title": "Del Dit resultat",
-                "message": {
-                    "intro": "Wow! Jeg scorede {points} point i Melody Mind i {category} kategorien ({difficulty})!",
-                    "stats": "Score: {correct} ud af {total} korrekte!",
-                    "challenge": "Challenge me at {url}"
-                },
-                "buttons": {
-                    "share": "Share",
-                    "copy": "Kopiér tekst",
-                    "twitter": "Del På Twitter",
-                    "telegram": "Del på Telegram",
-                    "reddit": "Andel af Reddit",
-                    "whatsapp": "Andel af hvad App"
-                }
-            },
-            "playAgain": "Play Again",
-            "backToHome": "Tilbage til hjemmet"
-        },
-        "round": "Rund {akkuell} af {max}",
-        "points_label": "Punkt",
-        "points": "Point: {Base} + {Time} tid bonus",
-        "confidence": "Fortrolighed",
-        "jokers": {
-            "title": "Livliner",
-            "fiftyFifty": {
-                "title": "50:50",
-                "description": "Fjerner to forkerte svar",
-                "remaining": "♪ Livliner tilbage ♪",
-                "ariaLabel": "Halvtreds-halvtreds livline"
-            },
-            "audience": {
-                "title": "Spørg publikum",
-                "description": "Viser fordelingen af publikums stemmer",
-                "remaining": "♪ Livliner tilbage ♪",
-                "ariaLabel": "Spørg publikum"
-            },
-            "phone": {
-                "title": "Expert Advice",
-                "description": "Få en eksperts mening",
-                "remaining": "♪ Livliner tilbage ♪",
-                "ariaLabel": "Få ekspertrådgivning"
-            },
-            "remainingCount": "{count} livliner tilgængelige",
-            "remaining": "♪ Livliner tilbage ♪"
-        },
-        "correctAnswer": "Det korrekte svar var: {answer}"
+      "title": "Musik quiz kategorier - Melody Mind",
+      "description": "Udforsk forskellige musikquiz kategorier på Melody Mind. Test din viden på tværs af forskellige genrer og tidsaldre af musik historie."
     },
     "gameRules": {
-        "meta": {
-            "title": "Spilregler og instruktioner - Melody Mind",
-            "description": "Lær reglerne for Melody Mind. Oplev alt om spil modes, scoring system, og bonus funktioner i vores musik quiz."
-        },
-        "title": "Spilregler - MelodyMind",
-        "overview": {
-            "title": "Overview",
-            "text": "Velkommen til MelodyMind! Dit mål er at besvare spørgsmål om sange, kunstnere og albums fra forskellige musikgenrer. Vælg en genre og sætte din viden på prøve. Jo flere spørgsmål du svarer korrekt, jo flere point vil du tjene."
-        },
-        "difficultyLevels": {
-            "title": "Vanskelige niveauer",
-            "intro": "Der er tre sværhedsgrader at vælge imellem:",
-            "levels": {
-                "easy": {
-                    "title": "Easy",
-                    "description": "10 spørgsmål per runde. Perfekt til at forfriske din viden og have det sjovt."
-                },
-                "medium": {
-                    "title": "Medium",
-                    "description": "15 spørgsmål per runde. En udfordring for avancerede musikelskere."
-                },
-                "hard": {
-                    "title": "Hard",
-                    "description": "20 spørgsmål per runde . Kun for sande musikeksperter!"
-                }
-            },
-            "titles": {
-                "intro": "Hver vanskelighed niveau har sin egen titel, som du kan låse op:",
-                "novice": {
-                    "title": "Musik novice",
-                    "description": "Besvar alle spørgsmål korrekt i nem tilstand."
-                },
-                "master": {
-                    "title": "Musikmester",
-                    "description": "Besvar alle spørgsmål korrekt i medium tilstand."
-                },
-                "legend": {
-                    "title": "Music Legend",
-                    "description": "Besvar alle spørgsmål korrekt i hård tilstand."
-                }
-            }
-        },
-        "pointsSystem": {
-            "title": "Pointersystem",
-            "rules": [
-                "50 point For hvert korrekt svar .",
-                "Ingen point for forkerte svar."
-            ]
-        },
-        "goldenRecords": {
-            "title": "Golden Records",
-            "intro": "Når du besvarer alle spørgsmål korrekt i en kategori, vil du tjene en gylden rekord:",
-            "rewards": {
-                "easy": "Rolig: Musik Begynder.",
-                "medium": "Medium: Musical tester.",
-                "hard": "Hard: Music Legend."
-            }
-        },
-        "rankings": {
-            "title": "Rankings",
-            "text": "Den ranking system sammenligner dig med andre spillere. Din placering i top 10 er baseret på dine samlede point på tværs af alle kategorier.",
-            "lists": [
-                "Gene- specifik Rankings: De bedste spillere i hver genre.",
-                "Samlede rangeringer: Bedste spillere på tværs af alle kategorier."
-            ]
-        },
-        "tipsAndTricks": {
-            "title": "Tips & tricks",
-            "tips": [
-                "Start med nem mode for at få en fornemmelse for spillet.",
-                "Spil til dine styrker og vælge genrer, du er komfortabel med.",
-                "Øv dig regelmæssigt for at forbedre din score.",
-                "Nøjagtighed Over hastighed - læs hvert spørgsmål omhyggeligt."
-            ]
-        }
+      "title": "Spilleregler - Melody Mind",
+      "description": "Lær om spillereglerne for Melody Mind. Oplev alt om spil modes, scoring system, og bonus funktioner i vores musik quiz."
     },
-    "knowledge": {
-        "meta": {
-            "title": "Opdag Musikkens Verden - Melody Mind",
-            "description": "Dyk ned i musikkens mangfoldige verden. Opdag spændende historier og fascinerende fakta om forskellige musikgenrer og epoker."
-        },
-        "overview": "Knowledge Overview",
-        "title": "Opdag Musikverdenen",
-        "description": "Velkommen til vores musikalske skatkammer! Her finder du spændende artikler, fascinerende historier og eksklusive indblik i musikkens verden. Fra banebrydende albummer til legendariske koncertøjeblikke og revolutionerende musikbevægelser - lad dig fortrylle af musikhistoriens magi og udvid din viden til quizzen!",
-        "loading": "Indlæser indhold...",
-        "playAndListen": "Spil & Lyt til musik",
-        "playNow": "Spil nu",
-        "playlists": "Spillelister",
-        "playlist": {
-            "spotify": "Lyt til Spotify",
-            "deezer": "Lyt til Deezer",
-            "apple": "Lyt til Apple Music",
-            "description": "Dyk ind i verden af {genre}! Vi har kurateret de bedste sange til dig. Lyt til spillelisten på din foretrukne streaming platform og få klar til spillet."
-        },
-        "error": "Fejl ved indlæsning af indhold",
-        "backToGame": "Tilbage til spillet"
+    "privacy": {
+      "title": "Privacy Policy - Melody Mind",
+      "description": "Lær om vores privatlivspolitik. Find ud af, hvordan vi beskytter og bruger dine data på Melody Mind."
     },
-    "profile": {
-        "title": "Profil",
-        "name": "Navn",
-        "username": "Brugernavn",
-        "email": "Email",
-        "points": "Punkt",
-        "namePlaceholder": "Dit navn",
-        "usernamePlaceholder": "Dit brugernavn",
-        "emailPlaceholder": "Din e- mail- adresse",
-        "lps": {
-            "title": "Registreringssamling",
-            "none": "Du har ikke indsamlet nogen optegnelser endnu",
-            "types": {
-                "gold": "Gold",
-                "silver": "Silver",
-                "bronze": "Bronze"
-            }
-        },
-        "stats": {
-            "title": "Statistik",
-            "gamesPlayed": "Spil spillet",
-            "totalScore": "Samlet",
-            "averageScore": "Gennemsnitlig score",
-            "highestScore": "Højeste score",
-            "accuracy": "Accuracy"
-        },
-        "achievements": {
-            "title": "Resultater",
-            "locked": "Endnu ikke låst op",
-            "progress": "♪"
-        },
-        "settings": {
-            "title": "Indstillinger",
-            "language": "Language",
-            "sound": "Lyd",
-            "music": "Musik",
-            "notifications": "Meddelelser",
-            "theme": "Tema",
-            "save": "Save",
-            "saved": "Saved!"
-        }
+    "imprint": {
+      "title": "Juridisk meddelelse - Melody Mind",
+      "description": "Juridiske oplysninger og kontaktoplysninger for Melody Mind."
+    }
+  },
+  "welcome": {
+    "title": "Velkommen til Melody Mind",
+    "start": "Start spil",
+    "about": {
+      "title": "Om Melody Mind",
+      "description": "Test din musikviden i forskellige kategorier. En spændende quiz for musikelskere af alle genrer."
     },
-    "navigation": {
-        "mainNavLabel": "Hovednavigation",
-        "mainMenu": "Hovedmenu",
-        "openMenu": "Åbn menu",
-        "home": "Hjem",
-        "knowledge": "Videnbase",
-        "rules": "Spilleregler",
-        "support": "Støtte os",
-        "imprint": "Imprint",
-        "privacy": "Privacy",
-        "legal": "Legal"
+    "seo": {
+      "description": "Opdag musikkens verden med vores interaktive musikquiz. Test din viden, saml point og bliv musikekspert."
+    }
+  },
+  "intro": "Dyk ned i musikkens fascinerende verden! I Melody Mind sætter du din musikviden på prøve i spændende quiz-runder. Fra legendariske rock-hymner til moderne pop-hits, fra banebrydende hip-hop-numre til tidløse klassikere - oplev musikhistoriens mangfoldighed. Saml point, tjen guldplader og udfordr andre musikentusiaster. Start dit musikalske quiz-eventyr nu!",
+  "auth": {
+    "email": {
+      "label": "Email",
+      "placeholder": "Indtast din e- mail- adresse"
     },
-    "footer": {
-        "about": "Om",
-        "contact": "Kontakt",
-        "privacy": "Privacy Policy",
-        "terms": "Betingelser for anvendelse"
+    "password": {
+      "label": "Password",
+      "placeholder": "Indtast din adgangskode"
     },
-    "errors": {
-        "general": "En fejl du er sket",
-        "network": "Netværksfejl",
-        "retry": "Try again",
-        "pageNotFound": "Side ikke fundet",
-        "emailRequired": "E-mailadresse er påkrævet",
-        "invalidEmail": "Invalid email Address",
-        "passwordRequired": "Adgangskode er påkrævet",
-        "passwordTooShort": "Adgangskoden skal være mindst 6 tegn",
-        "nameRequired": "Navn er påkrævet",
-        "nameTooShort": "Navnet skal være mindst 2 tegn",
-        "loginFailed": "Login mislykkedes",
-        "registrationFailed": "Registrering mislykkedes",
-        "passwordResetFailed": "Nulstilling af adgangskode mislykkedes"
+    "name": {
+      "label": "Navn",
+      "placeholder": "Indtast dit fulde navn"
+    }
+  },
+  "login": {
+    "title": "Sign In",
+    "methodLabel": "Log ind metode",
+    "submitButton": "Sign In",
+    "noAccount": "Har du ingen konto?",
+    "forgotPassword": "Har du glemt dit kodeord?",
+    "orContinueWith": "Eller fortsætte Med",
+    "continueWithDiscord": "Fortsæt med discord",
+    "continueWithGithub": "Fortsæt med GitHub",
+    "error": {
+      "invalidEmail": "Invalid email Address",
+      "invalidPassword": "Invalid password",
+      "required": "Dette felt er påkrævet",
+      "loginFailed": "Log ind Mislykkedes",
+      "discordLoginFailed": "Diskord tegn i mislykkedes",
+      "githubLoginFailed": "GitHub tegn i mislykkedes"
+    }
+  },
+  "register": {
+    "title": "registrering",
+    "submitButton": "Sign Up",
+    "hasAccount": "Har du allerede en konto?",
+    "successMessage": "Tilmelding lykkedes! Tjek venligst din e-mail.",
+    "error": {
+      "invalidEmail": "Invalid email Address",
+      "invalidPassword": "Adgangskoden skal være mindst 6 tegn",
+      "nameRequired": "Navn er påkrævet",
+      "nameTooShort": "Navnet skal være mindst 2 tegn",
+      "usernameRequired": "Brugernavn er påkrævet",
+      "usernameTooShort": "Brugernavn skal være mindst 3 tegn",
+      "passwordTooShort": "Adgangskoden skal være mindst 8 tegn",
+      "registrationFailed": "Registrering mislykkedes"
+    }
+  },
+  "gameHome": {
+    "meta": {
+      "title": "Melody Mind - Musik quiz for alle genrer",
+      "description": "Udforsk vores musik quiz kategorier og teste din viden på tværs af forskellige genrer, herunder rock, pop, hip-hop, og klassisk."
     },
-    "accessibility": {
-        "skipToMain": "Spring til hovedindhold",
-        "closeMenu": "Luk menu",
-        "openMenu": "Åbn menu",
-        "darkMode": "Toggle light and dark mode",
-        "playButton": "Play",
-        "pauseButton": "Pause",
-        "nextButton": "Næste",
-        "previousButton": "Forrige",
-        "closeButton": "Luk"
+    "title": "Vælg en kategori at spille",
+    "categoriesTitle": "Categories",
+    "description": "Fra rock-legender til pop-ikoner, fra hip-hop-pionerer til klassiske mesterværker - din musikalske opdagelsesrejse starter her!",
+    "searchPlaceholder": "Søg kategorier ...",
+    "playCategory": "Play {Kategorie}",
+    "comingSoon": "{Kategorie} - Coming Soon",
+    "categoryAlt": "Billede for kategori {Kategorie}",
+    "comingSoonLabel": "Coming Soon",
+    "locked": "Låst",
+    "categoryLocked": "Denne kategori er i øjeblikket låst og utilgængelig.",
+    "noResults": "Ingen resultater fundet",
+    "tryAnotherSearch": "Prøv en anden søgning"
+  },
+  "multiplayer": {
+    "meta": {
+      "title": "{category} Quiz - {difficulty} Vanskelighed - Multiplayer Melody Mind",
+      "description": "Spil {category} musikquiz i {difficulty} tilstand med venner. Test din viden sammen og finde ud af, hvem der er den bedste musikekspert!"
     },
-    "cookies": {
-        "title": "Cookie Settings",
-        "message": "Denne hjemmeside bruger cookies til at forbedre din oplevelse",
-        "accept": "Accept All",
-        "decline": "Fald Formand",
-        "customize": "Tilpas",
-        "preferences": {
-            "necessary": {
-                "title": "Nødvendige cookies",
-                "description": "Disse cookies er nødvendige for grundlæggende website funktionalitet",
-                "required": "Krævet"
-            },
-            "analytics": {
-                "title": "Analytiske cookies",
-                "description": "Hjælp os med at forstå, hvordan besøgende interagerer med hjemmesiden"
-            },
-            "marketing": {
-                "title": "Marketing Cookies",
-                "description": "Bruges til at vise relevante annoncer til besøgende"
-            }
-        },
-        "save": "Save Settings",
-        "moreInfo": "Mere information",
-        "cookiePolicy": "Cookie Policy"
+    "setup": {
+      "title": "Spiller opsætning",
+      "players": "Spillere",
+      "playerName": "Navn på spiller {nummer}",
+      "enterName": "Navn",
+      "startGame": "Start spil"
+    }
+  },
+  "category": {
+    "selected": "Udvalgt!",
+    "mode": {
+      "singleplayer": "Enkelt spiller",
+      "multiplayer": "Multiplayer"
     },
-    "gdpr": {
-        "title": "Indstillinger for personlige oplysninger",
-        "description": "Vi respekterer dit privatliv",
-        "settings": {
-            "title": "Indstillinger for beskyttelse af personlige oplysninger",
-            "data": {
-                "collection": "Dataindsamling",
-                "usage": "Data Usage",
-                "sharing": "Data Sharing"
-            },
-            "consent": {
-                "title": "Din samtykke",
-                "withdraw": "Du kan til enhver tid trække dit samtykke tilbage",
-                "manage": "Håndtér indstillinger"
-            },
-            "deletion": {
-                "title": "Dato Sletning",
-                "request": "Anmodning om data Slet",
-                "info": "Vi sletter dine data inden for 30 dage",
-                "confirmation": "Bekræftelse af sletning",
-                "local": "Lokale data i din browser kan slettes via dine browserindstillinger."
-            }
-        }
-    },
-    "legal": {
-        "privacy": {
-            "meta": {
-                "title": "Privacy Policy - Melody Mind",
-                "description": "Information om privatliv på Melody Mind. Lær hvordan vi beskytter dine data og hvilke rettigheder du har."
-            },
-            "title": "Privacy Policy",
-            "overview": {
-                "title": "Overview",
-                "general": {
-                    "title": "Generelle Oplysninger",
-                    "text": "Vi tager beskyttelsen af dine personoplysninger meget alvorligt. Denne fortrolighedspolitik informerer dig om, hvordan vi håndterer dine data."
-                }
-            },
-            "dataCollection": {
-                "title": "Dataindsamling",
-                "cookies": {
-                    "title": "Cookies",
-                    "text": "Vi bruger cookies for at give dig den bedst mulige brugeroplevelse. De gemmer ingen personligt identificerbare oplysninger."
-                },
-                "serverLogs": {
-                    "title": "Server Logs",
-                    "text": "Til tekniske formål gemmer vi automatisk serverlogfiler, der overføres af din browser."
-                },
-                "analytics": {
-                    "title": "Analytiske data",
-                    "text": "Vi bruger anonymiserede analysedata til at forbedre vores spiloplevelse. Disse data omfatter spilstatistik, brugsmønstre og præstationsdata, men ingen personligt identificerbare oplysninger."
-                }
-            },
-            "rights": {
-                "title": "Dine rettigheder",
-                "intro": "Du har følgende rettigheder vedrørende dine personlige data:",
-                "list": {
-                    "information": "Ret til at få adgang til dine lagrede data",
-                    "correction": "Ret til berigtigelse af urigtige oplysninger",
-                    "restriction": "Retten til at begrænse behandlingen",
-                    "objection": "Ret til at gøre indsigelse mod behandling",
-                    "portability": "Rettet til datahavbarheder"
-                }
-            },
-            "contact": {
-                "title": "Kontakt",
-                "text": "Hvis du har spørgsmål om privatliv, kan du kontakte os når som helst.",
-                "emailLabel": "Email",
-                "emailAddress": "Daniel. schmid1980 (at) Ichalat. com"
-            },
-            "gameData": {
-                "title": "Spildata",
-                "progress": {
-                    "title": "Spil fremskridt",
-                    "intro": "Følgende spildata gemmes:",
-                    "list": {
-                        "scores": "Score records",
-                        "awards": "Resultater",
-                        "rankings": "Jernbanestationer"
-                    },
-                    "purpose": "Disse data bruges udelukkende til at forbedre din spiloplevelse og vise dine resultater."
-                },
-                "localStorage": {
-                    "title": "Lokal opbevaring",
-                    "intro": "Følgende oplysninger gemmes lokalt i din browser:",
-                    "list": {
-                        "categories": "Spillede kategorier",
-                        "settings": "Game settings",
-                        "language": "Sprogindstilling"
-                    },
-                    "storage": "Disse data forbliver gemt lokalt på din enhed og overføres ikke til vores servere. Du kan til enhver tid slette det via dine browserindstillinger."
-                },
-                "session": {
-                    "title": "Session",
-                    "intro": "Under en aktiv spilsession lagres følgende data midlertidigt:",
-                    "list": {
-                        "auth": "Autentificeringsstatus for spilsessionen",
-                        "progress": "Aktuelle spil fremskridt og score",
-                        "settings": "Midlertidige spilindstillinger"
-                    }
-                }
-            },
-            "deletion": {
-                "title": "Dato Sletning",
-                "intro": "Du har ret til at få følgende data slettet:",
-                "list": {
-                    "highscores": "Dine personlige highscores og spilstatistik",
-                    "results": "Reddede spilresultater og resultater",
-                    "account": "Hele din brugerkonto og alle tilknyttede data"
-                },
-                "local": "Lokalt lagrede data (cookies, spilfremskridt) kan slettes uafhængigt gennem dine browserindstillinger."
-            }
-        },
-        "imprint": {
-            "meta": {
-                "title": "Imprint - Melody Mind",
-                "description": "Juridiske oplysninger og kontaktoplysninger for Melody Mind. Find alle vigtige oplysninger om hjemmesiden her."
-            },
-            "title": "Retsmeddelelse",
-            "information": {
-                "title": "Oplysninger i henhold til § 5 i TMG",
-                "operator": "Daniel Schmid",
-                "address": "Hiltenspergerstr. 78, 80796 München",
-                "country": "Germany"
-            },
-            "contact": {
-                "title": "Kontakt",
-                "emailLabel": "Email",
-                "emailAddress": "Daniel. schmid1980 (at) Icloud. com"
-            },
-            "responsible": {
-                "title": "Ansvarlig for indhold i henhold til § 55 Abs. 2 RStV"
-            },
-            "disputeResolution": {
-                "title": "Tvistbilæggelse",
-                "text": "Europa-Kommissionen udgør en platform for onlinekonfliktløsning (ODR)",
-                "link": "Https: / / ec.europa. eu / consumers / odr /",
-                "additional": "Vi er hverken villige eller forpligtede til at deltage i en tvistbilæggelsesprocedure ved et forbrugervoldgiftsudvalg."
-            },
-            "lawReference": {
-                "title": "Retsmeddelelse",
-                "text": "Trods omhyggelig indholdskontrol påtager vi os intet ansvar for indholdet af eksterne links. Operatørerne af de linkede sider er alene ansvarlige for deres indhold."
-            },
-            "jurisdiction": {
-                "title": "Legal Basis",
-                "text": "Denne hjemmeside er underlagt tysk lov.",
-                "applicableLaw": "Den tyske lovgivning finder udelukkende anvendelse, bortset fra FN ' S konvention om kontrakter om international handel med varer.",
-                "jurisdiction": "Kompetencestedet for alle tvister i forbindelse med denne kontrakt er Tyskland, hvor det er lovligt."
-            }
-        }
+    "aria": {
+      "categoryRegion": "Kategori Information",
+      "description": "Varebeskrivelse",
+      "extendedDescription": "Yderligere oplysninger om kategori"
     },
     "difficulty": {
-        "easy": "Easy",
-        "medium": "Medium",
-        "hard": "Hard"
+      "title": "Vælg sværhedsgrad Niveau",
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard",
+      "description": {
+        "easy": "Perfekt Til begyndere",
+        "medium": "For erfarne musikelskere",
+        "hard": "For true music experts"
+      }
+    },
+    "playlist": {
+      "title": "Spillelister",
+      "description": "Dyk ind i verden af {genre}! Vi har kurateret de bedste sange til dig. Lyt til spillelisten på din foretrukne streaming platform og få klar til spillet.",
+      "spotify": "Lyt til Spotify",
+      "deezer": "Lyt til Deezer",
+      "appleMusic": "Lyt til Apple Music"
+    },
+    "knowledge": {
+      "title": "Viden",
+      "link": "Lær mere om {genre}",
+      "description": "Vil du vide mere om historien og udviklingen af {genre}? Find spændende baggrundsinformation og interessante fakta her."
+    },
+    "combined": {
+      "title": "Viden & Musik",
+      "description": "Dyk ned i verden af {genre}! Udvid din viden om denne genre og lyt til de bedste sange på din foretrukne streaming-platform."
+    },
+    "noImage": "Intet billede tilgængelig",
+    "image": {
+      "altText": "Kategori For {kategori}"
     }
+  },
+  "game": {
+    "meta": {
+      "title": "{category} Quiz - {difficulty} Vanskelighed - Melody Mind",
+      "description": "Spil {category} musik quiz i {difficulty} tilstand nu. Test din viden, optjene point, og blive en musik ekspert!"
+    },
+    "loading": "Indlæser spil...",
+    "question": "Spørgsmål {Aktuell} af {Total}",
+    "timeLeft": "Time Remaining",
+    "score": "Karakter",
+    "correct": "Korrekt!",
+    "wrong": "Wrong!",
+    "timeUp": "Tiden er gået!",
+    "next": "Næste",
+    "nextQuestion": "Næste spørgsmål",
+    "finish": "Afslut spil",
+    "option": "Tilvalg {nummer}",
+    "selectAnswer": "Svar:",
+    "expert": {
+      "title": "Expert Opinion",
+      "confidence": "Expert Confidence: {value}%"
+    },
+    "aria": {
+      "quizQuestion": "Spørgsmål quiz",
+      "answerOptions": "Responses to",
+      "expertAdvice": "Expert Advice",
+      "audienceOpinion": "Høringsudtalelse"
+    },
+    "links": {
+      "listen_on": "Liste"
+    },
+    "trivia": {
+      "title": "Sjov Kendsgerning"
+    },
+    "gameOver": {
+      "title": "Spil forbi",
+      "correctAnswers": "Korrekt svar",
+      "backToMenu": "Tilbage til menuen",
+      "playAgain": "Play Again",
+      "rankings": "Rankings"
+    },
+    "results": {
+      "title": "Game Results",
+      "totalScore": "Samlet",
+      "correctAnswers": "Korrekt svar",
+      "accuracy": "Accuracy",
+      "timeTaken": "Time Taken",
+      "newHighscore": "New High Score!",
+      "share": {
+        "title": "Del Dit resultat",
+        "message": {
+          "intro": "Wow! Jeg scorede {points} point i Melody Mind i {category} kategorien ({difficulty})!",
+          "stats": "Score: {correct} ud af {total} korrekte!",
+          "challenge": "Challenge me at {url}"
+        },
+        "buttons": {
+          "share": "Share",
+          "copy": "Kopiér tekst",
+          "twitter": "Del På Twitter",
+          "telegram": "Del på Telegram",
+          "reddit": "Andel af Reddit",
+          "whatsapp": "Andel af hvad App"
+        }
+      },
+      "playAgain": "Play Again",
+      "backToHome": "Tilbage til hjemmet"
+    },
+    "round": "Rund {akkuell} af {max}",
+    "points_label": "Punkt",
+    "points": "Point: {Base} + {Time} tid bonus",
+    "confidence": "Fortrolighed",
+    "jokers": {
+      "title": "Livliner",
+      "fiftyFifty": {
+        "title": "50:50",
+        "description": "Fjerner to forkerte svar",
+        "remaining": "♪ Livliner tilbage ♪",
+        "ariaLabel": "Halvtreds-halvtreds livline"
+      },
+      "audience": {
+        "title": "Spørg publikum",
+        "description": "Viser fordelingen af publikums stemmer",
+        "remaining": "♪ Livliner tilbage ♪",
+        "ariaLabel": "Spørg publikum"
+      },
+      "phone": {
+        "title": "Expert Advice",
+        "description": "Få en eksperts mening",
+        "remaining": "♪ Livliner tilbage ♪",
+        "ariaLabel": "Få ekspertrådgivning"
+      },
+      "remainingCount": "{count} livliner tilgængelige",
+      "remaining": "♪ Livliner tilbage ♪"
+    },
+    "correctAnswer": "Det korrekte svar var: {answer}"
+  },
+  "gameRules": {
+    "meta": {
+      "title": "Spilregler og instruktioner - Melody Mind",
+      "description": "Lær reglerne for Melody Mind. Oplev alt om spil modes, scoring system, og bonus funktioner i vores musik quiz."
+    },
+    "title": "Spilregler - MelodyMind",
+    "overview": {
+      "title": "Overview",
+      "text": "Velkommen til MelodyMind! Dit mål er at besvare spørgsmål om sange, kunstnere og albums fra forskellige musikgenrer. Vælg en genre og sætte din viden på prøve. Jo flere spørgsmål du svarer korrekt, jo flere point vil du tjene."
+    },
+    "difficultyLevels": {
+      "title": "Vanskelige niveauer",
+      "intro": "Der er tre sværhedsgrader at vælge imellem:",
+      "levels": {
+        "easy": {
+          "title": "Easy",
+          "description": "10 spørgsmål per runde. Perfekt til at forfriske din viden og have det sjovt."
+        },
+        "medium": {
+          "title": "Medium",
+          "description": "15 spørgsmål per runde. En udfordring for avancerede musikelskere."
+        },
+        "hard": {
+          "title": "Hard",
+          "description": "20 spørgsmål per runde . Kun for sande musikeksperter!"
+        }
+      },
+      "titles": {
+        "intro": "Hver vanskelighed niveau har sin egen titel, som du kan låse op:",
+        "novice": {
+          "title": "Musik novice",
+          "description": "Besvar alle spørgsmål korrekt i nem tilstand."
+        },
+        "master": {
+          "title": "Musikmester",
+          "description": "Besvar alle spørgsmål korrekt i medium tilstand."
+        },
+        "legend": {
+          "title": "Music Legend",
+          "description": "Besvar alle spørgsmål korrekt i hård tilstand."
+        }
+      }
+    },
+    "pointsSystem": {
+      "title": "Pointersystem",
+      "rules": ["50 point For hvert korrekt svar .", "Ingen point for forkerte svar."]
+    },
+    "goldenRecords": {
+      "title": "Golden Records",
+      "intro": "Når du besvarer alle spørgsmål korrekt i en kategori, vil du tjene en {0}gylden rekord{1}:",
+      "rewards": {
+        "easy": "Rolig: Musik Begynder.",
+        "medium": "Medium: Musical tester.",
+        "hard": "Hard: Music Legend."
+      }
+    },
+    "rankings": {
+      "title": "Rankings",
+      "text": "Den ranking system sammenligner dig med andre spillere. Din placering i top 10 er baseret på dine samlede point på tværs af alle kategorier.",
+      "lists": [
+        "Gene- specifik Rankings: De bedste spillere i hver genre.",
+        "Samlede rangeringer: Bedste spillere på tværs af alle kategorier."
+      ]
+    },
+    "tipsAndTricks": {
+      "title": "Tips & tricks",
+      "tips": [
+        "Start med nem mode for at få en fornemmelse for spillet.",
+        "Spil til dine styrker og vælge genrer, du er komfortabel med.",
+        "Øv dig regelmæssigt for at forbedre din score.",
+        "Nøjagtighed Over hastighed - læs hvert spørgsmål omhyggeligt."
+      ]
+    }
+  },
+  "knowledge": {
+    "meta": {
+      "title": "Opdag Musikkens Verden - Melody Mind",
+      "description": "Dyk ned i musikkens mangfoldige verden. Opdag spændende historier og fascinerende fakta om forskellige musikgenrer og epoker."
+    },
+    "overview": "Knowledge Overview",
+    "title": "Opdag Musikverdenen",
+    "description": "Velkommen til vores musikalske skatkammer! Her finder du spændende artikler, fascinerende historier og eksklusive indblik i musikkens verden. Fra banebrydende albummer til legendariske koncertøjeblikke og revolutionerende musikbevægelser - lad dig fortrylle af musikhistoriens magi og udvid din viden til quizzen!",
+    "loading": "Indlæser indhold...",
+    "playAndListen": "Spil & Lyt til musik",
+    "playNow": "Spil nu",
+    "playlists": "Spillelister",
+    "playlist": {
+      "spotify": "Lyt til Spotify",
+      "deezer": "Lyt til Deezer",
+      "apple": "Lyt til Apple Music",
+      "description": "Dyk ind i verden af {genre}! Vi har kurateret de bedste sange til dig. Lyt til spillelisten på din foretrukne streaming platform og få klar til spillet."
+    },
+    "error": "Fejl ved indlæsning af indhold",
+    "backToGame": "Tilbage til spillet"
+  },
+  "profile": {
+    "title": "Profil",
+    "name": "Navn",
+    "username": "Brugernavn",
+    "email": "Email",
+    "points": "Punkt",
+    "namePlaceholder": "Dit navn",
+    "usernamePlaceholder": "Dit brugernavn",
+    "emailPlaceholder": "Din e- mail- adresse",
+    "lps": {
+      "title": "Registreringssamling",
+      "none": "Du har ikke indsamlet nogen optegnelser endnu",
+      "types": {
+        "gold": "Gold",
+        "silver": "Silver",
+        "bronze": "Bronze"
+      }
+    },
+    "stats": {
+      "title": "Statistik",
+      "gamesPlayed": "Spil spillet",
+      "totalScore": "Samlet",
+      "averageScore": "Gennemsnitlig score",
+      "highestScore": "Højeste score",
+      "accuracy": "Accuracy"
+    },
+    "achievements": {
+      "title": "Resultater",
+      "locked": "Endnu ikke låst op",
+      "progress": "♪"
+    },
+    "settings": {
+      "title": "Indstillinger",
+      "language": "Language",
+      "sound": "Lyd",
+      "music": "Musik",
+      "notifications": "Meddelelser",
+      "theme": "Tema",
+      "save": "Save",
+      "saved": "Saved!"
+    }
+  },
+  "navigation": {
+    "mainNavLabel": "Hovednavigation",
+    "mainMenu": "Hovedmenu",
+    "openMenu": "Åbn menu",
+    "home": "Hjem",
+    "knowledge": "Videnbase",
+    "rules": "Spilleregler",
+    "support": "Støtte os",
+    "imprint": "Imprint",
+    "privacy": "Privacy",
+    "legal": "Legal"
+  },
+  "footer": {
+    "about": "Om",
+    "contact": "Kontakt",
+    "privacy": "Privacy Policy",
+    "terms": "Betingelser for anvendelse"
+  },
+  "errors": {
+    "general": "En fejl du er sket",
+    "network": "Netværksfejl",
+    "retry": "Try again",
+    "pageNotFound": "Side ikke fundet",
+    "emailRequired": "E-mailadresse er påkrævet",
+    "invalidEmail": "Invalid email Address",
+    "passwordRequired": "Adgangskode er påkrævet",
+    "passwordTooShort": "Adgangskoden skal være mindst 6 tegn",
+    "nameRequired": "Navn er påkrævet",
+    "nameTooShort": "Navnet skal være mindst 2 tegn",
+    "loginFailed": "Login mislykkedes",
+    "registrationFailed": "Registrering mislykkedes",
+    "passwordResetFailed": "Nulstilling af adgangskode mislykkedes"
+  },
+  "accessibility": {
+    "skipToMain": "Spring til hovedindhold",
+    "closeMenu": "Luk menu",
+    "openMenu": "Åbn menu",
+    "darkMode": "Toggle light and dark mode",
+    "playButton": "Play",
+    "pauseButton": "Pause",
+    "nextButton": "Næste",
+    "previousButton": "Forrige",
+    "closeButton": "Luk"
+  },
+  "cookies": {
+    "title": "Cookie Settings",
+    "message": "Denne hjemmeside bruger cookies til at forbedre din oplevelse",
+    "accept": "Accept All",
+    "decline": "Fald Formand",
+    "customize": "Tilpas",
+    "preferences": {
+      "necessary": {
+        "title": "Nødvendige cookies",
+        "description": "Disse cookies er nødvendige for grundlæggende website funktionalitet",
+        "required": "Krævet"
+      },
+      "analytics": {
+        "title": "Analytiske cookies",
+        "description": "Hjælp os med at forstå, hvordan besøgende interagerer med hjemmesiden"
+      },
+      "marketing": {
+        "title": "Marketing Cookies",
+        "description": "Bruges til at vise relevante annoncer til besøgende"
+      }
+    },
+    "save": "Save Settings",
+    "moreInfo": "Mere information",
+    "cookiePolicy": "Cookie Policy"
+  },
+  "gdpr": {
+    "title": "Indstillinger for personlige oplysninger",
+    "description": "Vi respekterer dit privatliv",
+    "settings": {
+      "title": "Indstillinger for beskyttelse af personlige oplysninger",
+      "data": {
+        "collection": "Dataindsamling",
+        "usage": "Data Usage",
+        "sharing": "Data Sharing"
+      },
+      "consent": {
+        "title": "Din samtykke",
+        "withdraw": "Du kan til enhver tid trække dit samtykke tilbage",
+        "manage": "Håndtér indstillinger"
+      },
+      "deletion": {
+        "title": "Dato Sletning",
+        "request": "Anmodning om data Slet",
+        "info": "Vi sletter dine data inden for 30 dage",
+        "confirmation": "Bekræftelse af sletning",
+        "local": "Lokale data i din browser kan slettes via dine browserindstillinger."
+      }
+    }
+  },
+  "legal": {
+    "privacy": {
+      "meta": {
+        "title": "Privacy Policy - Melody Mind",
+        "description": "Information om privatliv på Melody Mind. Lær hvordan vi beskytter dine data og hvilke rettigheder du har."
+      },
+      "title": "Privacy Policy",
+      "overview": {
+        "title": "Overview",
+        "general": {
+          "title": "Generelle Oplysninger",
+          "text": "Vi tager beskyttelsen af dine personoplysninger meget alvorligt. Denne fortrolighedspolitik informerer dig om, hvordan vi håndterer dine data."
+        }
+      },
+      "dataCollection": {
+        "title": "Dataindsamling",
+        "cookies": {
+          "title": "Cookies",
+          "text": "Vi bruger cookies for at give dig den bedst mulige brugeroplevelse. De gemmer ingen personligt identificerbare oplysninger."
+        },
+        "serverLogs": {
+          "title": "Server Logs",
+          "text": "Til tekniske formål gemmer vi automatisk serverlogfiler, der overføres af din browser."
+        },
+        "analytics": {
+          "title": "Analytiske data",
+          "text": "Vi bruger anonymiserede analysedata til at forbedre vores spiloplevelse. Disse data omfatter spilstatistik, brugsmønstre og præstationsdata, men ingen personligt identificerbare oplysninger."
+        }
+      },
+      "rights": {
+        "title": "Dine rettigheder",
+        "intro": "Du har følgende rettigheder vedrørende dine personlige data:",
+        "list": {
+          "information": "Ret til at få adgang til dine lagrede data",
+          "correction": "Ret til berigtigelse af urigtige oplysninger",
+          "restriction": "Retten til at begrænse behandlingen",
+          "objection": "Ret til at gøre indsigelse mod behandling",
+          "portability": "Rettet til datahavbarheder"
+        }
+      },
+      "contact": {
+        "title": "Kontakt",
+        "text": "Hvis du har spørgsmål om privatliv, kan du kontakte os når som helst.",
+        "emailLabel": "Email",
+        "emailAddress": "Daniel. schmid1980 (at) Ichalat. com"
+      },
+      "gameData": {
+        "title": "Spildata",
+        "progress": {
+          "title": "Spil fremskridt",
+          "intro": "Følgende spildata gemmes:",
+          "list": {
+            "scores": "Score records",
+            "awards": "Resultater",
+            "rankings": "Jernbanestationer"
+          },
+          "purpose": "Disse data bruges udelukkende til at forbedre din spiloplevelse og vise dine resultater."
+        },
+        "localStorage": {
+          "title": "Lokal opbevaring",
+          "intro": "Følgende oplysninger gemmes lokalt i din browser:",
+          "list": {
+            "categories": "Spillede kategorier",
+            "settings": "Game settings",
+            "language": "Sprogindstilling"
+          },
+          "storage": "Disse data forbliver gemt lokalt på din enhed og overføres ikke til vores servere. Du kan til enhver tid slette det via dine browserindstillinger."
+        },
+        "session": {
+          "title": "Session",
+          "intro": "Under en aktiv spilsession lagres følgende data midlertidigt:",
+          "list": {
+            "auth": "Autentificeringsstatus for spilsessionen",
+            "progress": "Aktuelle spil fremskridt og score",
+            "settings": "Midlertidige spilindstillinger"
+          }
+        }
+      },
+      "deletion": {
+        "title": "Dato Sletning",
+        "intro": "Du har ret til at få følgende data slettet:",
+        "list": {
+          "highscores": "Dine personlige highscores og spilstatistik",
+          "results": "Reddede spilresultater og resultater",
+          "account": "Hele din brugerkonto og alle tilknyttede data"
+        },
+        "local": "Lokalt lagrede data (cookies, spilfremskridt) kan slettes uafhængigt gennem dine browserindstillinger."
+      }
+    },
+    "imprint": {
+      "meta": {
+        "title": "Imprint - Melody Mind",
+        "description": "Juridiske oplysninger og kontaktoplysninger for Melody Mind. Find alle vigtige oplysninger om hjemmesiden her."
+      },
+      "title": "Retsmeddelelse",
+      "information": {
+        "title": "Oplysninger i henhold til § 5 i TMG",
+        "operator": "Daniel Schmid",
+        "address": "Hiltenspergerstr. 78, 80796 München",
+        "country": "Germany"
+      },
+      "contact": {
+        "title": "Kontakt",
+        "emailLabel": "Email",
+        "emailAddress": "Daniel. schmid1980 (at) Icloud. com"
+      },
+      "responsible": {
+        "title": "Ansvarlig for indhold i henhold til § 55 Abs. 2 RStV"
+      },
+      "disputeResolution": {
+        "title": "Tvistbilæggelse",
+        "text": "Europa-Kommissionen udgør en platform for onlinekonfliktløsning (ODR)",
+        "link": "Https: / / ec.europa. eu / consumers / odr /",
+        "additional": "Vi er hverken villige eller forpligtede til at deltage i en tvistbilæggelsesprocedure ved et forbrugervoldgiftsudvalg."
+      },
+      "lawReference": {
+        "title": "Retsmeddelelse",
+        "text": "Trods omhyggelig indholdskontrol påtager vi os intet ansvar for indholdet af eksterne links. Operatørerne af de linkede sider er alene ansvarlige for deres indhold."
+      },
+      "jurisdiction": {
+        "title": "Legal Basis",
+        "text": "Denne hjemmeside er underlagt tysk lov.",
+        "applicableLaw": "Den tyske lovgivning finder udelukkende anvendelse, bortset fra FN ' S konvention om kontrakter om international handel med varer.",
+        "jurisdiction": "Kompetencestedet for alle tvister i forbindelse med denne kontrakt er Tyskland, hvor det er lovligt."
+      }
+    }
+  },
+  "difficulty": {
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard"
+  }
 }
