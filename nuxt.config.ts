@@ -3,12 +3,12 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
   modules: [
-    'nuxt-icon',
+    '@nuxt/icon',
     '@nuxtjs/i18n',
-    '@nuxt/content',
-    'nuxt-fathom',
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
+    '@nuxt/content',
+    'nuxt-fathom',
     'nuxt-jsonld',
     '@nuxt/fonts',
     '@nuxt/image',
