@@ -106,14 +106,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
 import Button from '~/components/ui/Button.vue'
 
 const props = defineProps<{
   categorySlug: string
 }>()
 
-const { t } = useI18n()
 const localePath = useLocalePath()
 const isMultiplayer = ref(false)
 
