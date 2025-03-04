@@ -82,11 +82,11 @@
  * @license MIT
  */
 
-import { readFileSync, writeFileSync, existsSync } from 'fs'
-import { join, basename } from 'path'
+import { existsSync, readFileSync, writeFileSync } from 'fs'
+import * as glob from 'glob'
+import { basename, join } from 'path'
 import sharp from 'sharp'
 import { rgbaToThumbHash } from 'thumbhash'
-import * as glob from 'glob'
 
 /**
  * ANSI color codes for terminal output formatting
@@ -129,7 +129,7 @@ const Logger = {
    */
   info: (message: string): void => {
     const timestamp = new Date().toISOString()
-    console.log(`${Colors.FgBlue}[${timestamp}] ℹ ${message}${Colors.Reset}`)
+    console.info(`${Colors.FgBlue}[${timestamp}] ℹ ${message}${Colors.Reset}`)
   },
 
   /**
@@ -138,7 +138,7 @@ const Logger = {
    */
   success: (message: string): void => {
     const timestamp = new Date().toISOString()
-    console.log(`${Colors.FgGreen}[${timestamp}] ✓ ${message}${Colors.Reset}`)
+    console.info(`${Colors.FgGreen}[${timestamp}] ✓ ${message}${Colors.Reset}`)
   },
 
   /**
@@ -147,7 +147,7 @@ const Logger = {
    */
   warn: (message: string): void => {
     const timestamp = new Date().toISOString()
-    console.log(`${Colors.FgYellow}[${timestamp}] ⚠ ${message}${Colors.Reset}`)
+    console.info(`${Colors.FgYellow}[${timestamp}] ⚠ ${message}${Colors.Reset}`)
   },
 
   /**

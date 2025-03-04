@@ -21,7 +21,7 @@ try {
   // Write the valid JSON back to the file
   fs.writeFileSync(jsonFilePath, validJson, 'utf8')
 
-  console.log('JSON file successfully fixed!')
+  console.info('JSON file successfully fixed!')
 } catch (error) {
   console.error('Error fixing JSON file:', error)
 }
