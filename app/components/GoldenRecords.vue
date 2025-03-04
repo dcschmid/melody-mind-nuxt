@@ -15,7 +15,9 @@
     >
       <i18n-t keypath="gameRules.goldenRecords.intro" tag="span">
         <template #0>
-          <span class="font-semibold text-[rgb(var(--primary-color-rgb))] motion-safe:transition-colors motion-safe:duration-300 print:text-black print:underline print:font-bold">
+          <span
+            class="font-semibold text-[rgb(var(--primary-color-rgb))] motion-safe:transition-colors motion-safe:duration-300 print:font-bold print:text-black print:underline"
+          >
           </span>
         </template>
       </i18n-t>
@@ -24,7 +26,7 @@
     <!-- Auflistung der Belohnungen mit verbesserten Zugänglichkeitsattributen -->
     <RulesList :title="$t('gameRules.goldenRecords.rewardsListTitle')" class="mb-8 print:mb-6">
       <li
-        v-for="(difficulty, index) in ['easy', 'medium', 'hard']"
+        v-for="difficulty in ['easy', 'medium', 'hard']"
         :key="difficulty"
         class="group mb-3 last:mb-0 print:mb-2"
       >

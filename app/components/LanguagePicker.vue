@@ -4,7 +4,7 @@
     <button
       :id="buttonId"
       type="button"
-      class="group flex min-h-[44px] w-auto items-center gap-3 rounded-lg bg-[rgba(var(--surface-color-rgb),0.9)] px-4 py-3 font-medium text-[rgb(var(--text-color-rgb))] shadow-sm hover:bg-[rgb(var(--surface-hover-color-rgb))] hover:text-[rgb(var(--highlight-color-rgb))] hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-all motion-safe:duration-300 print:border-black print:bg-white print:text-black print:shadow-none"
+      class="group flex min-h-[44px] w-auto items-center gap-3 rounded-lg bg-[rgba(var(--surface-color-rgb),0.9)] px-4 py-3 font-medium text-[rgb(var(--text-color-rgb))] shadow-sm hover:bg-[rgb(var(--surface-hover-color-rgb))] hover:text-[rgb(var(--highlight-color-rgb))] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-all motion-safe:duration-300 print:border-black print:bg-white print:text-black print:shadow-none"
       :aria-expanded="isOpen"
       aria-haspopup="listbox"
       :aria-controls="dropdownId"
@@ -67,27 +67,27 @@
 
       <!-- Verbesserte Sprachoptionen mit konsistenten Tailwind v4 Klassen -->
       <div class="max-h-[350px] overflow-y-auto overscroll-contain px-2">
-        <template v-for="locale in availableLocales" :key="locale.code">
+        <template v-for="localeItem in availableLocales" :key="localeItem.code">
           <button
-            :id="`language-option-${locale.code}`"
-            class="my-1 flex min-h-[44px] w-full items-center gap-3 rounded-md px-4 py-3 text-left text-base text-[rgb(var(--text-color-rgb))] hover:bg-[rgb(var(--surface-hover-color-rgb))] hover:text-[rgb(var(--highlight-color-rgb))] focus-visible:bg-[rgb(var(--surface-hover-color-rgb))] focus-visible:text-[rgb(var(--highlight-color-rgb))] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-colors motion-safe:duration-300 print:border print:border-black print:text-black"
+            :id="`language-option-${localeItem.code}`"
+            class="my-1 flex min-h-[44px] w-full items-center gap-3 rounded-md px-4 py-3 text-left text-base text-[rgb(var(--text-color-rgb))] hover:bg-[rgb(var(--surface-hover-color-rgb))] hover:text-[rgb(var(--highlight-color-rgb))] focus-visible:bg-[rgb(var(--surface-hover-color-rgb))] focus-visible:text-[rgb(var(--highlight-color-rgb))] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-colors motion-safe:duration-300 print:border print:border-black print:text-black"
             :class="{
               'bg-[rgba(var(--primary-color-rgb),0.1)] font-semibold':
-                locale.code === currentLocale,
+                localeItem.code === currentLocale,
             }"
             role="option"
-            :aria-selected="locale.code === currentLocale"
-            @click="switchLanguage(locale.code)"
-            @keydown.enter="switchLanguage(locale.code)"
-            @keydown.space.prevent="switchLanguage(locale.code)"
+            :aria-selected="localeItem.code === currentLocale"
+            @click="switchLanguage(localeItem.code)"
+            @keydown.enter="switchLanguage(localeItem.code)"
+            @keydown.space.prevent="switchLanguage(localeItem.code)"
           >
             <!-- Sprachflagge mit verbessertem Kontrast und Größe für AAA-Konformität -->
             <div
               class="h-6 w-6 flex-shrink-0 overflow-hidden rounded-full border border-[rgba(255,255,255,0.2)] shadow-md print:border-black print:shadow-none"
             >
               <img
-                :src="`/images/flags/${locale.code}.svg`"
-                :alt="`${locale.name} flag`"
+                :src="`/images/flags/${localeItem.code}.svg`"
+                :alt="`${localeItem.name} flag`"
                 class="h-full w-full object-cover"
                 width="24"
                 height="24"
@@ -97,11 +97,11 @@
             </div>
 
             <!-- Sprachname mit verbesserter Lesbarkeit -->
-            <span class="flex-grow">{{ locale.name }}</span>
+            <span class="flex-grow">{{ localeItem.name }}</span>
 
             <!-- Ausgewählte Sprache Indikator mit verbessertem Kontrast -->
             <Icon
-              v-if="locale.code === currentLocale"
+              v-if="localeItem.code === currentLocale"
               name="material-symbols:check-circle"
               class="ml-auto text-lg text-[rgb(var(--highlight-color-rgb))] print:text-black"
               aria-hidden="true"
@@ -116,10 +116,9 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 
 const { locale, locales } = useI18n()
-const router = useRouter()
 const route = useRoute()
 const isOpen = ref(false)
 const dropdown = ref<HTMLElement | null>(null)
@@ -260,7 +259,7 @@ function switchLanguage(localeCode: string) {
 
     // Auf die lokalisierte URL weiterleiten mit Hard Reload
     const { fullPath } = route
-    const newPath = fullPath.replace(/^\/[^\/]+/, `/${localeCode}`)
+    const newPath = fullPath.replace(/^\/[^/]+/, `/${localeCode}`)
 
     // Nur navigieren, wenn sich der Pfad tatsächlich geändert hat
     if (newPath !== fullPath) {
