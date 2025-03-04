@@ -43,9 +43,9 @@
               <!-- Music streaming services links -->
               <div
                 v-if="
-                  currentCategory.spotifyPlaylist
-                  || currentCategory.deezerPlaylist
-                  || currentCategory.appleMusicPlaylist
+                  currentCategory.spotifyPlaylist ||
+                  currentCategory.deezerPlaylist ||
+                  currentCategory.appleMusicPlaylist
                 "
                 role="list"
                 aria-labelledby="streaming-services-title"
@@ -189,10 +189,6 @@ const loadCategories = async () => {
     console.error('Fehler beim Laden der Kategorien:', error)
     categories.value = []
   }
-}
-
-const onUsernameSet = () => {
-  hasUsername.value = true
 }
 
 onMounted(() => {
