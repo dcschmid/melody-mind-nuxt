@@ -1,10 +1,11 @@
-import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useThrottleFn } from '@vueuse/core'
+import type { Ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 /**
  * Interface for the game navigation options
  * @interface GameNavigationOptions
- * @property {Ref<any[]>} usedQuestions - Array of questions that have been used
+ * @property {Ref<number[]>} usedQuestions - Array of questions that have been used
  * @property {Ref<number>} maxQuestions - Maximum number of questions in the game
  * @property {Ref<boolean>} gameFinished - Flag indicating if the game is finished
  * @property {Ref<boolean>} showSolution - Flag indicating if the solution should be shown
@@ -12,7 +13,7 @@ import { useThrottleFn } from '@vueuse/core'
  * @property {Function} [onNextQuestion] - Optional callback function to load next question
  */
 interface GameNavigationOptions {
-  usedQuestions: Ref<any[]>
+  usedQuestions: Ref<number[]>
   maxQuestions: Ref<number>
   gameFinished: Ref<boolean>
   showSolution: Ref<boolean>
