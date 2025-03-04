@@ -177,7 +177,6 @@ import Button from '~/components/ui/Button.vue'
 const { t } = useI18n()
 const route = useRoute()
 const localePath = useLocalePath()
-const { locale } = useI18n()
 const { saveGameResults } = useGameResults()
 
 const props = defineProps<{
@@ -300,5 +299,3 @@ const shareViaAPI = async () => {
   }
 }
 </script>
-
-<!-- Styles are now fully implemented with Tailwind utility classes -->
