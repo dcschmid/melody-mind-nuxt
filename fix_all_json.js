@@ -12,7 +12,7 @@ const jsonDir = path.join(__dirname, 'app/json')
 // Function to fix a single JSON file
 const fixJsonFile = (filePath) => {
   try {
-    console.log(`Processing ${filePath}...`)
+    console.info(`Processing ${filePath}...`)
 
     // Read the file content
     const fileContent = fs.readFileSync(filePath, 'utf8')
@@ -25,7 +25,7 @@ const fixJsonFile = (filePath) => {
     // Write the valid JSON back to the file
     fs.writeFileSync(filePath, validJson, 'utf8')
 
-    console.log(`✓ Fixed ${path.basename(filePath)}`)
+    console.info(`✓ Fixed ${path.basename(filePath)}`)
     return true
   } catch (error) {
     console.error(`✗ Error fixing ${path.basename(filePath)}:`, error)
@@ -40,7 +40,7 @@ const processLanguageFiles = () => {
     .filter((file) => file.endsWith('_categories.json'))
     .map((file) => path.join(jsonDir, file))
 
-  console.log(`Found ${languageFiles.length} language files to process.`)
+  console.info(`Found ${languageFiles.length} language files to process.`)
 
   let successCount = 0
 
@@ -50,7 +50,9 @@ const processLanguageFiles = () => {
     }
   }
 
-  console.log(`\nSummary: Successfully fixed ${successCount} out of ${languageFiles.length} files.`)
+  console.info(
+    `\nSummary: Successfully fixed ${successCount} out of ${languageFiles.length} files.`
+  )
 }
 
 // Run the script

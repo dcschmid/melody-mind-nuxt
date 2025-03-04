@@ -45,7 +45,7 @@
  */
 
 import { readFileSync } from 'fs'
-import { join, dirname } from 'path'
+import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 
 // Set up ES module compatible __dirname
@@ -105,7 +105,7 @@ function generateUrls() {
     ...languages.map((lang) => `/${lang}${path}`),
   ])
 
-  console.log('export default ' + JSON.stringify(urls, null, 2) + ';')
+  console.info('export default ' + JSON.stringify(urls, null, 2) + ';')
 }
 
 generateUrls()
