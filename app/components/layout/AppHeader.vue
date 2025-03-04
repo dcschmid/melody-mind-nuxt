@@ -28,7 +28,7 @@
 import { useThrottleFn } from '@vueuse/core'
 import { onMounted, onUnmounted, ref } from 'vue'
 
-const props = defineProps({
+defineProps({
   navLabel: {
     type: String,
     default: 'Hauptnavigation',

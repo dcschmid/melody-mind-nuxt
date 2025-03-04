@@ -53,7 +53,7 @@
 </template>
 
 <script setup lang="ts">
-import { usePreferredReducedMotion, useThrottleFn } from '@vueuse/core'
+import { useThrottleFn } from '@vueuse/core'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import Button from '../ui/Button.vue'
@@ -76,7 +76,6 @@ const props = defineProps({
 const emits = defineEmits(['close'])
 const menuRef = ref<HTMLElement | null>(null)
 const closeButtonRef = ref<HTMLElement | null>(null)
-const reducedMotion = usePreferredReducedMotion()
 
 // Verbesserte Fokus-Falle mit Zugänglichkeitsoptionen
 const { activate, deactivate } = useFocusTrap(menuRef, {

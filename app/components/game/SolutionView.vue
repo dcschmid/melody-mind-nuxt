@@ -220,12 +220,10 @@
 
 <script setup lang="ts">
 import { useThrottleFn } from '@vueuse/core'
-import { computed, onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue'
+import { onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useThumbHash } from '~/composables/useThumbHash'
 
 const { t } = useI18n()
-const { getThumbHash } = useThumbHash()
 
 interface Props {
   isCorrectAnswer: boolean
@@ -251,16 +249,13 @@ interface Props {
 
 const props = defineProps<Props>()
 const emit = defineEmits<{
-  (e: 'update:isPlaying', value: boolean): void
-  (e: 'update:audioLoaded', value: boolean): void
-  (e: 'update:isBuffering', value: boolean): void
+  (e: 'update:isPlaying' | 'update:audioLoaded' | 'update:isBuffering', value: boolean): void
   (e: 'update:progress', value: number): void
   (e: 'next'): void
 }>()
 
 // Optimierte Audio-Player Variablen
 const audio = shallowRef<HTMLAudioElement | null>(null)
-const progressUpdateInterval = ref<number | null>(null)
 const updateProgressThrottled = useThrottleFn(() => {
   if (audio.value) {
     progress.value = (audio.value.currentTime / audio.value.duration) * 100
@@ -271,11 +266,6 @@ const audioLoaded = ref(props.audioLoaded)
 const isPlaying = ref(props.isPlaying)
 const isBuffering = ref(props.isBuffering)
 const progress = ref(props.progress)
-
-// ThumbHash für das Cover-Bild abrufen
-const thumbHash = computed(() =>
-  props.artist?.coverSrc ? getThumbHash(props.artist.coverSrc) : undefined
-)
 
 // Watch für Änderungen der Props
 watch(

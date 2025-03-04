@@ -61,7 +61,7 @@
 <script setup lang="ts">
 import { NuxtLink } from '#components'
 
-const props = defineProps({
+defineProps({
   icon: {
     type: String,
     default: '',
