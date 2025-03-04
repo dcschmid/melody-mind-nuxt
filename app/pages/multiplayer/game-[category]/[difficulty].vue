@@ -165,7 +165,7 @@
 </template>
 
 <script setup lang="ts">
-import { useRequestURL, useRoute, useSeoMeta } from '#imports'
+import { useRoute, useSeoMeta } from '#imports'
 import { computed, nextTick, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import MultiplayerGameOverScreen from '~/components/game/MultiplayerGameOverScreen.vue'
@@ -182,15 +182,31 @@ import { useQuestions } from '~/composables/useQuestions'
 // Initialize core utilities
 const route = useRoute()
 const { t, locale } = useI18n()
-const url = useRequestURL()
 
 // --- Route Parameters ---
 const category = route.params.category as string
 const difficulty = route.params.difficulty as string
 
 // --- Load Category Data ---
+// Define category type
+interface CategoryData {
+  categoryUrl: string
+  headline: string
+  imageUrl: string
+  introSubline: string
+  isPlayable: boolean
+  slug: string
+  text: string
+  spotifyPlaylist?: string
+  deezerPlaylist?: string
+  appleMusicPlaylist?: string
+  knowledgeUrl?: string
+  name?: string // Falls 'name' in einigen Kategorien verwendet wird
+}
+
+// Import category data based on current locale
 const categories = await import(`~/json/${locale.value}_categories.json`)
-const currentCategoryData = ref(categories.default.find((cat: any) => cat.slug === category))
+const currentCategoryData = ref(categories.default.find((cat: CategoryData) => cat.slug === category))
 
 // --- Multiplayer State ---
 const gameStarted = ref(false)
@@ -298,13 +314,6 @@ const nextTurn = async () => {
   }
 
   // Get a new question for the next player
-  await questions.selectRandomQuestion()
-  gameState.showSolution.value = false
-  gameState.isCorrectAnswer.value = false
-  scrollToTop()
-}
-
-const nextQuestion = async () => {
   await questions.selectRandomQuestion()
   gameState.showSolution.value = false
   gameState.isCorrectAnswer.value = false

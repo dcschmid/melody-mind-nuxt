@@ -130,9 +130,27 @@ const category = route.params.category as string
 const difficulty = route.params.difficulty as string
 
 // --- Load Category Data ---
+// Define category type
+interface CategoryData {
+  categoryUrl: string
+  headline: string
+  imageUrl: string
+  introSubline: string
+  isPlayable: boolean
+  slug: string
+  text: string
+  spotifyPlaylist?: string
+  deezerPlaylist?: string
+  appleMusicPlaylist?: string
+  knowledgeUrl?: string
+  name?: string // Falls 'name' in einigen Kategorien verwendet wird
+}
+
 // Import category data based on current locale
 const categories = await import(`~/json/${locale.value}_categories.json`)
-const currentCategoryData = ref(categories.default.find((cat: any) => cat.slug === category))
+const currentCategoryData = ref(
+  categories.default.find((cat: CategoryData) => cat.slug === category)
+)
 
 // SEO Meta Tags
 useSeoMeta({
@@ -202,15 +220,10 @@ const gameState = useGameState(questions.maxQuestions.value) // Game state track
 const { points } = gameState
 const artist = useArtist() // Artist/music info handling
 const timeBonus = useTimeBonus() // Time-based bonus system
-const gameScore = useGameScore()
-const { resultMessage, earnedRecord, calculateReward, getResultMessage, saveGameResults } =
-  useGameResults()
+const { calculateReward, getResultMessage } = useGameResults()
 
 // Audio playback management
 const gameAudio = useGameAudio()
-
-// Social sharing functionality
-const sharing = useShare({ currentCategoryData: currentCategoryData.value, category, difficulty })
 
 // Navigation utilities
 const { scrollToTop } = useGameNavigation({
