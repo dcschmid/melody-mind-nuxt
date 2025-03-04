@@ -8,17 +8,17 @@ import { useAudioPlayer } from './useAudioPlayer'
 export function useGameAudio() {
   // Destructure all necessary methods and properties from useAudioPlayer
   const {
-    isPlaying,      // Boolean ref indicating if audio is currently playing
-    currentTime,    // Current playback position in seconds
-    duration,       // Total duration of audio in seconds
-    audioLoaded,    // Boolean ref indicating if audio file is loaded
-    error,          // Error state if audio loading/playback fails
-    progress,       // Playback progress as percentage (0-100)
-    formattedTime,  // Current time formatted as MM:SS
+    isPlaying, // Boolean ref indicating if audio is currently playing
+    currentTime, // Current playback position in seconds
+    duration, // Total duration of audio in seconds
+    audioLoaded, // Boolean ref indicating if audio file is loaded
+    error, // Error state if audio loading/playback fails
+    progress, // Playback progress as percentage (0-100)
+    formattedTime, // Current time formatted as MM:SS
     formattedDuration, // Total duration formatted as MM:SS
-    isBuffering,    // Boolean ref indicating if audio is buffering
-    togglePlay,     // Function to toggle play/pause
-    loadAudio       // Function to load new audio file
+    isBuffering, // Boolean ref indicating if audio is buffering
+    togglePlay, // Function to toggle play/pause
+    loadAudio, // Function to load new audio file
   } = useAudioPlayer()
 
   /**
@@ -50,6 +50,6 @@ export function useGameAudio() {
     formattedDuration,
     togglePlay,
     handleArtistChange,
-    cleanup
+    cleanup,
   }
 }

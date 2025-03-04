@@ -56,10 +56,13 @@ export const useSeo = () => {
    * @param content - Content value for the meta tag
    * @returns MetaTag object
    */
-  const createMetaTag = (nameOrProperty: { name?: string; property?: string }, content: string | ComputedRef<string>): MetaTag => ({
+  const createMetaTag = (
+    nameOrProperty: { name?: string; property?: string },
+    content: string | ComputedRef<string>
+  ): MetaTag => ({
     ...(nameOrProperty.name ? { name: nameOrProperty.name } : {}),
     ...(nameOrProperty.property ? { property: nameOrProperty.property } : {}),
-    content: content
+    content: content,
   })
 
   /**
@@ -69,13 +72,17 @@ export const useSeo = () => {
    * @param imageUrl - Optional image URL for social cards
    * @returns Array of meta tags for social media
    */
-  const createSocialMetaTags = (title: ComputedRef<string>, description: ComputedRef<string>, imageUrl?: string): MetaTag[] => {
+  const createSocialMetaTags = (
+    title: ComputedRef<string>,
+    description: ComputedRef<string>,
+    imageUrl?: string
+  ): MetaTag[] => {
     const tags: MetaTag[] = [
       createMetaTag({ property: 'og:title' }, title),
       createMetaTag({ property: 'og:description' }, description),
       createMetaTag({ name: 'twitter:title' }, title),
       createMetaTag({ name: 'twitter:description' }, description),
-      createMetaTag({ name: 'twitter:card' }, 'summary_large_image')
+      createMetaTag({ name: 'twitter:card' }, 'summary_large_image'),
     ]
 
     if (imageUrl) {
@@ -101,7 +108,7 @@ export const useSeo = () => {
       imageUrl,
       type = 'website',
       noIndex = false,
-      canonicalUrl
+      canonicalUrl,
     } = options
 
     const title = computed(() => customTitle || t(`meta.${pageName}Title`))
@@ -115,7 +122,7 @@ export const useSeo = () => {
       createMetaTag({ property: 'og:type' }, type),
       createMetaTag({ property: 'og:url' }, url.value),
       ...(noIndex ? [createMetaTag({ name: 'robots' }, 'noindex,nofollow')] : []),
-      ...createSocialMetaTags(title, description, imageUrl)
+      ...createSocialMetaTags(title, description, imageUrl),
     ])
 
     useHead({
@@ -124,21 +131,21 @@ export const useSeo = () => {
       link: [
         {
           rel: 'canonical',
-          href: url.value
+          href: url.value,
         },
         {
           rel: 'alternate',
           hreflang: locale.value,
-          href: url.value
-        }
+          href: url.value,
+        },
       ],
       htmlAttrs: {
-        lang: locale.value
-      }
+        lang: locale.value,
+      },
     })
   }
 
   return {
-    setupSeo
+    setupSeo,
   }
 }

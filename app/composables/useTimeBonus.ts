@@ -1,4 +1,4 @@
-import { ref, computed } from "vue";
+import { ref, computed } from 'vue'
 
 /**
  * Time Bonus Composable
@@ -21,28 +21,30 @@ export const useTimeBonus = (
   }
 ) => {
   // Store option values in constants for better performance
-  const TIME_LIMIT = options.timeLimit;
-  const BASE_POINTS = options.basePoints;
-  const MAX_BONUS = options.maxTimeBonus;
+  const TIME_LIMIT = options.timeLimit
+  const BASE_POINTS = options.basePoints
+  const MAX_BONUS = options.maxTimeBonus
 
   /**
    * Stores the timestamp when the question timer started
    * @type {Ref<number>}
    */
-  const questionStartTime = ref(0);
+  const questionStartTime = ref(0)
 
   /**
    * Computed property that calculates the elapsed time since the question started
    * Returns 0 if the timer hasn't been started yet
    */
-  const timeElapsed = computed(() => (questionStartTime.value ? Date.now() - questionStartTime.value : 0));
+  const timeElapsed = computed(() =>
+    questionStartTime.value ? Date.now() - questionStartTime.value : 0
+  )
 
   /**
    * Starts the timer by setting the current timestamp
    */
   const startTimer = () => {
-    questionStartTime.value = Date.now();
-  };
+    questionStartTime.value = Date.now()
+  }
 
   /**
    * Calculates the bonus points based on elapsed time
@@ -52,17 +54,17 @@ export const useTimeBonus = (
    *   - total: Sum of base points and time bonus
    */
   const calculateBonus = () => {
-    const timePercentage = Math.max(0, 1 - timeElapsed.value / TIME_LIMIT);
-    const timeBonus = Math.floor(timePercentage * MAX_BONUS);
+    const timePercentage = Math.max(0, 1 - timeElapsed.value / TIME_LIMIT)
+    const timeBonus = Math.floor(timePercentage * MAX_BONUS)
     return {
       base: BASE_POINTS,
       time: timeBonus,
       total: BASE_POINTS + timeBonus,
-    };
-  };
+    }
+  }
 
   return {
     startTimer,
     calculateBonus,
-  };
-};
+  }
+}

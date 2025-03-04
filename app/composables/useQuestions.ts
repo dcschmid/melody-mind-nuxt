@@ -1,69 +1,69 @@
-import { ref, computed, onUnmounted } from "vue";
-import { useI18n } from "vue-i18n";
+import { ref, computed, onUnmounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 // Type definitions for the quiz structure
 interface Question {
-  question: string;
-  options: string[];
-  correctAnswer: string;
+  question: string
+  options: string[]
+  correctAnswer: string
 }
 
 interface Artist {
   questions: {
-    [key: string]: Question[]; // Dictionary of difficulty levels to question arrays
-  };
+    [key: string]: Question[] // Dictionary of difficulty levels to question arrays
+  }
 }
 
 // Fisher-Yates (Knuth) shuffle algorithm for better randomization
-const shuffleArray = <T,>(array: T[]): T[] => {
-  const shuffled = [...array];
+const shuffleArray = <T>(array: T[]): T[] => {
+  const shuffled = [...array]
   for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const temp = shuffled[i]!;
-    shuffled[i] = shuffled[j]!;
-    shuffled[j] = temp;
+    const j = Math.floor(Math.random() * (i + 1))
+    const temp = shuffled[i]!
+    shuffled[i] = shuffled[j]!
+    shuffled[j] = temp
   }
-  return shuffled;
+  return shuffled
 }
 
 // Memoized function to shuffle options for better performance
 const memoizedShuffleOptions = memoize((options: string[]): string[] => {
-  return shuffleArray<string>(options);
-});
+  return shuffleArray<string>(options)
+})
 
 export const useQuestions = (category: string, difficulty: string) => {
-  const { locale } = useI18n();
+  const { locale } = useI18n()
 
   // Improved typing
-  const currentQuestion = ref<Question | null>(null);
-  const questions = ref<Question[]>([]);
-  const usedQuestions = ref<number[]>([]);
-  const currentOptions = ref<string[]>([]);
+  const currentQuestion = ref<Question | null>(null)
+  const questions = ref<Question[]>([])
+  const usedQuestions = ref<number[]>([])
+  const currentOptions = ref<string[]>([])
 
   // Computed property to determine max questions based on difficulty level
   const maxQuestions = computed(() => {
     switch (difficulty) {
-      case "easy":
-        return 10;
-      case "medium":
-        return 15;
-      case "hard":
-        return 20;
+      case 'easy':
+        return 10
+      case 'medium':
+        return 15
+      case 'hard':
+        return 20
       default:
-        return 10;
+        return 10
     }
-  });
+  })
 
   // Cache system to store loaded questions and prevent unnecessary API calls
-  const questionsCache = new Map<string, Question[]>();
-  const localeValue = (locale.value ?? 'en') as string;
-  const cacheKey = `${category}-${difficulty}-${localeValue}`;
+  const questionsCache = new Map<string, Question[]>()
+  const localeValue = (locale.value ?? 'en') as string
+  const cacheKey = `${category}-${difficulty}-${localeValue}`
 
   // Improved typing and null check
   const shuffleOptions = (question: Question): string[] => {
-    if (!question?.options?.length) return [];
-    return memoizedShuffleOptions(question.options);
-  };
+    if (!question?.options?.length) return []
+    return memoizedShuffleOptions(question.options)
+  }
 
   /**
    * Loads questions from JSON files based on category and difficulty
@@ -73,35 +73,35 @@ export const useQuestions = (category: string, difficulty: string) => {
     try {
       // Check cache
       if (questionsCache.has(cacheKey)) {
-        questions.value = questionsCache.get(cacheKey)!;
-        selectRandomQuestion();
-        return;
+        questions.value = questionsCache.get(cacheKey)!
+        selectRandomQuestion()
+        return
       }
 
       const response = await import(
         /* webpackChunkName: "questions-[request]" */
         `~/json/genres/${localeValue}/${category}.json`
-      );
+      )
 
       const allQuestions = response.default.reduce((acc: Question[], artist: Artist) => {
-        const difficultyQuestions = artist.questions[difficulty] || [];
-        return [...acc, ...difficultyQuestions];
-      }, []);
+        const difficultyQuestions = artist.questions[difficulty] || []
+        return [...acc, ...difficultyQuestions]
+      }, [])
 
       if (allQuestions.length === 0) {
-        throw new Error(`No questions found for category ${category} and difficulty ${difficulty}`);
+        throw new Error(`No questions found for category ${category} and difficulty ${difficulty}`)
       }
 
       // Set cache
-      const shuffledQuestions = shuffleArray([...allQuestions]);
-      questionsCache.set(cacheKey, shuffledQuestions);
-      questions.value = shuffledQuestions;
-      selectRandomQuestion();
+      const shuffledQuestions = shuffleArray([...allQuestions])
+      questionsCache.set(cacheKey, shuffledQuestions)
+      questions.value = shuffledQuestions
+      selectRandomQuestion()
     } catch (error) {
-      console.error("Error loading questions:", error);
-      throw error;
+      console.error('Error loading questions:', error)
+      throw error
     }
-  };
+  }
 
   /**
    * Selects a random question that hasn't been used yet
@@ -109,38 +109,38 @@ export const useQuestions = (category: string, difficulty: string) => {
    * Updates currentQuestion and shuffles its options
    */
   const selectRandomQuestion = async () => {
-    if (!questions.value || questions.value.length === 0) return;
+    if (!questions.value || questions.value.length === 0) return
 
     const availableIndices = Array.from({ length: questions.value.length }, (_, i) => i).filter(
       (i) => !usedQuestions.value.includes(i)
-    );
+    )
 
     if (availableIndices.length === 0) {
-      usedQuestions.value = [];
-      return selectRandomQuestion();
+      usedQuestions.value = []
+      return selectRandomQuestion()
     }
 
-    const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
-    if (typeof randomIndex !== 'number') return;
-    
-    const question = questions.value[randomIndex];
+    const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)]
+    if (typeof randomIndex !== 'number') return
 
-    if (!question) return;
+    const question = questions.value[randomIndex]
 
-    usedQuestions.value.push(randomIndex);
+    if (!question) return
+
+    usedQuestions.value.push(randomIndex)
     currentQuestion.value = {
       ...question,
-      correctAnswer: question.correctAnswer
-    };
-    if (currentQuestion.value) {
-      currentOptions.value = shuffleOptions(currentQuestion.value);
+      correctAnswer: question.correctAnswer,
     }
-  };
+    if (currentQuestion.value) {
+      currentOptions.value = shuffleOptions(currentQuestion.value)
+    }
+  }
 
   // Cleanup cache when component is unmounted
   onUnmounted(() => {
-    questionsCache.clear();
-  });
+    questionsCache.clear()
+  })
 
   return {
     currentQuestion,
@@ -150,8 +150,8 @@ export const useQuestions = (category: string, difficulty: string) => {
     maxQuestions,
     loadQuestions,
     selectRandomQuestion,
-  };
-};
+  }
+}
 
 /**
  * Simple memoization function to cache results of pure functions
@@ -159,16 +159,16 @@ export const useQuestions = (category: string, difficulty: string) => {
  * @returns Memoized version of the function
  */
 function memoize<T extends (...args: any[]) => any>(fn: T) {
-  const cache = new Map<string, ReturnType<T>>();
+  const cache = new Map<string, ReturnType<T>>()
   return (...args: Parameters<T>): ReturnType<T> => {
-    const key = JSON.stringify(args);
-    const cachedResult = cache.get(key);
+    const key = JSON.stringify(args)
+    const cachedResult = cache.get(key)
     if (cachedResult !== undefined) {
-      return cachedResult as ReturnType<T>;
+      return cachedResult as ReturnType<T>
     }
 
-    const result = fn(...args);
-    cache.set(key, result);
-    return result;
-  };
+    const result = fn(...args)
+    cache.set(key, result)
+    return result
+  }
 }

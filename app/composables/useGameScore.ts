@@ -2,9 +2,9 @@ export const useGameScore = () => {
   const saveGameScore = async (
     category: string,
     points: number,
-    reward: "gold" | "silver" | "bronze" | "none",
+    reward: 'gold' | 'silver' | 'bronze' | 'none',
     language: string,
-    difficulty: string,
+    difficulty: string
   ) => {
     try {
       const response = await fetch('/api/highscores', {
@@ -19,7 +19,7 @@ export const useGameScore = () => {
           language,
           goldLP: reward === 'gold',
           silverLP: reward === 'silver',
-          bronzeLP: reward === 'bronze'
+          bronzeLP: reward === 'bronze',
         }),
       })
 

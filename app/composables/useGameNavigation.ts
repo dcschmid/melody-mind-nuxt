@@ -26,14 +26,8 @@ interface GameNavigationOptions {
  * @returns {Object} Navigation utilities and state
  */
 export function useGameNavigation(options: GameNavigationOptions) {
-  const {
-    usedQuestions,
-    maxQuestions,
-    gameFinished,
-    showSolution,
-    onReset,
-    onNextQuestion
-  } = options
+  const { usedQuestions, maxQuestions, gameFinished, showSolution, onReset, onNextQuestion } =
+    options
 
   // Cache for media query result to avoid repeated DOM access
   let mediaQueryList: MediaQueryList | null = null
@@ -46,9 +40,7 @@ export function useGameNavigation(options: GameNavigationOptions) {
    * Computed property that determines scroll behavior based on user preferences
    * Returns 'auto' if user prefers reduced motion, otherwise 'smooth'
    */
-  const smoothScrollBehavior = computed(() =>
-    prefersReducedMotion.value ? 'auto' : 'smooth'
-  )
+  const smoothScrollBehavior = computed(() => (prefersReducedMotion.value ? 'auto' : 'smooth'))
 
   /**
    * Throttled function to scroll to top of page
@@ -61,7 +53,7 @@ export function useGameNavigation(options: GameNavigationOptions) {
     requestAnimationFrame(() => {
       window.scrollTo({
         top: offset,
-        behavior: smoothScrollBehavior.value
+        behavior: smoothScrollBehavior.value,
       })
     })
   }, 16) // Throttled to ~60fps for performance
@@ -122,6 +114,6 @@ export function useGameNavigation(options: GameNavigationOptions) {
     nextQuestion,
     smoothScrollBehavior,
     isGameComplete,
-    lastScrollPosition
+    lastScrollPosition,
   }
-} 
+}

@@ -4,9 +4,9 @@
  */
 interface JokerState {
   /** Whether the joker has been used in the current round */
-  jokerUsed: boolean;
+  jokerUsed: boolean
   /** Total number of jokers used in the game */
-  jokerUsedCount: number;
+  jokerUsedCount: number
 }
 
 /**
@@ -15,7 +15,7 @@ interface JokerState {
  */
 interface Question {
   /** The correct answer for the question */
-  correctAnswer: string;
+  correctAnswer: string
 }
 
 /**
@@ -24,11 +24,11 @@ interface Question {
  */
 export enum Difficulty {
   /** Easy difficulty - 3 jokers available */
-  EASY = "easy",
+  EASY = 'easy',
   /** Medium difficulty - 5 jokers available */
-  MEDIUM = "medium",
+  MEDIUM = 'medium',
   /** Hard difficulty - 7 jokers available */
-  HARD = "hard",
+  HARD = 'hard',
 }
 
 /**
@@ -37,9 +37,9 @@ export enum Difficulty {
  */
 interface UpdateUI {
   /** Callback to update button state */
-  updateButton?: (disabled: boolean) => void;
+  updateButton?: (disabled: boolean) => void
   /** Callback to update joker counter */
-  updateCounter?: (remaining: number) => void;
+  updateCounter?: (remaining: number) => void
 }
 
 /**
@@ -54,59 +54,55 @@ export function use5050Joker(
   question: Question,
   jokerState: JokerState,
   maxJokers: number,
-  updateUI: UpdateUI = {},
+  updateUI: UpdateUI = {}
 ): JokerState {
-  const { jokerUsed, jokerUsedCount } = jokerState;
+  const { jokerUsed, jokerUsedCount } = jokerState
 
   if (jokerUsed) {
-    return jokerState;
+    return jokerState
   }
 
   if (!question.correctAnswer) {
-    console.warn("Keine korrekte Antwort definiert");
-    return jokerState;
+    console.warn('Keine korrekte Antwort definiert')
+    return jokerState
   }
 
-  const options = Array.from(
-    document.querySelectorAll<HTMLButtonElement>("#options button"),
-  );
+  const options = Array.from(document.querySelectorAll<HTMLButtonElement>('#options button'))
 
   if (options.length === 0) {
-    console.warn("Keine Antwortoptionen gefunden");
-    return jokerState;
+    console.warn('Keine Antwortoptionen gefunden')
+    return jokerState
   }
 
   try {
     const incorrectOptions = options.filter(
-      (option) => option.textContent !== question.correctAnswer,
-    );
+      (option) => option.textContent !== question.correctAnswer
+    )
 
-    const optionsToRemove = incorrectOptions
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 2);
+    const optionsToRemove = incorrectOptions.sort(() => Math.random() - 0.5).slice(0, 2)
 
     optionsToRemove.forEach((option) => {
-      option.classList.add("hidden");
-      option.addEventListener("transitionend", () => option.remove());
-    });
+      option.classList.add('hidden')
+      option.addEventListener('transitionend', () => option.remove())
+    })
 
-    const newJokerCount = jokerUsedCount + 1;
+    const newJokerCount = jokerUsedCount + 1
 
     if (updateUI.updateButton && newJokerCount >= maxJokers) {
-      updateUI.updateButton(true);
+      updateUI.updateButton(true)
     }
 
     if (updateUI.updateCounter) {
-      updateUI.updateCounter(maxJokers - newJokerCount);
+      updateUI.updateCounter(maxJokers - newJokerCount)
     }
 
     return {
       jokerUsed: true,
       jokerUsedCount: newJokerCount,
-    };
+    }
   } catch (error) {
-    console.error("Fehler beim Ausführen des Jokers:", error);
-    return jokerState;
+    console.error('Fehler beim Ausführen des Jokers:', error)
+    return jokerState
   }
 }
 
@@ -116,15 +112,10 @@ export function use5050Joker(
  * @returns {{ maxJokers: number; jokerState: JokerState }} Initial joker configuration
  */
 export function createInitialJokerState(difficulty: Difficulty): {
-  maxJokers: number;
-  jokerState: JokerState;
+  maxJokers: number
+  jokerState: JokerState
 } {
-  const maxJokers =
-    difficulty === Difficulty.EASY
-      ? 3
-      : difficulty === Difficulty.MEDIUM
-        ? 5
-        : 7;
+  const maxJokers = difficulty === Difficulty.EASY ? 3 : difficulty === Difficulty.MEDIUM ? 5 : 7
 
   return {
     maxJokers,
@@ -132,5 +123,5 @@ export function createInitialJokerState(difficulty: Difficulty): {
       jokerUsed: false,
       jokerUsedCount: 0,
     },
-  };
+  }
 }

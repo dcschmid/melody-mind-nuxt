@@ -86,7 +86,9 @@ export const useGameRewards = ({
   /**
    * Returns the appropriate CSS class for the current achievement level
    */
-  const recordClass = computed(() => CLASSES[getAchievementLevel.value as keyof typeof CLASSES] || '')
+  const recordClass = computed(
+    () => CLASSES[getAchievementLevel.value as keyof typeof CLASSES] || ''
+  )
 
   return {
     recordIcon,

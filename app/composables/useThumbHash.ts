@@ -8,6 +8,6 @@ export function useThumbHash() {
   }
 
   return {
-    getThumbHash
+    getThumbHash,
   }
 }

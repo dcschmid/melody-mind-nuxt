@@ -1,10 +1,10 @@
-type Difficulty = "easy" | "medium" | "hard";
+type Difficulty = 'easy' | 'medium' | 'hard'
 
 const DIFFICULTY_TITLES = {
-  easy: "Musik-Novize",
-  medium: "Musik-Meister",
-  hard: "Musik-Legende",
-} as const;
+  easy: 'Musik-Novize',
+  medium: 'Musik-Meister',
+  hard: 'Musik-Legende',
+} as const
 
 /**
  * Returns a title based on the selected game difficulty.
@@ -20,5 +20,5 @@ const DIFFICULTY_TITLES = {
  * getTitleBasedOnDifficulty("hard") // returns "Musik-Legende"
  */
 export function getTitleBasedOnDifficulty(difficulty: Difficulty): string {
-  return DIFFICULTY_TITLES[difficulty] ?? "Musik-Kenner";
+  return DIFFICULTY_TITLES[difficulty] ?? 'Musik-Kenner'
 }
