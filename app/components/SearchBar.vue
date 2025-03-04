@@ -34,7 +34,7 @@
       <button
         v-if="modelValue"
         type="button"
-        class="absolute right-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-transparent text-[rgb(var(--text-secondary-color-rgb))] hover:bg-[rgb(var(--surface-light-color-rgb))] hover:text-[rgb(var(--text-color-rgb))] focus-visible:bg-[rgb(var(--surface-light-color-rgb))] focus-visible:text-[rgb(var(--text-color-rgb))] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-all motion-safe:duration-300 print:text-black"
+        class="absolute right-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-transparent text-[rgb(var(--text-secondary-color-rgb))] hover:bg-[rgb(var(--surface-light-color-rgb))] hover:text-[rgb(var(--text-color-rgb))] focus-visible:bg-[rgb(var(--surface-light-color-rgb))] focus-visible:text-[rgb(var(--text-color-rgb))] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-all motion-safe:duration-300 print:text-black"
         :aria-label="$t('common.clearSearch')"
         @click="clearSearch"
       >
@@ -69,9 +69,6 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { useI18n } from 'vue-i18n'
-
-const { t } = useI18n()
 
 interface Props {
   /** ID für das Sucheingabefeld, wird für die Zugänglichkeit benötigt */
