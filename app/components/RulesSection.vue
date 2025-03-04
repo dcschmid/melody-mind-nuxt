@@ -4,7 +4,7 @@
     :class="[
       'mb-8 w-full max-w-prose last:mb-0 print:my-6 print:break-inside-avoid',
       background
-        ? 'rounded-lg p-6 bg-[rgba(var(--surface-color-rgb),0.95)] shadow-md backdrop-blur-sm md:p-6 print:border print:border-black print:bg-transparent'
+        ? 'rounded-lg bg-[rgba(var(--surface-color-rgb),0.95)] p-6 shadow-md backdrop-blur-sm md:p-6 print:border print:border-black print:bg-transparent'
         : '',
       centered ? 'text-center' : '',
     ]"
@@ -13,7 +13,7 @@
     <!-- Verbesserte Überschrift mit besserem Kontrast und Abständen -->
     <h2
       :id="id"
-      class="mb-6 text-2xl font-bold tracking-tight text-[rgb(var(--text-color-rgb))] md:mb-5 md:text-xl focus-within:rounded-sm focus-within:outline-none focus-within:ring-2 focus-within:ring-[rgb(var(--highlight-color-rgb))] focus-within:ring-offset-2 print:text-black"
+      class="mb-6 text-2xl font-bold tracking-tight text-[rgb(var(--text-color-rgb))] focus-within:rounded-sm focus-within:ring-2 focus-within:ring-[rgb(var(--highlight-color-rgb))] focus-within:ring-offset-2 focus-within:outline-none md:mb-5 md:text-xl print:text-black"
     >
       <slot name="title" />
     </h2>
@@ -37,7 +37,7 @@ interface Props {
   centered?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   background: false,
   centered: false,
 })
@@ -49,7 +49,7 @@ const props = withDefaults(defineProps<Props>(), {
   /* Verbesserte Basis-Styling für Sektionen */
   section[aria-labelledby] {
     @apply relative;
-    @apply focus-within:rounded focus-within:outline-none focus-within:ring-2 focus-within:ring-[rgba(var(--highlight-color-rgb),0.7)] focus-within:ring-offset-4;
+    @apply focus-within:rounded focus-within:ring-2 focus-within:ring-[rgba(var(--highlight-color-rgb),0.7)] focus-within:ring-offset-4 focus-within:outline-none;
   }
 
   /* Verbesserte Link-Styling mit WCAG AAA-konformen Fokuszuständen */
@@ -57,7 +57,7 @@ const props = withDefaults(defineProps<Props>(), {
     @apply font-medium text-[rgb(var(--primary-color-rgb))] underline decoration-1 decoration-from-font underline-offset-4;
     @apply motion-safe:transition-all motion-safe:duration-300;
     @apply hover:text-[rgb(var(--primary-dark-color-rgb))] hover:decoration-2 hover:underline-offset-4;
-    @apply focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--highlight-color-rgb))] focus-visible:ring-offset-4;
+    @apply focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-[rgb(var(--highlight-color-rgb))] focus-visible:ring-offset-4 focus-visible:outline-none;
     @apply print:text-black print:underline;
   }
 
@@ -117,7 +117,7 @@ const props = withDefaults(defineProps<Props>(), {
   section[aria-labelledby] a {
     @apply rounded-sm bg-[rgb(var(--primary-dark-color-rgb))] px-1 py-0.5 text-black underline decoration-2;
     @apply hover:bg-black hover:text-white hover:decoration-white hover:decoration-[0.2em];
-    @apply focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white focus-visible:ring-4 focus-visible:ring-black;
+    @apply focus-visible:ring-4 focus-visible:ring-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white;
   }
 
   section[aria-labelledby] strong,

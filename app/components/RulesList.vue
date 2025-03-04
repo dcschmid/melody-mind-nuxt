@@ -21,7 +21,7 @@ interface Props {
   listClass?: 'pl-large' | 'pl-medium' | 'pl-small'
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   listClass: 'pl-large',
 })
 </script>
