@@ -43,9 +43,9 @@
               <!-- Music streaming services links -->
               <div
                 v-if="
-                  currentCategory.spotifyPlaylist ||
-                  currentCategory.deezerPlaylist ||
-                  currentCategory.appleMusicPlaylist
+                  currentCategory.spotifyPlaylist
+                  || currentCategory.deezerPlaylist
+                  || currentCategory.appleMusicPlaylist
                 "
                 role="list"
                 aria-labelledby="streaming-services-title"

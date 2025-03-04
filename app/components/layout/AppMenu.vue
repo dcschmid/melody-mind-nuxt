@@ -56,6 +56,7 @@
 import { usePreferredReducedMotion, useThrottleFn } from '@vueuse/core'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
+import Button from '../ui/Button.vue'
 
 const props = defineProps({
   isOpen: {

@@ -2,13 +2,13 @@
   <NuxtLayout name="default" :show-header="true" :show-menu="true">
     <main
       id="main-content"
-      class="mx-auto w-full max-w-[75rem] px-4 py-8 sm:px-6 md:px-8 md:py-12 print:print-friendly motion-reduce:transition-none"
+      class="print:print-friendly mx-auto w-full max-w-[75rem] px-4 py-8 motion-reduce:transition-none sm:px-6 md:px-8 md:py-12"
     >
       <!-- Intro Section -->
       <section class="mb-10 md:mb-12">
         <h1
           tabindex="-1"
-          class="mb-6 text-center text-2xl font-bold text-white leading-[1.4] sm:text-3xl md:mb-8 md:text-4xl"
+          class="mb-6 text-center text-2xl leading-[1.4] font-bold text-white sm:text-3xl md:mb-8 md:text-4xl"
         >
           {{ $t('gameHome.title') }}
         </h1>
@@ -57,7 +57,7 @@
             {{ $t('gameHome.tryAnotherSearch') }}
           </p>
           <button
-            class="mt-6 min-h-[44px] rounded-full bg-[rgb(130,87,229)] px-6 py-2 text-white transition-colors duration-300 hover:bg-[#6d46c4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(130,87,229)] focus-visible:ring-offset-2 motion-reduce:transition-none"
+            class="mt-6 min-h-[44px] rounded-full bg-[rgb(130,87,229)] px-6 py-2 text-white transition-colors duration-300 hover:bg-[#6d46c4] focus-visible:ring-2 focus-visible:ring-[rgb(130,87,229)] focus-visible:ring-offset-2 focus-visible:outline-none motion-reduce:transition-none"
             :aria-label="$t('gameHome.clearSearch')"
             @click="searchQuery = ''"
           >
@@ -77,6 +77,7 @@
             :headline="category.headline"
             :image-url="category.imageUrl"
             :category-url="localePath(category.categoryUrl)"
+            :category-slug="category.slug"
             :is-playable="category.isPlayable"
             :intro-subline="category.introSubline"
             role="listitem"
@@ -89,9 +90,9 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
 import { useRequestURL } from '#imports'
+import { computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
