@@ -1,5 +1,5 @@
 import { useDebounce } from '@vueuse/core'
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 
 interface Category {
   headline: string
@@ -29,12 +29,11 @@ export const useCategories = () => {
     })
   })
 
-  const preloadImages = (categoryData: any[]) => {
+  const preloadImages = (categoryData: Category[]) => {
     if (typeof window !== 'undefined') {
       categoryData.slice(0, 4).forEach((category) => {
         const img = new Image()
         img.src = `${category.imageUrl}?w=480`
-        img.importance = 'high'
       })
     }
   }
