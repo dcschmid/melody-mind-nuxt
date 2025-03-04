@@ -1,3 +1,4 @@
+import type { Artist } from './useArtist'
 import { useAudioPlayer } from './useAudioPlayer'
 
 /**
@@ -22,11 +23,11 @@ export function useGameAudio() {
   } = useAudioPlayer()
 
   /**
-   * Handles changing the current artist and loads their preview audio
-   * @param {Object} artist - The artist object containing preview_link
+   * Handle artist change by loading the preview audio
+   * @param {Artist} artist - The artist object containing preview_link
    * @returns {Promise<void>}
    */
-  const handleArtistChange = async (artist: any) => {
+  const handleArtistChange = async (artist: Artist) => {
     if (!artist?.preview_link) return
     await loadAudio(artist.preview_link)
   }

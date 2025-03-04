@@ -1,11 +1,11 @@
-import { ref } from 'vue'
 import type { Ref } from 'vue'
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 /**
  * Interface representing an artist with their metadata and associated questions
  */
-interface Artist {
+export interface Artist {
   artist: string
   album: string
   coverSrc: string
@@ -16,16 +16,17 @@ interface Artist {
   year: string
   trivia?: string
   questions: {
-    [key: string]: any[] // Questions organized by difficulty level
+    [key: string]: Question[] // Questions organized by difficulty level
   }
 }
 
 /**
  * Interface representing a single question and its correct answer
  */
-interface Question {
+export interface Question {
   question: string
   correctAnswer: string
+  trivia?: string
 }
 
 /**
