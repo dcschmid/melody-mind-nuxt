@@ -1,4 +1,4 @@
-import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 /**
  * Custom composable for audio player functionality
@@ -121,7 +121,9 @@ export function useAudioPlayer() {
       isPlaying.value = !isPlaying.value
     } catch (err: unknown) {
       isPlaying.value = false
-      error.value = 'Error playing audio'
+      error.value =
+        err instanceof Error ? `Error playing audio: ${err.message}` : 'Error playing audio'
+      console.error('Audio playback error:', err)
     }
   }
 
@@ -150,8 +152,12 @@ export function useAudioPlayer() {
       }
 
       audioPlayer.value.load()
-    } catch (err) {
-      error.value = 'Error loading audio file'
+    } catch (err: unknown) {
+      error.value =
+        err instanceof Error
+          ? `Error loading audio file: ${err.message}`
+          : 'Error loading audio file'
+      console.error('Audio loading error:', err)
     }
   }
 
