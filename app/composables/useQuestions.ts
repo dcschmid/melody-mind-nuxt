@@ -1,4 +1,4 @@
-import { ref, computed, onUnmounted } from 'vue'
+import { computed, onUnmounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 // Type definitions for the quiz structure
@@ -158,13 +158,13 @@ export const useQuestions = (category: string, difficulty: string) => {
  * @param fn The function to memoize
  * @returns Memoized version of the function
  */
-function memoize<T extends (...args: any[]) => any>(fn: T) {
-  const cache = new Map<string, ReturnType<T>>()
-  return (...args: Parameters<T>): ReturnType<T> => {
+function memoize<TArgs extends unknown[], TReturn>(fn: (...args: TArgs) => TReturn) {
+  const cache = new Map<string, TReturn>()
+  return (...args: TArgs): TReturn => {
     const key = JSON.stringify(args)
     const cachedResult = cache.get(key)
     if (cachedResult !== undefined) {
-      return cachedResult as ReturnType<T>
+      return cachedResult
     }
 
     const result = fn(...args)
