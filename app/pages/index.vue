@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout :show-header="false" :show-menu="false">
-    <main
-      class="relative flex min-h-screen items-center justify-center overflow-hidden bg-[var(--color-background)] p-4 md:p-8"
+    <div
+      class="relative flex min-h-screen items-center justify-center overflow-hidden"
       aria-labelledby="welcome-title"
     >
       <div class="mx-auto w-full max-w-7xl text-center">
@@ -10,24 +10,24 @@
         </div>
         <h1
           id="welcome-title"
-          class="mb-4 text-3xl leading-tight font-bold text-[var(--color-primary)]"
+          class="mb-8 text-3xl leading-tight font-bold text-[var(--color-primary)]"
         >
           {{ $t('welcome.title') }}
         </h1>
         <p
-          class="mx-auto mb-8 max-w-3xl text-base leading-relaxed text-[var(--color-text-secondary)] md:text-lg"
+          class="mx-auto mb-8 max-w-3xl text-base leading-relaxed text-[var(--color-text-secondary)]"
         >
           {{ $t('intro') }}
         </p>
         <NuxtLinkLocale
           to="/gamehome"
-          class="text-md inline-block min-h-[44px] rounded-lg bg-[var(--color-primary)] px-6 py-3 font-semibold text-[var(--color-text-dark)] shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-[var(--secondary-color-dark)] hover:shadow-lg focus-visible:ring-3 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-background)] focus-visible:outline-none active:translate-y-0 motion-reduce:transform-none motion-reduce:transition-none md:w-auto md:px-6 md:py-3"
+          class="inline-block min-h-[44px] rounded-lg bg-[var(--color-primary)] px-6 py-3 text-base font-semibold text-[var(--color-text-dark)] shadow-md transition-all duration-300 hover:bg-[var(--secondary-color-dark)] focus-visible:ring-3 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-background)]"
           :aria-label="$t('welcome.start')"
         >
           {{ $t('welcome.start') }}
         </NuxtLinkLocale>
       </div>
-    </main>
+    </div>
   </NuxtLayout>
 </template>
 
