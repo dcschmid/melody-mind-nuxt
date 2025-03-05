@@ -236,6 +236,8 @@
   h6 {
     font-weight: var(--font-weight-bold);
     line-height: var(--line-height-tight);
+    color: var(--primary-color-dark);
+    margin: var(--padding-large) 0 var(--padding-medium);
   }
 
   h1 {

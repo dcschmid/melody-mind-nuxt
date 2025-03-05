@@ -1,18 +1,16 @@
 <template>
   <NuxtLayout name="default" :show-header="true" :show-menu="true" :show-coins="false">
     <div v-if="genre" class="min-h-screen text-white">
-      <div
-        class="mx-auto flex max-w-4xl flex-col items-center gap-8 p-4 motion-reduce:transition-none md:p-8"
-      >
+      <div class="mx-auto flex max-w-4xl flex-col items-center gap-8">
         <!-- Main Content -->
-        <div class="p-4 text-center text-base md:p-6 print:p-0">
+        <div class="text-center text-base">
           <h1 class="mb-6 text-3xl leading-tight font-bold text-[var(--color-primary)]">
             {{ genre.title }}
           </h1>
           <UnLazyImage
             :src="genre.image"
             :alt="genre.title"
-            class="mx-auto aspect-square w-full max-w-[300px] rounded object-cover shadow transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg motion-reduce:transform-none motion-reduce:transition-none print:max-w-[200px] print:shadow-none"
+            class="mx-auto aspect-square w-full max-w-[300px] rounded object-cover shadow"
             :thumbhash="thumbHash"
             auto-sizes
             loading="lazy"
@@ -23,7 +21,7 @@
           </div>
         </div>
 
-        <article class="prose prose-invert print:prose-black w-full text-gray-300 print:text-black">
+        <article class="prose prose-invert print:prose-black w-full print:text-black">
           <ContentRenderer :value="genre" />
         </article>
 
