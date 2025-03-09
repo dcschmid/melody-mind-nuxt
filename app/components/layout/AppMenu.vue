@@ -2,7 +2,8 @@
   <div
     id="menu"
     ref="menuRef"
-    class="fixed inset-0 z-[9999] h-full w-full overflow-y-auto bg-black/90 backdrop-blur-md motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-in-out motion-reduce:transition-none print:hidden"
+    class="fixed inset-0 z-[9999] h-full w-full overflow-y-auto bg-black/90 backdrop-blur-md motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-in-out motion-reduce:transition-none print:hidden focus:outline-none"
+    data-testid="app-menu"
     :class="[isOpen ? 'visible opacity-100' : 'pointer-events-none invisible opacity-0']"
     tabindex="-1"
     role="dialog"
@@ -12,12 +13,12 @@
   >
     <!-- Animierter Hintergrund -->
     <div
-      class="motion-safe:animate-gradient-slow absolute inset-0 bg-gradient-to-tr from-[rgb(var(--primary-color-rgb))]/10 to-[rgb(var(--secondary-color-rgb))]/10 motion-reduce:bg-none"
+      class="motion-safe:animate-gradient-slow absolute inset-0 bg-gradient-to-tr from-[rgb(var(--primary-color-rgb))]/15 to-[rgb(var(--secondary-color-rgb))]/15 motion-reduce:bg-none"
     />
 
     <!-- Menü Container mit Glaseffekt -->
     <div
-      class="relative mx-auto my-[calc(4rem+1rem)] w-full max-w-3xl overflow-y-auto rounded-xl border border-[rgb(var(--border-color-rgb))] bg-[rgb(var(--surface-color-rgb))]/80 p-6 shadow-xl backdrop-blur-md motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none md:p-8 [&>a]:flex [&>a]:min-h-[44px] [&>a]:min-w-[44px] [&>a]:items-center [&>a]:justify-center [&>a:focus-visible]:outline-[3px] [&>a:focus-visible]:outline-offset-2 [&>a:focus-visible]:outline-[rgb(var(--focus-color-rgb))] [&>button]:flex [&>button]:min-h-[44px] [&>button]:min-w-[44px] [&>button]:items-center [&>button]:justify-center [&>button:focus-visible]:outline-[3px] [&>button:focus-visible]:outline-offset-2 [&>button:focus-visible]:outline-[rgb(var(--focus-color-rgb))]"
+      class="relative mx-auto my-[calc(4rem+1rem)] w-full max-w-3xl overflow-y-auto rounded-xl border border-[rgb(var(--border-color-rgb))] bg-[rgb(var(--surface-color-rgb))]/85 p-6 shadow-sm backdrop-blur-md motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none md:p-8 [&>a]:flex [&>a]:min-h-[44px] [&>a]:min-w-[44px] [&>a]:items-center [&>a]:justify-center [&>a:focus-visible]:outline-[3px] [&>a:focus-visible]:outline-offset-4 [&>a:focus-visible]:outline-[rgb(var(--focus-color-rgb))] [&>button]:flex [&>button]:min-h-[44px] [&>button]:min-w-[44px] [&>button]:items-center [&>button]:justify-center [&>button:focus-visible]:outline-[3px] [&>button:focus-visible]:outline-offset-4 [&>button:focus-visible]:outline-[rgb(var(--focus-color-rgb))]" data-testid="menu-container"
       :class="[
         isOpen ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-[-20px] scale-95 opacity-0',
       ]"
@@ -25,10 +26,10 @@
       <!-- Shine effect -->
       <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-xl">
         <div
-          class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgb(var(--highlight-color-rgb))]/20 to-transparent"
+          class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgb(var(--highlight-color-rgb))]/30 to-transparent"
         />
         <div
-          class="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-[rgb(var(--highlight-color-rgb))]/20 to-transparent"
+          class="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-[rgb(var(--highlight-color-rgb))]/30 to-transparent"
         />
       </div>
 
@@ -37,15 +38,16 @@
         ref="closeButtonRef"
         :aria-label="closeLabel"
         variant="icon"
-        class-name="absolute top-4 right-4 min-w-[48px] min-h-[48px] rounded-full bg-[rgb(var(--surface-light-color-rgb))] border border-[rgb(var(--border-color-rgb))] hover:bg-[rgb(var(--surface-hover-color-rgb))] focus:ring-[3px] focus:ring-[rgb(var(--focus-color-rgb))] focus:ring-offset-2 motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none"
+        class-name="absolute top-4 right-4 min-w-[48px] min-h-[48px] rounded-full bg-[rgb(var(--surface-light-color-rgb))] border border-[rgb(var(--border-color-rgb))] hover:bg-[rgb(var(--surface-hover-color-rgb))] focus-visible:ring-[3px] focus-visible:ring-[rgb(var(--focus-color-rgb))] focus-visible:ring-offset-4 motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none"
+        data-testid="menu-close-button"
         @click="$emit('close')"
       >
-        <Icon name="material-symbols:close" class="text-2xl" :aria-hidden="true" />
+        <Icon name="material-symbols:close" class="text-2xl text-[rgb(var(--text-color-rgb))]" :aria-hidden="true" />
         <span class="sr-only">{{ closeLabel }}</span>
       </Button>
 
       <!-- Menü Inhalt mit verbesserten Abständen -->
-      <div class="mt-8 space-y-8">
+      <div class="mt-8 space-y-8" data-testid="menu-content">
         <slot />
       </div>
     </div>
@@ -77,7 +79,7 @@ const emits = defineEmits(['close'])
 const menuRef = ref<HTMLElement | null>(null)
 const closeButtonRef = ref<HTMLElement | null>(null)
 
-// Verbesserte Fokus-Falle mit Zugänglichkeitsoptionen
+// Enhanced focus trap with accessibility options
 const { activate, deactivate } = useFocusTrap(menuRef, {
   immediate: false,
   escapeDeactivates: true,
@@ -138,7 +140,7 @@ onMounted(() => {
   // Event-Listener für verbesserte Tastatur-Navigation
   window.addEventListener('keydown', handleKeyDown)
 
-  // ARIA-Attribute dynamisch setzen für bessere Zugänglichkeit
+  // Dynamically set ARIA attributes for better accessibility
   if (menuRef.value) {
     menuRef.value.setAttribute('aria-hidden', props.isOpen ? 'false' : 'true')
   }
@@ -153,7 +155,7 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* Animationen - optimiert für Performance */
+/* Animations - optimized for performance */
 @keyframes gradient-shift {
   0%,
   100% {
@@ -169,7 +171,7 @@ onUnmounted(() => {
   background-size: 200% 200%;
 }
 
-/* Verbesserter Kontrast für WCAG AAA */
+/* Enhanced contrast for WCAG AAA */
 @media (prefers-contrast: more) {
   #menu {
     background-color: black !important;
@@ -181,7 +183,8 @@ onUnmounted(() => {
     background-color: black !important;
     color: white !important;
     outline: 2px solid white !important;
-    outline-offset: 2px !important;
+    outline-offset: 4px !important;
+    text-decoration: underline !important;
   }
 
   button:focus-visible {
@@ -195,10 +198,11 @@ onUnmounted(() => {
     backdrop-filter: none !important;
   }
 
-  /* Verbesserte Sichtbarkeit für interaktive Elemente */
+  /* Enhanced visibility for interactive elements */
   a,
   button {
     text-decoration: underline !important;
+    font-weight: bold !important;
   }
 }
 

@@ -67,14 +67,12 @@
         <div
           class="mx-auto aspect-square w-full max-w-[300px] overflow-hidden rounded-lg bg-[rgb(var(--surface-color-light-rgb))]"
         >
-          <UnLazyImage
+          <img
             :src="artist.coverSrc"
             :alt="`Album Cover: ${artist.artist} - ${artist.album}`"
             loading="lazy"
             width="300"
             height="300"
-            format="webp"
-            quality="80"
             sizes="(max-width: 768px) 100vw, 300px"
             class="h-full w-full object-cover hover:scale-105 motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out motion-reduce:transition-none"
             fetchpriority="high"

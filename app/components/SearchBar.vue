@@ -1,14 +1,18 @@
 <template>
-  <div class="relative mx-auto max-w-[var(--content-width)]" role="search">
+  <div class="relative mx-auto max-w-[var(--content-width)]" role="search" data-testid="search-bar" aria-labelledby="search-heading">
+    <h2 id="search-heading" class="sr-only">
+      {{ label || placeholder }}
+    </h2>
     <label :for="id" class="sr-only">{{ label || placeholder }}</label>
 
     <div class="relative flex items-center">
       <Icon
         name="ic:baseline-search"
         size="24"
-        class="pointer-events-none absolute left-3 text-[rgb(var(--text-secondary-color-rgb))]"
+        class="pointer-events-none absolute left-3 text-[rgb(var(--text-secondary-color-rgb))] dark:text-[rgb(var(--text-secondary-dark-color-rgb,255,255,255))]"
         aria-hidden="true"
         focusable="false"
+        data-testid="search-icon"
       />
 
       <input
@@ -16,7 +20,7 @@
         ref="searchInput"
         :value="modelValue"
         type="search"
-        class="w-full rounded-lg border-2 border-[rgb(var(--surface-light-color-rgb))] bg-[rgb(var(--surface-color-rgb))] px-4 py-2 pl-10 text-base leading-normal text-[rgb(var(--text-color-rgb))] placeholder:text-[rgb(var(--text-secondary-color-rgb))] placeholder:opacity-70 hover:border-[rgb(var(--primary-color-rgb))] focus:border-[rgb(var(--focus-color-rgb))] focus:ring-2 focus:ring-[rgb(var(--focus-color-rgb))] focus:outline-none motion-safe:transition-all motion-safe:duration-300 print:border-black print:bg-white print:text-black print:placeholder:text-gray-500"
+        class="w-full rounded-lg border-2 border-[rgb(var(--surface-light-color-rgb))] bg-[rgb(var(--surface-color-rgb))] px-4 py-3 pl-10 text-base leading-normal text-[rgb(var(--text-color-rgb))] placeholder:text-[rgb(var(--text-secondary-color-rgb))] placeholder:opacity-70 hover:border-[rgb(var(--primary-color-rgb))] focus-visible:border-[rgb(var(--focus-color-rgb))] focus-visible:outline-[3px] focus-visible:outline-[rgb(var(--focus-color-rgb))] focus-visible:outline-offset-2 motion-safe:transition-all motion-safe:duration-300 print:border-black print:bg-white print:text-black print:placeholder:text-gray-500 dark:bg-[rgb(var(--surface-dark-color-rgb,18,18,18))] dark:text-[rgb(var(--text-dark-color-rgb,255,255,255))] dark:border-[rgb(var(--surface-light-dark-color-rgb,48,48,48))]"
         :placeholder="placeholder"
         :aria-label="label || placeholder"
         :aria-describedby="describedBy"
@@ -34,7 +38,8 @@
       <button
         v-if="modelValue"
         type="button"
-        class="absolute right-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-transparent text-[rgb(var(--text-secondary-color-rgb))] hover:bg-[rgb(var(--surface-light-color-rgb))] hover:text-[rgb(var(--text-color-rgb))] focus-visible:bg-[rgb(var(--surface-light-color-rgb))] focus-visible:text-[rgb(var(--text-color-rgb))] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-all motion-safe:duration-300 print:text-black"
+        class="absolute right-2 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border-2 border-transparent bg-transparent text-[rgb(var(--text-secondary-color-rgb))] hover:bg-[rgb(var(--surface-light-color-rgb))] hover:text-[rgb(var(--text-color-rgb))] hover:scale-110 focus-visible:bg-[rgb(var(--surface-light-color-rgb))] focus-visible:text-[rgb(var(--text-color-rgb))] focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-all motion-safe:duration-300 print:text-black dark:hover:bg-[rgb(var(--surface-light-dark-color-rgb,48,48,48))] dark:text-[rgb(var(--text-secondary-dark-color-rgb,170,170,170))]"
+        data-testid="clear-search"
         :aria-label="$t('common.clearSearch')"
         @click="clearSearch"
       >
@@ -46,7 +51,8 @@
     <div
       v-if="showSuggestions && suggestions && suggestions.length > 0"
       :id="listboxId"
-      class="absolute top-full right-0 left-0 z-50 mt-1 rounded-lg border-2 border-[rgb(var(--surface-light-color-rgb))] bg-[rgb(var(--surface-color-rgb))] py-1 shadow-md print:hidden"
+      class="absolute top-full right-0 left-0 z-50 mt-1 rounded-lg border-2 border-[rgb(var(--surface-light-color-rgb))] bg-[rgb(var(--surface-color-rgb))] py-1 shadow-lg print:hidden dark:bg-[rgb(var(--surface-dark-color-rgb,18,18,18))] dark:border-[rgb(var(--surface-light-dark-color-rgb,48,48,48))]"
+      data-testid="search-suggestions"
       role="listbox"
       :aria-label="$t('common.searchSuggestions')"
     >
@@ -54,8 +60,8 @@
         v-for="(suggestion, index) in suggestions"
         :id="`${id}-suggestion-${suggestion.id || index}`"
         :key="suggestion.id || index"
-        class="cursor-pointer px-3 py-2 text-[rgb(var(--text-color-rgb))] hover:bg-[rgb(var(--surface-light-color-rgb))] motion-safe:transition-all motion-safe:duration-200"
-        :class="{ 'bg-[rgb(var(--surface-light-color-rgb))]': index === activeIndex }"
+        class="cursor-pointer px-4 py-3 text-[rgb(var(--text-color-rgb))] hover:bg-[rgb(var(--surface-light-color-rgb))] hover:text-[rgb(var(--highlight-color-rgb))] motion-safe:transition-all motion-safe:duration-200 dark:text-[rgb(var(--text-dark-color-rgb,255,255,255))] dark:hover:bg-[rgb(var(--surface-light-dark-color-rgb,48,48,48))]"
+        :class="{ 'bg-[rgb(var(--surface-light-color-rgb))] font-semibold text-[rgb(var(--highlight-color-rgb))] dark:bg-[rgb(var(--surface-light-dark-color-rgb,48,48,48))]': index === activeIndex }"
         role="option"
         :aria-selected="index === activeIndex"
         @mousedown.prevent="selectSuggestion(suggestion)"
@@ -189,35 +195,43 @@ const clearSearch = () => {
 /* High Contrast Mode */
 @media (prefers-contrast: more) {
   input[type='search'] {
-    border: 3px solid black !important;
+    border: 4px solid black !important;
     background-color: white !important;
     color: black !important;
-    outline: 2px solid black !important;
-    outline-offset: 2px !important;
+    outline: 4px solid black !important;
+    outline-offset: 6px !important;
+    font-weight: 600 !important;
   }
 
-  input[type='search']:focus {
-    outline: 3px solid black !important;
-    outline-offset: 3px !important;
+  input[type='search']:focus-visible {
+    outline: 4px solid black !important;
+    outline-offset: 4px !important;
     border-color: black !important;
+    text-decoration: underline !important;
+    text-decoration-thickness: 2px !important;
   }
 
   button:focus-visible {
-    outline: 3px solid black !important;
-    outline-offset: 3px !important;
+    outline: 4px solid black !important;
+    outline-offset: 4px !important;
     background-color: white !important;
     color: black !important;
+    text-decoration: underline !important;
+    text-decoration-thickness: 2px !important;
   }
 
   div[role='listbox'] {
-    border: 3px solid black !important;
+    border: 4px solid black !important;
     background-color: white !important;
     box-shadow: none !important;
+    margin-top: 8px !important;
   }
 
   div[role='option'] {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3) !important;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5) !important;
     color: black !important;
+    padding: 0.75rem 1rem !important;
+    font-weight: 600 !important;
   }
 
   div[role='option']:hover,
@@ -250,9 +264,10 @@ const clearSearch = () => {
 /* Mobile Anpassungen */
 @media (max-width: 768px) {
   input[type='search'] {
-    font-size: 0.875rem !important;
-    padding: 0.5rem 0.75rem !important;
+    font-size: 1rem !important;
+    padding: 0.625rem 0.875rem !important;
     padding-left: 2.5rem !important;
+    min-height: 3rem !important; /* Verbesserte Touch-Ziel-Größe */
   }
 
   div[role='listbox'] {
@@ -260,7 +275,13 @@ const clearSearch = () => {
   }
 
   div[role='option'] {
-    padding: 0.5rem 0.75rem !important;
+    padding: 0.75rem 1rem !important;
+    min-height: 3rem !important; /* Verbesserte Touch-Ziel-Größe */
   }
+}
+
+/* Dark Mode Anpassungen */
+@media (prefers-color-scheme: dark) {
+  /* Styles werden über Tailwind-Klassen mit dark: Präfix gesteuert */
 }
 </style>

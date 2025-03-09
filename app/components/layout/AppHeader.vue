@@ -1,8 +1,9 @@
 <template>
   <header
     role="banner"
-    class="fixed inset-x-0 top-0 z-50 h-16 border-b border-[rgb(var(--border-color-rgb))] bg-[rgb(var(--surface-color-rgb))]/95 shadow-sm backdrop-blur-sm motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-out motion-reduce:transition-none print:hidden"
-    :class="{ 'shadow-lg': scrolled }"
+    class="fixed inset-x-0 top-0 z-50 h-16 border-b border-[rgb(var(--border-color-rgb))] bg-[rgb(var(--surface-color-rgb))]/95 shadow-xs backdrop-blur-xs motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-out motion-reduce:transition-none print:hidden"
+    :class="{ 'shadow-sm': scrolled }"
+    aria-label="Haupt-Header"
   >
     <div class="container mx-auto flex h-full items-center justify-between px-4 md:px-6">
       <!-- Logo/Branding -->
@@ -20,7 +21,7 @@
     </div>
   </header>
 
-  <!-- Spacer für den Header -->
+  <!-- Spacer für den Header - vermeidet visuelles Verschwinden von Inhalten unter dem Header -->
   <div class="h-16" aria-hidden="true" />
 </template>
 

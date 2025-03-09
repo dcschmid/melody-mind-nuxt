@@ -1,17 +1,20 @@
 <template>
   <div
-    class="flex flex-col gap-4 rounded-xl border-2 border-[rgb(30,30,30)] bg-[rgb(20,20,20)] p-4 text-center shadow-md motion-safe:transition-all motion-safe:duration-300 sm:flex-row sm:items-center sm:justify-between sm:p-4 sm:px-6 sm:text-left print:border print:border-gray-300 print:bg-white print:text-black print:shadow-none"
+    class="flex flex-col gap-4 rounded-xl border-2 border-[rgb(30,30,30)] bg-[rgb(20,20,20)] p-4 text-center shadow-sm motion-safe:transition-all motion-safe:duration-300 sm:flex-row sm:items-center sm:justify-between sm:p-4 sm:px-6 sm:text-left print:border print:border-gray-300 print:bg-white print:text-black print:shadow-none"
+    data-testid="game-header"
     role="banner"
   >
     <div class="flex flex-col">
       <h1
         id="category-name"
-        class="m-0 text-[clamp(2rem,2.7vw+1rem,2.25rem)] leading-[1.4] font-bold tracking-[0.025em] text-white contrast-more:underline contrast-more:underline-offset-4 print:text-black"
+        class="m-0 text-[clamp(2rem,2.7vw+1rem,2.25rem)] leading-[1.4] font-bold tracking-[0.025em] text-white contrast-more:underline contrast-more:underline-offset-8 print:text-black"
+        data-testid="category-name"
       >
         {{ categoryName }}
       </h1>
       <p
         class="mt-2 text-[clamp(1.25rem,1.2vw+1rem,1.5rem)] leading-[1.6] font-medium text-white contrast-more:text-white print:text-black"
+        data-testid="round-text"
         aria-live="polite"
       >
         {{ roundText }}
@@ -26,7 +29,7 @@
       >
         <span
           class="text-[clamp(2rem,2.7vw+1rem,2.25rem)] leading-[1.4] font-semibold tracking-[0.025em] text-[rgb(130,87,229)] motion-safe:transition-transform motion-safe:duration-300 motion-reduce:transition-none print:text-black"
-          :class="{ 'scale-110 text-[#00b248]': isAnimating }"
+          :class="{ 'scale-110 text-success': isAnimating }"
         >
           {{ formattedPoints }}
         </span>
@@ -45,11 +48,12 @@
       >
         <div
           v-if="showBonus"
-          class="absolute bottom-[-3.75rem] left-1/2 z-[400] min-w-[7.5rem] -translate-x-1/2 transform rounded-xl border-2 border-[#00b248] bg-[rgb(20,20,20)] p-4 text-center text-[clamp(1.25rem,1.2vw+1rem,1.5rem)] whitespace-nowrap text-white shadow-md sm:top-[-3.75rem] sm:right-0 sm:bottom-auto sm:left-auto sm:transform-none print:hidden"
+          class="absolute bottom-[-3.75rem] left-1/2 z-[400] min-w-[7.5rem] -translate-x-1/2 transform rounded-xl border-2 border-success bg-[rgb(20,20,20)] p-4 text-center text-[clamp(1.25rem,1.2vw+1rem,1.5rem)] whitespace-nowrap text-white shadow-sm sm:top-[-3.75rem] sm:right-0 sm:bottom-auto sm:left-auto sm:transform-none print:hidden"
+          data-testid="bonus-indicator"
           role="alert"
         >
           <div
-            class="text-[clamp(1.5rem,1.7vw+1rem,1.75rem)] leading-[1.6] font-bold text-[#00b248]"
+            class="text-[clamp(1.5rem,1.7vw+1rem,1.75rem)] leading-[1.6] font-bold text-success"
           >
             +{{ latestBonus.base }}
           </div>
@@ -100,11 +104,13 @@ const formattedPoints = computed(() => {
 @media (prefers-contrast: more) {
   #category-name {
     text-decoration: underline !important;
-    text-underline-offset: 4px !important;
+    text-underline-offset: 8px !important;
+    text-decoration-thickness: 2px !important;
   }
 
-  .text-\[#00b248\] {
-    color: #008c38 !important; /* Dunkleres Grün für besseren Kontrast */
+  .text-success {
+    color: #007c28 !important; /* Noch dunkleres Grün für besseren Kontrast (AAA) */
+    font-weight: bold !important;
   }
 
   .text-\[#f0f0f0\] {

@@ -7,12 +7,20 @@
 2010s
 Acoustic Metal
 Afrobeat
+After Work Chill
 Alternative Metal
 Alternative Rock
 Ambient
 Ambient Metal
+Angry
 Argentinian
+Autumn Chill
+Autumn Leaves
+Austrian
 Avant-Garde Metal
+Back to School
+Backyard BBQ
+Beach Day
 Belgian
 Black Metal
 Blackened Death Metal
@@ -28,13 +36,17 @@ Chamber Metal
 Chicago House
 Children
 Christian Metal
+Christmas Classics
 Classic Heavy Metal
 Classic Rock
 Classical
 Club
 Colombian
+Commute Companion
+Cooking Soundtrack
 Coregrind
 Country
+Cozy Evening
 Crossover Thrash
 Cuban
 Cyber Metal
@@ -42,23 +54,35 @@ Czech
 Dancehall
 Danish
 Dark Metal
+Date Night
 Death Metal
 Deep House
 Desert Rock
 Detroit Techno
+Deutschrock
+Dinner Party
 Disco Fever
 Doom Metal
+Dramatic
+Dreamy
 Drum and Bass
 Dutch
+Energetic
+Eurodance
 Experimental Metal
+Female Rock/Metal Vocalists
+Female Vocal Icons
+Festival Season
 Film Music
 Finnish
+Focus & Concentration
 Folk
 Folk Metal
 Forró
 French
 Funeral Doom Metal
 Funk
+Gaming Session
 Garage
 German
 German Rap
@@ -72,23 +96,25 @@ Groove Metal
 Grunge
 Guitar
 Hair Metal
+Halloween Spooky Tunes
 Happy
 Hard Rock
-Hardcore
 Hardstyle
 Hawaiian
 Heavy Metal
 Heavy Psych
-Hip-Hop
+Hip Hop
 Holiday
+Hopeful
 Horror Metal
 House
 Icelandic
 Indian
 Indie
-Indie Pop
+Indie-Pop
 Industrial
 Industrial Metal
+Intense
 Iranian
 Irish
 J-Dance
@@ -97,42 +123,52 @@ J-Rock
 Jazz
 Jazz Metal
 K-Pop
-Latin
+Krautrock
 Latin American
+Latin Vibes
+Lazy Sunday
 Mandopop
 Math Metal
+Meditation & Yoga
+Melancholic
 Melodic Death Metal
 Metalcore
 Mexican
+Morning Coffee
 Neo-Classical Metal
 New Age
 New Wave of British Heavy Metal
+Night Drive
 Noise Metal
+Nostalgic
 Nu Metal
 Opera
-Pagode
 Party On!
+Peaceful
 Peruvian
 Piano
 Polish
 Pop
-Pop Rock
-Post-Hardcore
-Post-Metal
+PopRock
+Post Hardcore
+Post Metal
 Power Metal
-Power Pop
+Power Walk
+Power-Pop
 Progressive Metal
-Psych Rock
+Psych-Rock
 Punk
 R&B
 Rainy Day
 Reggae
 Reggaeton
+Relaxed
 Road Trip
 Rock
 Rock 'n' Roll
 Rockabilly
 Romantic
+Running Playlist
 Russian
 Sad
 Salsa
@@ -140,17 +176,22 @@ Samba
 Screamo
 Sertanejo
 Ska
+Sleep Soundly
 Sludge Metal
 Songwriter
 Soul
 Spanish
 Speed Metal
+Spring Awakening
 Stoner Metal
+Study Session
 Summer Hits
+Sunset Vibes
 Swedish
+Swiss
 Symphonic Black Metal
 Symphonic Metal
-Synth Pop
+Synth-Pop
 Tango
 Technical Death Metal
 Techno
@@ -159,4 +200,9 @@ Trance
 Trip-Hop
 Turkish
 Ukrainian
+Uplifting
+Valentine's Day
 Viking Metal
+Winter Vibes
+Winter Wonderland
+Workout Motivation

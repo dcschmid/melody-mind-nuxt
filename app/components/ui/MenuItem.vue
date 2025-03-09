@@ -7,11 +7,12 @@
     :rel="external ? 'noopener noreferrer' : undefined"
     :aria-label="ariaLabel"
     :role="role || (list ? 'listitem' : undefined)"
-    class="group bg-opacity-60 relative flex min-h-[56px] w-full items-center gap-4 overflow-hidden rounded-lg border border-white/5 bg-[rgb(var(--surface-color-rgb))] px-4 py-3 font-medium text-[rgb(var(--text-color-rgb))] no-underline shadow-sm backdrop-blur-sm hover:border-[rgb(var(--primary-light-color-rgb))] hover:bg-[rgb(var(--surface-hover-color-rgb))] hover:pr-3 hover:pl-5 hover:shadow-md focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none print:border-gray-300 print:bg-white print:text-black print:shadow-none"
+    class="group bg-opacity-60 relative flex min-h-[56px] w-full items-center gap-4 overflow-hidden rounded-lg border border-white/5 bg-[rgb(var(--surface-color-rgb))] px-4 py-3 font-medium text-[rgb(var(--text-color-rgb))] no-underline shadow-sm backdrop-blur-sm hover:border-[rgb(var(--primary-light-color-rgb))] hover:bg-[rgb(var(--surface-hover-color-rgb))] hover:pr-3 hover:pl-5 hover:shadow-md focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none print:border-gray-300 print:bg-white print:text-black print:shadow-none"
+    data-testid="menu-item"
   >
     <!-- Shine Effect mit Pseudo-Element -->
     <span
-      class="absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-white/0 via-white/5 to-white/0 group-hover:translate-x-[100%] motion-safe:transition-transform motion-safe:duration-1000 motion-reduce:transition-none"
+      class="absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-white/0 via-white/15 to-white/0 group-hover:translate-x-[100%] motion-safe:transition-transform motion-safe:duration-1000 motion-reduce:transition-none"
       aria-hidden="true"
     ></span>
 
@@ -19,7 +20,7 @@
     <div v-if="icon" class="relative flex-shrink-0">
       <!-- Subtiler Hintergrund-Kreis -->
       <div
-        class="absolute inset-0 -z-10 scale-0 transform rounded-full bg-[rgb(var(--primary-color-rgb))]/10 group-hover:scale-110 motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none"
+        class="absolute inset-0 -z-10 scale-0 transform rounded-full bg-[rgb(var(--primary-color-rgb))]/25 group-hover:scale-110 motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none"
         aria-hidden="true"
       ></div>
 
@@ -102,7 +103,7 @@ defineProps({
 </script>
 
 <style scoped>
-/* Verbesserte Zugänglichkeit für hohen Kontrast */
+/* Enhanced accessibility for high contrast mode */
 @media (prefers-contrast: more) {
   :deep(a),
   :deep(button) {
@@ -122,10 +123,12 @@ defineProps({
   :deep(a:focus-visible),
   :deep(button:focus-visible) {
     outline-width: 4px !important;
+    outline-offset: 4px !important;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5) !important;
   }
 }
 
-/* Print-Optimierung */
+/* Print optimization */
 @media print {
   :deep(a),
   :deep(button) {

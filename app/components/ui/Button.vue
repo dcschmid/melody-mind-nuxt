@@ -13,6 +13,7 @@
     :disabled="disabled"
     :aria-disabled="disabled"
     :type="as === 'button' ? type : undefined"
+    :data-testid="$attrs['data-testid'] || 'button'"
     v-bind="$attrs"
   >
     <!-- Für Icon-Buttons: Wenn kein Text, aber aria-label vorhanden ist -->
@@ -27,12 +28,12 @@ import { tv } from 'tailwind-variants'
 // Button Varianten mit tailwind-variants
 const button = tv({
   base: [
-    // Basis-Stile
+    // Base styles
     'inline-flex items-center justify-center gap-2 font-medium',
-    // Basis-Größen und Abstände
+    // Base sizes and spacing
     'min-h-[44px] min-w-[44px] px-4 py-2 text-base',
-    // Gemeinsame Stile
-    'rounded-lg focus-visible:ring-[3px] focus-visible:ring-[rgb(var(--focus-color-rgb))] focus-visible:ring-offset-2 focus-visible:outline-none',
+    // Common styles
+    'rounded-lg focus-visible:ring-3 focus-visible:ring-[rgb(var(--focus-color-rgb))] focus-visible:ring-offset-4 focus-visible:outline-hidden',
     // Transitions
     'motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none',
     // Cursor
@@ -42,28 +43,28 @@ const button = tv({
     // Varianten
     variant: {
       primary: [
-        'bg-[rgb(var(--primary-color-rgb))] text-[rgb(var(--text-on-primary-color-rgb))] shadow-md',
-        'hover:bg-[rgb(var(--primary-dark-color-rgb))] hover:shadow-lg',
+        'bg-[rgb(var(--primary-color-rgb))] text-[rgb(var(--text-on-primary-color-rgb))] shadow-sm',
+        'hover:bg-[rgb(var(--primary-dark-color-rgb))] hover:shadow-md',
         'active:bg-[rgb(var(--primary-darker-color-rgb))]',
         'focus-visible:bg-[rgb(var(--primary-dark-color-rgb))]',
       ],
       secondary: [
         'border border-[rgb(var(--border-color-rgb))] bg-[rgb(var(--surface-color-rgb))] text-[rgb(var(--text-color-rgb))]',
-        'hover:bg-[rgb(var(--surface-hover-color-rgb))]',
+        'hover:bg-[rgb(var(--surface-hover-color-rgb))] hover:border-[rgb(var(--primary-light-color-rgb))]',
         'active:bg-[rgb(var(--surface-active-color-rgb))]',
         'focus-visible:bg-[rgb(var(--surface-hover-color-rgb))]',
       ],
       outline: [
         'border border-[rgb(var(--border-color-rgb))] bg-transparent text-[rgb(var(--text-color-rgb))]',
-        'hover:bg-[rgb(var(--surface-light-color-rgb))]',
+        'hover:bg-[rgb(var(--surface-light-color-rgb))] hover:border-[rgb(var(--primary-color-rgb))]',
         'active:bg-[rgb(var(--surface-hover-color-rgb))]',
         'focus-visible:bg-[rgb(var(--surface-light-color-rgb))]',
       ],
       icon: [
         'rounded-full bg-transparent p-2 text-[rgb(var(--text-color-rgb))]',
-        'hover:bg-[rgb(var(--surface-hover-color-rgb))]',
+        'hover:bg-[rgb(var(--surface-hover-color-rgb))] hover:text-[rgb(var(--primary-color-rgb))]',
         'active:bg-[rgb(var(--surface-active-color-rgb))]',
-        'focus-visible:bg-[rgb(var(--surface-hover-color-rgb))]',
+        'focus-visible:bg-[rgb(var(--surface-hover-color-rgb))] focus-visible:text-[rgb(var(--primary-color-rgb))]',
       ],
       text: [
         'bg-transparent p-2 text-[rgb(var(--text-color-rgb))] underline-offset-4',
@@ -84,7 +85,7 @@ const button = tv({
     },
     // Status
     disabled: {
-      true: 'pointer-events-none cursor-not-allowed opacity-50',
+      true: 'pointer-events-none cursor-not-allowed opacity-70 aria-disabled:true',
     },
   },
   defaultVariants: {
@@ -137,7 +138,7 @@ defineProps({
 </script>
 
 <style scoped>
-/* High Contrast Mode für WCAG AAA */
+/* High Contrast Mode for WCAG AAA */
 @media (prefers-contrast: more) {
   :where(button, a) {
     border: 3px solid currentColor !important;
@@ -152,10 +153,11 @@ defineProps({
     outline-width: 4px !important;
     outline-style: solid !important;
     outline-color: white !important;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5) !important;
   }
 }
 
-/* Print-Optimierung */
+/* Print optimization */
 @media print {
   :where(button, a) {
     border: 1px solid black !important;

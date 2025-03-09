@@ -1,102 +1,52 @@
-import { computed, onUnmounted, ref } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { computed, onUnmounted } from 'vue'
+import { useQuestionsStore } from '../stores/questionsStore'
 
 // Type definitions for the quiz structure
-interface Question {
+// Exported for use in other components
+export interface Question {
   question: string
   options: string[]
   correctAnswer: string
 }
 
-interface Artist {
-  questions: {
-    [key: string]: Question[] // Dictionary of difficulty levels to question arrays
-  }
-}
+// Type definition for question structure only
+// Dictionary structure is now handled by the store
 
-// Fisher-Yates (Knuth) shuffle algorithm for better randomization
-const shuffleArray = <T>(array: T[]): T[] => {
-  const shuffled = [...array]
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    const temp = shuffled[i]!
-    shuffled[i] = shuffled[j]!
-    shuffled[j] = temp
-  }
-  return shuffled
-}
+// Shuffle algorithm now implemented directly in the store
 
-// Memoized function to shuffle options for better performance
-const memoizedShuffleOptions = memoize((options: string[]): string[] => {
-  return shuffleArray<string>(options)
-})
+// Shuffle and memoization now implemented in the store
 
+/**
+ * Legacy composable that uses the new Pinia store internally
+ * This provides backward compatibility for existing components
+ * New components should use the Pinia store directly
+ */
 export const useQuestions = (category: string, difficulty: string) => {
-  const { locale } = useI18n()
+  // Use the Pinia store internally
+  const questionsStore = useQuestionsStore()
 
-  // Improved typing
-  const currentQuestion = ref<Question | null>(null)
-  const questions = ref<Question[]>([])
-  const usedQuestions = ref<number[]>([])
-  const currentOptions = ref<string[]>([])
+  // Initialize the store with the provided category and difficulty
+  questionsStore.init(category, difficulty)
+  // Create refs from store values for backward compatibility
+  const currentQuestion = computed(() => questionsStore.currentQuestion)
+  const questions = computed(() => questionsStore.questions)
+  const usedQuestions = computed(() => questionsStore.usedQuestions)
+  const currentOptions = computed(() => questionsStore.currentOptions)
 
-  // Computed property to determine max questions based on difficulty level
-  const maxQuestions = computed(() => {
-    switch (difficulty) {
-      case 'easy':
-        return 10
-      case 'medium':
-        return 15
-      case 'hard':
-        return 20
-      default:
-        return 10
-    }
-  })
+  // Maximum questions based on difficulty level
+  const maxQuestions = computed(() => questionsStore.maxQuestions)
 
-  // Cache system to store loaded questions and prevent unnecessary API calls
-  const questionsCache = new Map<string, Question[]>()
-  const localeValue = (locale.value ?? 'en') as string
-  const cacheKey = `${category}-${difficulty}-${localeValue}`
-
-  // Improved typing and null check
-  const shuffleOptions = (question: Question): string[] => {
-    if (!question?.options?.length) return []
-    return memoizedShuffleOptions(question.options)
-  }
+  /**
+   * Delegate shuffling options to the store - now handled directly by the store
+   */
 
   /**
    * Loads questions from JSON files based on category and difficulty
-   * Uses caching to improve performance on subsequent loads
+   * Delegates to the Pinia store implementation
    */
   const loadQuestions = async () => {
     try {
-      // Check cache
-      if (questionsCache.has(cacheKey)) {
-        questions.value = questionsCache.get(cacheKey)!
-        selectRandomQuestion()
-        return
-      }
-
-      const response = await import(
-        /* webpackChunkName: "questions-[request]" */
-        `~/json/genres/${localeValue}/${category}.json`
-      )
-
-      const allQuestions = response.default.reduce((acc: Question[], artist: Artist) => {
-        const difficultyQuestions = artist.questions[difficulty] || []
-        return [...acc, ...difficultyQuestions]
-      }, [])
-
-      if (allQuestions.length === 0) {
-        throw new Error(`No questions found for category ${category} and difficulty ${difficulty}`)
-      }
-
-      // Set cache
-      const shuffledQuestions = shuffleArray([...allQuestions])
-      questionsCache.set(cacheKey, shuffledQuestions)
-      questions.value = shuffledQuestions
-      selectRandomQuestion()
+      await questionsStore.loadQuestions()
     } catch (error) {
       console.error('Error loading questions:', error)
       throw error
@@ -105,59 +55,35 @@ export const useQuestions = (category: string, difficulty: string) => {
 
   /**
    * Selects a random question that hasn't been used yet
-   * Resets used questions when all questions have been shown
-   * Updates currentQuestion and shuffles its options
+   * Delegates to the Pinia store implementation
    */
   const selectRandomQuestion = async () => {
-    if (!questions.value || questions.value.length === 0) return
-
-    const availableIndices = Array.from({ length: questions.value.length }, (_, i) => i).filter(
-      (i) => !usedQuestions.value.includes(i)
-    )
-
-    if (availableIndices.length === 0) {
-      usedQuestions.value = []
-      return selectRandomQuestion()
-    }
-
-    const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)]
-    if (typeof randomIndex !== 'number') return
-
-    const question = questions.value[randomIndex]
-
-    if (!question) return
-
-    usedQuestions.value.push(randomIndex)
-    currentQuestion.value = {
-      ...question,
-      correctAnswer: question.correctAnswer,
-    }
-    if (currentQuestion.value) {
-      currentOptions.value = shuffleOptions(currentQuestion.value)
-    }
+    await questionsStore.selectRandomQuestion()
   }
 
-  // Cleanup cache when component is unmounted
+  // Cleanup when component is unmounted
   onUnmounted(() => {
-    questionsCache.clear()
+    questionsStore.clearStore()
   })
 
   return {
+    // Return computed refs for backward compatibility
     currentQuestion,
     questions,
     usedQuestions,
     currentOptions,
     maxQuestions,
+    // Return store methods
     loadQuestions,
     selectRandomQuestion,
+    // Add a reference to the store for advanced usage
+    store: questionsStore
   }
 }
 
-/**
- * Simple memoization function to cache results of pure functions
- * @param fn The function to memoize
- * @returns Memoized version of the function
- */
+// Memoization is now handled by the Pinia store
+// This code is kept for reference but marked as unused to avoid linting issues
+/*
 function memoize<TArgs extends unknown[], TReturn>(fn: (...args: TArgs) => TReturn) {
   const cache = new Map<string, TReturn>()
   return (...args: TArgs): TReturn => {
@@ -172,3 +98,4 @@ function memoize<TArgs extends unknown[], TReturn>(fn: (...args: TArgs) => TRetu
     return result
   }
 }
+*/

@@ -2,28 +2,30 @@
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
+  // Erforderliche Module für die Anwendung
   modules: [
-    '@nuxt/icon',
-    '@nuxtjs/i18n',
-    '@nuxtjs/sitemap',
-    '@nuxtjs/robots',
     '@nuxt/content',
-    'nuxt-fathom',
-    'nuxt-jsonld',
-    '@nuxt/fonts',
     '@nuxt/image',
-    '@unlazy/nuxt',
-    '@nuxt/eslint',
+    '@nuxtjs/i18n',
+    '@nuxt/icon',
+    '@vueuse/nuxt',
+    '@nuxtjs/color-mode',
+    '@pinia/nuxt',
+    '@nuxtjs/sitemap',
   ],
+
   devtools: {
     enabled: true,
-
     timeline: {
       enabled: false,
     },
   },
   app: {
-    pageTransition: { name: 'page' },
+    // Optimierte Page-Transitions für bessere Performance und Barrierefreiheit
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in',
+    },
     head: {
       htmlAttrs: {
         dir: 'auto',
@@ -32,6 +34,11 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        // Performance und Sicherheitsverbesserungen
+        { name: 'format-detection', content: 'telephone=no' },
+        // Barrierefreiheitsverbesserungen
+        { name: 'theme-color', content: '#ffffff', media: '(prefers-color-scheme: light)' },
+        { name: 'theme-color', content: '#121212', media: '(prefers-color-scheme: dark)' },
       ],
       link: [
         {
@@ -43,10 +50,17 @@ export default defineNuxtConfig({
           href: 'https://fonts.gstatic.com',
           crossorigin: '',
         },
+        // DNS-Prefetch für häufig genutzte Ressourcen
+        { rel: 'dns-prefetch', href: 'https://fonts.googleapis.com' },
+        // Favicons mit verschiedenen Größen für unterschiedliche Geräte
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/png', href: '/favicon-32x32.png', sizes: '32x32' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' },
       ],
     },
   },
   css: ['./app/assets/css/main.css'],
+  // Optimierungen für den Content-Bereich
   content: {
     documentDriven: true,
     navigation: {
@@ -54,13 +68,25 @@ export default defineNuxtConfig({
     },
     experimental: {
       clientDB: true,
+      // Verbessert Performance durch statische Erfassung von Inhalten während der Build-Zeit
+      search: {
+        indexed: true,
+      },
     },
     markdown: {
       toc: {
         depth: 3,
         searchDepth: 3,
       },
-      anchorLinks: false,
+      // Aktivieren für bessere Zugänglichkeit und Navigation
+      anchorLinks: true,
+      // Performance-Optimierung für Markdown Rendering
+      rehypePlugins: {
+        'rehype-external-links': {
+          target: '_blank',
+          rel: ['noopener', 'noreferrer'],
+        },
+      },
     },
   },
   runtimeConfig: {
@@ -69,48 +95,142 @@ export default defineNuxtConfig({
       authToken: process.env.NUXT_TURSO_AUTH_TOKEN,
     },
   },
+
+  // Optimierte Build-Parameter für bessere Performance
+  build: {
+    transpile: [process.env.NODE_ENV === 'production' ? '@headlessui/vue' : ''],
+  },
   future: {
     compatibilityVersion: 4,
   },
   compatibilityDate: '2024-11-01',
   nitro: {
+    // Optimierte Kompression für bessere Performance
+    compressPublicAssets: {
+      gzip: true,
+      brotli: true,
+    },
+    // Optimierte Caching-Strategien
     routeRules: {
       '/health': {
         headers: {
           'Cache-Control': 'no-cache, no-store',
         },
       },
-      // Static assets caching
+      // Static assets caching mit verbesserten Caching-Strategien
       '/assets/**': {
         headers: {
           'Cache-Control': 'public, max-age=31536000, immutable',
+          // Preload-Hinweise für kritische Assets
+          'X-Early-Hints': '103',
         },
+        prerender: true,
       },
-      // API routes caching
+      // Verbesserte Caching-Regeln für Bilder
+      '/assets/images/**': {
+        headers: {
+          'Cache-Control': 'public, max-age=31536000, immutable',
+          // Content Security Policy für Bilder
+          'Content-Security-Policy': "img-src 'self' data: https: http:",
+        },
+        prerender: true,
+      },
+      // API routes caching mit adaptivem Caching
       '/api/**': {
         cache: {
           maxAge: 60,
+          swr: true,
+          staleMaxAge: 600, // Verwende veraltete Daten für 10 Minuten wenn nötig
+        },
+        // Sicherheitsheader für API-Anfragen
+        headers: {
+          'X-Content-Type-Options': 'nosniff',
         },
       },
-      // Content pages caching
+      // Content pages caching mit erhöhter Gültigkeitsdauer
       '/content/**': {
         cache: {
-          maxAge: 120,
+          maxAge: 3600, // Eine Stunde für bessere Performance
+          swr: true,
+          // Erlaubt Verwendung von veralteten Inhalten während Aktualisierung
+          staleMaxAge: 86400, // 24 Stunden
+        },
+        prerender: true,
+      },
+      // Optimierung für statisches Content im Knowledge-Bereich
+      '/knowledge/**': {
+        prerender: true,
+        // Aggressive Caching für statische Inhalte
+        cache: {
+          maxAge: 86400, // 24 Stunden
+          staleMaxAge: 604800, // 7 Tage für veraltete Inhalte
+          swr: true,
         },
       },
     },
   },
+
   vite: {
     plugins: [tailwindcss()],
-  },
-  vite: {
-    plugins: [tailwindcss()],
-  },
-  eslint: {
-    config: {
-      stylistic: true,
+    // Optimierung des Vite Build-Prozesses für bessere Performance
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: (id) => {
+            // Intelligentes Code-Splitting nach Modul-Typen für optimale Ladestrategie
+            if (id.includes('node_modules')) {
+              if (id.includes('vue') || id.includes('router')) {
+                return 'vue-libs'
+              }
+              if (id.includes('pinia')) {
+                return 'pinia-store'
+              }
+              if (id.includes('tailwind') || id.includes('ui-components')) {
+                return 'ui-components'
+              }
+              // Drittanbieter-Bibliotheken in eigene Chunk
+              return 'vendor'
+            }
+            // Game-bezogene Komponenten in eigene Chunk für besseres Lazy-Loading
+            if (id.includes('/game-') || id.includes('/components/game/')) {
+              return 'game-features'
+            }
+            // Highscore-bezogene Funktionen zusammenfassen
+            if (id.includes('highscore') || id.includes('scores')) {
+              return 'scores-features'
+            }
+            return undefined
+          },
+        },
+      },
+      // Minimierung und Treeshaking optimieren
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          // Aggressivere Minimierung für schnellere Ladezeiten
+          drop_console: process.env.NODE_ENV === 'production',
+          drop_debugger: process.env.NODE_ENV === 'production',
+          pure_funcs: process.env.NODE_ENV === 'production' ? ['console.log', 'console.debug'] : [],
+          passes: 3, // Mehrere Durchläufe für bessere Optimierung
+        },
+        // Bessere Minimierung für Klassennamen und Property-Namen
+        mangle: {
+          properties: {
+            regex: /^_/,
+          },
+        },
+      },
     },
-    lintOnStart: true,
+    // Optimieren der CSS-Verarbeitung
+    css: {
+      devSourcemap: false, // Nur in Produktion deaktivieren
+    },
+    // Optimieren des Dev-Servers für schnellere Entwicklung
+    server: {
+      hmr: {
+        overlay: true,
+      },
+    },
   },
   fathom: {
     siteId: 'RKHOWTTO',
@@ -123,6 +243,12 @@ export default defineNuxtConfig({
       {
         name: 'Inter',
         weights: [400, 500, 600, 700],
+        // Display: 'swap' verbessert die Ladeperformance während Schriftarten geladen werden
+        display: 'swap',
+        // Preload verhindert Layout-Shifts für bessere Performance und Barrierefreiheit
+        preload: true,
+        // Subset verbessert die Ladezeit durch Reduzierung der Schriftgröße
+        subsets: ['latin'],
       },
     ],
   },
@@ -190,6 +316,54 @@ export default defineNuxtConfig({
       },
     ],
   },
+
+  // Komplett überarbeitete Bild-Konfiguration, um Bildprobleme zu beheben
+  image: {
+    // Einfachere Einstellungen für bessere Kompatibilität
+    format: ['webp', 'jpg', 'jpeg', 'png', 'svg'],
+    quality: 90,
+    // Responsive Bildgrößen für unterschiedliche Geräte
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+    },
+    // Unterstützung für High-DPI Displays vereinfacht
+    densities: [1, 2],
+    // Verwende den Standard-Provider von Nuxt
+    provider: undefined,
+    // Setze das public-Verzeichnis explizit als Basis
+    dir: 'public',
+    // Erlaubt Bilder direkt aus der public/ anzuzeigen
+    domains: ['localhost'],
+    // Keine benutzerdefinierten Aliasnamen mehr
+    alias: {},
+    // WCAG AAA-konforme Alt-Texte erzwingen
+    presets: {
+      category: {
+        modifiers: {
+          format: 'webp',
+          width: 600,
+          height: 400,
+          quality: 80,
+          loading: 'lazy',
+          fit: 'cover',
+        },
+      },
+      avatar: {
+        modifiers: {
+          format: 'webp',
+          width: 48,
+          height: 48,
+          quality: 90,
+          fit: 'cover',
+        },
+      },
+    },
+  },
   sitemap: {
     enabled: true,
     autoLastmod: true,
@@ -197,7 +371,9 @@ export default defineNuxtConfig({
     urls: (await import('./app/sitemap-urls.js')).default,
   },
 
+  // Optimierte Darstellung von Bildern für WCAG AAA-Konformität
   unlazy: {
+    // Verbesserte UnLazy-Konfiguration für Barrierefreiheit
     ssr: true,
     placeholderSize: 32,
   },

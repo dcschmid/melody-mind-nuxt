@@ -11,7 +11,7 @@
       role="img"
       :aria-label="imageAltText"
     >
-      <UnLazyImage
+      <img
         v-if="imageUrl"
         class="h-full w-full rounded-xl bg-[rgb(20,20,20)] object-cover"
         :src="imageUrl"
@@ -19,8 +19,6 @@
         width="280"
         height="280"
         loading="lazy"
-        :thumbhash="thumbHash"
-        auto-sizes
       />
       <div
         v-else
@@ -37,17 +35,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useThumbHash } from '~/composables/useThumbHash'
-
+// Verwenden von i18n für Übersetzungen
 const { t } = useI18n()
-const { getThumbHash } = useThumbHash()
 
 const props = defineProps<{
   imageUrl: string
   headline: string
 }>()
-
-const thumbHash = computed(() => (props.imageUrl ? getThumbHash(props.imageUrl) : undefined))
 
 const headlineId = computed(() => `category-${props.headline.toLowerCase().replace(/\s+/g, '-')}`)
 

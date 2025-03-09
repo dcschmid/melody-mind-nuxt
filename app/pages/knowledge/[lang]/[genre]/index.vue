@@ -7,14 +7,20 @@
           <h1 class="mb-6 text-3xl leading-tight font-bold text-[var(--color-primary)]">
             {{ genre.title }}
           </h1>
-          <UnLazyImage
+          <img
             :src="genre.image"
             :alt="genre.title"
-            class="mx-auto aspect-square w-full max-w-[300px] rounded object-cover shadow"
-            :thumbhash="thumbHash"
-            auto-sizes
+            class="mx-auto aspect-square w-full max-w-[300px] rounded-lg object-cover shadow-md transition-opacity duration-300 motion-reduce:transition-none dark:border-[rgb(var(--border-color-rgb))] print:border print:border-black print:shadow-none print:grayscale"
+            placeholder
             loading="lazy"
+            sizes="(min-width: 768px) 300px, 100vw"
+            :quality="80"
+            format="webp"
+            aria-describedby="image-description"
           />
+          <p id="image-description" class="sr-only">
+            {{ $t('common.imageFor', { title: genre.title }) }}
+          </p>
 
           <div class="mt-6 text-base leading-[1.6]">
             {{ genre.description }}
@@ -57,7 +63,7 @@
                 :href="category.spotifyPlaylist"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="relative flex h-16 min-h-[44px] w-16 items-center justify-center overflow-hidden rounded border border-white/10 backdrop-blur-sm transition-all duration-300 ease-in-out hover:translate-y-[-4px] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transform-none motion-reduce:transition-none"
+                class="relative flex h-16 min-h-[44px] w-16 items-center justify-center overflow-hidden rounded border border-white/10 backdrop-blur-sm transition-all duration-300 ease-in-out hover:translate-y-[-4px] hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transform-none motion-reduce:transition-none"
                 :aria-label="$t('knowledge.playlist.spotify')"
                 role="listitem"
               >
@@ -76,7 +82,7 @@
                 :href="category.deezerPlaylist"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="relative flex h-16 min-h-[44px] w-16 items-center justify-center overflow-hidden rounded border border-white/10 backdrop-blur-sm transition-all duration-300 ease-in-out hover:translate-y-[-4px] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transform-none motion-reduce:transition-none"
+                class="relative flex h-16 min-h-[44px] w-16 items-center justify-center overflow-hidden rounded border border-white/10 backdrop-blur-sm transition-all duration-300 ease-in-out hover:translate-y-[-4px] hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transform-none motion-reduce:transition-none"
                 :aria-label="$t('knowledge.playlist.deezer')"
                 role="listitem"
               >
@@ -95,7 +101,7 @@
                 :href="category.appleMusicPlaylist"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="relative flex h-16 min-h-[44px] w-16 items-center justify-center overflow-hidden rounded border border-white/10 backdrop-blur-sm transition-all duration-300 ease-in-out hover:translate-y-[-4px] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transform-none motion-reduce:transition-none"
+                class="relative flex h-16 min-h-[44px] w-16 items-center justify-center overflow-hidden rounded border border-white/10 backdrop-blur-sm transition-all duration-300 ease-in-out hover:translate-y-[-4px] hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-reduce:transform-none motion-reduce:transition-none"
                 :aria-label="$t('knowledge.playlist.apple')"
                 role="listitem"
               >
@@ -115,7 +121,7 @@
             <NuxtLink
               v-if="genre.isPlayable"
               :to="gameUrl"
-              class="mx-auto mt-6 flex min-h-[44px] w-auto items-center gap-2 rounded bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary-light)] to-[var(--color-highlight)] p-2 text-sm font-bold text-black no-underline shadow transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:scale-95 motion-reduce:transform-none motion-reduce:transition-none"
+              class="mx-auto mt-6 flex min-h-[44px] w-auto items-center gap-2 rounded bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary-light)] to-[var(--color-highlight)] p-2 text-sm font-bold text-black no-underline shadow transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:scale-95 motion-reduce:transform-none motion-reduce:transition-none"
             >
               <Icon name="i-mdi:play-outline" size="48" :aria-hidden="true" />
               {{ $t('knowledge.playNow') }}
@@ -141,7 +147,6 @@
 import { queryContent, useHead, useRequestURL, useSeoMeta } from '#imports'
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { useThumbHash } from '~/composables/useThumbHash'
 
 const route = useRoute()
 const url = useRequestURL()
@@ -150,11 +155,6 @@ const genre = ref(null)
 const category = ref(null)
 const gameUrl = ref('')
 const error = ref(null)
-
-const { getThumbHash } = useThumbHash()
-
-// ThumbHash für das Genre-Bild abrufen
-const thumbHash = computed(() => (genre.value?.image ? getThumbHash(genre.value.image) : undefined))
 
 const loadContent = async () => {
   try {

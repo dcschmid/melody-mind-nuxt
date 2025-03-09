@@ -4,7 +4,8 @@
     <button
       :id="buttonId"
       type="button"
-      class="group flex min-h-[44px] w-auto items-center gap-3 rounded-lg bg-[rgba(var(--surface-color-rgb),0.9)] px-4 py-3 font-medium text-[rgb(var(--text-color-rgb))] shadow-sm hover:bg-[rgb(var(--surface-hover-color-rgb))] hover:text-[rgb(var(--highlight-color-rgb))] hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-all motion-safe:duration-300 print:border-black print:bg-white print:text-black print:shadow-none"
+      class="group flex min-h-[44px] w-auto items-center gap-3 rounded-lg bg-[rgba(var(--surface-color-rgb),0.9)] px-4 py-3 font-medium text-[rgb(var(--text-color-rgb))] shadow-xs hover:bg-[rgb(var(--surface-hover-color-rgb))] hover:text-[rgb(var(--highlight-color-rgb))] hover:shadow-sm focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-all motion-safe:duration-300 print:border-black print:bg-white print:text-black print:shadow-none"
+      data-testid="language-picker"
       :aria-expanded="isOpen"
       aria-haspopup="listbox"
       :aria-controls="dropdownId"
@@ -18,7 +19,7 @@
 
       <!-- Aktuelle Sprachflagge mit verbessertem Kontrast und Größe für AAA-Konformität -->
       <span
-        class="h-6 w-6 flex-shrink-0 overflow-hidden rounded-full border border-[rgba(255,255,255,0.2)] shadow-md group-hover:border-[rgba(var(--primary-light-color-rgb),0.3)] motion-safe:transition-all motion-safe:duration-300 print:border-black print:shadow-none"
+        class="h-6 w-6 flex-shrink-0 overflow-hidden rounded-full border border-[rgba(255,255,255,0.2)] shadow-xs group-hover:border-[rgba(var(--primary-light-color-rgb),0.3)] motion-safe:transition-all motion-safe:duration-300 print:border-black print:shadow-none"
       >
         <img
           :src="`/images/flags/${currentLocale}.svg`"
@@ -48,7 +49,8 @@
       v-show="isOpen"
       :id="dropdownId"
       ref="dropdown"
-      class="absolute top-[calc(100%+0.75rem)] left-0 mt-1 min-w-[220px] origin-top-left overflow-hidden rounded-lg border border-[rgba(var(--primary-light-color-rgb),0.2)] bg-[rgba(var(--surface-color-rgb),0.95)] py-3 shadow-md backdrop-blur-sm motion-safe:transform motion-safe:transition-all motion-safe:duration-300 print:border-black print:bg-white print:shadow-none"
+      class="absolute top-[calc(100%+0.75rem)] left-0 mt-1 min-w-[220px] origin-top-left overflow-hidden rounded-lg border border-[rgba(var(--primary-light-color-rgb),0.2)] bg-[rgba(var(--surface-color-rgb),0.95)] py-3 shadow-sm backdrop-blur-sm motion-safe:transform motion-safe:transition-all motion-safe:duration-300 print:border-black print:bg-white print:shadow-none"
+      data-testid="language-dropdown"
       role="listbox"
       :aria-labelledby="buttonId"
       :aria-activedescendant="activeItemId"
@@ -70,7 +72,8 @@
         <template v-for="localeItem in availableLocales" :key="localeItem.code">
           <button
             :id="`language-option-${localeItem.code}`"
-            class="my-1 flex min-h-[44px] w-full items-center gap-3 rounded-md px-4 py-3 text-left text-base text-[rgb(var(--text-color-rgb))] hover:bg-[rgb(var(--surface-hover-color-rgb))] hover:text-[rgb(var(--highlight-color-rgb))] focus-visible:bg-[rgb(var(--surface-hover-color-rgb))] focus-visible:text-[rgb(var(--highlight-color-rgb))] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-colors motion-safe:duration-300 print:border print:border-black print:text-black"
+            class="my-1 flex min-h-[44px] w-full items-center gap-3 rounded-md px-4 py-3 text-left text-base text-[rgb(var(--text-color-rgb))] hover:bg-[rgb(var(--surface-hover-color-rgb))] hover:text-[rgb(var(--highlight-color-rgb))] focus-visible:bg-[rgb(var(--surface-hover-color-rgb))] focus-visible:text-[rgb(var(--highlight-color-rgb))] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-colors motion-safe:duration-300 print:border print:border-black print:text-black"
+            data-testid="language-option-${localeItem.code}"
             :class="{
               'bg-[rgba(var(--primary-color-rgb),0.1)] font-semibold':
                 localeItem.code === currentLocale,
@@ -83,7 +86,7 @@
           >
             <!-- Sprachflagge mit verbessertem Kontrast und Größe für AAA-Konformität -->
             <div
-              class="h-6 w-6 flex-shrink-0 overflow-hidden rounded-full border border-[rgba(255,255,255,0.2)] shadow-md print:border-black print:shadow-none"
+              class="h-6 w-6 flex-shrink-0 overflow-hidden rounded-full border border-[rgba(255,255,255,0.2)] shadow-xs print:border-black print:shadow-none"
             >
               <img
                 :src="`/images/flags/${localeItem.code}.svg`"

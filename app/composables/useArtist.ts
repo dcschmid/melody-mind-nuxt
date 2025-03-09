@@ -69,26 +69,48 @@ export function useArtist() {
       }
 
       // Find the artist that matches the current question
-      currentArtist.value =
-        artists.find((artist) => {
-          const questions = artist.questions[difficulty]
-          if (!questions) return false
+      const foundArtist = artists.find((artist) => {
+        const questions = artist.questions[difficulty]
+        if (!questions) return false
 
-          // Check if any question in the difficulty level matches the current question
-          const matchingQuestion = questions.find(
-            (q) =>
-              q.question === currentQuestion.value?.question &&
-              q.correctAnswer === currentQuestion.value?.correctAnswer
-          )
+        // Check if any question in the difficulty level matches the current question
+        const matchingQuestion = questions.find(
+          (q) =>
+            q.question === currentQuestion.value?.question &&
+            q.correctAnswer === currentQuestion.value?.correctAnswer
+        )
 
-          // If we found a matching question, add its trivia to the artist data
-          if (matchingQuestion) {
-            artist.trivia = matchingQuestion.trivia
-            return true
+        // If we found a matching question, add its trivia to the artist data
+        if (matchingQuestion) {
+          // Explizite Typkonversion und stellen sicher, dass trivia immer einen String-Wert hat
+          const trivia: string = matchingQuestion.trivia ?? ''
+          artist.trivia = trivia
+          return true
+        }
+
+        return false
+      })
+
+      // Process image paths correctly before assigning to currentArtist
+      if (foundArtist) {
+        // Stellen sicher, dass coverSrc immer ein String ist und nicht undefined
+        if (typeof foundArtist.coverSrc === 'string') {
+          // Ensure coverSrc path is absolute and formatted correctly
+          foundArtist.coverSrc = foundArtist.coverSrc.startsWith('/')
+            ? foundArtist.coverSrc
+            : `/${foundArtist.coverSrc}`
+
+          // Remove any query parameters from image URL
+          if (foundArtist.coverSrc.includes('?')) {
+            foundArtist.coverSrc = foundArtist.coverSrc.split('?')[0]
           }
+        } else {
+          // Falls coverSrc undefined ist, setzen wir einen Fallback-Wert
+          foundArtist.coverSrc = '/images/default-cover.jpg'
+        }
+      }
 
-          return false
-        }) || null
+      currentArtist.value = foundArtist || null
     } catch (error) {
       console.error('Error loading artist:', error)
       currentArtist.value = null

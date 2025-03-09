@@ -87,7 +87,7 @@
   }
 }
 
-@theme {
+:root {
   /* Brand Colors - Angepasst für WCAG AAA (7:1 Kontrastverhältnis) */
   --primary-color-rgb: 130, 87, 229; /* Dunkleres Lila für besseren Kontrast */
   --primary-color-dark: #6d46c4;

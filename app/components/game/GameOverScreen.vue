@@ -1,12 +1,13 @@
 <template>
   <div
     class="motion-safe:animate-fade-in print:print-friendly mx-auto flex min-h-[calc(100vh-var(--header-height))] w-full flex-col items-center justify-start p-4 sm:justify-center sm:p-6"
+    data-testid="game-over-screen"
     role="main"
     aria-label="Game Over Screen"
   >
     <div class="flex w-full max-w-[var(--max-content-width)] flex-col gap-6 text-center sm:gap-8">
       <div class="flex flex-col items-center">
-        <h1 id="game-over-title" class="mb-8 text-center text-3xl font-bold sm:text-4xl">
+        <h1 id="game-over-title" class="mb-8 text-center text-3xl font-bold sm:text-4xl" data-testid="game-over-title">
           {{ t('game.gameOver.title') }}
         </h1>
         <div
@@ -15,7 +16,8 @@
           aria-labelledby="game-over-title"
         >
           <div
-            class="relative flex h-[clamp(120px,30vw,200px)] w-[clamp(120px,30vw,200px)] items-center justify-center rounded-full border-2 border-[rgb(var(--primary-color-rgb))] bg-[rgb(var(--surface-color-rgb))] shadow-md hover:scale-105 hover:shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-[rgb(var(--highlight-color-rgb))] focus-visible:ring-offset-2 motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-[var(--transition-bounce)] motion-reduce:transform-none motion-reduce:transition-none"
+            class="relative flex h-[clamp(120px,30vw,200px)] w-[clamp(120px,30vw,200px)] items-center justify-center rounded-full border-2 border-[rgb(var(--primary-color-rgb))] bg-[rgb(var(--surface-color-rgb))] shadow-sm hover:scale-105 hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-[rgb(var(--highlight-color-rgb))] focus-visible:ring-offset-4 motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-[var(--transition-bounce)] motion-reduce:transform-none motion-reduce:transition-none"
+            data-testid="score-circle"
             role="text"
             aria-label="Total Score"
           >
@@ -25,6 +27,7 @@
             <div class="flex flex-col items-center gap-1">
               <span
                 class="text-2xl font-bold text-[rgb(var(--primary-color-rgb))] sm:text-3xl"
+                data-testid="total-points"
                 aria-label="Points"
                 >{{ totalPoints }}</span
               >
@@ -50,7 +53,8 @@
 
       <div
         v-if="earnedRecord || resultMessage"
-        class="my-4 flex w-full flex-col items-center gap-3 rounded-lg border-2 bg-[rgb(var(--surface-color-rgb))] p-6 sm:my-6 sm:gap-6"
+        class="my-4 flex w-full flex-col items-center gap-3 rounded-lg border-2 bg-[rgb(var(--surface-color-rgb))] p-6 shadow-sm sm:my-6 sm:gap-6"
+        data-testid="achievement-region"
         :class="[
           recordClass === 'new-record'
             ? 'border-[var(--success-color)] bg-[color-mix(in_srgb,rgb(var(--surface-color-rgb))_95%,var(--success-color))]'
@@ -83,6 +87,7 @@
           class="mt-3 flex flex-col gap-3 px-3 sm:mt-6 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6 sm:px-0"
           role="group"
           aria-label="Share options"
+          data-testid="share-options"
         >
           <Button
             v-if="canShare"
@@ -159,7 +164,8 @@
       <div class="mt-6 px-3 sm:mt-8 sm:px-0" role="navigation">
         <NuxtLink
           :to="localePath('/gamehome')"
-          class="inline-flex h-12 min-h-[44px] items-center justify-center gap-2 rounded-lg bg-[rgb(var(--primary-color-rgb))] px-6 py-2 font-medium text-white transition-colors duration-300 hover:bg-[var(--primary-color-dark)] focus:outline-none focus-visible:ring-4 focus-visible:ring-[rgb(var(--highlight-color-rgb))] focus-visible:ring-offset-2 motion-reduce:transition-none"
+          data-testid="back-to-menu"
+          class="inline-flex h-12 min-h-[44px] items-center justify-center gap-2 rounded-lg bg-[rgb(var(--primary-color-rgb))] px-6 py-2 font-medium text-white transition-colors duration-300 hover:bg-[var(--primary-color-dark)] focus:outline-none focus-visible:ring-4 focus-visible:ring-[rgb(var(--highlight-color-rgb))] focus-visible:ring-offset-4 motion-reduce:transition-none"
           aria-label="Back to main menu"
         >
           <Icon name="material-symbols:home" size="36" aria-hidden="true" />

@@ -21,7 +21,7 @@
             {{ currentCategory.text }}
           </p>
 
-          <CategoryDifficultySelector v-if="hasUsername" :category-slug="currentCategory.slug" />
+          <CategoryDifficultySelector :category-slug="currentCategory.slug" />
 
           <section
             class="mx-auto my-6 flex w-full max-w-3xl flex-col items-center gap-6 print:hidden"

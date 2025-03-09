@@ -2,6 +2,8 @@
   <footer
     class="border-t border-[rgb(var(--border-color-rgb))] bg-[rgb(var(--surface-color-rgb))] py-12 print:border-t-2 print:border-black print:bg-white print:py-6"
     role="contentinfo"
+    data-testid="footer"
+    aria-labelledby="footer-heading"
   >
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 print:gap-4">
@@ -17,7 +19,7 @@
               >Melody Mind</span
             >
           </div>
-          <p class="text-base text-[rgb(var(--text-secondary-color-rgb))] print:text-black">
+          <p class="text-base text-[rgb(var(--text-secondary-color-rgb))] print:text-black leading-relaxed">
             {{ $t('footer.description') }}
           </p>
         </div>
@@ -25,6 +27,7 @@
         <!-- Interne Links -->
         <div>
           <h2
+            id="footer-links-heading"
             class="mb-4 text-base font-semibold text-[rgb(var(--text-color-rgb))] print:font-bold print:text-black"
           >
             {{ $t('footer.links') }}
@@ -33,7 +36,7 @@
             <li v-for="(link, index) in footerLinks" :key="index">
               <NuxtLink
                 :to="localePath(link.to)"
-                class="inline-flex items-center text-base text-[rgb(var(--text-secondary-color-rgb))] hover:text-[rgb(var(--primary-color-rgb))] focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-colors motion-safe:duration-300 print:text-black print:underline"
+                class="inline-flex items-center text-base text-[rgb(var(--text-secondary-color-rgb))] hover:text-[rgb(var(--primary-color-rgb))] focus:outline-none focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-colors motion-safe:duration-300 print:text-black print:underline"
               >
                 {{ $t(link.title) }}
               </NuxtLink>
@@ -44,6 +47,7 @@
         <!-- Externe Links -->
         <div>
           <h2
+            id="footer-resources-heading"
             class="mb-4 text-base font-semibold text-[rgb(var(--text-color-rgb))] print:font-bold print:text-black"
           >
             {{ $t('footer.resources') }}
@@ -54,7 +58,7 @@
                 :href="externalLink.url"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center text-base text-[rgb(var(--text-secondary-color-rgb))] hover:text-[rgb(var(--primary-color-rgb))] focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-colors motion-safe:duration-300 print:text-black print:underline"
+                class="inline-flex items-center text-base text-[rgb(var(--text-secondary-color-rgb))] hover:text-[rgb(var(--primary-color-rgb))] focus:outline-none focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-colors motion-safe:duration-300 print:text-black print:underline"
                 :aria-label="`${$t(externalLink.title)} (${$t('common.opensInNewTab')})`"
               >
                 {{ $t(externalLink.title) }}
@@ -72,20 +76,21 @@
         <!-- Sprachauswahl -->
         <div>
           <h2
+            id="footer-language-heading"
             class="mb-4 text-base font-semibold text-[rgb(var(--text-color-rgb))] print:font-bold print:text-black"
           >
-            {{ $t('common.selectLanguage') }}
+            {{ t('common.selectLanguage') }}
           </h2>
           <div class="flex flex-wrap gap-2">
             <NuxtLink
               v-for="locale in availableLocales"
               :key="locale"
               :to="switchLocalePath(locale)"
-              class="inline-flex items-center rounded-md border border-[rgb(var(--border-color-rgb))] bg-[rgb(var(--surface-light-color-rgb))] px-3 py-2 text-sm text-[rgb(var(--text-color-rgb))] hover:bg-[rgb(var(--surface-hover-color-rgb))] focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-colors motion-safe:duration-300 print:border-black print:bg-white print:text-black"
-              :aria-label="$t('languages.' + locale)"
-              :aria-current="$i18n.locale === locale ? 'true' : undefined"
+              class="inline-flex items-center rounded-md border border-[rgb(var(--border-color-rgb))] bg-[rgb(var(--surface-light-color-rgb))] px-3 py-2 text-sm text-[rgb(var(--text-color-rgb))] hover:bg-[rgb(var(--surface-hover-color-rgb))] hover:border-[rgb(var(--primary-light-color-rgb))] focus:outline-none focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-colors motion-safe:duration-300 print:border-black print:bg-white print:text-black"
+              :aria-label="t('languages.' + locale)"
+              :aria-current="currentLocale === locale ? 'true' : undefined"
             >
-              {{ $t('languages.' + locale) }}
+              {{ t('languages.' + locale) }}
             </NuxtLink>
           </div>
         </div>
@@ -104,14 +109,14 @@
         </p>
 
         <!-- Social Media Links -->
-        <div class="flex space-x-4 print:hidden">
+        <div class="flex space-x-4 print:hidden" aria-label="Social Media Links">
           <a
             v-for="(social, index) in socialLinks"
             :key="index"
             :href="social.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex h-10 w-10 items-center justify-center rounded-full bg-[rgb(var(--surface-light-color-rgb))] text-[rgb(var(--text-secondary-color-rgb))] hover:bg-[rgb(var(--primary-light-color-rgb))] hover:text-[rgb(var(--primary-color-rgb))] focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-colors motion-safe:duration-300"
+            class="flex h-10 w-10 items-center justify-center rounded-full bg-[rgb(var(--surface-light-color-rgb))] text-[rgb(var(--text-secondary-color-rgb))] hover:bg-[rgb(var(--primary-light-color-rgb))] hover:text-[rgb(var(--primary-color-rgb))] hover:scale-110 focus:outline-none focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[rgb(var(--focus-color-rgb))] motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none"
             :aria-label="social.name + ' ' + $t('common.opensInNewTab')"
           >
             <Icon :name="social.icon" class="h-5 w-5" aria-hidden="true" />
@@ -129,7 +134,7 @@ import { useI18n, useLocalePath, useSwitchLocalePath } from '#i18n'
 // Importieren Sie die localePath-Funktion
 const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
-const { availableLocales } = useI18n()
+const { t, locale: currentLocale, availableLocales } = useI18n()
 
 // Definieren Sie hier Ihre Footer-Links
 const footerLinks = [
@@ -154,7 +159,7 @@ const socialLinks = [
 </script>
 
 <style scoped>
-/* Verbesserte Zugänglichkeit für hohen Kontrast */
+/* Enhanced accessibility for high contrast mode */
 @media (prefers-contrast: more) {
   footer {
     background-color: black !important;
@@ -169,16 +174,18 @@ const socialLinks = [
 
   a {
     text-decoration: underline !important;
-    outline: 2px solid white !important;
-    outline-offset: 2px !important;
+    outline: 3px solid white !important;
+    outline-offset: 4px !important;
     padding: 2px !important;
+    font-weight: bold !important;
   }
 
-  a:focus,
+  a:focus-visible,
   a:hover {
     background-color: white !important;
     color: black !important;
-    outline-width: 3px !important;
+    outline-width: 4px !important;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5) !important;
   }
 
   div[class*='h-px'] {
@@ -191,7 +198,7 @@ const socialLinks = [
   }
 }
 
-/* Print-Optimierung */
+/* Print optimization */
 @media print {
   footer {
     page-break-inside: avoid !important;

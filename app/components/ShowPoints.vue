@@ -7,7 +7,7 @@
   >
     <!-- Points container with improved accessibility -->
     <div
-      class="flex cursor-pointer flex-col items-center rounded-md bg-[rgb(var(--surface-color-rgb))]/95 p-2 shadow-sm backdrop-blur-sm transition-all hover:bg-[rgb(var(--surface-hover-color-rgb))] hover:shadow-md focus:ring-2 focus:ring-[rgb(var(--highlight-color-rgb))] focus:ring-offset-2 focus:outline-none motion-safe:duration-300 dark:bg-[rgb(var(--surface-light-color-rgb))]/90 dark:hover:bg-[rgb(var(--surface-hover-color-rgb))]/80 print:border print:border-black print:bg-transparent"
+      class="flex cursor-pointer flex-col items-center rounded-md bg-[rgb(var(--surface-color-rgb))]/95 p-2 shadow-xs backdrop-blur-xs transition-all hover:bg-[rgb(var(--surface-hover-color-rgb))] hover:shadow-md focus:ring-2 focus:ring-[rgb(var(--highlight-color-rgb))] focus:ring-offset-2 focus:outline-hidden motion-safe:duration-300 dark:bg-[rgb(var(--surface-light-color-rgb))]/90 dark:hover:bg-[rgb(var(--surface-hover-color-rgb))]/80 print:border print:border-black print:bg-transparent"
       tabindex="0"
       aria-describedby="points-description"
       @keydown.enter="announcePoints"
@@ -29,7 +29,7 @@
       <!-- Points label -->
       <span
         id="points-description"
-        class="mt-1 text-base leading-normal font-medium text-[rgb(var(--text-secondary-color-rgb))] dark:text-white/70"
+        class="mt-1 text-base leading-normal font-medium text-[rgb(var(--text-secondary-color-rgb))] dark:text-white/90"
       >
         {{ $t('points.label') }}
       </span>
@@ -43,7 +43,7 @@
     >
       <div
         v-if="showBonus"
-        class="text-md absolute -top-6 right-0 rounded-md border border-[rgb(var(--highlight-color-rgb))]/20 bg-[rgb(var(--surface-color-rgb))]/95 px-2 py-1 font-bold text-[rgb(var(--highlight-color-rgb))] shadow-md backdrop-blur-sm dark:border-[rgb(var(--highlight-color-rgb))]/30 dark:bg-[rgb(var(--surface-light-color-rgb))]/90"
+        class="text-md absolute -top-6 right-0 rounded-md border border-[rgb(var(--highlight-color-rgb))]/30 bg-[rgb(var(--surface-color-rgb))]/95 px-2 py-1 font-bold text-[rgb(var(--highlight-color-rgb))] shadow-md backdrop-blur-xs dark:border-[rgb(var(--highlight-color-rgb))]/40 dark:bg-[rgb(var(--surface-light-color-rgb))]/90"
         role="alert"
         aria-live="assertive"
       >
@@ -158,79 +158,101 @@ defineExpose({
 /* Animation classes for bonus indicator */
 .bonus-enter-active,
 .bonus-leave-active {
-  @apply transition-all ease-in-out duration-300 motion-safe:duration-300;
+  transition-property: all;
+  transition-timing-function: ease-in-out;
+  transition-duration: 300ms;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bonus-enter-active,
+  .bonus-leave-active {
+    transition-duration: 300ms;
+  }
 }
 
 .bonus-enter-from {
-  @apply translate-y-5 opacity-0;
+  transform: translateY(1.25rem);
+  opacity: 0;
 }
 
 .bonus-leave-to {
-  @apply -translate-y-5 opacity-0;
+  transform: translateY(-1.25rem);
+  opacity: 0;
 }
 
 /* High contrast mode improvements */
 @media (forced-colors: active) {
   div[tabindex='0'] {
-    @apply border-2 border-[CanvasText];
+    border-width: 2px;
+    border-color: CanvasText;
   }
 
   div[role='alert'] {
-    @apply border-2 border-[CanvasText];
+    border-width: 2px;
+    border-color: CanvasText;
   }
 }
 
 /* Increased contrast mode */
 @media (prefers-contrast: more) {
   div[tabindex='0'] {
-    @apply border-2 border-black bg-white shadow-none;
+    border-width: 2px;
+    border-color: black;
+    background-color: white;
+    box-shadow: none;
   }
 
   span[aria-atomic='true'] {
-    @apply font-extrabold text-black;
+    font-weight: 800;
+    color: black;
   }
 
   span[id='points-description'] {
-    @apply font-semibold text-black;
+    font-weight: 600;
+    color: black;
   }
 
   div[role='alert'] {
-    @apply border-2 border-black bg-white font-extrabold text-black;
+    border-width: 2px;
+    border-color: black;
+    background-color: white;
+    font-weight: 800;
+    color: black;
   }
 }
 
 /* Mobile optimizations */
 @media (max-width: 768px) {
   span[aria-atomic='true'] {
-    @apply text-base;
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   span[id='points-description'] {
-    @apply text-sm;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 }
 
 /* Print optimizations */
 @media print {
   div[tabindex='0'] {
-    @apply border border-black/80 bg-transparent shadow-none;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.8);
+    background-color: transparent;
+    box-shadow: none;
   }
 
   span[aria-atomic='true'] {
-    @apply text-black;
+    color: black;
   }
 
   span[id='points-description'] {
-    @apply text-black;
+    color: black;
   }
 
   div[role='alert'] {
-    @apply hidden;
-  }
-}
-
-  div[role='alert'] {
-    @apply hidden;
+    display: none;
   }
 }
 </style>

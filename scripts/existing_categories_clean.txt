@@ -1,4 +1,3 @@
-# Decades
 1950s
 1960s
 1970s
@@ -6,53 +5,94 @@
 1990s
 2000s
 2010s
-
-# Genres
 Acoustic Metal
 Afrobeat
+After Work Chill
 Alternative Metal
 Alternative Rock
 Ambient
 Ambient Metal
+Angry
+Argentinian
+Austrian
+Autumn Chill
+Autumn Leaves
 Avant-Garde Metal
-Black Metal
+Back to School
+Backyard BBQ
+Beach Day
+Belgian
 Blackened Death Metal
+Black Metal
 Bluegrass
 Blues
+Blues Legends
 Bossa Nova
+Brazilian
 Breakbeat
+British
 Cantopop
 Celtic Metal
 Chamber Metal
 Chicago House
 Children
 Christian Metal
+Christmas Classics
+Classical
 Classic Heavy Metal
 Classic Rock
-Classical
 Club
+Colombian
+Commute Companion
+Cooking Soundtrack
 Coregrind
 Country
+Cozy Evening
 Crossover Thrash
+Cuban
 Cyber Metal
+Czech
 Dancehall
+Danish
 Dark Metal
+Date Night
 Death Metal
 Deep House
 Desert Rock
 Detroit Techno
 Deutschrock
+Dinner Party
+Disco Fever
 Doom Metal
+Dramatic
+Dreamy
 Drum and Bass
+Dutch
+Energetic
 Eurodance
 Experimental Metal
+Female Country Stars
+Female DJs
+Female Grunge Artists
+Female Hip Hop Artists
+Female Rappers
+Female R&B Divas
+Female Rock/Metal Vocalists
+Female Soul Legends
+Female Vocal Icons
+Festival Season
 Film Music
+Finnish
+Focus & Concentration
 Folk
 Folk Metal
 Forró
+French
 Funeral Doom Metal
 Funk
+Gaming Session
 Garage
+German Music
 German Rap
 German Schlager
 Gospel
@@ -64,63 +104,101 @@ Groove Metal
 Grunge
 Guitar
 Hair Metal
+Halloween Spooky Tunes
+Happy
 Hard Rock
 Hardstyle
+Hawaiian
 Heavy Metal
 Heavy Psych
 Hip Hop
+Holiday
+Hopeful
 Horror Metal
 House
+Icelandic
+Indian
 Indie
 Indie-Pop
 Industrial
 Industrial Metal
+Intense
+Iranian
+Irish
+Jazz
+Jazz Metal
+Jazz Vocalists
 J-Dance
 J-Pop
 J-Rock
-Jazz
-Jazz Metal
-Krautrock
 K-Pop
+Krautrock
+Latin American
 Latin Vibes
+Lazy Sunday
 Mandopop
 Math Metal
+Meditation & Yoga
+Melancholic
 Melodic Death Metal
 Metalcore
+Mexican
+Morning Coffee
 Neo-Classical Metal
 New Age
 New Wave of British Heavy Metal
+Night Drive
 Noise Metal
+Nostalgic
 Nu Metal
 Opera
+Party On!
+Peaceful
+Peruvian
 Piano
+Polish
 Pop
-PopRock
+Pop Rock
+Pop Superstars
 Post Hardcore
 Post Metal
 Power Metal
 Power-Pop
+Power Walk
 Progressive Metal
 Psych-Rock
 Punk
+Rainy Day
 R&B
 Reggae
 Reggaeton
+Relaxed
 Road Trip
 Rock
-Rock 'n' Roll
 Rockabilly
+Rock 'n' Roll
+Romantic
+Running Playlist
+Russia
+Sad
 Salsa
 Samba
 Screamo
 Sertanejo
 Ska
+Sleep Soundly
 Sludge Metal
-
 Songwriter
 Soul
+Spanish
 Speed Metal
+Spring Awakening
 Stoner Metal
+Study Session
+Summer Hits
+Sunset Vibes
+Swedish
+Swiss
 Symphonic Black Metal
 Symphonic Metal
 Synth-Pop
@@ -130,104 +208,11 @@ Techno
 Thrash Metal
 Trance
 Trip-Hop
-Viking Metal
-
-# Female-Focused Categories
-Female Vocal Icons
-Female Rock/Metal Vocalists
-Female Pop Superstars
-Female Jazz Vocalists
-Female Blues Legends
-Female R&B Divas
-Female Rappers
-Female Hip Hop Artists
-Female Country Stars
-Female Soul Legends
-Female DJs
-Female Grunge Artists
-
-# Countries and Regional Genres
-Argentinian
-Austrian
-Belgian
-Brazilian
-British
-Colombian
-Cuban
-Czech
-Danish
-Dutch
-Finnish
-French
-German
-Hawaiian
-Icelandic
-Indian
-Iranian
-Irish
-Latin American
-Mexican
-Peruvian
-Polish
-Russian
-Spanish
-Swedish
-Swiss
-Turkish
+Turkey
 Ukrainian
-
-# Emotional Genres
-Happy
-Sad
-Relaxed
-Energetic
-Melancholic
-Nostalgic
-Romantic
 Uplifting
-Dramatic
-Angry
-Peaceful
-Intense
-Hopeful
-Dreamy
-
-# Seasonal Genres
-Holiday
-Summer Hits
-Winter Vibes
-Autumn Leaves
-Spring Awakening
-Christmas Classics
-Halloween Spooky Tunes
 Valentine's Day
-Back to School
-Festival Season
-Autumn Chill
+Viking Metal
+Winter Vibes
 Winter Wonderland
-
-# Situational and Activity-Based Genres
-Disco Fever
-Party On!
-Rainy Day
-Road Trip
 Workout Motivation
-Study Session
-Morning Coffee
-Sunset Vibes
-Dinner Party
-Night Drive
-Beach Day
-Cozy Evening
-Gaming Session
-Focus & Concentration
-Lazy Sunday
-Commute Companion
-Cooking Soundtrack
-After Work Chill
-Power Walk
-Meditation & Yoga
-Sleep Soundly
-Running Playlist
-Date Night
-Backyard BBQ

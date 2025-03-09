@@ -2,28 +2,30 @@
   <section
     :aria-labelledby="headingId"
     :class="[
-      'bg-gradient-to-br from-[rgb(var(--surface-color-rgb))]/90 to-[rgb(var(--surface-color-light-rgb))]/90 backdrop-blur-sm',
+      'bg-gradient-to-br from-[rgb(var(--surface-color-rgb))]/95 to-[rgb(var(--surface-color-light-rgb))]/95 backdrop-blur-sm',
       'rounded-xl border border-[rgb(var(--border-color-rgb))] p-6',
-      'shadow-lg hover:shadow-xl motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none',
+      'shadow-sm hover:shadow-md motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none',
       'group relative overflow-hidden',
       'print:border print:border-gray-300 print:bg-white print:shadow-none',
     ]"
+    data-testid="menu-section"
   >
     <!-- Hintergrund-Highlight-Effekt -->
     <div
       aria-hidden="true"
-      class="absolute inset-0 bg-gradient-to-r from-[rgb(var(--primary-color-rgb))]/5 to-transparent opacity-0 group-hover:opacity-100 motion-safe:transition-opacity motion-safe:duration-500 motion-reduce:hidden print:hidden"
+      class="absolute inset-0 bg-gradient-to-r from-[rgb(var(--primary-color-rgb))]/10 to-transparent opacity-0 group-hover:opacity-100 motion-safe:transition-opacity motion-safe:duration-500 motion-reduce:hidden print:hidden"
     ></div>
 
     <h2 v-if="title" :id="headingId" class="relative mb-4 flex items-center gap-2">
       <!-- Accent line -->
       <span
         aria-hidden="true"
-        class="mr-1 inline-block h-6 w-1.5 rounded-full bg-gradient-to-b from-[rgb(var(--primary-color-rgb))] to-[rgb(var(--primary-light-color-rgb))] shadow-[0_0_10px_rgba(var(--primary-color-rgb),0.5)] print:bg-black print:shadow-none"
+        class="mr-1 inline-block h-6 w-1.5 rounded-full bg-gradient-to-b from-[rgb(var(--primary-color-rgb))] to-[rgb(var(--primary-light-color-rgb))] shadow-[0_0_12px_rgba(var(--primary-color-rgb),0.6)] print:bg-black print:shadow-none"
       ></span>
 
       <span
         class="text-sm font-bold tracking-wider text-[rgb(var(--text-color-rgb))] uppercase print:text-black"
+        data-testid="menu-section-title"
       >
         {{ title }}
       </span>
@@ -37,8 +39,8 @@
 
     <div
       :class="[
-        'space-y-3 motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none',
-        'relative z-10', // Stellt sicher, dass der Inhalt über dem Hintergrund-Highlight liegt
+        'space-y-4 motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none',
+        'relative z-10', // Ensures content is above the background highlight
       ]"
       :role="list ? 'list' : undefined"
       :aria-label="listLabel || title"
@@ -75,7 +77,7 @@ const headingId = computed(() => {
 </script>
 
 <style scoped>
-/* Verbesserte Zugänglichkeit für hohen Kontrast */
+/* Enhanced accessibility for high contrast mode */
 @media (prefers-contrast: more) {
   section {
     background: black !important;
@@ -100,24 +102,26 @@ const headingId = computed(() => {
   }
 
   h2 span:last-child {
-    display: none !important; /* Versteckt die subtile Linie im High-Contrast-Modus */
+    display: none !important; /* Hides the subtle line in high contrast mode */
   }
 
-  /* Verbesserte Sichtbarkeit für Listenelemente im High-Contrast-Modus */
+  /* Enhanced visibility for list elements in high contrast mode */
   div[role='list'] {
     border-top: 1px solid white !important;
     padding-top: 0.5rem !important;
   }
 }
 
-/* Verbesserte Fokus-Sichtbarkeit für Tastaturnavigation */
+/* Enhanced focus visibility for keyboard navigation */
 :deep(*:focus-visible) {
   outline: 3px solid rgb(var(--focus-color-rgb)) !important;
-  outline-offset: 3px !important;
+  outline-offset: 4px !important;
   border-radius: 4px !important;
+  text-decoration: underline !important;
+  box-shadow: 0 0 0 3px rgba(var(--focus-color-rgb), 0.4) !important;
 }
 
-/* Print-Optimierung */
+/* Print optimization */
 @media print {
   section {
     background: white !important;

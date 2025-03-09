@@ -4,37 +4,38 @@
     :aria-expanded="isActive"
     :aria-label="isActive ? closeLabel : openLabel"
     :class="[
-      'relative flex min-h-[48px] min-w-[48px] flex-col items-center justify-center',
+      'relative flex min-h-[56px] min-w-[56px] flex-col items-center justify-center',
       'rounded-full p-3',
       'motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none',
-      'focus-visible:ring-[3px] focus-visible:ring-[rgb(var(--focus-color-rgb))] focus-visible:ring-offset-2',
+      'focus-visible:outline-[3px] focus-visible:outline-[rgb(var(--focus-color-rgb))] focus-visible:outline-offset-4',
       'group',
       isActive
         ? 'bg-[rgb(var(--surface-active-color-rgb))]'
-        : 'bg-[rgb(var(--surface-color-rgb))] hover:bg-[rgb(var(--surface-hover-color-rgb))] active:bg-[rgb(var(--surface-active-color-rgb))]',
+        : 'bg-[rgb(var(--surface-color-rgb))] hover:bg-[rgb(var(--surface-hover-color-rgb))] hover:scale-105 active:bg-[rgb(var(--surface-active-color-rgb))]',
     ]"
+    data-testid="hamburger-button"
     v-bind="$attrs"
   >
     <!-- Visuell versteckter Text für Screenreader -->
     <span class="sr-only">{{ isActive ? closeLabel : openLabel }}</span>
 
     <!-- Hamburger-Linien Container - verbessert Touch-Ziel -->
-    <div class="relative flex h-6 w-6 flex-col items-center justify-center">
+    <div class="relative flex h-7 w-7 flex-col items-center justify-center" aria-hidden="true">
       <!-- Hamburger-Linien -->
       <span
         aria-hidden="true"
         :class="[
-          'absolute block h-[2px] w-6 rounded-full',
+          'absolute block h-[3px] w-7 rounded-full',
           'motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none',
           isActive
             ? 'translate-y-0 rotate-45 bg-[rgb(var(--highlight-color-rgb))]'
-            : 'translate-y-[-6px] bg-[rgb(var(--text-color-rgb))] group-hover:bg-[rgb(var(--highlight-color-rgb))]',
+            : 'translate-y-[-8px] bg-[rgb(var(--text-color-rgb))] group-hover:bg-[rgb(var(--highlight-color-rgb))]',
         ]"
       />
       <span
         aria-hidden="true"
         :class="[
-          'absolute block h-[2px] w-6 rounded-full',
+          'absolute block h-[3px] w-7 rounded-full',
           'motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none',
           isActive
             ? 'scale-x-0 opacity-0'
@@ -44,11 +45,11 @@
       <span
         aria-hidden="true"
         :class="[
-          'absolute block h-[2px] w-6 rounded-full',
+          'absolute block h-[3px] w-7 rounded-full',
           'motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none',
           isActive
             ? 'translate-y-0 -rotate-45 bg-[rgb(var(--highlight-color-rgb))]'
-            : 'translate-y-[6px] bg-[rgb(var(--text-color-rgb))] group-hover:bg-[rgb(var(--highlight-color-rgb))]',
+            : 'translate-y-[8px] bg-[rgb(var(--text-color-rgb))] group-hover:bg-[rgb(var(--highlight-color-rgb))]',
         ]"
       />
     </div>
@@ -79,17 +80,20 @@ defineProps({
 @media (prefers-contrast: more) {
   :deep(button) span:not(.sr-only) {
     background-color: white !important;
-    height: 3px !important;
+    height: 4px !important;
     width: 100% !important;
     border: 1px solid black !important;
-    outline: 1px solid white !important;
+    outline: 2px solid white !important;
   }
 
   :deep(button) {
-    outline: 3px solid white !important;
-    outline-offset: 3px !important;
+    outline: 4px solid white !important;
+    outline-offset: 6px !important;
     background-color: black !important;
-    border: 2px solid white !important;
+    border: 3px solid white !important;
+    text-decoration: underline !important;
+    text-decoration-thickness: 2px !important;
+    font-weight: bold !important;
   }
 }
 

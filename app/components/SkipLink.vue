@@ -1,7 +1,7 @@
 <template>
   <a
     href="#main-content"
-    class="fixed left-[-9999px] top-4 z-[9999] flex min-h-[48px] min-w-[220px] items-center justify-center rounded-lg border-2 border-[rgb(var(--highlight-color-rgb))] bg-[rgb(var(--surface-color-rgb))] p-3 text-center text-base font-bold leading-normal text-[rgb(var(--text-color-rgb))] no-underline shadow-lg hover:cursor-pointer hover:bg-[rgb(var(--highlight-color-rgb))] hover:text-[rgb(var(--surface-color-rgb))] hover:underline focus:left-1/2 focus:-translate-x-1/2 focus:bg-[rgb(var(--highlight-color-rgb))] focus:text-[rgb(var(--surface-color-rgb))] focus:outline-none focus:ring-4 focus:ring-[rgb(var(--highlight-color-rgb))] focus:ring-offset-2 focus:underline active:translate-y-0.5 active:shadow-md motion-safe:transition-all motion-safe:duration-300 print:hidden"
+    class="fixed left-[-9999px] top-4 z-[9999] flex min-h-[48px] min-w-[220px] items-center justify-center rounded-lg border-2 border-[rgb(var(--highlight-color-rgb))] bg-[rgb(var(--surface-color-rgb))] p-3 text-center text-base font-bold leading-normal text-[rgb(var(--text-color-rgb))] no-underline shadow-sm hover:cursor-pointer hover:bg-[rgb(var(--highlight-color-rgb))] hover:text-[rgb(var(--surface-color-rgb))] hover:underline focus:left-1/2 focus:-translate-x-1/2 focus:bg-[rgb(var(--highlight-color-rgb))] focus:text-[rgb(var(--surface-color-rgb))] focus:outline-none focus-visible:ring-4 focus-visible:ring-[rgb(var(--highlight-color-rgb))] focus-visible:ring-offset-2 focus-visible:underline active:translate-y-0.5 active:shadow-xs motion-safe:transition-all motion-safe:duration-300 print:hidden"
     role="link"
     :aria-hidden="!isVisible"
     :aria-label="t('accessibility.skipToMain')"
@@ -63,7 +63,7 @@ const handleSkip = (event: Event) => {
     }
 
     // Fügt vorübergehend einen sichtbaren Fokusindikator hinzu
-    mainContent.style.outline = `2px solid rgb(var(--highlight-color-rgb))`
+    mainContent.style.outline = `3px solid rgb(var(--highlight-color-rgb))`
     mainContent.style.outlineOffset = '4px'
 
     // Scrollt zum Element unter Berücksichtigung der Präferenzen für reduzierte Bewegung
@@ -98,11 +98,12 @@ const handleSkip = (event: Event) => {
     color: ButtonText !important;
   }
 
-  a[data-testid='skip-link']:focus {
+  a[data-testid='skip-link']:focus-visible {
     outline: 3px solid ButtonText !important;
     outline-offset: 4px !important;
     background-color: Highlight !important;
     color: HighlightText !important;
+    text-decoration: underline !important;
   }
 }
 
@@ -115,7 +116,7 @@ const handleSkip = (event: Event) => {
     font-weight: 900 !important;
   }
 
-  a[data-testid='skip-link']:focus,
+  a[data-testid='skip-link']:focus-visible,
   a[data-testid='skip-link']:hover {
     background-color: black !important;
     color: white !important;

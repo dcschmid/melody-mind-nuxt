@@ -33,7 +33,8 @@ export const useCategories = () => {
     if (typeof window !== 'undefined') {
       categoryData.slice(0, 4).forEach((category) => {
         const img = new Image()
-        img.src = `${category.imageUrl}?w=480`
+        // Verwende den Originalpfad ohne Query-Parameter
+        img.src = category.imageUrl
       })
     }
   }
@@ -41,8 +42,18 @@ export const useCategories = () => {
   const loadCategories = async (locale: string) => {
     try {
       const { default: data } = await import(`../json/${locale}_categories.json`)
-      categories.value = data
-      preloadImages(data)
+
+      // Bildpfade für jede Kategorie präparieren
+      const processedData = data.map((category: Category) => ({
+        ...category,
+        // Stellen sicher, dass der Bildpfad korrekt formatiert ist
+        imageUrl: category.imageUrl.startsWith('/')
+          ? category.imageUrl // Bereits ein absoluter Pfad
+          : `/${category.imageUrl}` // Konvertiere zu absolutem Pfad
+      }))
+
+      categories.value = processedData
+      preloadImages(processedData)
     } catch (error) {
       console.error('Fehler beim Laden der Kategorien:', error)
       categories.value = []
