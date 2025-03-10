@@ -21,11 +21,6 @@ export default defineNuxtConfig({
     },
   },
   app: {
-    // Optimierte Page-Transitions für bessere Performance und Barrierefreiheit
-    pageTransition: {
-      name: 'page',
-      mode: 'out-in',
-    },
     head: {
       htmlAttrs: {
         dir: 'auto',
@@ -172,65 +167,6 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [tailwindcss()],
-    // Optimierung des Vite Build-Prozesses für bessere Performance
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks: (id) => {
-            // Intelligentes Code-Splitting nach Modul-Typen für optimale Ladestrategie
-            if (id.includes('node_modules')) {
-              if (id.includes('vue') || id.includes('router')) {
-                return 'vue-libs'
-              }
-              if (id.includes('pinia')) {
-                return 'pinia-store'
-              }
-              if (id.includes('tailwind') || id.includes('ui-components')) {
-                return 'ui-components'
-              }
-              // Drittanbieter-Bibliotheken in eigene Chunk
-              return 'vendor'
-            }
-            // Game-bezogene Komponenten in eigene Chunk für besseres Lazy-Loading
-            if (id.includes('/game-') || id.includes('/components/game/')) {
-              return 'game-features'
-            }
-            // Highscore-bezogene Funktionen zusammenfassen
-            if (id.includes('highscore') || id.includes('scores')) {
-              return 'scores-features'
-            }
-            return undefined
-          },
-        },
-      },
-      // Minimierung und Treeshaking optimieren
-      minify: 'terser',
-      terserOptions: {
-        compress: {
-          // Aggressivere Minimierung für schnellere Ladezeiten
-          drop_console: process.env.NODE_ENV === 'production',
-          drop_debugger: process.env.NODE_ENV === 'production',
-          pure_funcs: process.env.NODE_ENV === 'production' ? ['console.log', 'console.debug'] : [],
-          passes: 3, // Mehrere Durchläufe für bessere Optimierung
-        },
-        // Bessere Minimierung für Klassennamen und Property-Namen
-        mangle: {
-          properties: {
-            regex: /^_/,
-          },
-        },
-      },
-    },
-    // Optimieren der CSS-Verarbeitung
-    css: {
-      devSourcemap: false, // Nur in Produktion deaktivieren
-    },
-    // Optimieren des Dev-Servers für schnellere Entwicklung
-    server: {
-      hmr: {
-        overlay: true,
-      },
-    },
   },
   fathom: {
     siteId: 'RKHOWTTO',
