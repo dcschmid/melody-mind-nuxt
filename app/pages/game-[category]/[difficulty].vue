@@ -10,113 +10,78 @@
   <NuxtLayout name="default" :show-header="false" :show-menu="false">
     <main
       id="main-content"
-      class="min-h-screen bg-[var(--color-background)] p-4 motion-reduce:transition-none sm:p-6 lg:p-8 print:p-0"
+      class="min-h-screen bg-[var(--color-background)]"
       aria-live="polite"
       aria-atomic="true"
     >
-      <Transition
-        enter-active-class="transition-all duration-300 ease-out motion-reduce:transition-none will-change-transform"
-        enter-from-class="opacity-0 translate-x-4"
-        enter-to-class="opacity-100 translate-x-0"
-        leave-active-class="transition-all duration-300 ease-in motion-reduce:transition-none will-change-transform"
-        leave-from-class="opacity-100 translate-x-0"
-        leave-to-class="opacity-0 translate-x-4"
-        mode="out-in"
-        :css="!prefersReducedMotion"
+      <!-- Game Content -->
+      <div
+        v-if="!gameFinished"
+        :key="'game'"
+        class="mx-auto w-full max-w-3xl"
+        aria-label="Game in progress"
       >
-        <!-- Game Content -->
-        <div
-          v-if="!gameFinished"
-          :key="'game'"
-          class="mx-auto w-full max-w-3xl print:max-w-full"
-          aria-label="Game in progress"
-        >
-          <Transition
-            enter-active-class="transition-all duration-300 ease-out motion-reduce:transition-none will-change-transform"
-            enter-from-class="opacity-0 translate-y-4"
-            enter-to-class="opacity-100 translate-y-0"
-            leave-active-class="transition-all duration-300 ease-in motion-reduce:transition-none will-change-transform"
-            leave-from-class="opacity-100 translate-y-0"
-            leave-to-class="opacity-0 translate-y-4"
-            mode="out-in"
-            :css="!prefersReducedMotion"
-          >
-            <!-- Question View -->
-            <div
-              v-if="!showSolution"
-              :key="'question'"
-              class="space-y-6 motion-reduce:animate-none"
-            >
-              <GameHeader
-                :category-name="currentCategoryData.value?.name || category"
-                :current-round="usedQuestions.length"
-                :max-rounds="maxQuestions"
-                :points="points"
-                :is-animating="isAnimating"
-                :show-bonus="showBonus"
-                :latest-bonus="latestBonus"
-                class="mb-6"
-              />
+        <!-- Question View -->
+        <div v-if="!showSolution" :key="'question'">
+          <GameHeader
+            :category-name="currentCategoryData.value?.name || category"
+            :current-round="usedQuestions.length"
+            :max-rounds="maxQuestions"
+            :points="points"
+            :is-animating="isAnimating"
+            class="mb-6"
+          />
 
-              <ClientOnly fallback-tag="div" fallback-class="p-4 rounded-xl bg-gray-100 animate-pulse min-h-[300px]">
-                <GameQuestionView
-                  v-if="currentQuestion"
-                  :question="currentQuestion"
-                  :current-options="currentOptions"
-                  :hidden-options="hiddenOptions"
-                  :disabled="showSolution"
-                  :remaining-jokers="remainingJokers"
-                  :joker-used-for-current-question="jokerUsedForCurrentQuestion"
-                  :phone-expert-opinion="phoneExpertOpinion"
-                  :audience-opinion="audienceHelp"
-                  class="overflow-hidden rounded-xl shadow-lg"
-                  @select-answer="selectAnswer"
-                  @use-fifty-fifty="useFiftyFiftyJoker(currentQuestion)"
-                  @use-audience="useAudienceJoker(currentQuestion)"
-                  @use-phone="usePhoneJoker(currentQuestion)"
-                />
-              </ClientOnly>
-            </div>
-            <!-- Solution View -->
-            <div
-              v-else-if="currentQuestion"
-              :key="'solution'"
-            >
-              <ClientOnly fallback-tag="div" fallback-class="p-4 rounded-xl bg-gray-100 animate-pulse min-h-[300px]">
-                <SolutionView
-                  :is-correct-answer="isCorrectAnswer"
-                  :latest-bonus="latestBonus"
-                  :current-round="usedQuestions.length"
-                  :max-rounds="maxQuestions"
-                  :question="currentQuestion"
-                  :artist="currentArtist"
-                  :is-playing="isPlaying"
-                  :audio-loaded="audioLoaded"
-                  :is-buffering="isBuffering"
-                  :progress="progress"
-                  class="overflow-hidden rounded-xl shadow-lg motion-reduce:animate-none"
-                  @toggle-play="togglePlay"
-                  @next="nextQuestion"
-                />
-              </ClientOnly>
-            </div>
-          </Transition>
+          <GameQuestionView
+            v-if="currentQuestion"
+            :question="currentQuestion"
+            :current-options="currentOptions"
+            :hidden-options="hiddenOptions"
+            :disabled="showSolution"
+            :remaining-jokers="remainingJokers"
+            :joker-used-for-current-question="jokerUsedForCurrentQuestion"
+            :phone-expert-opinion="phoneExpertOpinion"
+            :audience-opinion="audienceHelp"
+            class="overflow-hidden rounded-xl shadow-lg"
+            @select-answer="selectAnswer"
+            @use-fifty-fifty="useFiftyFiftyJoker(currentQuestion)"
+            @use-audience="useAudienceJoker(currentQuestion)"
+            @use-phone="usePhoneJoker(currentQuestion)"
+          />
         </div>
-        <!-- Game Over Screen -->
-        <GameOverScreen
-          v-else
-          :key="'gameover'"
-          :total-points="totalPoints"
-          :correct-answers="game.correctAnswers.value"
-          :max-questions="maxQuestions"
-          :earned-record="currentReward !== 'none'"
-          :record-icon="recordIcon"
-          :record-class="recordClass"
-          :result-message="currentResultMessage"
-          class="mx-auto max-w-3xl overflow-hidden rounded-xl shadow-lg motion-reduce:animate-none print:border print:border-gray-300 print:shadow-none"
-          aria-label="Game over screen"
-        />
-      </Transition>
+        <!-- Solution View -->
+        <div v-else-if="currentQuestion" :key="'solution'">
+            <SolutionView
+              :is-correct-answer="isCorrectAnswer"
+              :latest-bonus="latestBonus"
+              :current-round="usedQuestions.length"
+              :max-rounds="maxQuestions"
+              :question="currentQuestion"
+              :artist="currentArtist"
+              :is-playing="isPlaying"
+              :audio-loaded="audioLoaded"
+              :is-buffering="isBuffering"
+              :progress="progress"
+              class="overflow-hidden rounded-xl shadow-lg motion-reduce:animate-none"
+              @toggle-play="togglePlay"
+              @next="nextQuestion"
+            />
+        </div>
+      </div>
+      <!-- Game Over Screen -->
+      <GameOverScreen
+        v-else
+        :key="'gameover'"
+        :total-points="totalPoints"
+        :correct-answers="game.correctAnswers.value"
+        :max-questions="maxQuestions"
+        :earned-record="currentReward !== 'none'"
+        :record-icon="recordIcon"
+        :record-class="recordClass"
+        :result-message="currentResultMessage"
+        class="mx-auto max-w-3xl overflow-hidden rounded-xl shadow-lg motion-reduce:animate-none print:border print:border-gray-300 print:shadow-none"
+        aria-label="Game over screen"
+      />
     </main>
   </NuxtLayout>
 </template>
@@ -247,7 +212,7 @@ const {
   totalPoints,
   isAnimating,
   showBonus,
-  latestBonus
+  latestBonus,
 } = game
 
 const artist = useArtist() // Artist/music info handling
@@ -325,11 +290,14 @@ onMounted(async () => {
 })
 
 // Handle artist changes for audio playback
-watch(() => artist.currentArtist.value, (newArtist) => {
-  if (newArtist) {
-    gameAudio.handleArtistChange(newArtist)
+watch(
+  () => artist.currentArtist.value,
+  (newArtist) => {
+    if (newArtist) {
+      gameAudio.handleArtistChange(newArtist)
+    }
   }
-})
+)
 
 // Monitor game completion
 watch(
@@ -350,7 +318,7 @@ watch(
             // Hinzufügen der erforderlichen LP-Felder für den Highscore-Typ
             goldLP: currentReward.value === 'gold',
             silverLP: currentReward.value === 'silver',
-            bronzeLP: currentReward.value === 'bronze'
+            bronzeLP: currentReward.value === 'bronze',
           })
 
           if (savingResult) {

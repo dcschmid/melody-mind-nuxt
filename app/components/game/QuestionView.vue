@@ -1,18 +1,18 @@
 <template>
   <div
-    class="print:print-friendly mx-auto flex w-full flex-col gap-6 py-6"
+    class="print:print-friendly mx-auto flex w-full flex-col gap-6"
     role="main"
     :aria-label="t('game.aria.quizQuestion')"
   >
     <!-- Frage -->
     <div
-      class="rounded-lg border-2 border-[rgb(var(--surface-color-light-rgb))] bg-[rgb(var(--surface-color-rgb))] p-6 shadow-md md:p-8"
+      class="rounded-lg border-2 border-[rgb(var(--surface-color-light-rgb))] bg-[rgb(var(--surface-color-rgb))] p-6 shadow-md"
       role="region"
       aria-labelledby="question-text"
     >
       <h1
         id="question-text"
-        class="mb-4 text-center text-[clamp(1.5rem,1.7vw+1rem,1.75rem)] leading-normal font-bold text-[rgb(var(--text-color-rgb))]"
+        class="mb-4 text-center text-base leading-normal font-bold text-[rgb(var(--text-color-rgb))]"
       >
         {{ question.question }}
       </h1>
@@ -20,39 +20,37 @@
 
     <!-- Antwortmöglichkeiten -->
     <div class="w-full" role="group" :aria-label="t('game.aria.answerOptions')">
-      <TransitionGroup v-bind="transitionGroupProps">
-        <Button
-          v-for="(option, index) in currentOptions"
-          v-show="!hiddenOptions.includes(option)"
-          :key="option"
-          :disabled="disabled || hiddenOptions.includes(option)"
-          :aria-label="t('game.selectAnswer', { answer: option })"
-          :aria-hidden="hiddenOptions.includes(option)"
-          :aria-disabled="disabled || hiddenOptions.includes(option)"
-          :tabindex="hiddenOptions.includes(option) ? -1 : 0"
-          :data-index="index + 1"
-          variant="secondary"
-          full-width
-          class-name="min-h-[3rem] py-4 text-[clamp(1.5rem,1.7vw+1rem,1.75rem)] font-semibold leading-normal text-center border-2 border-transparent motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-out relative hover:translate-y-[-2px] hover:border-[rgb(var(--highlight-color-rgb))] hover:shadow-lg focus:ring-[3px] focus:ring-[rgb(var(--focus-color-rgb))] focus:ring-offset-2 motion-reduce:transition-none"
-          @click="$emit('select-answer', option)"
-        >
-          <span>{{ option }}</span>
-          <span class="sr-only">{{ t('game.option', { number: index + 1 }) }}</span>
-        </Button>
-      </TransitionGroup>
+      <Button
+        v-for="(option, index) in currentOptions"
+        v-show="!hiddenOptions.includes(option)"
+        :key="option"
+        :disabled="disabled || hiddenOptions.includes(option)"
+        :aria-label="t('game.selectAnswer', { answer: option })"
+        :aria-hidden="hiddenOptions.includes(option)"
+        :aria-disabled="disabled || hiddenOptions.includes(option)"
+        :tabindex="hiddenOptions.includes(option) ? -1 : 0"
+        :data-index="index + 1"
+        variant="secondary"
+        full-width
+        className="min-h-[3rem] w-full mb-6 py-4 text-base leading-normal text-center border-2 border-transparent relative"
+        @click="$emit('select-answer', option)"
+      >
+        <span>{{ option }}</span>
+        <span class="sr-only">{{ t('game.option', { number: index + 1 }) }}</span>
+      </Button>
     </div>
 
     <!-- Telefonjoker Antwort -->
     <div
       v-if="phoneExpertOpinion"
-      class="my-4 rounded-lg border-2 border-[rgb(var(--surface-color-light-rgb))] bg-[rgb(var(--surface-color-rgb))] p-6 shadow-md"
+      class="my-4 rounded-lg border-2 border-[rgb(var(--surface-color-light-rgb))] bg-[rgb(var(--surface-color-rgb))] shadow-md"
       role="region"
       :aria-label="t('game.aria.expertAdvice')"
       aria-labelledby="expert-title"
     >
       <h2
         id="expert-title"
-        class="mb-4 text-[clamp(1.75rem,2vw+1.25rem,2rem)] leading-tight font-bold tracking-wide text-[rgb(var(--text-color-rgb))]"
+        class="mb-4 text-lg leading-tight font-bold tracking-wide text-[rgb(var(--text-color-rgb))]"
       >
         {{ t('game.expert.title') }}
       </h2>
@@ -63,15 +61,14 @@
           >
             <Icon name="material-symbols:call" class="text-2xl" aria-hidden="true" />
           </div>
-          <span
-            class="text-[clamp(1.5rem,1.7vw+1rem,1.75rem)] font-semibold text-[rgb(var(--text-color-rgb))]"
-            >{{ phoneExpertOpinion.expert }}</span
-          >
+          <span class="text-base font-semibold text-[rgb(var(--text-color-rgb))]">{{
+            phoneExpertOpinion.expert
+          }}</span>
         </div>
         <div
           class="bg-opacity-30 rounded-lg border border-[rgb(var(--border-color-rgb))] bg-[rgb(var(--surface-color-light-rgb))] p-4"
         >
-          <p class="mb-6 text-[clamp(1.5rem,1.7vw+1rem,1.75rem)] leading-relaxed">
+          <p class="mb-6 text-base leading-relaxed text-pretty">
             {{ phoneExpertOpinion.message }}
           </p>
           <div
@@ -110,14 +107,14 @@
     <!-- Publikumsjoker Antwort -->
     <div
       v-if="audienceOpinion && Object.keys(audienceOpinion).length > 0"
-      class="my-4 rounded-lg border-2 border-[rgb(var(--surface-color-light-rgb))] bg-[rgb(var(--surface-color-rgb))] p-6 shadow-md"
+      class="rounded-lg border-2 border-[rgb(var(--surface-color-light-rgb))] bg-[rgb(var(--surface-color-rgb))] p-4 shadow-md"
       role="region"
       :aria-label="t('game.aria.audienceOpinion')"
       aria-labelledby="audience-title"
     >
       <h2
         id="audience-title"
-        class="mb-6 text-[clamp(1.75rem,2vw+1.25rem,2rem)] leading-tight font-bold tracking-wide text-[rgb(var(--text-color-rgb))]"
+        class="mb-6 text-lg leading-tight font-bold tracking-wide text-[rgb(var(--text-color-rgb))]"
       >
         {{ t('game.jokers.audience.title') }}
       </h2>
@@ -125,29 +122,31 @@
         <div
           v-for="(percentage, option) in audienceOpinion"
           :key="option"
-          class="flex items-center gap-3"
+          class="flex flex-col gap-3"
           role="progressbar"
           :aria-valuenow="percentage"
           aria-valuemin="0"
           aria-valuemax="100"
           :aria-label="t('game.jokers.audience.result', { option, percentage })"
         >
-          <div class="w-16 font-semibold text-[rgb(var(--text-color-rgb))]" aria-hidden="true">
+          <div class="w-full font-semibold text-[rgb(var(--text-color-rgb))]" aria-hidden="true">
             {{ option }}
           </div>
-          <div
-            class="h-[44px] flex-1 overflow-hidden rounded-full bg-[rgb(var(--surface-color-light-rgb))] shadow-md"
-          >
+          <div class="flex flex-row">
             <div
-              class="h-full rounded-full bg-[rgb(var(--primary-color-rgb))] motion-safe:transition-[width] motion-safe:duration-300 motion-safe:ease-out motion-reduce:transition-none"
-              :style="{ width: percentage + '%' }"
-            />
-          </div>
-          <div
-            class="w-16 text-right text-[clamp(1.5rem,1.7vw+1rem,1.75rem)] font-semibold text-[rgb(var(--text-color-rgb))]"
-            aria-hidden="true"
-          >
-            {{ percentage }}%
+              class="h-[44px] flex-1 overflow-hidden rounded-full bg-[rgb(var(--surface-color-light-rgb))] shadow-md"
+            >
+              <div
+                class="h-full rounded-full bg-[rgb(var(--primary-color-rgb))] motion-safe:transition-[width]"
+                :style="{ width: percentage + '%' }"
+              />
+            </div>
+            <div
+              class="w-16 text-right text-base font-semibold text-[rgb(var(--text-color-rgb))]"
+              aria-hidden="true"
+            >
+              {{ percentage }}%
+            </div>
           </div>
         </div>
       </div>
@@ -264,8 +263,6 @@ defineEmits<{
 </script>
 
 <style>
-@tailwind utilities;
-
 @layer utilities {
   .fade-shrink-move,
   .fade-shrink-enter-active,

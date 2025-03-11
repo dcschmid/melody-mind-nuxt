@@ -10,7 +10,7 @@
           v-if="currentCategory"
           :data-category="currentCategory?.slug"
           aria-labelledby="difficulty-heading"
-          class="mx-auto flex max-w-4xl flex-col items-center gap-8 transition-all duration-300 ease-in-out motion-reduce:transition-none md:gap-12"
+          class="mx-auto flex max-w-4xl flex-col items-center gap-8 md:gap-12"
         >
           <CategoryCover
             :image-url="currentCategory.imageUrl"
@@ -43,9 +43,9 @@
               <!-- Music streaming services links -->
               <div
                 v-if="
-                  currentCategory.spotifyPlaylist
-                  || currentCategory.deezerPlaylist
-                  || currentCategory.appleMusicPlaylist
+                  currentCategory.spotifyPlaylist ||
+                  currentCategory.deezerPlaylist ||
+                  currentCategory.appleMusicPlaylist
                 "
                 role="list"
                 aria-labelledby="streaming-services-title"
@@ -58,9 +58,9 @@
                   rel="noopener noreferrer"
                   :aria-label="t('category.playlist.spotify')"
                   role="listitem"
-                  class="flex h-16 min-h-[44px] w-16 items-center justify-center rounded-full bg-[#1DB954] text-white shadow transition-all duration-300 hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-[#1DB954]/50 motion-reduce:transition-none"
+                  class="flex h-16 min-h-[44px] w-16 items-center justify-center rounded-full bg-[#1DB954] text-white shadow hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-[#1DB954]/50"
                 >
-                  <Icon name="mdi:spotify" class="h-8 w-8" aria-hidden="true" />
+                  <Icon name="mdi:spotify" class="h-16 w-16" aria-hidden="true" />
                 </a>
 
                 <a
@@ -70,7 +70,7 @@
                   rel="noopener noreferrer"
                   :aria-label="t('category.playlist.deezer')"
                   role="listitem"
-                  class="flex h-16 min-h-[44px] w-16 items-center justify-center rounded-full bg-[#00C7F2] text-white shadow transition-all duration-300 hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-[#00C7F2]/50 motion-reduce:transition-none"
+                  class="flex h-16 min-h-[44px] w-16 items-center justify-center rounded-full bg-[#00C7F2] text-white shadow hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-[#00C7F2]/50"
                 >
                   <Icon name="simple-icons:deezer" class="h-8 w-8" aria-hidden="true" />
                 </a>
@@ -82,7 +82,7 @@
                   rel="noopener noreferrer"
                   :aria-label="t('category.playlist.apple')"
                   role="listitem"
-                  class="flex h-16 min-h-[44px] w-16 items-center justify-center rounded-full bg-[#FA243C] text-white shadow transition-all duration-300 hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-[#FA243C]/50 motion-reduce:transition-none"
+                  class="flex h-16 min-h-[44px] w-16 items-center justify-center rounded-full bg-[#FA243C] text-white shadow hover:shadow-md focus:outline-none focus-visible:ring-4 focus-visible:ring-[#FA243C]/50"
                 >
                   <Icon name="simple-icons:applemusic" class="h-8 w-8" aria-hidden="true" />
                 </a>
@@ -93,12 +93,12 @@
                 <NuxtLink
                   :to="localePath(`${currentCategory.knowledgeUrl}`)"
                   :aria-label="t('category.knowledge.link', { genre: currentCategory.headline })"
-                  class="group flex min-h-[44px] items-center gap-3 rounded-lg bg-[var(--color-primary)] px-6 py-3 text-white shadow-md transition-all duration-300 hover:bg-[var(--color-primary-dark)] hover:shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-[var(--color-primary)]/50 motion-reduce:transition-none"
+                  class="group flex min-h-[44px] items-center gap-3 rounded-lg bg-[var(--color-primary)] px-6 py-3 text-white shadow-md hover:bg-[var(--color-primary-dark)] hover:shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-[var(--color-primary)]/50"
                 >
                   <Icon
                     name="material-symbols:menu-book"
                     aria-hidden="true"
-                    class="h-6 w-6 transition-transform duration-300 group-hover:scale-110 motion-reduce:transform-none motion-reduce:transition-none"
+                    class="h-6 w-6 group-hover:scale-110 motion-reduce:transform-none"
                   />
                   <span class="font-medium">{{ t('category.knowledge.title') }}</span>
                 </NuxtLink>

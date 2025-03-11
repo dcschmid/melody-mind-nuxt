@@ -86,7 +86,7 @@
               :aria-label="isPlaying ? t('game.audio.pause') : t('game.audio.play')"
               aria-pressed="false"
               variant="primary"
-              class-name="min-w-[3rem] min-h-[3rem] rounded-full p-0 flex items-center justify-center motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-out hover:scale-105 focus:ring-[3px] focus:ring-[rgb(var(--focus-color-rgb))] focus:ring-offset-2 motion-reduce:transition-none"
+              className="min-w-[3rem] min-h-[3rem] rounded-full p-0 flex items-center justify-center motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-out hover:scale-105 focus:ring-[3px] focus:ring-[rgb(var(--focus-color-rgb))] focus:ring-offset-2 motion-reduce:transition-none"
               @click="togglePlay"
             >
               <Icon
@@ -199,14 +199,14 @@
       >
         {{ t('game.trivia.title') }}
       </h3>
-      <div class="text-base leading-relaxed text-[rgb(var(--text-color-rgb))]">
+      <div class="text-base leading-relaxed text-pretty text-[rgb(var(--text-color-rgb))]">
         {{ artist.trivia }}
       </div>
     </div>
 
     <Button
       :aria-label="t('game.next')"
-      variant="primary"
+      variant="icon"
       class-name="w-fit min-h-[3rem] flex items-center justify-center gap-2 mx-auto my-6 p-4 text-base font-medium motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-out hover:translate-y-[-2px] hover:shadow-lg focus:ring-[3px] focus:ring-[rgb(var(--focus-color-rgb))] focus:ring-offset-2 motion-reduce:transition-none"
       @click="$emit('next')"
     >

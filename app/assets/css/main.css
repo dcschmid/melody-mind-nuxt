@@ -31,9 +31,6 @@
   background-color: rgb(var(--primary-color-rgb));
 }
 
-/* Print Utilities */
-.print\:print-friendly {
-}
 @media print {
   .print\:print-friendly {
     padding: 0;
@@ -79,8 +76,7 @@
   transition-property: color, background-color, border-color;
   transition-duration: 150ms;
 }
-.motion-reduce\:transition-none {
-}
+
 @media (prefers-reduced-motion: reduce) {
   .motion-reduce\:transition-none {
     transition: none;

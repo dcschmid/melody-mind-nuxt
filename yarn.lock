@@ -1803,20 +1803,19 @@
     sirv "^3.0.1"
     ufo "^1.5.4"
 
-"@nuxtjs/tailwindcss@^6.13.1":
-  version "6.13.1"
-  resolved "https://registry.npmjs.org/@nuxtjs/tailwindcss/-/tailwindcss-6.13.1.tgz"
-  integrity sha512-atL2SaPsxLfMTlXUQvr1UpDYdz6ocNOhH35H+t7M++g4r79QiQScJ7XuyyMR9AyBN19lkPA3nw7NXxazXmYxlA==
+"@nuxtjs/tailwindcss@^6.13.2":
+  version "6.13.2"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/tailwindcss/-/tailwindcss-6.13.2.tgz#116e4896b592b5d8e40d1095f0df2c5753779539"
+  integrity sha512-knCmVe1I0div4tWj6f9GRaHX97zqD257gOeG4JIcWsC0yRfoiT34GBAyqK8Sc15qiKKMB/lZK6Z3skQRYRk/1Q==
   dependencies:
-    "@nuxt/kit" "^3.15.1"
     autoprefixer "^10.4.20"
-    c12 "^2.0.1"
-    consola "^3.3.3"
+    c12 "^3.0.2"
+    consola "^3.4.0"
     defu "^6.1.4"
-    h3 "^1.13.1"
+    h3 "^1.15.1"
     klona "^2.0.6"
-    pathe "^2.0.1"
-    postcss "^8.4.49"
+    pathe "^2.0.3"
+    postcss "^8.5.3"
     postcss-nesting "^13.0.1"
     tailwind-config-viewer "^2.0.4"
     tailwindcss "~3.4.17"
@@ -3137,15 +3136,14 @@
     "@vueuse/shared" "11.3.0"
     vue-demi ">=0.14.10"
 
-"@vueuse/core@12.8.2", "@vueuse/core@^12.8.2":
-  version "12.8.2"
-  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-12.8.2.tgz#007c6dd29a7d1f6933e916e7a2f8ef3c3f968eaa"
-  integrity sha512-HbvCmZdzAu3VGi/pWYm5Ut+Kd9mn1ZHnn4L5G8kOQTPs/IwIAmJoBrmYk2ckLArgMXZj0AW3n5CAejLUO+PhdQ==
+"@vueuse/core@13.0.0", "@vueuse/core@^13.0.0":
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-13.0.0.tgz#60bf419e3f9fb003b51f1dfed550afffdb1691ff"
+  integrity sha512-rkgb4a8/0b234lMGCT29WkCjPfsX0oxrIRR7FDndRoW3FsaC9NBzefXg/9TLhAgwM11f49XnutshM4LzJBrQ5g==
   dependencies:
     "@types/web-bluetooth" "^0.0.21"
-    "@vueuse/metadata" "12.8.2"
-    "@vueuse/shared" "12.8.2"
-    vue "^3.5.13"
+    "@vueuse/metadata" "13.0.0"
+    "@vueuse/shared" "13.0.0"
 
 "@vueuse/head@^2.0.0":
   version "2.0.0"
@@ -3157,24 +3155,23 @@
     "@unhead/ssr" "^1.7.0"
     "@unhead/vue" "^1.7.0"
 
-"@vueuse/integrations@^12.8.2":
-  version "12.8.2"
-  resolved "https://registry.yarnpkg.com/@vueuse/integrations/-/integrations-12.8.2.tgz#d04f33d86fe985c9a27c98addcfde9f30f2db1df"
-  integrity sha512-fbGYivgK5uBTRt7p5F3zy6VrETlV9RtZjBqd1/HxGdjdckBgBM4ugP8LHpjolqTj14TXTxSK1ZfgPbHYyGuH7g==
+"@vueuse/integrations@^13.0.0":
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/integrations/-/integrations-13.0.0.tgz#dd73747a7f163e3397f09b9ba20c77140d6e9073"
+  integrity sha512-PXARslYRWf4u0xjdW6N5eC5kVQj2z/dxfZ7ildI1okLm2AwmhL+wiWzaNMSJMxTKX4ew7kNe70yJg1QjnWmE5w==
   dependencies:
-    "@vueuse/core" "12.8.2"
-    "@vueuse/shared" "12.8.2"
-    vue "^3.5.13"
+    "@vueuse/core" "13.0.0"
+    "@vueuse/shared" "13.0.0"
 
 "@vueuse/metadata@11.3.0":
   version "11.3.0"
   resolved "https://registry.npmjs.org/@vueuse/metadata/-/metadata-11.3.0.tgz"
   integrity sha512-pwDnDspTqtTo2HwfLw4Rp6yywuuBdYnPYDq+mO38ZYKGebCUQC/nVj/PXSiK9HX5otxLz8Fn7ECPbjiRz2CC3g==
 
-"@vueuse/metadata@12.8.2":
-  version "12.8.2"
-  resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-12.8.2.tgz#6cb3a4e97cdcf528329eebc1bda73cd7f64318d3"
-  integrity sha512-rAyLGEuoBJ/Il5AmFHiziCPdQzRt88VxR+Y/A/QhJ1EWtWqPBBAxTAFaSkviwEuOEZNtW8pvkPgoCZQ+HxqW1A==
+"@vueuse/metadata@13.0.0":
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-13.0.0.tgz#f9c70e1d4958869693e6dcf385d3294cdd304b58"
+  integrity sha512-TRNksqmvtvqsuHf7bbgH9OSXEV2b6+M3BSN4LR5oxWKykOFT9gV78+C2/0++Pq9KCp9KQ1OQDPvGlWNQpOb2Mw==
 
 "@vueuse/nuxt@^11.1.0":
   version "11.3.0"
@@ -3194,12 +3191,10 @@
   dependencies:
     vue-demi ">=0.14.10"
 
-"@vueuse/shared@12.8.2":
-  version "12.8.2"
-  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-12.8.2.tgz#b9e4611d0603629c8e151f982459da394e22f930"
-  integrity sha512-dznP38YzxZoNloI0qpEfpkms8knDtaoQ6Y/sfS0L7Yki4zh40LFHEhur0odJC6xTHG5dxWVPiUWBXn+wCG2s5w==
-  dependencies:
-    vue "^3.5.13"
+"@vueuse/shared@13.0.0":
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-13.0.0.tgz#4bc454ac359303904d4cf9b23e0dd265be90bf2d"
+  integrity sha512-9MiHhAPw+sqCF/RLo8V6HsjRqEdNEWVpDLm2WBRW2G/kSQjb8X901sozXpSCaeLG0f7TEfMrT4XNaA5m1ez7Dg==
 
 abbrev@^3.0.0:
   version "3.0.0"
@@ -5458,7 +5453,7 @@ h3-compression@^0.3.2:
   resolved "https://registry.npmjs.org/h3-compression/-/h3-compression-0.3.2.tgz"
   integrity sha512-B+yCKyDRnO0BXSfjAP4tCXJgJwmnKp3GyH5Yh66mY9KuOCrrGQSPk/gBFG2TgH7OyB/6mvqNZ1X0XNVuy0qRsw==
 
-h3@^1.10.0, h3@^1.12.0, h3@^1.13.0, h3@^1.13.1, h3@^1.15.0, h3@^1.15.1:
+h3@^1.10.0, h3@^1.12.0, h3@^1.13.0, h3@^1.15.0, h3@^1.15.1:
   version "1.15.1"
   resolved "https://registry.npmjs.org/h3/-/h3-1.15.1.tgz"
   integrity sha512-+ORaOBttdUm1E2Uu/obAyCguiI7MbBvsLTndc3gyK3zU+SYLoZXlyCP9Xgy0gikkGufFLTZXCXD6+4BsufnmHA==
@@ -8318,7 +8313,7 @@ postcss-value-parser@^4.0.0, postcss-value-parser@^4.2.0:
   resolved "https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
-postcss@^8.4.47, postcss@^8.4.48, postcss@^8.4.49, postcss@^8.5.1, postcss@^8.5.3:
+postcss@^8.4.47, postcss@^8.4.48, postcss@^8.5.1, postcss@^8.5.3:
   version "8.5.3"
   resolved "https://registry.npmjs.org/postcss/-/postcss-8.5.3.tgz"
   integrity sha512-dle9A3yYxlBSrt8Fu+IpjGT8SY8hN0mlaA6GY8t0P5PjIOZemULz/E2Bnm/2dcUOena75OTNkHI76uZBNUUq3A==
