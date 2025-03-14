@@ -1,20 +1,9 @@
 import { computed, onUnmounted } from 'vue'
 import { useQuestionsStore } from '../stores/questionsStore'
+import { Question } from '../types/question'
 
-// Type definitions for the quiz structure
-// Exported for use in other components
-export interface Question {
-  question: string
-  options: string[]
-  correctAnswer: string
-}
-
-// Type definition for question structure only
-// Dictionary structure is now handled by the store
-
-// Shuffle algorithm now implemented directly in the store
-
-// Shuffle and memoization now implemented in the store
+// Type definitions for the quiz structure are now imported from shared file
+export { Question } from '../types/question }
 
 /**
  * Legacy composable that uses the new Pinia store internally
@@ -77,25 +66,6 @@ export const useQuestions = (category: string, difficulty: string) => {
     loadQuestions,
     selectRandomQuestion,
     // Add a reference to the store for advanced usage
-    store: questionsStore
+    store: questionsStore,
   }
 }
-
-// Memoization is now handled by the Pinia store
-// This code is kept for reference but marked as unused to avoid linting issues
-/*
-function memoize<TArgs extends unknown[], TReturn>(fn: (...args: TArgs) => TReturn) {
-  const cache = new Map<string, TReturn>()
-  return (...args: TArgs): TReturn => {
-    const key = JSON.stringify(args)
-    const cachedResult = cache.get(key)
-    if (cachedResult !== undefined) {
-      return cachedResult
-    }
-
-    const result = fn(...args)
-    cache.set(key, result)
-    return result
-  }
-}
-*/

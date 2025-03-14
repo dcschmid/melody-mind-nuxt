@@ -23,7 +23,7 @@
  * - Each file contains an array of category objects with properties:
  *   - categoryUrl: string (e.g., '/rock-music')
  *   - isPlayable: boolean
- *   - [other metadata]
+ *   - other metadata]
  *
  * Output:
  * - JavaScript module (../app/sitemap-urls.js)

@@ -4,7 +4,7 @@ Content Generation Script for MelodyMind
 =======================================
 
 This script generates comprehensive, multilingual content for music categories
-using the Ollama API. It creates structured markdown files with SEO-optimized
+using the OpenAI API. It creates structured markdown files with SEO-optimized
 metadata and detailed content sections for each music category.
 
 Features:
@@ -19,12 +19,12 @@ Features:
 Dependencies:
 - Python 3.8+
 - External packages:
-  - ollama: For API communication with Ollama
+  - openai: For API communication with OpenAI
   - pathlib: For cross-platform path handling
   - typing: For type hints
 - Requirements:
-  - Ollama must be installed and running locally (or at specified host)
-  - A compatible model must be pulled (e.g., llama3, llama3.2)
+  - OpenAI API key must be set as environment variable
+  - Compatible model access (e.g., o3-mini)
 
 File Structure:
 - Input Files:
@@ -81,7 +81,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
-import ollama
+import openai
 
 # Configure logging
 logging.basicConfig(
@@ -95,12 +95,17 @@ BASE_DIR = Path(__file__).parent.parent  # Project root directory
 CONTENT_DIR = BASE_DIR / "content" / "knowledge"  # Directory for generated content
 JSON_DIR = BASE_DIR / "app" / "json"  # Directory for JSON data
 
-# Ollama configuration - customize as needed
-OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://localhost:11434")  # Ollama API host
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "mistral-small")  # Default model to use
+# OpenAI configuration - customize as needed
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "o3-mini")  # Default model to use
 
-# Initialize Ollama client
-ollama_client = ollama.Client(host=OLLAMA_HOST)
+# Initialize OpenAI client
+if not OPENAI_API_KEY:
+    raise ValueError(
+        "OpenAI API key not found. Please set OPENAI_API_KEY environment variable."
+    )
+
+openai_client = openai.OpenAI(api_key=OPENAI_API_KEY)
 
 
 def get_available_languages() -> List[str]:
@@ -1387,6 +1392,25 @@ def get_language_prompts(language):
             9. Berücksichtige den deutschen Sprachrhythmus
             10. Verwende dem Kontext angemessene Formulierungen
             
+            ABSATZSTRUKTUR UND LESEFLUSS:
+            1. Beginne einen neuen Absatz bei jedem Themenwechsel oder neuer Idee
+            2. Halte Absätze auf 3-5 Sätze begrenzt für optimale Lesbarkeit
+            3. Verwende kürzere Absätze für wichtige Aussagen oder Übergänge
+            4. Schaffe visuelle Pausen im Text durch sinnvolle Absatzstruktur
+            5. Stelle sicher, dass jeder Absatz eine klare Kernaussage enthält
+            6. Vermeide zu lange, ungegliederte Textblöcke
+            7. Nutze Absätze zur inhaltlichen Strukturierung und Argumentationsentwicklung
+            
+            ABSATZÜBERGÄNGE UND TEXTFLUSS:
+            1. Schaffe nahtlose Übergänge zwischen allen Absätzen
+            2. Verwende Überleitungswörter und -sätze (z.B. "Zudem", "Darüber hinaus", "Im Gegensatz dazu")
+            3. Stelle inhaltliche Verbindungen zwischen aufeinanderfolgenden Absätzen her
+            4. Sorge für thematische Kontinuität durch den gesamten Text
+            5. Nutze Bezugnahmen auf vorherige Absätze, um Kohärenz zu schaffen
+            6. Vermeide abrupte Themenwechsel ohne passende Überleitungen
+            7. Entwickle Argumente und Ideen über mehrere Absätze hinweg fließend
+            8. Baue eine logische Progression auf, die den Leser durch den Text führt
+            
             INHALTLICHE ANFORDERUNGEN:
             1. Der Text MUSS mindestens {char_min} Zeichen lang sein
             2. Konzentriere dich ausschließlich auf internationale Musik
@@ -1419,6 +1443,25 @@ def get_language_prompts(language):
             8. Use idiomatic expressions where appropriate
             9. Consider English language rhythm and cadence
             10. Apply context-appropriate phrasing
+            
+            PARAGRAPH STRUCTURE AND READABILITY:
+            1. Begin a new paragraph with each topic change or new idea
+            2. Keep paragraphs to 3-5 sentences for optimal readability
+            3. Use shorter paragraphs for important statements or transitions
+            4. Create visual breaks in the text through thoughtful paragraph structure
+            5. Ensure each paragraph contains one clear main point
+            6. Avoid long, undivided blocks of text
+            7. Use paragraphs to structure content and develop arguments
+            
+            PARAGRAPH TRANSITIONS AND TEXT FLOW:
+            1. Create seamless transitions between all paragraphs
+            2. Use transitional words and phrases (e.g., "Moreover," "Furthermore," "In contrast")
+            3. Establish content connections between consecutive paragraphs
+            4. Maintain thematic continuity throughout the entire text
+            5. Reference previous paragraphs to build coherence
+            6. Avoid abrupt topic changes without appropriate transitions
+            7. Develop arguments and ideas fluidly across multiple paragraphs
+            8. Build a logical progression that guides the reader through the text
             
             CONTENT SPECIFICATIONS:
             1. Text length MUST be at least {char_min} characters
@@ -1453,6 +1496,25 @@ def get_language_prompts(language):
             9. Tenez compte du rythme de la langue française
             10. Adaptez le style au contexte culturel français
             
+            STRUCTURE DES PARAGRAPHES ET LISIBILITÉ:
+            1. Commencez un nouveau paragraphe à chaque changement de sujet ou nouvelle idée
+            2. Limitez les paragraphes à 3-5 phrases pour une lisibilité optimale
+            3. Utilisez des paragraphes plus courts pour des déclarations importantes ou des transitions
+            4. Créez des pauses visuelles dans le texte grâce à une structure de paragraphe réfléchie
+            5. Assurez-vous que chaque paragraphe contient un point principal clair
+            6. Évitez les blocs de texte longs et non divisés
+            7. Utilisez des paragraphes pour structurer le contenu et développer des arguments
+            
+            TRANSITIONS ENTRE PARAGRAPHES ET FLUX DU TEXTE:
+            1. Créez des transitions fluides entre tous les paragraphes
+            2. Utilisez des mots et des phrases de transition (par exemple, "De plus", "En outre", "En revanche")
+            3. Établissez des connexions de contenu entre les paragraphes consécutifs
+            4. Maintenez la continuité thématique tout au long du texte
+            5. Faites référence aux paragraphes précédents pour renforcer la cohérence
+            6. Évitez les changements de sujet abrupts sans transitions appropriées
+            7. Développez des arguments et des idées de manière fluide sur plusieurs paragraphes
+            8. Construisez une progression logique qui guide le lecteur à travers le texte
+            
             EXIGENCES DE CONTENU:
             1. Respectez strictement le minimum de caractères : {char_min}
             2. Développez une analyse académique de la musique internationale
@@ -1485,6 +1547,25 @@ def get_language_prompts(language):
             8. Emplee expresiones idiomáticas adecuadas
             9. Considere el ritmo del español
             10. Adapte el estilo al contexto hispanohablante
+            
+            ESTRUCTURA DE PÁRRAFOS Y LEGIBILIDAD:
+            1. Comience un nuevo párrafo con cada cambio de tema o nueva idea
+            2. Mantenga los párrafos en 3-5 oraciones para una legibilidad óptima
+            3. Use párrafos más cortos para declaraciones importantes o transiciones
+            4. Cree pausas visuales en el texto a través de una estructura de párrafo reflexiva
+            5. Asegúrese de que cada párrafo contenga un punto principal claro
+            6. Evite bloques de texto largos y no divididos
+            7. Use párrafos para estructurar el contenido y desarrollar argumentos
+            
+            TRANSICIONES ENTRE PÁRRAFOS Y FLUJO DEL TEXTO:
+            1. Cree transiciones fluidas entre todos los párrafos
+            2. Use palabras y frases de transición (por ejemplo, "Además", "Asimismo", "En contraste")
+            3. Establezca conexiones de contenido entre párrafos consecutivos
+            4. Mantenga la continuidad temática a lo largo de todo el texto
+            5. Haga referencia a párrafos anteriores para construir coherencia
+            6. Evite cambios abruptos de tema sin transiciones apropiadas
+            7. Desarrolle argumentos e ideas de manera fluida a lo largo de varios párrafos
+            8. Construya una progresión lógica que guíe al lector a través del texto
             
             REQUISITOS DE CONTENIDO:
             1. Respete estrictamente el mínimo de caracteres: {char_min}
@@ -1519,6 +1600,25 @@ def get_language_prompts(language):
             9. Considera il ritmo della lingua italiana
             10. Adatta lo stile al contesto culturale italiano
             
+            STRUTTURA DEI PARAGRAFI E LEGGIBILITÀ:
+            1. Inizia un nuovo paragrafo con ogni cambio di argomento o nuova idea
+            2. Mantieni i paragrafi a 3-5 frasi per una leggibilità ottimale
+            3. Usa paragrafi più brevi per dichiarazioni importanti o transizioni
+            4. Crea pause visive nel testo attraverso una struttura di paragrafo ponderata
+            5. Assicurati che ogni paragrafo contenga un punto principale chiaro
+            6. Evita blocchi di testo lunghi e non divisi
+            7. Usa i paragrafi per strutturare il contenuto e sviluppare argomenti
+            
+            TRANSIZIONI TRA PARAGRAFI E FLUSSO DEL TESTO:
+            1. Crea transizioni fluide tra tutti i paragrafi
+            2. Usa parole e frasi di transizione (ad esempio, "Inoltre", "In aggiunta", "In contrasto")
+            3. Stabilisci connessioni di contenuto tra paragrafi consecutivi
+            4. Mantieni la continuità tematica in tutto il testo
+            5. Fai riferimento ai paragrafi precedenti per costruire coerenza
+            6. Evita cambiamenti di argomento bruschi senza transizioni appropriate
+            7. Sviluppa argomenti e idee in modo fluido su più paragrafi
+            8. Costruisci una progressione logica che guidi il lettore attraverso il testo
+            
             REQUISITI DI CONTENUTO:
             1. Rispetta rigorosamente il minimo di caratteri: {char_min}
             2. Sviluppa un'analisi accademica della musica internazionale
@@ -1551,6 +1651,25 @@ def get_language_prompts(language):
             8. Empregue expressões idiomáticas adequadas
             9. Considere o ritmo da língua portuguesa
             10. Adapte o estilo ao contexto lusófono
+            
+            ESTRUTURA DE PARÁGRAFOS E LEGIBILIDADE:
+            1. Comece um novo parágrafo com cada mudança de tópico ou nova ideia
+            2. Mantenha os parágrafos em 3-5 frases para uma legibilidade ideal
+            3. Use parágrafos mais curtos para declarações importantes ou transições
+            4. Crie pausas visuais no texto através de uma estrutura de parágrafo ponderada
+            5. Certifique-se de que cada parágrafo contenha um ponto principal claro
+            6. Evite blocos de texto longos e não divididos
+            7. Use parágrafos para estruturar o conteúdo e desenvolver argumentos
+            
+            TRANSIÇÕES ENTRE PARÁGRAFOS E FLUXO DO TEXTO:
+            1. Crie transições fluidas entre todos os parágrafos
+            2. Use palavras e frases de transição (por exemplo, "Além disso", "Ademais", "Em contraste")
+            3. Estabeleça conexões de conteúdo entre parágrafos consecutivos
+            4. Mantenha a continuidade temática ao longo de todo o texto
+            5. Faça referência a parágrafos anteriores para construir coerência
+            6. Evite mudanças abruptas de tópico sem transições apropriadas
+            7. Desenvolva argumentos e ideias de forma fluida ao longo de vários parágrafos
+            8. Construa uma progressão lógica que guie o leitor através do texto
             
             REQUISITOS DE CONTEÚDO:
             1. Respeite estritamente o mínimo de caracteres: {char_min}
@@ -1585,6 +1704,25 @@ def get_language_prompts(language):
             9. Houd rekening met het Nederlandse taalritme
             10. Pas de stijl aan de Nederlandse context aan
             
+            STRUCTUUR VAN PARAGRAFEN EN LEESBAARHEID:
+            1. Begin een nieuwe alinea bij elke onderwerpwijziging of nieuw idee
+            2. Houd alinea's op 3-5 zinnen voor optimale leesbaarheid
+            3. Gebruik kortere alinea's voor belangrijke uitspraken of overgangen
+            4. Creëer visuele pauzes in de tekst door middel van doordachte alinea-indeling
+            5. Zorg ervoor dat elke alinea één duidelijk hoofdidee bevat
+            6. Vermijd lange, onverdeelde tekstblokken
+            7. Gebruik alinea's om inhoud te structureren en argumenten te ontwikkelen
+            
+            OVERGANGEN TUSSEN PARAGRAFEN EN TEKSTSTROOM:
+            1. Creëer naadloze overgangen tussen alle alinea's
+            2. Gebruik overgangswoorden en -zinnen (bijv. "Bovendien", "Verder", "In tegenstelling tot")
+            3. Leg inhoudelijke verbanden tussen opeenvolgende alinea's
+            4. Behoud thematische continuïteit door de hele tekst
+            5. Verwijs naar eerdere alinea's om samenhang te creëren
+            6. Vermijd abrupte onderwerpwisselingen zonder passende overgangen
+            7. Ontwikkel argumenten en ideeën vloeiend over meerdere alinea's
+            8. Bouw een logische voortgang op die de lezer door de tekst leidt
+            
             INHOUDELIJKE VEREISTEN:
             1. De tekst MOET minimaal {char_min} tekens bevatten
             2. Focus uitsluitend op internationale muziek
@@ -1617,6 +1755,25 @@ def get_language_prompts(language):
             8. Anvend passende idiomatiske udtryk
             9. Tag hensyn til det danske sprogflow
             10. Tilpas stilen til dansk sprogbrug
+            
+            STRUKTUR AF AFSNIT OG LÆSBARHED:
+            1. Begynd et nyt afsnit ved hvert emneskift eller ny idé
+            2. Hold afsnit på 3-5 sætninger for optimal læsbarhed
+            3. Brug kortere afsnit til vigtige udsagn eller overgange
+            4. Skab visuelle pauser i teksten gennem gennemtænkt afsnitsstruktur
+            5. Sørg for, at hvert afsnit indeholder ét klart hovedpunkt
+            6. Undgå lange, udelte tekstblokke
+            7. Brug afsnit til at strukturere indhold og udvikle argumenter
+            
+            OVERGANGE MELLEM AFSNIT OG TEKSTSTRØM:
+            1. Skab sømløse overgange mellem alle afsnit
+            2. Brug overgangsord og -sætninger (f.eks. "Desuden", "Yderligere", "I modsætning til")
+            3. Etabler indholdsmæssige forbindelser mellem på hinanden følgende afsnit
+            4. Bevar tematisk kontinuitet gennem hele teksten
+            5. Henvis til tidligere afsnit for at skabe sammenhæng
+            6. Undgå pludselige emneskift uden passende overgange
+            7. Udvikl argumenter og ideer flydende over flere afsnit
+            8. Byg en logisk progression, der guider læseren gennem teksten
             
             INDHOLDSKRAV:
             1. Teksten SKAL være mindst {char_min} tegn
@@ -1651,15 +1808,34 @@ def get_language_prompts(language):
             9. Beakta det svenska språkrytmen
             10. Anpassa stilen till svensk språkkontext
             
+            STRUKTUR AV STYCKEN OCH LÄSBARHET:
+            1. Börja ett nytt stycke vid varje ämnesbyte eller ny idé
+            2. Håll stycken på 3-5 meningar för optimal läsbarhet
+            3. Använd kortare stycken för viktiga uttalanden eller övergångar
+            4. Skapa visuella pauser i texten genom genomtänkt styckesstruktur
+            5. Se till att varje stycke innehåller en tydlig huvudpunkt
+            6. Undvik långa, odelade textblock
+            7. Använd stycken för att strukturera innehåll och utveckla argument
+            
+            ÖVERGÅNGAR MELLAN STYCKEN OCH TEXTFLÖDE:
+            1. Skapa sömlösa övergångar mellan alla stycken
+            2. Använd övergångsord och -fraser (t.ex. "Dessutom", "Vidare", "I kontrast")
+            3. Etablera innehållsförbindelser mellan på varandra följande stycken
+            4. Bevara tematisk kontinuitet genom hela texten
+            5. Hänvisa till tidigare stycken för att bygga sammanhang
+            6. Undvik plötsliga ämnesbyten utan lämpliga övergångar
+            7. Utveckla argument och idéer flytande över flera stycken
+            8. Bygg en logisk progression som vägleder läsaren genom texten
+            
             INNEHÅLLSKRAV:
             1. Texten MÅSTE vara minst {char_min} tecken
             2. Fokusera uteslutande på internationell musik
             3. Strukturera innehållet med tydliga, logiska stycken
             4. Använd komplexa men förståeliga meningsstrukturer
-            5. Undvik punktlistor till förmån för flödande text
+            5. Undvik punktlistor till förmån för flytande text
             6. Integrera relevanta kulturhistoriska sammanhang
             7. Använd precis musikalisk terminologi
-            8. Artikulera musikteoretiska samband tydligt
+            8. Artikuler musikteoretiska samband tydligt
             9. Implementera lämpliga övergångar mellan stycken
             10. Behåll en konsekvent vetenskaplig ton
             
@@ -1683,6 +1859,25 @@ def get_language_prompts(language):
             8. Käytä sopivia idiomeja
             9. Huomioi suomen kielen rytmi
             10. Mukauta tyyli suomalaiseen kielikontekstiin
+            
+            KAPPALEIDEN RAKENNE JA LUETTAVUUS:
+            1. Aloita uusi kappale jokaisella aiheenvaihdolla tai uudella idealla
+            2. Pidä kappaleet 3-5 lauseen pituisina optimaalisen luettavuuden takaamiseksi
+            3. Käytä lyhyempiä kappaleita tärkeisiin lausuntoihin tai siirtymiin
+            4. Luo visuaalisia taukoja tekstiin harkitun kappalerakenteen avulla
+            5. Varmista, että jokainen kappale sisältää yhden selkeän pääkohdan
+            6. Vältä pitkiä, jakamattomia tekstilohkoja
+            7. Käytä kappaleita sisällön jäsentämiseen ja argumenttien kehittämiseen
+            
+            KAPPALEIDEN VÄLISET SIIRTYMÄT JA TEKSTIN VIRTAUS:
+            1. Luo saumattomia siirtymiä kaikkien kappaleiden välillä
+            2. Käytä siirtymäsanoja ja -lauseita (esim. "Lisäksi", "Edelleen", "Vastakohtana")
+            3. Luo sisältöyhteyksiä peräkkäisten kappaleiden välille
+            4. Säilytä temaattinen jatkuvuus koko tekstin ajan
+            5. Viittaa aiempiin kappaleisiin rakentaaksesi johdonmukaisuutta
+            6. Vältä äkillisiä aiheenvaihtoja ilman sopivia siirtymiä
+            7. Kehitä argumentteja ja ideoita sujuvasti useiden kappaleiden ajan
+            8. Rakenna looginen eteneminen, joka ohjaa lukijaa tekstin läpi
             
             SISÄLTÖVAATIMUKSET:
             1. Tekstin pituuden TÄYTYY olla vähintään {char_min} merkkiä
@@ -1721,12 +1916,687 @@ def get_language_style_guide(language: str) -> Dict[str, str]:
     return {"style": prompts["style"], "characteristics": prompts["characteristics"]}
 
 
+def get_language_quality_criteria(language: str) -> str:
+    """Get language-specific quality criteria for content generation.
+
+    Provides standardized quality guidelines for each supported language
+    to ensure consistent, high-quality content across all articles.
+
+    Args:
+        language: ISO 639-1 language code
+
+    Returns:
+        str: Language-specific quality criteria
+    """
+    criteria = {
+        "en": """
+        QUALITY REQUIREMENTS:
+        - Use contemporary language and consistent terminology throughout
+        - Avoid repetition of words, phrases, and ideas
+        - Create smooth transitions between sections and paragraphs
+        - Vary sentence structure for engaging reading experience
+        - Ensure impeccable spelling and grammar
+        - Create fluid reading experience with natural cadence
+        - Use appropriate paragraph breaks to enhance readability (typically every 3-5 sentences)
+        - Start a new paragraph when introducing a new idea, concept, or perspective
+        - Use shorter paragraphs for emphasizing key points or dramatic effect
+        - Include sufficient white space to improve visual comfort and reduce cognitive load
+        - Break up long explanations with logical paragraph divisions
+        - Connect paragraphs with smooth transitions that maintain narrative flow
+        - Use connective phrases between paragraphs (e.g., "Furthermore," "In addition," "However," "As a result")
+        - Ensure each paragraph follows logically from the previous one
+        - Maintain thematic continuity across paragraph boundaries
+        - Create a sense of progression between paragraphs to guide the reader forward
+        - Express information in flowing prose rather than bullet points or lists
+        """,
+        "de": """
+        QUALITÄTSANFORDERUNGEN:
+        - Verwenden Sie zeitgemäße Sprachbilder und konsistente Terminologie
+        - Vermeiden Sie Wiederholungen von Wörtern, Phrasen und Ideen
+        - Schaffen Sie flüssige Übergänge zwischen Abschnitten und Absätzen
+        - Variieren Sie den Satzbau für ein ansprechendes Leseerlebnis
+        - Gewährleisten Sie fehlerfreie Rechtschreibung und Grammatik
+        - Erzeugen Sie ein flüssiges Leseerlebnis mit natürlichem Sprachrhythmus
+        - Verwenden Sie angemessene Absatzumbrüche zur Verbesserung der Lesbarkeit (üblicherweise alle 3-5 Sätze)
+        - Beginnen Sie einen neuen Absatz, wenn Sie eine neue Idee, ein neues Konzept oder eine neue Perspektive einführen
+        - Nutzen Sie kürzere Absätze, um wichtige Punkte zu betonen oder dramatische Effekte zu erzielen
+        - Sorgen Sie für ausreichend Weißraum, um den visuellen Komfort zu verbessern und die kognitive Belastung zu reduzieren
+        - Unterteilen Sie lange Erklärungen mit logischen Absatztrennungen
+        - Verbinden Sie Absätze mit fließenden Übergängen, die den narrativen Fluss aufrechterhalten
+        - Verwenden Sie Überleitungsphrasen zwischen Absätzen (z.B. "Darüber hinaus", "Zusätzlich", "Allerdings", "Infolgedessen")
+        - Stellen Sie sicher, dass jeder Absatz logisch aus dem vorherigen folgt
+        - Bewahren Sie thematische Kontinuität über Absatzgrenzen hinweg
+        - Erzeugen Sie ein Gefühl der Progression zwischen Absätzen, um den Leser vorwärts zu führen
+        - Präsentieren Sie Informationen in fließendem Text statt in Aufzählungen oder Listen
+        """,
+        "es": """
+        REQUISITOS DE CALIDAD:
+        - Utilice lenguaje contemporáneo y terminología consistente
+        - Evite la repetición de palabras, frases e ideas
+        - Cree transiciones fluidas entre secciones y párrafos
+        - Varíe la estructura de las frases para una experiencia de lectura atractiva
+        - Asegure una ortografía y gramática impecables
+        - Cree una experiencia de lectura fluida con cadencia natural
+        - Utilice saltos de párrafo apropiados para mejorar la legibilidad (generalmente cada 3-5 oraciones)
+        - Inicie un nuevo párrafo al introducir una nueva idea, concepto o perspectiva
+        - Use párrafos más cortos para enfatizar puntos clave o efectos dramáticos
+        - Incluya suficiente espacio en blanco para mejorar la comodidad visual y reducir la carga cognitiva
+        - Divida las explicaciones largas con divisiones lógicas de párrafos
+        - Mantenga la continuidad de los párrafos sin interrupciones innecesarias
+        - Exprese la información en prosa fluida en lugar de puntos o listas
+        """,
+        "fr": """
+        EXIGENCES DE QUALITÉ:
+        - Utilisez un langage contemporain et une terminologie cohérente
+        - Évitez la répétition de mots, de phrases et d'idées
+        - Créez des transitions fluides entre les sections et les paragraphes
+        - Variez la structure des phrases pour une expérience de lecture engageante
+        - Assurez une orthographe et une grammaire impeccables
+        - Créez une expérience de lecture fluide avec une cadence naturelle
+        - Utilisez des sauts de paragraphe appropriés pour améliorer la lisibilité (généralement toutes les 3 à 5 phrases)
+        - Commencez un nouveau paragraphe lorsque vous introduisez une nouvelle idée, un nouveau concept ou une nouvelle perspective
+        - Utilisez des paragraphes plus courts pour mettre l'accent sur des points clés ou des effets dramatiques
+        - Incluez suffisamment d'espace blanc pour améliorer le confort visuel et réduire la charge cognitive
+        - Divisez les longues explications avec des divisions logiques de paragraphes
+        - Maintenez la continuité des paragraphes sans interruptions inutiles
+        - Exprimez l'information en prose fluide plutôt qu'en points ou en listes
+        """,
+        "it": """
+        REQUISITI DI QUALITÀ:
+        - Utilizzare un linguaggio contemporaneo e una terminologia coerente
+        - Evitare la ripetizione di parole, frasi e idee
+        - Creare transizioni fluide tra sezioni e paragrafi
+        - Variare la struttura delle frasi per un'esperienza di lettura coinvolgente
+        - Garantire un'ortografia e una grammatica impeccabili
+        - Creare un'esperienza di lettura fluida con una cadenza naturale
+        - Utilizzare interruzioni di paragrafo appropriate per migliorare la leggibilità (generalmente ogni 3-5 frasi)
+        - Iniziare un nuovo paragrafo quando si introduce una nuova idea, concetto o prospettiva
+        - Usare paragrafi più brevi per enfatizzare punti chiave o effetti drammatici
+        - Includere sufficiente spazio bianco per migliorare il comfort visivo e ridurre il carico cognitivo
+        - Dividere le spiegazioni lunghe con divisioni logiche dei paragrafi
+        - Mantenere la continuità dei paragrafi senza interruzioni non necessarie
+        - Esprimere le informazioni in prosa scorrevole anziché in punti o elenchi
+        """,
+        "pt": """
+        REQUISITOS DE QUALIDADE:
+        - Use linguagem contemporânea e terminologia consistente
+        - Evite a repetição de palavras, frases e ideias
+        - Crie transições suaves entre seções e parágrafos
+        - Varie a estrutura das frases para uma experiência de leitura envolvente
+        - Garanta ortografia e gramática impecáveis
+        - Crie uma experiência de leitura fluida com cadência natural
+        - Use quebras de parágrafo apropriadas para melhorar a legibilidade (geralmente a cada 3-5 frases)
+        - Inicie um novo parágrafo ao introduzir uma nova ideia, conceito ou perspectiva
+        - Use parágrafos mais curtos para enfatizar pontos-chave ou efeitos dramáticos
+        - Inclua espaço em branco suficiente para melhorar o conforto visual e reduzir a carga cognitiva
+        - Divida explicações longas com divisões lógicas de parágrafos
+        - Mantenha a continuidade do parágrafo sem quebras desnecessárias
+        - Expresse informações em prosa fluente em vez de pontos ou listas
+        """,
+        "nl": """
+        KWALITEITSEISEN:
+        - Gebruik hedendaags taalgebruik en consistente terminologie
+        - Vermijd herhaling van woorden, zinnen en ideeën
+        - Creëer vloeiende overgangen tussen secties en alinea's
+        - Varieer de zinsstructuur voor een boeiende leeservaring
+        - Zorg voor foutloze spelling en grammatica
+        - Creëer een vloeiende leeservaring met een natuurlijk ritme
+        - Gebruik gepaste alineaonderbrekingen om de leesbaarheid te verbeteren (doorgaans elke 3-5 zinnen)
+        - Begin een nieuwe alinea wanneer u een nieuw idee, concept of perspectief introduceert
+        - Gebruik kortere alinea's om belangrijke punten te benadrukken of dramatische effecten te creëren
+        - Zorg voor voldoende witruimte om het visuele comfort te verbeteren en de cognitieve belasting te verminderen
+        - Verdeel lange verklaringen met logische alinea-indelingen
+        - Handhaaf de continuïteit van alinea's zonder onnodige onderbrekingen
+        - Presenteer informatie in vloeiend proza in plaats van opsommingen of lijsten
+        """,
+        "da": """
+        KVALITETSKRAV:
+        - Brug tidssvarende sprog og konsistent terminologi
+        - Undgå gentagelse af ord, sætninger og idéer
+        - Skab flydende overgange mellem afsnit
+        - Varier sætningsstrukturen for en engagerende læseoplevelse
+        - Sikre fejlfri stavning og grammatik
+        - Skab en flydende læseoplevelse med naturlig rytme
+        - Brug passende afsnitsskift til at forbedre læsbarheden (typisk hver 3-5 sætninger)
+        - Start et nyt afsnit, når du introducerer en ny idé, et nyt koncept eller perspektiv
+        - Brug kortere afsnit til at fremhæve vigtige pointer eller dramatiske effekter
+        - Inkluder tilstrækkelig med hvidt rum for at forbedre den visuelle komfort og reducere den kognitive belastning
+        - Del lange forklaringer med logiske afsnitsinddeling
+        - Oprethold kontinuiteten i afsnit uden unødvendige afbrydelser
+        - Udtrykk information i flydende prosa i stedet for punkter eller lister
+        """,
+        "sv": """
+        KVALITETSKRAV:
+        - Använd modernt språkbruk och konsekvent terminologi
+        - Undvik upprepning av ord, fraser och idéer
+        - Skapa smidiga övergångar mellan avsnitt
+        - Variera meningsstrukturen för en engagerande läsupplevelse
+        - Säkerställ felfri stavning och grammatik
+        - Skapa en flytande läsupplevelse med naturlig rytm
+        - Använd lämpliga styckebrytningar för att förbättra läsbarheten (vanligtvis var 3-5 meningar)
+        - Börja ett nytt stycke när du introducerar en ny idé, ett nytt koncept eller perspektiv
+        - Använd kortare stycken för att betona viktiga punkter eller dramatiska effekter
+        - Inkludera tillräckligt med vitt utrymme för att förbättra visuell komfort och minska kognitiv belastning
+        - Dela upp långa förklaringar med logiska styckesindelningar
+        - Upprätthåll styckets kontinuitet utan onödiga avbrott
+        - Uttryck information i flytande prosa snarare än punkter eller listor
+        """,
+        "fi": """
+        LAATUVAATIMUKSET:
+        - Käytä ajanmukaista kieltä ja johdonmukaista terminologiaa
+        - Vältä sanojen, lauseiden ja ajatusten toistoa
+        - Luo sujuvat siirtymät osioiden ja kappaleiden välillä
+        - Vaihtele lauserakennetta miellyttävän lukukokemuksen luomiseksi
+        - Varmista virheetön oikeinkirjoitus ja kielioppi
+        - Luo sujuva lukukokemus luonnollisella rytmillä
+        - Käytä asianmukaisia kappalejakoja luettavuuden parantamiseksi (yleensä 3-5 lauseen välein)
+        - Aloita uusi kappale, kun esittelet uuden idean, käsitteen tai näkökulman
+        - Käytä lyhyempiä kappaleita tärkeiden kohtien korostamiseen tai dramaattisen vaikutuksen luomiseen
+        - Sisällytä riittävästi tyhjää tilaa visuaalisen mukavuuden parantamiseksi ja kognitiivisen kuormituksen vähentämiseksi
+        - Jaa pitkät selitykset loogisiin kappaleisiin
+        - Ylläpidä kappaleiden jatkuvuutta ilman tarpeettomia katkoksia
+        - Esitä tiedot sujuvana tekstinä luetteloiden sijaan
+        """,
+    }
+
+    # Erweitern Sie alle Sprachkriterien mit spezifischen Absatzübergangsanweisungen
+    for lang in ["es", "fr", "it", "pt", "nl", "da", "sv", "fi"]:
+        if lang in criteria:
+            # Füge spezifische Absatzübergangsrichtlinien für jede Sprache hinzu
+            if lang == "es":
+                criteria[
+                    lang
+                ] += """
+        - Conecte los párrafos con transiciones fluidas que mantengan el flujo narrativo
+        - Utilice frases conectivas entre párrafos (p.ej., "Además", "Por otra parte", "Sin embargo", "Como resultado")
+        - Asegúrese de que cada párrafo siga lógicamente del anterior
+        - Mantenga la continuidad temática a través de los límites entre párrafos
+        - Cree una sensación de progresión entre párrafos para guiar al lector hacia adelante
+        """
+            elif lang == "fr":
+                criteria[
+                    lang
+                ] += """
+        - Connectez les paragraphes avec des transitions fluides qui maintiennent le flux narratif
+        - Utilisez des phrases de liaison entre les paragraphes (p.ex., "En outre", "Par ailleurs", "Cependant", "Par conséquent")
+        - Assurez-vous que chaque paragraphe découle logiquement du précédent
+        - Maintenez une continuité thématique au-delà des limites des paragraphes
+        - Créez un sentiment de progression entre les paragraphes pour guider le lecteur vers l'avant
+        """
+            elif lang == "it":
+                criteria[
+                    lang
+                ] += """
+        - Collega i paragrafi con transizioni fluide che mantengono il flusso narrativo
+        - Utilizza frasi di collegamento tra i paragrafi (es. "Inoltre", "D'altra parte", "Tuttavia", "Di conseguenza")
+        - Assicurati che ogni paragrafo segua logicamente dal precedente
+        - Mantieni la continuità tematica attraverso i confini dei paragrafi
+        - Crea un senso di progressione tra i paragrafi per guidare il lettore in avanti
+        """
+            elif lang == "pt":
+                criteria[
+                    lang
+                ] += """
+        - Conecte os parágrafos com transições fluidas que mantenham o fluxo narrativo
+        - Use frases conectivas entre parágrafos (por exemplo, "Além disso", "Por outro lado", "No entanto", "Como resultado")
+        - Certifique-se de que cada parágrafo siga logicamente do anterior
+        - Mantenha a continuidade temática através dos limites dos parágrafos
+        - Crie uma sensação de progressão entre parágrafos para guiar o leitor adiante
+        """
+            elif lang == "nl":
+                criteria[
+                    lang
+                ] += """
+        - Verbind alinea's met vloeiende overgangen die de verhalende stroom behouden
+        - Gebruik verbindende zinnen tussen alinea's (bijv. "Bovendien", "Daarentegen", "Echter", "Als gevolg hiervan")
+        - Zorg ervoor dat elke alinea logisch volgt uit de vorige
+        - Behoud thematische continuïteit over alineagrenzen heen
+        - Creëer een gevoel van progressie tussen alinea's om de lezer voorwaarts te leiden
+        """
+            elif lang == "da":
+                criteria[
+                    lang
+                ] += """
+        - Forbind afsnit med flydende overgange, der opretholder den fortællende strøm
+        - Brug forbindende sætninger mellem afsnit (f.eks. "Desuden", "På den anden side", "Dog", "Som et resultat")
+        - Sørg for, at hvert afsnit følger logisk fra det forrige
+        - Oprethold tematisk kontinuitet på tværs af afsnitsgrænser
+        - Skab en fornemmelse af progression mellem afsnit for at lede læseren fremad
+        """
+            elif lang == "sv":
+                criteria[
+                    lang
+                ] += """
+        - Koppla samman stycken med flytande övergångar som upprätthåller berättelsens flöde
+        - Använd sammanbindande fraser mellan stycken (t.ex. "Dessutom", "Å andra sidan", "Emellertid", "Som ett resultat")
+        - Se till att varje stycke följer logiskt från det föregående
+        - Upprätthåll tematisk kontinuitet över styckegränser
+        - Skapa en känsla av progression mellan stycken för att guida läsaren framåt
+        """
+            elif lang == "fi":
+                criteria[
+                    lang
+                ] += """
+        - Yhdistä kappaleet sujuvilla siirtymillä, jotka ylläpitävät kerronnan virtausta
+        - Käytä yhdistäviä lauseita kappaleiden välillä (esim. "Lisäksi", "Toisaalta", "Kuitenkin", "Tämän seurauksena")
+        - Varmista, että jokainen kappale seuraa loogisesti edellistä
+        - Ylläpidä temaattista jatkuvuutta kappalerajan yli
+        - Luo etenemisen tunne kappaleiden välillä ohjataksesi lukijaa eteenpäin
+        """
+
+    return criteria.get(language, criteria["en"])
+
+
+def generate_complete_content(category: str, language: str) -> str:
+    """Generate complete content for a music category in a specific language.
+
+    Generates all sections of content in a single API call, ensuring that each
+    section meets minimum length requirements and follows quality guidelines.
+
+    Args:
+        category: Music category name
+        language: ISO 639-1 language code
+
+    Returns:
+        str: Complete formatted content for the category
+    """
+    logging.info(
+        f"Starting complete content generation for category '{category}' in language '{language}'"
+    )
+
+    # Check if language is supported
+    if language not in get_available_languages():
+        logging.error(f"Language '{language}' is not supported")
+        raise ValueError(f"Language '{language}' is not supported")
+
+    # Get section limits and translations
+    logging.info("Getting section limits and translations")
+    section_limits = get_section_limits(category, language)
+    translations = get_translated_sections(language)
+    logging.info(f"Found {len(section_limits)} sections to generate")
+
+    # Prepare section requirements
+    section_requirements = []
+    total_min_chars = 0
+
+    for section_name, char_min in section_limits.items():
+        translated_title = translations.get(section_name, section_name)
+        section_requirements.append(
+            {
+                "title": translated_title,
+                "original_title": section_name,
+                "min_chars": char_min,
+            }
+        )
+        total_min_chars += char_min
+
+    # Prepare API request
+    style_guide = get_language_style_guide(language)
+    quality_criteria = get_language_quality_criteria(language)
+    category_type = get_category_type(category)
+    is_decade_category = is_decade(category)
+
+    # Prepare section specifications
+    section_specs = "\n\n".join(
+        [
+            f"Section: {section['title']}\nMinimum characters: {section['min_chars']}"
+            for section in section_requirements
+        ]
+    )
+
+    # Base historical accuracy guidelines
+    historical_accuracy = """
+    Important historical guidelines:
+    - Ensure strict historical accuracy for the specific time period, genre, or region being discussed
+    - Only mention artists, bands, and cultural phenomena that were active/present during the relevant time period
+    - Pay careful attention to when specific music styles, technologies, and cultural movements emerged
+    - Be precise with dates and chronological order of events
+    - Consider the geographical and cultural context of musical developments
+    - Verify the accuracy of technological developments and their impact on music
+    - When discussing influences, ensure they are chronologically possible and historically accurate
+    """
+
+    # Add category-specific guidelines
+    if is_decade_category:
+        decade = category[:-1]
+        historical_accuracy += f"""
+        Decade-specific guidelines for the {decade}s:
+        - Focus EXCLUSIVELY on artists, bands, and trends that were active/prominent during the {decade}s
+        - DO NOT mention any developments or artists that emerged after the {decade}s
+        - DO NOT discuss musical styles or technologies that weren't available in the {decade}s
+        - When mentioning influences, only reference artists/styles from the {decade}s or earlier
+        - Ensure all cultural and social references are specific to the {decade}s
+        - For technological developments, only mention what was actually available in the {decade}s
+        - When discussing international influences, verify they were possible in the {decade}s
+        - Keep all fashion and cultural references authentic to the {decade}s period
+        """
+    elif "Countries" in category_type:
+        historical_accuracy += f"""
+        Country-specific guidelines for {category}:
+        - Focus primarily on artists who are actually from {category}
+        - When discussing international influences, verify the historical connections
+        - Respect the cultural authenticity of {category}'s musical traditions
+        - Consider the specific regional variations within {category}
+        - Discuss musical developments in chronological order
+        - Only mention cultural exchanges that were historically possible
+        - Verify the accuracy of local music scene developments
+        """
+    elif "Genres" in category_type:
+        historical_accuracy += f"""
+        Genre-specific guidelines for {category}:
+        - Only mention artists who genuinely contributed to or performed in {category}
+        - Trace the genre's development chronologically
+        - Verify the authenticity of genre characteristics
+        - Discuss subgenres in their historical context
+        - When mentioning technical aspects, ensure they match the genre's era
+        - Consider regional variations in how the genre developed
+        - Only include cross-genre influences that were historically possible
+        """
+    elif "Instruments" in category_type:
+        historical_accuracy += f"""
+        Instrument-specific guidelines for {category}:
+        - Follow the chronological development of the instrument
+        - Only mention technological improvements when they were actually invented
+        - Discuss playing techniques in their historical context
+        - Verify the accuracy of manufacturing methods for each period
+        - Consider regional variations in instrument construction and playing styles
+        - Only mention performers from periods when the instrument existed
+        - Ensure all technical specifications match historical records
+        """
+
+    # Language-specific system prompts with enhanced instructions
+    language_system_prompts = {
+        "en": "You are an expert music historian writing in English. Focus on accuracy, clarity, and engaging narrative.",
+        "de": "Sie sind ein Musikhistoriker, der auf Deutsch schreibt. Legen Sie Wert auf Präzision, Klarheit und fesselnde Erzählweise.",
+        "es": "Eres un historiador musical que escribe en español. Enfócate en la precisión, claridad y narrativa cautivadora.",
+        "fr": "Vous êtes un historien de la musique écrivant en français. Concentrez-vous sur la précision, la clarté et un récit engageant.",
+        "it": "Sei uno storico della musica che scrive in italiano. Concentrati su precisione, chiarezza e narrativa coinvolgente.",
+        "pt": "Você é um historiador musical escrevendo em português. Foque em precisão, clareza e narrativa envolvente.",
+        "da": "Du er en musikhistoriker, der skriver på dansk. Fokusér på nøjagtighed, klarhed og engagerende fortælling.",
+        "fi": "Olet musiikkihistorioitsija, joka kirjoittaa suomeksi. Keskity tarkkuuteen, selkeyteen ja mukaansatempaavaan kerrontaan.",
+        "nl": "U bent een muziekhistoricus die in het Nederlands schrijft. Focus op nauwkeurigheid, duidelijkheid en een boeiend verhaal.",
+        "sv": "Du är en musikhistoriker som skriver på svenska. Fokusera på noggrannhet, tydlighet och engagerande berättande.",
+    }
+
+    # Get language-specific system prompt, default to English if not found
+    system_prompt = language_system_prompts.get(language, language_system_prompts["en"])
+
+    # Language-specific user prompt
+    language_name = {
+        "en": "English",
+        "de": "German (Deutsch)",
+        "es": "Spanish (Español)",
+        "fr": "French (Français)",
+        "it": "Italian (Italiano)",
+        "pt": "Portuguese (Português)",
+        "da": "Danish (Dansk)",
+        "fi": "Finnish (Suomi)",
+        "nl": "Dutch (Nederlands)",
+        "sv": "Swedish (Svenska)",
+    }.get(language, "English")
+
+    # Add explicit language instruction to system prompt
+    enhanced_system_prompt = f"{system_prompt}\n\nIMPORTANT: You MUST write ONLY in {language_name}. Do not include any content in other languages. The entire response must be in {language_name} only."
+
+    # Craft user prompt for complete content generation
+    user_prompt = f"""
+    Create complete content for a music article about the category '{category}' in {language_name}.
+    
+    CONTENT STRUCTURE:
+    {section_specs}
+    
+    OVERALL REQUIREMENTS:
+    1. Write a complete article with all sections
+    2. Each section must meet or exceed its minimum character count
+    3. Start each section with the exact section title as specified
+    4. Maintain a cohesive narrative throughout the entire article
+    5. Ensure strong connections between all sections
+    6. Total article length should be at least {total_min_chars} characters
+    
+    PARAGRAPH STRUCTURE AND READABILITY:
+    1. Use appropriate paragraph breaks to enhance readability (typically every 3-5 sentences)
+    2. Start a new paragraph when introducing a new idea, concept, or perspective
+    3. Use shorter paragraphs for emphasizing key points or dramatic effect
+    4. Include sufficient white space to improve visual comfort and reduce cognitive load
+    5. Break up long explanations with logical paragraph divisions
+    6. Ensure each paragraph focuses on a single main point or idea
+    7. Avoid excessively long paragraphs that create "walls of text"
+    8. Use logical paragraph flow to guide the reader through your narrative
+    
+    PARAGRAPH TRANSITIONS AND CONTENT FLOW:
+    1. Create seamless transitions between all paragraphs
+    2. Use transitional words and phrases to connect ideas between paragraphs
+    3. Ensure each paragraph flows naturally from the previous one
+    4. Maintain thematic continuity across paragraph boundaries
+    5. Build logical connections between consecutive paragraphs
+    6. Use reference words to connect back to previous content
+    7. Create a sense of progression that carries the reader forward
+    8. Avoid jarring shifts in topic, tone, or perspective
+    9. Develop ideas progressively across multiple paragraphs when needed
+    10. Use a variety of transition techniques to keep the text engaging
+    
+    STYLE REQUIREMENTS:
+    {style_guide['style']}
+    {style_guide['characteristics']}
+    
+    {quality_criteria}
+    
+    HISTORICAL ACCURACY:
+    {historical_accuracy}
+    
+    RESPONSE FORMAT:
+    - Start each section with '## [Section Title]'
+    - Don't include any additional formatting or numbering
+    - Don't add any introduction or conclusion beyond the specified sections
+    """
+
+    # Prepare API request
+    messages = [
+        {
+            "role": "system",
+            "content": enhanced_system_prompt,
+        },
+        {"role": "user", "content": user_prompt},
+    ]
+
+    # Call API with exponential backoff for retries
+    attempt = 0
+    max_attempts = 5
+
+    while attempt < max_attempts:
+        attempt += 1
+
+        try:
+            if attempt > 1:
+                wait_time = min(2 ** (attempt - 1), 30)
+                print(f"Attempt {attempt}: Waiting {wait_time} seconds before retry...")
+                time.sleep(wait_time)
+
+            # Log API call
+            logging.info(
+                f"Calling OpenAI API with model {OPENAI_MODEL} for complete content generation"
+            )
+
+            # Make the API call
+            start_time = time.time()
+            response = openai_client.chat.completions.create(
+                model=OPENAI_MODEL,
+                messages=messages,
+            )
+            elapsed_time = time.time() - start_time
+
+            logging.info(f"OpenAI API response received: time={elapsed_time:.2f}s")
+
+            # Extract content
+            content = response.choices[0].message.content.strip()
+
+            # Validate language
+            language_markers = {
+                "fi": ["ä", "ö", "Ä", "Ö"],
+                "sv": ["å", "ä", "ö", "Å", "Ä", "Ö"],
+                "da": ["æ", "ø", "å", "Æ", "Ø", "Å"],
+                "de": ["ä", "ö", "ü", "ß", "Ä", "Ö", "Ü"],
+                "es": ["ñ", "¿", "¡", "á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú"],
+                "fr": [
+                    "ç",
+                    "à",
+                    "â",
+                    "ê",
+                    "î",
+                    "ô",
+                    "û",
+                    "ë",
+                    "ï",
+                    "ü",
+                    "ÿ",
+                    "é",
+                    "è",
+                    "ù",
+                ],
+                "it": ["à", "è", "é", "ì", "ò", "ù"],
+                "nl": ["ij", "IJ", "é", "ë", "ï", "ö", "ü"],
+                "pt": ["ã", "õ", "á", "à", "â", "é", "ê", "í", "ó", "ô", "ú", "ç"],
+            }
+
+            # Typische Wörter in jeder Sprache zum zusätzlichen Check
+            common_words = {
+                "en": ["the", "and", "this", "was", "with"],
+                "de": ["der", "die", "das", "und", "ist", "von", "mit"],
+                "es": ["el", "la", "los", "las", "es", "por", "que"],
+                "fr": ["le", "la", "les", "et", "est", "pour", "avec"],
+                "it": ["il", "lo", "la", "e", "è", "per", "con"],
+                "pt": ["o", "a", "os", "as", "e", "para", "com"],
+                "da": ["det", "den", "er", "og", "at", "på", "med"],
+                "fi": ["on", "ja", "se", "että", "ovat", "kuin"],
+                "nl": ["de", "het", "een", "is", "en", "van", "voor"],
+                "sv": ["är", "och", "att", "det", "som", "med", "för"],
+            }
+
+            # Check language markers and common words
+            markers = language_markers.get(language, [])
+            words = common_words.get(language, [])
+            content_lower = content.lower()
+
+            has_markers = not markers or any(marker in content for marker in markers)
+            has_words = not words or any(
+                f" {word} " in f" {content_lower} " for word in words
+            )
+
+            if not has_markers or not has_words:
+                logging.warning(f"Warning: Content may not be in {language_name}")
+                if attempt < max_attempts:
+                    # Add stronger language instructions
+                    enhanced_system_prompt += f"""
+                    
+                    WARNING: The previous response was NOT in {language_name}!
+                    It is ABSOLUTELY CRUCIAL that you write ONLY in {language_name}.
+                    
+                    CRITICAL: ALL content MUST be in {language_name}.
+                    """
+                    messages[0]["content"] = enhanced_system_prompt
+                    continue
+
+            # Validate section lengths
+            sections = []
+            current_section = None
+            current_content = []
+
+            # Parse content into sections
+            for line in content.split("\n"):
+                if line.startswith("## "):
+                    # Save previous section if exists
+                    if current_section is not None:
+                        sections.append(
+                            {
+                                "title": current_section,
+                                "content": "\n".join(current_content),
+                            }
+                        )
+                        current_content = []
+
+                    # Start new section
+                    current_section = line[3:].strip()
+                elif current_section is not None:
+                    current_content.append(line)
+
+            # Add the last section
+            if current_section is not None and current_content:
+                sections.append(
+                    {"title": current_section, "content": "\n".join(current_content)}
+                )
+
+            # Validate section lengths
+            all_sections_valid = True
+            missing_sections = []
+            short_sections = []
+
+            # Check that all required sections are present and meet minimum length
+            for req in section_requirements:
+                found = False
+                for section in sections:
+                    if section["title"] == req["title"]:
+                        found = True
+                        if len(section["content"]) < req["min_chars"]:
+                            short_sections.append(
+                                {
+                                    "title": req["title"],
+                                    "current": len(section["content"]),
+                                    "required": req["min_chars"],
+                                }
+                            )
+                            all_sections_valid = False
+                        break
+
+                if not found:
+                    missing_sections.append(req["title"])
+                    all_sections_valid = False
+
+            if not all_sections_valid:
+                if attempt < max_attempts:
+                    # Enhance prompt with specific guidance on missing/short sections
+                    additional_guidance = "\n\nPrevious attempt was not satisfactory:"
+
+                    if missing_sections:
+                        additional_guidance += (
+                            f"\n- Missing sections: {', '.join(missing_sections)}"
+                        )
+
+                    if short_sections:
+                        additional_guidance += "\n- Sections too short:"
+                        for section in short_sections:
+                            additional_guidance += f"\n  * {section['title']}: {section['current']}/{section['required']} characters"
+
+                    messages[1]["content"] = user_prompt + additional_guidance
+                    continue
+
+            # If we get here, content is valid
+            logging.info(
+                f"Successfully generated complete content for {category} in {language}"
+            )
+
+            # Format complete content
+            formatted_content = ""
+            for section in sections:
+                formatted_content += (
+                    f"\n## {section['title']}\n\n{section['content']}\n"
+                )
+
+            return formatted_content
+
+        except Exception as e:
+            logging.error(f"API Error on attempt {attempt}: {str(e)}")
+            if attempt >= max_attempts:
+                raise RuntimeError(
+                    f"Failed to generate content after {max_attempts} attempts: {str(e)}"
+                )
+
+
 def generate_section(
     category: str, language: str, section_name: str, char_min: int
 ) -> str:
     """Generate content for a specific section of a music category.
 
-    Uses the Ollama API to generate language-specific content that adheres
+    Uses the OpenAI API to generate language-specific content that adheres
     to style guidelines and meets minimum length requirements.
 
     Args:
@@ -1764,7 +2634,7 @@ def generate_section_chunk(
 
     Helper function that handles the actual API calls and retries for
     generating a single chunk of content. Will keep retrying until valid
-    content is received. Uses Ollama for generation.
+    content is received. Uses OpenAI for generation.
     """
     style_guide = get_language_style_guide(language)
     language_prompts = get_language_prompts(language)
@@ -1864,11 +2734,6 @@ def generate_section_chunk(
                 print(f"Attempt {attempt}: Waiting {wait_time} seconds before retry...")
                 time.sleep(wait_time)
 
-            # Adjust max_tokens based on char_min
-            max_tokens = max(
-                2000, int(char_min / 2)
-            )  # Ensure enough tokens for content
-
             # Language-specific system prompts with enhanced instructions
             language_system_prompts = {
                 "en": "You are an expert music historian writing in English. Focus on accuracy, clarity, and engaging narrative.",
@@ -1916,7 +2781,7 @@ def generate_section_chunk(
             # Add language-specific style guide
             current_prompt += f"\n\nStyle Guide:\n{style_guide['style']}\n{style_guide['characteristics']}"
 
-            # Prepare messages for Ollama with strong language instruction
+            # Prepare messages for OpenAI with strong language instruction
             language_name = {
                 "en": "English",
                 "de": "German (Deutsch)",
@@ -1943,28 +2808,22 @@ def generate_section_chunk(
 
             try:
                 # Log that we're making an API call
-                logging.info(f"Calling Ollama API with model {OLLAMA_MODEL}")
+                logging.info(f"Calling OpenAI API with model {OPENAI_MODEL}")
 
-                # Make the API call to Ollama
+                # Make the API call to OpenAI
                 start_time = time.time()
-                response = ollama_client.chat(
-                    model=OLLAMA_MODEL,
+                response = openai_client.chat.completions.create(
+                    model=OPENAI_MODEL,
                     messages=messages,
-                    options={
-                        "temperature": 0.1,  # Lower temperature for more focused output
-                        "top_p": 0.9,
-                        "top_k": 40,
-                        "num_predict": max_tokens,  # Equivalent to max_tokens
-                    },
                 )
 
                 elapsed_time = time.time() - start_time
 
                 # Log the response timing
-                logging.info(f"Ollama API response received: time={elapsed_time:.2f}s")
+                logging.info(f"OpenAI API response received: time={elapsed_time:.2f}s")
 
                 # Extract content from response
-                content = response["message"]["content"].strip()
+                content = response.choices[0].message.content.strip()
                 char_count = len(content)
 
                 # Verifikation, dass der Inhalt in der richtigen Sprache ist
@@ -2052,7 +2911,7 @@ def generate_section_chunk(
                         time.sleep(2)
                         continue  # Neuer Versuch mit stärkeren Sprachanweisungen
             except Exception as e:
-                print(f"Ollama API call failed: {str(e)}")
+                print(f"OpenAI API call failed: {str(e)}")
                 time.sleep(5)  # Wait before retrying
                 continue
 
@@ -2097,6 +2956,8 @@ def generate_section_chunk(
 def generate_content(category: str, language: str) -> str:
     """Generate or update content for a music category in a specific language.
 
+    Now uses the complete content generation approach instead of section-by-section.
+
     Args:
         category: Music category name
         language: ISO 639-1 language code
@@ -2108,77 +2969,22 @@ def generate_content(category: str, language: str) -> str:
         f"Starting content generation for category '{category}' in language '{language}'"
     )
 
-    # Check if language is supported
-    if language not in get_available_languages():
-        logging.error(f"Language '{language}' is not supported")
-        raise ValueError(f"Language '{language}' is not supported")
+    try:
+        # Generate complete content in one API call
+        content = generate_complete_content(category, language)
 
-    # Get section limits and translations
-    logging.info("Getting section limits and translations")
-    section_limits = get_section_limits(category)
-    translations = get_translated_sections(language)
-    logging.info(f"Found {len(section_limits)} sections to generate")
+        # Save the complete content
+        save_content(category, language, content, "a")
+        logging.info(
+            f"Successfully saved complete content for {category} in {language}"
+        )
 
-    # Map English section names to translated ones
-    section_mapping = {
-        "Introduction": translations.get("Introduction", "Introduction"),
-        "Historical Background": translations.get(
-            "Historical Background", "Historical Background"
-        ),
-        "Musical Characteristics": translations.get(
-            "Musical Characteristics", "Musical Characteristics"
-        ),
-        "Subgenres and Variations": translations.get(
-            "Subgenres and Variations", "Subgenres and Variations"
-        ),
-        "Key Figures and Important Works": translations.get(
-            "Key Figures and Important Works", "Key Figures and Important Works"
-        ),
-        "Technical Aspects": translations.get("Technical Aspects", "Technical Aspects"),
-        "Cultural Significance": translations.get(
-            "Cultural Significance", "Cultural Significance"
-        ),
-        "Performance and Live Culture": translations.get(
-            "Performance and Live Culture", "Performance and Live Culture"
-        ),
-        "Development and Evolution": translations.get(
-            "Development and Evolution", "Development and Evolution"
-        ),
-        "Legacy and Influence": translations.get(
-            "Legacy and Influence", "Legacy and Influence"
-        ),
-    }
-
-    # Generate each section
-    for section_name, char_min in section_limits.items():
-        try:
-            # Get translated section name
-            translated_title = section_mapping.get(section_name, section_name)
-            logging.info(
-                f"Generating section: {translated_title} (min chars: {char_min})"
-            )
-
-            # Generate content
-            section_content = generate_section(
-                category, language, section_name, char_min
-            )
-            content = f"\n## {translated_title}\n\n{section_content}\n"
-            logging.info(
-                f"Generated {len(section_content)} characters for section {translated_title}"
-            )
-
-            # Save content
-            save_content(category, language, content, "a")
-            logging.info(f"Saved section: {translated_title}")
-
-        except Exception as e:
-            logging.error(f"Error generating section {translated_title}: {str(e)}")
-            continue
-
-    logging.info(
-        f"Completed content generation for category '{category}' in language '{language}'"
-    )
-    return "Content generation completed"
+        return "Content generation completed"
+    except Exception as e:
+        logging.error(
+            f"Failed to generate content for {category} in {language}: {str(e)}"
+        )
+        raise
 
 
 def get_output_path(category: str, language: str) -> Path:
@@ -2202,7 +3008,7 @@ def get_output_path(category: str, language: str) -> Path:
 def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[str]]:
     """Generate SEO metadata for a music category using AI.
 
-    Uses the Ollama API to generate language-specific, SEO-optimized title,
+    Uses the OpenAI API to generate language-specific, SEO-optimized title,
     description, and keywords for a music category page. Adapts content
     based on language-specific SEO best practices and cultural context.
 
@@ -2263,7 +3069,7 @@ def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[
     # Get language-specific guidelines or use English defaults
     guidelines = seo_guidelines.get(language, seo_guidelines["en"])
 
-    # No headers needed for Ollama
+    # No headers needed for OpenAI
 
     # Get category type for context
     category_type = get_category_type(category)
@@ -2329,7 +3135,7 @@ def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[
         "sv": "Swedish (Svenska)",
     }.get(language, "English")
 
-    # Prepare messages for Ollama API with explicit language instruction
+    # Prepare messages for OpenAI API with explicit language instruction
     system_prompt = f"""You are an SEO expert specializing in {language_name} music content optimization.
     
     CRITICAL INSTRUCTION: You MUST write ONLY in {language_name}. The title, description, and all keywords MUST be in {language_name} only.
@@ -2355,24 +3161,18 @@ def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[
                 time.sleep(wait_time)
 
             try:
-                # Make the API call to Ollama
+                # Make the API call to OpenAI
                 start_time = time.time()
-                response = ollama_client.chat(
-                    model=OLLAMA_MODEL,
+                response = openai_client.chat.completions.create(
+                    model=OPENAI_MODEL,
                     messages=messages,
-                    options={
-                        "temperature": 0.1,
-                        "top_p": 0.9,
-                        "top_k": 40,
-                        "num_predict": 2000,  # Equivalent to max_tokens
-                    },
                 )
                 elapsed_time = time.time() - start_time
                 logging.info(
-                    f"Ollama API response for SEO metadata: time={elapsed_time:.2f}s"
+                    f"OpenAI API response for SEO metadata: time={elapsed_time:.2f}s"
                 )
 
-                content = response["message"]["content"].strip()
+                content = response.choices[0].message.content.strip()
 
                 # Verifikation, dass der Inhalt in der richtigen Sprache ist
                 # Sprachspezifische Marker definieren
@@ -2412,7 +3212,7 @@ def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[
                     "pt": ["o", "a", "os", "as", "e"],
                     "da": ["det", "den", "er", "og", "at"],
                     "fi": ["on", "ja", "se", "että", "ovat"],
-                    "nl": ["de", "het", "een", "is", "en"],
+                    "nl": ["de", "het", "een", "is", "en", "van", "voor"],
                     "sv": ["är", "och", "att", "det", "som"],
                 }
 
@@ -2476,8 +3276,6 @@ def generate_seo_metadata(category: str, language: str) -> Tuple[str, str, List[
             if not title or not description or not keywords:
                 print(f"Attempt {attempt}: Missing metadata components. Retrying...")
                 continue
-
-            # ...existing validation code...
 
             # If we have valid content, return it
             print(f"Success on attempt {attempt}: Generated valid SEO metadata")
