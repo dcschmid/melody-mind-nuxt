@@ -176,7 +176,15 @@
     "noImage": "Kein Bild verfügbar",
     "image": {
       "altText": "Kategorie-Cover für {category}"
+    },
+    "cover_quiz": {
+      "title": "Album Cover Puzzle",
+      "description": "Teste dein Musikwissen: Erkenne das Album anhand seines Covers und beweise dein Gespür für ikonische Albumkunst!"
     }
+  },
+  "cover_quiz": {
+    "title": "Album Cover Puzzle",
+    "description": "Teste dein Musikwissen: Erkenne das Album anhand seines Covers und beweise dein Gespür für ikonische Albumkunst!"
   },
   "game": {
     "meta": {
@@ -186,7 +194,7 @@
     "loading": "Spiel wird geladen...",
     "question": "Frage {Aktuell} von {Gesamt}",
     "timeLeft": "Verbleibende Zeit",
-    "score": "Ergebnis",
+    "score": "Punkte",
     "correct": "Richtig!",
     "wrong": "Falsch!",
     "timeUp": "Die Zeit ist um!",
@@ -244,7 +252,7 @@
       "playAgain": "Nochmal spielen",
       "backToHome": "Zurück zur Startseite"
     },
-    "round": "Runde {aktuell} Von {max}",
+    "round": "Runde",
     "points_label": "Punkte",
     "points": "Punkte: {Basis} + {Zeit} Zeitbonus",
     "confidence": "Sicherheit",

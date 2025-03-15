@@ -6,7 +6,7 @@
     "es": "Spanska",
     "pt": "Portugisiska",
     "it": "Italienska",
-    "nl": "Nederländska",
+    "nl": "Holländska",
     "sv": "Svenska",
     "fi": "Finska",
     "da": "Danska"
@@ -175,6 +175,10 @@
     "noImage": "Ingen bild tillgänglig",
     "image": {
       "altText": "Category cover for {category }"
+    },
+    "cover_quiz": {
+      "title": "Albumomslag Pussel",
+      "description": "Testa dina musikkunskaper: Identifiera album genom deras ikoniska omslag och bevisa ditt öga för legendarisk albumkonst!"
     }
   },
   "game": {
@@ -244,7 +248,7 @@
       "playAgain": "Play Again",
       "backToHome": "Tillbaka hem"
     },
-    "round": "Round {aktuell} of { Max}",
+    "round": "Omgång {aktuell} of { Max}",
     "points_label": "Poäng",
     "points": "Points: { Basis} + {Zeit} time Bonus",
     "confidence": "Konfidentialit",
@@ -637,5 +641,9 @@
     "easy": "Easy",
     "medium": "Medium",
     "hard": "Hard"
+  },
+  "cover_quiz": {
+    "title": "Albumomslag Pussel",
+    "description": "Testa dina musikkunskaper: Identifiera album genom deras ikoniska omslag och bevisa ditt öga för legendarisk albumkonst!"
   }
 }

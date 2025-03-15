@@ -176,7 +176,15 @@
     "noImage": "No image available",
     "image": {
       "altText": "Category cover for {category}"
+    },
+    "cover_quiz": {
+      "title": "Album Cover Puzzle",
+      "description": "Test your music knowledge: Identify albums by their iconic covers and prove your eye for legendary album art!"
     }
+  },
+  "cover_quiz": {
+    "title": "Album Cover Puzzle",
+    "description": "Test your music knowledge: Identify albums by their iconic covers and prove your eye for legendary album art!"
   },
   "game": {
     "meta": {
@@ -244,7 +252,7 @@
       "playAgain": "Play Again",
       "backToHome": "Back to Home"
     },
-    "round": "Round {current} of {max}",
+    "round": "Round",
     "points_label": "Points",
     "points": "Points: {base} + {time} time bonus",
     "confidence": "Confidence",

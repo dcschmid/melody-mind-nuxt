@@ -11,6 +11,10 @@
     "fi": "Fins",
     "da": "Deens"
   },
+  "cover_quiz": {
+    "title": "Album Hoes Puzzel",
+    "description": "Test je muziekkennis: Herken albums aan hun iconische hoezen en bewijs je oog voor legendarische albumkunst!"
+  },
   "common": {
     "openLanguageMenu": "Taalmenu openen",
     "closeLanguageMenu": "Sluiten",
@@ -176,6 +180,10 @@
     "noImage": "Geen afbeelding beschikbaar",
     "image": {
       "altText": "Category cover for { Category}"
+    },
+    "cover_quiz": {
+      "title": "Album Hoes Puzzel",
+      "description": "Test je muziekkennis: Herken albums aan hun iconische hoezen en bewijs je oog voor legendarische albumkunst!"
     }
   },
   "game": {
@@ -244,7 +252,7 @@
       "playAgain": "Play Again",
       "backToHome": "Terug naar Begin"
     },
-    "round": "Round {aktuell} of {max}",
+    "round": "Ronde",
     "points_label": "Punt",
     "points": "Points: {Basis} + {Zeit} time bonus",
     "confidence": "Vertrouwelijkheid",

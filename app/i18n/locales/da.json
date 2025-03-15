@@ -175,6 +175,10 @@
     "noImage": "Intet billede tilgængelig",
     "image": {
       "altText": "Kategori For {kategori}"
+    },
+    "cover_quiz": {
+      "title": "Albumcover Puslespil",
+      "description": "Test din musikviden: Identificér albums ud fra deres ikoniske covers og bevis dit øje for legendarisk albumkunst!"
     }
   },
   "game": {
@@ -243,7 +247,7 @@
       "playAgain": "Play Again",
       "backToHome": "Tilbage til hjemmet"
     },
-    "round": "Rund {akkuell} af {max}",
+    "round": "Runde",
     "points_label": "Punkt",
     "points": "Point: {Base} + {Time} tid bonus",
     "confidence": "Fortrolighed",
@@ -633,5 +637,9 @@
     "easy": "Easy",
     "medium": "Medium",
     "hard": "Hard"
+  },
+  "cover_quiz": {
+    "title": "Albumcover Puslespil",
+    "description": "Test din musikviden: Identificér albums ud fra deres ikoniske covers og bevis dit øje for legendarisk albumkunst!"
   }
 }

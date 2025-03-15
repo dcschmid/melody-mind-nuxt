@@ -176,6 +176,10 @@
     "noImage": "Nessuna immagine disponibile",
     "image": {
       "altText": "Copertina categoria per {category}"
+    },
+    "cover_quiz": {
+      "title": "Puzzle di Copertine degli Album",
+      "description": "Metti alla prova le tue conoscenze musicali: Identifica gli album dalle loro copertine iconiche e dimostra il tuo occhio per l'arte leggendaria!"
     }
   },
   "game": {
@@ -245,7 +249,7 @@
       "playAgain": "Gioca ancora",
       "backToHome": "Torna alla home"
     },
-    "round": "Round {aktuell} di {max}",
+    "round": "Round",
     "points_label": "Punti",
     "points": "Punti: {Basis} + {Zeit} bonus tempo",
     "confidence": "Sicurezza",
@@ -272,6 +276,10 @@
       "remainingCount": "{count} jolly disponibili",
       "remaining": "{Anzahl} jolly rimanenti"
     }
+  },
+  "cover_quiz": {
+    "title": "Puzzle di Copertine degli Album",
+    "description": "Metti alla prova le tue conoscenze musicali: Identifica gli album dalle loro copertine iconiche e dimostra il tuo occhio per l'arte leggendaria!"
   },
   "gameRules": {
     "meta": {

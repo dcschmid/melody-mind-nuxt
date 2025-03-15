@@ -175,7 +175,15 @@
     "noImage": "Kuvaa ei ole saatavilla",
     "image": {
       "altText": "Category cover for {category}"
+    },
+    "cover_quiz": {
+      "title": "Albumin Kansi Palapeli",
+      "description": "Testaa musiikkitietosi: Tunnista albumit niiden ikonisista kansista ja todista silmäsi legendaariselle taiteelle!"
     }
+  },
+  "cover_quiz": {
+    "title": "Albumin Kansi Palapeli",
+    "description": "Testaa musiikkitietosi: Tunnista albumit niiden ikonisista kansista ja todista silmäsi legendaariselle taiteelle!"
   },
   "game": {
     "meta": {
@@ -244,7 +252,7 @@
       "playAgain": "Play Again",
       "backToHome": "Takaisin kotiin"
     },
-    "round": "Round {aktuell} of {max}",
+    "round": "Kierros",
     "points_label": "Points",
     "points": "Points: {Basis} + {Zeit} time bonus",
     "confidence": "Luottamuksellisuus",

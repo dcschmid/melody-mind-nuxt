@@ -108,7 +108,7 @@ Reggae
 Reggaeton
 Road Trip
 Rock
-Rock 'n' Roll
+Rock n Roll
 Rockabilly
 Salsa
 Samba
@@ -134,7 +134,7 @@ Viking Metal
 
 # Female-Focused Categories
 Female Vocal Icons
-Female Rock/Metal Vocalists
+Female Rock-Metal Vocalists
 Female Pop Superstars
 Female Jazz Vocalists
 Female Blues Legends
@@ -200,7 +200,7 @@ Autumn Leaves
 Spring Awakening
 Christmas Classics
 Halloween Spooky Tunes
-Valentine's Day
+Valentines Day
 Back to School
 Festival Season
 Autumn Chill

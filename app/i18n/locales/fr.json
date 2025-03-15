@@ -176,7 +176,15 @@
     "combined": {
       "title": "Savoir & Musique",
       "description": "Plongez dans l'univers de {genre} ! Enrichissez vos connaissances sur ce genre et écoutez les meilleures chansons sur votre plateforme de streaming préférée."
+    },
+    "cover_quiz": {
+      "title": "Puzzle de Pochettes d'Albums",
+      "description": "Testez vos connaissances musicales : Identifiez les albums par leurs pochettes iconiques et prouvez votre œil pour l'art légendaire !"
     }
+  },
+  "cover_quiz": {
+    "title": "Puzzle de Pochettes d'Albums",
+    "description": "Testez vos connaissances musicales : Identifiez les albums par leurs pochettes iconiques et prouvez votre œil pour l'art légendaire !"
   },
   "game": {
     "meta": {

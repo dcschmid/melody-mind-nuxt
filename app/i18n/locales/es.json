@@ -176,7 +176,15 @@
     "noImage": "Imagen no disponible",
     "image": {
       "altText": "Portada para la categoría {category}"
+    },
+    "cover_quiz": {
+      "title": "Puzzle de Portadas de Álbumes",
+      "description": "¡Pon a prueba tus conocimientos musicales: Identifica álbumes por sus portadas icónicas y demuestra tu ojo para el arte legendario!"
     }
+  },
+  "cover_quiz": {
+    "title": "Puzzle de Portadas de Álbumes",
+    "description": "¡Pon a prueba tus conocimientos musicales: Identifica álbumes por sus portadas icónicas y demuestra tu ojo para el arte legendario!"
   },
   "game": {
     "meta": {
@@ -245,7 +253,7 @@
       "playAgain": "Juega de nuevo",
       "backToHome": "Volver a casa"
     },
-    "round": "Runde {aktuell} von {max}",
+    "round": "Ronda",
     "points_label": "Puntos",
     "points": "Punkte: {Basis} + {Zeit} Zeitbonus",
     "confidence": "Seguridad",

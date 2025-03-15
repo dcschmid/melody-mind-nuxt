@@ -6,7 +6,7 @@
     "es": "Espanhol",
     "pt": "Português",
     "it": "Italiano",
-    "nl": "Neerlandês",
+    "nl": "Holandês",
     "sv": "Sueco",
     "fi": "Finlandês",
     "da": "Dinamarquês"
@@ -225,6 +225,10 @@
     "noImage": "Imagem não disponível",
     "image": {
       "altText": "Capa da categoria {category }"
+    },
+    "cover_quiz": {
+      "title": "Quebra-cabeça de Capas de Álbuns",
+      "description": "Teste seu conhecimento musical: Identifique álbuns por suas capas icônicas e prove seu olhar para a arte lendária!"
     }
   },
   "game": {
@@ -293,7 +297,7 @@
       "playAgain": "Jogar novamente",
       "backToHome": "Voltar à página inicial"
     },
-    "round": "Rodada {aktuell} de {max}",
+    "round": "Rodada",
     "points_label": "Pontos",
     "points": "Pontos: { Basis } + {Zeit } bônus de tempo",
     "confidence": "Confiscação",
@@ -687,5 +691,9 @@
     "easy": "Fácil",
     "medium": "Mídia",
     "hard": "Difícil"
+  },
+  "cover_quiz": {
+    "title": "Quebra-cabeça de Capas de Álbuns",
+    "description": "Teste seu conhecimento musical: Identifique álbuns por suas capas icônicas e prove seu olhar para a arte lendária!"
   }
 }

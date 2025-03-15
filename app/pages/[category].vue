@@ -21,7 +21,22 @@
             {{ currentCategory.text }}
           </p>
 
-          <CategoryDifficultySelector :category-slug="currentCategory.slug" />
+          <div class="flex flex-col items-center gap-6">
+            <CategoryDifficultySelector :category-slug="currentCategory.slug" />
+            
+            <!-- Genre Quiz Button -->
+            <NuxtLink
+              :to="`/cover-quiz/${currentCategory.slug}`"
+              class="group flex min-h-[44px] items-center gap-3 rounded-lg bg-[var(--color-primary)] px-6 py-3 text-white shadow-md hover:bg-[var(--color-primary-dark)] hover:shadow-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-[var(--color-primary)]/50"
+            >
+              <Icon
+                name="material-symbols:music-note"
+                aria-hidden="true"
+                class="h-6 w-6 group-hover:scale-110 motion-reduce:transform-none"
+              />
+              <span class="font-medium">{{ t('category.cover_quiz') }}</span>
+            </NuxtLink>
+          </div>
 
           <section
             class="mx-auto my-6 flex w-full max-w-3xl flex-col items-center gap-6 print:hidden"
