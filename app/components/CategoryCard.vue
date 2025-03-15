@@ -46,7 +46,7 @@
           >
             <h2
               :id="`${cardId}-title`"
-              class="m-0 p-6 text-center text-base leading-tight font-semibold text-white drop-shadow-md group-hover/link:text-[rgb(var(--highlight-color-rgb))] group-focus-visible/link:text-[rgb(var(--highlight-color-rgb))] motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none md:text-xl dark:text-white print:text-white"
+              class="m-0 p-6 text-center text-base text-white drop-shadow-md group-hover/link:text-[rgb(var(--highlight-color-rgb))] group-focus-visible/link:text-[rgb(var(--highlight-color-rgb))] motion-safe:transition-all motion-safe:duration-300 motion-reduce:transition-none"
             >
               {{ headline }}
             </h2>
