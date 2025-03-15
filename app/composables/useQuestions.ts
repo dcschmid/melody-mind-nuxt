@@ -1,8 +1,8 @@
 import { computed, onUnmounted } from 'vue'
 import { useQuestionsStore } from '../stores/questionsStore'
 
-// Type definitions for the quiz structure are now imported from shared file
-export { Question } from '../types/question'
+// Korrigierter Import (Beispiel - ersetzen Sie den Pfad mit dem tatsächlichen Pfad)
+export type { Question } from '../types/question'
 
 /**
  * Legacy composable that uses the new Pinia store internally
