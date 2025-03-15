@@ -1096,7 +1096,7 @@
     "introSubline": "Oplev de fancy melodier og dynamisk energi Power-Pop!",
     "isPlayable": false,
     "slug": "power-pop",
-    "text": "Power@-@ Pop er en genre, der kombinerer den melodiske kærlighed til pop med energi og drev af rock. Denne kategori tilbyder et udvalg af kraftfulde, melodydrevne sange kendetegnet ved harmoniske vokal dele, iørefaldende choruser, og sprøde guitarriffs. Fra tidlige pionerer som Big Star og Billige Trick til moderne bands som Weezer og springvand af Wayne - Power- Pop står for uimodståelige øreorme og en positiv, energisk stemning. Lad dig selv blive inspireret af de muntre melodier og fængslende lyd af Power- Pop og opleve den perfekte blanding af pop kroge og rock energi, der inviterer dig til at synge og svaje langs."
+    "text": "Power@-@ Pop er en genre, der kombinerer den melodiske kærlighed til pop med energi og drev af rock. Denne kategori tilbyder et udvalg af kraftfulde, melodydrevne sange kendetegnet ved harmoniske vokal dele, iørefaldende choruses, og sprøde guitarriffs. Fra tidlige pionerer som Big Star og Billige Trick til moderne bands som Weezer og springvand af Wayne - Power- Pop står for uimodståelige øreorme og en positiv, energisk stemning. Lad dig selv blive inspireret af de muntre melodier og fængslende lyd af Power- Pop og opleve den perfekte blanding af pop kroge og rock energi, der inviterer dig til at synge og svaje langs."
   },
   {
     "categoryUrl": "/progressive-metal",
@@ -1448,5 +1448,230 @@
     "isPlayable": false,
     "slug": "viking-metal",
     "text": "Viking Metal er en undergenre af metal, der kombinerer sværhedsgrad af metal med episke temaer fra nordisk mytologi, Viking sagas, og nordisk historie. Denne kategori tilbyder thuding guitar riffs, mægtige kamp salmer, og ofte folky melodier, der afspejler den ru og majestætiske natur i nord. Med bands som Amon Amarth, Bathory, Ensiferum og Týr fører Viking Metal lytteren ind i en verden fuld af guder, heltemod og episke kampe. Musikken spænder fra brutale, riffdrevne stykker til atmosfæriske, ofte folkeinspirerede lyde, der skaber en majestætisk og kraftfuld atmosfære. Lad dig rive med af de episke melodier og heroiske historier om Viking Metal og dykke ned i en verden fuld af myter og legender, hvor musikken er lige så mægtig som guderne selv."
+  },
+  {
+    "categoryUrl": "/krautrock",
+    "headline": "Krautrock",
+    "imageUrl": "/category/krautrock.jpg",
+    "introSubline": "Oplev den eksperimentelle fusion af elektroniske lyde og psykedeliske elementer i tysk Krautrock!",
+    "isPlayable": false,
+    "slug": "krautrock",
+    "text": "Krautrock er en innovativ musikbevægelse, der opstod i Tyskland i slutningen af 1960'erne og 1970'erne, og som kombinerer eksperimentelle elektroniske lyde med psykedeliske rock-elementer. Denne genre er kendetegnet ved sine minimalistiske arrangementer, hypnotiske rytmer og innovative lydkoncepter. Bands som Kraftwerk, Can, Neu! og Tangerine Dream har formet denne unikke retning, der havde en betydelig indflydelse på elektronisk musik, ambient og art rock. Med sine lange, instrumentale passager, pulserende rytmer og futuristiske synthesizere skaber Krautrock en drømmeagtig og tidløs lyd. Lad dig selv blive båret væk af de eksperimentelle arrangementer og hypnotiske strukturer af Krautrock og oplev den banebrydende tyske musikscene, der revolutionerede moderne musik."
+  },
+  {
+    "categoryUrl": "/austrian",
+    "headline": "Østrigsk",
+    "imageUrl": "/category/austrian.jpg",
+    "introSubline": "Oplev den musikalske mangfoldighed og kulturelle rigdom af østrigsk musik!",
+    "isPlayable": false,
+    "slug": "austrian",
+    "text": "Den østrigske musikscene er dybt rodfæstet i landets rige kulturhistorie, fra klassiske mesterværker til folkemusiktraditioner og moderne lyde. Denne kategori omfatter alt fra den klassiske arv af komponister som Mozart, Schubert og Strauss til de charmerende folkemusiktraditioner i de alpine regioner og innovative moderne østrigske kunstnere. Wienervalsen, den traditionelle 'Schrammelmusik' og de alpine folkedanse er lige så meget en del af østrigsk kultur som avantgarde-bevægelserne og den moderne pop- og elektroniske scene. Lad dig selv blive båret væk af de elegante melodier, de harmoniske toner og den kulturelle dybde af østrigsk musik og oplev den musikalske sjæl af et land, der har bidraget betydeligt til verdens musikhistorie."
+  },
+  {
+    "categoryUrl": "/swiss",
+    "headline": "Schweizisk",
+    "imageUrl": "/category/swiss.jpg",
+    "introSubline": "Oplev den kulturelle mangfoldighed og unikke lyd af schweizisk musik!",
+    "isPlayable": false,
+    "slug": "swiss",
+    "text": "Den schweiziske musikscene afspejler landets multikulturelle karakter og kombinerer traditionelle alpine lyde med moderne musikalske udtryk. Denne kategori omfatter alt fra de karakteristiske alpehornklange og jodeltraditionen til moderne schweiziske pop, rock og elektroniske beats. Med indflydelser fra tyske, franske og italienske kulturtraditioner byder schweizisk musik på en fascinerende blanding af stilarter. Traditionelle instrumenter som alpehornet, harmonika og hackbræt mødes med innovative koncepter fra nutidens kunstnere. Lad dig selv blive fortryllet af de unikke melodier og kulturelle dybde af schweizisk musik og nyd en musikalsk rejse gennem et land, hvor tradition og innovation går hånd i hånd."
+  },
+  {
+    "categoryUrl": "/angry",
+    "headline": "Vred",
+    "imageUrl": "/category/angry.jpg",
+    "introSubline": "Oplev den rå kraft og energiske intensitet af musik, der kanaliserer vrede!",
+    "isPlayable": false,
+    "slug": "angry",
+    "text": "Kategorien 'Vred' samler musik, der giver udtryk for frustration, oprør og ren, ubegrænset energi. Dette følelsesmæssige spektrum kanaliseres gennem kraftfulde guitarriffs, aggressive beats og lidenskabelige vokal. Fra den rå intensitet i heavy metal og hardcore punk til den kontrollerede vrede i rap og grunge - disse sange giver stemme til indestængte følelser og fungerer som en katarsis for både kunstnere og lyttere. Med sin ofte direkte og kompromisløse tilgang skaber denne musik et rum, hvor vrede kan omdannes til energi og befrielse. Lad dig selv blive båret væk af den kraftfulde intensitet og emotionelle ærlighed i denne musik og oplev den forløsning, der kan komme fra at udtrykke og bearbejde stærke følelser gennem lyd."
+  },
+  {
+    "categoryUrl": "/dramatic",
+    "headline": "Dramatisk",
+    "imageUrl": "/category/dramatic.jpg",
+    "introSubline": "Lad dig overvælde af de storslåede følelser og kraftfulde dynamikker i dramatisk musik!",
+    "isPlayable": false,
+    "slug": "dramatic",
+    "text": "Kategorien 'Dramatisk' omfatter musik, der fanger lytteren med sine intense følelser, storslåede arrangementer og narrativ dybde. Denne musik skaber en følelsesladet rejse, der involverer kraftige dynamiske skift, episke strukturer og ofte cinematiske kvaliteter. Fra klassiske symfonier og operaer til moderne filmmusik og rock-ballader - dramatisk musik udforsker de store følelser og livets store spørgsmål. Den dybe musikalske spænding, de stærke kontraster mellem stille og kraftfulde passager, og den emotionelle fortælling skaber en intens lytteoplevelse. Lad dig selv blive ført ind i en verden af stor passion og dybe følelser gennem den dramatiske musiks ekspressive kraft og oplev, hvordan musikken kan male billeder og fortælle historier, der berører sjælen."
+  },
+  {
+    "categoryUrl": "/dreamy",
+    "headline": "Drømmende",
+    "imageUrl": "/category/dreamy.jpg",
+    "introSubline": "Forsvind ind i svævende melodier og atmosfæriske lydbilleder af drømmende musik!",
+    "isPlayable": false,
+    "slug": "dreamy",
+    "text": "Kategorien 'Drømmende' samler musik, der skaber en svævende, atmosfærisk oplevelse og transporterer lytteren til en anden verden. Med blide harmonier, flydende arrangementer og en næsten svævende kvalitet inviterer denne musik til fordybelse og fantasi. Fra ambient og drømmepop til visse former for neo-klassisk og chillout - drømmende musik giver plads til kontemplation og indre rejser. De ofte lagdelte lydlandskaber, subtile teksturer og bløde melodier skaber en fornemmelse af vægtløshed og ro. Lad dig selv blive båret væk af de svævende lyde og eteriske stemning af drømmende musik og forsvind ind i en verden, hvor virkelighed og fantasi smelter sammen i en betagende lydoplevelse."
+  },
+  {
+    "categoryUrl": "/energetic",
+    "headline": "Energisk",
+    "imageUrl": "/category/energetic.jpg",
+    "introSubline": "Oplad med de dynamiske rytmer og kraftfulde beats af energisk musik!",
+    "isPlayable": false,
+    "slug": "energetic",
+    "text": "Kategorien 'Energisk' bringer musik, der strømmer over med livskraft og positiv energi. Dette er lyden af bevægelse, motivation og ren livsglæde, som kommer til udtryk gennem pulserende beats, hurtige tempi og opløftende melodier. Fra dansabel elektronisk musik og power pop til funk grooves og up-tempo rock - energisk musik får kroppen til at bevæge sig og humøret til at stige. Den rytmiske drive, de kraftfulde hooks og den ubændige vitalitet skaber en stimulerende atmosfære, der inspirerer til aktivitet og optimisme. Lad dig selv blive fyldt med positiv energi og dynamisk kraft gennem denne musik og oplev, hvordan de rigtige beats og tempi kan transformere dit humør og motivere dig til at erobre verden."
+  },
+  {
+    "categoryUrl": "/hopeful",
+    "headline": "Håbefuld",
+    "imageUrl": "/category/hopeful.jpg",
+    "introSubline": "Lad dig inspirere af de opløftende melodier og positive budskaber i håbefuld musik!",
+    "isPlayable": false,
+    "slug": "hopeful",
+    "text": "Kategorien 'Håbefuld' samler musik, der udstråler optimisme, tro på fremtiden og en følelse af mulighed. Dette er sange, der løfter ånden gennem deres opadstræbende melodier, inspirerende tekster og varme harmonier. Fra folkemusikkens simple, oprigtige udtryk til poppens glade hymner og gospelens åndelige løft - håbefuld musik giver næring til troen på bedre tider. De ofte lysere tonearter, gradvist stigende melodiske linjer og bekræftende budskaber skaber en følelse af at bevæge sig mod lyset. Lad dig selv blive båret af de opløftende toner og positive vibrationer af håbefuld musik og mærk, hvordan de rette melodier kan forstærke dit mod og inspirere dig til at tro på morgendagen."
+  },
+  {
+    "categoryUrl": "/intense",
+    "headline": "Intens",
+    "imageUrl": "/category/intense.jpg",
+    "introSubline": "Oplev den rå koncentration og ubarmhjertige kraft af intens musik!",
+    "isPlayable": false,
+    "slug": "intense",
+    "text": "Kategorien 'Intens' omfatter musik, der fængsler med sin kompromisløse koncentration, kraftfulde dynamik og emotionelle dybde. Dette er musik, der kræver fuld opmærksomhed og konfronterer lytteren med rå, ubændige følelser og teknisk kompleksitet. Fra den ekstreme intensitet i death metal og hardcore til den krævende kompleksitet i avantgarde jazz og eksperimentel elektronik - denne musik presser grænser og udfordrer konventioner. De ofte tætte lydstrukturer, tekniske udfordringer og emotionelle ekstremiteter skaber en overvældende lytteoplevelse. Lad dig selv blive draget ind i den altopslugende verden af intens musik og oplev den særlige tilfredsstillelse, der kommer fra at engagere sig fuldt ud med kunst, der ikke tilbyder lette svar eller kompromiser."
+  },
+  {
+    "categoryUrl": "/melancholic",
+    "headline": "Melankolsk",
+    "imageUrl": "/category/melancholic.jpg",
+    "introSubline": "Fordyb dig i de reflekterende stemninger og sødmefulde sorger af melankolsk musik!",
+    "isPlayable": false,
+    "slug": "melancholic",
+    "text": "Kategorien 'Melankolsk' samler musik, der udforsker den særlige skønhed i vemod og eftertænksomhed. Dette er ikke ren tristhed, men snarere en sofistikeret blanding af længsel, nostalgi og kontemplativ dybde, som kommer til udtryk gennem sørgmodige melodier, rørende harmonier og reflekterende tekster. Fra de dybe blues-traditioner og folk ballader til moderne indie og post-rock - melankolsk musik tilbyder en særlig skønhed i sin sårbarhed og oprigtighed. De ofte mollprægede tonearter, langsomt flydende tempi og introspektive stemninger skaber et rum for refleksion og følelsesmæssig fordybelse. Lad dig selv blive omfavnet af den blide sorg og poetiske skønhed af melankolsk musik og opdage, hvordan disse dybere følelser kan føre til indsigt og forbindelse med din indre verden."
+  },
+  {
+    "categoryUrl": "/nostalgic",
+    "headline": "Nostalgisk",
+    "imageUrl": "/category/nostalgic.jpg",
+    "introSubline": "Rejs tilbage i tiden med de varme lyde og minderige melodier af nostalgisk musik!",
+    "isPlayable": false,
+    "slug": "nostalgic",
+    "text": "Kategorien 'Nostalgisk' bringer musik, der vækker minder og transporterer lytteren tilbage til specielle øjeblikke og tider. Med sin evne til at fremkalde følelsen af forgangne dage, ungdommens uskyld eller betydningsfulde livsperioder, skaber nostalgisk musik en bro mellem fortid og nutid. Fra tidløse klassikere og gyldne oldies til moderne fortolkninger af retrostile - denne musik appellerer til vores kollektive og personlige minder. De ofte varme produktioner, velkendte melodiske strukturer og tidstypiske lyde vækker genklang af tidligere tider og skaber en særlig følelsesmæssig resonans. Lad dig selv blive ført tilbage gennem tiden af de mindeværdige toner og familiære klange af nostalgisk musik og genoplev de øjeblikke og følelser, der har formet dit liv."
+  },
+  {
+    "categoryUrl": "/peaceful",
+    "headline": "Fredfyldt",
+    "imageUrl": "/category/peaceful.jpg",
+    "introSubline": "Find indre ro og harmoni med de bløde lyde af fredfyldt musik!",
+    "isPlayable": false,
+    "slug": "peaceful",
+    "text": "Kategorien 'Fredfyldt' samler musik, der skaber en følelse af ro, indre harmoni og afslappet klarhed. Dette er lydspor til meditation, afslapning og stille kontemplation, udtrykt gennem blide toner, harmoniske arrangementer og afdæmpet dynamik. Fra ambient og new age til rolige klassiske stykker og akustiske ballader - fredfyldt musik skaber et beskyttet rum, hvor sind og krop kan finde ro. De ofte minimalistiske kompositioner, langsomme tempi og naturlige klangteksturer hjælper med at sænke pulsen og skabe mental klarhed. Lad dig selv blive omfavnet af den beroligende atmosfære og balancerede harmoni af fredfyldt musik og oplev, hvordan de rette lyde kan transformere dit indre landskab og lede dig mod en tilstand af dyb ro og velvære."
+  },
+  {
+    "categoryUrl": "/relaxed",
+    "headline": "Afslappet",
+    "imageUrl": "/category/relaxed.jpg",
+    "introSubline": "Slå dig ned og nyd de afslappende rytmer og ubekymrede melodier!",
+    "isPlayable": false,
+    "slug": "relaxed",
+    "text": "Kategorien 'Afslappet' bringer musik, der skaber en afslappet atmosfære og inviterer til at sænke tempoet. Med sin afstressende kvalitet og ubesværede rytmer er denne musik perfekt til rolige stunder, afslapning efter arbejde eller til at skabe en behagelig baggrund for sociale sammenkomster. Fra bossa nova og smooth jazz til laid-back indie og downtempo elektronik - afslappet musik kombinerer lettilgængelighed med subtil sofistikation. De jævne grooves, behagelige tempi og balancerede arrangementer skaber en følelse af både komfort og elegance. Lad dig selv blive båret af de ubesværede rytmer og behagelige stemning af afslappet musik og mærk, hvordan presset fra hverdagen gradvist forsvinder til fordel for en tilstand af afslappet velvære og mild nydelse."
+  },
+  {
+    "categoryUrl": "/romantic",
+    "headline": "Romantisk",
+    "imageUrl": "/category/romantic.jpg",
+    "introSubline": "Oplev den følelsesladede skønhed og hjertelige lidenskab af romantisk musik!",
+    "isPlayable": false,
+    "slug": "romantic",
+    "text": "Kategorien 'Romantisk' omfatter musik, der fejrer kærligheden i alle dens facetter, fra den første forelskelse til den dybe, varige forbindelse. Med sin følelsesladede intensitet, sødmefulde melodier og passionerede udtryk skaber romantisk musik en atmosfære af intimitet og emotionel dybde. Fra tidløse kærlighedsballader og klassiske serenader til moderne soul og R&B duetter - romantisk musik giver stemme til hjertets dybeste længsler. De ofte udsøgte harmonier, smukke melodiske linjer og oprigtige tekster taler direkte til vores inderste følelser og længsler. Lad dig selv blive indhyllet i den varme omfavnelse og rørende skønhed af romantisk musik og oplev, hvordan de rette toner kan udtrykke de følelser, som ord alene ikke kan beskrive."
+  },
+  {
+    "categoryUrl": "/uplifting",
+    "headline": "Opløftende",
+    "imageUrl": "/category/uplifting.jpg",
+    "introSubline": "Løft dit humør med de inspirerende melodier og positive energi af opløftende musik!",
+    "isPlayable": false,
+    "slug": "uplifting",
+    "text": "Kategorien 'Opløftende' samler musik, der inspirerer, motiverer og fylder lytteren med positiv energi. Med sine opadgående melodiske linjer, dynamiske rytmer og optimistiske budskaber er denne musik designet til at løfte ånden og skabe en følelse af mulighed og glæde. Fra triumferende klassiske stykker og inspirerende gospel til moderne pop-hymner og euforisk trance - opløftende musik har evnen til at transformere humør og perspektiv. De ofte lysere tonearter, stigende melodiske konturer og bekræftende budskaber skaber en følelse af bevægelse mod noget større og lysere. Lad dig selv blive løftet af de inspirerende toner og positive energi af opløftende musik og mærk, hvordan den rette melodi kan ændre din dag og give dig ny kraft til at møde livets udfordringer."
+  },
+  {
+    "categoryUrl": "/autumn-chill",
+    "headline": "Efterårskøling",
+    "imageUrl": "/category/autumn-chill.jpg",
+    "introSubline": "Fordyb dig i de varme, rolige lyde af efterårssæsonen!",
+    "isPlayable": false,
+    "slug": "autumn-chill",
+    "text": "Kategorien 'Efterårskøling' bringer musik, der perfekt fanger essensen af efterårssæsonen - med dens gyldne farver, kølige luft og reflekterende stemning. Denne samling af sange og melodier skaber en varm, hyggelig atmosfære, ideel til lange aftener med en kop te, mens bladene falder udenfor. Fra akustiske indie-folk sange og blide jazz kompositioner til ambient elektronik med varme undertoner - efterårskøling musik omfavner både melankolien og skønheden i årstidens skift. De ofte amber-tonede produktioner, midtempo rytmer og kontemplative stemninger afspejler den særlige ro, der kommer med efteråret. Lad dig selv blive indhyllet i de varme lyde og rolige rytmer af efterårskøling og oplev musikken, der forstærker årstidens unikke magi og skønhed."
+  },
+  {
+    "categoryUrl": "/autumn-leaves",
+    "headline": "Efterårsblade",
+    "imageUrl": "/category/autumn-leaves.jpg",
+    "introSubline": "Lad dig forføre af de gyldne melodier og rustikke lyde af efterårets soundtrack!",
+    "isPlayable": false,
+    "slug": "autumn-leaves",
+    "text": "Kategorien 'Efterårsblade' samler musik, der fejrer efterårets særlige stemning - tiden hvor naturen skifter farve, og et strejf af melankoli og eftertænksomhed fylder luften. Fra jazzstandarden 'Autumn Leaves' til moderne folkeinspirerede kompositioner - denne musik fanger essensen af årstidens forandring. Instrumentale stykker med akustiske guitarer, piano og strygere blander sig med stemningsfulde sange, der reflekterer over forgængelighed og skønhed. De varme, rustikke toner, midtempo rytmer og let melankolske melodier skaber et perfekt lydspor til skovture blandt faldende blade og lange eftermiddage med en bog og et tæppe. Lad dig selv blive omfavnet af de gyldne toner og atmosfæriske dybde af efterårsblade-musikken og find ro i årstidens særlige balance mellem vemod og skønhed."
+  },
+  {
+    "categoryUrl": "/back-to-school",
+    "headline": "Tilbage til skolen",
+    "imageUrl": "/category/back-to-school.jpg",
+    "introSubline": "Start det nye skoleår med energiske beats og motiverende melodier!",
+    "isPlayable": false,
+    "slug": "back-to-school",
+    "text": "Kategorien 'Tilbage til skolen' bringer en samling af energiske, opmuntrende og positive sange, der er perfekte til at starte et nyt skoleår med god energi. Fra opløftende pop-hits og motiverende indie-rock til fokusfremmende instrumentaler - denne musik er designet til at skabe en positiv atmosfære omkring uddannelse og læring. De ofte optimistiske temaer, friske rytmer og engagerende melodier hjælper med at opbygge entusiasme og reducere nervøsitet ved sæsonens start. Disse sange fejrer både spændingen ved ny begyndelse, venskaber der fornyes, og potentialet for vækst og opdagelse. Lad dig selv blive motiveret af de energiske rytmer og inspirerende toner af tilbage-til-skolen musikken og mærk, hvordan den rette lydside kan transformere den årlige tilbagevenden til klasseværelset til en spændende og positiv oplevelse."
+  },
+  {
+    "categoryUrl": "/christmas-classics",
+    "headline": "Juleklassikere",
+    "imageUrl": "/category/christmas-classics.jpg",
+    "introSubline": "Nyd den tidløse magi af traditionelle og elskede julemelodier!",
+    "isPlayable": false,
+    "slug": "christmas-classics",
+    "text": "Kategorien 'Juleklassikere' samler de tidløse sange og melodier, der har defineret julestemningen gennem generationer. Fra 'Stille Nat' og 'Jingle Bells' til 'White Christmas' og 'Let It Snow' - disse elskede klassikere vækker minder og skaber den særlige atmosfære, der hører juletiden til. De traditionelle julesange, populære julemelodier fra det 20. århundrede og instrumentale versioner af kendte julesalmer tilbyder en nostalgisk rejse gennem julens musikalske historie. De ofte varme arrangementer, genkendelige melodier og festlige eller kontemplative stemninger skaber en perfekt lydkulisse til juleforberedelser, familiemiddage og hyggestunder ved pejsen. Lad dig selv blive omfavnet af den tidløse charme og varme komfort af juleklassikerne og mærk, hvordan disse velkendte toner har kraften til at vække juleånden og forbinde os med traditioner på tværs af tid."
+  },
+  {
+    "categoryUrl": "/festival-season",
+    "headline": "Festivalsæson",
+    "imageUrl": "/category/festival-season.jpg",
+    "introSubline": "Oplev den elektriske stemning og friske energi af festivalsæsonen!",
+    "isPlayable": false,
+    "slug": "festival-season",
+    "text": "Kategorien 'Festivalsæson' bringer lydene af sommerens største musikbegivenheder direkte til dig - fra ikoniske festival-hymner til de nyeste hits, der definerer årets line-ups. Denne samling omfatter den brede vifte af musik, der kendetegner moderne festivaler, fra indie-rock og alternativ til elektronisk dansemusik og hip-hop. De energiske beats, fængslende melodier og fællesskabsorienterede vibe mimer den særlige følelse af at stå under åben himmel med tusindvis af ligesindede musikelskere. Festivalsæson-musikken fejrer frihed, ungdom og den særlige magi, der opstår, når live musik, sommer og fællesskab mødes. Lad dig selv blive båret af de levende rytmer og friske energi af festivalsæson-musikken og genskab den unikke stemning fra de store scener og magiske musikoplevelser under sommerhimlen."
+  },
+  {
+    "categoryUrl": "/halloween-spooky-tunes",
+    "headline": "Halloween Uhyggelige Toner",
+    "imageUrl": "/category/halloween-spooky-tunes.jpg",
+    "introSubline": "Skab den perfekte uhyggelige stemning med skumle melodier og mystiske beats!",
+    "isPlayable": false,
+    "slug": "halloween-spooky-tunes",
+    "text": "Kategorien 'Halloween Uhyggelige Toner' samler musik, der skaber den perfekte lydkulisse til årets mest skræmmende fest. Fra klassiske uhyggelige temaer som 'Thriller' og 'Monster Mash' til filmmusik fra gyserklassikere og moderne atmosfæriske kompositioner - denne samling omfatter alle grader af uhygge, fra sjovt skræmmende til genuint gysende. De mørke toner, dramatiske arrangementer og overraskende lydeffekter skaber den perfekte stemning til udskæring af græskar, Halloween-fester eller en aften med gyserfilm. Musikken spænder fra spøgelsesagtig ambient og gotiske orgelstykker til dansable Halloween-hits og tematiske rocksange. Lad dig selv blive hjemsøgt af de skumle melodier og mystiske rytmer af Halloween-musikken og skab den perfekte atmosfære for en nat med gys, grin og overnaturlig stemning."
+  },
+  {
+    "categoryUrl": "/valentines-day",
+    "headline": "Valentinsdag",
+    "imageUrl": "/category/valentines-day.jpg",
+    "introSubline": "Fejr kærligheden med romantiske ballader og hjertevarmende melodier!",
+    "isPlayable": false,
+    "slug": "valentines-day",
+    "text": "Kategorien 'Valentinsdag' samler musik, der fejrer kærligheden i alle dens former - fra den første forelskelse til dyb, varig hengivenhed. Denne samling af romantiske sange spænder fra tidløse kærlighedsballader og klassiske duetter til moderne R&B slow jams og følsomme indie-kærlighedssange. De ofte følelsesladede vokalfraseringer, intime produktioner og hjertevarmende tekster skaber den perfekte lydkulisse til romantiske middage, særlige øjeblikke eller blot til at fejre kærligheden i hverdagen. Valentinsdag-musikken omfavner både den søde romantiks lette toner og den dybe kærligheds mere komplekse nuancer. Lad dig selv blive omfavnet af de kærlige toner og følelsesfulde melodier af valentinsdag-musikken og genfind eller bekræft de følelser, der forbinder os på de dybeste niveauer."
+  },
+  {
+    "categoryUrl": "/winter-vibes",
+    "headline": "Vinterstemning",
+    "imageUrl": "/category/winter-vibes.jpg",
+    "introSubline": "Fordyb dig i den kølige skønhed og stille magi af vintersæsonens lyde!",
+    "isPlayable": false,
+    "slug": "winter-vibes",
+    "text": "Kategorien 'Vinterstemning' fanger essensen af vintersæsonen gennem musik, der reflekterer dens særlige atmosfære - fra frostklar skønhed til hyggelig varme. Denne samling omfatter både instrumentale stykker, der maler billeder af snedækkede landskaber, og stemningsfulde sange, der fejrer eller reflekterer over vinterens særlige karakter. Ambient kompositioner med krystalklare klange, akustiske folk-ballader og kontemplative klaverstykker skaber en følelse af vinterens ro og stilhed. De ofte minimalistiske arrangementer, rene toner og rolige tempi afspejler sæsonens særlige blanding af kulde udenfor og varme indenfor. Lad dig selv blive transporteret af de kølige melodier og rolige rytmer af vinterstemnings-musikken og opdag, hvordan vintersæsonens særlige skønhed og ro kan fanges i lyd."
+  },
+  {
+    "categoryUrl": "/winter-wonderland",
+    "headline": "Vinterunderland",
+    "imageUrl": "/category/winter-wonderland.jpg",
+    "introSubline": "Træd ind i et magisk lydlandskab af glitrende sne og festlig vinterstemning!",
+    "isPlayable": false,
+    "slug": "winter-wonderland",
+    "text": "Kategorien 'Vinterunderland' samler musik, der fejrer vinterens magiske og festlige sider - fra snefyldte eventyr til hyggestunder ved pejsen. Denne samling inkluderer både instrumentale vinterklassikere og stemningsfulde sange, der indfanger sæsonens særlige magi og glæde."
+  },
+  {
+    "categoryUrl": "/deutschrock",
+    "headline": "Deutschrock",
+    "imageUrl": "/category/deutschrock.jpg",
+    "introSubline": "Oplev den kraftfulde energi og autentiske lyd af tysk rock musik!",
+    "isPlayable": false,
+    "slug": "deutschrock",
+    "text": "Deutschrock er en kraftfuld musik genre, der kombinerer den rå energi af rock med tyske tekster og en særlig kulturel identitet. Denne kategori omfatter alt fra de pioneerende bands i 70'erne som Ton Steine Scherben og Udo Lindenberg til moderne repræsentanter som Rammstein, Die Toten Hosen og Kraftklub. Med sin direkte og ofte samfundskritiske tilgang tilbyder Deutschrock en autentisk blanding af energiske guitar riffs, kraftfulde trommer og udtryksfulde tekster, der afspejler den tyske kultur og identitet. Fra politisk engagerede sange til hyldester til livet og kærligheden - Deutschrock fanger essensen af tysk rockmusik med sin ærlighed, intensitet og karakteristiske lyd. Lad dig selv blive båret væk af den kraftfulde energi og autentiske udtryk af Deutschrock og oplev den musikalske tradition, der har formet generationer af tyske rockfans."
   }
 ]
