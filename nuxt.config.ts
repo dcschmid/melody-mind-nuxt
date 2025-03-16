@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@pinia/nuxt',
     '@nuxtjs/sitemap',
+    '@nuxthub/core',
   ],
 
   devtools: {
