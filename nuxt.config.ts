@@ -12,7 +12,6 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@pinia/nuxt',
     '@nuxtjs/sitemap',
-    '@nuxthub/core',
   ],
 
   devtools: {
@@ -90,11 +89,6 @@ export default defineNuxtConfig({
       databaseUrl: process.env.NUXT_TURSO_DATABASE_URL,
       authToken: process.env.NUXT_TURSO_AUTH_TOKEN,
     },
-  },
-
-  // Optimierte Build-Parameter für bessere Performance
-  build: {
-    transpile: [process.env.NODE_ENV === 'production' ? '@headlessui/vue' : ''],
   },
   future: {
     compatibilityVersion: 4,
